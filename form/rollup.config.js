@@ -39,6 +39,9 @@ export default {
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
+	watch: {
+		chokidar: false
+	},
 	plugins: [
 		css({ output: "public/build/site.css" }),
 		svelte({

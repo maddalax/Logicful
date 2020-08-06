@@ -1,0 +1,15 @@
+{
+    "name": "api",
+    "scripts": {
+        "start": "ts-node-dev --respawn --transpile-only src/Program.ts",
+        "run:install": "npm install"
+    },
+    "dependencies": {
+        "koa": "2.13.0"
+    },
+    "devDependencies": {
+        "typescript": "3.9.7",
+        "@types/koa": "2.11.3",
+        "ts-node-dev": "1.0.0-pre.56"
+    }
+}

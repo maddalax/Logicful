@@ -54,7 +54,7 @@
   function onSubmit() {
     console.log("VALUES", values);
     const validator = new AddressService();
-    //validator.normalize()
+    validator.normalize(values.address);
   }
 </script>
 

@@ -8,12 +8,12 @@ export class AddressService {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body : JSON.stringify({
+            body : JSON.stringify([{
                 street : address.address1,
                 city : address.city,
                 state : address.state,
                 zipcode: address.zip
-            })
+            }])
         });
         const body = await result.json();
         console.log(body);
