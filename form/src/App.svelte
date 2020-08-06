@@ -137,7 +137,7 @@
           class="usa-layout-docs__main desktop:grid-col-9 usa-prose
           usa-layout-docs"
           id="main-content">
-          <DynamicForm {form} />
+          <DynamicForm {form}/>
         </main>
       </div>
     </div>

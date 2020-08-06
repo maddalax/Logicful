@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from "rollup-plugin-css-only";
+import copy from 'rollup-plugin-copy'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -73,7 +74,15 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+
+		// Copy assets to build directory.
+		copy({
+			targets: [
+			  { src: 'node_modules/uswds/dist/img', dest: 'public' },
+			  { src: 'node_modules/uswds/dist/fonts', dest: 'public' },
+			]
+		  })
 	],
 	watch: {
 		clearScreen: false

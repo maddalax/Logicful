@@ -2,18 +2,37 @@
   import Field from "./Field.svelte";
   import type { IForm } from "./entities/IForm";
   import type { IField } from "./entities/IField";
-  import { formStore } from "./Store";
+  import { AddressService } from "./services/AddressService";
+  import { formStore } from "./event/Store";
+  import { subscribeFieldChange } from "./event/FieldEvent";
+  import { set } from "./util/Selection";
 
   export let form: IForm;
-  export let values: {[key : string] : any} = {}
+  let values: { [key: string]: any } = {};
 
-  formStore.subscribe(v => {
+  subscribeFieldChange((updatedField: IField, value: any) => {
+    onInput(updatedField, value);
+  });
+
+  function onInput(field: IField, value: any) {
+    formStore.update((prev) => {
+      if (value === "" || value == null) {
+        set(prev, field.name, undefined);
+      } else {
+        set(prev, field.name, value);
+      }
+      prev.lastFieldChange = field.name;
+      return prev;
+    });
+  }
+
+  formStore.subscribe((v) => {
     values = v;
-    const index = form.fields.findIndex(w => w.name === v.lastFieldChange);
-    if(index != -1) {
+    const index = form.fields.findIndex((w) => w.name === v.lastFieldChange);
+    if (index != -1) {
       form.fields[index].updated = !form.fields[index].updated;
     }
-  })
+  });
 
   function display(field: IField): boolean {
     if (!field.display) {
@@ -31,18 +50,23 @@
       }
     }
   }
+
+  function onSubmit() {
+    console.log("VALUES", values);
+    const validator = new AddressService();
+    //validator.normalize()
+  }
 </script>
 
-<form class="usa-form">
+<form class="usa-form" on:submit|preventDefault={onSubmit}>
   <fieldset class="usa-fieldset">
-    {#each form.fields.filter((w) => display(w)) as field}
-      {#if field.type === 'repeating'}
-        {#each field.fields as child}
-          <Field field={child} />
-        {/each}
+    {#each form.fields as field}
+      {#if !display(field)}
+        <span />
       {:else}
         <Field {field} />
       {/if}
     {/each}
   </fieldset>
+  <button class="usa-button" type="submit">Submit Form</button>
 </form>
