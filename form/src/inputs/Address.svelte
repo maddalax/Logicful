@@ -1,6 +1,6 @@
 <script lang="ts">
     import StateSelector from "./StateSelector.svelte"
-    import type { IField } from "src/entities/IField";
+    import { IField } from "src/entities/IField";
     import { afterUpdate } from "svelte";
 import TextInput from "./TextInput.svelte";
     export let field : IField

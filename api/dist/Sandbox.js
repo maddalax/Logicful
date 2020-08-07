@@ -29,7 +29,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Container_1 = __importStar(require("./Container"));
-const NormalizeAddressCommand_1 = require("./application/features/forms/fields/address/commands/NormalizeAddressCommand");
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         const data = {
@@ -38,9 +37,13 @@ function run() {
             "state": "KS",
             "zip": "66204"
         };
-        const result = yield Container_1.default
-            .get(Container_1.Service.Mediator).execute(new NormalizeAddressCommand_1.NormalizeAddressCommand(data));
-        console.log(result);
+        const db = yield Container_1.default
+            .get(Container_1.Service.Database);
+        yield db.users.insert({
+            email: 'jm2@madev.me',
+            username: 'test',
+            id: 'my_id_2'
+        });
     });
 }
 run();

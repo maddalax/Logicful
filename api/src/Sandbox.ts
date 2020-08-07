@@ -1,6 +1,7 @@
 import registry, { Service } from "./Container";
 import { Mediator } from "./infrastructure/event/Mediator";
 import { NormalizeAddressCommand } from "./application/features/forms/fields/address/commands/NormalizeAddressCommand";
+import { Database } from "./infrastructure/persistence/Database";
 
 async function run() {
   const data = {
@@ -9,9 +10,14 @@ async function run() {
     "state" : "KS",
     "zip" : "66204"
 }
-  const result = await registry
-  .get<Mediator>(Service.Mediator).execute(new NormalizeAddressCommand(data));
-  console.log(result);
+  const db = await registry
+  .get<Database>(Service.Database);
+
+  await db.users.insert({
+    email : 'jm2@madev.me',
+    username : 'test',
+    id : 'my_id_2'
+  })
 }
 
 run();

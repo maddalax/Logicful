@@ -2,10 +2,12 @@ import Bottle from 'bottlejs';
 import { ConfigProvider } from './config/ConfigProvider';
 import { Mediator } from './infrastructure/event/Mediator';
 import { Logger, ConsoleLogger } from './infrastructure/logging/Logger';
+import { Database } from './infrastructure/persistence/Database';
 
 const bottle : Bottle = new Bottle();
 
 export enum Service {
+  Database,
   Config,
   Mediator,
   Logger
@@ -31,5 +33,6 @@ export const registry : ServiceRegistry = new ServiceRegistry();
 registry.register(Service.Config, ConfigProvider);
 registry.register(Service.Mediator, Mediator);
 registry.register(Service.Logger, ConsoleLogger)
+registry.register(Service.Database, Database, Service.Config);
 
 export default registry;
