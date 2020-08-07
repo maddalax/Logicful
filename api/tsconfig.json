@@ -1,5 +1,13 @@
 {
     "compilerOptions": {
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "target": "esnext",
+        "lib": ["esnext"],
+        "types": ["reflect-metadata"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "baseUrl": "src",
     }
 }
