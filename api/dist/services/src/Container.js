@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const inversify_1 = require("inversify");
+const MongoService_1 = require("./infrastructure/persistence/mongo/MongoService");
+const ConfigProvider_1 = require("./config/ConfigProvider");
+const Logger_1 = require("./infrastructure/logging/Logger");
+const Mediator_1 = require("./infrastructure/event/Mediator");
+const provider = new inversify_1.Container();
+provider.bind(MongoService_1.MongoService).to(MongoService_1.MongoService).inSingletonScope();
+provider.bind(ConfigProvider_1.ConfigProvider).to(ConfigProvider_1.ConfigProvider).inSingletonScope();
+provider.bind(Logger_1.Logger).to(Logger_1.ConsoleLogger).inSingletonScope();
+provider.bind(Mediator_1.Mediator).to(Mediator_1.Mediator).inSingletonScope();
+exports.default = provider;

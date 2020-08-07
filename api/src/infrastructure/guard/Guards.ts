@@ -1,4 +1,4 @@
-export function assertNotEmpty(value) {
+export function assertNotEmpty(value, item?) {
     let isEmpty = !value ? true : false;
     if(value == null) {
         isEmpty = true;
@@ -10,7 +10,7 @@ export function assertNotEmpty(value) {
         isEmpty = Object.keys(value).length === 0;
     }
     if(isEmpty) {
-        throw new Error("Value was empty. " + JSON.stringify(value));
+        throw new Error(`${item ?? 'value'} was empty. ` + JSON.stringify(value));
     }
 }
 

@@ -1,11 +1,8 @@
-import { inject, injectable } from "inversify";
-
 export interface Log {
     message: string,
     [key: string]: any
 }
 
-@injectable()
 export abstract class Logger {
     abstract log(object: Log): void
     abstract logError(object: Log): void;

@@ -1,15 +1,9 @@
 import { CommandRequest, Mediator } from "../../../../infrastructure/event/Mediator";
 import { Command } from "../../../../infrastructure/event/Commands";
-import provider from "../../../../Container";
-import { MongoService } from "../../../../infrastructure/persistence/mongo/MongoService";
+import registry, { Service } from '../../../../Container';
 
-provider.get(Mediator).register<string>(Command.UserRegister, async () => {
-    const db = provider.get(MongoService);
-    const id = await db.users.insertOne({
-        username : 'test',
-        email : 'test@test.com'
-    });
-    throw new Error("Test");
+registry.get<Mediator>(Service.Mediator).register<string>(Command.UserRegister, async () => {
+    return "";
 });
 
 export class UserRegisterCommand extends CommandRequest<string> {

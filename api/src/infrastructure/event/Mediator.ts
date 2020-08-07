@@ -1,17 +1,12 @@
 import { Command } from "./Commands";
-import { injectable, inject } from "inversify";
-import { Logger } from "../logging/Logger";
 import { assertNotNull } from "../guard/Guards";
+import registry, { Service } from '../../Container';
+import { Logger } from '../logging/Logger';
 
-@injectable()
 export class Mediator {
 
     private handlers = {};
     private listeners : {[key : number] : any[]} = {};
-
-    constructor(@inject(Logger) private readonly logger : Logger) {
-    }
-
     async register<T>(command : Command, handler: (command: CommandRequest<T>) => Promise<T>) {
         assertNotNull(command, handler);
         this.handlers[command] = handler;
@@ -30,7 +25,7 @@ export class Mediator {
         if (!listeners) {
             throw new Error("No listener found for " + Command[command.command]);
         }
-        this.logger.log({
+        registry.get<Logger>(Service.Logger).log({
             message : Command[command.command],
             ...command,
             listeners : listeners.length
@@ -41,7 +36,7 @@ export class Mediator {
     }
 
     async execute<T>(command: CommandRequest<T>): Promise<T> {
-        this.logger.log({
+        registry.get<Logger>(Service.Logger).log({
             message : Command[command.command],
             ...command
         });
