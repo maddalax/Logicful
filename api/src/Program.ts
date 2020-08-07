@@ -16,7 +16,10 @@ const router = new Router({
 });
 
 app.use(bodyParser({
-    enableTypes : ["json"]
+    enableTypes: ["json"],
+    onerror(err, ctx) {
+        ctx.throw({ error: err }, 422);
+    }
 }))
 
 app.use(async (ctx, next) => {
@@ -37,11 +40,11 @@ app.use(async (context, next) => {
 });
 
 app.on('error', (error, context: Koa.Context) => {
-   provider.get(Mediator).notify(new ErrorCommand(error, {
-       method : context.method,
-       url : context.url,
-       ip : context.request.ip
-   }))
+    provider.get(Mediator).notify(new ErrorCommand(error, {
+        method: context.method,
+        url: context.url,
+        ip: context.request.ip
+    }))
 });
 
 
