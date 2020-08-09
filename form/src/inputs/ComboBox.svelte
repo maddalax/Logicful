@@ -82,7 +82,7 @@
             name={field.name}
             id={field.id}
             required
-            value="value"
+            value={value}
             on:change={(e) => {
                 dispatchFieldChange(field, e.target.value);
             }}>

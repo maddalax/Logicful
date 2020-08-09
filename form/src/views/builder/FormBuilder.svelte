@@ -46,7 +46,7 @@
                 {#each form.fields as field}
                     <div style="margin-top: 1em">
                         {#if initialized}
-                            <FieldEdit field="field" />
+                            <FieldEdit field={field} />
                         {/if}
                     </div>
                 {/each}
@@ -56,7 +56,7 @@
             </div>
             <div class="grid-col-4">
                 {#if initialized}
-                    <DynamicForm form="form" />
+                    <DynamicForm form={form} />
                 {/if}
             </div>
         </div>

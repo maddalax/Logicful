@@ -55,7 +55,7 @@
                 field={{ id: `${id}-label`, name: `${field.id}-builder-config-field-label`, label: 'Label', value: field.label, type: 'string', configFieldTarget: 'label', configTarget: field.id }} />
             <Field
                 field={{ id: `${id}-type`, name: `${field.id}-builder-config-field-fieldType`, label: 'Field Type', value: field.type, type: 'combobox', configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'https://gist.githubusercontent.com/MaddoxDevelopment/e84af9214b329b9c717c00dc676d5565/raw/844db197e9834593c3b84a7013a4020454235b86/field_types.json' } }} />
-            <FieldTypeEditor field="field" editorId={id} />
+            <FieldTypeEditor field={field} editorId={id} />
         </div>
     </div>
 </div>

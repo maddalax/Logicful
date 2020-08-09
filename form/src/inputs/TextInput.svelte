@@ -14,12 +14,12 @@
 </script>
 
 <div>
-    <Label field="field" />
+    <Label field={field} />
     <input
         on:input={(e) => dispatchFieldChange(field, e.target.value)}
         class={field.properties?.className ?? 'usa-input usa-input'}
         id={field.id}
-        value="value"
+        value={value}
         name={field.name}
         type="text" />
 </div>

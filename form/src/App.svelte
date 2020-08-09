@@ -8,7 +8,7 @@
     import { dispatch } from 'event/EventBus';
 
     onMount(() => {
-        dispatch('dialog_show', ManageOptionSets);
+        //dispatch('dialog_show', ManageOptionSets);
     });
 </script>
 

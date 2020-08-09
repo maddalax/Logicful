@@ -65,7 +65,7 @@
             {#if !display(field)}
                 <span />
             {:else}
-                <Field field="field" />
+                <Field field={field} />
             {/if}
         {/each}
     </fieldset>
