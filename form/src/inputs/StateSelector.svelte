@@ -8,10 +8,6 @@ export let value : FormValue = ""
 export let name : string
 export let id : string;
 
-afterUpdate(() => {
-        console.log("STATE VAL", value);
-    })
-
 </script>
 <ComboBox field={{
     id : id,

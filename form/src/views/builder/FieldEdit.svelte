@@ -7,6 +7,7 @@
   import { formStore } from "event/Store";
   import { subscribeFieldChange, dispatchFieldChange } from "event/FieldEvent";
   import { randomString } from "util/Generate";
+  import FieldTypeEditor from "./FieldTypeEditor.svelte";
 
   export let field: IField;
   export let config: FieldEditConfig;
@@ -14,10 +15,6 @@
   let expanded = false;
   let accordion = { name: "", label: "" };
   let id = "";
-
-  afterUpdate(() => {
-    console.log("field_edit", field);
-  });
 
   function toFieldName(selector: string) {
     return `${field.id}-builder-config-field-${selector}`;
@@ -70,6 +67,9 @@
         field={{ id: `${id}-name`, name: `${field.id}-builder-config-field-name`, label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }} />
       <Field
         field={{ id: `${id}-label`, name: `${field.id}-builder-config-field-label`, label: 'Label', value: field.label, type: 'string', configFieldTarget: 'label', configTarget: field.id }} />
+      <Field
+        field={{ id: `${id}-type`, name: `${field.id}-builder-config-field-fieldType`, label: 'Field Type', value: field.type, type: 'combobox', configFieldTarget: 'type', configTarget: field.id, options: 'https://gist.githubusercontent.com/MaddoxDevelopment/e84af9214b329b9c717c00dc676d5565/raw/533cbfd544152ae315a65e6b93f42d2c143f78b0/field_types.json' }} />
+      <FieldTypeEditor field={field} editorId={id}/>
     </div>
   </div>
 </div>

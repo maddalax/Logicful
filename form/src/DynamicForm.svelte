@@ -15,10 +15,6 @@ import { afterUpdate } from "svelte";
     onInput(updatedField, value);
   });
 
-  afterUpdate(() => {
-    console.log("updated", form);
-  })
-
   function onInput(field: IField, value: any) {
     formStore.update((prev) => {
       if (value === "" || value == null) {

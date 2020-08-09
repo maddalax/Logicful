@@ -11,8 +11,8 @@ module.exports = {
         name : "job",
         label : "Job",
         required : true,
-        type : "string",
-        value : {type : 'remote', value : 'https://jsonplaceholder.typicode.com/posts/1', selector : 'title'},
+        type : "combobox",
+        options : 'https://gist.githubusercontent.com/MaddoxDevelopment/d6798ab851278c58449afacac71a18fb/raw/0adc15e9bdc6e7ee064d58300a990448d80c37c7/jobs.json',
     },
     {
         id : "fake_id_3",

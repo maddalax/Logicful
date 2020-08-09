@@ -15,7 +15,6 @@
   let value: any;
 
   afterUpdate(() => {
-    console.log("FIELD", field);
   })
 
   onMount(async () => {

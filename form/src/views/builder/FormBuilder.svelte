@@ -16,14 +16,15 @@
       if (!field.configTarget) {
         return;
       }
+      console.log(field, value);
       const toUpdate = form.fields.findIndex(
         (w) => w.id === field.configTarget
       );
       form.fields[toUpdate][field.configFieldTarget] = value;
+      console.log("update", form.fields[toUpdate])
     });
 
     initialized = true;
-    console.log("FORM", form);
   });
 
   function addField() {
