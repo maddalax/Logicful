@@ -1,3 +1,11 @@
 .hidden {
     display: none
 }
+
+option:first-child{
+	display: none;
+}
+
+option {
+    font-size: 15pt;
+}

@@ -21,7 +21,7 @@
         (w) => w.id === field.configTarget
       );
       form.fields[toUpdate][field.configFieldTarget] = value;
-      console.log("update", form.fields[toUpdate])
+      form = JSON.parse(JSON.stringify(form))
     });
 
     initialized = true;

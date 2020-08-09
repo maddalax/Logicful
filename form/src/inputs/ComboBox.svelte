@@ -9,6 +9,7 @@
   import Label from "inputs/Label.svelte";
   import { isString } from "guards/Guard";
   import StateSelector from "./StateSelector.svelte";
+  import { subscribe } from "event/EventBus";
   export let field: IField;
 
   let prevOptions = null;
@@ -79,11 +80,7 @@
         Click here to retry.
       </button>
     </span>
-  {/if}
-  <div
-    class="usa-combo-box"
-    data-default-value={value}
-    class:hidden={state !== LoadState.Finished}>
+  {:else}
     <select
       class="usa-select"
       name={field.name}
@@ -93,10 +90,10 @@
       on:change={(e) => {
         dispatchFieldChange(field, e.target.value);
       }}>
-      <option value>{field.label}</option>
+      <option value />
       {#each options as option}
         <option value={option.value}>{option.label}</option>
       {/each}
     </select>
-  </div>
+  {/if}
 </div>
