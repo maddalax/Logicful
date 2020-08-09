@@ -7,7 +7,8 @@ export interface IField {
     display? : IFieldCondition,
     updated? : boolean,
     required? : boolean,
-    value? : FormValue | undefined
+    value? : FormValue | undefined,
+    onChange? : (value : any) => any
 }
 
 export type FormValue = {type : 'local' | 'remote', value : any, selector? : string} | string

@@ -41,12 +41,12 @@
 
 <div>
     {#if field.type === 'address'}
-        <Address field={field} value={value} />
+        <Address {field} {value} />
     {/if}
     {#if field.type === 'string'}
-        <TextInput field={field} />
+        <TextInput {field} />
     {/if}
     {#if field.type === 'combobox'}
-        <ComboBox field={field} />
+        <ComboBox {field} />
     {/if}
 </div>

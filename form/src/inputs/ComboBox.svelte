@@ -8,7 +8,6 @@
     import { dispatchFieldChange } from 'event/FieldEvent';
     import Label from 'inputs/Label.svelte';
     import { isString } from 'guards/Guard';
-    import StateSelector from './StateSelector.svelte';
     import { subscribe } from 'event/EventBus';
     export let field: IField;
 
@@ -30,7 +29,6 @@
     async function setup() {
         state = LoadState.Loading;
         try {
-            console.log('OTPIONS', field.options);
             if (field.options.type === 'remote') {
                 const url = field.options.value;
                 const result = await fetch(url);
@@ -85,6 +83,8 @@
             value={value}
             on:change={(e) => {
                 dispatchFieldChange(field, e.target.value);
+                console.log(field);
+                field.onChange?.(e.target.value);
             }}>
             <option value />
             {#each options as option}

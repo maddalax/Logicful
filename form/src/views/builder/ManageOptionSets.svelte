@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, afterUpdate } from 'svelte';
     import Field from 'Field.svelte';
     import { fields } from 'exampleForm';
     import type { OptionSet } from 'entities/OptionSet';
@@ -7,6 +7,9 @@
 
     let sets: OptionSet[] = [];
 
+    $: {
+        console.log('sets changed', sets);
+    }
     onMount(async () => {
         const response = await fetch(
             'https://gist.githubusercontent.com/MaddoxDevelopment/11f3de2a8435228f5bd4d5bb387a943c/raw/b63725ad2111491b78025251afe30f8cf7f28a8a/option_sets.json',
@@ -24,9 +27,18 @@
             </h2>
             <div id={set.name} class="usa-accordion__content usa-prose">
                 <Field
-                    field={{ id: `${set.name}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'inline' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type' }} />
+                    field={{ onChange: (value) => {
+                            set.type = value;
+                        }, id: `${set.name}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'inline' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type' }} />
 
-                <Field field={{ id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url' }} />
+                {#if set.type === 'remote'}
+                    <Field
+                        field={{ onChange: (value) => {
+                                set.value = value;
+                            }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url' }} />
+                {:else}
+                    <p>add options</p>
+                {/if}
             </div>
 
         </div>
