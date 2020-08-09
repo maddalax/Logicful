@@ -1,5 +1,7 @@
 export enum Command {
     UserRegister,
     NormalizeAddress,
-    ApplicationError
+    ApplicationError,
+    GetForms,
+    GetClient
 }

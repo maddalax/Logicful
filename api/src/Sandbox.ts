@@ -1,10 +1,7 @@
 import registry, { Service } from "./Container";
-import { Mediator } from "./infrastructure/event/Mediator";
-import { NormalizeAddressCommand } from "./application/features/forms/fields/address/commands/NormalizeAddressCommand";
 import { Database } from "./infrastructure/persistence/Database";
 import { v4 as uuidv4 } from 'uuid';
 import { Form, Client, FormSubmission } from "./application/features/forms/models/Form";
-import { BatchGetItemInput } from "aws-sdk/clients/dynamodb";
 
 async function run() {
   const data = {
@@ -17,7 +14,6 @@ async function run() {
     .get<Database>(Service.Database);
 
 
-  /*
 const id = uuidv4();
 const clientId = uuidv4();
 const userId = uuidv4();
@@ -91,46 +87,15 @@ users : [{
 created : Date.now(),
 createdBy : userId
 }
-*/
-
-  // await db.clients.insert(client);
-  // await db.forms.insert(form);
-  // await db.submissions.insert(submission);
-
-  const client = await db.clients.findOne({
-    TableName: null,
-    KeyConditionExpression: "#UserId = :UserId",
-    ExpressionAttributeNames: {
-        "#UserId": "name"
-    },
-    ExpressionAttributeValues: {
-        ":UserId": 'maddox'
-    }
-});
-
-  const config = {
-    RequestItems: {
-      'forms': {
-        Keys: client.forms.map(c => {
-          return {
-            'id': { 'S': c.id },
-            'timestamp': { 'N': c.timestamp.toString() }
-          }
-        })
-      }
-    }
-  };
-
-  console.log(JSON.stringify(config, null, 2))
-
-  const forms = await db.forms.batchGet(config);
-
-  console.log(forms)
 
 }
+
+
 run().catch(err => {
   console.error(err);
 });
+
+
 
  // 31852cb9-f4ed-49dd-abd0-c37f8fb0c52e
 // 1596838514283
