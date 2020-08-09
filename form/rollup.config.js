@@ -91,7 +91,7 @@ export default {
 				{ src: 'node_modules/uswds/dist/fonts', dest: 'public' },
 			]
 		}),
-		babel({
+		production && babel({
 			extensions: ['.js', '.mjs', '.html', '.svelte', '.ts'],
 			runtimeHelpers: true,
 			exclude: ['node_modules/@babel/**'],
