@@ -2,7 +2,7 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c",
+    "build": "cross-env NODE_PATH=src rollup -c",
     "dev": "cross-env NODE_PATH=src rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check"
@@ -25,7 +25,12 @@
     "svelte-check": "1.0.5",
     "svelte-preprocess": "4.0.9",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "rollup-plugin-babel": "4.4.0",
+    "@babel/preset-env": "7.11.0",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.11.0",
+    "@babel/core": "7.11.1"
   },
   "dependencies": {
     "lodash.get": "4.4.2",

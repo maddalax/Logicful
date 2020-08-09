@@ -7,12 +7,14 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from "rollup-plugin-css-only";
 import copy from 'rollup-plugin-copy'
+import babel from 'rollup-plugin-babel';
+
 
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -64,8 +66,8 @@ export default {
 			browser: true,
 			dedupe: ['svelte'],
 			customResolveOptions: {
-				paths: process.env.NODE_PATH.split( /[;:]/ )
-			  }
+				paths: process.env.NODE_PATH.split(/[;:]/)
+			}
 		}),
 		commonjs(),
 		typescript({ sourceMap: !production }),
@@ -85,10 +87,34 @@ export default {
 		// Copy assets to build directory.
 		copy({
 			targets: [
-			  { src: 'node_modules/uswds/dist/img', dest: 'public' },
-			  { src: 'node_modules/uswds/dist/fonts', dest: 'public' },
+				{ src: 'node_modules/uswds/dist/img', dest: 'public' },
+				{ src: 'node_modules/uswds/dist/fonts', dest: 'public' },
 			]
-		  })
+		}),
+		babel({
+			extensions: ['.js', '.mjs', '.html', '.svelte', '.ts'],
+			runtimeHelpers: true,
+			exclude: ['node_modules/@babel/**'],
+			presets: [
+				[
+					'@babel/preset-env',
+					{
+						targets: '> 0.25%, not dead',
+						useBuiltIns: 'usage',
+						corejs: 3
+					}
+				]
+			],
+			plugins: [
+				'@babel/plugin-syntax-dynamic-import',
+				[
+					'@babel/plugin-transform-runtime',
+					{
+						useESModules: true
+					}
+				]
+			]
+		}),
 	],
 	watch: {
 		clearScreen: false
