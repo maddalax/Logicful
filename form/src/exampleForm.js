@@ -1,11 +1,13 @@
 module.exports = {
     fields : [{
+        id : "fake_id_1",
         label : "Name",
         value : {type : 'remote', value : 'https://jsonplaceholder.typicode.com/posts/1', selector : 'title'},
         name : "name",
-        type : "name"
+        type : "string"
     }, 
     {
+        id : "fake_id_2",
         name : "job",
         label : "Job",
         required : true,
@@ -13,6 +15,7 @@ module.exports = {
         value : {type : 'remote', value : 'https://jsonplaceholder.typicode.com/posts/1', selector : 'title'},
     },
     {
+        id : "fake_id_3",
         name : "address",
         type : "address",
         label : "Address",
@@ -27,7 +30,7 @@ module.exports = {
         display : {
             condition : 'hasValue',
             target : 'form',
-            parameter : 'job'
+            parameter : 'fake_id_2'
         }
     }]
 }

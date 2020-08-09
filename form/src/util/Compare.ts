@@ -1,4 +1,4 @@
-import { isString } from '../guards/Guard';
+import { isString } from 'guards/Guard';
 
 export function stringEquals(str1 : string, str2 : string) {
     if(str1 == null && str2 == null) {

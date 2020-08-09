@@ -1,28 +1,24 @@
 <script lang="ts">
-  import type { IField } from "src/entities/IField";
-  import { formStore } from "src/event/Store";
-  import { dispatchFieldChange } from "src/event/FieldEvent";
-import { select } from "src/util/Selection";
+  import type { IField } from "entities/IField";
+  import { formStore } from "event/Store";
+  import { dispatchFieldChange } from "event/FieldEvent";
+  import { select } from "util/Selection";
+  import Label from "./Label.svelte";
   export let field: IField;
 
   let value = "";
 
   formStore.subscribe((values) => {
-    value = select(values, field.name) ?? "";
+    value = select(values, field.id) ?? "";
   });
 </script>
 
 <div>
-  <label class="usa-label" for={field.name}>
-    {field.label ?? field.name}
-    {#if !field.required}
-      <span class="usa-hint">(optional)</span>
-    {/if}
-  </label>
+  <Label {field} />
   <input
     on:input={(e) => dispatchFieldChange(field, e.target.value)}
-    class={field.properties?.className ?? "usa-input usa-input"}
-    id={field.name}
+    class={field.properties?.className ?? 'usa-input usa-input'}
+    id={field.id}
     {value}
     name={field.name}
     type="text" />

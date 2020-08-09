@@ -62,7 +62,10 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte'],
+			customResolveOptions: {
+				paths: process.env.NODE_PATH.split( /[;:]/ )
+			  }
 		}),
 		commonjs(),
 		typescript({ sourceMap: !production }),

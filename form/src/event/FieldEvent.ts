@@ -4,7 +4,7 @@ import { subscribe, dispatch } from './EventBus';
 export function dispatchFieldChange(field : IField, value : any) {
     dispatch("field_changed", {
         field,
-        value
+        value : value === '' ? undefined : value
     })
 }
 

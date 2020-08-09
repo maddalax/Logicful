@@ -1,6 +1,7 @@
 <script lang="ts">
   import DynamicForm from "./DynamicForm.svelte";
-  import form from "./form";
+  import form from "./exampleForm";
+  import FormBuilder from "views/builder/FormBuilder.svelte";
 </script>
 
 <main>
@@ -11,7 +12,7 @@
       <div class="usa-navbar">
         <div class="usa-logo" id="basic-logo">
           <em class="usa-logo__text">
-            <a href="/" title="Home" aria-label="Home">LowCode</a>
+            <a href="/" title="Home" aria-label="Home">Logicful</a>
           </em>
         </div>
         <button class="usa-menu-btn">Menu</button>
@@ -82,64 +83,7 @@
     </div>
   </header>
 
-  <div class="usa-section">
-    <div class="grid-container">
-      <div class="grid-row grid-gap">
-        <div class="usa-layout-docs__sidenav desktop:grid-col-3">
-          <nav aria-label="Secondary navigation">
-            <ul class="usa-sidenav">
-              <li class="usa-sidenav__item">
-                <a href="">Parent link</a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="" class="usa-current">Current page</a>
-                <ul class="usa-sidenav__sublist">
-                  <li class="usa-sidenav__item">
-                    <a href="">Child link</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="" class="usa-current">Child link</a>
-                    <ul class="usa-sidenav__sublist">
-                      <li class="usa-sidenav__item">
-                        <a href="">Grandchild link</a>
-                      </li>
-                      <li class="usa-sidenav__item">
-                        <a href="">Grandchild link</a>
-                      </li>
-                      <li class="usa-sidenav__item">
-                        <a href="" class="usa-current">Grandchild link</a>
-                      </li>
-                      <li class="usa-sidenav__item">
-                        <a href="">Grandchild link</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="">Child link</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="">Child link</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="">Child link</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="">Parent link</a>
-              </li>
-            </ul>
-          </nav>
-
-        </div>
-
-        <main
-          class="usa-layout-docs__main desktop:grid-col-9 usa-prose
-          usa-layout-docs"
-          id="main-content">
-          <DynamicForm {form}/>
-        </main>
-      </div>
-    </div>
+  <div style="margin-top: 1em">
+    <FormBuilder/>
   </div>
 </main>

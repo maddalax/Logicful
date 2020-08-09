@@ -14,6 +14,10 @@
   let state = LoadState.NotStarted;
   let value: any;
 
+  afterUpdate(() => {
+    console.log("FIELD", field);
+  })
+
   onMount(async () => {
     if (field.value) {
       state = LoadState.Loading;
@@ -23,8 +27,8 @@
         value = result;
         if (result != null) {
           formStore.update((prev) => {
-            prev[field.name] = result;
-            prev.lastFieldChange = field.name;
+            prev[field.id] = result;
+            prev.lastFieldChange = field.id;
             return prev;
           });
         }
@@ -38,9 +42,6 @@
 </script>
 
 <div>
-  {#if field.type === 'name'}
-    <TextInput {field} />
-  {/if}
   {#if field.type === 'address'}
     <Address {field} {value} />
   {/if}

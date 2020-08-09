@@ -6,6 +6,7 @@
   import { formStore } from "./event/Store";
   import { subscribeFieldChange } from "./event/FieldEvent";
   import { set } from "./util/Selection";
+import { afterUpdate } from "svelte";
 
   export let form: IForm;
   let values: { [key: string]: any } = {};
@@ -14,21 +15,25 @@
     onInput(updatedField, value);
   });
 
+  afterUpdate(() => {
+    console.log("updated", form);
+  })
+
   function onInput(field: IField, value: any) {
     formStore.update((prev) => {
       if (value === "" || value == null) {
-        set(prev, field.name, undefined);
+        set(prev, field.id, undefined);
       } else {
-        set(prev, field.name, value);
+        set(prev, field.id, value);
       }
-      prev.lastFieldChange = field.name;
+      prev.lastFieldChange = field.id;
       return prev;
     });
   }
 
   formStore.subscribe((v) => {
     values = v;
-    const index = form.fields.findIndex((w) => w.name === v.lastFieldChange);
+    const index = form.fields.findIndex((w) => w.id === v.lastFieldChange);
     if (index != -1) {
       form.fields[index].updated = !form.fields[index].updated;
     }
@@ -52,9 +57,9 @@
   }
 
   function onSubmit() {
-    console.log("VALUES", values);
-    const validator = new AddressService();
-    validator.normalize(values.address);
+    console.log("SUBMIT", values);
+    //const validator = new AddressService();
+    //validator.normalize(values.address);
   }
 </script>
 

@@ -2,7 +2,10 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports" : true,
-    "baseUrl": "."
+    "baseUrl": "src",
+    "target": "ES6",
+    "module": "ESNext",
+    "sourceMap": true
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
   "include": ["src/**/*"],

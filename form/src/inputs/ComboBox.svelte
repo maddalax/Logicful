@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { IField, LabelValue } from "src/entities/IField";
-  import { formStore } from "src/event/Store";
+  import type { IField, LabelValue } from "entities/IField";
+  import { formStore } from "event/Store";
   import { onMount, afterUpdate } from "svelte";
-  import { LoadState } from "src/entities/LoadState";
-  import { select } from "src/util/Selection";
-  import {stringEquals} from "src/util/Compare"
-  import {dispatchFieldChange} from "src/event/FieldEvent"
+  import { LoadState } from "entities/LoadState";
+  import { select } from "util/Selection";
+  import {stringEquals} from "util/Compare"
+  import {dispatchFieldChange} from "event/FieldEvent"
+  import Label from 'inputs/Label.svelte'
   export let field: IField;
 
   onMount(setup);
@@ -45,14 +46,15 @@
   }
 
   formStore.subscribe((values) => {
-    normalizeValue(select(values, field.name) ?? "");
+    console.log("VALUES", values);
+    normalizeValue(select(values, field.id) ?? "");
   });
 
 </script>
 
 <!-- svelte-ignore a11y-no-onchange -->
 <div>
-  <label class="usa-label" for={field.name}>{field.label}</label>
+  <Label {field} />
   <div class="usa-combo-box" data-default-value={value}>
     {#if state === LoadState.Loading}
       <p>Loading...</p>
@@ -62,7 +64,7 @@
       <select
         class="usa-select"
         name={field.name}
-        id={field.name}
+        id={field.id}
         required
         {value}
         on:change={(e) => {

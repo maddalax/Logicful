@@ -1,7 +1,7 @@
-import type { IField } from "src/entities/IField";
-import type { FormValue } from "../entities/IField";
-import { isString } from "../guards/Guard";
-import { select } from "src/util/Selection";
+import type { IField } from "entities/IField";
+import type { FormValue } from "entities/IField";
+import { isString } from "guards/Guard";
+import { select } from "util/Selection";
 
 export class FieldValueLoader {
   public async load(field: IField): Promise<any | undefined> {

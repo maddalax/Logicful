@@ -1,4 +1,5 @@
 export interface IField {
+    id? : string,
     name : string,
     label : string,
     type : string,
@@ -6,7 +7,7 @@ export interface IField {
     display? : IFieldCondition,
     updated? : boolean,
     required? : boolean,
-    value? : FormValue
+    value? : FormValue | undefined
 }
 
 export type FormValue = {type : 'local' | 'remote', value : any, selector? : string} | string
