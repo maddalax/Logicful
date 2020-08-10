@@ -1,6 +1,6 @@
 <script lang="ts">
     import Trash from '@fortawesome/fontawesome-free/svgs/regular/trash-alt.svg';
-import type { LabelValue } from 'entities/IField';
+    import type { LabelValue } from 'entities/IField';
     export let onChange : (data : LabelValue[]) => any
 
     let options = [

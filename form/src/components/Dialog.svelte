@@ -1,26 +1,33 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { subscribe } from 'event/EventBus';
+    import CloseIcon from '@fortawesome/fontawesome-free/svgs/regular/window-close.svg';
 
     let child;
+    let isOpen = false;
 
     subscribe('dialog_show', (component) => {
         child = component;
-        openModal();
+        open();
+    });
+
+    onMount(() => {
+        subscribe('document_click', (e) => {
+            if (e.target?.id === 'dialog' && isOpen) {
+                close();
+            }
+        });
     });
 
     const FOCUSABLE_SELECTORS =
         'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
 
-    function openModal() {
+    function open() {
         const main = document.querySelector('main') as any;
         const modal = document.querySelector('.modal') as any;
 
         // show the modal
         modal.style.display = 'flex';
-
-        // Focus the first element within the modal. Make sure the element is visible and doesnt have focus disabled (tabindex=-1);
-        modal.querySelector(FOCUSABLE_SELECTORS).focus();
 
         // Trap the tab focus by disable tabbing on all elements outside of your modal.  Because the modal is a sibling of main, this is easier. Make sure to check if the element is visible, or already has a tabindex so you can restore it when you untrap.
         const focusableElements = main.querySelectorAll(FOCUSABLE_SELECTORS);
@@ -29,9 +36,10 @@
         // Trap the screen reader focus as well with aria roles. This is much easier as our main and modal elements are siblings, otherwise you'd have to set aria-hidden on every screen reader focusable element not in the modal.
         modal.removeAttribute('aria-hidden');
         main.setAttribute('aria-hidden', 'true');
+        isOpen = true;
     }
 
-    function closeModal() {
+    function close() {
         const main = document.querySelector('main') as any;
         const modal = document.querySelector('.modal') as any;
         // hide the modal
@@ -44,23 +52,10 @@
         // Untrap screen reader focus
         modal.setAttribute('aria-hidden', 'true');
         main.removeAttribute('aria-hidden');
+        child = null;
+        isOpen = false;
     }
 </script>
-
-<div
-    class="modal"
-    role="dialog"
-    aria-labelledby="Modal_Title"
-    aria-describedby="Modal_Description"
-    aria-hidden="true"
-    style="display: none">
-    <div class="modal-content">
-        <svelte:component this={child} />
-    </div>
-    <div class="modal-footer">
-        <button class="usa-button usa-button--unstyled dialog-action float-right">Close</button>
-    </div>
-</div>
 
 <style>
     .modal {
@@ -94,4 +89,32 @@
         background: white;
         padding: 20px;
     }
+
+    .close-icon {
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+        margin-bottom: 1em;
+        cursor: pointer;
+    }
 </style>
+
+<div
+    class="modal"
+    role="dialog"
+    id="dialog"
+    aria-labelledby="Modal_Title"
+    aria-describedby="Modal_Description"
+    aria-hidden="true"
+    style="display: none;">
+
+    <div class="modal-content" on:click={(e) => e.stopPropagation()}>
+        <div class="close-icon" on:click={close}>
+            {@html CloseIcon}
+        </div>
+        <svelte:component this={child} />
+    </div>
+    <div class="modal-footer">
+        <button class="usa-button usa-button--unstyled dialog-action float-right" on:click={close}>Close</button>
+    </div>
+</div>
