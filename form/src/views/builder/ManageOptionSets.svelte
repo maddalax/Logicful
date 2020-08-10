@@ -11,7 +11,7 @@
     $: {
         console.log('sets changed', sets);
     }
-    
+
     onMount(async () => {
         const response = await fetch(
             'https://gist.githubusercontent.com/MaddoxDevelopment/11f3de2a8435228f5bd4d5bb387a943c/raw/b63725ad2111491b78025251afe30f8cf7f28a8a/option_sets.json',

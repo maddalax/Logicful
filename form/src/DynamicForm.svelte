@@ -7,8 +7,10 @@
     import { subscribeFieldChange } from './event/FieldEvent';
     import { set } from './util/Selection';
     import { afterUpdate } from 'svelte';
+    import { DynamicFormMode } from 'components/models/ComponentProps';
 
     export let form: IForm;
+    export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
 
     subscribeFieldChange((updatedField: IField, value: any) => {
@@ -69,5 +71,7 @@
             {/if}
         {/each}
     </fieldset>
-    <button class="usa-button" type="submit">Submit Form</button>
+    {#if mode === DynamicFormMode.Live}
+        <button class="usa-button" type="submit">Submit Form</button>
+    {/if}
 </form>

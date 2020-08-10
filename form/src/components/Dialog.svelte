@@ -16,19 +16,19 @@
     });
 
     subscribe('user_change', () => {
-        if(isOpen) {
+        if(isOpen && props.confirmCloseOnDirty) {
             dirty = true;
         }
     });
 
     onMount(() => {
         subscribeFieldChange(() => {
-            if(isOpen) {
+            if(isOpen && props.confirmCloseOnDirty) {
                 dirty = true;
             }
         });
         subscribe('document_click', (e) => {
-            if (e.target?.id === 'dialog' && isOpen && props.closeOnOutsideClick) {
+            if (e.target?.id === 'dialog' && isOpen && !dirty) {
                 close();
             }
         });
