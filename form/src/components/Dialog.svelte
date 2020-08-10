@@ -80,7 +80,7 @@
     .modal-content {
         width: 100%;
         height: 100%;
-        max-width: 1200px;
+        max-width: 780px;
         background: white;
         padding: 20px;
         position: relative;
@@ -90,7 +90,7 @@
     .modal-footer {
         width: 100%;
         height: 50px;
-        max-width: 1200px;
+        max-width: 780px;
         background: white;
         padding: 20px;
     }

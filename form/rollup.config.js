@@ -8,6 +8,7 @@ import typescript from '@rollup/plugin-typescript';
 import css from "rollup-plugin-css-only";
 import copy from 'rollup-plugin-copy'
 import babel from 'rollup-plugin-babel';
+import svg from 'rollup-plugin-svg'
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -45,6 +46,7 @@ export default {
 		chokidar: false
 	},
 	plugins: [
+		svg(),
 		css({ output: "public/build/site.css" }),
 		svelte({
 			// enable run-time checks when not in production

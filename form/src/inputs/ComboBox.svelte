@@ -29,8 +29,8 @@
     async function setup() {
         state = LoadState.Loading;
         try {
-            if (field.options.type === 'remote') {
-                const url = field.options.value;
+            if (field.options.type === 'remote' || isString(field.options)) {
+                const url = field.options.value || field.options;
                 const result = await fetch(url);
                 const data = await result.json();
                 const parsed = [];

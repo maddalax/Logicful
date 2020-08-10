@@ -9,3 +9,11 @@ option:first-child{
 option {
     font-size: 15pt;
 }
+
+.usa-accordion__content {
+    padding: 0 !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+    padding-bottom: 3em !important;
+    background-color: #f7f7f7 !important
+}

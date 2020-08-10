@@ -4,18 +4,24 @@
     import { fields } from 'exampleForm';
     import type { OptionSet } from 'entities/OptionSet';
     import type { set } from 'util/Selection';
+    import Repeater from 'components/Repeater.svelte';
 
     let sets: OptionSet[] = [];
 
     $: {
         console.log('sets changed', sets);
     }
+    
     onMount(async () => {
         const response = await fetch(
             'https://gist.githubusercontent.com/MaddoxDevelopment/11f3de2a8435228f5bd4d5bb387a943c/raw/b63725ad2111491b78025251afe30f8cf7f28a8a/option_sets.json',
         );
         const data = await response.json();
-        sets = data;
+        
+        sets = data.map(s => {
+            s.type = 'local';
+            return s;
+        });
     });
 </script>
 
@@ -37,7 +43,9 @@
                                 set.value = value;
                             }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url' }} />
                 {:else}
-                    <p>add options</p>
+                   <Repeater onChange={(data) => {
+                        console.log("data has hcaned", data);   
+                    }}/>
                 {/if}
             </div>
 

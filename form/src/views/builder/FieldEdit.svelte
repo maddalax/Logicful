@@ -48,7 +48,7 @@
                 {accordion.label ?? accordion.name ?? ''}
             </button>
         </h2>
-        <div id={`accordion-${field.name}`} class="usa-accordion__content usa-prose" style="background-color: #f7f7f7">
+        <div id={`accordion-${field.name}`} class="usa-accordion__content usa-prose">
             <Field
                 field={{ id: `${id}-name`, name: `${field.id}-builder-config-field-name`, label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }} />
             <Field
@@ -59,12 +59,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .usa-accordion__content {
-        padding: 0;
-        padding-left: 1.25em;
-        padding-right: 1.25em;
-        padding-bottom: 3em;
-    }
-</style>

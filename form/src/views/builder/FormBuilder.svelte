@@ -19,7 +19,6 @@
             console.log(field, value);
             const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
             form.fields[toUpdate][field.configFieldTarget] = value;
-            form = JSON.parse(JSON.stringify(form));
         });
 
         initialized = true;
@@ -42,7 +41,7 @@
 
     <div class="grid-container" style="margin-top: 1em">
         <div class="grid-row grid-gap">
-            <div class="grid-col-8" style="margin-top: 3.2em">
+            <div class="grid-col-7" style="margin-top: 3.2em">
                 {#each form.fields as field}
                     <div style="margin-top: 1em">
                         {#if initialized}
@@ -54,7 +53,7 @@
                     <button class="usa-button" on:click={addField}>Add Field</button>
                 </div>
             </div>
-            <div class="grid-col-4">
+            <div class="grid-col-5">
                 {#if initialized}
                     <DynamicForm form={form} />
                 {/if}

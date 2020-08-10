@@ -59,7 +59,7 @@
     }
 </script>
 
-<form class="usa-form" on:submit|preventDefault={onSubmit}>
+<form class="usa-form" style="max-width: 100em" on:submit|preventDefault={onSubmit}>
     <fieldset class="usa-fieldset">
         {#each form.fields as field}
             {#if !display(field)}
