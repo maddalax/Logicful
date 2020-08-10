@@ -11,7 +11,6 @@
     import { DynamicFormMode } from 'components/models/ComponentProps';
 
     let form: IForm = exampleForm as IForm;
-    let initialized: boolean = false;
 
     onMount(() => {
         subscribeFieldChange((field: IField, value: any) => {
@@ -22,8 +21,6 @@
             const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
             form.fields[toUpdate][field.configFieldTarget] = value;
         });
-
-        initialized = true;
     });
 
     function addField() {
@@ -36,6 +33,13 @@
                 id: randomString(),
             },
         ]);
+        setTimeout(() => {
+            console.log("scrolling")
+            const ele = document.getElementById(form.fields[form.fields.length - 1].id);
+            const preview = document.getElementById("form-live-preview");
+            preview.scrollTop = preview.scrollHeight;
+            ele.scrollIntoView({behavior : 'smooth'})
+        }, 200)
     }
 </script>
 
@@ -47,7 +51,7 @@
 
 <div>
 
-    <div class="grid-container" style="margin-top: 1em">
+    <div class="grid-container" style="margin-top: 1em; margin-bottom: 2em;">
         <div class="grid-row grid-gap">
             <div class="margin-top-3">
                 <DropdownButton
@@ -56,25 +60,21 @@
             </div>
         </div>
         <div class="grid-row grid-gap">
-            <div class="grid-col-7">
+            <div class="grid-col-7" style="overflow: scroll; height: 100vh" id="form-builder">
                 {#each form.fields as field}
-                    <div style="margin-top: 1em">
-                        {#if initialized}
-                            <FieldEdit {field} />
-                        {/if}
+                    <div style="margin-top: 1em" id={field.id}>
+                        <FieldEdit {field} />
                     </div>
                 {/each}
                 <div class="margin-top-2">
                     <button class="usa-button usa-button--outline" on:click={addField}>Add Field</button>
                 </div>
             </div>
-            <div class="grid-col-5">
-                {#if initialized}
-                    <h3>Live Preview</h3>
+            <div class="grid-col-5" style="overflow: scroll; height: 100vh" id="form-live-preview">
+                <h3>Live Preview</h3>
                     <p>This preview shows how your form will look and act to a live user filling it out.</p>
                     <hr />
                     <DynamicForm {form} mode={DynamicFormMode.Preview} />
-                {/if}
             </div>
         </div>
     </div>

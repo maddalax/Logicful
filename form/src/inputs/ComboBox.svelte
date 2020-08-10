@@ -4,7 +4,7 @@
     import { onMount, afterUpdate } from 'svelte';
     import { LoadState } from 'entities/LoadState';
     import { select } from 'util/Selection';
-    import { stringEquals } from 'util/Compare';
+    import { stringEquals, shallowEquals } from 'util/Compare';
     import { dispatchFieldChange } from 'event/FieldEvent';
     import Label from 'inputs/Label.svelte';
     import { isString } from 'guards/Guard';
@@ -16,7 +16,7 @@
     onMount(setup);
 
     $: {
-        if (prevOptions !== field.options) {
+        if (!shallowEquals(prevOptions, field.options)) {
             prevOptions = field.options;
             setup();
         }
@@ -83,7 +83,6 @@
             value={value}
             on:change={(e) => {
                 dispatchFieldChange(field, e.target.value);
-                console.log(field);
                 field.onChange?.(e.target.value);
             }}>
             <option value />

@@ -9,3 +9,7 @@ export function stringEquals(str1 : string, str2 : string) {
     }
     return false;
 }
+
+export function shallowEquals(any : string, any2 : string) {
+    return JSON.stringify(any) === JSON.stringify(any2);
+}
