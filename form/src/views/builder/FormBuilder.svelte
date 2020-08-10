@@ -6,24 +6,28 @@
     import { randomStringSmall, randomString } from 'util/Generate';
     import type { IForm } from 'entities/IForm';
     import { onMount } from 'svelte';
-    import { subscribeFieldChange } from 'event/FieldEvent';
+    import { subscribeFieldChange, dispatchFieldChange } from 'event/FieldEvent';
     import DropdownButton from 'components/DropdownButton.svelte';
     import { DynamicFormMode } from 'components/models/ComponentProps';
 
     let form: IForm = exampleForm as IForm;
 
     onMount(() => {
-        subscribeFieldChange((field: IField, value: any) => {
+        subscribeFieldChange((field: IField) => {
             if (!field.configTarget) {
                 return;
             }
-            console.log(field, value);
             const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
-            form.fields[toUpdate][field.configFieldTarget] = value;
+            form.fields[toUpdate][field.configFieldTarget] = field.value;
+            dispatchFieldChange(form.fields[toUpdate], true);
         });
     });
 
     function addField() {
+        form.fields = form.fields.map(m => {
+            m.expanded = false;
+            return m;
+        })
         form.fields = form.fields.concat([
             {
                 name: 'new-field-' + randomStringSmall(),

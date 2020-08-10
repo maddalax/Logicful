@@ -7,7 +7,7 @@ export interface IField {
     display? : IFieldCondition,
     updated? : boolean,
     required? : boolean,
-    value? : FormValue | undefined,
+    value? : FormValue | undefined | any,
     onChange? : (value : any) => any
 }
 

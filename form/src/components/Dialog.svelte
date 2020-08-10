@@ -22,8 +22,8 @@
     });
 
     onMount(() => {
-        subscribeFieldChange(() => {
-            if(isOpen && props.confirmCloseOnDirty) {
+        subscribeFieldChange((_, userChange) => {
+            if(isOpen && props.confirmCloseOnDirty && userChange) {
                 dirty = true;
             }
         });

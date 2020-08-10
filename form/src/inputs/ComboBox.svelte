@@ -1,11 +1,10 @@
 <script lang="ts">
     import type { IField, LabelValue } from 'entities/IField';
-    import { formStore } from 'event/Store';
     import { onMount, afterUpdate } from 'svelte';
     import { LoadState } from 'entities/LoadState';
     import { select } from 'util/Selection';
     import { stringEquals, shallowEquals } from 'util/Compare';
-    import { dispatchFieldChange } from 'event/FieldEvent';
+    import { dispatchFieldChange, subscribeFieldChange } from 'event/FieldEvent';
     import Label from 'inputs/Label.svelte';
     import { isString } from 'guards/Guard';
     import { subscribe } from 'event/EventBus';
@@ -13,7 +12,15 @@
 
     let prevOptions = null;
 
-    onMount(setup);
+    onMount(async () => {
+        subscribeFieldChange((newField) => {
+            if (newField.id === field.id) {
+                value = newField.value;
+                normalizeValue();
+            }
+        });
+        await setup();
+    });
 
     $: {
         if (!shallowEquals(prevOptions, field.options)) {
@@ -21,10 +28,6 @@
             setup();
         }
     }
-
-    afterUpdate(() => {
-        normalizeValue(value);
-    });
 
     async function setup() {
         state = LoadState.Loading;
@@ -41,7 +44,7 @@
             } else {
                 options = field.options.value;
             }
-            normalizeValue(value);
+            normalizeValue();
             state = LoadState.Finished;
         } catch (ex) {
             state = LoadState.Failed;
@@ -52,16 +55,12 @@
     let value = '';
     let options: LabelValue[] = [];
 
-    function normalizeValue(v) {
-        const option = options.find((w) => stringEquals(w.label, v) || stringEquals(w.value, v));
-        if (option && option.value && option.value != value) {
+    function normalizeValue() {
+        const option = options.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value));
+        if (option) {
             value = option.value;
         }
     }
-
-    formStore.subscribe((values) => {
-        normalizeValue(select(values, field.id) ?? '');
-    });
 </script>
 
 <!-- svelte-ignore a11y-no-onchange -->
@@ -80,9 +79,10 @@
             name={field.name}
             id={field.id}
             required
-            value={value}
+            {value}
             on:change={(e) => {
-                dispatchFieldChange(field, e.target.value);
+                field.value = e.target.value;
+                dispatchFieldChange(field, true);
                 field.onChange?.(e.target.value);
             }}>
             <option value />

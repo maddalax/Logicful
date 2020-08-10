@@ -3,7 +3,6 @@
     import type { IForm } from './entities/IForm';
     import type { IField } from './entities/IField';
     import { AddressService } from './services/AddressService';
-    import { formStore } from './event/Store';
     import { subscribeFieldChange } from './event/FieldEvent';
     import { set } from './util/Selection';
     import { afterUpdate } from 'svelte';
@@ -13,11 +12,12 @@
     export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
 
-    subscribeFieldChange((updatedField: IField, value: any) => {
-        onInput(updatedField, value);
+    subscribeFieldChange((updatedField: IField) => {
+        onInput(updatedField);
     });
 
-    function onInput(field: IField, value: any) {
+    function onInput(field: IField) {
+        /*
         formStore.update((prev) => {
             if (value === '' || value == null) {
                 set(prev, field.id, undefined);
@@ -27,8 +27,10 @@
             prev.lastFieldChange = field.id;
             return prev;
         });
+        */
     }
 
+    /*
     formStore.subscribe((v) => {
         values = v;
         const index = form.fields.findIndex((w) => w.id === v.lastFieldChange);
@@ -36,6 +38,7 @@
             form.fields[index].updated = !form.fields[index].updated;
         }
     });
+    */
 
     function display(field: IField): boolean {
         if (!field.display) {

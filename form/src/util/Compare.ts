@@ -7,9 +7,13 @@ export function stringEquals(str1 : string, str2 : string) {
     if(isString(str1) && isString(str2)) {
         return str1.toLowerCase().trim() === str2.toLowerCase().trim();
     }
-    return false;
+    return str1 === str2;
 }
 
-export function shallowEquals(any : string, any2 : string) {
+export function nullOrEmpty(str : string) {
+    return str == null || str === '';
+}   
+
+export function shallowEquals(any : any, any2 : any) {
     return JSON.stringify(any) === JSON.stringify(any2);
 }

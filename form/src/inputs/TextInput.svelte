@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { IField } from 'entities/IField';
-    import { formStore } from 'event/Store';
-    import { dispatchFieldChange } from 'event/FieldEvent';
+    import { dispatchFieldChange, subscribeFieldChange } from 'event/FieldEvent';
     import { select } from 'util/Selection';
     import Label from './Label.svelte';
     import { onMount } from 'svelte';
@@ -11,9 +10,11 @@
     export let value = '';
 
     onMount(() => {
-        formStore.subscribe((values) => {
-            value = select(values, field.id) ?? '';
-        });
+        subscribeFieldChange((newField) => {
+            if(newField.id === field.id) {
+                value = newField.value ?? "";
+            }
+        })
     });
 </script>
 
@@ -21,7 +22,8 @@
     <Label {field} />
     <input
         on:input={(e) => {
-            dispatchFieldChange(field, e.target.value);
+            field.value = e.target.value ?? "";
+            dispatchFieldChange(field, true);
             field.onChange?.(e.target.value);
         }}
         class={field.properties?.className ?? 'usa-input usa-input'}
