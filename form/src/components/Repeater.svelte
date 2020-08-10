@@ -1,7 +1,9 @@
 <script lang="ts">
     import Trash from '@fortawesome/fontawesome-free/svgs/regular/trash-alt.svg';
     import type { LabelValue } from 'entities/IField';
-    export let onChange : (data : LabelValue[]) => any
+    import { dispatch } from 'event/EventBus';
+    import { afterUpdate } from 'svelte';
+    export let onChange: (data: LabelValue[]) => any;
 
     let options = [
         {
@@ -11,13 +13,16 @@
     ];
 
     $: {
+        if(options.length > 0 && options.find(w => w.label != "" || w.value != "")) {
+            dispatch("user_change", options);
+        }
         onChange?.(options);
     }
 
-    function remove(option : number) {
+    function remove(option: number) {
         options.splice(option, 1);
-        options = [...options]
-    }    
+        options = [...options];
+    }
 
     function addNew() {
         options = options.concat([
@@ -63,7 +68,7 @@
 
             </div>
             <div class="mobile-lg:grid-col-1">
-                <span class="icon baseline trash-icon" on:click="{() => remove(i)}">
+                <span class="icon baseline trash-icon" on:click={() => remove(i)}>
                     {@html Trash}
                 </span>
             </div>

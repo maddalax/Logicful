@@ -5,10 +5,16 @@
     import Dialog from 'components/Dialog.svelte';
     import { onMount } from 'svelte';
     import ManageOptionSets from 'views/builder/ManageOptionSets.svelte';
-    import { dispatch } from 'event/EventBus';
+    import { dispatch, subscribe } from 'event/EventBus';
+
+    let showingDialog = false;
 
     onMount(() => {
-        dispatch('dialog_show', ManageOptionSets);
+        dispatch('dialog_show', {
+            child : ManageOptionSets,
+            closeOnOutsideClick : false,
+            confirmCloseOnDirty : true 
+        });
     });
 </script>
 

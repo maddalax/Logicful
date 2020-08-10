@@ -8,7 +8,11 @@
     export let editorId: string;
 
     function manageSets() {
-        dispatch('dialog_show', ManageOptionSets);
+        dispatch('dialog_show', {
+            child : ManageOptionSets,
+            closeOnOutsideClick : false,
+            confirmCloseOnDirty : true 
+        });
     }
 </script>
 

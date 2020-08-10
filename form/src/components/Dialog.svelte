@@ -2,18 +2,33 @@
     import { onMount } from 'svelte';
     import { subscribe } from 'event/EventBus';
     import CloseIcon from '@fortawesome/fontawesome-free/svgs/regular/window-close.svg';
+    import type { DialogOptions } from './models/ComponentProps';
+    import { subscribeFieldChange } from 'event/FieldEvent';
 
-    let child;
     let isOpen = false;
+    let props: DialogOptions;
+    let confirm = false;
+    let dirty = false;
 
-    subscribe('dialog_show', (component) => {
-        child = component;
+    subscribe('dialog_show', (p: DialogOptions) => {
+        props = p;
         open();
     });
 
+    subscribe('user_change', () => {
+        if(isOpen) {
+            dirty = true;
+        }
+    });
+
     onMount(() => {
+        subscribeFieldChange(() => {
+            if(isOpen) {
+                dirty = true;
+            }
+        });
         subscribe('document_click', (e) => {
-            if (e.target?.id === 'dialog' && isOpen) {
+            if (e.target?.id === 'dialog' && isOpen && props.closeOnOutsideClick) {
                 close();
             }
         });
@@ -40,6 +55,11 @@
     }
 
     function close() {
+        if (props.confirmCloseOnDirty && !confirm && dirty) {
+            confirm = true;
+            return;
+        }
+
         const main = document.querySelector('main') as any;
         const modal = document.querySelector('.modal') as any;
         // hide the modal
@@ -52,8 +72,10 @@
         // Untrap screen reader focus
         modal.setAttribute('aria-hidden', 'true');
         main.removeAttribute('aria-hidden');
-        child = null;
+        props.child = null;
         isOpen = false;
+        confirm = false;
+        dirty = false;
     }
 </script>
 
@@ -97,6 +119,10 @@
         margin-bottom: 1em;
         cursor: pointer;
     }
+
+    .usa-alert {
+        margin-top: 1em;
+    }
 </style>
 
 <div
@@ -108,11 +134,23 @@
     aria-hidden="true"
     style="display: none;">
 
-    <div class="modal-content" on:click={(e) => e.stopPropagation()}>
+    <div class="modal-content">
         <div class="close-icon" on:click={close}>
             {@html CloseIcon}
         </div>
-        <svelte:component this={child} />
+        {#if props?.confirmCloseOnDirty && confirm}
+            <div style="margin-top: 2em">
+                <div class="usa-alert usa-alert--warning">
+                    <div class="usa-alert__body">
+                        <h3 class="usa-alert__heading">Unsaved Changes</h3>
+                        <p class="usa-alert__text">
+                            You have unsaved changes, click the X again to close this dialog and discard your changes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {/if}
+        <svelte:component this={props?.child} />
     </div>
     <div class="modal-footer">
         <button class="usa-button usa-button--unstyled dialog-action float-right" on:click={close}>Close</button>
