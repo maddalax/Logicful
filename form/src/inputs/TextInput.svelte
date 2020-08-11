@@ -8,6 +8,7 @@
 
     export let field: IField;
     export let value = '';
+    export let type = 'text';
 
     onMount(() => {
         subscribeFieldChange((newField) => {
@@ -30,5 +31,5 @@
         id={field.id}
         {value}
         name={field.name}
-        type="text" />
+        type={type} />
 </div>

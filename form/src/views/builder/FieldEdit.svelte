@@ -47,11 +47,18 @@
 <div>
     {#if field.type === 'spacer'}
     <div class="usa-accordion" aria-multiselectable="false">
-        <button
-                class="usa-accordion__button no-accordion-button"
-                aria-expanded={false}>
-                Spacer - <span style="font-weight: lighter">Creates extra spacing between two fields.</span>
+        <h2 class="usa-accordion__heading">
+            <button
+                class="usa-accordion__button"
+                aria-expanded={expanded}
+                aria-controls={`accordion-${field.name}`}>
+                Spacer Block
             </button>
+        </h2>
+        <div id={`accordion-${field.name}`} class="usa-accordion__content usa-prose">
+            <Field
+                field={{ id: `${id}-spacer-block`, name: `${field.id}-builder-config-field-spacer-block`, label: 'Increase value to add more spacing between the previous and next field.', required: true, value: field.value, type: 'number', configFieldTarget: 'value', configTarget: field.id }} />
+        </div>
     </div>
     {:else if field.type === 'block'}
         <div class="usa-accordion" aria-multiselectable="false">

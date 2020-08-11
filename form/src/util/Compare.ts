@@ -10,6 +10,11 @@ export function stringEquals(str1 : string, str2 : string) {
     return str1 === str2;
 }
 
+export function toNumberOrDefault(value) {
+    const parsed = parseFloat(value)
+    return isNaN(parsed) ? 0 : parsed;
+}
+
 export function nullOrEmpty(str : string) {
     return str == null || str === '';
 }   

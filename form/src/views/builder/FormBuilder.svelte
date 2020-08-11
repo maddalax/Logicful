@@ -23,7 +23,7 @@
         });
     });
 
-    function addField(type : string = "string") {
+    function addField(type : string = "string", value? : any) {
         form.fields = form.fields.map(m => {
             m.expanded = false;
             return m;
@@ -33,6 +33,7 @@
                 name: 'new-field-' + randomStringSmall(),
                 label: 'New Field',
                 type: type,
+                value : value ? {type : 'local', value} : undefined,
                 expanded: true,
                 id: randomString(),
             },
@@ -73,7 +74,7 @@
                 <div class="margin-top-2">
                     <button class="usa-button usa-button--outline" on:click={() => addField()}>Add Field</button>
                     <button class="usa-button usa-button--outline" on:click={() => addField("block")}>Add Content Block</button>
-                    <button class="usa-button usa-button--outline" on:click={() => addField("spacer")}>Add Spacer</button>
+                    <button class="usa-button usa-button--outline" on:click={() => addField("spacer", 1)}>Add Spacer</button>
                 </div>
             
             </div>

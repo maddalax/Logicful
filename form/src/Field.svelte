@@ -12,6 +12,7 @@
     import { shallowEquals } from 'util/Compare';
     import { dispatch } from 'event/EventBus';
     import TextArea from 'inputs/TextArea.svelte';
+    import Spacer from "inputs/Spacer.svelte"
 
     let state = LoadState.NotStarted;
     let value: any;
@@ -22,10 +23,12 @@
     async function load() {
         lastValue = field.value;
         if (field.value) {
+            console.log("V", field.value);
             state = LoadState.Loading;
             try {
                 const loader = new FieldValueLoader();
                 const result = await loader.load(field);
+                console.log("RES", result);
                 value = result;
                 field.value = result;
                 if (result != null) {
@@ -47,6 +50,9 @@
     {#if field.type === 'string'}
         <TextInput {field} />
     {/if}
+    {#if field.type === 'number'}
+        <TextInput {field} type={"number"}/>
+    {/if}
     {#if field.type === 'combobox'}
         <ComboBox {field} />
     {/if}
@@ -57,6 +63,6 @@
         <TextArea {field} />
     {/if}
     {#if field.type === "spacer"}
-        <br/>
-    {/if}
+        <Spacer {field}/>
+{/if}
 </div>

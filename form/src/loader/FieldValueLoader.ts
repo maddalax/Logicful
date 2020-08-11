@@ -1,6 +1,6 @@
 import type { IField } from "entities/IField";
 import type { FormValue } from "entities/IField";
-import { isString } from "guards/Guard";
+import { isString, isObject } from "guards/Guard";
 import { select } from "util/Selection";
 
 export class FieldValueLoader {
@@ -20,7 +20,7 @@ export class FieldValueLoader {
     }
     if (value.type === "local") {
       const localValue = value.value;
-      if (!isString(localValue)) {
+      if (isObject(localValue)) {
         return await this.loadChildren(localValue);
       }
       return localValue;
