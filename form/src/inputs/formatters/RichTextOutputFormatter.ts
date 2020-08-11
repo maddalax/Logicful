@@ -1,5 +1,8 @@
 export function richTextBlocksToHtml(data: any) {
     var html = '';
+    if(!data || !data.blocks) {
+        return '';
+    }
     data.blocks.forEach((block) => {
         console.log(block);
         switch (block.type) {

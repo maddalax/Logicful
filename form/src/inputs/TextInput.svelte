@@ -5,12 +5,17 @@
     import Label from './Label.svelte';
     import { onMount } from 'svelte';
     import type Address from './Address.svelte';
+    import formStore from 'store/FormStore';
 
     export let field: IField;
-    export let value = '';
+    export let value = ''
     export let type = 'text';
 
     onMount(() => {
+
+        value = formStore.get(field.configTarget ?? field.id);
+
+
         subscribeFieldChange((newField) => {
             if(newField.id === field.id) {
                 value = newField.value ?? "";

@@ -7,38 +7,19 @@
     import { set } from './util/Selection';
     import { afterUpdate } from 'svelte';
     import { DynamicFormMode } from 'components/models/ComponentProps';
+    import formStore from 'store/FormStore'
 
     export let form: IForm;
     export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
 
     subscribeFieldChange((updatedField: IField) => {
-        onInput(updatedField);
-    });
-
-    function onInput(field: IField) {
-        /*
-        formStore.update((prev) => {
-            if (value === '' || value == null) {
-                set(prev, field.id, undefined);
-            } else {
-                set(prev, field.id, value);
-            }
-            prev.lastFieldChange = field.id;
-            return prev;
-        });
-        */
-    }
-
-    /*
-    formStore.subscribe((v) => {
-        values = v;
-        const index = form.fields.findIndex((w) => w.id === v.lastFieldChange);
-        if (index != -1) {
-            form.fields[index].updated = !form.fields[index].updated;
+        const index = form.fields.findIndex(w => w.id === updatedField.id);
+        if(index === -1) {
+            return;
         }
+        form.fields[index].updated = !form.fields[index].updated;
     });
-    */
 
     function display(field: IField): boolean {
         if (!field.display) {

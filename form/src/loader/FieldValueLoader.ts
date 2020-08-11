@@ -12,6 +12,7 @@ export class FieldValueLoader {
     if (!value) {
       return;
     }
+    console.log("LOAD", value);
     if(isString(value)) {
         return value;
     }
@@ -20,11 +21,13 @@ export class FieldValueLoader {
     }
     if (value.type === "local") {
       const localValue = value.value;
-      if (isObject(localValue)) {
+      console.log("LOCAL", localValue)
+      if (isObject(localValue) && localValue.type === "remote") {
         return await this.loadChildren(localValue);
       }
       return localValue;
     }
+    return value;
   }
 
   private async loadRemote(value: FormValue) {

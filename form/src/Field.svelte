@@ -12,7 +12,10 @@
     import { shallowEquals } from 'util/Compare';
     import { dispatch } from 'event/EventBus';
     import TextArea from 'inputs/TextArea.svelte';
-    import Spacer from "inputs/Spacer.svelte"
+    import Spacer from 'inputs/Spacer.svelte';
+    import { richTextBlocksToHtml } from 'inputs/formatters/RichTextOutputFormatter';
+    import formStore from 'store/FormStore';
+    import RichTextDisplay from 'inputs/RichTextDisplay.svelte';
 
     let state = LoadState.NotStarted;
     let value: any;
@@ -23,14 +26,14 @@
     async function load() {
         lastValue = field.value;
         if (field.value) {
-            console.log("V", field.value);
+            console.log('V', field.value);
             state = LoadState.Loading;
             try {
                 const loader = new FieldValueLoader();
                 const result = await loader.load(field);
-                console.log("RES", result);
                 value = result;
                 field.value = result;
+                formStore.set(field);
                 if (result != null) {
                     dispatchFieldChange(field, false);
                 }
@@ -51,18 +54,18 @@
         <TextInput {field} />
     {/if}
     {#if field.type === 'number'}
-        <TextInput {field} type={"number"}/>
+        <TextInput {field} type={'number'} />
     {/if}
     {#if field.type === 'combobox'}
         <ComboBox {field} />
     {/if}
     {#if field.type === 'block'}
-        {@html field.value ?? ""}
+        <RichTextDisplay {field} />
     {/if}
     {#if field.type === 'block-editor'}
         <TextArea {field} />
     {/if}
-    {#if field.type === "spacer"}
-        <Spacer {field}/>
-{/if}
+    {#if field.type === 'spacer'}
+        <Spacer {field} />
+    {/if}
 </div>

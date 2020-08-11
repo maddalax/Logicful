@@ -10,9 +10,14 @@
     import DropdownButton from 'components/DropdownButton.svelte';
     import { DynamicFormMode } from 'components/models/ComponentProps';
 
-    let form: IForm = exampleForm as IForm;
+    let form: IForm = {fields : []};
 
     onMount(() => {
+
+        if(localStorage.getItem("form")) {
+            form = JSON.parse(localStorage.getItem("form")) as IForm;
+        }
+
         subscribeFieldChange((field: IField) => {
             if (!field.configTarget) {
                 return;
@@ -22,6 +27,14 @@
             dispatchFieldChange(form.fields[toUpdate], true);
         });
     });
+
+    function saveDraft() {
+        localStorage.setItem("form", JSON.stringify(form));
+    }
+
+    function saveAndPublish() {
+
+    }
 
     function addField(type : string = "string", value? : any) {
         form.fields = form.fields.map(m => {
@@ -61,7 +74,7 @@
             <div class="margin-top-3">
                 <DropdownButton
                     label={'Save Form'}
-                    actions={[{ label: 'Save as Draft', onClick: () => {} }, { label: 'Save and Publish', onClick: () => {} }, { label: 'Delete', onClick: () => {} }]} />
+                    actions={[{ label: 'Save as Draft', onClick: saveDraft }, { label: 'Save and Publish', onClick: saveAndPublish }, { label: 'Delete', onClick: () => {} }]} />
             </div>
         </div>
         <div class="grid-row grid-gap">
