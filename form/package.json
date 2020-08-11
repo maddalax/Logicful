@@ -36,12 +36,17 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.18.0",
+    "@editorjs/header": "^2.5.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "lodash.get": "4.4.2",
     "lodash.set": "4.3.2",
+    "quill": "^1.3.7",
+    "quill-delta-to-html": "^0.12.0",
     "rollup-plugin-copy": "^3.3.0",
     "sirv-cli": "^1.0.0",
     "svelte-routing": "^1.4.2",
+    "trix": "^1.2.4",
     "uswds": "^2.8.0"
   }
 }

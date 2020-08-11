@@ -11,7 +11,7 @@ export function subscribe(event : string, subscriber : (payload : any) => any) {
 }
 
 export function dispatch(event : string, payload : any) {
-  console.trace("Event: ", event, payload);
+  console.log("Event: ", event, payload);
   if (map.has(event)) {
     const subscribers = map.get(event);
     subscribers.forEach((subscriber) => {

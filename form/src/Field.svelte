@@ -11,6 +11,7 @@
     import { set } from './util/Selection';
     import { shallowEquals } from 'util/Compare';
     import { dispatch } from 'event/EventBus';
+    import TextArea from 'inputs/TextArea.svelte';
 
     let state = LoadState.NotStarted;
     let value: any;
@@ -48,5 +49,14 @@
     {/if}
     {#if field.type === 'combobox'}
         <ComboBox {field} />
+    {/if}
+    {#if field.type === 'block'}
+        {@html field.value ?? ""}
+    {/if}
+    {#if field.type === 'block-editor'}
+        <TextArea {field} />
+    {/if}
+    {#if field.type === "spacer"}
+        <br/>
     {/if}
 </div>

@@ -23,7 +23,7 @@
         });
     });
 
-    function addField() {
+    function addField(type : string = "string") {
         form.fields = form.fields.map(m => {
             m.expanded = false;
             return m;
@@ -32,7 +32,7 @@
             {
                 name: 'new-field-' + randomStringSmall(),
                 label: 'New Field',
-                type: 'string',
+                type: type,
                 expanded: true,
                 id: randomString(),
             },
@@ -71,8 +71,11 @@
                     </div>
                 {/each}
                 <div class="margin-top-2">
-                    <button class="usa-button usa-button--outline" on:click={addField}>Add Field</button>
+                    <button class="usa-button usa-button--outline" on:click={() => addField()}>Add Field</button>
+                    <button class="usa-button usa-button--outline" on:click={() => addField("block")}>Add Content Block</button>
+                    <button class="usa-button usa-button--outline" on:click={() => addField("spacer")}>Add Spacer</button>
                 </div>
+            
             </div>
             <div class="grid-col-5" style="overflow: scroll; height: 100vh" id="form-live-preview">
                 <h3>Live Preview</h3>

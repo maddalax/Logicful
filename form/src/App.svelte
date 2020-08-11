@@ -24,7 +24,7 @@
                 </div>
                 <nav aria-label="Primary navigation" class="usa-nav">
                     <button class="usa-nav__close">
-                        <img src="/assets/img/close.svg" role="img" alt="close" />
+                        <img src="/img/close.svg" role="img" alt="close" />
                     </button>
                     <ul class="usa-nav__primary usa-accordion">
                         <li class="usa-nav__primary-item">
