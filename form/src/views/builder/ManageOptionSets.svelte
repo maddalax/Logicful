@@ -8,18 +8,38 @@
     import type { LabelValue } from 'entities/IField';
     import { getUrlParameter } from 'util/Http';
     import { subscribe } from 'event/EventBus';
+    import DropdownButton from 'components/DropdownButton.svelte';
+    import { randomStringSmall } from 'util/Generate';
+    import OptionSetsList from './OptionSetsList.svelte';
+    import { dispatch } from 'event/EventBus';
 
     let sets: OptionSet[] = [];
     let loading = false;
     let errored = false;
-
-    onMount(() => {
-        subscribe('dialog_save', async () => {
-            await save();
-        });
-    });
+    export let name: string;
+    export let isNew: boolean;
 
     onMount(async () => {
+        if (isNew) {
+            sets = sets.concat([
+                {
+                    value: [
+                        {
+                            label: 'Label',
+                            value: 'Value',
+                        },
+                    ],
+                    type: 'local',
+                    name: `Example Set`,
+                },
+            ]);
+        } else {
+            await load();
+        }
+    });
+
+    async function load() {
+        loading = true;
         const response = await fetch('http://localhost:8080/option-sets.json');
         const data: OptionSet[] = await response.json();
         const promises: any[] = data.map(async (d) => {
@@ -30,8 +50,9 @@
             return d;
         });
         const results = await Promise.all(promises);
-        sets = results;
-    });
+        sets = results.filter((w) => w.name === name);
+        loading = false;
+    }
 
     async function loadLocalOptions(index: number) {
         sets[index].value = await convertUrlToLocal(sets[index]);
@@ -40,16 +61,23 @@
     async function convertUrlToLocal(set: OptionSet): Promise<LabelValue[]> {
         loading = true;
         try {
-        const response = await fetch(set.value as string ?? set.localSaveId);
-        const data = await response.json();
-        const results: LabelValue[] = [];
-        Object.keys(data).forEach((key) => {
-            results.push({ label: key, value: data[key] });
-        });
-        return results;
-        } catch(ex) {
+            const url = (set.value as string) ?? set.localSaveId;
+            if(!url) {
+                return [{
+                    label : '',
+                    value : ''
+                }];
+            }
+            const response = await fetch(url);
+            const data = await response.json();
+            const results: LabelValue[] = [];
+            Object.keys(data).forEach((key) => {
+                results.push({ label: key, value: data[key] });
+            });
+            return results;
+        } catch (ex) {
             errored = true;
-            return []
+            return [];
         } finally {
             loading = false;
         }
@@ -68,6 +96,12 @@
         });
         const finish = await Promise.all(promises);
         localStorage.setItem('option_sets', JSON.stringify(finish));
+        dispatch('dialog_show', {
+            child: OptionSetsList,
+            closeOnOutsideClick: false,
+            confirmCloseOnDirty: true,
+            title: 'Manage Option Sets',
+        });
     }
 
     async function generateInlineUrl(set: OptionSet): Promise<string> {
@@ -91,39 +125,52 @@
 </script>
 
 <div class="usa-accordion">
+    {#if sets.length > 0}
+        <DropdownButton
+            label={'Save'}
+            processingLabel={'Saving...'}
+            actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]} />
+    {:else}
+        <div class="loader"/>
+    {/if}
     {#each sets as set, index}
         <div style="margin-top: 1em">
             <h2 class="usa-accordion__heading">
-                <button class="usa-accordion__button" aria-controls={set.name}>{set.name}</button>
+                <button class="usa-accordion__button" style="background-image: none">{set.name}</button>
             </h2>
             <div id={set.name} class="usa-accordion__content usa-prose">
                 <Field
                     field={{ onChange: (value) => {
-                            set.value = undefined;
                             if (value === 'local') {
-                                loadLocalOptions(index);
+                                set.remoteUrl = set.value;
+                                set.value = set.localOptions;
+                                if(!isNew && set.localOptions?.length === 0) {
+                                    set.value = undefined;
+                                    loadLocalOptions(index);
+                                }
+                            }
+                            if (value === 'remote') {
+                                set.localOptions = set.value ?? [];
+                                set.value = set.remoteUrl;
                             }
                             set.type = value;
-                        }, id: `${set.name}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here. <strong>Changing your option will clear previous values.</strong>' }} />
+                        }, id: `${set.name}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
 
                 {#if set.type === 'remote'}
                     <Field
                         field={{ helperText: 'See <a href="test" target="_blank">Remote Option Set Guide</a> for information on how to structure your endpoint response.', onChange: (value) => {
                                 set.value = value;
                             }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url', required: true }} />
+                {:else if loading}
+                    <div class="loader" />
+                {:else if errored}
+                    Failed to load, please try re-opening this dialog.
                 {:else}
-                    {#if loading}
-                    <div class="loader"></div>
-                    {:else if errored}
-                        Failed to load, please try re-opening this dialog.
-                    {:else}
                     <Repeater
                         options={set.value}
                         onChange={(data) => {
                             onRepeaterChange(data, index);
                         }} />
-                    {/if}
-
                 {/if}
             </div>
 

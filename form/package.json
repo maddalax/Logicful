@@ -47,6 +47,7 @@
     "sirv-cli": "^1.0.0",
     "svelte-routing": "^1.4.2",
     "trix": "^1.2.4",
-    "uswds": "^2.8.0"
+    "uswds": "^2.8.0",
+    "fuse.js": "6.4.1"
   }
 }

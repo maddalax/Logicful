@@ -4,5 +4,7 @@ export interface OptionSet {
     name : string,
     type : 'local' | 'remote',
     value : string | LabelValue[],
-    localSaveId? : string 
+    localSaveId? : string,
+    remoteUrl? : string,
+    [key : string] : any
 }

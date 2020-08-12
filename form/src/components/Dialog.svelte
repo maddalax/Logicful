@@ -4,12 +4,13 @@
     import CloseIcon from '@fortawesome/fontawesome-free/svgs/regular/window-close.svg';
     import type { DialogOptions } from './models/ComponentProps';
     import { subscribeFieldChange } from 'event/FieldEvent';
+    import type Address from 'inputs/Address.svelte';
 
     let isOpen = false;
     let props: DialogOptions;
     let confirm = false;
     let dirty = false;
-    let saving : boolean = false;
+    let saving: boolean = false;
 
     subscribe('dialog_show', (p: DialogOptions) => {
         props = p;
@@ -17,14 +18,14 @@
     });
 
     subscribe('user_change', () => {
-        if(isOpen && props.confirmCloseOnDirty) {
+        if (isOpen && props.confirmCloseOnDirty) {
             dirty = true;
         }
     });
 
     onMount(() => {
         subscribeFieldChange((_, userChange) => {
-            if(isOpen && props.confirmCloseOnDirty && userChange) {
+            if (isOpen && props.confirmCloseOnDirty && userChange) {
                 dirty = true;
             }
         });
@@ -57,7 +58,7 @@
 
     async function save() {
         saving = true;
-        await dispatch("dialog_save", {});
+        await dispatch('dialog_save', {});
         saving = false;
         dirty = false;
         close();
@@ -81,7 +82,7 @@
         // Untrap screen reader focus
         modal.setAttribute('aria-hidden', 'true');
         main.removeAttribute('aria-hidden');
-        dispatch("dialog_close", {});
+        dispatch('dialog_close', {});
         props.child = null;
         isOpen = false;
         confirm = false;
@@ -105,19 +106,21 @@
     }
 
     .modal-content {
-        width: 100%;
-        height: 100%;
-        max-width: 780px;
+        width: 90%;
+        max-width: 90%;
         background: white;
-        padding: 20px;
+        padding-left: 3em;
+        padding-right: 3em;
+        padding-top: 2.5em;
+        padding-bottom: 3em;
         position: relative;
         overflow: auto;
     }
 
     .modal-footer {
-        width: 100%;
+        width: 90%;
         height: 50px;
-        max-width: 780px;
+        max-width: 90%;
         background: white;
     }
 
@@ -127,6 +130,11 @@
         float: right;
         margin-bottom: 1em;
         cursor: pointer;
+        position: absolute;
+        right: 0;
+        z-index: 100000;
+        right: 1em;
+        top: 1em;
     }
 
     .usa-alert {
@@ -147,6 +155,9 @@
         <div class="close-icon" on:click={close}>
             {@html CloseIcon}
         </div>
+        <section class="usa-prose font-sans-sm" style="margin-bottom: 1em">
+            <h2>{props?.title}</h2>
+        </section>
         {#if props?.confirmCloseOnDirty && confirm}
             <div style="margin-top: 2em">
                 <div class="usa-alert usa-alert--warning">
@@ -159,9 +170,13 @@
                 </div>
             </div>
         {/if}
-        <svelte:component this={props?.child} />
+        <svelte:component this={props?.child} {...props?.props} />
     </div>
+    {#if props?.save} 
     <div class="modal-footer">
-        <button disabled={saving} class="usa-button dialog-action float-right" on:click={save}>{saving ? 'Saving...' : 'Save'}</button>
+        <button disabled={saving} class="usa-button dialog-action float-right" on:click={save}>
+            {saving ? 'Saving...' : 'Save'}
+        </button>
     </div>
+    {/if}   
 </div>

@@ -5,6 +5,7 @@
     import { dispatch } from 'event/EventBus';
     import ManageOptionSets from './ManageOptionSets.svelte';
     import { onMount, afterUpdate } from 'svelte';
+    import OptionSetsList from './OptionSetsList.svelte';
     export let field: IField;
     export let editorId: string;
 
@@ -14,9 +15,11 @@
 
     function manageSets() {
         dispatch('dialog_show', {
-            child: ManageOptionSets,
+            child: OptionSetsList,
             closeOnOutsideClick: false,
             confirmCloseOnDirty: true,
+            title : 'Manage Option Sets',
+            save : false
         });
     }
 

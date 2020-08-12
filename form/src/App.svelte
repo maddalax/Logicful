@@ -6,6 +6,17 @@
     import { onMount } from 'svelte';
     import ManageOptionSets from 'views/builder/ManageOptionSets.svelte';
     import { dispatch, subscribe } from 'event/EventBus';
+    import OptionSetsList from 'views/builder/OptionSetsList.svelte';
+
+    onMount(() => {
+        dispatch('dialog_show', {
+            child: OptionSetsList,
+            closeOnOutsideClick: false,
+            confirmCloseOnDirty: true,
+            title : 'Manage Option Sets'
+        });
+    })
+
 </script>
 
 <div>

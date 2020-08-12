@@ -1,6 +1,9 @@
 export interface DialogOptions {
     child : any,
-    confirmCloseOnDirty : boolean
+    confirmCloseOnDirty : boolean,
+    props? : any
+    title : string,
+    save? : boolean
 }
 
 export interface DropdownButtonAction {

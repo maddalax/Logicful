@@ -3,8 +3,19 @@
 
     export let label : string
     export let actions: DropdownButtonAction[] = [];
+    export let processing: boolean
+    export let processingLabel: string
 
     let showing = false;
+    
+    async function executeAction(action : DropdownButtonAction) {
+        try {
+        processing = true;
+        await action.onClick();
+        } finally {
+            processing = false;
+        }
+    }
 
     function show() {
         showing = true;
@@ -52,10 +63,10 @@
 </style>
 
 <div class="dropdown">
-    <button class="usa-button" style="min-width: 150px" on:mouseover={show} on:mouseout={hide}>{label}</button>
+    <button disabled={processing} class="usa-button" style="min-width: 150px" on:mouseover={show} on:mouseout={hide}>{`${processing ? processingLabel ?? 'Processing...' : label}`}</button>
     <div class="dropdown-content" class:show={showing} on:mouseover={show} on:mouseout={hide}>
         {#each actions as action}
-            <button class="usa-button usa-button--unstyled" style="width: 100%" on:click={action.onClick}>{action.label}</button>
+            <button disabled={processing} class="usa-button usa-button--unstyled" style="width: 100%" on:click={() => executeAction(action)}>{action.label}</button>
         {/each}
     </div>
 </div>

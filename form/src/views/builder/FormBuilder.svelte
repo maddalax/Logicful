@@ -22,7 +22,6 @@
             if (!field.configTarget) {
                 return;
             }
-            console.log("FIELD CHANGE", field);
             const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
             form.fields[toUpdate][field.configFieldTarget] = field.value;
             dispatchFieldChange(form.fields[toUpdate], true);

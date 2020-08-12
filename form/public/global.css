@@ -65,3 +65,7 @@ button:focus {
 	font-size: medium;
 	color: #424242
 }
+
+table th {
+	border-color: #d5d5d5 !important;
+}
