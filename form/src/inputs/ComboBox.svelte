@@ -42,7 +42,7 @@
                     options = field.loadTransformer(data);
                 } else {
                     Object.keys(data).forEach((key) => {
-                        parsed.push({ value: key, label: data[key] });
+                        parsed.push({ value: data[key], label: key });
                     });
                     options = parsed;
                 }

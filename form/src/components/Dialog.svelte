@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { subscribe } from 'event/EventBus';
+    import { subscribe, dispatch } from 'event/EventBus';
     import CloseIcon from '@fortawesome/fontawesome-free/svgs/regular/window-close.svg';
     import type { DialogOptions } from './models/ComponentProps';
     import { subscribeFieldChange } from 'event/FieldEvent';
@@ -9,6 +9,7 @@
     let props: DialogOptions;
     let confirm = false;
     let dirty = false;
+    let saving : boolean = false;
 
     subscribe('dialog_show', (p: DialogOptions) => {
         props = p;
@@ -54,6 +55,14 @@
         isOpen = true;
     }
 
+    async function save() {
+        saving = true;
+        await dispatch("dialog_save", {});
+        saving = false;
+        dirty = false;
+        close();
+    }
+
     function close() {
         if (props.confirmCloseOnDirty && !confirm && dirty) {
             confirm = true;
@@ -72,6 +81,7 @@
         // Untrap screen reader focus
         modal.setAttribute('aria-hidden', 'true');
         main.removeAttribute('aria-hidden');
+        dispatch("dialog_close", {});
         props.child = null;
         isOpen = false;
         confirm = false;
@@ -109,7 +119,6 @@
         height: 50px;
         max-width: 780px;
         background: white;
-        padding: 20px;
     }
 
     .close-icon {
@@ -153,6 +162,6 @@
         <svelte:component this={props?.child} />
     </div>
     <div class="modal-footer">
-        <button class="usa-button usa-button--unstyled dialog-action float-right" on:click={close}>Close</button>
+        <button disabled={saving} class="usa-button dialog-action float-right" on:click={save}>{saving ? 'Saving...' : 'Save'}</button>
     </div>
 </div>

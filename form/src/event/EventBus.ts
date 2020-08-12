@@ -1,6 +1,6 @@
 const map = new Map<string, any[]>();
 
-export function subscribe(event : string, subscriber : (payload : any) => any) {
+export function subscribe(event : string, subscriber : (((payload : any) => any) | ((payload : any) => Promise<any>))) {
   if (!map.has(event)) {
     map.set(event, [subscriber]);
   } else {
@@ -10,11 +10,12 @@ export function subscribe(event : string, subscriber : (payload : any) => any) {
   }
 }
 
-export function dispatch(event : string, payload : any) {
+export async function dispatch(event : string, payload : any) {
   if (map.has(event)) {
-    const subscribers = map.get(event);
-    subscribers.forEach((subscriber) => {
-      subscriber(payload);
+    const subscribers = map.get(event); 
+    const promises = subscribers.map((subscriber) => {
+      return subscriber(payload);
     });
+    await Promise.all(promises);
   }
 }

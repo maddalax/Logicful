@@ -13,7 +13,8 @@ const client = new S3({
 });
 
 registry.get<Mediator>(Service.Mediator).register<string>(Command.StoreJson, async (command: StoreJsonCommand) => {
-    const name = `${command.clientId}-${command.id ?? randomString()}-${command.status}.json`;
+    const id = command.id ?? randomString();
+    const name = `${command.clientId}-${id}-${command.status}.json`;
     return new Promise((resolve, reject) => {
         client.putObject({
             Body : JSON.stringify(command.json),
@@ -25,7 +26,7 @@ registry.get<Mediator>(Service.Mediator).register<string>(Command.StoreJson, asy
             if(err) {
                 return reject(err);
             }
-            return resolve(`https://logicful.nyc3.digitaloceanspaces.com/${name}`);
+            return resolve(`https://logicful.nyc3.digitaloceanspaces.com/${name}?id=${id}`);
         });
     })
 });
