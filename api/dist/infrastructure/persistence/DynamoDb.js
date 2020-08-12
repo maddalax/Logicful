@@ -12,17 +12,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DynamoCollection = void 0;
 const aws_sdk_1 = require("aws-sdk");
 const Collection_1 = require("./Collection");
-const client = new aws_sdk_1.DynamoDB.DocumentClient({
-    endpoint: 'http://localhost:8000',
-    region: 'us-east-1'
-});
+let client;
 let db;
 class DynamoCollection extends Collection_1.Collection {
+    batchGet(query) {
+        return new Promise((resolve, reject) => {
+            this.getDb().batchGetItem(query, (err, data) => {
+                if (err) {
+                    return reject(err);
+                }
+                const keys = Object.keys(data.Responses);
+                const result = {};
+                keys.forEach(k => {
+                    result[k] = data.Responses[k];
+                });
+                return resolve(result);
+            });
+        });
+    }
     insert(item) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.setup();
             return new Promise((resolve, reject) => {
-                client.put({
+                this.getClient().put({
                     TableName: this.table,
                     Item: item
                 }, (err, data) => {
@@ -41,20 +53,52 @@ class DynamoCollection extends Collection_1.Collection {
         throw new Error("Method not implemented.");
     }
     findOne(query) {
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.setup();
+            query.TableName = this.table;
+            return new Promise((resolve, reject) => {
+                this.getClient().query(query, (err, data) => {
+                    var _a, _b;
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve((_b = (_a = data.Items) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : undefined);
+                });
+            });
+        });
     }
     find(query) {
+        query.TableName = this.table;
         throw new Error("Method not implemented.");
+    }
+    getClient() {
+        if (client) {
+            return client;
+        }
+        client = new aws_sdk_1.DynamoDB.DocumentClient({
+            endpoint: this.config.get("database:connection"),
+            region: this.config.get("database:region")
+        });
+        return client;
+    }
+    getDb() {
+        if (db) {
+            return db;
+        }
+        db = new aws_sdk_1.DynamoDB({
+            endpoint: this.config.get("database:connection"),
+            region: this.config.get("database:region")
+        });
+        return db;
     }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (db) {
-                return db;
+            if (!db) {
+                db = new aws_sdk_1.DynamoDB({
+                    endpoint: this.config.get("database:connection"),
+                    region: this.config.get("database:region")
+                });
             }
-            db = new aws_sdk_1.DynamoDB({
-                endpoint: this.config.get("database:connection"),
-                region: 'us-east-1'
-            });
             return new Promise((resolve, reject) => {
                 db.createTable(this.createTable, (err, data) => {
                     if (err) {

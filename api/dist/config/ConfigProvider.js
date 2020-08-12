@@ -12,6 +12,7 @@ class ConfigProvider {
             "database:provider": "dynamodb",
             "database:database": "LowCode",
             "database:connection": "http://localhost:8000",
+            "database:region": "localhost"
         };
         Guards_1.assertNotEmpty(config, 'config');
         return config[key];

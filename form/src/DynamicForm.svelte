@@ -5,13 +5,17 @@
     import { AddressService } from './services/AddressService';
     import { subscribeFieldChange } from './event/FieldEvent';
     import { set } from './util/Selection';
-    import { afterUpdate } from 'svelte';
+    import { afterUpdate, beforeUpdate } from 'svelte';
     import { DynamicFormMode } from 'components/models/ComponentProps';
     import formStore from 'store/FormStore'
 
     export let form: IForm;
     export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
+
+    beforeUpdate(() => {
+        console.log("FORM", form);
+    })
 
     subscribeFieldChange((updatedField: IField) => {
         const index = form.fields.findIndex(w => w.id === updatedField.id);

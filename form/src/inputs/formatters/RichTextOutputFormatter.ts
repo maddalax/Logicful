@@ -1,10 +1,10 @@
 export function richTextBlocksToHtml(data: any) {
     var html = '';
+    console.log(data);
     if(!data || !data.blocks) {
         return '';
     }
     data.blocks.forEach((block) => {
-        console.log(block);
         switch (block.type) {
             case 'header':
                 html += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;

@@ -32,15 +32,20 @@
     async function setup() {
         state = LoadState.Loading;
         try {
-            if (field.options.type === 'remote' || isString(field.options)) {
+            console.log("F", field);
+            if (field.options.type === 'remote' || isString(field.options) || (field.options.type === 'local' && isString(field.options.value))) {
                 const url = field.options.value || field.options;
                 const result = await fetch(url);
                 const data = await result.json();
                 const parsed = [];
-                Object.keys(data).forEach((key) => {
-                    parsed.push({ value: key, label: data[key] });
-                });
-                options = parsed;
+                if (field.loadTransformer) {
+                    options = field.loadTransformer(data);
+                } else {
+                    Object.keys(data).forEach((key) => {
+                        parsed.push({ value: key, label: data[key] });
+                    });
+                    options = parsed;
+                }
             } else {
                 options = field.options.value;
             }
@@ -90,5 +95,10 @@
                 <option value={option.value}>{option.label}</option>
             {/each}
         </select>
+        {#if field.helperText} 
+           <div class="helper-text">
+                {@html field.helperText ?? ""}
+           </div>
+        {/if}
     {/if}
 </div>

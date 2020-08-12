@@ -4,18 +4,16 @@
     import { dispatch } from 'event/EventBus';
     import { afterUpdate } from 'svelte';
     export let onChange: (data: LabelValue[]) => any;
-
-    let options = [
+    export let helperText : string | undefined
+    export let options : LabelValue[] = [
         {
             label: '',
             value: '',
         },
     ];
 
-    $: {
-        if(options.length > 0 && options.find(w => w.label != "" || w.value != "")) {
-            dispatch("user_change", options);
-        }
+    function onRepeaterChange() {
+        dispatch("user_change", options);
         onChange?.(options);
     }
 
@@ -54,6 +52,7 @@
                     id="city"
                     name="city"
                     type="text"
+                    on:blur={onRepeaterChange}
                     bind:value={option.label}
                     placeholder={'Label'} />
             </div>
@@ -63,6 +62,7 @@
                     id="city"
                     name="city"
                     type="text"
+                    on:blur={onRepeaterChange}
                     bind:value={option.value}
                     placeholder={'Value'} />
 
@@ -74,5 +74,10 @@
             </div>
         </div>
     {/each}
+    {#if helperText} 
+    <div class="helper-text">
+         {@html helperText ?? ""}
+    </div>
+ {/if}
     <button class="usa-button" style="margin-top: 1em" on:click={addNew}>Add New</button>
 </div>

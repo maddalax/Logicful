@@ -3,5 +3,6 @@ export enum Command {
     NormalizeAddress,
     ApplicationError,
     GetForms,
-    GetClient
+    GetClient,
+    StoreJson
 }

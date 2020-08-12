@@ -37,6 +37,13 @@ functions:
           path: field/address/validate
           method: post
           cors: true
+  storeJson:
+    handler: dist/http/handlers/StoreJsonFileHttpHandler.storeJsonFile
+    events:
+      - http:
+          path: file/json/store
+          method: post
+          cors: true
 
 resources:
   Resources:

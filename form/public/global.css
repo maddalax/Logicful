@@ -60,3 +60,8 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+.helper-text {
+	font-size: medium;
+	color: #424242
+}

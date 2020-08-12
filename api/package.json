@@ -3,13 +3,15 @@
     "scripts": {
         "start": "ts-node --transpile-only src/Sandbox.ts",
         "run:install": "npm install",
-        "watch": "tsc -w"
+        "watch": "tsc -w",
+        "studio": "serverless studio"
     },
     "dependencies": {
         "node-fetch": "2.6.0",
         "dotenv": "8.2.0",
         "bottlejs": "1.7.2",
-        "uuid": "8.3.0"
+        "uuid": "8.3.0",
+        "aws-sdk": "2.731.0"
     },
     "devDependencies": {
         "typescript": "3.9.7",

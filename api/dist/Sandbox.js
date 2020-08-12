@@ -29,21 +29,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Container_1 = __importStar(require("./Container"));
+const StoreJsonCommand_1 = require("./application/features/files/commands/StoreJsonCommand");
+const Status_1 = require("./application/models/Status");
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = {
-            "address1": "8045 metcalf ave",
-            "city": "op",
-            "state": "KS",
-            "zip": "66204"
-        };
-        const db = yield Container_1.default
-            .get(Container_1.Service.Database);
-        yield db.users.insert({
-            email: 'jm2@madev.me',
-            username: 'test',
-            id: 'my_id_2'
-        });
+        const mediator = Container_1.default.get(Container_1.Service.Mediator);
+        const result = yield mediator.execute(new StoreJsonCommand_1.StoreJsonCommand({
+            hello: 'test3'
+        }, "maddox", Status_1.Status.Draft, 'k5kzuyq0jat2ytwc7mgf7toyg8zrjob'));
+        console.log(result);
     });
 }
-run();
+run().catch(err => {
+    console.error(err);
+});

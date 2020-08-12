@@ -23,7 +23,11 @@ function validateAddress(event, context) {
             .get(Container_1.Service.Mediator).execute(new NormalizeAddressCommand_1.NormalizeAddressCommand(data));
         return {
             statusCode: 200,
-            body: JSON.stringify(result)
+            body: JSON.stringify(result),
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+            },
         };
     });
 }

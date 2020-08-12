@@ -22,6 +22,7 @@
             if (!field.configTarget) {
                 return;
             }
+            console.log("FIELD CHANGE", field);
             const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
             form.fields[toUpdate][field.configFieldTarget] = field.value;
             dispatchFieldChange(form.fields[toUpdate], true);
@@ -37,10 +38,6 @@
     }
 
     function addField(type : string = "string", value? : any) {
-        form.fields = form.fields.map(m => {
-            m.expanded = false;
-            return m;
-        })
         form.fields = form.fields.concat([
             {
                 name: 'new-field-' + randomStringSmall(),

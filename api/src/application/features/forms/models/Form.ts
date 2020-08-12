@@ -33,6 +33,7 @@ export interface UserHash {
 }
 
 export interface Client {
+    id : string,
     forms : FormHash[],
     users: UserHash[],
     name : string,

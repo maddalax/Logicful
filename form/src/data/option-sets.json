@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Open Jobs",
+        "type": "local",
+        "value": "https://logicful.nyc3.digitaloceanspaces.com/maddox-s6g80n3695m3690cetfexmmkkl9aqqny-0.json"
+    },
+    {
+        "name": "States",
+        "type": "remote",
+        "value": "http://localhost:8080/sets/states.json"
+    }
+]

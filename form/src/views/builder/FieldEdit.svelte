@@ -7,6 +7,7 @@
     import { subscribeFieldChange, dispatchFieldChange } from 'event/FieldEvent';
     import { randomString } from 'util/Generate';
     import FieldTypeEditor from './FieldTypeEditor.svelte';
+    import ContentBlockEditor from "./ContentBlockEditor.svelte";
 
     export let field: IField;
     export let config: FieldEditConfig;
@@ -61,20 +62,7 @@
         </div>
     </div>
     {:else if field.type === 'block'}
-        <div class="usa-accordion" aria-multiselectable="false">
-            <h2 class="usa-accordion__heading">
-                <button
-                    class="usa-accordion__button"
-                    aria-expanded={expanded}
-                    aria-controls={`accordion-${field.name}`}>
-                    Content Block
-                </button>
-            </h2>
-            <div id={`accordion-${field.name}`} class="usa-accordion__content usa-prose">
-                <Field
-                    field={{ id: `${id}-content-block`, name: `${field.id}-builder-config-field-content-block`, label: 'Content Block', required: true, value: field.value, type: 'block-editor', configFieldTarget: 'value', configTarget: field.id }} />
-            </div>
-        </div>
+       <ContentBlockEditor id={id} field={field} expanded={expanded}/>
     {:else}
         <div class="usa-accordion" aria-multiselectable="false">
             <h2 class="usa-accordion__heading">
@@ -91,7 +79,7 @@
                 <Field
                     field={{ id: `${id}-label`, name: `${field.id}-builder-config-field-label`, label: 'Label', value: field.label, type: 'string', configFieldTarget: 'label', configTarget: field.id }} />
                 <Field
-                    field={{ id: `${id}-type`, name: `${field.id}-builder-config-field-fieldType`, label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'https://gist.githubusercontent.com/MaddoxDevelopment/e84af9214b329b9c717c00dc676d5565/raw/844db197e9834593c3b84a7013a4020454235b86/field_types.json' } }} />
+                    field={{ id: `${id}-type`, name: `${field.id}-builder-config-field-fieldType`, label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:8080/field-types.json' } }} />
                 <FieldTypeEditor {field} editorId={id} />
             </div>
         </div>

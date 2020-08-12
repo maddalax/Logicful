@@ -9,6 +9,10 @@ export async function validateAddress(event, context) {
       .get<Mediator>(Service.Mediator).execute(new NormalizeAddressCommand(data));
     return {
       statusCode : 200,
-      body : JSON.stringify(result)
+      body : JSON.stringify(result),
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+        'Access-Control-Allow-Credentials': true, // Required for cookies, authorization headers with HTTPS
+      },
     }
   }

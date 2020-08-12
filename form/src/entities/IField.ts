@@ -9,7 +9,8 @@ export interface IField {
     required? : boolean,
     value? : FormValue | undefined | any,
     onChange? : (value : any) => any,
-    configTarget? : string
+    configTarget? : string,
+    loadTransformer? : (value : any) => any
 }
 
 export type FormValue = {type : 'local' | 'remote', value : any, selector? : string} | string

@@ -8,19 +8,17 @@
     import formStore from 'store/FormStore';
 
     export let field: IField;
-    export let value = ''
+    export let value = '';
     export let type = 'text';
 
     onMount(() => {
-
-        value = formStore.get(field.configTarget ?? field.id);
-
+        value = formStore.get(field.configTarget ?? field.id) ?? '';
 
         subscribeFieldChange((newField) => {
-            if(newField.id === field.id) {
-                value = newField.value ?? "";
+            if (newField.id === field.id) {
+                value = newField.value ?? '';
             }
-        })
+        });
     });
 </script>
 
@@ -28,7 +26,7 @@
     <Label {field} />
     <input
         on:input={(e) => {
-            field.value = e.target.value ?? "";
+            field.value = e.target.value ?? '';
             dispatchFieldChange(field, true);
             field.onChange?.(e.target.value);
         }}
@@ -36,5 +34,10 @@
         id={field.id}
         {value}
         name={field.name}
-        type={type} />
+        {type} />
+    {#if field.helperText}
+        <div class="helper-text">
+            {@html field.helperText ?? ''}
+        </div>
+    {/if}
 </div>
