@@ -32,7 +32,6 @@
     async function setup() {
         state = LoadState.Loading;
         try {
-            console.log("F", field);
             if (field.options.type === 'remote' || isString(field.options) || (field.options.type === 'local' && isString(field.options.value))) {
                 const url = field.options.value || field.options;
                 const result = await fetch(url);
@@ -72,7 +71,7 @@
 <div>
     <label class="usa-label" for={field.name}>{field.label}</label>
     {#if state === LoadState.Loading}
-        <p>Loading...</p>
+        <div class="loader"/>
     {:else if state === LoadState.Failed}
         <span>
             Failed to load this field.

@@ -10,6 +10,8 @@
     import { subscribe } from 'event/EventBus';
 
     let sets: OptionSet[] = [];
+    let loading = false;
+    let errored = false;
 
     onMount(() => {
         subscribe('dialog_save', async () => {
@@ -22,6 +24,7 @@
         const data: OptionSet[] = await response.json();
         const promises: any[] = data.map(async (d) => {
             if (d.type === 'local') {
+                d.localSaveId = d.value as string;
                 d.value = await convertUrlToLocal(d);
             }
             return d;
@@ -30,15 +33,26 @@
         sets = results;
     });
 
+    async function loadLocalOptions(index: number) {
+        sets[index].value = await convertUrlToLocal(sets[index]);
+    }
+
     async function convertUrlToLocal(set: OptionSet): Promise<LabelValue[]> {
-        set.localSaveId = set.value as string;
-        const response = await fetch(set.value as string);
+        loading = true;
+        try {
+        const response = await fetch(set.value as string ?? set.localSaveId);
         const data = await response.json();
         const results: LabelValue[] = [];
         Object.keys(data).forEach((key) => {
             results.push({ label: key, value: data[key] });
         });
         return results;
+        } catch(ex) {
+            errored = true;
+            return []
+        } finally {
+            loading = false;
+        }
     }
 
     function onRepeaterChange(data: LabelValue[], index: number) {
@@ -86,6 +100,9 @@
                 <Field
                     field={{ onChange: (value) => {
                             set.value = undefined;
+                            if (value === 'local') {
+                                loadLocalOptions(index);
+                            }
                             set.type = value;
                         }, id: `${set.name}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here. <strong>Changing your option will clear previous values.</strong>' }} />
 
@@ -95,11 +112,18 @@
                                 set.value = value;
                             }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url', required: true }} />
                 {:else}
+                    {#if loading}
+                    <div class="loader"></div>
+                    {:else if errored}
+                        Failed to load, please try re-opening this dialog.
+                    {:else}
                     <Repeater
                         options={set.value}
                         onChange={(data) => {
                             onRepeaterChange(data, index);
                         }} />
+                    {/if}
+
                 {/if}
             </div>
 
