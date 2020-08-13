@@ -1,21 +1,22 @@
 <script lang="ts">
     import type {IField, LabelValue} from 'models/IField';
-    import {onMount} from 'svelte';
+    import {afterUpdate, onMount} from 'svelte';
     import { LoadState } from 'models/LoadState';
     import {stringEquals, shallowEquals} from 'util/Compare';
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {isString} from 'guards/Guard';
     import {subscribe} from "../event/EventBus";
     import {dispatchFieldChange} from "../event/FieldEvent";
-
-
-
+    import {randomString} from "../util/Generate";
+    let elementId;
 
     export let field: IField;
 
     let prevOptions = null;
 
     onMount(async () => {
+
+        elementId = randomString();
 
         subscribe("option_set_modified", (set) => {
             if(set.value === field.options) {
@@ -41,6 +42,12 @@
             setup();
         }
     }
+
+    afterUpdate(() => {
+        if(state === LoadState.Finished) {
+            new Choices(document.getElementById(elementId));
+        }
+    })
 
     async function setup() {
         state = LoadState.Loading;
@@ -92,21 +99,16 @@
         </span>
     {:else}
         <select
-                class="usa-select"
-                name={field.name}
-                id={field.id}
-                required
-                {value}
-                on:change={
-(e) => {
-                field.value = e.target.value;
-                dispatchFieldChange(field, true);
-                field.onChange?.(e.target.value);
-            }}>
-            <option value/>
-            {#each options as option}
-                <option value={option.value}>{option.label}</option>
-            {/each}
+                class="form-control"
+                data-trigger
+                name="choices-single-default"
+                id={elementId}
+                placeholder="This is a search placeholder"
+        >
+            <option value="">This is a placeholder</option>
+            <option value="Choice 1">Choice 1</option>
+            <option value="Choice 2">Choice 2</option>
+            <option value="Choice 3">Choice 3</option>
         </select>
         {#if field.helperText}
             <div class="helper-text">

@@ -26,9 +26,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="table updates">
+    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="aadd dynamodb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/db.sh" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/form/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,8 @@
       <workItem from="1596822449714" duration="257000" />
       <workItem from="1597068331284" duration="7000" />
       <workItem from="1597269302461" duration="29000" />
-      <workItem from="1597269353250" duration="20107000" />
+      <workItem from="1597269353250" duration="20190000" />
+      <workItem from="1597356907561" duration="3246000" />
     </task>
     <task id="LOCAL-00001" summary="server side work for storing/getting option sets">
       <created>1597285292287</created>
@@ -99,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597323742048</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="aadd dynamodb">
+      <created>1597323866105</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597323866105</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,13 +128,15 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server side work for storing/getting option sets" />
     <MESSAGE value="build fix, save and edit option sets" />
     <MESSAGE value="reload combobox on set change" />
     <MESSAGE value="table updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="table updates" />
+    <MESSAGE value="aadd dynamodb" />
+    <option name="LAST_COMMIT_MESSAGE" value="aadd dynamodb" />
   </component>
   <component name="WindowStateProjectService">
     <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
@@ -167,10 +179,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597323743440">
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597323868441">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597323743440" />
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597323868441" />
     <state x="186" y="90" width="1239" height="898" key="find.popup" timestamp="1597317906040">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -183,9 +195,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="643" y="401" width="501" height="379" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1597270006099" />
-    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597322104682">
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597360521009">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597322104682" />
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597360521009" />
   </component>
 </project>
