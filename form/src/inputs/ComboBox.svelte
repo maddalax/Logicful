@@ -6,6 +6,9 @@
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {isString} from 'guards/Guard';
     import {subscribe} from "../event/EventBus";
+    import {dispatchFieldChange} from "../event/FieldEvent";
+
+
 
 
     export let field: IField;
@@ -16,6 +19,9 @@
 
         subscribe("option_set_modified", (set) => {
             if(set.value === field.options) {
+                setup();
+            }
+            if(field.configTarget) {
                 setup();
             }
         })
@@ -91,7 +97,8 @@
                 id={field.id}
                 required
                 {value}
-                on:change={(e) => {
+                on:change={
+(e) => {
                 field.value = e.target.value;
                 dispatchFieldChange(field, true);
                 field.onChange?.(e.target.value);

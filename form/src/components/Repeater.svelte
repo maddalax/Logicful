@@ -48,18 +48,16 @@
             <div class="mobile-lg:grid-col-5">
                 <input
                     class="usa-input"
-                    id="city"
-                    name="city"
+                    name="display"
                     type="text"
                     on:blur={onRepeaterChange}
                     bind:value={option.label}
-                    placeholder={'Label'} />
+                    placeholder={'Display'} />
             </div>
             <div class="mobile-lg:grid-col-5">
                 <input
                     class="usa-input"
-                    id="city"
-                    name="city"
+                    name="value"
                     type="text"
                     on:blur={onRepeaterChange}
                     bind:value={option.value}

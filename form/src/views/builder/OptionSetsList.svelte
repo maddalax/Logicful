@@ -5,6 +5,8 @@
     import {dispatch} from 'event/EventBus';
     import ManageOptionSets from './ManageOptionSets.svelte';
 
+    export let type = "Selector"
+
     function createNew() {
         dispatch("dialog_show", {
             child: ManageOptionSets,

@@ -21,12 +21,11 @@
                 {
                     value: [
                         {
-                            label: 'Label',
-                            value: 'Value',
+                            label: '',
+                            value: '',
                         },
                     ],
                     type: 'local',
-                    name: `Example Set`,
                 },
             ]);
         } else {
@@ -139,15 +138,17 @@
     {#each sets as set, index}
         <div style="margin-top: 1em">
             <h2 class="usa-accordion__heading">
-                <button class="usa-accordion__button" style="background-image: none">{set.name}</button>
+                <button class="usa-accordion__button" style="background-image: none">{set.name ?? ""}</button>
             </h2>
-            <div id={set.name} class="usa-accordion__content usa-prose">
+            <div id={set.name ?? ""} class="usa-accordion__content usa-prose">
                 <Field
                     field={{
+                        id : `${set.id}-name`,
                         type : 'string',
                         required : true,
                         name : 'name',
                         label : "Name",
+                        placeholder : 'Name',
                         value : set.name,
                         onChange : (value) => {
                             set.name = value;
@@ -169,7 +170,7 @@
                                 set.value = set.remoteUrl;
                             }
                             set.type = value;
-                        }, id: `${set.name}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
+                        }, id: `${set.id}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
 
                 {#if set.type === 'remote'}
                     <Field

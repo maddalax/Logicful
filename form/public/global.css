@@ -69,3 +69,7 @@ button:focus {
 table th {
 	border-color: #d5d5d5 !important;
 }
+
+table.usa-table tr:hover td {
+	background-color: green !important;
+}

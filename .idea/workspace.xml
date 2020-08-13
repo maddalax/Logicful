@@ -26,11 +26,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="build fix, save and edit option sets">
+    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="reload combobox on set change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/form/public/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/Repeater.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/views/builder/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ComboBoxOptionsEditor.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form/src/views/builder/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ManageOptionSets.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/OptionSetsList.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +75,7 @@
       <workItem from="1596822449714" duration="257000" />
       <workItem from="1597068331284" duration="7000" />
       <workItem from="1597269302461" duration="29000" />
-      <workItem from="1597269353250" duration="14868000" />
+      <workItem from="1597269353250" duration="20002000" />
     </task>
     <task id="LOCAL-00001" summary="server side work for storing/getting option sets">
       <created>1597285292287</created>
@@ -87,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597317520418</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="reload combobox on set change">
+      <created>1597318573237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597318573237</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +121,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server side work for storing/getting option sets" />
     <MESSAGE value="build fix, save and edit option sets" />
-    <option name="LAST_COMMIT_MESSAGE" value="build fix, save and edit option sets" />
+    <MESSAGE value="reload combobox on set change" />
+    <option name="LAST_COMMIT_MESSAGE" value="reload combobox on set change" />
   </component>
   <component name="WindowStateProjectService">
     <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
@@ -153,10 +165,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597317522066">
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597318575078">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597317522066" />
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597318575078" />
     <state x="186" y="90" width="1239" height="898" key="find.popup" timestamp="1597317906040">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -169,9 +181,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="643" y="401" width="501" height="379" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1597270006099" />
-    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597318086150">
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597322104682">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597318086150" />
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597322104682" />
   </component>
 </project>
