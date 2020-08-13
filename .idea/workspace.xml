@@ -26,78 +26,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="server side work for storing/getting option sets">
-      <change afterPath="$PROJECT_DIR$/api/src/infrastructure/guard/Compare.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LowCode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LowCode.iml" afterDir="false" />
+    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="build fix, save and edit option sets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/Program.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/error/ErrorLogger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/guard/Guards.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/infrastructure/guard/Guards.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/MongoDb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/mongo/MongoService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/Container.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/Program.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/application/features/forms/fields/address/commands/NormalizeAddressCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/application/features/forms/fields/models/Address.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/application/features/user/commands/UserRegisterCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/application/features/user/models/User.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/config/ConfigProvider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/http/handlers/ValidateAddressHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/error/ErrorLogger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/error/commands/ErrorCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/event/Commands.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/event/Listeners.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/event/Mediator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/guard/Guards.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/logging/Logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/services/src/infrastructure/persistence/mongo/MongoService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/Container.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/Program.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/application/features/forms/fields/address/commands/NormalizeAddressCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/application/features/forms/fields/models/Address.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/application/features/user/commands/UserRegisterCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/application/features/user/models/User.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/config/ConfigProvider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/http/handlers/ValidateAddressHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/error/ErrorLogger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/error/commands/ErrorCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/event/Commands.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/event/Listeners.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/event/Mediator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/guard/Guards.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/logging/Logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/infrastructure/persistence/mongo/MongoService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/application/features/files/commands/StoreJsonCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/application/features/files/commands/StoreJsonCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/application/features/option_sets/commands/SetOptionSetCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/application/features/option_sets/commands/SetOptionSetCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/application/features/option_sets/queries/GetOptionSetsQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/application/features/option_sets/queries/GetOptionSetsQuery.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/http/handlers/GetOptionSetsHttpHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/http/handlers/GetOptionSetsHttpHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/infrastructure/guard/Guards.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/infrastructure/guard/Guards.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/DynamicForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/Field.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/components/DropdownButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/DropdownButton.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/Repeater.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/Address.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/Label.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/RichTextDisplay.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/Spacer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/StateSelector.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/TextArea.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/TextInput.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/loader/FieldValueLoader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/loader/FieldValueLoader.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/models/OptionSet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/models/OptionSet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/store/FormStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/store/FormStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form/src/views/builder/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ComboBoxOptionsEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/views/builder/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ContentBlockEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/views/builder/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/FieldEdit.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/views/builder/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/FieldTypeEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/views/builder/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/FormBuilder.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form/src/views/builder/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ManageOptionSets.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/views/builder/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/OptionSetsList.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +71,7 @@
       <workItem from="1596822449714" duration="257000" />
       <workItem from="1597068331284" duration="7000" />
       <workItem from="1597269302461" duration="29000" />
-      <workItem from="1597269353250" duration="13782000" />
+      <workItem from="1597269353250" duration="14868000" />
     </task>
     <task id="LOCAL-00001" summary="server side work for storing/getting option sets">
       <created>1597285292287</created>
@@ -147,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597285292287</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="build fix, save and edit option sets">
+      <created>1597317520418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597317520418</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +109,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server side work for storing/getting option sets" />
-    <option name="LAST_COMMIT_MESSAGE" value="server side work for storing/getting option sets" />
+    <MESSAGE value="build fix, save and edit option sets" />
+    <option name="LAST_COMMIT_MESSAGE" value="build fix, save and edit option sets" />
   </component>
   <component name="WindowStateProjectService">
     <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
@@ -212,14 +153,14 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597285294308">
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597317522066">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597285294308" />
-    <state x="186" y="90" width="1239" height="898" key="find.popup" timestamp="1597315316581">
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597317522066" />
+    <state x="186" y="90" width="1239" height="898" key="find.popup" timestamp="1597317906040">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="186" y="90" width="1239" height="898" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597315316581" />
+    <state x="186" y="90" width="1239" height="898" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597317906040" />
     <state x="621" y="248" key="run.anything.popup" timestamp="1597317121190">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -228,9 +169,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="643" y="401" width="501" height="379" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1597270006099" />
-    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597317328916">
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597318086150">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597317328916" />
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597318086150" />
   </component>
 </project>

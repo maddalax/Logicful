@@ -98,6 +98,7 @@
             },
             body : JSON.stringify(toSave[0])
         })
+        dispatch("option_set_modified", toSave[0])
         dispatch('dialog_show', {
             child: OptionSetsList,
             closeOnOutsideClick: false,

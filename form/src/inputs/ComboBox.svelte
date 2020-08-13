@@ -5,12 +5,21 @@
     import {stringEquals, shallowEquals} from 'util/Compare';
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {isString} from 'guards/Guard';
+    import {subscribe} from "../event/EventBus";
+
 
     export let field: IField;
 
     let prevOptions = null;
 
     onMount(async () => {
+
+        subscribe("option_set_modified", (set) => {
+            if(set.value === field.options) {
+                setup();
+            }
+        })
+
         subscribeFieldChange((newField) => {
             if (newField.id === field.id) {
                 value = newField.value;
