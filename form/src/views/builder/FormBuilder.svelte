@@ -1,14 +1,14 @@
 <script lang="ts">
     import DynamicForm from 'DynamicForm.svelte';
-    import exampleForm from 'exampleForm';
     import FieldEdit from './FieldEdit.svelte';
-    import { IField } from 'models/IField';
+    import type { IField } from 'models/IField';
     import { randomStringSmall, randomString } from 'util/Generate';
-    import { IForm } from 'models/IForm';
+    import type { IForm } from 'models/IForm';
     import { onMount } from 'svelte';
     import { subscribeFieldChange, dispatchFieldChange } from 'event/FieldEvent';
     import DropdownButton from 'components/DropdownButton.svelte';
-    import { DynamicFormMode } from 'components/models/ComponentProps';
+    import {DynamicFormMode} from "components/models/ComponentProps";
+
 
     let form: IForm = {fields : []};
 

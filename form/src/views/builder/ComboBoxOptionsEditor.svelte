@@ -1,10 +1,7 @@
 <script lang="ts">
-    import { IField } from 'models/IField';
+    import type { IField } from 'models/IField';
     import Field from 'Field.svelte';
-    import Dialog from 'components/Dialog.svelte';
     import { dispatch } from 'event/EventBus';
-    import ManageOptionSets from './ManageOptionSets.svelte';
-    import { onMount, afterUpdate } from 'svelte';
     import OptionSetsList from './OptionSetsList.svelte';
     export let field: IField;
     export let editorId: string;

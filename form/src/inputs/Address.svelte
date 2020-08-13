@@ -1,8 +1,7 @@
 <script lang="ts">
     import StateSelector from 'inputs/StateSelector.svelte';
-    import { afterUpdate } from 'svelte';
     import TextInput from 'inputs/TextInput.svelte';
-    import { IField } from 'models/IField';
+    import type { IField } from 'models/IField';
     export let field: IField;
     export let value: { [key: string]: string };
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {IField} from 'models/IField';
+    import type {IField} from 'models/IField';
     import {dispatchFieldChange, subscribeFieldChange} from 'event/FieldEvent';
     import {onMount} from 'svelte';
     import EditorJS from '@editorjs/editorjs';

@@ -1,15 +1,11 @@
 <script lang="ts">
-    import { onMount, afterUpdate } from 'svelte';
+    import { onMount } from 'svelte';
     import Field from 'Field.svelte';
-    import { fields } from 'exampleForm';
-    import { OptionSet } from 'models/OptionSet';
-    import { set } from 'util/Selection';
+    import type { OptionSet } from 'models/OptionSet';
     import Repeater from 'components/Repeater.svelte';
-    import { LabelValue } from 'models/IField';
+    import type { LabelValue } from 'models/IField';
     import { getUrlParameter } from 'util/Http';
-    import { subscribe } from 'event/EventBus';
     import DropdownButton from 'components/DropdownButton.svelte';
-    import { randomStringSmall } from 'util/Generate';
     import OptionSetsList from './OptionSetsList.svelte';
     import { dispatch } from 'event/EventBus';
 
@@ -40,7 +36,7 @@
 
     async function load() {
         loading = true;
-        const response = await fetch('http://localhost:8080/option-sets.json');
+        const response = await fetch('https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/option_sets/list');
         const data: OptionSet[] = await response.json();
         const promises: any[] = data.map(async (d) => {
             if (d.type === 'local') {
@@ -94,8 +90,14 @@
             }
             return s;
         });
-        const finish = await Promise.all(promises);
-        localStorage.setItem('option_sets', JSON.stringify(finish));
+        const toSave = await Promise.all(promises);
+        await fetch("https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/option_sets/set", {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(toSave[0])
+        })
         dispatch('dialog_show', {
             child: OptionSetsList,
             closeOnOutsideClick: false,
@@ -139,6 +141,18 @@
                 <button class="usa-accordion__button" style="background-image: none">{set.name}</button>
             </h2>
             <div id={set.name} class="usa-accordion__content usa-prose">
+                <Field
+                    field={{
+                        type : 'string',
+                        required : true,
+                        name : 'name',
+                        label : "Name",
+                        value : set.name,
+                        onChange : (value) => {
+                            set.name = value;
+                        }
+                    }}
+                />
                 <Field
                     field={{ onChange: (value) => {
                             if (value === 'local') {

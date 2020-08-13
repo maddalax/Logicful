@@ -39,7 +39,8 @@ registry.get<Mediator>(Service.Mediator).register<OptionSet[]>(Command.GetOption
             name : item.name?.S,
             id : item.id?.S,
             value : item.value?.S,
-            type : item.type?.S
+            type : item.type?.S,
+            lastModified : item.lastModified?.N
         }
     });
 });

@@ -1,9 +1,9 @@
 <script lang="ts">
     import Field from './Field.svelte';
-    import { IForm } from './models/IForm';
-    import { IField } from './models/IField';
+    import type { IForm } from './models/IForm';
+    import type { IField } from 'models/IField';
     import { subscribeFieldChange } from './event/FieldEvent';
-    import { DynamicFormMode } from 'components/models/ComponentProps';
+    import {DynamicFormMode} from "components/models/ComponentProps";
 
     export let form: IForm;
     export let mode : DynamicFormMode = DynamicFormMode.Live; 

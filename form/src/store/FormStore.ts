@@ -1,4 +1,4 @@
-import type { IField } from "entities/IField";
+import type { IField } from "models/IField";
 
 export const store : {[key : string] : any}= {};
 

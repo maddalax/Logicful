@@ -5,7 +5,6 @@ import {GetOptionSetsQuery} from "../../application/features/option_sets/queries
 export async function getOptionSets(event, context) {
     const mediator = registry.get<Mediator>(Service.Mediator);
     const result = await mediator.execute(new GetOptionSetsQuery("maddox"))
-    console.log(result);
     return {
         statusCode : 200,
         body : JSON.stringify(result),

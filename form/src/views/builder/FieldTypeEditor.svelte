@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { IField } from 'models/IField';
-    import Field from 'Field.svelte';
+    import type { IField } from 'models/IField';
     import ComboBoxOptionsEditor from 'views/builder/ComboBoxOptionsEditor.svelte';
     export let field: IField;
     export let editorId: string;

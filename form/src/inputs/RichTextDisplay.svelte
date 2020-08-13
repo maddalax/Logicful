@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {IField} from 'models/IField';
+    import type {IField} from 'models/IField';
     import {richTextBlocksToHtml} from './formatters/RichTextOutputFormatter';
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {onMount} from 'svelte';

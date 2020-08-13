@@ -1,13 +1,10 @@
 <script lang="ts">
-    import {IField, LabelValue} from 'models/IField';
-    import {onMount, afterUpdate} from 'svelte';
-    import {LoadState} from 'models/LoadState';
-    import {select} from 'util/Selection';
+    import type {IField, LabelValue} from 'models/IField';
+    import {onMount} from 'svelte';
+    import { LoadState } from 'models/LoadState';
     import {stringEquals, shallowEquals} from 'util/Compare';
-    import {dispatchFieldChange, subscribeFieldChange} from 'event/FieldEvent';
-    import Label from 'inputs/Label.svelte';
+    import {subscribeFieldChange} from 'event/FieldEvent';
     import {isString} from 'guards/Guard';
-    import {subscribe} from 'event/EventBus';
 
     export let field: IField;
 

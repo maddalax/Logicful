@@ -1,7 +1,8 @@
 <script lang="ts">
-    import {TableRow, TableButtonAction} from 'components/models/RemoteTableProps';
+    import type {TableRow, TableButtonAction} from 'components/models/RemoteTableProps';
     import {onMount} from 'svelte';
     import Fuse from 'fuse.js';
+    import {LoadState} from "models/LoadState";
 
     export let getRows: () => Promise<TableRow[]>;
 
@@ -12,6 +13,7 @@
     let columns: string[] = [];
     let query = '';
     let fuse: Fuse<{}>;
+    let state = LoadState.Loading;
 
     export let headerActions: TableButtonAction[];
     export let actions: { [key: string]: (row: any) => any };
@@ -47,10 +49,15 @@
     }
 
     async function load() {
-        rows = await getRows();
-        fuse = createFuse();
-        filtered = rows;
-        columns = Object.keys(rows[0] ?? {}).filter((w) => !hidden.has(w));
+        try {
+            rows = await getRows();
+            fuse = createFuse();
+            filtered = rows;
+            columns = Object.keys(rows[0] ?? {}).filter((w) => !hidden.has(w));
+            state = LoadState.Finished;
+        } catch(ex) {
+            state = LoadState.Failed;
+        }
     }
 </script>
 
@@ -69,41 +76,47 @@
             {/each}
         </ul>
     {/if}
-    <table class="usa-table" style="width: 100%; margin: unset">
-        <caption>{caption}</caption>
-        <thead>
-        <tr>
-            {#each columns as column}
-                <th scope="col">{column}</th>
-            {/each}
-            {#if actions}
-                <th scope="col"></th>
-            {/if}
-        </tr>
-        </thead>
-        <tbody>
-        {#each filtered as row}
+    {#if state === LoadState.Loading}
+        <div class="loader"/>
+    {:else if state === LoadState.Finished}
+        <table class="usa-table" style="width: 100%; margin: unset">
+            <caption>{caption}</caption>
+            <thead>
             <tr>
                 {#each columns as column}
-                    <th scope="row">{row[column]}</th>
+                    <th scope="col">{column}</th>
                 {/each}
                 {#if actions}
-                    <th scope="row">
-                        <ul class="usa-button-group">
-                            {#each Object.keys(actions) as action}
-                                <li class="usa-button-group__item">
-                                    <button
-                                            class="usa-button usa-button--outline usa-button--unstyled"
-                                            on:click={() => actions[action](row)}>
-                                        {action}
-                                    </button>
-                                </li>
-                            {/each}
-                        </ul>
-                    </th>
+                    <th scope="col"></th>
                 {/if}
             </tr>
-        {/each}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {#each filtered as row}
+                <tr>
+                    {#each columns as column}
+                        <th scope="row">{row[column]}</th>
+                    {/each}
+                    {#if actions}
+                        <th scope="row">
+                            <ul class="usa-button-group">
+                                {#each Object.keys(actions) as action}
+                                    <li class="usa-button-group__item">
+                                        <button
+                                                class="usa-button usa-button--outline usa-button--unstyled"
+                                                on:click={() => actions[action](row)}>
+                                            {action}
+                                        </button>
+                                    </li>
+                                {/each}
+                            </ul>
+                        </th>
+                    {/if}
+                </tr>
+            {/each}
+            </tbody>
+        </table>
+    {:else if state === LoadState.Failed}
+        <p>Failed to load rows, please try refreshing the page.</p>
+    {/if}
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {IField} from 'models/IField';
+    import type { IField } from 'models/IField';
     import Field from 'Field.svelte';
-    import {FieldEditConfig} from 'views/builder/models/FieldEditConfig';
+    import type {FieldEditConfig} from 'views/builder/models/FieldEditConfig';
     import {onMount} from 'svelte';
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {randomString} from 'util/Generate';

@@ -6,5 +6,6 @@ export interface OptionSet {
     value : string | LabelValue[],
     localSaveId? : string,
     remoteUrl? : string,
-    [key : string] : any
+    [key : string] : any,
+    lastModified : number
 }

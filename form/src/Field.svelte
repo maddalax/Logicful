@@ -1,19 +1,15 @@
 <script lang="ts">
-    import { IField } from './models/IField';
+    import type { IField } from 'models/IField';
     export let field: IField;
     import TextInput from './inputs/TextInput.svelte';
-    import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+    import { onMount } from 'svelte';
     import ComboBox from './inputs/ComboBox.svelte';
-    import { LoadState } from './models/LoadState';
+    import { LoadState } from 'models/LoadState';
     import { FieldValueLoader } from './loader/FieldValueLoader';
     import Address from './inputs/Address.svelte';
-    import { subscribeFieldChange, dispatchFieldChange } from './event/FieldEvent';
-    import { set } from './util/Selection';
-    import { shallowEquals } from 'util/Compare';
-    import { dispatch } from 'event/EventBus';
+    import { dispatchFieldChange } from './event/FieldEvent';
     import TextArea from 'inputs/TextArea.svelte';
     import Spacer from 'inputs/Spacer.svelte';
-    import { richTextBlocksToHtml } from 'inputs/formatters/RichTextOutputFormatter';
     import formStore from 'store/FormStore';
     import RichTextDisplay from 'inputs/RichTextDisplay.svelte';
 

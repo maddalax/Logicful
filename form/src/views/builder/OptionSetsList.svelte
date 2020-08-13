@@ -1,7 +1,7 @@
 <script lang="ts">
     import RemoteTable from 'components/RemoteTable.svelte';
-    import {TableRow} from 'components/models/RemoteTableProps';
-    import {OptionSet} from 'models/OptionSet';
+    import type {TableRow} from 'components/models/RemoteTableProps';
+    import type {OptionSet} from 'models/OptionSet';
     import {dispatch} from 'event/EventBus';
     import ManageOptionSets from './ManageOptionSets.svelte';
 
@@ -17,14 +17,15 @@
     }
 
     async function getRows(): Promise<TableRow[]> {
-        const response = await fetch('http://localhost:8080/option-sets.json');
+        const response = await fetch('https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/option_sets/list');
         const data: OptionSet[] = await response.json();
         return data.map((d) => {
             return {
+                id : d.id,
                 'Name': d.name,
                 'Value': d.value,
-                'Type': d.type,
-                'Last Updated': new Date().toLocaleDateString(),
+                'Type': d.type === 'local' ? 'Inline' : 'Remote',
+                'Last Updated': new Date(parseInt(d.lastModified)).toLocaleString(),
                 'Modified By': 'Maddox',
                 'Forms Using': 3,
                 'Status': 'Published'
@@ -32,7 +33,7 @@
         });
     }
 
-    const hidden = new Set(['Value']);
+    const hidden = new Set(['Value', "id"]);
 </script>
 
 <RemoteTable

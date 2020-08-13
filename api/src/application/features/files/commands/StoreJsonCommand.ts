@@ -2,8 +2,9 @@ import { CommandRequest, Mediator } from "../../../../infrastructure/event/Media
 import { Command } from "../../../../infrastructure/event/Commands";
 import registry, { Service } from "../../../../Container";
 import { S3 } from 'aws-sdk';
-import {randomString} from '../../../utility/Random'
+import { v4 } from 'uuid';
 import { Status } from "../../../models/Status";
+import {isNull} from "../../../../infrastructure/guard/Compare";
 
 const client = new S3({
     endpoint : 'nyc3.digitaloceanspaces.com',
@@ -12,7 +13,7 @@ const client = new S3({
 });
 
 registry.get<Mediator>(Service.Mediator).register<string>(Command.StoreJson, async (command: StoreJsonCommand) => {
-    const id = command.id ?? randomString();
+    const id = isNull(command.id) ? v4() : command.id;
     const name = `${command.clientId}-${id}-${command.status}.json`;
     return new Promise((resolve, reject) => {
         client.putObject({

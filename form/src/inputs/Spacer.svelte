@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { IField } from 'models/IField';
+    import type { IField } from 'models/IField';
     import { subscribeFieldChange } from 'event/FieldEvent';
     import { onMount } from 'svelte';
     import { toNumberOrDefault } from 'util/Compare';

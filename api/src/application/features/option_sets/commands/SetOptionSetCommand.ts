@@ -3,9 +3,14 @@ import {Command} from "../../../../infrastructure/event/Commands";
 import registry, {Service} from "../../../../Container";
 import {Database} from "../../../../infrastructure/persistence/Database";
 import {OptionSet} from "../models/OptionSet";
+import {v4} from 'uuid'
+import {isNull} from "../../../../infrastructure/guard/Compare";
 
 registry.get<Mediator>(Service.Mediator).register<void>(Command.SetOptionSet, async (command: SetOptionSetCommand) => {
     const db = registry.get<Database>(Service.Database);
+    if(isNull(command.set.id)) {
+        command.set.id = v4();
+    }
     const request = {
         "TransactItems": [
             {
@@ -37,7 +42,7 @@ registry.get<Mediator>(Service.Mediator).register<void>(Command.SetOptionSet, as
                             "S": command.set.id
                         }
                     },
-                    "UpdateExpression": "SET #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73)",
+                    "UpdateExpression": "SET #c1e70 = :c1e70, #value = :value, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73)",
                     "ExpressionAttributeValues": {
                         ":c1e70": {
                             "S": command.set.name
@@ -50,6 +55,9 @@ registry.get<Mediator>(Service.Mediator).register<void>(Command.SetOptionSet, as
                         },
                         ":c1e73": {
                             "N": Date.now().toString()
+                        },
+                        ":value" : {
+                            "S" : command.set.value
                         }
                     },
                     "ExpressionAttributeNames": {
@@ -57,7 +65,8 @@ registry.get<Mediator>(Service.Mediator).register<void>(Command.SetOptionSet, as
                         "#c1e71": "lastModified",
                         "#c1e72": "type",
                         "#c1e73": "createdAt",
-                        "#c1e74": "createdAt"
+                        "#c1e74": "createdAt",
+                        "#value" : "value"
                     }
                 }
             }

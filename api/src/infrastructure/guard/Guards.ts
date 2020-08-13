@@ -1,5 +1,5 @@
 export function assertNotEmpty(value, item?) {
-    let isEmpty = !value ? true : false;
+    let isEmpty = !value;
     if(value == null) {
         isEmpty = true;
     }
