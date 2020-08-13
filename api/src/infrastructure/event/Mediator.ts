@@ -7,7 +7,8 @@ export class Mediator {
 
     private handlers = {};
     private listeners : {[key : number] : any[]} = {};
-    async register<T>(command : Command, handler: (command: CommandRequest<T>) => Promise<T>) {
+
+    register<T>(command : Command, handler: (command: CommandRequest<T>) => Promise<T>) {
         assertNotNull(command, handler);
         this.handlers[command] = handler;
     }

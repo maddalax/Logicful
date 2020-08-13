@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { IField } from 'entities/IField';
+    import { IField } from 'models/IField';
     import Field from 'Field.svelte';
     import ComboBoxOptionsEditor from 'views/builder/ComboBoxOptionsEditor.svelte';
     export let field: IField;

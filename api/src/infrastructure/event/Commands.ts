@@ -4,5 +4,7 @@ export enum Command {
     ApplicationError,
     GetForms,
     GetClient,
-    StoreJson
+    StoreJson,
+    SetOptionSet,
+    GetOptionSets
 }

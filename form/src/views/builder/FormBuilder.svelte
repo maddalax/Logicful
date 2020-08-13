@@ -2,9 +2,9 @@
     import DynamicForm from 'DynamicForm.svelte';
     import exampleForm from 'exampleForm';
     import FieldEdit from './FieldEdit.svelte';
-    import type { IField } from 'entities/IField';
+    import { IField } from 'models/IField';
     import { randomStringSmall, randomString } from 'util/Generate';
-    import type { IForm } from 'entities/IForm';
+    import { IForm } from 'models/IForm';
     import { onMount } from 'svelte';
     import { subscribeFieldChange, dispatchFieldChange } from 'event/FieldEvent';
     import DropdownButton from 'components/DropdownButton.svelte';

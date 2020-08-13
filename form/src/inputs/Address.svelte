@@ -2,7 +2,7 @@
     import StateSelector from 'inputs/StateSelector.svelte';
     import { afterUpdate } from 'svelte';
     import TextInput from 'inputs/TextInput.svelte';
-    import type { IField } from 'entities/IField';
+    import { IField } from 'models/IField';
     export let field: IField;
     export let value: { [key: string]: string };
 </script>

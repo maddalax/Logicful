@@ -1,6 +1,6 @@
 <script lang="ts">
     import Trash from '@fortawesome/fontawesome-free/svgs/regular/trash-alt.svg';
-    import type { LabelValue } from 'entities/IField';
+    import { LabelValue } from 'models/IField';
     import { dispatch } from 'event/EventBus';
     import { afterUpdate } from 'svelte';
     export let onChange: (data: LabelValue[]) => any;

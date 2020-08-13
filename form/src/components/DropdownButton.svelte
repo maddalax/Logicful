@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { DropdownButtonAction } from './models/ComponentProps';
+    import { DropdownButtonAction } from './models/ComponentProps';
 
     export let label : string
     export let actions: DropdownButtonAction[] = [];

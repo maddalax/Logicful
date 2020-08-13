@@ -2,9 +2,8 @@ import { CommandRequest, Mediator } from "../../../../infrastructure/event/Media
 import { Command } from "../../../../infrastructure/event/Commands";
 import registry, { Service } from "../../../../Container";
 import { S3 } from 'aws-sdk';
-import {randomString} from './../../../utility/Random'
+import {randomString} from '../../../utility/Random'
 import { Status } from "../../../models/Status";
-
 
 const client = new S3({
     endpoint : 'nyc3.digitaloceanspaces.com',

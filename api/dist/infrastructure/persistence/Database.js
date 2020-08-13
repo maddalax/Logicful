@@ -76,6 +76,21 @@ class Database {
                     AttributeType: "N"
                 }]
         });
+        this.optionSets = new DynamoDb_1.DynamoCollection("option_sets", config, {
+            TableName: "option_sets",
+            KeySchema: [{
+                    AttributeName: 'id',
+                    KeyType: "HASH"
+                }],
+            ProvisionedThroughput: {
+                ReadCapacityUnits: 1,
+                WriteCapacityUnits: 1
+            },
+            AttributeDefinitions: [{
+                    AttributeName: "id",
+                    AttributeType: "S"
+                }]
+        });
     }
 }
 exports.Database = Database;

@@ -1,13 +1,14 @@
 <script lang="ts">
-    import type { IField, LabelValue } from 'entities/IField';
-    import { onMount, afterUpdate } from 'svelte';
-    import { LoadState } from 'entities/LoadState';
-    import { select } from 'util/Selection';
-    import { stringEquals, shallowEquals } from 'util/Compare';
-    import { dispatchFieldChange, subscribeFieldChange } from 'event/FieldEvent';
+    import {IField, LabelValue} from 'models/IField';
+    import {onMount, afterUpdate} from 'svelte';
+    import {LoadState} from 'models/LoadState';
+    import {select} from 'util/Selection';
+    import {stringEquals, shallowEquals} from 'util/Compare';
+    import {dispatchFieldChange, subscribeFieldChange} from 'event/FieldEvent';
     import Label from 'inputs/Label.svelte';
-    import { isString } from 'guards/Guard';
-    import { subscribe } from 'event/EventBus';
+    import {isString} from 'guards/Guard';
+    import {subscribe} from 'event/EventBus';
+
     export let field: IField;
 
     let prevOptions = null;
@@ -41,7 +42,7 @@
                     options = field.loadTransformer(data);
                 } else {
                     Object.keys(data).forEach((key) => {
-                        parsed.push({ value: data[key], label: key });
+                        parsed.push({value: data[key], label: key});
                     });
                     options = parsed;
                 }
@@ -79,25 +80,25 @@
         </span>
     {:else}
         <select
-            class="usa-select"
-            name={field.name}
-            id={field.id}
-            required
-            {value}
-            on:change={(e) => {
+                class="usa-select"
+                name={field.name}
+                id={field.id}
+                required
+                {value}
+                on:change={(e) => {
                 field.value = e.target.value;
                 dispatchFieldChange(field, true);
                 field.onChange?.(e.target.value);
             }}>
-            <option value />
+            <option value/>
             {#each options as option}
                 <option value={option.value}>{option.label}</option>
             {/each}
         </select>
-        {#if field.helperText} 
-           <div class="helper-text">
+        {#if field.helperText}
+            <div class="helper-text">
                 {@html field.helperText ?? ""}
-           </div>
+            </div>
         {/if}
     {/if}
 </div>

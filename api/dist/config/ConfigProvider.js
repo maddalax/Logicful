@@ -11,8 +11,8 @@ class ConfigProvider {
             "smartystreets:token": "63CwZKLIeojla8vjz43O",
             "database:provider": "dynamodb",
             "database:database": "LowCode",
-            "database:connection": "http://localhost:8000",
-            "database:region": "localhost"
+            "database:connection": "",
+            "database:region": "us-east-1"
         };
         Guards_1.assertNotEmpty(config, 'config');
         return config[key];

@@ -1,19 +1,17 @@
 import registry, { Service } from "../../Container";
 import { Mediator } from "../../infrastructure/event/Mediator";
-import { StoreJsonCommand } from "../../application/features/files/commands/StoreJsonCommand";
+import {SetOptionSetCommand} from "../../application/features/option_sets/commands/SetOptionSetCommand";
 
-export async function storeJsonFile(event, context) {
+export async function setOptionSet(event, context) {
     const data = JSON.parse(event.body);
-    const status = event.queryStringParameters?.status;
-    const id = event.queryStringParameters?.id ?? undefined;
     const mediator = registry.get<Mediator>(Service.Mediator);
-    const result = await mediator.execute(new StoreJsonCommand(data, "maddox", status, id))
+    await mediator.execute(new SetOptionSetCommand("maddox", data))
     return {
-        statusCode : 200,
-        body : JSON.stringify({url : result}),
+        statusCode : 204,
+        body : JSON.stringify({}),
         headers: {
             'Access-Control-Allow-Origin': '*', // Required for CORS support to work
             'Access-Control-Allow-Credentials': true, // Required for cookies, authorization headers with HTTPS
-          },
-      }
+        },
+    }
 }

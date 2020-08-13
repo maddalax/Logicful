@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { TableRow, TableButtonAction } from 'components/models/RemoteTableProps';
-    import { onMount } from 'svelte';
+    import {TableRow, TableButtonAction} from 'components/models/RemoteTableProps';
+    import {onMount} from 'svelte';
     import Fuse from 'fuse.js';
-    import { each } from 'svelte/internal';
+
     export let getRows: () => Promise<TableRow[]>;
 
     let caption: string = '';
@@ -15,7 +15,7 @@
 
     export let headerActions: TableButtonAction[];
     export let actions: { [key: string]: (row: any) => any };
-    export let hidden = new Set<string>();
+    export let hidden = new Set <string> ();
 
     function createFuse(): Fuse<{}> {
         const list = rows.map((r) => {
@@ -35,7 +35,10 @@
     });
 
     $: {
-        if (query === '') {
+        if(rows.length === 0) {
+            filtered = rows;
+        }
+        else if (query === '') {
             filtered = rows;
         } else {
             const result = fuse.search(query);
@@ -56,7 +59,7 @@
 </style>
 
 <div>
-    <input class="usa-input" placeholder={searchPlaceHolder} bind:value={query} />
+    <input class="usa-input" placeholder={searchPlaceHolder} bind:value={query}/>
     {#if headerActions}
         <ul class="usa-button-group" style="margin-top: 1em">
             {#each headerActions as action}
@@ -69,38 +72,38 @@
     <table class="usa-table" style="width: 100%; margin: unset">
         <caption>{caption}</caption>
         <thead>
-            <tr>
-                {#each columns as column}
-                    <th scope="col">{column}</th>
-                {/each}
-                {#if actions}
-                    <th scope="col"></th>
-                {/if}
-            </tr>
+        <tr>
+            {#each columns as column}
+                <th scope="col">{column}</th>
+            {/each}
+            {#if actions}
+                <th scope="col"></th>
+            {/if}
+        </tr>
         </thead>
         <tbody>
-            {#each filtered as row}
-                <tr>
-                    {#each columns as column}
-                        <th scope="row">{row[column]}</th>
-                    {/each}
-                    {#if actions}
-                        <th scope="row">
-                            <ul class="usa-button-group">
-                                {#each Object.keys(actions) as action}
-                                    <li class="usa-button-group__item">
-                                        <button
+        {#each filtered as row}
+            <tr>
+                {#each columns as column}
+                    <th scope="row">{row[column]}</th>
+                {/each}
+                {#if actions}
+                    <th scope="row">
+                        <ul class="usa-button-group">
+                            {#each Object.keys(actions) as action}
+                                <li class="usa-button-group__item">
+                                    <button
                                             class="usa-button usa-button--outline usa-button--unstyled"
                                             on:click={() => actions[action](row)}>
-                                            {action}
-                                        </button>
-                                    </li>
-                                {/each}
-                            </ul>
-                        </th>
-                    {/if}
-                </tr>
-            {/each}
+                                        {action}
+                                    </button>
+                                </li>
+                            {/each}
+                        </ul>
+                    </th>
+                {/if}
+            </tr>
+        {/each}
         </tbody>
     </table>
 </div>

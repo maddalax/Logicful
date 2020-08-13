@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { IField } from 'entities/IField';
+    import { IField } from 'models/IField';
     import Field from 'Field.svelte';
     import Dialog from 'components/Dialog.svelte';
     import { dispatch } from 'event/EventBus';
@@ -8,10 +8,6 @@
     import OptionSetsList from './OptionSetsList.svelte';
     export let field: IField;
     export let editorId: string;
-
-    afterUpdate(() => {
-        console.log('EDITOR FIELD', field);
-    });
 
     function manageSets() {
         dispatch('dialog_show', {

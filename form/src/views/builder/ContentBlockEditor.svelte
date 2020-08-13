@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { IField } from 'entities/IField';
+    import { IField } from 'models/IField';
     import Field from 'Field.svelte'
 
     export let field: IField;

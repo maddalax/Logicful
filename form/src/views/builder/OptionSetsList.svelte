@@ -1,17 +1,17 @@
 <script lang="ts">
     import RemoteTable from 'components/RemoteTable.svelte';
-    import type { TableRow } from 'components/models/RemoteTableProps';
-    import type { OptionSet } from 'entities/OptionSet';
-import { dispatch } from 'event/EventBus';
-import ManageOptionSets from './ManageOptionSets.svelte';
+    import {TableRow} from 'components/models/RemoteTableProps';
+    import {OptionSet} from 'models/OptionSet';
+    import {dispatch} from 'event/EventBus';
+    import ManageOptionSets from './ManageOptionSets.svelte';
 
     function createNew() {
         dispatch("dialog_show", {
-            child : ManageOptionSets,
-            title : 'Create Option Set',
-            save : false,
-            props : {
-                isNew : true
+            child: ManageOptionSets,
+            title: 'Create Option Set',
+            save: false,
+            props: {
+                isNew: true
             }
         })
     }
@@ -27,7 +27,7 @@ import ManageOptionSets from './ManageOptionSets.svelte';
                 'Last Updated': new Date().toLocaleDateString(),
                 'Modified By': 'Maddox',
                 'Forms Using': 3,
-                'Status' : 'Published'
+                'Status': 'Published'
             };
         });
     }
@@ -36,13 +36,13 @@ import ManageOptionSets from './ManageOptionSets.svelte';
 </script>
 
 <RemoteTable
-    headerActions={[{
-        label : '+ New Option Set',
-        onClick : createNew
-    }]}
-    {getRows}
-    {hidden}
-    actions={{ Edit: async (row) => {
+        headerActions={[{
+            label : '+ New Option Set',
+            onClick : createNew
+        }]}
+        {getRows}
+        {hidden}
+        actions={{ Edit: async (row) => {
         dispatch("dialog_show", {
             child : ManageOptionSets,
             title : 'Modifying Option Set',
@@ -53,4 +53,4 @@ import ManageOptionSets from './ManageOptionSets.svelte';
         })
     }, Delete: async (row) => {
             console.log(row);
-    } }} />
+    } }}/>

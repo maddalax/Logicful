@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Unnamed" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="" />
+    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/src/application/features/option_sets/commands/SetOptionSetCommand.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/application/features/option_sets/models/OptionSet.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/application/features/option_sets/queries/GetOptionSetsQuery.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/http/handlers/GetOptionSetsHttpHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/http/handlers/SetOptionSetHttpHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/Sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/Sandbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/config/ConfigProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/config/ConfigProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/event/Commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/infrastructure/event/Commands.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/event/Mediator.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/infrastructure/event/Mediator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/infrastructure/persistence/Database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/DynamoDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/infrastructure/persistence/DynamoDb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/serverless.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/shared-local-instance.db" beforeDir="false" afterPath="$PROJECT_DIR$/api/shared-local-instance.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Container.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Container.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Sandbox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Sandbox.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/application/features/files/commands/StoreJsonCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/application/features/files/commands/StoreJsonCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/config/ConfigProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/config/ConfigProvider.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/http/handlers/StoreJsonFileHttpHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/http/handlers/StoreJsonFileHttpHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/infrastructure/event/Commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/infrastructure/event/Commands.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/infrastructure/event/Mediator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/infrastructure/event/Mediator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/infrastructure/persistence/Collection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/infrastructure/persistence/Collection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/infrastructure/persistence/Database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/infrastructure/persistence/Database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/infrastructure/persistence/DynamoDb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/infrastructure/persistence/DynamoDb.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/form/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/form/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/DynamicForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/Field.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/Dialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/components/DropdownButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/DropdownButton.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/components/Repeater.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/entities/IAddress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/models/IAddress.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/entities/IField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/models/IField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/entities/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/models/IForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/entities/LoadState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/models/LoadState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/entities/OptionSet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/models/OptionSet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/event/FieldEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/event/FieldEvent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/exampleForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/Address.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/Label.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/RichTextDisplay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/Spacer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/StateSelector.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/TextArea.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/TextInput.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/loader/FieldValueLoader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/loader/FieldValueLoader.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/services/AddressService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/services/AddressService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/util/Http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/util/Http.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ComboBoxOptionsEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ContentBlockEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/FieldTypeEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/ManageOptionSets.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form/src/views/builder/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/views/builder/OptionSetsList.svelte" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +96,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="Unnamed" pattern="file[LowCode]:api//*||file[LowCode]:form//*" />
   </component>
   <component name="ProjectId" id="1fmTpAuugDvZzbQxagVlTzlNkRM" />
   <component name="ProjectViewState">
@@ -22,7 +112,9 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/api/node_modules/typescript/lib" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -35,6 +127,8 @@
       <updated>1596822448580</updated>
       <workItem from="1596822449714" duration="257000" />
       <workItem from="1597068331284" duration="7000" />
+      <workItem from="1597269302461" duration="29000" />
+      <workItem from="1597269353250" duration="9433000" />
     </task>
     <servers />
   </component>
@@ -44,10 +138,65 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.svelte" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="344" y="175" key="SettingsEditor" timestamp="1596822530672">
+    <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1596822530672" />
+    <state x="443" y="184" key="#Plugins/0.23.1680.1027@0.23.1680.1027" timestamp="1597269381088" />
+    <state x="656" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1597281330077">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="656" y="259" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597281330077" />
+    <state x="531" y="279" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1597269308978">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="531" y="279" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597269308978" />
+    <state x="589" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597270011188">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="589" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1680.1027@0.23.1680.1027" timestamp="1597270011188" />
+    <state width="1653" height="280" key="GridCell.Tab.0.bottom" timestamp="1597278080430">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1653" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597278080430" />
+    <state width="1653" height="280" key="GridCell.Tab.0.center" timestamp="1597278080429">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1653" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597278080429" />
+    <state width="1653" height="280" key="GridCell.Tab.0.left" timestamp="1597278080429">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1653" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597278080429" />
+    <state width="1653" height="280" key="GridCell.Tab.0.right" timestamp="1597278080430">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1653" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597278080430" />
+    <state x="344" y="175" key="SettingsEditor" timestamp="1597270158342">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
+    <state x="544" y="262" width="598" height="548" key="find.popup" timestamp="1597277503664">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="544" y="262" width="598" height="548" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597277503664" />
+    <state x="643" y="401" width="501" height="379" key="scopes" timestamp="1597270006099">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="643" y="401" width="501" height="379" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1597270006099" />
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1597284715357">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597284715357" />
   </component>
 </project>

@@ -1,19 +1,17 @@
 import { Collection } from "./Collection";
-import { User } from "../../application/features/user/models/User";
 import { ConfigProvider } from "../../config/ConfigProvider";
 import { DynamoCollection } from "./DynamoDb";
-import { Client, FormSubmission, Form } from "../../application/features/forms/models/Form";
 
 export class Database {
 
-    public readonly users: Collection<User>
-    public readonly clients: Collection<Client>
-    public readonly submissions: Collection<FormSubmission>
-    public readonly forms: Collection<Form>
-
+    public readonly users: Collection
+    public readonly clients: Collection
+    public readonly submissions: Collection
+    public readonly forms: Collection
+    public readonly optionSets: Collection
 
     constructor(config: ConfigProvider) {
-        this.users = new DynamoCollection<User>("users", config, {
+        this.users = new DynamoCollection("users", config, {
             TableName: 'users',
             KeySchema: [{
                 AttributeName: 'email',
@@ -29,7 +27,7 @@ export class Database {
             }]
         })
 
-        this.clients = new DynamoCollection<Client>("clients", config, {
+        this.clients = new DynamoCollection("clients", config, {
             TableName: "clients",
             KeySchema: [{
                 AttributeName: 'name',
@@ -45,7 +43,7 @@ export class Database {
             }]
         })
 
-        this.submissions = new DynamoCollection<FormSubmission>("form_submissions", config, {
+        this.submissions = new DynamoCollection("form_submissions", config, {
             TableName: "form_submissions",
             KeySchema: [{
                 AttributeName: 'id',
@@ -67,7 +65,7 @@ export class Database {
             }]
         })
 
-        this.forms = new DynamoCollection<Form>("forms", config, {
+        this.forms = new DynamoCollection("forms", config, {
             TableName: "forms",
             KeySchema: [{
                 AttributeName: 'id',
@@ -87,7 +85,23 @@ export class Database {
                 AttributeName: "timestamp",
                 AttributeType: "N"
             }]
-        })
+        });
+
+        this.optionSets = new DynamoCollection("option_sets", config, {
+            TableName: "option_sets",
+            KeySchema: [{
+                AttributeName: 'id',
+                KeyType: "HASH"
+            }],
+            ProvisionedThroughput: {
+                ReadCapacityUnits: 1,
+                WriteCapacityUnits: 1
+            },
+            AttributeDefinitions: [{
+                AttributeName: "id",
+                AttributeType: "S"
+            }]
+        });
     }
 
 }

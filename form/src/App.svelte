@@ -1,11 +1,8 @@
 <script lang="ts">
-    import DynamicForm from './DynamicForm.svelte';
-    import form from './exampleForm';
     import FormBuilder from 'views/builder/FormBuilder.svelte';
     import Dialog from 'components/Dialog.svelte';
     import { onMount } from 'svelte';
-    import ManageOptionSets from 'views/builder/ManageOptionSets.svelte';
-    import { dispatch, subscribe } from 'event/EventBus';
+    import { dispatch} from 'event/EventBus';
     import OptionSetsList from 'views/builder/OptionSetsList.svelte';
 
     onMount(() => {
@@ -22,7 +19,7 @@
 <div>
     <main>
         <a class="usa-skipnav" href="#main-content">Skip to main content</a>
-        <div class="usa-overlay" />
+        <div class="usa-overlay"></div>
         <header class="usa-header usa-header--basic">
             <div class="usa-nav-container">
                 <div class="usa-navbar">

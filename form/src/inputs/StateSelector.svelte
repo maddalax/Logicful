@@ -1,6 +1,6 @@
 <script lang="ts">
     import ComboBox from 'inputs/ComboBox.svelte';
-    import type { FormValue } from 'entities/IField';
+    import { FormValue } from 'models/IField';
     import { afterUpdate } from 'svelte';
 
     export let label: string = 'State';

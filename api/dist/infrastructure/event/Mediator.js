@@ -38,10 +38,8 @@ class Mediator {
         this.listeners = {};
     }
     register(command, handler) {
-        return __awaiter(this, void 0, void 0, function* () {
-            Guards_1.assertNotNull(command, handler);
-            this.handlers[command] = handler;
-        });
+        Guards_1.assertNotNull(command, handler);
+        this.handlers[command] = handler;
     }
     listen(command, handler) {
         return __awaiter(this, void 0, void 0, function* () {

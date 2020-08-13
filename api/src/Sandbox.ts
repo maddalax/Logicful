@@ -1,17 +1,15 @@
 import registry, { Service } from "./Container";
-import { Database } from "./infrastructure/persistence/Database";
-import { v4 as uuidv4 } from 'uuid';
-import { Form, Client, FormSubmission } from "./application/features/forms/models/Form";
 import { Mediator } from "./infrastructure/event/Mediator";
-import { StoreJsonCommand } from "./application/features/files/commands/StoreJsonCommand";
-import { Status } from "./application/models/Status";
+import {SetOptionSetCommand} from "./application/features/option_sets/commands/SetOptionSetCommand";
+import {v4} from 'uuid'
+import {GetOptionSetsQuery} from "./application/features/option_sets/queries/GetOptionSetsQuery";
 
 async function run() {
   const mediator = registry.get<Mediator>(Service.Mediator);
-  const result = await mediator.execute(new StoreJsonCommand({
-    hello : 'test3'
-  }, "maddox", Status.Draft, 'k5kzuyq0jat2ytwc7mgf7toyg8zrjob'))
-  console.log(result);
+  const id = v4();
+  console.log(id);
+  const results = await mediator.execute(new GetOptionSetsQuery("maddox"));
+  console.log(results);
 }
 
 run().catch(err => {

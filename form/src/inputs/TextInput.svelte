@@ -1,11 +1,10 @@
 <script lang="ts">
-    import type { IField } from 'entities/IField';
-    import { dispatchFieldChange, subscribeFieldChange } from 'event/FieldEvent';
-    import { select } from 'util/Selection';
+    import { IField } from 'models/IField';
+    import { subscribeFieldChange } from 'event/FieldEvent';
     import Label from './Label.svelte';
     import { onMount } from 'svelte';
-    import type Address from './Address.svelte';
     import formStore from 'store/FormStore';
+    import {dispatchFieldChange} from "../event/FieldEvent";
 
     export let field: IField;
     export let value = '';
@@ -25,7 +24,8 @@
 <div>
     <Label {field} />
     <input
-        on:input={(e) => {
+        on:input={
+(e) => {
             field.value = e.target.value ?? '';
             dispatchFieldChange(field, true);
             field.onChange?.(e.target.value);

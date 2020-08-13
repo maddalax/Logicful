@@ -46,18 +46,26 @@ class DynamoCollection extends Collection_1.Collection {
             });
         });
     }
-    update(query, item) {
-        throw new Error("Method not implemented.");
-    }
-    upsert(query, item) {
-        throw new Error("Method not implemented.");
+    update(update) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.setup();
+            update.TableName = this.table;
+            return new Promise((resolve, reject) => {
+                this.getDb().updateItem(update, (err, data) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(data);
+                });
+            });
+        });
     }
     findOne(query) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.setup();
             query.TableName = this.table;
             return new Promise((resolve, reject) => {
-                this.getClient().query(query, (err, data) => {
+                this.getDb().query(query, (err, data) => {
                     var _a, _b;
                     if (err) {
                         return reject(err);
@@ -68,8 +76,19 @@ class DynamoCollection extends Collection_1.Collection {
         });
     }
     find(query) {
-        query.TableName = this.table;
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.setup();
+            query.TableName = this.table;
+            return new Promise((resolve, reject) => {
+                this.getDb().query(query, (err, data) => {
+                    var _a;
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve((_a = data.Items) !== null && _a !== void 0 ? _a : []);
+                });
+            });
+        });
     }
     getClient() {
         if (client) {
@@ -86,7 +105,6 @@ class DynamoCollection extends Collection_1.Collection {
             return db;
         }
         db = new aws_sdk_1.DynamoDB({
-            endpoint: this.config.get("database:connection"),
             region: this.config.get("database:region")
         });
         return db;
@@ -95,21 +113,15 @@ class DynamoCollection extends Collection_1.Collection {
         return __awaiter(this, void 0, void 0, function* () {
             if (!db) {
                 db = new aws_sdk_1.DynamoDB({
-                    endpoint: this.config.get("database:connection"),
                     region: this.config.get("database:region")
                 });
             }
-            return new Promise((resolve, reject) => {
-                db.createTable(this.createTable, (err, data) => {
-                    if (err) {
-                        if (err.toString().includes('ResourceInUseException: Cannot create preexisting table')) {
-                            return resolve();
-                        }
-                        return reject(err);
-                    }
-                    resolve();
-                });
-            });
+        });
+    }
+    transactWrite(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.setup();
+            return yield this.getDb().transactWriteItems(params).promise();
         });
     }
 }

@@ -2,10 +2,10 @@
     import { onMount, afterUpdate } from 'svelte';
     import Field from 'Field.svelte';
     import { fields } from 'exampleForm';
-    import type { OptionSet } from 'entities/OptionSet';
-    import type { set } from 'util/Selection';
+    import { OptionSet } from 'models/OptionSet';
+    import { set } from 'util/Selection';
     import Repeater from 'components/Repeater.svelte';
-    import type { LabelValue } from 'entities/IField';
+    import { LabelValue } from 'models/IField';
     import { getUrlParameter } from 'util/Http';
     import { subscribe } from 'event/EventBus';
     import DropdownButton from 'components/DropdownButton.svelte';

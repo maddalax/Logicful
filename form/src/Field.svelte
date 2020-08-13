@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { IField } from './entities/IField';
+    import { IField } from './models/IField';
     export let field: IField;
     import TextInput from './inputs/TextInput.svelte';
     import { onMount, beforeUpdate, afterUpdate } from 'svelte';
     import ComboBox from './inputs/ComboBox.svelte';
-    import { LoadState } from './entities/LoadState';
+    import { LoadState } from './models/LoadState';
     import { FieldValueLoader } from './loader/FieldValueLoader';
     import Address from './inputs/Address.svelte';
     import { subscribeFieldChange, dispatchFieldChange } from './event/FieldEvent';

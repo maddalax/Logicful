@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { IField } from 'entities/IField';
-    import { dispatchFieldChange, subscribeFieldChange } from 'event/FieldEvent';
+    import { IField } from 'models/IField';
+    import { subscribeFieldChange } from 'event/FieldEvent';
     import { onMount } from 'svelte';
     import { toNumberOrDefault } from 'util/Compare';
 
@@ -16,4 +16,4 @@
     });
 </script>
 
-<div style={`margin-bottom:${value}em`} />
+<div style={`margin-bottom:${value}em`}></div>

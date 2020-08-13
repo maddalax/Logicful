@@ -1,4 +1,4 @@
-import type { IAddress } from 'entities/IAddress';
+import type { IAddress } from 'models/IAddress';
 
 export class AddressService {
 

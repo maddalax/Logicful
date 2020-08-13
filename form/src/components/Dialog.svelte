@@ -2,9 +2,9 @@
     import { onMount } from 'svelte';
     import { subscribe, dispatch } from 'event/EventBus';
     import CloseIcon from '@fortawesome/fontawesome-free/svgs/regular/window-close.svg';
-    import type { DialogOptions } from './models/ComponentProps';
+    import { DialogOptions } from './models/ComponentProps';
     import { subscribeFieldChange } from 'event/FieldEvent';
-    import type Address from 'inputs/Address.svelte';
+    import Address from 'inputs/Address.svelte';
 
     let isOpen = false;
     let props: DialogOptions;

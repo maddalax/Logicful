@@ -1,4 +1,4 @@
-import type { IField } from '../entities/IField';
+import type { IField } from '../models/IField';
 import { subscribe, dispatch } from './EventBus';
 
 export function dispatchFieldChange(field : IField, userChange : boolean) {

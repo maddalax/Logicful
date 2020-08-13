@@ -1,7 +1,7 @@
 import Bottle from 'bottlejs';
 import { ConfigProvider } from './config/ConfigProvider';
 import { Mediator } from './infrastructure/event/Mediator';
-import { Logger, ConsoleLogger } from './infrastructure/logging/Logger';
+import { ConsoleLogger } from './infrastructure/logging/Logger';
 import { Database } from './infrastructure/persistence/Database';
 
 const bottle : Bottle = new Bottle();

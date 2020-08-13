@@ -9,4 +9,6 @@ var Command;
     Command[Command["GetForms"] = 3] = "GetForms";
     Command[Command["GetClient"] = 4] = "GetClient";
     Command[Command["StoreJson"] = 5] = "StoreJson";
+    Command[Command["SetOptionSet"] = 6] = "SetOptionSet";
+    Command[Command["GetOptionSets"] = 7] = "GetOptionSets";
 })(Command = exports.Command || (exports.Command = {}));
