@@ -3,6 +3,21 @@ service: services
 app: logicful
 org: logicful
 
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    includeModules: true
+
+package:
+  exclude:
+    - lib/**
+    - .git/**
+    - dist/**
+    - node_modules/**
+    - '!node_modules/node-fetch/**'
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -34,7 +49,7 @@ provider:
 
 functions:
   hello:
-    handler: dist/http/handlers/ValidateAddressHandler.validateAddress
+    handler: src/http/handlers/ValidateAddressHandler.validateAddress
     timeout: 45
     events:
       - http:
@@ -42,7 +57,7 @@ functions:
           method: post
           cors: true
   storeJson:
-    handler: dist/http/handlers/StoreJsonFileHttpHandler.storeJsonFile
+    handler: src/http/handlers/StoreJsonFileHttpHandler.storeJsonFile
     timeout: 45
     events:
       - http:
@@ -51,7 +66,7 @@ functions:
           cors: true
 
   option_set-set:
-    handler: dist/http/handlers/SetOptionSetHttpHandler.setOptionSet
+    handler: src/http/handlers/SetOptionSetHttpHandler.setOptionSet
     timeout: 45
     events:
       - http:
@@ -60,7 +75,7 @@ functions:
           cors: true
 
   option_set-list:
-    handler: dist/http/handlers/GetOptionSetsHttpHandler.getOptionSets
+    handler: src/http/handlers/GetOptionSetsHttpHandler.getOptionSets
     timeout: 45
     events:
       - http:

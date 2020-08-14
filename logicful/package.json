@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build:watch": "chokidar \"**/*.go\" -c \"sam build\"",
+    "start": "sam local start-api"
+  },
+  "devDependencies": {
+    "chokidar": "^3.4.2",
+    "chokidar-cli": "^2.1.0"
+  }
+}
