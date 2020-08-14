@@ -1,28 +1,31 @@
 <script lang="ts">
     import type {IField, LabelValue} from 'models/IField';
     import {afterUpdate, onMount} from 'svelte';
-    import { LoadState } from 'models/LoadState';
+    import {LoadState} from 'models/LoadState';
     import {stringEquals, shallowEquals} from 'util/Compare';
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {isString} from 'guards/Guard';
     import {subscribe} from "../event/EventBus";
-    import {dispatchFieldChange} from "../event/FieldEvent";
     import {randomString} from "../util/Generate";
-    let elementId;
+    import Choices from 'choices.js'
+
+
+    let choices : Choices;
+    let initialized = false;
+    let dropdownId;
 
     export let field: IField;
 
     let prevOptions = null;
 
     onMount(async () => {
-
-        elementId = randomString();
-
+        dropdownId = `${field.name}-${randomString()}`;
+        initialized = false;
         subscribe("option_set_modified", (set) => {
-            if(set.value === field.options) {
+            if (set.value === field.options) {
                 setup();
             }
-            if(field.configTarget) {
+            if (field.configTarget) {
                 setup();
             }
         })
@@ -43,13 +46,11 @@
         }
     }
 
-    afterUpdate(() => {
-        if(state === LoadState.Finished) {
-            new Choices(document.getElementById(elementId));
-        }
-    })
-
     async function setup() {
+        if(!document.getElementById(dropdownId)) {
+            setTimeout(setup, 100);
+            return;
+        }
         state = LoadState.Loading;
         try {
             if (field.options.type === 'remote' || isString(field.options) || (field.options.type === 'local' && isString(field.options.value))) {
@@ -68,9 +69,22 @@
             } else {
                 options = field.options.value;
             }
+            if(choices == null) {
+                choices = new Choices(document.getElementById(dropdownId), {
+                    searchPlaceholderValue: 'Search Options...',
+                    callbackOnInit: () => {
+                        initialized = true;
+                    }
+                });
+            }
+            console.log("O", options);
+            choices.clearChoices();
+            choices.setChoices(options, 'value',
+                'label', true);
             normalizeValue();
             state = LoadState.Finished;
         } catch (ex) {
+            console.log(ex);
             state = LoadState.Failed;
         }
     }
@@ -80,40 +94,42 @@
     let options: LabelValue[] = [];
 
     function normalizeValue() {
+        if(!choices) {
+            return;
+        }
         const option = options.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value));
         if (option) {
-            value = option.value;
+            //value = option.value;
+            choices.setChoiceByValue(option.value)
         }
     }
 </script>
 
 <!-- svelte-ignore a11y-no-onchange -->
 <div>
-    <label class="usa-label" for={field.name}>{field.label}</label>
-    {#if state === LoadState.Loading}
+    <label class="usa-label" for="{dropdownId}">{field.label}</label>
+    {#if !initialized}
         <div class="loader"/>
-    {:else if state === LoadState.Failed}
-        <span>
-            Failed to load this field.
-            <button on:click={setup} class="usa-button usa-button--unstyled">Click here to retry.</button>
-        </span>
-    {:else}
+    {/if}
+    <div>
         <select
+                style="{initialized ? 'display: unset' : 'display: none'}"
                 class="form-control"
+                id={dropdownId}
+                required
                 data-trigger
                 name="choices-single-default"
-                id={elementId}
-                placeholder="This is a search placeholder"
-        >
-            <option value="">This is a placeholder</option>
-            <option value="Choice 1">Choice 1</option>
-            <option value="Choice 2">Choice 2</option>
-            <option value="Choice 3">Choice 3</option>
+                on:change={
+(e) => {
+                    field.value = e.target.value;
+                    dispatchFieldChange(field, true);
+                    field.onChange?.(e.target.value);
+            }}>
         </select>
-        {#if field.helperText}
-            <div class="helper-text">
-                {@html field.helperText ?? ""}
-            </div>
-        {/if}
+    </div>
+    {#if field.helperText}
+        <div class="helper-text">
+            {@html field.helperText ?? ""}
+        </div>
     {/if}
 </div>

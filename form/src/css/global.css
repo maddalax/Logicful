@@ -81,3 +81,7 @@ div.choices {
     background-color: inherit !important;
     padding: 0 !important;
 }
+
+input:not([disabled]):focus {
+    outline: unset !important;
+}
