@@ -8,6 +8,7 @@
     import {subscribe} from "../event/EventBus";
     import {randomString} from "../util/Generate";
     import Choices from 'choices.js'
+    import {dispatchFieldChange} from "../event/FieldEvent";
 
 
     let choices : Choices;

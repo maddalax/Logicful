@@ -26,13 +26,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="new combo box">
+    <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="coombo box fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/form/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/form/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/form/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/src/data/field-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/data/field-types.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/form/src/inputs/ComboBox.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +70,7 @@
       <workItem from="1597068331284" duration="7000" />
       <workItem from="1597269302461" duration="29000" />
       <workItem from="1597269353250" duration="20190000" />
-      <workItem from="1597356907561" duration="6466000" />
+      <workItem from="1597356907561" duration="6578000" />
     </task>
     <task id="LOCAL-00001" summary="server side work for storing/getting option sets">
       <created>1597285292287</created>
@@ -119,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597361748159</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="coombo box fixed">
+      <created>1597365099555</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597365099555</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,7 +159,8 @@
     <MESSAGE value="table updates" />
     <MESSAGE value="aadd dynamodb" />
     <MESSAGE value="new combo box" />
-    <option name="LAST_COMMIT_MESSAGE" value="new combo box" />
+    <MESSAGE value="coombo box fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="coombo box fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
@@ -204,10 +207,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597361749807">
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597365101576">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597361749807" />
+    <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597365101576" />
     <state x="186" y="90" width="1239" height="898" key="find.popup" timestamp="1597317906040">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
