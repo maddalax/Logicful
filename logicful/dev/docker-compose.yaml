@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+ dynamodb-local:
+   image: amazon/dynamodb-local:latest
+   command: ["-jar", "DynamoDBLocal.jar", "-sharedDb"]
+   ports:
+    - "8000:8000"
+   networks:
+    - logicful
+
+networks:
+  logicful:
+    name: logicful
