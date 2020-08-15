@@ -10,16 +10,20 @@
     import {DynamicFormMode} from "components/models/ComponentProps";
 
 
-    let form: IForm = {fields : []};
+    let form: IForm = null
 
-    onMount(() => {
+    async function loadForm() {
+        const response = await fetch("http://127.0.0.1:3000/form/list");
+        const forms = await response.json();
+        form = forms.find(w => w.name === 'main');
+    }
 
-        if(localStorage.getItem("form")) {
-            form = JSON.parse(localStorage.getItem("form")) as IForm;
-        }
+    onMount(async () => {
+
+        loadForm();
 
         subscribeFieldChange((field: IField) => {
-            if (!field.configTarget) {
+            if (!form || !field.configTarget) {
                 return;
             }
             const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
@@ -65,34 +69,38 @@
 
 <div>
 
-    <div class="grid-container" style="margin-top: 1em; margin-bottom: 2em;">
-        <div class="grid-row grid-gap">
-            <div class="margin-top-3">
-                <DropdownButton
-                    label={'Save Form'}
-                    actions={[{ label: 'Save as Draft', onClick: saveDraft }, { label: 'Save and Publish', onClick: saveAndPublish }, { label: 'Delete', onClick: () => {} }]} />
-            </div>
-        </div>
-        <div class="grid-row grid-gap">
-            <div class="grid-col-7" style="overflow: scroll; height: 100vh" id="form-builder">
-                {#each form.fields as field}
-                    <div style="margin-top: 1em" id={field.id}>
-                        <FieldEdit {field} />
-                    </div>
-                {/each}
-                <div class="margin-top-2">
-                    <button class="usa-button usa-button--outline" on:click={() => addField()}>Add Field</button>
-                    <button class="usa-button usa-button--outline" on:click={() => addField("block")}>Add Content Block</button>
-                    <button class="usa-button usa-button--outline" on:click={() => addField("spacer", 1)}>Add Spacer</button>
+    {#if form == null}
+        <div class="loader"/>
+    {:else}
+        <div class="grid-container" style="margin-top: 1em; margin-bottom: 2em;">
+            <div class="grid-row grid-gap">
+                <div class="margin-top-3">
+                    <DropdownButton
+                            label={'Save Form'}
+                            actions={[{ label: 'Save as Draft', onClick: saveDraft }, { label: 'Save and Publish', onClick: saveAndPublish }, { label: 'Delete', onClick: () => {} }]} />
                 </div>
-            
             </div>
-            <div class="grid-col-5" style="overflow: scroll; height: 100vh" id="form-live-preview">
-                <h3>Live Preview</h3>
+            <div class="grid-row grid-gap">
+                <div class="grid-col-7" style="overflow: scroll; height: 100vh" id="form-builder">
+                    {#each form.fields as field}
+                        <div style="margin-top: 1em" id={field.id}>
+                            <FieldEdit {field} />
+                        </div>
+                    {/each}
+                    <div class="margin-top-2">
+                        <button class="usa-button usa-button--outline" on:click={() => addField()}>Add Field</button>
+                        <button class="usa-button usa-button--outline" on:click={() => addField("block")}>Add Content Block</button>
+                        <button class="usa-button usa-button--outline" on:click={() => addField("spacer", 1)}>Add Spacer</button>
+                    </div>
+
+                </div>
+                <div class="grid-col-5" style="overflow: scroll; height: 100vh" id="form-live-preview">
+                    <h3>Live Preview</h3>
                     <p>This preview shows how your form will look and act to a live user filling it out.</p>
                     <hr />
                     <DynamicForm {form} mode={DynamicFormMode.Preview} />
+                </div>
             </div>
         </div>
-    </div>
+    {/if}
 </div>

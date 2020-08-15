@@ -4,6 +4,7 @@
     "DYNAMO_REGION": "localhost",
     "DYNAMO_ENDPOINT" : "http://dynamodb-local:8000",
     "OPTION_SETS_TABLE" : "option_sets",
-    "CLIENTS_TABLE" : "clients"
+    "CLIENTS_TABLE" : "clients",
+    "FORMS_TABLE" : "forms"
   }
 }

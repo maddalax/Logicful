@@ -23,6 +23,7 @@ Globals:
         DYNAMO_REGION: us-east-1
         OPTION_SETS_TABLE: !Ref OptionSetsTable
         CLIENTS_TABLE: !Ref ClientsTable
+        FORMS_TABLE: !Ref FormsTable
         DYNAMO_IS_LOCAL: false
         DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
 
@@ -48,6 +49,18 @@ Resources:
       Type: String
     ProvisionedThroughput:
       ReadCapacityUnit: 2
+      WriteCapacityUnits: 2
+    Tags:
+      AppType: Serverless
+
+  FomsTable:
+    Type: AWS::Serverless::SimpleTable
+    TableName: Forms
+    PrimaryKey:
+      Name: id
+      Type: String
+    ProvisionedThroughput:
+      ReadCapacityUnit: 5
       WriteCapacityUnits: 2
     Tags:
       AppType: Serverless
@@ -95,6 +108,34 @@ Resources:
           Properties:
             Path: /s3/json/set
             Method: POST
+
+  SetForm:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: lambda/set-form/
+      Handler: set-form
+      Runtime: go1.x
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Events:
+        CatchAll:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /form/set
+            Method: POST
+
+  ListForms:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: lambda/list-forms/
+      Handler: list-forms
+      Runtime: go1.x
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Events:
+        CatchAll:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /form/list
+            Method: GET
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
