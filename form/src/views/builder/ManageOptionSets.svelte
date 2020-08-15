@@ -35,7 +35,7 @@
 
     async function load() {
         loading = true;
-        const response = await fetch('https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/option_sets/list');
+        const response = await fetch('http://localhost:3000/option-set/list');
         const data: OptionSet[] = await response.json();
         const promises: any[] = data.map(async (d) => {
             if (d.type === 'local') {
@@ -90,7 +90,7 @@
             return s;
         });
         const toSave = await Promise.all(promises);
-        await fetch("https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/option_sets/set", {
+        await fetch('http://localhost:3000/option-set/set', {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -113,7 +113,8 @@
             body[s.label] = s.value;
         });
         const saveId = getUrlParameter('id', set.localSaveId);
-        const saveUrl = `https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/file/json/store?status=0&id=${saveId}`;
+        const qs = saveId ? `?id=${saveId}` : ''
+        const saveUrl = `http://localhost:3000/s3/json/set${qs}`;
         const response = await fetch(saveUrl, {
             method: 'POST',
             headers: {
@@ -121,8 +122,8 @@
             },
             body: JSON.stringify(body),
         });
-        const { url } = await response.json();
-        return url;
+        const { message } = await response.json();
+        return message;
     }
 </script>
 

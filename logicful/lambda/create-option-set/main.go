@@ -21,13 +21,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	err := json.Unmarshal([]byte(request.Body), &set)
 
 	if set.Id == "" {
-		newId, err := uuid.NewUUID()
-
-		if err != nil {
-			return gateway.BadRequest(err.Error())
-		}
-
-		set.Id = newId.String()
+		set.Id = uuid.New().String()
 	}
 
 	set.CreateTime = date.ISO8601(time.Now())

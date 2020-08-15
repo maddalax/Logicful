@@ -1,11 +1,11 @@
 package models
 
 type Changeable struct {
-	ChangeTime string
-	ChangeBy   string
+	ChangeTime string `json:"changeTime"`
+	ChangeBy   string `json:"changeBy"`
 }
 
 type Creatable struct {
-	CreateTime string
-	CreateBy   string
+	CreateTime string `json:"createTime"`
+	CreateBy   string `json:"createBy"`
 }

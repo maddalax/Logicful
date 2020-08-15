@@ -19,7 +19,7 @@
     }
 
     async function getRows(): Promise<TableRow[]> {
-        const response = await fetch('https://gqe4ib85md.execute-api.us-east-1.amazonaws.com/dev/option_sets/list');
+        const response = await fetch('http://localhost:3000/option-set/list');
         const data: OptionSet[] = await response.json();
         return data.map((d) => {
             return {
@@ -27,8 +27,8 @@
                 'Name': d.name,
                 'Value': d.value,
                 'Type': d.type === 'local' ? 'Inline' : 'Remote',
-                'Last Updated': new Date(parseInt(d.lastModified)).toLocaleString(),
-                'Modified By': 'Maddox',
+                'Last Updated': new Date(d.changeTime).toLocaleString(),
+                'Modified By': d.changeBy,
                 'Forms Using': 3,
                 'Status': 'Published'
             };

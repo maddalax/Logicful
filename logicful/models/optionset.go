@@ -1,10 +1,10 @@
 package models
 
 type OptionSet struct {
-	Id    string
-	Type  string
-	Name  string
-	Value string
+	Id    string `json:"id"`
+	Type  string `json:"type"`
+	Name  string `json:"name"`
+	Value string `json:"value"`
 	Changeable
 	Creatable
 }

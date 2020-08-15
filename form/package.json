@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_PATH=src rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
-    "http-server" : "cd src/data && http-server --cors"
+    "http-server": "cd src/data && http-server --cors"
   },
   "devDependencies": {
     "@babel/core": "7.11.1",
