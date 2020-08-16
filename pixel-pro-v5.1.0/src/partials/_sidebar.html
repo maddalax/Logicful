@@ -1,0 +1,19 @@
+<div class="card border-light p-2">
+    <div class="card-header bg-white border-0 text-center">
+        <div class="profile-thumbnail profile-thumbnail mx-auto">
+            <img src="../../assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Joseph Portrait">
+        </div>
+        <h2 class="h5 mt-3">Hi, Sydne!</h2>
+        <a href="#" class="btn btn-gray btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+    </div>
+    <div class="card-body p-2">
+        <div class="list-group dashboard-menu list-group-sm">
+            <a href="./account.html" class="d-flex list-group-item border-0 list-group-item-action @@if (context.page === 'account') { active }">Overview <span class="icon icon-xs ml-auto"><span class="fas fa-chevron-right"></span></span> </a>
+            <a href="./settings.html" class="d-flex list-group-item border-0 list-group-item-action @@if (context.page === 'settings') { active }">Settings<span class="icon icon-xs ml-auto"><span class="fas fa-chevron-right"></span></span> </a>
+            <a href="./my-items.html" class="d-flex list-group-item border-0 list-group-item-action @@if (context.page === 'items') { active }">My Items<span class="icon icon-xs ml-auto"><span class="fas fa-chevron-right"></span></span> </a>
+            <a href="./security.html" class="d-flex list-group-item border-0 list-group-item-action @@if (context.page === 'security') { active }">Security<span class="icon icon-xs ml-auto"><span class="fas fa-chevron-right"></span></span> </a>
+            <a href="./billing.html" class="d-flex list-group-item border-0 list-group-item-action @@if (context.page === 'billing') { active }">Billing<span class="icon icon-xs ml-auto"><span class="fas fa-chevron-right"></span></span> </a>
+            <a href="./messages.html" class="d-flex list-group-item border-0 list-group-item-action @@if (context.page === 'messages') { active } border-0">Messages<span class="icon icon-xs ml-auto"><span class="fas fa-chevron-right"></span></span> </a>
+        </div>
+    </div>
+</div>

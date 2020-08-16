@@ -4,9 +4,12 @@
     <content url="file://$MODULE_DIR$/../form">
       <excludeFolder url="file://$MODULE_DIR$/../form/public/build" />
     </content>
+    <content url="file://$MODULE_DIR$/../frontend" />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.aws-sam" />
     </content>
+    <content url="file://$MODULE_DIR$/../pixel-pro-v5.1.0" />
+    <content url="file://$USER_HOME$/Downloads/pixel-pro-v5.1.0" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

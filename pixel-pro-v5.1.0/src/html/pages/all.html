@@ -1,0 +1,70 @@
+<!--
+
+=========================================================
+* Pixel Pro Bootstrap 5 UI Kit
+=========================================================
+
+* Product Page: https://themesberg.com/product/ui-kit/pixel-pro-premium-bootstrap-5-ui-kit
+* Copyright 2019 Themesberg (https://www.themesberg.com)
+
+* Coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Contact us if you want to remove it.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('./_head.html', {
+        "path": "../..",
+        "title": "Pixel Pro - All pages"
+    })
+</head>
+
+<body>
+    @@include('./_navigation.html', {
+        "path": "../..",
+        "classes": "navbar-dark"
+    })
+    <main>
+
+        @@include('./_preloader.html', {
+            "path": "../.."
+        })
+
+        <!-- Hero -->
+        <section class="section bg-primary text-white overflow-hidden z-2">
+            <div class="container z-2">
+                <div class="row justify-content-center pt-6 mb-2">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="display-2 font-weight-light mb-3">Well designed <span class="font-weight-bold">Pages</span></h2>
+                        <p class="lead">17 hand-crafted example pages</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section section-md">
+            <div class="container">
+                @@include('./_pages-preview.html', {
+                    "path": "../..",
+                    "path_pages": "."
+                })
+            </div>
+        </section>
+
+    </main>
+    @@include('./_footer.html', {
+        "path": "../..",
+        "classes": "bg-primary text-white"
+    })
+
+    @@include('./_scripts.html', {
+        "path": "../.."
+    })
+</body>
+
+</html>
