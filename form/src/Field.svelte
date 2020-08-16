@@ -11,6 +11,7 @@
     import TextArea from 'inputs/TextArea.svelte';
     import Spacer from 'inputs/Spacer.svelte';
     import formStore from 'store/FormStore';
+    import { fade } from 'svelte/transition';
     import RichTextDisplay from 'inputs/RichTextDisplay.svelte';
 
     let state = LoadState.NotStarted;
@@ -42,7 +43,7 @@
     }
 </script>
 
-<div>
+<div transition:fade={{duration: 500 }}>
     {#if field.type === 'address'}
         <Address {field} {value} />
     {/if}

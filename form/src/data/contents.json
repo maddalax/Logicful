@@ -1,4 +1,4 @@
 {
-    "http://localhost:8080/legal.json" : "Legal Disclaimer",
-    "http://localhost:8080/content-item-2.json" : "Test Item 2"
+  "Legal Disclaimer": "http://localhost:8080/legal.json",
+  "Test Item 2": "http://localhost:8080/content-item-2.json"
 }
