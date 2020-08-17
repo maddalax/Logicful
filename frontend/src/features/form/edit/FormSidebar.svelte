@@ -1,17 +1,21 @@
 <script>
-    import {dispatch} from "../../../event/EventBus";
+    import {dispatch} from "event/EventBus";
     import { flip } from 'svelte/animate';
     import { dndzone } from 'svelte-dnd-action';
+    import {randomString} from "util/Generate";
 
-    let items = [
-        {id: 5, name: "item5"},
-        {id: 6, name: "item6"},
-        {id: 7, name: "item7"},
-        {id: 8, name: "item8"}
-    ];
+    function defaultBlocks() {
+        return [
+            {id: randomString(), name : 'string'},
+            {id: randomString(), name : 'dropdown'},
+            {id: randomString(), name : 'spacer'},
+        ];
+    }
+
+    let blocks = defaultBlocks();
 
     function handler(e) {
-        items = e.detail.items;
+        blocks = defaultBlocks();
     }
 
   function saveDraft() {
@@ -28,8 +32,7 @@
     padding-bottom: 3em;
     padding-top: 1em;
     height: 90vh;
-    max-width: 20em;
-    width: 20em;
+    max-width: 10em;
   }
 
   .block {
@@ -48,14 +51,6 @@
   }
 </style>
 
-<div use:dndzone="{{items}}" on:consider={handler} on:finalize={handler}>
-    {#each items as item(item.id)}
-        <div style="margin-top: 1em" animate:flip="{{duration: 1000}}">
-            {item.name}
-        </div>
-    {/each}
-</div>
-
 <nav
   id="sidebarMenu"
   class="col-md-3 col-lg-2 col-sm d-md-block sidebar collapse"
@@ -70,37 +65,51 @@
             Save
         </button>
         </div>
-    <h5 style="padding-bottom:0.5em">Add Feild</h5>
-      <div class="d-flex px-3 block" id="text-input">
-        <div>
-          <div class="icon icon-sm icon-secondary">
-            <span class="fas fas fa-i-cursor" />
-          </div>
+    <h5 style="padding-bottom:0.5em">Add Field</h5>
+        <div use:dndzone="{{items : blocks}}" on:consider={handler} on:finalize={handler}>
+            {#each blocks as block(block.id)}
+                <div animate:flip="{{duration: 1000}}">
+                  <div>
+                      {#if block.name === 'string'}
+                          <div class="d-flex px-3 block">
+                              <div>
+                                  <div class="icon icon-sm icon-secondary">
+                                      <span class="fas fas fa-i-cursor" />
+                                  </div>
+                              </div>
+                              <div class="pl-3">
+                                  <h6 class="h6">Add Text Input</h6>
+                              </div>
+                          </div>
+                      {:else if block.name === 'dropdown'}
+                          <div class="d-flex px-2 block">
+                              <div>
+                                  <div class="icon icon-sm icon-secondary">
+                                      <span class="far fa-caret-square-down" />
+                                  </div>
+                              </div>
+                              <div class="pl-3">
+                                  <h6 class="h6">Add Dropdown</h6>
+                              </div>
+                          </div>
+                      {:else if block.name === 'spacer'}
+                          <div class="d-flex px-2 block">
+                              <div>
+                                  <div class="icon icon-sm icon-secondary">
+                                      <span class="fas fa-rocket" />
+                                  </div>
+                              </div>
+                              <div class="pl-3">
+                                  <h6 class="h6">Add Spacer</h6>
+                              </div>
+                          </div>
+                      {/if}
+                  </div>
+                </div>
+            {/each}
         </div>
-        <div class="pl-3">
-          <h6 class="h6">Add Text Input</h6>
-        </div>
-      </div>
-      <div class="d-flex px-2 block" id="dropdown">
-        <div>
-          <div class="icon icon-sm icon-secondary">
-            <span class="far fa-caret-square-down" />
-          </div>
-        </div>
-        <div class="pl-3">
-          <h6 class="h6">Add Dropdown</h6>
-        </div>
-      </div>
-      <div class="d-flex px-2 block" id="spacer">
-        <div>
-          <div class="icon icon-sm icon-secondary">
-            <span class="fas fa-rocket" />
-          </div>
-        </div>
-        <div class="pl-3">
-          <h6 class="h6">Add Spacer</h6>
-        </div>
-      </div>
+
+
 
       <div class="d-flex px-2 collapsed" href="#submenu-app" data-toggle="collapse" data-target="#submenu-app" aria-expanded="false" >
         <div>
