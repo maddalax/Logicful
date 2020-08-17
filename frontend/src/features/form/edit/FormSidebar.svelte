@@ -15,7 +15,11 @@
     let blocks = defaultBlocks();
 
     function handler(e) {
-        blocks = defaultBlocks();
+        if(e.type === 'consider') {
+             blocks = e.detail.items;
+        } else {
+            blocks = defaultBlocks();
+        }
     }
 
   function saveDraft() {
