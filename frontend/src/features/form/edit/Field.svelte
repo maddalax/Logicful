@@ -67,7 +67,7 @@
     }
 </style>
 
-<div on:click={select} style="margin-top: .3em" transition:fade={{duration: 500 }} class:wrapper={!field.configTarget} class:selected={field.selected}>
+<div on:click={select} style="margin-top: .3em" class:wrapper={!field.configTarget} class:selected={field.selected}>
     <div style="padding: .75em 0.6em; border-radius: 1em;">
     {#if field.type === 'address'}
         <Address {field} {value} />

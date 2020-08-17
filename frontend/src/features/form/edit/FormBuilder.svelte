@@ -43,7 +43,7 @@
         });
 
         subscribe("block_dropped", (e) => {
-            console.log("ITEMS", e.detail.items);
+
             const items = e.detail.items.map(i => {
                 if(!i.type) {
                     i = {...i, ...{
@@ -55,9 +55,8 @@
                             //id: randomString(),
                         }}
                 }
-                return i;
+                return {...i};
             })
-            console.log(items);
             form.fields = items;
             //addField(params.type, params.index);
         })

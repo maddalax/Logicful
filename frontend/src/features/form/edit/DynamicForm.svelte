@@ -6,14 +6,15 @@
     import {DynamicFormMode} from "components/models/ComponentProps";
     import { flip } from 'svelte/animate';
     import { dndzone } from 'svelte-dnd-action';
-    import {dispatch} from "event/EventBus";
+    import {dispatchSync} from "event/EventBus";
 
     export let form: IForm;
+    export let fields : IField[]
     export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
 
     function handler(e) {
-        dispatch("block_dropped", e);
+        dispatchSync("block_dropped", e);
     }
 
     subscribeFieldChange((updatedField: IField) => {
