@@ -50,12 +50,14 @@
 <style>
 
 </style>
-
 <div style="padding-left: 0.5em;">
     <h4>Preview</h4>
 </div>
+<div use:dndzone="{{items : form.fields, dropTargetStyle: {outline: 'rgba(153, 204, 255, 3) solid 2px'}}}" on:consider={handler} on:finalize={handler}>
+    <div class="container" style="height: 70vh">
+
 <form on:submit|preventDefault={onSubmit} class="preview-padding">
-    <div use:dndzone="{{items : form.fields, flipDurationMs : 300, dropTargetStyle : {outline: 'rgba(255, 255, 102, 0.7) solid 25px'}}}" on:consider={handler} on:finalize={handler}>
+    <div>
         {#each form.fields as field(field.id)}
             <div animate:flip="{{duration: 300}}">
                 <Field field={field} />
@@ -67,3 +69,5 @@
         <button class="btn btn-primary" type="submit">Submit Form</button>
     {/if}
 </form>
+</div>
+</div>

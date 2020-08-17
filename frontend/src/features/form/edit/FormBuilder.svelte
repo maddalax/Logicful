@@ -121,7 +121,7 @@
     {#if form == null}
         <div class="loader"/>
     {:else}
-        <div class="container" style="padding-left: 0em;">
+        <div class="container" style="padding-left: 0.4em; padding-top: 0.5em;">
             <div class="row">
                 <div class="{active != null ? 'col' : 'col max-width'}">
                     <DynamicForm form={form} mode={DynamicFormMode.Preview} />
