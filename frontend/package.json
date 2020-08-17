@@ -68,6 +68,7 @@
     "trix": "^1.2.4",
     "uswds": "^2.8.0",
     "choices.js": "^9.0.1",
-    "dragula": "^3.7.2"
+    "dragula": "^3.7.2",
+    "svelte-dnd-action": "^0.2.12"
   }
 }

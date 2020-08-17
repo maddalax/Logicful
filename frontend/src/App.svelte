@@ -5,6 +5,8 @@
     import Sidebar from "./features/form/edit/FormSidebar.svelte";
     import FormBuilderOld from "./features/form/edit/FormBuilder.svelte";
     import Dialog from 'components/Dialog.svelte';
+    import Drag from "./features/form/edit/Drag.svelte";
+    import FormBuilder from "./features/form/edit/FormBuilder.svelte";
 
 
     export let name: string;
@@ -23,7 +25,7 @@
         <div class="row" style="margin-top: .9em;">
             <Sidebar/>
             <div class="col-md-9 col-lg-10" style="margin-top: .7em;">
-                <FormBuilderOld/>
+                <FormBuilder/>
             </div>
         </div>
     </div>

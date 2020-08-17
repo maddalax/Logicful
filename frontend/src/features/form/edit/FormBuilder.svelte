@@ -42,8 +42,24 @@
             localStorage.setItem("form", JSON.stringify(form));
         });
 
-        subscribe("block_dropped", (params) => {
-            addField(params.type, params.index);
+        subscribe("block_dropped", (e) => {
+            addField('string');
+            const items = e.detail.items.map(i => {
+                if(!i.type) {
+                    i = {...i, ...{
+                            name: 'new-field-' + randomStringSmall(),
+                            label: 'New Field ' + randomStringSmall(),
+                            type: 'string',
+                            value: undefined,
+                            expanded: true,
+                            //id: randomString(),
+                        }}
+                }
+                return i;
+            })
+            console.log(items);
+            form.fields = items;
+            //addField(params.type, params.index);
         })
 
         subscribe("field_selected_change", (params) => {
@@ -84,19 +100,7 @@
     }
 
     function addField(type: string = "string", index : number = -1) {
-        const newField = {
-            name: 'new-field-' + randomStringSmall(),
-            label: 'New Field ' + randomStringSmall(),
-            type: type,
-            value: undefined,
-            expanded: true,
-            id: randomString(),
-        }
-        const temp = [...form.fields];
-        temp.splice(index, 0, newField);
-        form.fields = temp;
-        console.log(form.fields.map(w => w.label))
-        scrollToBottom();
+
     }
 </script>
 

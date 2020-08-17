@@ -4,10 +4,17 @@
     import type { IField } from 'models/IField';
     import { subscribeFieldChange } from 'event/FieldEvent';
     import {DynamicFormMode} from "components/models/ComponentProps";
+    import { flip } from 'svelte/animate';
+    import { dndzone } from 'svelte-dnd-action';
+    import {dispatch} from "event/EventBus";
 
     export let form: IForm;
     export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
+
+    function handler(e) {
+        dispatch("block_dropped", e);
+    }
 
     subscribeFieldChange((updatedField: IField) => {
         const index = form.fields.findIndex(w => w.id === updatedField.id);
@@ -48,14 +55,14 @@
     <h4>Preview</h4>
 </div>
 <form on:submit|preventDefault={onSubmit} class="preview-padding">
-    {#each form.fields as field}
-        {#if !display(field)}
-            <span />
-        {:else}
+    <div use:dndzone="{{items : form.fields}}" on:consider={handler} on:finalize={handler}>
+        {#each form.fields as field(field.id)}
+            <div animate:flip="{{duration: 300}}">
+                <Field field={field} />
+            </div>
+        {/each}
+    </div>
 
-            <Field field={field} />
-        {/if}
-    {/each}
     {#if mode === DynamicFormMode.Live}
         <button class="btn btn-primary" type="submit">Submit Form</button>
     {/if}
