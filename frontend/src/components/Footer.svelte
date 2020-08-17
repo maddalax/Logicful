@@ -1,13 +1,22 @@
 <style>
-</style>
+    .footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 8em;
+        padding-top: 1em;
 
-<footer class="footer py-5 bg-primary text-white">
+    }
+    .mb-5{
+            margin-bottom: 0rem !important;
+    }
+
+</style>
+<footer class="footer bg-primary text-white">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <img class="navbar-brand-dark mb-4" height="35" src="/assets/img/brand/light.svg" alt="Logo light">
-                <p><strong>Pixel</strong> is a large User Interface Kit that will help you prototype and design
-                    beautiful, creative and modern websites.</p>
                 <ul class="social-buttons mb-5 mb-lg-0">
                     <li>
                         <a href="https://twitter.com/themesberg" aria-label="twitter social link"
@@ -38,8 +47,6 @@
                 <ul class="footer-links mt-2">
                     <li><a target="_blank" href="https://themesberg.com/blog">Blog</a></li>
                     <li><a target="_blank" href="https://themesberg.com/products">Products</a></li>
-                    <li><a target="_blank" href="https://themesberg.com/about">About Us</a></li>
-                    <li><a target="_blank" href="https://themesberg.com/contact">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md-2 mb-5 mb-lg-0">
@@ -49,47 +56,8 @@
                         <span class="badge badge-sm bg-tertiary ml-2">v4.0</span></a></li>
                     <li><a href="https://themesberg.com/docs/pixel-bootstrap/getting-started/changelog" target="_blank">Changelog</a>
                     </li>
-                    <li><a target="_blank" href="https://themesberg.com/licensing">License</a>
-                    </li>
-                    <li><a target="_blank"
-                           href="https://github.com/themesberg/pixel-bootstrap-ui-kit/issues">Support</a></li>
+                  
                 </ul>
-            </div>
-            <div class="col-12 col-md-4 mb-5 mb-lg-0">
-                <span class="h5">Subscribe</span>
-                <p class="text-muted font-small mt-2">Join our mailing list. We write rarely, but only the best
-                    content.</p>
-                <form action="#">
-                    <div class="form-row mb-2">
-                        <div class="col-12">
-                            <label class="h6 font-weight-normal text-muted" for="exampleInputEmail3">Email
-                                address</label>
-                            <input type="email" class="form-control mb-2" placeholder="example@company.com" name="email"
-                                   aria-label="Subscribe form" id="exampleInputEmail3" required>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-tertiary shadow-soft btn-block"
-                                    data-loading-text="Sending">
-                                <span>Subscribe</span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <p class="text-muted font-small m-0">We’ll never share your details. See our <a class="text-white"
-                                                                                                href="#">Privacy
-                    Policy</a></p>
-            </div>
-        </div>
-        <hr class="bg-secondary my-2">
-        <div class="row">
-            <div class="col mb-md-0">
-                <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center">
-                    <img src="/assets/img/themesberg.svg" height="25" class="mb-3" alt="Themesberg Logo">
-                </a>
-                <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                    <p class="font-weight-normal font-small mb-0">Copyright © Themesberg 2019-<span
-                            class="current-year">2020</span>. All rights reserved.</p>
-                </div>
             </div>
         </div>
     </div>

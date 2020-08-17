@@ -24,11 +24,11 @@
     <div class="container-fluid" id="main-container" style="margin-top: 6em;">
         <div class="row">
             <Sidebar/>
-            <main class="col-md-9 col-lg-10">
+            <div class="col-md-9 col-lg-10">
                 <FormBuilderOld/>
-            </main>
+            </div>
         </div>
     </div>
-
+    
 <Dialog />
 <Footer/>

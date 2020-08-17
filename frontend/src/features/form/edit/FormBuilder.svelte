@@ -147,6 +147,7 @@
                    </div>
                 {:else if active != null}
                     <div class="col">
+
                         <div style="margin-top: 1em" transition:fade={{duration: 500 }}>
                             <FieldEdit field={active} />
                         </div>
