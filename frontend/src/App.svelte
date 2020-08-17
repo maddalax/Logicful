@@ -11,13 +11,17 @@
 </script>
 
 <style>
+    #main-container {
+       margin-top: 6em;
+       min-height: 41.5vh;
+    }
 </style>
 
 <Navbar/>
 
     <Preloader/>
 
-    <div class="container-fluid" style="margin-top: 6em;">
+    <div class="container-fluid" id="main-container" style="margin-top: 6em;">
         <div class="row">
             <Sidebar/>
             <main class="col-md-9 col-lg-10">

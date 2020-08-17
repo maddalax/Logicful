@@ -22,8 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="updates">
-      <change beforePath="$PROJECT_DIR$/../frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/index.html" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="ad dback bootstrap min">
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Footer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +190,8 @@
     <MESSAGE value="dropdown test" />
     <MESSAGE value="css fixes" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="ad dback bootstrap min" />
+    <option name="LAST_COMMIT_MESSAGE" value="ad dback bootstrap min" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -310,11 +313,11 @@
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
     <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597517618615" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597677244238">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597677422725">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597677244238" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597677422725" />
     <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597677401560">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -333,11 +336,11 @@
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="629" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597676808667" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597677132319">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597678030842">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597677132319" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597678030842" />
   </component>
 </project>
