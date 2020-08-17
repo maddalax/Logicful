@@ -20,6 +20,11 @@
 
     onMount(load);
 
+    function select() {
+        field.hovered = !field.hovered;
+        dispatchFieldChange(field, true);
+    }
+
     async function load() {
         lastValue = field.value;
         if (field.value) {
@@ -42,7 +47,24 @@
     }
 </script>
 
-<div transition:fade={{duration: 500 }} style="margin-bottom: 1em">
+<style>
+    .input-wrapper {
+        margin-bottom: 1em;
+    }
+
+    .input-wrapper:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+
+    .selected {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+
+<div on:click={select} transition:fade={{duration: 500 }} class="input-wrapper" class:selected={field.hovered}>
+    <div style="padding: .85em 1em; border-radius: 1em">
     {#if field.type === 'address'}
         <Address {field} {value} />
     {/if}
@@ -64,4 +86,5 @@
     {#if field.type === 'spacer'}
         <Spacer {field} />
     {/if}
+    </div>
 </div>

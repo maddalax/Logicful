@@ -22,340 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="updates">
-      <change afterPath="$PROJECT_DIR$/../frontend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Accordion.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Button.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/DropdownButton.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Repeater.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/models/ComponentProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/models/RemoteTableProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldConfiguration.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormPreview.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Black.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Black.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Black.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-BlackItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-BlackItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-BlackItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-BoldItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-BoldItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Light.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Light.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-LightItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-LightItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/merriweather/Latin-Merriweather-Regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Black.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Black.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Black.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-BlackItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-BlackItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-BlackItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-BoldItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-BoldItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraBold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraBold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraBoldItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraBoldItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraLight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraLight.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraLight.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraLightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraLightItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ExtraLightItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Light.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Light.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-LightItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-LightItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Medium.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Medium.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-MediumItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-MediumItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-MediumItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-SemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-SemiBold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-SemiBold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-SemiBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-SemiBoldItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-SemiBoldItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Thin.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-Thin.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ThinItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ThinItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/public-sans/PublicSans-ThinItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-100.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-100.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-100.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-100italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-100italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-100italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-300.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-300.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-300.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-300italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-300italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-300italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-500.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-500.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-500.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-500italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-500italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-500italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-700.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-700.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-700.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-700italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-700italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-700italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/roboto-mono/roboto-mono-v5-latin-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-black-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-black-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-black-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-blackitalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-blackitalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-blackitalic-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-bold-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-bold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-bold-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-extralight-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-extralight-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-extralight-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-extralightitalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-extralightitalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-extralightitalic-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-italic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-italic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-italic-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-light-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-light-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-light-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-regular-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-semibold-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-semibold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-semibold-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-semibolditalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-semibolditalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/fonts/source-sans-pro/sourcesanspro-semibolditalic-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/alerts/error.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/alerts/info.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/alerts/success.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/alerts/warning.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-down-gray-90.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-down-hover.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-down-primary-hover.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-down-primary.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-down-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-down.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-right-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-up-primary-hover.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-up-primary.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-arrow-up-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-double-left-solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-double-right-solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-left-solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/angle-right-solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-both.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-down-gray-60.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-down.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-left-indigo-cool-50v.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-left-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-left.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/arrow-right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/calendar-alt-solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/checkbox-check-print.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/chevron-right-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/chevron-right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/chevron-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/chevron.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/circle-124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-alt-blue-60v.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-blue-30-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-blue-40v-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-blue-50-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-blue-50v-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-blue-60-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-blue-60v-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-gray-60.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-gray-90-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-primary.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-white-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close-white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/close.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/correct8-alt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/correct8-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/correct8.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/correct9.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/external-link-alt-hover.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/external-link-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/external-link-hover.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/external-link.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-144.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon-72.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/favicons/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/file-excel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/file-pdf.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/file-video.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/file-word.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/file.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/hero.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/icon-dot-gov.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/icon-https.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/loader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/loader.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/lock.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/logo-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/minus-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/minus.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/plus-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/plus.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/search-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/search-primary.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/search.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/facebook25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/facebook25.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/rss25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/rss25.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/twitter16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/twitter16.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/youtube15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/social-icons/youtube15.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/img/us_flag_small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/rollup.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/App.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/DynamicForm.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/Field.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/Accordion.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/Button.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/Dialog.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/DropdownButton.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/RemoteTable.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/Repeater.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/models/ComponentProps.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/components/models/RemoteTableProps.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/css/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/css/loader.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/content-item-2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/content-item-2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/field-types.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/field-types.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/form.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/form.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/legal.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/legal.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/option-sets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/option-sets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/sets/jobs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/sets/jobs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/data/sets/states.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/sets/states.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/event/EventBus.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/event/FieldEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/event/FieldEvent.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/guards/Guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/guards/Guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/Address.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/Label.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/Spacer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/StateSelector.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/TextInput.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/inputs/formatters/RichTextOutputFormatter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/formatters/RichTextOutputFormatter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/loader/FieldValueLoader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/loader/FieldValueLoader.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/models/IAddress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/models/IAddress.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/models/IField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/models/IField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/models/IForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/models/LoadState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/models/LoadState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/models/OptionSet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/models/OptionSet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/services/AddressService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/services/AddressService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/store/FormStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/FormStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/util/Compare.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/util/Compare.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/util/Format.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/util/Format.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/util/Generate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/util/Generate.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/util/Http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/util/Http.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/util/Selection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/util/Selection.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldTypeEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/FormBuilder.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/src/views/builder/models/FieldEditConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/models/FieldEditConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../form/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="ui ported">
       <change beforePath="$PROJECT_DIR$/../frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/rollup.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/scripts/setupTypeScript.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Content.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Footer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Navbar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Preloader.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Preloader.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Sidebar.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -413,7 +86,7 @@
       <recent name="$PROJECT_DIR$/../frontend/public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build:watch">
+  <component name="RunManager" selected="npm.http-server (1)">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$/../form" />
@@ -496,9 +169,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.dev (1)" />
         <item itemvalue="npm.http-server (1)" />
+        <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
@@ -525,7 +198,8 @@
     <MESSAGE value="setup ui with new backend" />
     <MESSAGE value="save and load forms" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="ui ported" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui ported" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -565,25 +239,25 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1494" height="276" key="GridCell.Tab.0.bottom" timestamp="1597623258796">
+    <state width="1650" height="276" key="GridCell.Tab.0.bottom" timestamp="1597630986297">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1494" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597623258796" />
+    <state width="1650" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597630986297" />
     <state width="1499" height="213" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597597232570" />
-    <state width="1494" height="276" key="GridCell.Tab.0.center" timestamp="1597623258796">
+    <state width="1650" height="276" key="GridCell.Tab.0.center" timestamp="1597630986297">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1494" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597623258796" />
+    <state width="1650" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597630986297" />
     <state width="1499" height="213" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597597232569" />
-    <state width="1494" height="276" key="GridCell.Tab.0.left" timestamp="1597623258796">
+    <state width="1650" height="276" key="GridCell.Tab.0.left" timestamp="1597630986297">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1494" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597623258796" />
+    <state width="1650" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597630986297" />
     <state width="1499" height="213" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597597232569" />
-    <state width="1494" height="276" key="GridCell.Tab.0.right" timestamp="1597623258796">
+    <state width="1650" height="276" key="GridCell.Tab.0.right" timestamp="1597630986297">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1494" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597623258796" />
+    <state width="1650" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597630986297" />
     <state width="1499" height="213" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597597232570" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -642,9 +316,10 @@
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
     <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597517618615" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597591669247">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="360" y="342" key="Vcs.Push.Dialog.v2" timestamp="1597625583050">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597625583050" />
     <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597591669247" />
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597501355761">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -660,10 +335,10 @@
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="604" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597596307910" />
-    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup" timestamp="1597625390772">
+    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup" timestamp="1597630639436">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597625390772" />
+    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597630639436" />
     <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597602259372" />
   </component>
 </project>

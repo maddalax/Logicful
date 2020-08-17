@@ -10,11 +10,14 @@
     export let name: string;
 </script>
 
+<style>
+</style>
+
 <Navbar/>
 
     <Preloader/>
 
-    <div class="container-fluid" style="margin-top: 6em">
+    <div class="container-fluid" style="margin-top: 6em; margin-bottom: 6em">
         <div class="row">
             <Sidebar/>
             <main class="col-md-9 col-lg-10">

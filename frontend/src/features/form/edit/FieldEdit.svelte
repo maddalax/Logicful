@@ -1,6 +1,6 @@
 <script lang="ts">
     import type {IField} from 'models/IField';
-    import {onMount} from 'svelte';
+    import {afterUpdate, onMount} from 'svelte';
     import {subscribeFieldChange} from 'event/FieldEvent';
     import {randomString} from 'util/Generate';
     import FieldTypeEditor from './FieldTypeEditor.svelte';
@@ -18,6 +18,10 @@
     function toFieldName(selector: string) {
         return `${field.id}-builder-config-field-${selector}`;
     }
+
+    afterUpdate(() => {
+        console.log("FIELD", field)
+    })
 
     onMount(() => {
         id = `${field.id}-${randomString()}`;
@@ -37,11 +41,6 @@
     });
 </script>
 
-<style>
-    .no-accordion-button {
-        background-image: none !important;
-    }
-</style>
 
 <div>
     {#if field.type === 'spacer'}
