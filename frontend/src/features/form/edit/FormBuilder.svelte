@@ -8,69 +8,49 @@
     import DropdownButton from 'components/DropdownButton.svelte';
     import {DynamicFormMode} from "components/models/ComponentProps";
     import {fade} from 'svelte/transition';
-    import Dragula from 'dragula'
     import {dispatch, subscribe} from "event/EventBus";
     import DynamicForm from "./DynamicForm.svelte";
+    import {shiftArray} from "../../../util/Array";
 
     let form: IForm = null
-    let previewForm: IForm = null
-    let drake = null;
     let dropped = false;
     let active : IField
     let loadingActive : boolean = false;
+    let order = []
 
     async function loadForm() {
-        const response = await fetch("http://127.0.0.1:3000/form/list");
-        const forms = await response.json();
+        //const response = await fetch("http://127.0.0.1:3000/form/list");
+        //const forms = await response.json();
         //const temp = forms.find(w => w.name === 'main');
         let temp = localStorage.getItem("form");
         if (!temp) {
             temp = JSON.stringify({fields: []})
         }
-        console.log("FORM", temp);
-        previewForm = JSON.parse(temp);
         form = JSON.parse(temp);
         form.fields = form.fields.map(w => {
             w.expanded = false;
             return w;
         })
         scrollToBottom();
-        setTimeout(() => {
-            loadDragula();
-        }, 500)
-    }
-
-    function loadDragula() {
-        drake.containers.push(document.getElementById("fields"));
-    }
-
-    function initDragula() {
-        drake = new Dragula();
-        drake.on('drop', (el, target, source, sibling) => {
-            if (!form) {
-                return;
-            }
-            const container = [].slice.call(target.childNodes);
-            let ids = container.map(w => w.childNodes[0]).map(w => w.childNodes[0]).map(w => w.childNodes[0]).map(w => w.childNodes[0])
-                .map(w => w.id).map(w => w.replace("field-button-", ""));
-            previewForm.fields = ids.map(i => form.fields.find(f => f.id === i));
-        });
     }
 
     onMount(async () => {
 
-        initDragula();
         loadForm();
+
+        subscribe("save_form", (params) => {
+            localStorage.setItem("form", JSON.stringify(form));
+        });
+
+        subscribe("block_dropped", (params) => {
+            addField(params.type, params.index);
+        })
 
         subscribe("field_selected_change", (params) => {
             const field : IField = params.field;
             const index = form.fields.findIndex(w => w.id === field.id);
             if(field.selected) {
                 form.fields = form.fields.map((f, i) => {
-                    f.selected = i === index;
-                    return f;
-                });
-                previewForm.fields = form.fields.map((f, i) => {
                     f.selected = i === index;
                     return f;
                 });
@@ -89,16 +69,13 @@
 
             if(field.configTarget) {
                 const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget);
-                const toUpdatePreview = previewForm.fields.findIndex((w) => w.id === field.configTarget);
                 form.fields[toUpdate][field.configFieldTarget] = field.value;
-                previewForm.fields[toUpdatePreview][field.configFieldTarget] = field.value;
                 dispatchFieldChange(form.fields[toUpdate], true);
             }
 
             const index = form.fields.findIndex(w => w.id === field.id);
 
             form.fields[index] = field;
-            previewForm.fields[index] = field;
         });
     });
 
@@ -106,17 +83,19 @@
 
     }
 
-    function addField(type: string = "string", value? : any) {
+    function addField(type: string = "string", index : number = -1) {
         const newField = {
             name: 'new-field-' + randomStringSmall(),
-            label: 'New Field',
+            label: 'New Field ' + randomStringSmall(),
             type: type,
-            value: value ? {type: 'local', value} : undefined,
+            value: undefined,
             expanded: true,
             id: randomString(),
         }
-        form.fields = form.fields.concat([newField]);
-        previewForm.fields = previewForm.fields.concat([newField])
+        const temp = [...form.fields];
+        temp.splice(index, 0, newField);
+        form.fields = temp;
+        console.log(form.fields.map(w => w.label))
         scrollToBottom();
     }
 </script>
@@ -135,13 +114,13 @@
 </style>
 
 <div>
-    {#if form == null || previewForm == null}
+    {#if form == null}
         <div class="loader"/>
     {:else}
         <div class="container" style="padding-left: 0em;">
             <div class="row">
                 <div class="{active != null ? 'col' : 'col max-width'}">
-                    <DynamicForm form={previewForm} mode={DynamicFormMode.Preview} />
+                    <DynamicForm form={form} mode={DynamicFormMode.Preview} />
                 </div>
                 {#if loadingActive}
                    <div class="col" transition:fade={{duration: 200 }}>

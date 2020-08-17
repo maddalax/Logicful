@@ -6,7 +6,6 @@ const app = new App({
 	target: document.body
 });
 
-
 document.addEventListener("click", (e) => {
 	dispatch("document_click", e);
 })

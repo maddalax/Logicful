@@ -23,7 +23,9 @@
   });
 
   function saveDraft() {
-    localStorage.setItem("form", JSON.stringify(form));
+    dispatch("save_form", {
+            status : 'draft'
+        })
   }
 
   function saveAndPublish() {}
