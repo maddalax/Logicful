@@ -10,6 +10,7 @@
     import {subscribe} from "../event/EventBus";
     import Fuse from "fuse.js";
     import formStore from "../store/FormStore";
+    import Label from 'inputs/Label.svelte'
 
 
     let initialized = false;
@@ -44,7 +45,6 @@
 
         subscribeFieldChange((newField) => {
             if (newField.id === field.id) {
-                console.log("FIELD CHANGE", newField)
                 value = newField.value ?? '';
                 normalizeValue();
             }
@@ -55,12 +55,15 @@
     $: {
         if (!shallowEquals(prevOptions, field.options)) {
             prevOptions = field.options;
-            console.log('options changed')
             setup();
         }
     }
 
     function createFuse(): Fuse<{}> {
+        if(!options) {
+            return new Fuse([]);
+        }
+        options = options.filter(w => isString(w.value));
         return new Fuse(options, {
             keys: ['label', 'value'],
         });
@@ -74,7 +77,6 @@
                 const url = field.options.value || field.options;
                 const result = await fetch(url);
                 const data = await result.json();
-                console.log("DATA", data);
                 if(!data) {
                     return;
                 }
@@ -114,7 +116,11 @@
     }
 
     function select(option : LabelValue) {
+        console.log("SELECT", option);
         value = option.value;
+        field.value = option.value;
+        dispatchFieldChange(field, true);
+        field.onChange?.(e.target.value);
         open = false;
     }
 
@@ -168,10 +174,6 @@
 </script>
 
 <style>
-    .dropdown {
-        position: absolute;
-    }
-
     .search {
         border: 0.0625rem solid #e6e6e6;
         border-radius: 0;
@@ -182,6 +184,8 @@
 
 <svelte:body on:click={onBodyClick}/>
 
+<Label {field} />
+
 {#if state === LoadState.Loading}
     <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
@@ -189,7 +193,7 @@
 {:else if state === LoadState.Failed}
     <p>Failed to load.</p>
 {:else}
-    <div class="dropdown">
+    <div class="form-group dropdown">
         <input class="form-select" readonly on:click|stopPropagation={() => open = !open} placeholder={field.label} on:keydown={inputOnKeyDown} value={options?.find(w => w.value === value)?.label ?? ''}/>
         {#if filtered != null}
             <div class="dropdown-menu" class:show={open}>

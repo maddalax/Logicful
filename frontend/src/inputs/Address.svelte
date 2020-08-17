@@ -25,4 +25,4 @@
 </div>
 
 <TextInput
-    field={{ required: true, name: `${field.id}.zip`, id: `${field.id}.zip`, label: 'ZIP', value: value?.zip ?? '', type: 'text', properties: { pattern: '[d]{5}(-[d]{4})?', className: 'usa-input usa-input--medium' } }} />
+    field={{ required: true, name: `${field.id}.zip`, id: `${field.id}.zip`, label: 'ZIP', value: value?.zip ?? '', type: 'text', properties: { pattern: '[d]{5}(-[d]{4})?' } }} />

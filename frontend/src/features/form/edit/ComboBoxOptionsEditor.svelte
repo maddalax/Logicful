@@ -18,7 +18,6 @@
     }
 
     function loadTransformer(value: any[]) {
-        console.log("VALUE", value);
         return value.map((v) => {
             return {
                 label: v.name,
@@ -31,5 +30,5 @@
 <div>
     <Field
         field={{ id: `${editorId}-options`, loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: 'http://localhost:3000/option-set/list' }, configFieldTarget: 'options', configTarget: field.id }} />
-    <button on:click={manageSets} class="btn btn-primary btn btn-primary--unstyled">Manage Option Sets</button>
+    <button on:click={manageSets} class="btn btn-link">Manage Option Sets</button>
 </div>

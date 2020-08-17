@@ -21,6 +21,9 @@
     onMount(load);
 
     function select() {
+        if(field.configTarget) {
+           return;
+        }
         field.hovered = !field.hovered;
         dispatchFieldChange(field, true);
     }
@@ -48,11 +51,7 @@
 </script>
 
 <style>
-    .input-wrapper {
-        margin-bottom: 1em;
-    }
-
-    .input-wrapper:hover {
+    .wrapper:hover {
         background-color: #f0f0f0;
         cursor: pointer;
     }
@@ -63,27 +62,21 @@
     }
 </style>
 
-<div on:click={select} transition:fade={{duration: 500 }} class="input-wrapper" class:selected={field.hovered}>
-    <div style="padding: .85em 1em; border-radius: 1em">
+<div on:click={select} style="margin-top: .5em" transition:fade={{duration: 500 }} class:wrapper={!field.configTarget} class:selected={field.hovered}>
+    <div style="padding: .85em 1em; border-radius: 1em;">
     {#if field.type === 'address'}
         <Address {field} {value} />
-    {/if}
-    {#if field.type === 'string'}
+    {:else if field.type === 'string'}
         <TextInput {field} />
-    {/if}
-    {#if field.type === 'number'}
+    {:else if field.type === 'number'}
         <TextInput {field} type={'number'} />
-    {/if}
-    {#if field.type === 'combobox'}
+    {:else if field.type === 'combobox'}
         <ComboBox {field} />
-    {/if}
-    {#if field.type === 'block'}
+    {:else if field.type === 'block'}
         <RichTextDisplay {field} />
-    {/if}
-    {#if field.type === 'block-editor'}
+    {:else if field.type === 'block-editor'}
         <TextArea {field} />
-    {/if}
-    {#if field.type === 'spacer'}
+    {:else if field.type === 'spacer'}
         <Spacer {field} />
     {/if}
     </div>

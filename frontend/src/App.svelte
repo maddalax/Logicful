@@ -3,7 +3,7 @@
     import Footer from "./components/Footer.svelte";
     import Preloader from "./components/Preloader.svelte";
     import Sidebar from "./features/form/edit/FormSidebar.svelte";
-    import FormBuilderOld from "./features/form/edit/FormBuilderOld.svelte";
+    import FormBuilderOld from "./features/form/edit/FormBuilder.svelte";
     import Dialog from 'components/Dialog.svelte';
 
 
