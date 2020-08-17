@@ -24,6 +24,7 @@
 <div class="form-group">
     <Label {field} />
     <input
+        on:click|stopPropagation
         on:input={
 (e) => {
             field.value = e.target.value ?? '';

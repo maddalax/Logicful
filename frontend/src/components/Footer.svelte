@@ -1,3 +1,13 @@
+<style>
+    footer {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin-bottom: 0px;
+    }
+</style>
+
 <footer class="footer py-5 bg-primary text-white">
     <div class="container">
         <div class="row">

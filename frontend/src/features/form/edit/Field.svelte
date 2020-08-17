@@ -13,6 +13,7 @@
     import formStore from 'store/FormStore';
     import { fade } from 'svelte/transition';
     import RichTextDisplay from 'inputs/RichTextDisplay.svelte';
+    import {dispatch} from "event/EventBus";
 
     let state = LoadState.NotStarted;
     let value: any;
@@ -24,8 +25,10 @@
         if(field.configTarget) {
            return;
         }
-        field.hovered = !field.hovered;
-        dispatchFieldChange(field, true);
+        field.selected = !field.selected;
+        dispatch("field_selected_change", {
+            field
+        })
     }
 
     async function load() {
@@ -62,7 +65,7 @@
     }
 </style>
 
-<div on:click={select} style="margin-top: .5em" transition:fade={{duration: 500 }} class:wrapper={!field.configTarget} class:selected={field.hovered}>
+<div on:click={select} style="margin-top: .5em" transition:fade={{duration: 500 }} class:wrapper={!field.configTarget} class:selected={field.selected}>
     <div style="padding: .85em 1em; border-radius: 1em;">
     {#if field.type === 'address'}
         <Address {field} {value} />

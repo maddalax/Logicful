@@ -22,10 +22,8 @@
     export let field: IField;
 
     let prevOptions = null;
-    let lastFieldId = ''
 
     onMount(async () => {
-
         subscribe("show_field_config", (props) => {
             value = '';
             options = []
@@ -116,24 +114,24 @@
     }
 
     function select(option : LabelValue) {
-        console.log("SELECT", option);
+        doClose();
         value = option.value;
         field.value = option.value;
         dispatchFieldChange(field, true);
         field.onChange?.(e.target.value);
-        open = false;
+
     }
 
     function onBodyClick() {
-        open = false;
+       doClose();
     }
 
 
-    function onSearch(e) {
+    function onSearch() {
         if(options.length === 0) {
             filtered = options;
         }
-        else if (query === '') {
+        else if (query == null || query === '') {
             filtered = options;
         } else {
             const result = fuse.search(query);
@@ -142,32 +140,65 @@
     }
 
     function onKeyDown(e) {
+        if(e.key === "Escape") {
+            doClose();
+        }
       if(e.key === 'ArrowDown') {
-          const options = document.getElementById(`${field.id}-combobox-options`);
-          if(options.childNodes.length === 0) {
-              return;
-          }
-          options.childNodes[0].focus();
-          setTimeout(() => {
-              options.scrollTop = 0;
-          }, 50)
+          const option = document.getElementById(`${field.id}-option-0`);
+          option.focus({
+              preventScroll: true
+          })
       }
     }
 
     function inputOnKeyDown(e) {
+        if(e.key === "Escape") {
+           doClose();
+        }
         if(e.key === 'ArrowDown') {
             if(open) {
                 const input = document.getElementById(`${field.id}-search-input`);
-                input.focus();
+                input.focus({
+                    preventScroll : true
+                })
             } else {
-                open = true;
+               doOpen();
             }
         }
     }
 
-    function optionOnKeyPress(e, option) {
+    function doOpen() {
+        open = true;
+        document.body.style.overflow='hidden';
+    }
+
+    function doClose() {
+        open = false;
+        document.body.style.overflow='auto';
+    }
+
+    function optionOnKeyPress(e, option, index) {
+        console.log("OPTION", e.key);
+        if(index === 0 && e.key === "ArrowUp") {
+            const input = document.getElementById(`${field.id}-search-input`);
+            input.focus({
+                preventScroll : true
+            })
+        }
+        if(e.key === "Escape") {
+            open = false;
+        }
         if(e.key === 'Enter') {
             select(option)
+        }
+    }
+
+    function optionOnKeyDown(e, option, index) {
+        if(index === 0 && e.key === "ArrowUp") {
+            const input = document.getElementById(`${field.id}-search-input`);
+            input.focus({
+                preventScroll : true
+            });
         }
     }
 
@@ -178,11 +209,22 @@
         border: 0.0625rem solid #e6e6e6;
         border-radius: 0;
         margin-top: -9px;
+        color: #929292
+    }
+
+    .logicful-dropdown {
+        position: relative;
     }
 
 </style>
 
-<svelte:body on:click={onBodyClick}/>
+<svelte:body on:click={onBodyClick} on:keydown={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if(e.key === 'Escape') {
+        doClose();
+    }
+}}/>
 
 <Label {field} />
 
@@ -193,16 +235,17 @@
 {:else if state === LoadState.Failed}
     <p>Failed to load.</p>
 {:else}
-    <div class="form-group dropdown">
-        <input class="form-select" readonly on:click|stopPropagation={() => open = !open} placeholder={field.label} on:keydown={inputOnKeyDown} value={options?.find(w => w.value === value)?.label ?? ''}/>
+    <div class="form-group dropdown" on:keydown|stopPropagation>
+        <input class="form-select" readonly on:click|stopPropagation={() => open ? doClose() : doOpen()} placeholder={field.label} on:keydown|stopPropagation={inputOnKeyDown} value={options?.find(w => w.value === value)?.label ?? ''}/>
         {#if filtered != null}
             <div class="dropdown-menu" class:show={open}>
-                <input class="form-control search" id={`${field.id}-search-input`} placeholder="Search..." bind:value={query} on:keypress={onSearch} on:keydown={onKeyDown} on:click|stopPropagation/>
-                <div style="max-height: 200px; overflow: auto" id={`${field.id}-combobox-options`}>
-                    {#each filtered as option, i}
-                        <div class="dropdown-item" tabindex={0} on:keypress={(e) => optionOnKeyPress(e, option)} on:click={() => select(option)}>{option.label}</div>
-                    {/each}
-                </div>
+                <input class="form-control search dropdown-item" autocomplete="off" id={`${field.id}-search-input`} placeholder="Search..." value={query} on:input={(e) => {
+                        query = e.target.value;
+                        onSearch();
+                    }} on:keydown|stopPropagation={onSearch} on:keydown|stopPropagation={onKeyDown} on:click|stopPropagation/>
+                {#each filtered as option, i}
+                    <a class="dropdown-item" id={`${field.id}-option-${i}`} href="javascript:void(0)" on:keypress={(e) => optionOnKeyPress(e, option, i)} on:keydown={(e) => optionOnKeyDown(e, option, i)} on:click|stopPropagation={() => select(option)}>{option.label}</a>
+                {/each}
             </div>
         {/if}
     </div>

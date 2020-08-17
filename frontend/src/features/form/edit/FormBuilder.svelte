@@ -62,6 +62,26 @@
         initDragula();
         loadForm();
 
+        subscribe("field_selected_change", (params) => {
+            const field : IField = params.field;
+            const index = form.fields.findIndex(w => w.id === field.id);
+            if(field.selected) {
+                form.fields = form.fields.map((f, i) => {
+                    f.selected = i === index;
+                    return f;
+                });
+                previewForm.fields = form.fields.map((f, i) => {
+                    f.selected = i === index;
+                    return f;
+                });
+            }
+            if(field.selected) {
+                active = field;
+            } else {
+                active = null;
+            }
+        })
+
         subscribeFieldChange(async (field: IField) => {
             if(!form) {
                 return;
@@ -77,33 +97,8 @@
 
             const index = form.fields.findIndex(w => w.id === field.id);
 
-            if(field.hovered) {
-                form.fields = form.fields.map((f, i) => {
-                    if(i === index) {
-                        return f;
-                    }
-                    f.hovered = false;
-                    return f;
-                });
-                previewForm.fields = form.fields.map((f, i) => {
-                    if(i === index) {
-                        return f;
-                    }
-                    f.hovered = false;
-                    return f;
-                });
-            }
-
             form.fields[index] = field;
             previewForm.fields[index] = field;
-
-            if(!field.configTarget) {
-                if(field.hovered) {
-                    active = field;
-                } else {
-                    active = null;
-                }
-            }
         });
     });
 
