@@ -219,8 +219,6 @@
 </style>
 
 <svelte:body on:click={onBodyClick} on:keydown={(e) => {
-    e.preventDefault();
-    e.stopPropagation();
     if(e.key === 'Escape') {
         doClose();
     }
