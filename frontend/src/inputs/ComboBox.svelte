@@ -90,7 +90,7 @@
             } else {
                 options = field.options?.value;
             }
-            filtered = options;
+            filtered = options ?? [];
             fuse = createFuse();
             normalizeValue();
             state = LoadState.Finished;
@@ -241,6 +241,9 @@
                         query = e.target.value;
                         onSearch();
                     }} on:keydown|stopPropagation={onSearch} on:keydown|stopPropagation={onKeyDown} on:click|stopPropagation/>
+                {#if filtered.length === 0}
+                    <a class="dropdown-item" href="javascript:void(0)" >No options to display.</a>
+                {/if}
                 {#each filtered as option, i}
                     <a class="dropdown-item" id={`${field.id}-option-${i}`} href="javascript:void(0)" on:keypress={(e) => optionOnKeyPress(e, option, i)} on:keydown={(e) => optionOnKeyDown(e, option, i)} on:click|stopPropagation={() => select(option)}>{option.label}</a>
                 {/each}

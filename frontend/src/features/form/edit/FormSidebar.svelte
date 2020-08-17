@@ -16,7 +16,9 @@
     })
 
     function saveDraft() {
-        localStorage.setItem("form", JSON.stringify(form));
+        dispatch("save_form", {
+            status : 'draft'
+        })
     }
 
     function saveAndPublish() {
@@ -28,7 +30,7 @@
     #sidebarMenu {
         padding-bottom: 3em;
         padding-top: 1em;
-    height: 75vh;
+        height: 75vh;
     }
 
     .block {

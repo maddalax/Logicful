@@ -19,8 +19,8 @@
     let order = []
 
     async function loadForm() {
-        const response = await fetch("http://127.0.0.1:3000/form/list");
-        const forms = await response.json();
+        //const response = await fetch("http://127.0.0.1:3000/form/list");
+        //const forms = await response.json();
         //const temp = forms.find(w => w.name === 'main');
         let temp = localStorage.getItem("form");
         if (!temp) {
@@ -37,6 +37,10 @@
     onMount(async () => {
 
         loadForm();
+
+        subscribe("save_form", (params) => {
+            localStorage.setItem("form", JSON.stringify(form));
+        });
 
         subscribe("block_dropped", (params) => {
             addField(params.type, params.index);
@@ -116,7 +120,6 @@
         <div class="container" style="padding-left: 0em;">
             <div class="row">
                 <div class="{active != null ? 'col' : 'col max-width'}">
-                    <button class="btn btn-success" on:click={() => addField('string')}>Add</button>
                     <DynamicForm form={form} mode={DynamicFormMode.Preview} />
                 </div>
                 {#if loadingActive}
