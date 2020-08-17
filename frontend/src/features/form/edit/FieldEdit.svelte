@@ -19,10 +19,6 @@
         return `${field.id}-builder-config-field-${selector}`;
     }
 
-    afterUpdate(() => {
-        console.log("FIELD", field)
-    })
-
     onMount(() => {
         id = `${field.id}-${randomString()}`;
         accordion = {name: field.name, label: field.label};

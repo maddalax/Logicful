@@ -8,17 +8,29 @@
     import {randomString} from "../util/Generate";
     import {dispatchFieldChange} from "../event/FieldEvent";
     import {subscribe} from "../event/EventBus";
+    import Fuse from "fuse.js";
+    import formStore from "../store/FormStore";
 
 
     let initialized = false;
     let dropdownId;
     let open = false;
+    let fuse: Fuse<{}>;
+    let query = ''
 
     export let field: IField;
 
     let prevOptions = null;
+    let lastFieldId = ''
 
     onMount(async () => {
+
+        subscribe("show_field_config", (props) => {
+            value = '';
+            options = []
+            setup();
+        })
+
         dropdownId = `${field.name}-${randomString()}`;
         initialized = false;
         subscribe("option_set_modified", (set) => {
@@ -32,6 +44,7 @@
 
         subscribeFieldChange((newField) => {
             if (newField.id === field.id) {
+                console.log("FIELD CHANGE", newField)
                 value = newField.value ?? '';
                 normalizeValue();
             }
@@ -42,21 +55,29 @@
     $: {
         if (!shallowEquals(prevOptions, field.options)) {
             prevOptions = field.options;
+            console.log('options changed')
             setup();
         }
     }
 
+    function createFuse(): Fuse<{}> {
+        return new Fuse(options, {
+            keys: ['label', 'value'],
+        });
+    }
+
     async function setup() {
         state = LoadState.Loading;
+        options = [];
         try {
-            field.options = {
-                type : 'remote',
-                value : 'https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_hash.json'
-            }
             if (field.options?.type === 'remote' || isString(field.options) || (field.options?.type === 'local' && isString(field.options.value))) {
                 const url = field.options.value || field.options;
                 const result = await fetch(url);
                 const data = await result.json();
+                console.log("DATA", data);
+                if(!data) {
+                    return;
+                }
                 const parsed = [];
                 if (field.loadTransformer) {
                     options = field.loadTransformer(data);
@@ -69,11 +90,13 @@
             } else {
                 options = field.options?.value;
             }
-            console.log("OPTIOONS", options)
+            filtered = options;
+            fuse = createFuse();
             normalizeValue();
             state = LoadState.Finished;
         } catch (ex) {
             console.log(ex);
+            options = [];
             state = LoadState.Failed;
         }
     }
@@ -81,6 +104,7 @@
     let state: LoadState = LoadState.Loading;
     let value = '';
     let options: LabelValue[] = [];
+    let filtered: LabelValue[] = []
 
     function normalizeValue() {
         const option = options?.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value));
@@ -90,11 +114,57 @@
     }
 
     function select(option : LabelValue) {
-        test = option.value;
+        value = option.value;
         open = false;
     }
 
-    let test = ''
+    function onBodyClick() {
+        open = false;
+    }
+
+
+    function onSearch(e) {
+        if(options.length === 0) {
+            filtered = options;
+        }
+        else if (query === '') {
+            filtered = options;
+        } else {
+            const result = fuse.search(query);
+            filtered = result.map((r) => r.item);
+        }
+    }
+
+    function onKeyDown(e) {
+      if(e.key === 'ArrowDown') {
+          const options = document.getElementById(`${field.id}-combobox-options`);
+          if(options.childNodes.length === 0) {
+              return;
+          }
+          options.childNodes[0].focus();
+          setTimeout(() => {
+              options.scrollTop = 0;
+          }, 50)
+      }
+    }
+
+    function inputOnKeyDown(e) {
+        if(e.key === 'ArrowDown') {
+            if(open) {
+                const input = document.getElementById(`${field.id}-search-input`);
+                input.focus();
+            } else {
+                open = true;
+            }
+        }
+    }
+
+    function optionOnKeyPress(e, option) {
+        if(e.key === 'Enter') {
+            select(option)
+        }
+    }
+
 </script>
 
 <style>
@@ -110,16 +180,28 @@
 
 </style>
 
-<div class="dropdown">
-    <input class="form-select" on:click={() => open = true} placeholder="Select State" value={test}/>
-    {#if options != null}
-        <div class="dropdown-menu" class:show={open}>
-            <input class="form-control search" placeholder="Search..."/>
-            <div style="max-height: 200px; overflow: auto">
-                {#each options as option}
-                    <a class="dropdown-item" href="javascript:void(0)" on:click={() => select(option)}>{option.label}</a>
-                {/each}
+<svelte:body on:click={onBodyClick}/>
+
+{#if state === LoadState.Loading}
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+{:else if state === LoadState.Failed}
+    <p>Failed to load.</p>
+{:else}
+    <div class="dropdown">
+        <input class="form-select" readonly on:click|stopPropagation={() => open = !open} placeholder={field.label} on:keydown={inputOnKeyDown} value={options?.find(w => w.value === value)?.label ?? ''}/>
+        {#if filtered != null}
+            <div class="dropdown-menu" class:show={open}>
+                <input class="form-control search" id={`${field.id}-search-input`} placeholder="Search..." bind:value={query} on:keypress={onSearch} on:keydown={onKeyDown} on:click|stopPropagation/>
+                <div style="max-height: 200px; overflow: auto" id={`${field.id}-combobox-options`}>
+                    {#each filtered as option, i}
+                        <div class="dropdown-item" tabindex={0} on:keypress={(e) => optionOnKeyPress(e, option)} on:click={() => select(option)}>{option.label}</div>
+                    {/each}
+                </div>
             </div>
-        </div>
-    {/if}
-</div>
+        {/if}
+    </div>
+{/if}
+
+

@@ -8,6 +8,7 @@ export class FormStore {
         console.log("store_updated", store);
     }
     get(fieldId : string) {
+        console.log("STORE", store)
         return store[fieldId];
     }
 }

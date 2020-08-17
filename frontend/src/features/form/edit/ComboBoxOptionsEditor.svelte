@@ -18,6 +18,7 @@
     }
 
     function loadTransformer(value: any[]) {
+        console.log("VALUE", value);
         return value.map((v) => {
             return {
                 label: v.name,
