@@ -37,8 +37,12 @@
     });
 </script>
 
+<style>
+</style>
 
-<div>
+<h4 style="padding-left: 0.55em;">Edit Field</h4>
+<div class="border-left left-margin">
+    <div style="padding-left: 0.55em;">
     {#if field.type === 'spacer'}
         <Accordion buttonText="Spacer Block" id={`field-button-${field.id}`} open={field.expanded}>
             <Field
@@ -61,5 +65,5 @@
             <FieldTypeEditor {field} editorId={id}/>
         </Accordion>
     {/if}
-
+</div>
 </div>

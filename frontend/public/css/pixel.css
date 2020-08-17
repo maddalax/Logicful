@@ -7386,8 +7386,8 @@ progress {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: none;
+    padding-bottom: none;
 }
 
 .navbar > .container,

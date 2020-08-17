@@ -12,19 +12,17 @@
 
 <style>
     #main-container {
-       margin-top: 6em;
        min-height: 41.5vh;
     }
 </style>
 
 <Navbar/>
 
-    <Preloader/>
 
-    <div class="container-fluid" id="main-container" style="margin-top: 6em;">
-        <div class="row">
+    <div class="container-fluid" id="main-container" style="margin-top: 3.9em;">
+        <div class="row" style="margin-top: .9em;">
             <Sidebar/>
-            <div class="col-md-9 col-lg-10">
+            <div class="col-md-9 col-lg-10" style="margin-top: .7em;">
                 <FormBuilderOld/>
             </div>
         </div>

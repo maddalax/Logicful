@@ -102,14 +102,6 @@
         });
     });
 
-    function saveDraft() {
-        localStorage.setItem("form", JSON.stringify(form));
-    }
-
-    function saveAndPublish() {
-
-    }
-
     function scrollToBottom() {
 
     }
@@ -129,14 +121,26 @@
     }
 </script>
 
+<style>
+    .max-width{
+        max-width: 60%;
+    }
+
+    .col{
+        padding-left: 0.5em;
+        padding-right: 0.0em;
+
+    }
+
+</style>
+
 <div>
     {#if form == null || previewForm == null}
         <div class="loader"/>
     {:else}
-        <div class="container">
+        <div class="container" style="padding-left: 0em;">
             <div class="row">
-                <div class="col">
-                    <button class="btn btn-success" on:click={saveDraft}>Save</button>
+                <div class="{active != null ? 'col' : 'col max-width'}">
                     <DynamicForm form={previewForm} mode={DynamicFormMode.Preview} />
                 </div>
                 {#if loadingActive}
@@ -146,9 +150,8 @@
                        </div>
                    </div>
                 {:else if active != null}
-                    <div class="col">
-
-                        <div style="margin-top: 1em" transition:fade={{duration: 500 }}>
+                    <div class="col" >
+                        <div transition:fade={{duration: 500 }}>
                             <FieldEdit field={active} />
                         </div>
                     </div>

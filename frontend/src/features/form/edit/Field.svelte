@@ -57,16 +57,18 @@
     .wrapper:hover {
         background-color: #f0f0f0;
         cursor: pointer;
+        border-radius: 0.45rem;
     }
 
     .selected {
         background-color: #f0f0f0;
         cursor: pointer;
+        border-radius: 0.45rem;
     }
 </style>
 
-<div on:click={select} style="margin-top: .5em" transition:fade={{duration: 500 }} class:wrapper={!field.configTarget} class:selected={field.selected}>
-    <div style="padding: .85em 1em; border-radius: 1em;">
+<div on:click={select} style="margin-top: .3em" transition:fade={{duration: 500 }} class:wrapper={!field.configTarget} class:selected={field.selected}>
+    <div style="padding: .75em 0.6em; border-radius: 1em;">
     {#if field.type === 'address'}
         <Address {field} {value} />
     {:else if field.type === 'string'}

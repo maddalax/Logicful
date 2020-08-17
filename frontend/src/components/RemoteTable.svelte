@@ -81,10 +81,12 @@
     .table tbody tr:hover td {
         background-color: #f0f0f0 !important;
         cursor: pointer;
+        border-radius: 0.45rem;
     }
 
     td.active {
         background-color: #f0f0f0 !important;
+        border-radius: 0.45rem;
     }
 
     td {

@@ -40,12 +40,19 @@
         //validator.normalize(values.address);
     }
 </script>
+<style>
 
-<form on:submit|preventDefault={onSubmit}>
+</style>
+
+<div style="padding-left: 0.5em;">
+    <h4>Preview</h4>
+</div>
+<form on:submit|preventDefault={onSubmit} class="preview-padding">
     {#each form.fields as field}
         {#if !display(field)}
             <span />
         {:else}
+
             <Field field={field} />
         {/if}
     {/each}
