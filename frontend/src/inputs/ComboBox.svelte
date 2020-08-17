@@ -211,11 +211,13 @@
         margin-top: -9px;
         color: #929292
     }
-
     .logicful-dropdown {
         position: relative;
     }
 
+    .padding{
+        padding-left: 7em;
+    }
 </style>
 
 <svelte:body on:click={onBodyClick} on:keydown={(e) => {
@@ -223,6 +225,9 @@
         doClose();
     }
 }}/>
+
+<div>
+
 
 <Label {field} />
 
@@ -253,3 +258,4 @@
 {/if}
 
 
+</div>

@@ -6,9 +6,9 @@
     export let editorId: string;
 </script>
 
-<div style="padding: .75em 0.6em;">
+<div >
     {#if field.type === 'string'}
-        <div class="dropdown">
+        <div class="dropdown" style="padding: .75em 0.6em;">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                 Dropdown button
             </button>
