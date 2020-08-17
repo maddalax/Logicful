@@ -1,11 +1,13 @@
-<script>
-    import Navbar from "./Navbar.svelte";
-    import Footer from "./Footer.svelte";
-    import Preloader from "./Preloader.svelte";
-    import Sidebar from "./Sidebar.svelte";
-    import Content from "./Content.svelte";
+<script lang="ts">
+    import Navbar from "./components/Navbar.svelte";
+    import Footer from "./components/Footer.svelte";
+    import Preloader from "./components/Preloader.svelte";
+    import Sidebar from "./features/form/edit/FormSidebar.svelte";
+    import FormBuilderOld from "./features/form/edit/FormBuilderOld.svelte";
+    import Dialog from 'components/Dialog.svelte';
 
-    export let name;
+
+    export let name: string;
 </script>
 
 <Navbar/>
@@ -16,12 +18,10 @@
         <div class="row">
             <Sidebar/>
             <main class="col-md-9 col-lg-10">
-                <Content/>
+                <FormBuilderOld/>
             </main>
         </div>
     </div>
 
-
-
-
+<Dialog />
 <Footer/>

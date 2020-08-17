@@ -1,11 +1,11 @@
 {
   "scripts": {
     "build:watch": "sam build && concurrently npm:dev*",
-    "dev:setup" : "ls && docker-compose -f ./dev/docker-compose.yaml up -d && chmod +x ./dev/setup.sh && sh ./dev/setup.sh",
-    "dev:watch" : "chokidar \"**/*.go\" -c \"sam build\"",
+    "dev:setup": "docker-compose -f ./dev/docker-compose.yaml up -d && chmod +x ./dev/setup.sh && sh ./dev/setup.sh",
+    "dev:watch": "chokidar \"**/*.go\" -c \"sam build\"",
     "debug": "sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 5986 --debugger-path debug --debug-args \"-delveAPI=2\"",
     "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
-    "deploy" : "sam build && sam deploy"
+    "deploy": "sam build && sam deploy"
   },
   "devDependencies": {
     "chokidar": "^3.4.2",
