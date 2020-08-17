@@ -55,7 +55,7 @@
     <h4>Preview</h4>
 </div>
 <form on:submit|preventDefault={onSubmit} class="preview-padding">
-    <div use:dndzone="{{items : form.fields}}" on:consider={handler} on:finalize={handler}>
+    <div use:dndzone="{{items : form.fields, flipDurationMs : 300, dropTargetStyle : {outline: 'rgba(255, 255, 102, 0.7) solid 25px'}}}" on:consider={handler} on:finalize={handler}>
         {#each form.fields as field(field.id)}
             <div animate:flip="{{duration: 300}}">
                 <Field field={field} />

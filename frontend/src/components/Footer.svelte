@@ -1,14 +1,13 @@
 <style>
-    .footer{
-        position: absolute;
+    .footer {
         bottom: 0;
         width: 100%;
         height: 6.5em;
         padding-top: 1em;
 
     }
-    .mb-5{
-            margin-bottom: 0rem !important;
+    .mb-5 {
+        margin-bottom: 0rem !important;
     }
 
 </style>

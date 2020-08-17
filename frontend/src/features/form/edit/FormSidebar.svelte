@@ -3,6 +3,7 @@
     import { flip } from 'svelte/animate';
     import { dndzone } from 'svelte-dnd-action';
     import {randomString} from "util/Generate";
+    import {onMount} from "svelte";
 
     function defaultBlocks() {
         return [
@@ -29,13 +30,28 @@
   }
 
   function saveAndPublish() {}
+
+    onMount(() => {
+        window.onunhandledrejection = (e) => {
+            console.log('we got exception, but the app has crashed', e);
+            // here we should gracefully show some fallback error or previous good known state
+            // this does not work though:
+            // current = C1;
+
+            // todo: This is unexpected error, send error to log server
+            // only way to reload page so that users can try again until error is resolved
+            // uncomment to reload page:
+            // window.location = "/oi-oi-oi";
+        }
+    })
+
 </script>
 
 <style>
   #sidebarMenu {
     padding-bottom: 3em;
     padding-top: 1em;
-    height: 90vh;
+    min-height: 90vh;
     max-width: 215px;
   }
 
@@ -70,7 +86,7 @@
         </button>
         </div>
     <h5 style="padding-bottom:0.5em">Add Field</h5>
-        <div use:dndzone="{{items : blocks}}" on:consider={handler} on:finalize={handler}>
+        <div use:dndzone="{{items : blocks, flipDurationMs : 300, dropFromOthersDisabled : true}}" on:consider={handler} on:finalize={handler}>
             {#each blocks as block(block.id)}
                 <div animate:flip="{{duration: 1000}}">
                   <div>
