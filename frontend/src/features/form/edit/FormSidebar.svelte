@@ -54,20 +54,22 @@
   }
 </style>
 
+
 <nav
   id="sidebarMenu"
   class="col-md-3 col-lg-2 col-sm d-md-block sidebar collapse"
   style="background-color: #f5f9fe;">
   <div class="position-sticky">
     <ul class="nav flex-column" id="blocks">
-      <div style="text-align:center;">
+    <div style="text-align:center;">
         <button
-          class="save-button btn btn-light"
-          type="button"
-          on:click={saveDraft}>
-          Save
+            class="save-button btn btn-light"
+            type="button"
+            on:click={saveDraft}>
+            Save
         </button>
-      </div>
+        </div>
+    <h5 style="padding-bottom:0.5em">Add Feild</h5>
       <div class="d-flex px-3 block" id="text-input">
         <div>
           <div class="icon icon-sm icon-secondary">
