@@ -36,7 +36,7 @@
     padding-bottom: 3em;
     padding-top: 1em;
     height: 90vh;
-    max-width: 10em;
+    max-width: 215px;
   }
 
   .block {
@@ -57,7 +57,7 @@
 
 <nav
   id="sidebarMenu"
-  class="col-md-3 col-lg-2 col-sm d-md-block sidebar collapse"
+  class="col-md-3 col-lg-3 col-sm d-md-block sidebar collapse"
   style="background-color: #f5f9fe;">
   <div class="position-sticky">
     <ul class="nav flex-column" id="blocks">

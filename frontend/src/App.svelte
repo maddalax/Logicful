@@ -21,7 +21,7 @@
     <div class="container-fluid" id="main-container" style="margin-top: 3.9em;">
         <div class="row" style="margin-top: .9em;">
             <Sidebar/>
-            <div class="col-md-9 col-lg-10" style="margin-top: .7em;">
+            <div class="col-md-9 col-lg-9" style="margin-top: .7em;">
                 <FormBuilder/>
             </div>
         </div>
