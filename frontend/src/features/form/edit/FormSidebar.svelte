@@ -7,7 +7,7 @@
     function defaultBlocks() {
         return [
             {id: randomString(), name : 'string'},
-            {id: randomString(), name : 'dropdown'},
+            {id: randomString(), name : 'combobox'},
             {id: randomString(), name : 'spacer'},
         ];
     }
@@ -85,7 +85,7 @@
                                   <h6 class="h6">Add Text Input</h6>
                               </div>
                           </div>
-                      {:else if block.name === 'dropdown'}
+                      {:else if block.name === 'combobox'}
                           <div class="d-flex px-2 block">
                               <div>
                                   <div class="icon icon-sm icon-secondary">

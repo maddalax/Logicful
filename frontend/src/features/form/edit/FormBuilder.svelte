@@ -43,13 +43,13 @@
         });
 
         subscribe("block_dropped", (e) => {
-            addField('string');
+            console.log("ITEMS", e.detail.items);
             const items = e.detail.items.map(i => {
                 if(!i.type) {
                     i = {...i, ...{
                             name: 'new-field-' + randomStringSmall(),
                             label: 'New Field ' + randomStringSmall(),
-                            type: 'string',
+                            type: i.name,
                             value: undefined,
                             expanded: true,
                             //id: randomString(),
