@@ -86,7 +86,7 @@
         </button>
         </div>
     <h5 style="padding-bottom:0.5em">Add Field</h5>
-        <div use:dndzone="{{items : blocks, flipDurationMs : 300, dropFromOthersDisabled : true}}" on:consider={handler} on:finalize={handler}>
+        <div use:dndzone="{{items : blocks, flipDurationMs : 300, dropFromOthersDisabled : true, dropTargetStyle : {outline: 'white solid 0px'}}}" on:consider={handler} on:finalize={handler}>
             {#each blocks as block(block.id)}
                 <div animate:flip="{{duration: 1000}}">
                   <div>
