@@ -1,37 +1,61 @@
-<script lang="ts">
-  import Navbar from "./components/Navbar.svelte";
-  import Footer from "./components/Footer.svelte";
-  import Sidebar from "./features/form/edit/FormSidebar.svelte";
-  import Dialog from "components/Dialog.svelte";
+<script>
+
+  import Footer from 'components/Footer.svelte'
+  import Navbar from 'components/Navbar.svelte'
   import FormBuilder from "./features/form/edit/FormBuilder.svelte";
-  import { dispatch } from "./event/EventBus";
-  import OptionSetsList from "./features/form/edit/OptionSetsList.svelte";
-  import { onMount } from "svelte";
-  import Preloader from "./components/Preloader.svelte";
-
-  export let name: string;
-
-  onMount(() => {});
+  import FormSidebar from "./features/form/edit/FormSidebar.svelte";
+  import FieldEdit from "./features/form/edit/FieldEdit.svelte";
+  import FieldEditSidebar from "./features/form/edit/FieldEditSidebar.svelte";
+  import Dialog from 'components/Dialog.svelte'
 </script>
 
-<Preloader/>
+<style>
 
-<Navbar />
-<div class="container-fluid" id="main-container" style="margin-top: 3.9em;">
-  <div class="row d-flex" style="margin-top: .9em;">
-    <div class="col-md-3 col-lg-3">
-      <Sidebar />
-    </div>
-    <div class="col-md-9 col-lg-9" style="margin-top: .7em; ">
-      <FormBuilder />
-    </div>
+  .main {
+    height: 150vh;
+    width: 50%;
+    margin-top: 1em;
+  }
+
+  .left-sidebar {
+    width: 20%;
+    height: 25vh;
+    margin-left: -13px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+
+  .right-sidebar {
+    width: 30%;
+    height: 25vh;
+    margin-right: -30px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  #main-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+</style>
+
+<Navbar/>
+
+<div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
+  <div class="left-sidebar">
+    <FormSidebar/>
+  </div>
+  <div class="main">
+    <FormBuilder/>
+  </div>
+  <div class="right-sidebar">
+    <FieldEditSidebar/>
   </div>
 </div>
-<Footer />
-<Dialog/>
 
-<style>
-  #main-container {
-    min-height: 41.5vh;
-  }
-</style>
+<Dialog/>
+<Footer/>

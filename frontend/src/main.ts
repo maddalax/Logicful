@@ -1,5 +1,4 @@
-import App from './SidebarTest.svelte';
-import 'dragula/dist/dragula.min.css'
+import App from './App.svelte';
 import {dispatch} from "event/EventBus";
 
 const app = new App({
