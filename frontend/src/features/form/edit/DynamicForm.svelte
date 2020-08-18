@@ -55,8 +55,8 @@
 <div style="padding-left: 0.5em;">
     <h4>Preview</h4>
 </div>
-<form style="height: 89vh" on:submit|preventDefault={onSubmit} class="preview-padding">
-    <div style="height: 89vh" use:dndzone="{{items : form.fields, flipDurationMs : 300, dropTargetStyle : {outline: 'rgba(153, 204, 255, 3) solid 2px'}}}" on:consider={handler} on:finalize={handler}>
+<form style="min-height: 89vh" on:submit|preventDefault={onSubmit} class="preview-padding">
+    <div style="min-height: 89vh" use:dndzone="{{items : form.fields, flipDurationMs : 300, dropTargetStyle : {outline: 'white solid 0px'}}}" on:consider={handler} on:finalize={handler}>
         {#each form.fields as field(field.id)}
             <div animate:flip="{{duration: 300}}">
                 <Field field={field} />
