@@ -1,76 +1,86 @@
 <script lang="ts">
-    import Field from './Field.svelte';
-    import type { IForm } from 'models/IForm';
-    import type { IField } from 'models/IField';
-    import { subscribeFieldChange } from 'event/FieldEvent';
-    import {DynamicFormMode} from "components/models/ComponentProps";
-    import { flip } from 'svelte/animate';
-    import { dndzone } from 'svelte-dnd-action';
-    import {dispatchSync} from "event/EventBus";
+  import Field from "./Field.svelte";
+  import type { IForm } from "models/IForm";
+  import type { IField } from "models/IField";
+  import { subscribeFieldChange } from "event/FieldEvent";
+  import { DynamicFormMode } from "components/models/ComponentProps";
+  import { flip } from "svelte/animate";
+  import { dndzone } from "svelte-dnd-action";
+  import { dispatchSync } from "event/EventBus";
 
-    export let form: IForm;
-    export let fields : IField[]
-    let shadow = [] = [];
-    export let mode : DynamicFormMode = DynamicFormMode.Live; 
-    let values: { [key: string]: any } = {};
+  export let form: IForm;
+  export let fields: IField[];
+  let shadow = ([] = []);
+  export let mode: DynamicFormMode = DynamicFormMode.Live;
+  let values: { [key: string]: any } = {};
 
-    function handler(e) {
-        const items = e.detail.items;
-        const index = items.findIndex(w => w.isDndShadowItem);
-        if(index !== -1) {
-            shadow[index] = true;
-        }
-        dispatchSync("block_dropped", e);
+  function handler(e) {
+    const items = e.detail.items;
+    const index = items.findIndex((w) => w.isDndShadowItem);
+    if (index !== -1) {
+      shadow[index] = true;
     }
+    dispatchSync("block_dropped", e);
+  }
 
-    subscribeFieldChange((updatedField: IField) => {
-        const index = form.fields.findIndex(w => w.id === updatedField.id);
-        if(index === -1) {
-            return;
-        }
-        form.fields[index].updated = !form.fields[index].updated;
-    });
-
-    function display(field: IField): boolean {
-        if (!field.display) {
-            return true;
-        }
-        if (field.display.target === 'form') {
-            return onFormConditional(field);
-        }
+  subscribeFieldChange((updatedField: IField) => {
+    const index = form.fields.findIndex((w) => w.id === updatedField.id);
+    if (index === -1) {
+      return;
     }
+    form.fields[index].updated = !form.fields[index].updated;
+  });
 
-    function onFormConditional(field: IField): boolean {
-        switch (field.display.condition) {
-            case 'hasValue': {
-                return values[field.display.parameter] != null;
-            }
-        }
+  function display(field: IField): boolean {
+    if (!field.display) {
+      return true;
     }
+    if (field.display.target === "form") {
+      return onFormConditional(field);
+    }
+  }
 
-    function onSubmit() {
-        console.log('SUBMIT', values);
-        //const validator = new AddressService();
-        //validator.normalize(values.address);
+  function onFormConditional(field: IField): boolean {
+    switch (field.display.condition) {
+      case "hasValue": {
+        return values[field.display.parameter] != null;
+      }
     }
+  }
+
+  function onSubmit() {
+    console.log("SUBMIT", values);
+    //const validator = new AddressService();
+    //validator.normalize(values.address);
+  }
 </script>
+
+<div style="padding-left: 0.5em;">
+  <h4>Preview</h4>
+</div>
+<form
+  style="min-height: 89vh"
+  on:submit|preventDefault={onSubmit}
+  class="preview-padding"
+>
+  <div
+    style="min-height: 89vh"
+    use:dndzone={{ items: form.fields, flipDurationMs: 300, dropTargetStyle: { outline: 'white solid 0px' } }}
+    on:consider={handler}
+    on:finalize={handler}
+  >
+    {#each form.fields as field (field.id)}
+      <div>
+        <Field {field} />
+      </div>
+    {/each}
+  </div>
+
+  {#if mode === DynamicFormMode.Live}
+    <button class="btn btn-primary" type="submit">Submit Form</button>
+  {/if}
+</form>
+
 <style>
 
 </style>
-
-<div style="padding-left: 0.5em;">
-    <h4>Preview</h4>
-</div>
-<form style="min-height: 89vh" on:submit|preventDefault={onSubmit} class="preview-padding">
-    <div style="min-height: 89vh" use:dndzone="{{items : form.fields, flipDurationMs : 300, dropTargetStyle : {outline: 'white solid 0px'}}}" on:consider={handler} on:finalize={handler}>
-        {#each form.fields as field(field.id)}
-            <div>
-                <Field field={field} />
-            </div>
-        {/each}
-    </div>
-
-    {#if mode === DynamicFormMode.Live}
-        <button class="btn btn-primary" type="submit">Submit Form</button>
-    {/if}
-</form>
