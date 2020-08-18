@@ -111,7 +111,6 @@
     .col{
         padding-left: 0.5em;
         padding-right: 0.0em;
-
     }
 
 </style>
@@ -122,7 +121,7 @@
     {:else}
         <div class="container" style="padding-left: 0.4em; padding-top: 0.5em;">
             <div class="row">
-                <div class="{active != null ? 'col' : 'col max-width'}">
+                <div class="{active != null ? 'col' : 'col-md no-gutters max-width'}">
                     <DynamicForm form={form} mode={DynamicFormMode.Preview} />
                 </div>
                 {#if loadingActive}
@@ -132,7 +131,7 @@
                        </div>
                    </div>
                 {:else if active != null}
-                    <div class="col" >
+                    <div class="col-md no-gutters" >
                         <div transition:fade={{duration: 500 }}>
                             <FieldEdit field={active} />
                         </div>

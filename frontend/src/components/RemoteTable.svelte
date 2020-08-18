@@ -4,6 +4,7 @@
     import Fuse from 'fuse.js';
     import {LoadState} from "models/LoadState";
     import {randomString} from "../util/Generate";
+    import Accordion from "./Accordion.svelte";
 
     export let getRows: () => Promise<TableRow[]>;
 
@@ -19,7 +20,7 @@
 
     export let headerActions: TableButtonAction[];
     export let actions: { [key: string]: (row: any) => any };
-    export let hidden = new Set <string> ();
+    export let hidden = new Set < string > ();
 
     function createFuse(): Fuse<{}> {
         const list = rows.map((r) => {
@@ -40,10 +41,9 @@
     });
 
     $: {
-        if(rows.length === 0) {
+        if (rows.length === 0) {
             filtered = rows;
-        }
-        else if (query === '') {
+        } else if (query === '') {
             filtered = rows;
         } else {
             const result = fuse.search(query);
@@ -62,17 +62,17 @@
             filtered = rows;
             columns = Object.keys(rows[0] ?? {}).filter((w) => !hidden.has(w));
             state = LoadState.Finished;
-        } catch(ex) {
+        } catch (ex) {
             state = LoadState.Failed;
         }
     }
 
-    function onRowClick(row : any, index : number) {
-      if(lastSelectedIndex !== -1) {
-          filtered[lastSelectedIndex]?.meta_selected = false;
-      }
-      lastSelectedIndex = index;
-      filtered[index].meta_selected = true;
+    function onRowClick(row: any, index: number) {
+        if (lastSelectedIndex !== -1) {
+            filtered[lastSelectedIndex]?.meta_selected = false;
+        }
+        lastSelectedIndex = index;
+        filtered[index].meta_selected = true;
     }
 
 </script>
@@ -113,14 +113,28 @@
 </style>
 
 <div>
-    <input class="form-control" placeholder={searchPlaceHolder} bind:value={query}/>
-    {#if headerActions}
-        {#each headerActions as action}
-            <button class="btn btn-primary" on:click={action.onClick}>{action.label}</button>
-        {/each}
-    {/if}
+    <div class="d-flex container-fluid">
+        <div class="container-fluid" style="padding-left: 0em;">
+            <input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query}/>
+        </div>
+        <div class="text-right button">
+
+            {#if headerActions}
+                {#each headerActions as action}
+                    <button class="btn btn-primary" style="padding-left: 1em; width: 200px;" on:click={action.onClick}>{action.label}</button>
+                {/each}
+
+            {/if}
+        </div>
+
+    </div>
     {#if state === LoadState.Loading}
-        <div class="loader"/>
+        <div>
+
+            <div class="loader"/>
+
+
+        </div>
     {:else if state === LoadState.Finished}
         <table class="table table-hover" style="width: 100%; margin: unset">
             <caption>{caption}</caption>
@@ -156,6 +170,8 @@
             </tbody>
         </table>
     {:else if state === LoadState.Failed}
-        <p>Failed to load rows, please try refreshing the page.</p>
+        <div style="padding-top:1em; padding-left: 1em;">
+            <p >Failed to load rows, please try refreshing the page.</p>
+        </div>
     {/if}
 </div>
