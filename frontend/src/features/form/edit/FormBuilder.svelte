@@ -7,14 +7,14 @@
   import { subscribeFieldChange, dispatchFieldChange } from "event/FieldEvent";
   import DropdownButton from "components/DropdownButton.svelte";
   import { DynamicFormMode } from "components/models/ComponentProps";
-  import { fade } from "svelte/transition";
+  import { fade, slide } from "svelte/transition";
   import { dispatch, subscribe } from "event/EventBus";
   import DynamicForm from "./DynamicForm.svelte";
   import { shiftArray } from "../../../util/Array";
 
   let form: IForm = null;
   let dropped = false;
-  let active: IField;
+  let active : number = -1;
   let loadingActive: boolean = false;
   let order = [];
 
@@ -28,7 +28,7 @@
     }
     form = JSON.parse(temp);
     form.fields = form.fields.map((w) => {
-      w.expanded = false;
+      w.selected = false;
       return w;
     });
     scrollToBottom();
@@ -72,9 +72,9 @@
         });
       }
       if (field.selected) {
-        active = field;
+        active = index;
       } else {
-        active = null;
+        active = -1;
       }
     });
 
@@ -117,11 +117,15 @@
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-        {:else if active != null}
+        {:else if active !== -1}
           <div class="col-md no-gutters">
-            <div transition:fade={{ duration: 500 }}>
-              <FieldEdit field={active} />
-            </div>
+            {#each form.fields as field, i}
+              {#if i === active}
+                <div transition:slide={{ duration: 500 }}>
+                  <FieldEdit field={field} />
+                </div>
+              {/if}
+             {/each}
           </div>
         {/if}
       </div>
