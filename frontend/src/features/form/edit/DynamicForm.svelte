@@ -10,10 +10,16 @@
 
     export let form: IForm;
     export let fields : IField[]
+    let shadow = [] = [];
     export let mode : DynamicFormMode = DynamicFormMode.Live; 
     let values: { [key: string]: any } = {};
 
     function handler(e) {
+        const items = e.detail.items;
+        const index = items.findIndex(w => w.isDndShadowItem);
+        if(index !== -1) {
+            shadow[index] = true;
+        }
         dispatchSync("block_dropped", e);
     }
 
@@ -58,7 +64,7 @@
 <form style="min-height: 89vh" on:submit|preventDefault={onSubmit} class="preview-padding">
     <div style="min-height: 89vh" use:dndzone="{{items : form.fields, flipDurationMs : 300, dropTargetStyle : {outline: 'white solid 0px'}}}" on:consider={handler} on:finalize={handler}>
         {#each form.fields as field(field.id)}
-            <div animate:flip="{{duration: 300}}">
+            <div>
                 <Field field={field} />
             </div>
         {/each}
