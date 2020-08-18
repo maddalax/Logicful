@@ -37,9 +37,9 @@
   });
 </script>
 
-<h4 style="padding-left: 0.55em;">Edit Field</h4>
-<div class="border-left left-margin">
-  <div style="padding-left: 0.55em;">
+<h4 class="text-center">Field Configuration</h4>
+<div>
+  <div>
     {#if field.type === 'spacer'}
       <Accordion
         buttonText="Spacer Block"

@@ -76,6 +76,10 @@
       } else {
         active = -1;
       }
+      dispatch("edit_field", {
+        form,
+        active
+      })
     });
 
     subscribeFieldChange(async (field: IField) => {
@@ -116,16 +120,6 @@
             <div class="spinner-border" role="status">
               <span class="sr-only">Loading...</span>
             </div>
-          </div>
-        {:else if active !== -1}
-          <div class="col-md no-gutters">
-            {#each form.fields as field, i}
-              {#if i === active}
-                <div transition:slide={{ duration: 500 }}>
-                  <FieldEdit field={field} />
-                </div>
-              {/if}
-             {/each}
           </div>
         {/if}
       </div>

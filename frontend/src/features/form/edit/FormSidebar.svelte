@@ -51,7 +51,7 @@
   class="d-md-block sidebar collapse"
   style="background-color: #f5f9fe;"
 >
-  <div class="position-sticky">
+  <div style="margin-left: .5em">
     <ul class="nav flex-column" id="blocks">
       <div style="text-align:center;">
         <button
@@ -164,8 +164,7 @@
   #sidebarMenu {
     padding-bottom: 3em;
     padding-top: 1em;
-    min-height: 90vh;
-    max-width: 215px;
+    min-height: 100vh;
   }
 
   .block {
@@ -175,8 +174,9 @@
   .save-button {
     width: 94%;
     height: 40px;
-    padding: 0rem 0rem;
+    padding: 0 0;
     margin-bottom: 1.2em;
+    margin-left: -6px;
   }
 
   .px-3 {
