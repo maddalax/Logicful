@@ -11,9 +11,11 @@
   import Sidebar from "./components/Sidebar.svelte";
 
   let main: any;
-  let rightSidebar: any;
+  let rightSidebar;
 
   onMount(() => {
+    main = FormBuilder;
+    rightSidebar = FieldEditSidebar;
     subscribe("show_main_content", (props) => {
       main = props.component;
     });
@@ -67,11 +69,11 @@
     </Sidebar>
   </div>
   <div class="main">
-    <FormBuilder/>
+    <svelte:component this={main}/>
   </div>
   <div class="right-sidebar">
     <Sidebar>
-      <FieldEditSidebar/>
+      <svelte:component this={rightSidebar}/>
     </Sidebar>
   </div>
 </div>

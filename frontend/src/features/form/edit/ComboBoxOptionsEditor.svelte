@@ -8,12 +8,8 @@
   export let editorId: string;
 
   function manageSets() {
-    dispatch("dialog_show", {
-      child: OptionSetsList,
-      closeOnOutsideClick: false,
-      confirmCloseOnDirty: true,
-      title: "Manage Option Sets",
-      save: false,
+    dispatch("show_main_content", {
+      component: OptionSetsList
     });
   }
 

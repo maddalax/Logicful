@@ -30,6 +30,10 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		return gateway.BadRequest(err.Error())
 	}
 
+	if item == nil || item.Item["option_sets"] == nil {
+		return gateway.Ok(make([]string, 0))
+	}
+
 	ids := item.Item["option_sets"].SS
 	var keys []map[string]*dynamodb.AttributeValue
 	for id := range ids {

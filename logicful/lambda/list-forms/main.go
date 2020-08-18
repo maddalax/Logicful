@@ -26,6 +26,10 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		ProjectionExpression: aws.String("forms"),
 	})
 
+	if item == nil || item.Item["forms"] == nil {
+		return gateway.Ok(make([]string, 0))
+	}
+
 	if err != nil {
 		return gateway.BadRequest(err.Error())
 	}

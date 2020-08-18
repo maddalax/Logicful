@@ -22,12 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="updates">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar.svelte" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="remove sidebar duplication">
       <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEditSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEditSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/list-forms/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-forms/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-option-set/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="C:\Users\Maddox\go\go1.15" />
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.14.7/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -209,7 +209,8 @@
     <MESSAGE value="package cleanup" />
     <MESSAGE value="sidebar fix, move conffig to sidebar" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="remove sidebar duplication" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove sidebar duplication" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -219,11 +220,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="616" y="200" key="#GOPATH/0.23.1680.1027@0.23.1680.1027" timestamp="1597450931319" />
-    <state x="928" y="611" key="#GOROOT" timestamp="1597616800261">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="609" y="471" key="#GOROOT" timestamp="1597794472194">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="928" y="611" key="#GOROOT/0.0.2560.1400@0.0.2560.1400" timestamp="1597616800261" />
-    <state x="609" y="471" key="#GOROOT/0.23.1680.1027@0.23.1680.1027" timestamp="1597450925388" />
+    <state x="609" y="471" key="#GOROOT/0.23.1680.1027@0.23.1680.1027" timestamp="1597794472194" />
     <state x="459" y="476" key="#Go_Modules" timestamp="1597443699002">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -255,30 +256,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1597787847433">
+    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1597794366996">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597787847433" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1597787847432">
+    <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366996" />
+    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1597794366995">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597787847432" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1597787847431">
+    <state width="1638" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366995" />
+    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1597794366995">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597787847431" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1597787847432">
+    <state width="1638" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366995" />
+    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1597794366996">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597787847432" />
+    <state width="1638" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366996" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -348,11 +349,11 @@
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
     <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597517618615" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597787547708">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597787931394">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597787547708" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597787931394" />
     <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597786338592">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -366,16 +367,16 @@
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597752977606" />
-    <state x="28" y="23" width="701" height="735" key="find.popup" timestamp="1597785573511">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1597788138111">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="701" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597785573511" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597787832967">
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597788138111" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597794705632">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597787832967" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597794705632" />
   </component>
 </project>
