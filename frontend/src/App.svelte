@@ -14,7 +14,7 @@
   onMount(() => {});
 </script>
 
-<!--<Preloader/>-->
+<Preloader/>
 
 <Navbar />
 <div class="container-fluid" id="main-container" style="margin-top: 3.9em;">
@@ -28,6 +28,7 @@
   </div>
 </div>
 <Footer />
+<Dialog/>
 
 <style>
   #main-container {

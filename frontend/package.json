@@ -38,20 +38,14 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@glidejs/glide": "^3.4.1",
     "bootstrap": "5.0.0-alpha1",
-    "chartist": "^0.11.4",
-    "chartist-plugin-tooltips": "0.0.17",
     "countup.js": "^2.0.5",
     "headroom.js": "0.10.3",
-    "jarallax": "1.12.0",
     "nouislider": "11.0.3",
     "onscreen": "1.3.4",
     "popper.js": "1.16.0",
-    "prismjs": "1.17.1",
     "smooth-scroll": "^16.1.0",
     "sticky-sidebar": "3.3.1",
-    "vanillajs-datepicker": "^1.0.3",
     "vivus": "^0.4.5",
     "waypoints": "4.0.1",
     "@editorjs/editorjs": "^2.18.0",
@@ -61,15 +55,9 @@
     "fuse.js": "6.4.1",
     "lodash.get": "4.4.2",
     "lodash.set": "4.3.2",
-    "quill": "^1.3.7",
-    "quill-delta-to-html": "^0.12.0",
     "rollup-plugin-copy": "^3.3.0",
     "sirv-cli": "^1.0.0",
     "svelte-routing": "^1.4.2",
-    "trix": "^1.2.4",
-    "uswds": "^2.8.0",
-    "choices.js": "^9.0.1",
-    "dragula": "^3.7.2",
     "svelte-dnd-action": "^0.2.12"
   }
 }

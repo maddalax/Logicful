@@ -32,11 +32,11 @@ d.addEventListener("DOMContentLoaded", function(event) {
 
         const animations = ['oneByOne', 'delayed', 'sync', 'scenario'];
 
-        new Vivus('loader-logo', {duration: 80, type: 'oneByOne'}, function () {});
+        new Vivus('loader-logo', {duration: 60, type: 'oneByOne'}, function () {});
 
         setTimeout(function() {
             preloader.classList.add('show');
-        }, 1500);
+        }, 600);
     }
 
     if (d.body.clientWidth >= breakpoints.lg) {
@@ -55,17 +55,6 @@ d.addEventListener("DOMContentLoaded", function(event) {
                 this.classList.remove('show');
             })
         });
-    }
-
-    if (d.querySelector('.headroom')) {
-        var headroom = new Headroom(document.querySelector("#navbar-main"), {
-            offset: 0,
-            tolerance: {
-                up: 0,
-                down: 0
-            },
-        });
-        headroom.init();
     }
 
     [].slice.call(d.querySelectorAll('[data-background]')).map(function(el) {
