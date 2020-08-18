@@ -1,12 +1,27 @@
-<script>
+<script lang="ts">
 
   import Footer from 'components/Footer.svelte'
   import Navbar from 'components/Navbar.svelte'
   import FormBuilder from "./features/form/edit/FormBuilder.svelte";
   import FormSidebar from "./features/form/edit/FormSidebar.svelte";
-  import FieldEdit from "./features/form/edit/FieldEdit.svelte";
   import FieldEditSidebar from "./features/form/edit/FieldEditSidebar.svelte";
   import Dialog from 'components/Dialog.svelte'
+  import {onMount} from "svelte";
+  import {subscribe} from "event/EventBus";
+  import Sidebar from "./components/Sidebar.svelte";
+
+  let main: any;
+  let rightSidebar: any;
+
+  onMount(() => {
+    subscribe("show_main_content", (props) => {
+      main = props.component;
+    });
+    subscribe("show_right_sidebar", (props) => {
+      rightSidebar = props.component;
+    });
+  })
+
 </script>
 
 <style>
@@ -47,13 +62,17 @@
 
 <div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
   <div class="left-sidebar">
-    <FormSidebar/>
+    <Sidebar>
+      <FormSidebar/>
+    </Sidebar>
   </div>
   <div class="main">
     <FormBuilder/>
   </div>
   <div class="right-sidebar">
-    <FieldEditSidebar/>
+    <Sidebar>
+      <FieldEditSidebar/>
+    </Sidebar>
   </div>
 </div>
 
