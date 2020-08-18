@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { subscribe, dispatch } from 'event/EventBus';
+    import {onMount} from 'svelte';
+    import {subscribe, dispatch} from 'event/EventBus';
     import CloseIcon from '@fortawesome/fontawesome-free/svgs/regular/window-close.svg';
-    import type { DialogOptions } from './models/ComponentProps';
-    import { subscribeFieldChange } from 'event/FieldEvent';
+    import type {DialogOptions} from './models/ComponentProps';
+    import {subscribeFieldChange} from 'event/FieldEvent';
 
     let isOpen = false;
     let props: DialogOptions;
@@ -90,92 +90,49 @@
 </script>
 
 <style>
+    .modal-title{
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+
+    .modal-dialog {
+        width: 90%;
+        max-width: 1000px;
+    }
+
     .modal {
-        position: fixed;
         background: rgba(0, 0, 0, 0.6);
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .modal-content {
-        width: 90%;
-        max-width: 90%;
-        background: white;
-        padding-left: 3em;
-        padding-right: 3em;
-        padding-top: 2.5em;
-        padding-bottom: 3em;
-        position: relative;
-        overflow: auto;
-    }
-
-    .modal-footer {
-        width: 90%;
-        height: 50px;
-        max-width: 90%;
-        background: white;
-    }
-
-    .close-icon {
-        width: 1.5em;
-        height: 1.5em;
-        float: right;
-        margin-bottom: 1em;
-        cursor: pointer;
-        position: absolute;
-        right: 0;
-        z-index: 100000;
-        right: 1em;
-        top: 1em;
-    }
-
-    .usa-alert {
-        margin-top: 1em;
     }
 </style>
 
-<div
-    class="modal"
-    role="dialog"
-    id="dialog"
-    aria-labelledby="Modal_Title"
-    aria-describedby="Modal_Description"
-    aria-hidden="true"
-    style="display: none;">
-
-    <div class="modal-content">
-        <div class="close-icon" on:click={close}>
-            {@html CloseIcon}
-        </div>
-        <section class="usa-prose font-sans-sm" style="margin-bottom: 1em">
-            <h2>{props?.title}</h2>
-        </section>
-        {#if props?.confirmCloseOnDirty && confirm}
-            <div style="margin-top: 2em">
-                <div class="usa-alert usa-alert--warning">
-                    <div class="usa-alert__body">
-                        <h3 class="usa-alert__heading">Unsaved Changes</h3>
-                        <p class="usa-alert__text">
-                            You have unsaved changes, click the X again to close this dialog and discard your changes.
-                        </p>
-                    </div>
-                </div>
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"  >
+                    <h4 class="modal-title" style="padding-left: 0.8em;" >{props?.title}</h4>
+                    <button type="button" class="close" on:click={close} data-dismiss="modal" aria-label="Close">
+                        <span style="font-size: 2rem;" aria-hidden="true">&times;</span>
+                    </button>
             </div>
-        {/if}
-        <svelte:component this={props?.child} {...props?.props} />
+            {#if props?.confirmCloseOnDirty && confirm}
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert"><span
+                        class="alert-inner--icon"><span class="fas fa-exclamation-circle"></span></span> <span
+                        class="alert-inner--text"><strong>Warning!</strong> You have unsaved changes, click the X again to close this dialog and discard your
+                                changes.</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+            {/if}
+            <div class="modal-body">
+                <svelte:component this={props?.child} {...props?.props}/>
+            </div>
+            {#if props?.save}
+                <div class="modal-footer">
+                    <button disabled={saving} on:click={save} type="button" class="btn btn-secondary" data-dismiss="modal">{saving ? 'Saving...' : 'Save'}</button>
+                </div>
+            {/if}
+
+        </div>
     </div>
-    {#if props?.save} 
-    <div class="modal-footer">
-        <button disabled={saving} class="btn btn-primary dialog-action float-right" on:click={save}>
-            {saving ? 'Saving...' : 'Save'}
-        </button>
-    </div>
-    {/if}   
 </div>

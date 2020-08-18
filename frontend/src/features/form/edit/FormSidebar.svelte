@@ -73,7 +73,7 @@
 
 <nav
   id="sidebarMenu"
-  class="col-md-3 col-lg-3 col-sm d-md-block sidebar collapse"
+  class="d-md-block sidebar collapse"
   style="background-color: #f5f9fe;">
   <div class="position-sticky">
     <ul class="nav flex-column" id="blocks">
