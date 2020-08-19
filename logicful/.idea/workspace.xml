@@ -22,11 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="api fix for if client doesn't exist.">
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="drag fixes">
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/yarn.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +182,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="setup ui with new backend" />
     <MESSAGE value="save and load forms" />
     <MESSAGE value="ui ported" />
     <MESSAGE value="dropdown test" />
@@ -210,7 +206,8 @@
     <MESSAGE value="updates" />
     <MESSAGE value="remove sidebar duplication" />
     <MESSAGE value="api fix for if client doesn't exist." />
-    <option name="LAST_COMMIT_MESSAGE" value="api fix for if client doesn't exist." />
+    <MESSAGE value="drag fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="drag fixes" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -349,11 +346,11 @@
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
     <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597517618615" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597794772531">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597800679372">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597794772531" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597800679372" />
     <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597786338592">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

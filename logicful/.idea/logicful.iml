@@ -13,6 +13,7 @@
     <content url="file://$MODULE_DIR$/../pixel-pro-v5.1.0">
       <excludeFolder url="file://$MODULE_DIR$/../pixel-pro-v5.1.0" />
     </content>
+    <content url="file://$MODULE_DIR$/../svelte-dnd-action" />
     <content url="file://$USER_HOME$/Downloads/pixel-pro-v5.1.0" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
