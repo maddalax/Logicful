@@ -9,6 +9,7 @@
   import {onMount} from "svelte";
   import {subscribe} from "event/EventBus";
   import Sidebar from "./components/Sidebar.svelte";
+  import Preloader from "./components/Preloader.svelte";
 
   let main: any;
   let rightSidebar;
@@ -59,6 +60,8 @@
   }
 
 </style>
+
+<Preloader/>
 
 <Navbar/>
 

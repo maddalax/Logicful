@@ -29,8 +29,8 @@
 <div class="btn-group mr-2 mb-2">
   <button
     type="button"
-    class="btn btn-primary"
-    onclick={executeAction(actions[0])}
+    class={`btn btn-primary`}
+    onclick={() => executeAction(actions[0])}
   >
     {processing ? `${processingLabel}` : actions[0].label}
   </button>
@@ -49,7 +49,7 @@
       {#if i === 0}
         <span />
       {:else}
-        <a class="dropdown-item" href="#" on:click={executeAction(action)}>
+        <a class="dropdown-item" href="#" on:click={() => executeAction(action)}>
           {action.label}
         </a>
       {/if}

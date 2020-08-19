@@ -8,8 +8,13 @@
   export let editorId: string;
 
   function manageSets() {
-    dispatch("show_main_content", {
-      component: OptionSetsList
+
+    dispatch("dialog_show", {
+      child: OptionSetsList,
+      closeOnOutsideClick: false,
+      confirmCloseOnDirty: true,
+      title: "Manage Option Sets",
+      save: false
     });
   }
 
@@ -23,9 +28,17 @@
   }
 </script>
 
+<style>
+  .manage-button{
+    margin-top: 0.5em;
+    margin-left: 0.6em;
+  }
+
+</style>
+
 <div>
   <Field
     field={{ id: `${editorId}-options`, loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: 'http://localhost:3000/option-set/list' }, configFieldTarget: 'options', configTarget: field.id }}
   />
-  <button on:click={manageSets} class="btn btn-link">Manage Option Sets</button>
+  <button on:click={manageSets} class="manage-button btn btn-light" type="button">Manage Option Sets</button>
 </div>

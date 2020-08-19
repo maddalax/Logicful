@@ -37,15 +37,12 @@
     loading = true;
     const response = await fetch("http://localhost:3000/option-set/list");
     const data: OptionSet[] = await response.json();
-    const promises: any[] = data.map(async (d) => {
-      if (d.type === "local") {
-        d.localSaveId = d.value as string;
-        d.value = await convertUrlToLocal(d);
-      }
-      return d;
-    });
-    const results = await Promise.all(promises);
-    sets = results.filter((w) => w.name === name);
+    const result = data.find(w => w.name === name);
+    if(result.type === "local") {
+      result.localSaveId = result.value as string;
+      result.value = await convertUrlToLocal(result);
+    }
+    sets = [result]
     loading = false;
   }
 
@@ -131,13 +128,13 @@
 
 <div>
   {#if sets.length > 0}
-    <DropdownButton
-      label={'Save'}
-      processingLabel={'Saving...'}
-      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
-    />
+
   {:else}
-    <div class="loader" />
+    <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
+      <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
   {/if}
   {#each sets as set, index}
     <div style="margin-top: 1em">
@@ -188,4 +185,12 @@
 
     </div>
   {/each}
+  <div class="float-right">
+  <DropdownButton
+          position="float-right"
+          label={'Save'}
+          processingLabel={'Saving...'}
+          actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
+  />
+  </div>
 </div>
