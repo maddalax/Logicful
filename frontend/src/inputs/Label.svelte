@@ -7,6 +7,6 @@
 <label for={field.name}>
   {firstNotEmpty(field.label, field.name)}
   {#if !field.required}
-    <span class="usa-hint">(optional)</span>
+    <span>(optional)</span>
   {/if}
 </label>

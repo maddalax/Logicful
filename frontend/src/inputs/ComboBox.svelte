@@ -17,6 +17,7 @@
   let open = false;
   let fuse: Fuse<{}>;
   let query = "";
+  export let search = true;
 
   export let field: IField;
 
@@ -60,7 +61,6 @@
     if (!options) {
       return new Fuse([]);
     }
-    options = options.filter((w) => isString(w.value));
     return new Fuse(options, {
       keys: ["label", "value"],
     });
@@ -160,6 +160,9 @@
     if (e.key === "ArrowDown") {
       if (open) {
         const input = document.getElementById(`${field.id}-search-input`);
+        if(!input) {
+          return;
+        }
         input.focus({
           preventScroll: true,
         });
@@ -176,6 +179,8 @@
 
   function doClose() {
     open = false;
+    query = '';
+    filtered = options;
     document.body.style.overflow = "auto";
   }
 
@@ -183,6 +188,9 @@
     console.log("OPTION", e.key);
     if (index === 0 && e.key === "ArrowUp") {
       const input = document.getElementById(`${field.id}-search-input`);
+      if(!input) {
+        return;
+      }
       input.focus({
         preventScroll: true,
       });
@@ -198,6 +206,9 @@
   function optionOnKeyDown(e, option, index) {
     if (index === 0 && e.key === "ArrowUp") {
       const input = document.getElementById(`${field.id}-search-input`);
+      if(!input) {
+        return;
+      }
       input.focus({
         preventScroll: true,
       });
@@ -229,13 +240,13 @@
         class="form-select"
         readonly
         on:click|stopPropagation={() => (open ? doClose() : doOpen())}
-        placeholder={field.label}
         on:keydown|stopPropagation={inputOnKeyDown}
         value={options?.find((w) => w.value === value)?.label ?? ''}
       />
       {#if filtered != null}
         <div class="dropdown-menu" class:show={open}>
-          <input
+          {#if search}
+            <input
             class="form-control search dropdown-item"
             autocomplete="off"
             id={`${field.id}-search-input`}
@@ -249,6 +260,7 @@
             on:keydown|stopPropagation={onKeyDown}
             on:click|stopPropagation
           />
+          {/if}
           {#if filtered.length === 0}
             <a class="dropdown-item" href="javascript:void(0)">
               No options to display.

@@ -8,7 +8,7 @@ export class FieldValueLoader {
   }
 
   private async loadValue(value: FormValue): Promise<any | undefined> {
-    if (!value) {
+    if (value == null) {
       return;
     }
     if(isString(value)) {

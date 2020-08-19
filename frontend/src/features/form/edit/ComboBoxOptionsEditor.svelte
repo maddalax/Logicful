@@ -3,9 +3,10 @@
   import { dispatch } from "event/EventBus";
   import OptionSetsList from "./OptionSetsList.svelte";
   import Field from "./Field.svelte";
+  import {randomString} from "util/Generate";
+
 
   export let field: IField;
-  export let editorId: string;
 
   function manageSets() {
 
@@ -38,7 +39,8 @@
 
 <div>
   <Field
-    field={{ id: `${editorId}-options`, loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: 'http://localhost:3000/option-set/list' }, configFieldTarget: 'options', configTarget: field.id }}
+    field={
+    { id: randomString(), loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: 'http://localhost:3000/option-set/list' }, configFieldTarget: 'options', configTarget: field.id }}
   />
   <button on:click={manageSets} class="manage-button btn btn-light" type="button">Manage Option Sets</button>
 </div>

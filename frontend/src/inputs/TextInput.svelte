@@ -26,7 +26,6 @@
   <input
     on:click|stopPropagation
     on:input={(e) => {
-      console.log('CCHANGE', field);
       field.value = e.target.value ?? '';
       dispatchFieldChange(field, true);
       field.onChange?.(e.target.value);

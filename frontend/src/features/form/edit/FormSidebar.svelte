@@ -9,6 +9,7 @@
     return [
       { id: randomString(), name: "string" },
       { id: randomString(), name: "combobox" },
+      { id: randomString(), name: "switch" },
       { id: randomString(), name: "spacer" },
     ];
   }
@@ -59,8 +60,18 @@
 <div
         use:dndzone={{ items: blocks, flipDurationMs: 300,
         transformDraggedElement : (el, index) => {
-          console.log(el);
-          el.innerHTML = "<label>New Field</label><input class='form-control shadow'/>";
+          if(index === 0) {
+            el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
+          }
+          if(index === 1) {
+             el.innerHTML = "<label>New Dropdown</label><select class='form-control shadow'><option>Dropdown Value</option></select>";
+          }
+          if(index === 2) {
+            el.innerHTML = `<div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">New Toggle</label>
+            </div>`
+          }
 
           return el
         },
@@ -82,17 +93,6 @@
               <h6 class="h6">Add Text Input</h6>
             </div>
           </div>
-        {:else if block.name === 'combobox'}
-          <div class="d-flex px-2 block">
-            <div>
-              <div class="icon icon-sm icon-secondary">
-                <span class="far fa-caret-square-down" />
-              </div>
-            </div>
-            <div class="pl-3">
-              <h6 class="h6">Add Dropdown</h6>
-            </div>
-          </div>
         {:else if block.name === 'spacer'}
           <div class="d-flex px-2 block">
             <div>
@@ -104,7 +104,29 @@
               <h6 class="h6">Add Spacer</h6>
             </div>
           </div>
-        {/if}
+        {:else if block.name === 'switch'}
+          <div class="d-flex px-2 block">
+            <div>
+              <div class="icon icon-sm icon-secondary">
+                <span class="fas fa-toggle-off" />
+              </div>
+            </div>
+            <div class="pl-3">
+              <h6 class="h6">Add Toggle</h6>
+            </div>
+          </div>
+        {:else if block.name === 'combobox'}
+          <div class="d-flex px-2 block">
+            <div>
+              <div class="icon icon-sm icon-secondary">
+                <span class="far fa-caret-square-down" />
+              </div>
+            </div>
+            <div class="pl-3">
+              <h6 class="h6">Add Dropdown</h6>
+            </div>
+          </div>
+          {/if}
       </div>
     </div>
   {/each}

@@ -38,6 +38,7 @@
     loadForm();
 
     subscribe("save_form", (params) => {
+      console.log(JSON.stringify(form, null, 2))
       localStorage.setItem("form", JSON.stringify(form));
     });
 

@@ -48,7 +48,7 @@ function registerDropZone(dropZoneEl, type) {
         typeToDropZones.set(type, new Set());
     }
     if (!typeToDropZones.get(type).has(dropZoneEl)) {
-        typeToDropZones.get(type).add(dropZoneEl); 
+        typeToDropZones.get(type).add(dropZoneEl);
     }
 }
 function unregisterDropZone(dropZoneEl, type) {
@@ -292,7 +292,7 @@ export function dndzone(node, options) {
         shadowElData = {...draggedElData, isDndShadowItem: true};
 
         // creating the draggable element
-        draggedEl = createDraggedElementFrom(originalDragTarget);
+        draggedEl = createDraggedElementFrom(originalDragTarget, config.transformDraggedElement, currentIdx);
         // We will keep the original dom node in the dom because touch events keep firing on it, we want to re-add it after Svelte removes it
         function keepOriginalElementInDom() {
             const {items: itemsNow} = config;
@@ -309,7 +309,7 @@ export function dndzone(node, options) {
 
         styleActiveDropZones(
             Array.from(typeToDropZones.get(config.type))
-            .filter(dz => dz === originDropZone || !dzToConfig.get(dz).dropFromOthersDisabled),
+                .filter(dz => dz === originDropZone || !dzToConfig.get(dz).dropFromOthersDisabled),
             dz => dzToConfig.get(dz).dropTargetStyle,
         );
 
@@ -325,15 +325,15 @@ export function dndzone(node, options) {
     }
 
     function configure({
-        items = [],
-        flipDurationMs:dropAnimationDurationMs = 0,
-        type:newType = DEFAULT_DROP_ZONE_TYPE,
-        dragDisabled = false,
-        dropFromOthersDisabled = false,
-        dropTargetStyle = DEFAULT_DROP_TARGET_STYLE,
-        transformDraggedElement,
-         ...rest
-     }) {
+                           items = [],
+                           flipDurationMs:dropAnimationDurationMs = 0,
+                           type:newType = DEFAULT_DROP_ZONE_TYPE,
+                           dragDisabled = false,
+                           dropFromOthersDisabled = false,
+                           dropTargetStyle = DEFAULT_DROP_TARGET_STYLE,
+                           transformDraggedElement,
+                           ...rest
+                       }) {
         if (Object.keys(rest).length > 0) {
             console.warn(`dndzone will ignore unknown options`, rest);
         }
@@ -365,7 +365,7 @@ export function dndzone(node, options) {
             const draggableEl = node.children[idx];
             styleDraggable(draggableEl, dragDisabled);
             if (config.items[idx].hasOwnProperty('isDndShadowItem')) {
-                morphDraggedElementToBeLike(draggedEl, draggableEl, currentMousePosition.x, currentMousePosition.y, config.transformDraggedElement, idx);
+                morphDraggedElementToBeLike(draggedEl, draggableEl, currentMousePosition.x, currentMousePosition.y);
                 styleShadowEl(draggableEl);
                 continue;
             }
