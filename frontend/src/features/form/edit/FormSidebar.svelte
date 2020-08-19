@@ -11,6 +11,7 @@
       { id: randomString(), name: "combobox" },
       { id: randomString(), name: "switch" },
       { id: randomString(), name: "spacer" },
+      { id: randomString(), name: "date" },
     ];
   }
 
@@ -72,7 +73,9 @@
             <label class="form-check-label" for="flexSwitchCheckDefault">New Toggle</label>
             </div>`
           }
-
+          if(index === 4) {
+              el.innerHTML = "<label>New Date</label><select class='form-control shadow'><option>Dropdown Value</option></select>";
+          }
           return el
         },
         dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }}
@@ -126,7 +129,18 @@
               <h6 class="h6">Add Dropdown</h6>
             </div>
           </div>
-          {/if}
+    {:else if block.name === 'date'}
+    <div class="d-flex px-2 block">
+      <div>
+        <div class="icon icon-sm icon-secondary">
+          <span class="fas fa-calendar-day"></span>
+        </div>
+      </div>
+      <div class="pl-3">
+        <h6 class="h6">Add Date</h6>
+      </div>
+    </div>
+    {/if}
       </div>
     </div>
   {/each}

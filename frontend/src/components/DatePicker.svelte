@@ -1,0 +1,41 @@
+<script lang="ts">
+    import flatpickr from "flatpickr";
+    import 'flatpickr/dist/flatpickr.min.css'
+    import {onMount} from "svelte";
+    import type {IField} from 'models/IField'
+    import Label from "../inputs/Label.svelte";
+
+    export let field: IField;
+    let value: string = ''
+    let picker : flatpickr
+
+    onMount(() => {
+        picker = flatpickr(document.getElementById(field.id), {
+            onChange: (selectedDates, dateStr, instance) => {
+                console.log(selectedDates, dateStr, instance)
+                value = dateStr;
+            },
+            altInput: true,
+            altFormat: "F j, Y h:i K",
+            dateFormat: "Y-m-d h:i K",
+            enableTime: true,
+        });
+    })
+
+    function clearDate() {
+        picker.clear();
+    }
+</script>
+
+<Label field={field}/>
+<div class="input-group">
+    <input id={field.id} type="text" class="form-control date-input-hidden" value={value ?? ""} placeholder="Select a date...">
+    <span on:click={clearDate} class="input-group-text"><i class="fas fa-times"></i></span>
+</div>
+
+<style>
+    .date-input-hidden {
+        background-color: white !important;
+        opacity: 1;
+    }
+</style>

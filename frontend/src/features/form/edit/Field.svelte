@@ -16,6 +16,8 @@
   import RichTextDisplay from "inputs/RichTextDisplay.svelte";
   import {dispatch} from "event/EventBus";
   import Switch from "./Switch.svelte";
+  import {subscribe} from "event/EventBus";
+  import DatePicker from "../../../components/DatePicker.svelte";
 
   let state = LoadState.NotStarted;
   let value: any;
@@ -79,6 +81,8 @@
       <Spacer {field} />
     {:else if field.type === 'switch'}
       <Switch field={field} {...config}/>
+    {:else if field.type === 'date'}
+      <DatePicker field={field} {...config}/>
     {:else}
       <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
     {/if}

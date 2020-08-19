@@ -43,23 +43,37 @@
     });
 
     subscribe("block_dropped", (e) => {
-      const items = e.detail.items.map((i) => {
+      let newActive = -1;
+      const items = e.detail.items.map((i, index) => {
         if (!i.type) {
+          newActive = index;
           i = {
             ...i,
             ...{
               name: "new-field-" + randomStringSmall(),
               label: "New Field " + randomStringSmall(),
               type: i.name,
+              selected : true,
               value: undefined,
               expanded: true,
-              //id: randomString(),
             },
           };
+        } else {
+          // Deselect all other fields and select the one that was dropped.
+          if(e.type === 'finalize') {
+            i.selected = false;
+          }
         }
         return { ...i };
       });
       form.fields = items;
+      if(e.type === 'finalize') {
+        active = newActive;
+        dispatch("edit_field", {
+          form,
+          active
+        })
+      }
       //addField(params.type, params.index);
     });
 

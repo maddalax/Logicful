@@ -4,7 +4,7 @@
   export let field: IField;
 </script>
 
-<label for={field.name}>
+<label for={field.id}>
   {firstNotEmpty(field.label, field.name)}
   {#if !field.required}
     <span>(optional)</span>

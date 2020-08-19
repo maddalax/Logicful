@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { IField } from "models/IField";
-  import { afterUpdate, onMount } from "svelte";
-  import { randomString } from "util/Generate";
+  import type {IField} from "models/IField";
+  import {afterUpdate, onMount} from "svelte";
+  import {randomString} from "util/Generate";
   import FieldTypeEditor from "./FieldTypeEditor.svelte";
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
-  import type { FieldEditConfig } from "views/builder/models/FieldEditConfig";
+  import type {FieldEditConfig} from "views/builder/models/FieldEditConfig";
   import Field from "./Field.svelte";
+  import Button from "../../../components/Button.svelte";
 
   export let field: IField;
   export let config: FieldEditConfig;
@@ -18,15 +19,9 @@
 <div>
   <div>
     {#if field.type === 'spacer'}
-      <Accordion
-        buttonText="Spacer Block"
-        id={`field-button-${field.id}`}
-        open={field.expanded}
-      >
-        <Field
-          field={{ id: `${id}-spacer-block`, name: `${field.id}-builder-config-field-spacer-block`, label: 'Increase value to add more spacing between the previous and next field.', required: true, value: field.value, type: 'number', configFieldTarget: 'value', configTarget: field.id }}
-        />
-      </Accordion>
+      <Field
+          field={{ id: randomString(), label: 'Increase value to add more spacing between the previous and next field.', required: true, value: field.value, type: 'number', configFieldTarget: 'value', configTarget: field.id }}
+      />
     {:else if field.type === 'block'}
       <ContentBlockEditor {field} expanded={field.expanded} />
     {:else}

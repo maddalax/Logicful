@@ -27,31 +27,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="coombo box fixed">
-      <change afterPath="$PROJECT_DIR$/api/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicful/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicful/service/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/Container.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/Sandbox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/application/features/forms/fields/address/commands/NormalizeAddressCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/application/features/forms/fields/models/Address.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/application/features/user/commands/UserRegisterCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/application/features/user/models/User.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/config/ConfigProvider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/http/handlers/ValidateAddressHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/error/commands/ErrorCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/event/Commands.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/event/Listeners.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/event/Mediator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/guard/Guards.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/logging/Logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/Collection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/Database.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/infrastructure/persistence/DynamoDb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/serverless.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/form/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/Field.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +61,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/api/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.logs">
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -155,6 +137,8 @@
       <workItem from="1597269302461" duration="29000" />
       <workItem from="1597269353250" duration="20190000" />
       <workItem from="1597356907561" duration="6578000" />
+      <workItem from="1597851169076" duration="165000" />
+      <workItem from="1597851363755" duration="15000" />
     </task>
     <task id="LOCAL-00001" summary="server side work for storing/getting option sets">
       <created>1597285292287</created>
