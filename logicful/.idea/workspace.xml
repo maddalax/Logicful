@@ -22,12 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="remove sidebar duplication">
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="api fix for if client doesn't exist.">
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/yarn.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-forms/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-forms/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-option-set/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,19 +65,12 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend/src" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../frontend/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\views\builder" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
-      <recent name="$PROJECT_DIR$/lambda/list-forms" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
@@ -85,8 +78,15 @@
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\components" />
       <recent name="$PROJECT_DIR$/../frontend/public" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../frontend/src" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\views\builder" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.http-server (1)">
+  <component name="RunManager" selected="npm.dev (1)">
     <configuration name="Debug" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" port="5986">
       <method v="2" />
     </configuration>
@@ -151,8 +151,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev (1)" />
-        <item itemvalue="npm.http-server (1)" />
         <item itemvalue="npm.build:watch" />
+        <item itemvalue="npm.http-server (1)" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
@@ -185,7 +185,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="golang stuff" />
     <MESSAGE value="setup ui with new backend" />
     <MESSAGE value="save and load forms" />
     <MESSAGE value="ui ported" />
@@ -210,7 +209,8 @@
     <MESSAGE value="sidebar fix, move conffig to sidebar" />
     <MESSAGE value="updates" />
     <MESSAGE value="remove sidebar duplication" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove sidebar duplication" />
+    <MESSAGE value="api fix for if client doesn't exist." />
+    <option name="LAST_COMMIT_MESSAGE" value="api fix for if client doesn't exist." />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -256,30 +256,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1597794366996">
+    <state width="1181" height="214" key="GridCell.Tab.0.bottom" timestamp="1597800133963">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366996" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1597794366995">
+    <state width="1181" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597800133963" />
+    <state width="1181" height="214" key="GridCell.Tab.0.center" timestamp="1597800133962">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366995" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1597794366995">
+    <state width="1181" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597800133962" />
+    <state width="1181" height="214" key="GridCell.Tab.0.left" timestamp="1597800133962">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366995" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1597794366996">
+    <state width="1181" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597800133962" />
+    <state width="1181" height="214" key="GridCell.Tab.0.right" timestamp="1597800133963">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597794366996" />
+    <state width="1181" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597800133963" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -349,11 +349,11 @@
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
     <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597517618615" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597787931394">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597794772531">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597787931394" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597794772531" />
     <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597786338592">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -367,16 +367,16 @@
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597752977606" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1597788138111">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1597798907768">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597788138111" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597794705632">
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597798907768" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597798877833">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597794705632" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597798877833" />
   </component>
 </project>

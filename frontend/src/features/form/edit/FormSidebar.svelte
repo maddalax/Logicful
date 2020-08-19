@@ -57,7 +57,14 @@
 </div>
 <h5 style="padding-bottom:0.5em">Add Field</h5>
 <div
-        use:dndzone={{ items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }}
+        use:dndzone={{ items: blocks, flipDurationMs: 300,
+        transformDraggedElement : (el, index) => {
+          console.log(el);
+          el.innerHTML = "<label>New Field</label><input class='form-control shadow'/>";
+
+          return el
+        },
+        dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }}
         on:consider={handler}
         on:finalize={handler}
 >

@@ -7,7 +7,7 @@
     "start": "sirv public",
     "validate": "svelte-check",
     "http-server": "cd src/data && http-server --cors",
-    "pretty" : "prettier --write --svelte-sort-order scripts-markup-styles ./**/*.svelte"
+    "pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./**/*.svelte"
   },
   "devDependencies": {
     "@babel/core": "7.11.1",
@@ -38,25 +38,25 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "bootstrap": "5.0.0-alpha1",
-    "countup.js": "^2.0.5",
-    "headroom.js": "0.10.3",
-    "nouislider": "11.0.3",
-    "onscreen": "1.3.4",
-    "popper.js": "1.16.0",
-    "smooth-scroll": "^16.1.0",
-    "vivus": "^0.4.5",
-    "waypoints": "4.0.1",
     "@editorjs/editorjs": "^2.18.0",
     "@editorjs/header": "^2.5.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "5.0.0-alpha1",
+    "countup.js": "^2.0.5",
     "entities": "^2.0.3",
     "fuse.js": "6.4.1",
+    "headroom.js": "0.10.3",
     "lodash.get": "4.4.2",
     "lodash.set": "4.3.2",
+    "nouislider": "11.0.3",
+    "onscreen": "1.3.4",
+    "popper.js": "1.16.0",
     "rollup-plugin-copy": "^3.3.0",
     "sirv-cli": "^1.0.0",
+    "smooth-scroll": "^16.1.0",
+    "svelte-dnd-action": "file:../../svelte-dnd-action",
     "svelte-routing": "^1.4.2",
-    "svelte-dnd-action": "^0.2.12"
+    "vivus": "^0.4.5",
+    "waypoints": "4.0.1"
   }
 }
