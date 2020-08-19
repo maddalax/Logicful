@@ -1,5 +1,5 @@
 {
-    "String": "string",
+    "Text": "string",
     "Dropdown": "combobox",
     "Toggle" : "switch"
 }
