@@ -23,8 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="datetime picker">
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/setup.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,17 +67,10 @@
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend/src" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../frontend/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\event" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\components" />
-      <recent name="$PROJECT_DIR$/../frontend/public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../frontend/src" />
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\views\builder" />
@@ -82,8 +78,15 @@
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\event" />
+      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\components" />
+      <recent name="$PROJECT_DIR$/../frontend/public" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.dev (1)">
+  <component name="RunManager" selected="npm.http-server (1)">
     <configuration name="Debug" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" port="5986">
       <method v="2" />
     </configuration>
@@ -117,21 +120,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="http-server (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/../frontend/package.json" />
+    <configuration name="dev:setup" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="http-server" />
+        <script value="dev:setup" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$USER_HOME$/Downloads/Hyper_v3.3.0/hyper/package.json" />
+    <configuration name="http-server (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/../frontend/package.json" />
       <command value="run" />
       <scripts>
-        <script value="start" />
+        <script value="http-server" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -143,15 +146,15 @@
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.dev (1)" />
       <item itemvalue="npm.http-server (1)" />
-      <item itemvalue="npm.start" />
+      <item itemvalue="npm.dev:setup" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.http-server (1)" />
         <item itemvalue="npm.dev (1)" />
         <item itemvalue="npm.build:watch" />
+        <item itemvalue="npm.dev:setup" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -249,32 +252,32 @@
     <state x="104" y="114" width="1124" height="1056" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1597616782701" />
     <state x="59" y="94" width="1381" height="662" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1597667308591" />
     <state x="68" y="106" width="1612" height="776" key="DiffContextDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597702409911" />
-    <state x="284" y="261" key="FileChooserDialogImpl" timestamp="1597624486966">
+    <state x="284" y="261" key="FileChooserDialogImpl" timestamp="1597865980410">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1422" height="214" key="GridCell.Tab.0.bottom" timestamp="1597858776028">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597865980410" />
+    <state width="2030" height="276" key="GridCell.Tab.0.bottom" timestamp="1597867154067">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
+    <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597867154067" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1422" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597858776028" />
-    <state width="1422" height="214" key="GridCell.Tab.0.center" timestamp="1597858776027">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="2030" height="276" key="GridCell.Tab.0.center" timestamp="1597867154067">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
+    <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597867154067" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1422" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597858776027" />
-    <state width="1422" height="214" key="GridCell.Tab.0.left" timestamp="1597858776026">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="2030" height="276" key="GridCell.Tab.0.left" timestamp="1597867154067">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
+    <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597867154067" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1422" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597858776026" />
-    <state width="1422" height="214" key="GridCell.Tab.0.right" timestamp="1597858776027">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="2030" height="276" key="GridCell.Tab.0.right" timestamp="1597867154067">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
+    <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597867154067" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1422" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597858776027" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
@@ -341,10 +344,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597753461227" />
-    <state x="110" y="234" key="SettingsEditor" timestamp="1597858387360">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="168" y="287" key="SettingsEditor" timestamp="1597866562512">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
+    <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597866562512" />
     <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597858387360" />
     <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597858895784">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -359,20 +362,20 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597839311664">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597866428086">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
+    <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597866428086" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597839311664" />
     <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1597798907768">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597798907768" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1597859073087">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup" timestamp="1597867741400">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
+    <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597867741400" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
     <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597859073087" />
   </component>

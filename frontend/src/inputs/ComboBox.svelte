@@ -130,7 +130,8 @@
     doClose();
   }
 
-  function onSearch() {
+  function onSearch(e) {
+    e.preventDefault();
     if (options.length === 0) {
       filtered = options;
     } else if (query == null || query === "") {
@@ -142,6 +143,7 @@
   }
 
   function onKeyDown(e) {
+    e.preventDefault();
     if (e.key === "Escape") {
       doClose();
     }
@@ -154,6 +156,7 @@
   }
 
   function inputOnKeyDown(e) {
+    e.preventDefault();
     if (e.key === "Escape") {
       doClose();
     }
@@ -174,18 +177,17 @@
 
   function doOpen() {
     open = true;
-    document.body.style.overflow = "hidden";
+    //document.body.style.overflow = "hidden";
   }
 
   function doClose() {
     open = false;
     query = '';
     filtered = options;
-    document.body.style.overflow = "auto";
+    //document.body.style.overflow = "auto";
   }
 
   function optionOnKeyPress(e, option, index) {
-    console.log("OPTION", e.key);
     if (index === 0 && e.key === "ArrowUp") {
       const input = document.getElementById(`${field.id}-search-input`);
       if(!input) {
@@ -256,8 +258,8 @@
               query = e.target.value;
               onSearch();
             }}
-            on:keydown|stopPropagation={onSearch}
-            on:keydown|stopPropagation={onKeyDown}
+            on:keydown|stopPropagation|preventDefault={onSearch}
+            on:keydown|stopPropagation|preventDefault={onKeyDown}
             on:click|stopPropagation
           />
           {/if}
