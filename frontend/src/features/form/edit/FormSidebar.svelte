@@ -74,7 +74,7 @@
             </div>`
           }
           if(index === 4) {
-              el.innerHTML = "<label>New Date</label><select class='form-control shadow'><option>Dropdown Value</option></select>";
+             el.innerHTML = "<label>New Date</label><input type='date' class='form-control shadow'></input>";
           }
           return el
         },
