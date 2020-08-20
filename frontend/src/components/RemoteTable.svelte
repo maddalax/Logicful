@@ -57,6 +57,10 @@
   async function load() {
     try {
       rows = await getRows();
+      if(rows.length === 0) {
+        state = LoadState.Finished;
+        return;
+      }
       rows.map((w) => {
         w.table_meta_id = randomString();
         return w;
@@ -149,12 +153,18 @@
       <div class="spinner-border text-secondary" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-
     </div>
   {:else if state === LoadState.Finished}
-    <table class="table table-hover" style="width: 100%; margin: unset">
-      <caption>{caption}</caption>
-      <tbody>
+    {#if rows.length === 0}
+      <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
+        <div class="text-secondary">
+          <p>No results to display.</p>
+        </div>
+      </div>
+    {:else}
+      <table class="table table-hover" style="width: 100%; margin: unset">
+        <caption>{caption}</caption>
+        <tbody>
         <tr>
           {#each columns as column}
             <th scope="col">{column}</th>
@@ -174,8 +184,8 @@
               <td>
                 {#each Object.keys(actions) as action}
                   <button
-                    class="btn"
-                    on:click={() => actions[action](row)}
+                          class="btn"
+                          on:click={() => actions[action](row)}
                   >
                     {#if action === 'Edit'}
                       <div class="icon icon-sm icon-secondary">
@@ -185,7 +195,7 @@
                       <div class="icon icon-sm icon-secondary">
                         <span class="fas fa-trash"></span>
                       </div>
-                      {:else}
+                    {:else}
                       {action}
                     {/if}
                   </button>
@@ -194,11 +204,9 @@
             {/if}
           </tr>
         {/each}
-      </tbody>
-    </table>
-    <div>
-      <button class="float-right btn btn-light" type="button">Select Set</button>
-    </div>
+        </tbody>
+      </table>
+    {/if}
   {:else if state === LoadState.Failed}
     <div style="padding-top:1em; padding-left: 1em;">
       <p>Failed to load rows, please try refreshing the page.</p>
