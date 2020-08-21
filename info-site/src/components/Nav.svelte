@@ -41,106 +41,42 @@
 					</div>
 				</div>
 				<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+					<li class="nav-item">
+						<a
+								href="/pricing"
+								class="nav-link dropdown-toggle"
+								id="pricingDropdown"
+								aria-expanded="false"
+						>
+							Pricing
+						</a>
+					</li>
 					<li class="nav-item dropdown">
 						<a
 								href="#"
 								class="nav-link dropdown-toggle"
-								id="dashboardDropdown"
+								id="servicesDropdown"
 								aria-expanded="false"
 								data-toggle="dropdown"
 						>
-							Dashboard
+							Services
 							<span class="fas fa-angle-down nav-link-arrow ml-1" />
 						</a>
 						<div
 								class="dropdown-menu dropdown-megamenu-sm px-0 py-2 p-lg-4"
-								aria-labelledby="dashboardDropdown"
+								aria-labelledby="servicesDropdown"
+								style="min-width: 200px;"
 						>
 							<div class="row">
-								<div class="col-6">
-									<h6 class="d-block mb-3 text-primary">User dashboard</h6>
-									<ul class="list-style-none mb-4">
+								<div class="col">
+									<h6 class="d-block mb-3 text-primary">Services</h6>
+									<ul class="list-style-none mb-2">
 										<li class="mb-2 megamenu-item">
 											<a
 													class="megamenu-link"
-													href="../../html/dashboard/account.html"
+													href="/services/workflows"
 											>
-												My account
-											</a>
-										</li>
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/settings.html"
-											>
-												Settings
-											</a>
-										</li>
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/security.html"
-											>
-												Security
-											</a>
-										</li>
-									</ul>
-									<h6 class="d-block mb-3 text-primary">Items</h6>
-									<ul class="list-style-none">
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/my-items.html"
-											>
-												My items
-											</a>
-										</li>
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/edit-item.html"
-											>
-												Edit item
-											</a>
-										</li>
-									</ul>
-								</div>
-								<div class="col-6">
-									<h6 class="d-block mb-3 text-primary">Messaging</h6>
-									<ul class="list-style-none mb-4">
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/messages.html"
-											>
-												Messages
-											</a>
-										</li>
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/single-message.html"
-											>
-												Chat
-											</a>
-										</li>
-									</ul>
-									<h6 class="d-block mb-3 text-primary">Billing</h6>
-									<ul class="list-style-none mb-4">
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/billing.html"
-											>
-												Billing details
-											</a>
-										</li>
-										<li class="mb-2 megamenu-item">
-											<a
-													class="megamenu-link"
-													href="../../html/dashboard/invoice.html"
-											>
-												Invoice
+												Workflows
 											</a>
 										</li>
 									</ul>
@@ -148,6 +84,187 @@
 							</div>
 						</div>
 					</li>
+					<li class="nav-item dropdown">
+						<a
+								href="#"
+								class="nav-link dropdown-toggle"
+								id="productDropdown"
+								aria-expanded="false"
+								data-toggle="dropdown"
+						>
+							Product
+							<span class="fas fa-angle-down nav-link-arrow ml-1" />
+						</a>
+						<div
+								class="dropdown-menu dropdown-megamenu-sm px-0 py-2 p-lg-4"
+								aria-labelledby="productDropdown"
+						>
+							<div class="row">
+								<div class="col-6">
+									<h6 class="d-block mb-3 text-primary">Product</h6>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Demo
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Example Forms
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-6">
+
+									<h6 class="d-block mb-3 text-primary">Use Cases</h6>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Online Payments
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Registrations
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Document Generation
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Online Surveys
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a
+								href="#"
+								class="nav-link dropdown-toggle"
+								id="resourcesDropdown"
+								aria-expanded="false"
+								data-toggle="dropdown"
+						>
+							Resources
+							<span class="fas fa-angle-down nav-link-arrow ml-1" />
+						</a>
+						<div
+								class="dropdown-menu dropdown-megamenu-sm px-0 py-2 p-lg-4"
+								aria-labelledby="productDropdown"
+						>
+							<div class="row">
+								<div class="col-6">
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Demo
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/resources/tutorials"
+											>
+												Tutorials
+											</a>
+										</li>
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/resources/tutorials"
+											>
+												Getting Started
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-6">
+
+									<h6 class="d-block mb-3 text-primary">Use Cases</h6>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Online Payments
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Registrations
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Document Generation
+											</a>
+										</li>
+									</ul>
+									<ul class="list-style-none mb-2">
+										<li class="mb-2 megamenu-item">
+											<a
+													class="megamenu-link"
+													href="/services/workflows"
+											>
+												Online Surveys
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+
 					<li class="nav-item dropdown">
 						<a
 								href="#"
@@ -420,62 +537,6 @@
 											</a>
 										</li>
 									</ul>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a
-								href="#"
-								class="nav-link dropdown-toggle"
-								data-toggle="dropdown"
-								id="supportDropdown"
-								aria-expanded="false"
-						>
-							Support
-							<span class="fas fa-angle-down nav-link-arrow ml-1" />
-						</a>
-						<div
-								class="dropdown-menu dropdown-menu-lg"
-								aria-labelledby="supportDropdown"
-						>
-							<div class="col-auto px-0">
-								<div class="list-group list-group-flush">
-									<a
-											href="https://themesberg.com/docs/pixel-bootstrap/getting-started/overview/"
-											target="_blank"
-											class="list-group-item list-group-item-action d-flex
-                    align-items-center p-0 py-3 px-lg-4"
-									>
-                    <span class="icon icon-sm">
-                      <span class="fas fa-file-alt" />
-                    </span>
-										<div class="ml-4">
-                      <span class="d-block font-small font-weight-bold mb-0">
-                        Documentation
-                        <span class="badge badge-sm badge-secondary ml-2">
-                          v3.1
-                        </span>
-                      </span>
-											<span class="small">Examples and guides</span>
-										</div>
-									</a>
-									<a
-											href="https://themesberg.com/contact"
-											target="_blank"
-											class="list-group-item list-group-item-action d-flex
-                    align-items-center p-0 py-3 px-lg-4"
-									>
-                    <span class="icon icon-sm">
-                      <span class="fas fa-microphone-alt" />
-                    </span>
-										<div class="ml-4">
-                      <span class="d-block font-small font-weight-bold mb-0">
-                        Support
-                      </span>
-											<span class="small">Need help? Ask us!</span>
-										</div>
-									</a>
 								</div>
 							</div>
 						</div>
