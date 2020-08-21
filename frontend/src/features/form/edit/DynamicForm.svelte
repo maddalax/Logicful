@@ -65,7 +65,12 @@
 >
   <div
     style="min-height: 89vh"
-    use:dndzone={{ items: form.fields, flipDurationMs: 300, dropTargetStyle: { outline: 'white solid 0px' } }}
+    use:dndzone={{ items: form.fields, flipDurationMs: 300, transformDraggedElement: (el, index) => {
+          console.log(el);
+            el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
+
+      return el;
+    }, dropTargetStyle: { outline: 'white solid 0px' } }}
     on:consider={handler}
     on:finalize={handler}
   >

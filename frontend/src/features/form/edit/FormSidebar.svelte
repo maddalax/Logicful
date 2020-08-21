@@ -12,6 +12,7 @@
       { id: randomString(), name: "switch" },
       { id: randomString(), name: "spacer" },
       { id: randomString(), name: "date" },
+      { id: randomString(), name: "block" },
     ];
   }
 
@@ -49,38 +50,15 @@
 </script>
 
 <div style="text-align:center;">
-  <button
-          class="save-button btn btn-light"
-          type="button"
-          on:click={saveDraft}
-  >
+  <button class="save-button btn btn-light" type="button" on:click={saveDraft}>
     Save
   </button>
 </div>
 <h5 style="padding-bottom:0.5em">Add Field</h5>
 <div
-        use:dndzone={{ items: blocks, flipDurationMs: 300,
-        transformDraggedElement : (el, index) => {
-          if(index === 0) {
-            el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
-          }
-          if(index === 1) {
-             el.innerHTML = "<label>New Dropdown</label><select class='form-control shadow'><option>Dropdown Value</option></select>";
-          }
-          if(index === 2) {
-            el.innerHTML = `<div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">New Toggle</label>
-            </div>`
-          }
-          if(index === 4) {
-             el.innerHTML = "<label>New Date</label><input type='date' class='form-control shadow'></input>";
-          }
-          return el
-        },
-        dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }}
-        on:consider={handler}
-        on:finalize={handler}
+  use:dndzone={{ items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }}
+  on:consider={handler}
+  on:finalize={handler}
 >
   {#each blocks as block (block.id)}
     <div animate:flip={{ duration: 1000 }}>
@@ -129,29 +107,40 @@
               <h6 class="h6">Add Dropdown</h6>
             </div>
           </div>
-    {:else if block.name === 'date'}
-    <div class="d-flex px-2 block">
-      <div>
-        <div class="icon icon-sm icon-secondary">
-          <span class="fas fa-calendar-day"></span>
-        </div>
-      </div>
-      <div class="pl-3">
-        <h6 class="h6">Add Date</h6>
-      </div>
-    </div>
-    {/if}
+        {:else if block.name === 'block'}
+          <div class="d-flex px-2 block">
+            <div>
+              <div class="icon icon-sm icon-secondary">
+                <span class="fas fa-indent"></span>
+              </div>
+            </div>
+            <div class="pl-3">
+              <h6 class="h6">Add Content</h6>
+            </div>
+          </div>
+        {:else if block.name === 'date'}
+          <div class="d-flex px-2 block">
+            <div>
+              <div class="icon icon-sm icon-secondary">
+                <span class="fas fa-calendar-day" />
+              </div>
+            </div>
+            <div class="pl-3">
+              <h6 class="h6">Add Date</h6>
+            </div>
+          </div>
+        {/if}
       </div>
     </div>
   {/each}
 </div>
 
 <div
-        class="d-flex px-2 collapsed"
-        href="#submenu-app"
-        data-toggle="collapse"
-        data-target="#submenu-app"
-        aria-expanded="false"
+  class="d-flex px-2 collapsed"
+  href="#submenu-app"
+  data-toggle="collapse"
+  data-target="#submenu-app"
+  aria-expanded="false"
 >
   <div>
     <div class="icon icon-sm icon-secondary">
@@ -172,11 +161,11 @@
 </div>
 <div>
   <div
-          class="multi-level collapse"
-          role="list"
-          id="submenu-app"
-          aria-expanded="false"
-          style="padding-top:0.5em; padding-left: 1.9em;"
+    class="multi-level collapse"
+    role="list"
+    id="submenu-app"
+    aria-expanded="false"
+    style="padding-top:0.5em; padding-left: 1.9em;"
   >
     <ul class="flex-column nav">
       <li class="nav-item">
@@ -194,7 +183,6 @@
 </div>
 
 <style>
-
   .block {
     margin-bottom: 1em;
   }

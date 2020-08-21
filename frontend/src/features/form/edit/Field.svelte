@@ -1,28 +1,28 @@
 <script lang="ts">
-  import type {IField} from "models/IField";
+  import type { IField } from "models/IField";
 
   export let field: IField;
   import TextInput from "inputs/TextInput.svelte";
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
   import ComboBox from "inputs/ComboBox.svelte";
-  import {LoadState} from "models/LoadState";
-  import {FieldValueLoader} from "loader/FieldValueLoader";
+  import { LoadState } from "models/LoadState";
+  import { FieldValueLoader } from "loader/FieldValueLoader";
   import Address from "inputs/Address.svelte";
-  import {dispatchFieldChange} from "event/FieldEvent";
+  import { dispatchFieldChange } from "event/FieldEvent";
   import TextArea from "inputs/TextArea.svelte";
   import Spacer from "inputs/Spacer.svelte";
   import formStore from "store/FormStore";
-  import {fade} from "svelte/transition";
+  import { fade } from "svelte/transition";
   import RichTextDisplay from "inputs/RichTextDisplay.svelte";
-  import {dispatch} from "event/EventBus";
+  import { dispatch } from "event/EventBus";
   import Switch from "./Switch.svelte";
-  import {subscribe} from "event/EventBus";
+  import { subscribe } from "event/EventBus";
   import DatePicker from "../../../components/DatePicker.svelte";
 
   let state = LoadState.NotStarted;
   let value: any;
   let lastValue: any;
-  export let config: any
+  export let config: any;
 
   onMount(load);
 
@@ -72,7 +72,7 @@
     {:else if field.type === 'number'}
       <TextInput {field} type={'number'} />
     {:else if field.type === 'combobox'}
-      <ComboBox {field} {...config}/>
+      <ComboBox {field} {...config} />
     {:else if field.type === 'block'}
       <RichTextDisplay {field} />
     {:else if field.type === 'block-editor'}
@@ -80,9 +80,9 @@
     {:else if field.type === 'spacer'}
       <Spacer {field} />
     {:else if field.type === 'switch'}
-      <Switch field={field} {...config}/>
+      <Switch {field} {...config} />
     {:else if field.type === 'date'}
-      <DatePicker field={field} {...config}/>
+      <DatePicker {field} {...config} />
     {:else}
       <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
     {/if}

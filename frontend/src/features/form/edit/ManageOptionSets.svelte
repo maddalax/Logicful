@@ -37,12 +37,12 @@
     loading = true;
     const response = await fetch("http://localhost:3000/option-set/list");
     const data: OptionSet[] = await response.json();
-    const result = data.find(w => w.name === name);
-    if(result.type === "local") {
+    const result = data.find((w) => w.name === name);
+    if (result.type === "local") {
       result.localSaveId = result.value as string;
       result.value = await convertUrlToLocal(result);
     }
-    sets = [result]
+    sets = [result];
     loading = false;
   }
 
@@ -186,11 +186,11 @@
     </div>
   {/each}
   <div class="float-right">
-  <DropdownButton
-          position="float-right"
-          label={'Save'}
-          processingLabel={'Saving...'}
-          actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
-  />
+    <DropdownButton
+      position="float-right"
+      label={'Save'}
+      processingLabel={'Saving...'}
+      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
+    />
   </div>
 </div>

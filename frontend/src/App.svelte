@@ -1,13 +1,12 @@
 <script lang="ts">
-
-  import Footer from 'components/Footer.svelte'
-  import Navbar from 'components/Navbar.svelte'
+  import Footer from "components/Footer.svelte";
+  import Navbar from "components/Navbar.svelte";
   import FormBuilder from "./features/form/edit/FormBuilder.svelte";
   import FormSidebar from "./features/form/edit/FormSidebar.svelte";
   import FieldEditSidebar from "./features/form/edit/FieldEditSidebar.svelte";
-  import Dialog from 'components/Dialog.svelte'
-  import {onMount} from "svelte";
-  import {subscribe} from "event/EventBus";
+  import Dialog from "components/Dialog.svelte";
+  import { onMount } from "svelte";
+  import { subscribe } from "event/EventBus";
   import Sidebar from "./components/Sidebar.svelte";
   import Preloader from "./components/Preloader.svelte";
 
@@ -23,12 +22,37 @@
     subscribe("show_right_sidebar", (props) => {
       rightSidebar = props.component;
     });
-  })
-
+  });
 </script>
 
-<style>
+<Preloader />
 
+<Navbar />
+
+<div
+  class="container-fluid clearfix"
+  id="main-container"
+  style="margin-top: 3.9em;"
+>
+  <div class="left-sidebar">
+    <Sidebar>
+      <FormSidebar />
+    </Sidebar>
+  </div>
+  <div class="main">
+    <svelte:component this={main} />
+  </div>
+  <div class="right-sidebar">
+    <Sidebar>
+      <svelte:component this={rightSidebar} />
+    </Sidebar>
+  </div>
+</div>
+
+<Dialog />
+<Footer />
+
+<style>
   .main {
     height: 150vh;
     width: 50%;
@@ -44,7 +68,6 @@
     top: 0;
   }
 
-
   .right-sidebar {
     width: 30%;
     height: 25vh;
@@ -58,28 +81,4 @@
     display: flex;
     justify-content: space-between;
   }
-
 </style>
-
-<Preloader/>
-
-<Navbar/>
-
-<div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
-  <div class="left-sidebar">
-    <Sidebar>
-      <FormSidebar/>
-    </Sidebar>
-  </div>
-  <div class="main">
-    <svelte:component this={main}/>
-  </div>
-  <div class="right-sidebar">
-    <Sidebar>
-      <svelte:component this={rightSidebar}/>
-    </Sidebar>
-  </div>
-</div>
-
-<Dialog/>
-<Footer/>
