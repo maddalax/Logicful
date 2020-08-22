@@ -8,7 +8,13 @@
 
   export let field: IField;
   export let value = { blocks: [] };
+  export let onChange : (value : any) => any
   let editor: EditorJS;
+
+  function onFieldChange(data) {
+    console.log('on', onChange)
+    onChange?.(data);
+  }
 
   onMount(() => {
     value = formStore.get(field.configTarget ?? field.id);
@@ -25,6 +31,7 @@
           editor.save().then((data) => {
             field.value = data;
             dispatchFieldChange(field, true);
+            onFieldChange(data);
           });
         },
         data: value,

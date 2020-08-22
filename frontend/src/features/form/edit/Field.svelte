@@ -41,6 +41,7 @@
     if (field.value != null) {
       state = LoadState.Loading;
       try {
+        console.log("LOADING", field.value);
         const loader = new FieldValueLoader();
         const result = await loader.load(field);
         value = result;
@@ -76,7 +77,7 @@
     {:else if field.type === 'block'}
       <RichTextDisplay {field} />
     {:else if field.type === 'block-editor'}
-      <TextArea {field} />
+      <TextArea {field} {...config}/>
     {:else if field.type === 'spacer'}
       <Spacer {field} />
     {:else if field.type === 'switch'}

@@ -25,3 +25,11 @@ type Field struct {
 	Options interface{} `json:"options"`
 	Value   interface{} `json:"value"`
 }
+
+type ContentBlock struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+	Changeable
+	Creatable
+	Value string `json:"value"`
+}

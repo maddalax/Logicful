@@ -22,7 +22,8 @@
   let lastSelectedIndex = -1;
 
   export let headerActions: TableButtonAction[];
-  export let actions: { [key: string]: (row: any) => any };
+  export let onEdit : (row : any) => any
+  export let onDelete : (row : any) => any
   export let hidden = new Set<string>();
 
   function createFuse(): Fuse<{}> {
@@ -130,7 +131,7 @@
             {#each columns as column}
               <th scope="col">{column}</th>
             {/each}
-            {#if actions}
+            {#if onDelete || onEdit}
               <th scope="col" />
             {/if}
           </tr>
@@ -145,22 +146,19 @@
                   <div class="text">{row[column]}</div>
                 </td>
               {/each}
-              {#if actions}
-                <td>
-                  {#each Object.keys(actions) as action}
-                    <button class="btn" on:click={() => actions[action](row)}>
-                      {#if action === 'Edit'}
-                        <div class="icon icon-sm icon-secondary">
-                          <span class="fas fa-pencil-alt" />
-                        </div>
-                      {:else if action == 'Delete'}
-                        <div class="icon icon-sm icon-secondary">
-                          <span class="fas fa-trash" />
-                        </div>
-                      {:else}{action}{/if}
-                    </button>
-                  {/each}
-                </td>
+              {#if onEdit}
+                <button class="btn" on:click={() => onEdit(row)}>
+                  <div class="icon icon-sm icon-secondary">
+                    <span class="fas fa-pencil-alt" />
+                  </div>
+                </button>
+              {/if}
+              {#if onDelete}
+                <button class="btn" on:click={() => onDelete(row)}>
+                  <div class="icon icon-sm icon-secondary">
+                    <span class="fas fa-trash" />
+                  </div>
+                </button>
               {/if}
             </tr>
           {/each}
