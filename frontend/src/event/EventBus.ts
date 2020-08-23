@@ -11,7 +11,7 @@ export function subscribe(event : string, subscriber : (((payload : any) => any)
 }
 
 export async function dispatch(event : string, payload : any) {
-  console.trace("dispatch_event", event, payload);
+  console.log("dispatch_event", event, payload);
   if (map.has(event)) {
     const subscribers = map.get(event); 
     const promises = subscribers.map((subscriber) => {
@@ -22,7 +22,7 @@ export async function dispatch(event : string, payload : any) {
 }
 
 export function dispatchSync(event : string, payload : any) {
-  console.trace("dispatch_event", event, payload);
+  console.log("dispatch_event", event, payload);
   if (map.has(event)) {
     const subscribers = map.get(event);
     subscribers.map((subscriber) => {

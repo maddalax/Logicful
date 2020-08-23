@@ -31,9 +31,13 @@
 
 </script>
 
+<h4 class="text-center">Content Editor</h4>
 <Field
-  field={{ id: randomString(), required : true, loadTransformer: loadTransformer, label: 'Content Block', value: { type: 'local', value: field.value }, type: 'combobox', configFieldTarget: 'value', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:3000/content-block/list' } }}
-/>
-<div style="width: 90%; margin-left: 10px;">
-    <button class="btn btn-primary" on:click={manageBlocks}>Manage Content Blocks</button>
-</div>
+        editor={true}
+        field={{
+            id : randomString(),
+            type : 'block-editor',
+            value : field.value,
+            configTarget: field.id,
+            configFieldTarget : 'value'
+        }}/>

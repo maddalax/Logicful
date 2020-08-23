@@ -22,12 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="pretty">
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="dialog back button">
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/public/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/models/ComponentProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/models/ComponentProps.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/formatters/RichTextOutputFormatter.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,10 +158,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev (1)" />
         <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.pretty" />
         <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.dev (1)" />
         <item itemvalue="npm.http-server (1)" />
       </list>
     </recent_temporary>
@@ -188,7 +195,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="dd updates" />
     <MESSAGE value="field type fix" />
     <MESSAGE value="fixes" />
     <MESSAGE value="fix colors" />
@@ -213,7 +219,8 @@
     <MESSAGE value="content block edit stuff" />
     <MESSAGE value="move db out of handler, recursive fix on manage content block" />
     <MESSAGE value="pretty" />
-    <option name="LAST_COMMIT_MESSAGE" value="pretty" />
+    <MESSAGE value="dialog back button" />
+    <option name="LAST_COMMIT_MESSAGE" value="dialog back button" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -259,30 +266,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1598197142005">
+    <state width="1204" height="214" key="GridCell.Tab.0.bottom" timestamp="1598201693585">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598197142005" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1598197142004">
+    <state width="1204" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598201693585" />
+    <state width="1204" height="214" key="GridCell.Tab.0.center" timestamp="1598201693584">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598197142004" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1598197142003">
+    <state width="1204" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598201693584" />
+    <state width="1204" height="214" key="GridCell.Tab.0.left" timestamp="1598201693583">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598197142003" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1598197142004">
+    <state width="1204" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598201693583" />
+    <state width="1204" height="214" key="GridCell.Tab.0.right" timestamp="1598201693584">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598197142004" />
+    <state width="1204" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598201693584" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -356,11 +363,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598196336683">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598198029479">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598196336683" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598198029479" />
     <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598194754498">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -374,16 +381,16 @@
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598016320414" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1598188989307">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1598200331881">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598188989307" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598197749672">
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598200331881" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598202923150">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598197749672" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598202923150" />
   </component>
 </project>

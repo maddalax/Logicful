@@ -11,6 +11,7 @@
   import { dispatch, subscribe } from "event/EventBus";
   import DynamicForm from "./DynamicForm.svelte";
   import { shiftArray } from "../../../util/Array";
+  import formStore from "store/FormStore";
 
   let form: IForm = null;
   let dropped = false;
@@ -106,11 +107,13 @@
         );
         form.fields[toUpdate][field.configFieldTarget] = field.value;
         dispatchFieldChange(form.fields[toUpdate], true);
+        formStore.set(form.fields[toUpdate]);
       }
 
       const index = form.fields.findIndex((w) => w.id === field.id);
 
       form.fields[index] = field;
+      formStore.set(field);
     });
   });
 </script>

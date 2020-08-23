@@ -36,7 +36,7 @@
   let modal: bootstrap.Modal;
 
   onMount(() => {
-    modal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    modal = new bootstrap.Modal(document.getElementById("app-dialog"));
 
     subscribeFieldChange((_, userChange) => {
       if (isOpen && props.confirmCloseOnDirty && userChange) {
@@ -87,15 +87,15 @@
 
 <div
   class="modal fade"
-  id="exampleModal"
+  id="app-dialog"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="app-dialog-label"
   aria-hidden="true"
 >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
+        <h5 class="modal-title" id="app-dialog-label">
           {#if propsContainer.length > 1 && propsIndex > 0}
             <span class="fas fa-arrow-left" id="dialog-back" on:click={onBack}></span>
           {/if}
