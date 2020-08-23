@@ -15,6 +15,8 @@ var instance = db.New()
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
+	field := "content_blocks"
+
 	item, err := instance.GetItem(&dynamodb.GetItemInput{
 		TableName: aws.String("clients"),
 		Key: map[string]*dynamodb.AttributeValue{
@@ -22,18 +24,18 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 				S: aws.String("maddox"),
 			},
 		},
-		ProjectionExpression: aws.String("forms"),
+		ProjectionExpression: aws.String(field),
 	})
-
-	if item == nil || item.Item["forms"] == nil {
-		return gateway.Ok(make([]string, 0))
-	}
 
 	if err != nil {
 		return gateway.BadRequest(err.Error())
 	}
 
-	ids := item.Item["forms"].SS
+	if item == nil || item.Item[field] == nil {
+		return gateway.Ok(make([]string, 0))
+	}
+
+	ids := item.Item[field].SS
 	var keys []map[string]*dynamodb.AttributeValue
 	for id := range ids {
 		k := map[string]*dynamodb.AttributeValue{
@@ -44,7 +46,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
 		RequestItems: map[string]*dynamodb.KeysAndAttributes{
-			"forms": {
+			field: {
 				Keys: keys,
 			},
 		},
@@ -54,9 +56,9 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		return gateway.BadRequest(err.Error())
 	}
 
-	results := items.Responses["forms"]
+	results := items.Responses[field]
 
-	var recs []models.Form
+	var recs []models.ContentBlock
 
 	err = dynamodbattribute.UnmarshalListOfMaps(results, &recs)
 

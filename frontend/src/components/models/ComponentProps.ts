@@ -3,7 +3,8 @@ export interface DialogOptions {
     confirmCloseOnDirty : boolean,
     props? : any
     title : string,
-    save? : boolean
+    save? : boolean,
+    onBack? : () => any
 }
 
 export interface DropdownButtonAction {

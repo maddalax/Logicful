@@ -14,7 +14,7 @@
 
   let form: IForm = null;
   let dropped = false;
-  let active : number = -1;
+  let active: number = -1;
   let loadingActive: boolean = false;
   let order = [];
 
@@ -31,14 +31,13 @@
       w.selected = false;
       return w;
     });
-    scrollToBottom();
   }
 
   onMount(async () => {
     loadForm();
 
     subscribe("save_form", (params) => {
-      console.log(JSON.stringify(form, null, 2))
+      console.log(JSON.stringify(form, null, 2));
       localStorage.setItem("form", JSON.stringify(form));
     });
 
@@ -53,28 +52,27 @@
               name: "new-field-" + randomStringSmall(),
               label: "New Field " + randomStringSmall(),
               type: i.name,
-              selected : true,
+              selected: true,
               value: undefined,
               expanded: true,
             },
           };
         } else {
           // Deselect all other fields and select the one that was dropped.
-          if(e.type === 'finalize') {
+          if (e.type === "finalize") {
             i.selected = false;
           }
         }
         return { ...i };
       });
       form.fields = items;
-      if(e.type === 'finalize') {
+      if (e.type === "finalize") {
         active = newActive;
         dispatch("edit_field", {
           form,
-          active
-        })
+          active,
+        });
       }
-      //addField(params.type, params.index);
     });
 
     subscribe("field_selected_change", (params) => {
@@ -93,8 +91,8 @@
       }
       dispatch("edit_field", {
         form,
-        active
-      })
+        active,
+      });
     });
 
     subscribeFieldChange(async (field: IField) => {
@@ -115,10 +113,6 @@
       form.fields[index] = field;
     });
   });
-
-  function scrollToBottom() {}
-
-  function addField(type: string = "string", index: number = -1) {}
 </script>
 
 <div>
@@ -143,10 +137,6 @@
 </div>
 
 <style>
-  .max-width {
-    max-width: 60%;
-  }
-
   .col {
     padding-left: 0.5em;
     padding-right: 0em;

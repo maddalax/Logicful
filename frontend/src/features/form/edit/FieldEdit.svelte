@@ -1,18 +1,17 @@
 <script lang="ts">
-  import type {IField} from "models/IField";
-  import {afterUpdate, onMount} from "svelte";
-  import {randomString} from "util/Generate";
+  import type { IField } from "models/IField";
+  import { afterUpdate, onMount } from "svelte";
+  import { randomString } from "util/Generate";
   import FieldTypeEditor from "./FieldTypeEditor.svelte";
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
-  import type {FieldEditConfig} from "views/builder/models/FieldEditConfig";
+  import type { FieldEditConfig } from "views/builder/models/FieldEditConfig";
   import Field from "./Field.svelte";
   import Button from "../../../components/Button.svelte";
 
   export let field: IField;
   export let config: FieldEditConfig;
 
-  let cantBeRequired = ['switch']
-
+  let cantBeRequired = ["switch"];
 </script>
 
 <h4 class="text-center">Field Configuration</h4>
@@ -20,14 +19,12 @@
   <div>
     {#if field.type === 'spacer'}
       <Field
-          field={{ id: randomString(), label: 'Increase value to add more spacing between the previous and next field.', required: true, value: field.value, type: 'number', configFieldTarget: 'value', configTarget: field.id }}
+        field={{ id: randomString(), label: 'Increase value to add more spacing between the previous and next field.', required: true, value: field.value, type: 'number', configFieldTarget: 'value', configTarget: field.id }}
       />
     {:else if field.type === 'block'}
       <ContentBlockEditor {field} expanded={field.expanded} />
     {:else}
-      <div
-        id={`field-button-${field.id}`}
-      >
+      <div id={`field-button-${field.id}`}>
         <Field
           field={{ id: randomString(), label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }}
         />
@@ -36,12 +33,12 @@
         />
         {#if !cantBeRequired.includes(field.type)}
           <Field
-                  config={{search : false}}
-                  field={{ id: randomString(), label: 'Required', value: { type: 'local', value: field.required }, type: 'switch', configFieldTarget: 'required', configTarget: field.id, options: { type: 'local', value: [{label : 'Yes', value : true}, {label: 'No', value : false}] } }}
+            config={{ search: false }}
+            field={{ id: randomString(), label: 'Required', value: { type: 'local', value: field.required }, type: 'switch', configFieldTarget: 'required', configTarget: field.id, options: { type: 'local', value: [{ label: 'Yes', value: true }, { label: 'No', value: false }] } }}
           />
         {/if}
         <Field
-          field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required : true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:8080/field-types.json' } }}
+          field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required: true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:8080/field-types.json' } }}
         />
         <FieldTypeEditor {field} />
       </div>

@@ -130,8 +130,7 @@
     doClose();
   }
 
-  function onSearch(e) {
-    e.preventDefault();
+  function onSearch() {
     if (options.length === 0) {
       filtered = options;
     } else if (query == null || query === "") {
@@ -143,11 +142,10 @@
   }
 
   function onKeyDown(e) {
-    e.preventDefault();
     if (e.key === "Escape") {
       doClose();
-    }
-    if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
       const option = document.getElementById(`${field.id}-option-0`);
       option.focus({
         preventScroll: true,
@@ -163,7 +161,7 @@
     if (e.key === "ArrowDown") {
       if (open) {
         const input = document.getElementById(`${field.id}-search-input`);
-        if(!input) {
+        if (!input) {
           return;
         }
         input.focus({
@@ -177,20 +175,18 @@
 
   function doOpen() {
     open = true;
-    //document.body.style.overflow = "hidden";
   }
 
   function doClose() {
     open = false;
-    query = '';
+    query = "";
     filtered = options;
-    //document.body.style.overflow = "auto";
   }
 
   function optionOnKeyPress(e, option, index) {
     if (index === 0 && e.key === "ArrowUp") {
       const input = document.getElementById(`${field.id}-search-input`);
-      if(!input) {
+      if (!input) {
         return;
       }
       input.focus({
@@ -208,7 +204,7 @@
   function optionOnKeyDown(e, option, index) {
     if (index === 0 && e.key === "ArrowUp") {
       const input = document.getElementById(`${field.id}-search-input`);
-      if(!input) {
+      if (!input) {
         return;
       }
       input.focus({
@@ -249,19 +245,18 @@
         <div class="dropdown-menu" class:show={open}>
           {#if search}
             <input
-            class="form-control search dropdown-item"
-            autocomplete="off"
-            id={`${field.id}-search-input`}
-            placeholder="Search..."
-            value={query}
-            on:input={(e) => {
-              query = e.target.value;
-              onSearch();
-            }}
-            on:keydown|stopPropagation|preventDefault={onSearch}
-            on:keydown|stopPropagation|preventDefault={onKeyDown}
-            on:click|stopPropagation
-          />
+              class="form-control search dropdown-item"
+              autocomplete="off"
+              id={`${field.id}-search-input`}
+              placeholder="Search..."
+              value={query}
+              on:input={(e) => {
+                query = e.target.value;
+                onSearch();
+              }}
+              on:keydown|stopPropagation|preventDefault={onKeyDown}
+              on:click|stopPropagation
+            />
           {/if}
           {#if filtered.length === 0}
             <a class="dropdown-item" href="javascript:void(0)">

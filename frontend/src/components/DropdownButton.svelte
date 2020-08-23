@@ -49,7 +49,11 @@
       {#if i === 0}
         <span />
       {:else}
-        <a class="dropdown-item" href="#" on:click={() => executeAction(action)}>
+        <a
+          class="dropdown-item"
+          href="#"
+          on:click={() => executeAction(action)}
+        >
           {action.label}
         </a>
       {/if}

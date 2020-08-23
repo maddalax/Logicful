@@ -42,7 +42,7 @@
   headerActions={[{ label: '+ New Option Set', onClick: createNew }]}
   {getRows}
   {hidden}
-  actions={{ Edit: async (row) => {
+  onEdit={async (row) => {
       dispatch('dialog_show', {
         child: ManageOptionSets,
         title: 'Modifying Option Set',
@@ -51,7 +51,7 @@
           name: row.Name,
         },
       });
-    }, Delete: async (row) => {
-      console.log(row);
-    } }}
+    }}
+  onDelete={() => {alert('delete')}
+  }
 />

@@ -12,9 +12,10 @@ import (
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/gateway"
-	"os"
 	"time"
 )
+
+var instance = db.New()
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
@@ -30,8 +31,6 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	form.CreateBy = "maddox"
 	form.ChangeBy = "maddox"
 
-	instance := db.New()
-
 	fields, err := dynamodbattribute.Marshal(form.Fields)
 
 	if err != nil {
@@ -42,7 +41,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String(os.Getenv("CLIENTS_TABLE")),
+					TableName: aws.String("clients"),
 					Key: map[string]*dynamodb.AttributeValue{
 						"name": {
 							S: aws.String("maddox"),
@@ -61,7 +60,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String(os.Getenv("FORMS_TABLE")),
+					TableName: aws.String("forms"),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(form.Id),

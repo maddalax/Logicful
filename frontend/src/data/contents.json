@@ -1,4 +1,8 @@
-{
-  "Legal Disclaimer": "http://localhost:8080/legal.json",
-  "Test Item 2": "http://localhost:8080/content-item-2.json"
-}
+[{
+  "name": "Legal Disclaimer",
+  "value": "http://localhost:8080/legal.json",
+  "lastUpdated": "Today",
+  "modifiedBy": "Maddox",
+  "formsUsing": 3,
+  "status": "Published"
+}]

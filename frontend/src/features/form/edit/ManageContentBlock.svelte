@@ -1,0 +1,127 @@
+<script lang="ts">
+    import {onMount} from "svelte";
+    import Field from "./Field.svelte";
+    import type {ContentBlock} from "models/ContentBlock";
+    import {getUrlParameter} from "util/Http";
+    import DropdownButton from "components/DropdownButton.svelte";
+    import ContentBlockList from "./ContentBlockList.svelte";
+    import {dispatch} from "event/EventBus";
+    import TextArea from "inputs/TextArea.svelte";
+    import {randomString} from "util/Generate";
+
+    let block: ContentBlock
+    let data : any;
+    let loading = false;
+    let errored = false;
+    export let id: string;
+    export let isNew: boolean;
+
+    onMount(async () => {
+        if (!isNew) {
+            await load();
+        } else {
+            block = {}
+        }
+    });
+
+    async function load() {
+        loading = true;
+        const response = await fetch("http://localhost:3000/content-block/list");
+        const blocks: ContentBlock[] = await response.json();
+        const result = blocks.find((w) => w.id === id);
+        data = await convertUrlToLocal(result);
+        block = result;
+        console.log(data);
+        console.log(block);
+        loading = false;
+    }
+
+    async function convertUrlToLocal(block: ContentBlock): Promise<any> {
+        loading = true;
+        try {
+            const url = block.value;
+            if (!url) {
+                return [];
+            }
+            const response = await fetch(url);
+            return await response.json();
+        } catch (ex) {
+            errored = true;
+            return [];
+        } finally {
+            loading = false;
+        }
+    }
+
+    async function save() {
+        block.value = await generateInlineUrl();
+        await fetch("http://localhost:3000/content-block/set", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(block),
+        });
+        dispatch("option_set_modified", block);
+        dispatch("dialog_show", {
+            child: ContentBlockList,
+            closeOnOutsideClick: false,
+            confirmCloseOnDirty: true,
+            title: "Manage Content Blocks",
+        });
+    }
+
+    async function generateInlineUrl(): Promise<string> {
+        const saveId = getUrlParameter("id", block.value);
+        const qs = saveId ? `?id=${saveId}` : "";
+        const saveUrl = `http://localhost:3000/s3/json/set${qs}`;
+        const response = await fetch(saveUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        const {message} = await response.json();
+        return message;
+    }
+</script>
+
+<div>
+    {#if block == null}
+        <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    {:else}
+        <div style="margin-top: 1em">
+            <Field
+                    field={{ id: `${block.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: block.name, onChange: (value) => {
+              block.name = value;
+            } }}
+            />
+            <Field
+                    editor={true}
+                    config={{
+                        onChange : (d) => {
+                            data = d;
+                        }
+                    }}
+                    field={{
+            value : data,
+            id : randomString(),
+            name : block.name,
+            type : 'block-editor'
+        }}/>
+        </div>
+    {/if}
+    <div class="float-right">
+        <DropdownButton
+                position="float-right"
+                label={'Save'}
+                processingLabel={'Saving...'}
+                actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
+        />
+    </div>
+</div>

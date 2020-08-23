@@ -13,7 +13,7 @@ Globals:
       AllowHeaders: "'*'"
       AllowOrigin: "'*'"
   Function:
-    Timeout: 10
+    Timeout: 15
     Environment:
       Variables:
         S3_ENDPOINT: nyc3.digitaloceanspaces.com
@@ -21,49 +21,10 @@ Globals:
         S3_SECRET: N0+EBLQwNe78QV8Swyj+oXbVuFsP7eOeh6uzgd5Xam0
         S3_BUCKET: logicful
         DYNAMO_REGION: us-east-1
-        OPTION_SETS_TABLE: !Ref OptionSetsTable
-        CLIENTS_TABLE: !Ref ClientsTable
-        FORMS_TABLE: !Ref FormsTable
         DYNAMO_IS_LOCAL: false
         DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
 
 Resources:
-
-  OptionSetsTable:
-    Type: AWS::Serverless::SimpleTable # if you want to define a more complex table, use AWS::DynamoDB::Table
-    TableName: Option_Sets
-    PrimaryKey:
-      Name: id
-      Type: String
-    ProvisionedThroughput:
-      ReadCapacityUnit: 5
-      WriteCapacityUnits: 2
-    Tags:
-      AppType: Serverless
-
-  ClientsTable:
-    Type: AWS::Serverless::SimpleTable
-    TableName: Clients
-    PrimaryKey:
-      Name: name
-      Type: String
-    ProvisionedThroughput:
-      ReadCapacityUnit: 2
-      WriteCapacityUnits: 2
-    Tags:
-      AppType: Serverless
-
-  FomsTable:
-    Type: AWS::Serverless::SimpleTable
-    TableName: Forms
-    PrimaryKey:
-      Name: id
-      Type: String
-    ProvisionedThroughput:
-      ReadCapacityUnit: 5
-      WriteCapacityUnits: 2
-    Tags:
-      AppType: Serverless
 
   CreateOptionSet:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -136,16 +97,33 @@ Resources:
           Properties:
             Path: /form/list
             Method: GET
-Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldAPI:
-    Description: "API Gateway endpoint URL for Prod environment for First Function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  HelloWorldFunction:
-    Description: "First Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+
+  CreateContentBlock:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: lambda/set-content-block/
+      Handler: set-content-block
+      Runtime: go1.x
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Events:
+        CatchAll:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /content-block/set
+            Method: POST
+
+  ListContentBlock:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: lambda/list-content-block/
+      Handler: list-content-block
+      Runtime: go1.x
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Events:
+        CatchAll:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /content-block/list
+            Method: GET

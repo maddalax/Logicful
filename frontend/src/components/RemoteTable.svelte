@@ -22,7 +22,8 @@
   let lastSelectedIndex = -1;
 
   export let headerActions: TableButtonAction[];
-  export let actions: { [key: string]: (row: any) => any };
+  export let onEdit: (row: any) => any;
+  export let onDelete: (row: any) => any;
   export let hidden = new Set<string>();
 
   function createFuse(): Fuse<{}> {
@@ -57,7 +58,7 @@
   async function load() {
     try {
       rows = await getRows();
-      if(rows.length === 0) {
+      if (rows.length === 0) {
         state = LoadState.Finished;
         return;
       }
@@ -82,45 +83,6 @@
     filtered[index].meta_selected = true;
   }
 </script>
-
-<style>
-  .table-hover{
-    width: 95% !important;
-    margin-top: 1em !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-  }
-
-  table tr:hover td:first-child {
-    border-top-left-radius: 0.45rem;
-    border-bottom-left-radius: 0.45rem;
-  }
-  table tr:hover td:last-child {
-    border-top-right-radius: 0.45rem;
-    border-bottom-right-radius: 0.45rem;
-  }
-
-  tr.active {
-    background-color: #f0f0f0 !important;
-    border-radius: 0.45rem;
-  }
-
-  td {
-    max-width: 350px;
-  }
-
-  .text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
-  .save-btn{
-
-  }
-
-</style>
 
 <div>
   <div class="d-flex container-fluid">
@@ -165,45 +127,41 @@
       <table class="table table-hover" style="width: 100%; margin: unset">
         <caption>{caption}</caption>
         <tbody>
-        <tr>
-          {#each columns as column}
-            <th scope="col">{column}</th>
-          {/each}
-          {#if actions}
-            <th scope="col" />
-          {/if}
-        </tr>
-        {#each filtered as row, index}
-          <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
+          <tr>
             {#each columns as column}
-              <td >
-                <div class="text">{row[column]}</div>
-              </td>
+              <th scope="col">{column}</th>
             {/each}
-            {#if actions}
-              <td>
-                {#each Object.keys(actions) as action}
-                  <button
-                          class="btn"
-                          on:click={() => actions[action](row)}
-                  >
-                    {#if action === 'Edit'}
-                      <div class="icon icon-sm icon-secondary">
-                        <span class="fas fa-pencil-alt"></span>
-                      </div>
-                    {:else if action == 'Delete' }
-                      <div class="icon icon-sm icon-secondary">
-                        <span class="fas fa-trash"></span>
-                      </div>
-                    {:else}
-                      {action}
-                    {/if}
-                  </button>
-                {/each}
-              </td>
+            {#if onDelete || onEdit}
+              <th scope="col" />
             {/if}
           </tr>
-        {/each}
+          {#each filtered as row, index}
+            <tr
+              class:active={row.meta_selected}
+              on:click={() => onRowClick(row, index)}
+              style="vertical-align: middle;"
+            >
+              {#each columns as column}
+                <td>
+                  <div class="text">{row[column]}</div>
+                </td>
+              {/each}
+              {#if onEdit}
+                <button class="btn" on:click={() => onEdit(row)}>
+                  <div class="icon icon-sm icon-secondary">
+                    <span class="fas fa-pencil-alt" />
+                  </div>
+                </button>
+              {/if}
+              {#if onDelete}
+                <button class="btn" on:click={() => onDelete(row)}>
+                  <div class="icon icon-sm icon-secondary">
+                    <span class="fas fa-trash" />
+                  </div>
+                </button>
+              {/if}
+            </tr>
+          {/each}
         </tbody>
       </table>
     {/if}
@@ -214,3 +172,39 @@
   {/if}
 </div>
 
+<style>
+  .table-hover {
+    width: 95% !important;
+    margin-top: 1em !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  table tr:hover td:first-child {
+    border-top-left-radius: 0.45rem;
+    border-bottom-left-radius: 0.45rem;
+  }
+  table tr:hover td:last-child {
+    border-top-right-radius: 0.45rem;
+    border-bottom-right-radius: 0.45rem;
+  }
+
+  tr.active {
+    background-color: #f0f0f0 !important;
+    border-radius: 0.45rem;
+  }
+
+  td {
+    max-width: 350px;
+  }
+
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  .save-btn {
+  }
+</style>

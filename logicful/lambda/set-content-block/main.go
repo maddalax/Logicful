@@ -18,17 +18,17 @@ var instance = db.New()
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
-	set := models.OptionSet{}
-	err := json.Unmarshal([]byte(request.Body), &set)
+	block := models.ContentBlock{}
+	err := json.Unmarshal([]byte(request.Body), &block)
 
-	if set.Id == "" {
-		set.Id = uuid.New().String()
+	if block.Id == "" {
+		block.Id = uuid.New().String()
 	}
 
-	set.CreateTime = date.ISO8601(time.Now())
-	set.ChangeTime = date.ISO8601(time.Now())
-	set.CreateBy = "maddox"
-	set.ChangeBy = "maddox"
+	block.CreateTime = date.ISO8601(time.Now())
+	block.ChangeTime = date.ISO8601(time.Now())
+	block.CreateBy = "maddox"
+	block.ChangeBy = "maddox"
 
 	_, err = instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
 		TransactItems: []*dynamodb.TransactWriteItem{
@@ -43,50 +43,46 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 					UpdateExpression: aws.String("ADD #20e30 :20e30"),
 					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 						":20e30": {
-							SS: aws.StringSlice([]string{set.Id}),
+							SS: aws.StringSlice([]string{block.Id}),
 						},
 					},
 					ExpressionAttributeNames: map[string]*string{
-						"#20e30": aws.String("option_sets"),
+						"#20e30": aws.String("content_blocks"),
 					},
 				},
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("option_sets"),
+					TableName: aws.String("content_blocks"),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
-							S: aws.String(set.Id),
+							S: aws.String(block.Id),
 						},
 					},
-					UpdateExpression: aws.String("SET #c1e70 = :c1e70, #value = :value, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy"),
+					UpdateExpression: aws.String("SET #c1e70 = :c1e70, #value = :value, #c1e71 = :c1e71, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy"),
 					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 						":c1e70": {
-							S: aws.String(set.Name),
+							S: aws.String(block.Name),
 						},
 						":c1e71": {
-							S: aws.String(set.ChangeTime),
-						},
-						":c1e72": {
-							S: aws.String(set.Type),
+							S: aws.String(block.ChangeTime),
 						},
 						":c1e73": {
-							S: aws.String(set.CreateTime),
+							S: aws.String(block.CreateTime),
 						},
 						":value": {
-							S: aws.String(set.Value),
+							S: aws.String(block.Value),
 						},
 						":ChangeBy": {
-							S: aws.String(set.ChangeBy),
+							S: aws.String(block.ChangeBy),
 						},
 						":CreateBy": {
-							S: aws.String(set.CreateBy),
+							S: aws.String(block.CreateBy),
 						},
 					},
 					ExpressionAttributeNames: map[string]*string{
 						"#c1e70":    aws.String("name"),
 						"#c1e71":    aws.String("ChangeTime"),
-						"#c1e72":    aws.String("type"),
 						"#c1e73":    aws.String("CreateTime"),
 						"#c1e74":    aws.String("CreateTime"),
 						"#value":    aws.String("value"),
