@@ -26,6 +26,12 @@
     }
   }
 
+  function addField(block) {
+    dispatch("add_field", {
+      type : block.name
+    })
+  }
+
   function saveDraft() {
     dispatch("save_form", {
       status: "draft",
@@ -62,7 +68,7 @@
 >
   {#each blocks as block (block.id)}
     <div animate:flip={{ duration: 1000 }}>
-      <div>
+      <div on:click={() => addField(block)}>
         {#if block.name === 'string'}
           <div class="d-flex px-3 block">
             <div>

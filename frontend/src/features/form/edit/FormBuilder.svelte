@@ -53,6 +53,29 @@
       })
     })
 
+    subscribe("add_field", (params) => {
+      form.fields = form.fields.map(w => {
+        w.selected = false;
+        return w;
+      })
+      active = '';
+      const id = randomString();
+      form.fields = form.fields.concat([{
+        name: "new-field-" + randomStringSmall(),
+        label: "New Field " + randomStringSmall(),
+        type: params.type,
+        id,
+        selected: true,
+        value: undefined,
+        expanded: true,
+      }]);
+      active = id;
+      dispatch("edit_field", {
+        form,
+        active,
+      });
+    });
+
     subscribe("field_clone", (params) => {
       const index = form.fields.findIndex((w) => w.id === params.field.id);
       const copy = {...form.fields[index]};
