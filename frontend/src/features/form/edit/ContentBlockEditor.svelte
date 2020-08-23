@@ -31,6 +31,7 @@
 
 </script>
 
+<div>
 <div style="padding-left: 0.55em;">
     <h5>Block Editor</h5>
 </div>
@@ -43,3 +44,20 @@
             configTarget: field.id,
             configFieldTarget : 'value'
         }}/>
+    <div class="flex">
+        <button class="blocks-button btn btn-light" type="button">
+            Select Block
+        </button>
+        <button class="blocks-button btn btn-light" type="button">
+            Save Block
+        </button>
+    </div>
+</div>
+
+<style>
+    .blocks-button {
+        margin-top: 0.5em;
+        margin-left: 0.6em;
+    }
+</style>
+

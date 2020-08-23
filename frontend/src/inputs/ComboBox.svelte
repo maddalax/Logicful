@@ -227,8 +227,10 @@
   <Label {field} />
 
   {#if state === LoadState.Loading}
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
+    <div>
+      <div class="spinner-border" role="status" >
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   {:else if state === LoadState.Failed}
     <p>Failed to load.</p>
