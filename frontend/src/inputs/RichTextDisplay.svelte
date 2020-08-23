@@ -41,10 +41,16 @@
   }
 </script>
 
+<style>
+  :global(p){
+    margin-block-end: 0;
+  }
+</style>
+
 <div>
   {#if value === '' || value == null}
     <h5>Content Placeholder</h5>
-    <p>
+    <p style="margin-block-end: 0;">
       From the field configuration settings, select a content block to display.
     </p>
   {:else}

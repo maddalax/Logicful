@@ -24,7 +24,11 @@
   });
 </script>
 
-<div class="form-check form-switch">
+<style>
+
+</style>
+
+<div class="form-check form-switch" style="margin-bottom: 0;">
   <input
     class="form-check-input"
     type="checkbox"
@@ -36,7 +40,7 @@
       field.onChange?.(field.value);
     }}
   />
-  <label class="form-check-label" for={`${field.id}`}>
+  <label class="form-check-label" for={`${field.id}`} style="margin-bottom: .2rem;">
     {firstNotEmpty(field.label, field.name)}
   </label>
 </div>
