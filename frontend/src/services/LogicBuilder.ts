@@ -80,6 +80,12 @@ export class LogicBuilder {
                 return parseFloat(value) <= parseFloat(rule.value)
             case "gte":
                 return parseFloat(value) >= parseFloat(rule.value)
+            case "hasValue":
+                return value != null && value != ""
+            case "isTrue":
+                return value != null && value == true
+            case "isFalse":
+                return value != null && value == false
         }
     }
 

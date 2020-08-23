@@ -4,7 +4,6 @@
   import type { IField } from "models/IField";
   import { subscribeFieldChange } from "event/FieldEvent";
   import { DynamicFormMode } from "components/models/ComponentProps";
-  import { flip } from "svelte/animate";
   import { dndzone } from "svelte-dnd-action";
   import { dispatchSync } from "event/EventBus";
   import {transformDraggedElement} from "./util/Draggable";
