@@ -9,6 +9,7 @@
     import Field from "features/form/edit/Field.svelte";
     import {randomString} from "../util/Generate";
     import {subscribeFieldChange} from "event/FieldEvent";
+    import {dispatchFieldChange} from "event/FieldEvent";
 
     export let onChange: (data: LogicRule[]) => any;
     export let helperText: string | undefined;
@@ -26,13 +27,13 @@
         subscribeFieldChange((newField) => {
             if(field.id === newField.id) {
                 field = newField;
-                rules = field.logic.rules;
+                rules = field.logic?.rules ?? [];
             }
         })
 
         fields = await dispatchSingle("get_form_fields", {});
         fields = fields.filter(w => w.id !== field.id);
-        rules = field.logic.rules;
+        rules = field.logic?.rules ?? [];
     });
 
     function onRepeaterChange() {
@@ -43,6 +44,8 @@
     function remove(option: number) {
         rules.splice(option, 1);
         rules = [...rules];
+        field.logic.rules = rules;
+        dispatchFieldChange(field, true);
     }
 
     function addNew() {

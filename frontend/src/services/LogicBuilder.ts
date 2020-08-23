@@ -5,6 +5,10 @@ import formStore from "../store/FormStore";
 export class LogicBuilder {
 
     evaluate(field : IField) : boolean {
+        if(!field.logic.rules || field.logic.rules.length === 0) {
+            return true;
+        }
+        console.log("FIELD LOGIC", field.logic);
         if (field.logic.action === "show-any-match") {
             for (let rule of field.logic.rules) {
                 const fieldTargetValue = formStore.get(rule.field);
@@ -17,18 +21,30 @@ export class LogicBuilder {
             }
             return false;
         }
+        if (field.logic.action === "hide-any-match") {
+            for (let rule of field.logic.rules) {
+                const fieldTargetValue = formStore.get(rule.field);
+                if(fieldTargetValue == null) {
+                    continue;
+                }
+                if(this.evaluateCondition(rule, fieldTargetValue)) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     private evaluateCondition(rule : LogicRule, value : any) : boolean {
         switch (rule.condition) {
             case "contains":
-                return value.toString().includes(rule.value.toString())
+                return value?.toString()?.includes(rule.value?.toString())
             case "startsWith":
-                return value.toString().startsWith(rule.value.toString())
+                return value?.toString()?.startsWith(rule.value?.toString())
             case "endsWith":
-                return value.toString().endsWith(rule.value.toString())
+                return value?.toString()?.endsWith(rule.value?.toString())
             case "eq":
-                return value.toString() == rule.value.toString()
+                return value?.toString() == rule.value?.toString()
             case "gt":
                 return parseFloat(value) > parseFloat(rule.value)
             case "lt":
