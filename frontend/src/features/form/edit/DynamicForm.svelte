@@ -56,7 +56,11 @@
 </script>
 
 <div style="padding-left: 0.5em;">
-  <h4>Preview</h4>
+  <div style="">
+  <h4 style="margin-bottom: 0rem;">Form Preview</h4>
+<!--    <p style="margin-top: 0; margin-bottom: 0; font-size: 0.85rem;">Select a field to modify its configuration.</p>-->
+  </div>
+  <hr/>
 </div>
 <form
   style="min-height: 89vh"

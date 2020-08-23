@@ -31,8 +31,8 @@
     </div>
   {:else}
     <div style="margin-left: 1em">
-      <h4>Field Configuration</h4>
-      <p>Select a field to modify its configuration.</p>
+      <h4>Form Configurations</h4>
+      <p>Configure settings for your form.</p>
     </div>
   {/if}
 </div>
