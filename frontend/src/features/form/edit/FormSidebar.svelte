@@ -7,12 +7,12 @@
 
   function defaultBlocks() {
     return [
-      { id: randomString(), name: "string" },
-      { id: randomString(), name: "combobox" },
+      { id: randomString(), name: "string", morph : true },
+      { id: randomString(), name: "combobox", morph : true },
       { id: randomString(), name: "switch" },
       { id: randomString(), name: "spacer" },
-      { id: randomString(), name: "date" },
-      { id: randomString(), name: "block" },
+      { id: randomString(), name: "date", morph : true },
+      { id: randomString(), name: "block", morph : true },
     ];
   }
 

@@ -58,7 +58,8 @@ export function morphDraggedElementToBeLike(draggedEl, copyFromEl, currentMouseX
     const draggedElRect = draggedEl.getBoundingClientRect();
     const widthChange = newRect.width - draggedElRect.width;
     const heightChange = newRect.height - draggedElRect.height;
-    if (widthChange || heightChange) {
+    if (draggedElData.morph && (widthChange || heightChange)) {
+
         const relativeDistanceOfMousePointerFromDraggedSides = {
             left: (currentMouseX - draggedElRect.left) / draggedElRect.width,
             top: (currentMouseY - draggedElRect.top) / draggedElRect.height
