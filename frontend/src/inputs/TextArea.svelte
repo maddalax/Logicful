@@ -2,6 +2,8 @@
   import type { IField } from "models/IField";
   import { dispatchFieldChange, subscribeFieldChange } from "event/FieldEvent";
   import { onMount } from "svelte";
+  import 'quill/dist/quill.min'
+  import 'quill/dist/quill.snow.css'
 
   import formStore from "store/FormStore";
   import Quill from "quill";
