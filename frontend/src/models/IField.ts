@@ -10,7 +10,15 @@ export interface IField {
     value? : FormValue | undefined | any,
     onChange? : (value : any) => any,
     configTarget? : string,
-    loadTransformer? : (value : any) => any
+    loadTransformer? : (value : any) => any,
+    logic? : {
+        action : string,
+        rules : {
+            field : string,
+            condition : string,
+            value : any
+        }[]
+    }
 }
 
 export type FormValue = {type : 'local' | 'remote', value : any, selector? : string} | string

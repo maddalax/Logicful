@@ -30,7 +30,8 @@
             }
         })
 
-        fields = await dispatchSingle("get_form_fields", {})
+        fields = await dispatchSingle("get_form_fields", {});
+        fields = fields.filter(w => w.id !== field.id);
     });
 
     function onRepeaterChange() {
@@ -52,11 +53,50 @@
         ]);
     }
 
-    function conditions() : LabelValue[] {
-        return [{
-            label : 'Greater Than',
-            value : 'gt'
-        }]
+    function conditions(index : number) : LabelValue[] {
+        const targetFieldId = field.logic?.rules?.[index]?.field;
+        if(!targetFieldId) {
+            return []
+        }
+        const targetField = fields.find(w => w.id === targetFieldId);
+        if(!targetField) {
+            return []
+        }
+        if(targetField.type === "string") {
+            return [{
+                label : 'Contains',
+                value : 'contains'
+            }, {
+                label : 'Starts With',
+                value : 'startsWith'
+            }, {
+                label : 'Ends With',
+                value : 'endsWith'
+            }, {
+                label : 'Equals',
+                value : 'eq'
+            }]
+        }
+        if(targetField.type === "number") {
+            return [{
+                label : 'Greater Than',
+                value : 'gt'
+            }, {
+                label : 'Less Than',
+                value : 'lt'
+            }, {
+                label : 'Less Than or Equal To',
+                value : 'lte'
+            }, {
+                label : 'Greater Than or Equal To',
+                value : 'gte'
+            }, {
+                label : 'Equal To',
+                value : 'eq'
+            }]
+        }
+
+        return []
     }
 </script>
 
@@ -77,7 +117,7 @@
                     <div class="col">
                         <Field
                                 config={{ search: false }}
-                                field={{ id: randomString(), label: 'Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions() } }}
+                                field={{ id: randomString(), label: 'Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }}
                         />
                     </div>
                 </div>

@@ -26,6 +26,7 @@
   let lastValue: any;
   export let editor : boolean = false;
   export let config: any;
+  export let hidden : boolean = false;
 
   onMount(load);
 
@@ -91,6 +92,7 @@
   <div
       on:click={select}
       style="margin-top: .3em"
+      class:hidden={hidden}
       class:wrapper={!field.configTarget && !editor}
       class:selected={field.selected}
   >
@@ -105,6 +107,12 @@
       </div>
     {/if}
     <div style="padding: .75em 0.6em; border-radius: 1em;">
+      {#if hidden}
+        <p>
+          {firstNotEmpty(field.label, field.name)} is hidden by rules defined in logic.
+          This message is only displayed on this preview.
+        </p>
+      {:else}
       {#if field.type === 'address'}
         <Address {field} {value} />
       {:else if field.type === 'string'}
@@ -126,6 +134,7 @@
       {:else}
         <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
       {/if}
+     {/if}
     </div>
   </div>
 {/if}
@@ -142,5 +151,9 @@
     background-color: #f0f0f0;
     cursor: pointer;
     border-radius: 0.45rem;
+  }
+
+  .hidden {
+    opacity: .7;
   }
 </style>

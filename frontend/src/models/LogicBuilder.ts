@@ -3,3 +3,4 @@ export interface LogicRule {
     condition : string,
     value : any
 }
+

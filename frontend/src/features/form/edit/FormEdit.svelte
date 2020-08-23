@@ -16,4 +16,7 @@
     <Field
         field={{ id: randomString(), required : true, label: 'Form Title', value: { type: 'local', value: form.title }, type: 'string', configFieldTarget: 'title', configTarget: 'form'}}
     />
+    <Field
+        field={{ id: randomString(), type: 'switch', label: 'Enable Logic For Preview', value: { type: 'local', value: form.enableLogic ?? true}, configFieldTarget: 'enableLogic', configTarget: 'form' }}
+    />
 </div>
