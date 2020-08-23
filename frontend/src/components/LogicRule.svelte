@@ -58,6 +58,15 @@
         ]);
     }
 
+    function shouldShowValue(index : number) {
+        const condition = field.logic?.rules?.[index]?.condition;
+        const toNotShow = ["hasValue", "isTrue", "isFalse"];
+        if(toNotShow.includes(condition)) {
+            return false;
+        }
+        return true;
+    }
+
     function conditions(index : number) : LabelValue[] {
         const targetFieldId = field.logic?.rules?.[index]?.field;
         if(!targetFieldId) {
@@ -80,6 +89,18 @@
             }, {
                 label : 'Equals',
                 value : 'eq'
+            }, {
+                label : 'Has Value',
+                value : 'hasValue'
+            }]
+        }
+        if(targetField.type === "switch") {
+            return [{
+                label : 'Is Toggled',
+                value : 'isTrue'
+            }, {
+                label : 'Is Not Toggled',
+                value : 'isFalse'
             }]
         }
         if(targetField.type === "number") {
@@ -98,6 +119,9 @@
             }, {
                 label : 'Equal To',
                 value : 'eq'
+            }, {
+                label : 'Has Value',
+                value : 'hasValue'
             }]
         }
 
@@ -111,7 +135,7 @@
                     <div class="row">
                         <div class="col-11">
                             <Field
-                                    config={{ search: false }}
+                                    config={{ search: true }}
                                     field={{ id: randomString(), label: 'Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: fields.map(w => ({label : w.label, value : w.id})) } }}
                             />
                         </div>
@@ -125,10 +149,21 @@
                         <div class="row">
                             <div class="col">
                                 <Field
-                                        config={{ search: false }}
+                                        config={{ search: true }}
                                         field={{ id: randomString(), label: 'Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }}
                                 />
                             </div>
+                        </div>
+                    {/if}
+                    {#if field.logic?.rules?.[i]?.condition && shouldShowValue(i)}
+                        <div class="row">
+                            <div class="col">
+                                <Field
+                                        field={{ id: randomString(), label: 'Value', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
+                                />
+                            </div>
+                        </div>
+                    {/if}
                             {#if field.logic?.rules?.[i]?.condition}
                                 <div class="col">
                                     <Field
@@ -137,8 +172,7 @@
                                     />
                                 </div>
                             {/if}
-                        </div>
-                    {/if}
+
 
         {/each}
     </div>

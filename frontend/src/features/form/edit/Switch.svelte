@@ -35,6 +35,8 @@
     id={`${field.id}`}
     checked={value}
     on:input={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
       field.value = e.target.checked;
       dispatchFieldChange(field, true);
       field.onChange?.(field.value);
