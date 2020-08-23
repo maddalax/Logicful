@@ -1,12 +1,13 @@
 <script lang="ts">
-  import type { IField } from "models/IField";
-  import { afterUpdate, onMount } from "svelte";
-  import { randomString } from "util/Generate";
+  import type {IField} from "models/IField";
+  import {afterUpdate, onMount} from "svelte";
+  import {randomString} from "util/Generate";
   import FieldTypeEditor from "./FieldTypeEditor.svelte";
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
-  import type { FieldEditConfig } from "views/builder/models/FieldEditConfig";
+  import type {FieldEditConfig} from "views/builder/models/FieldEditConfig";
   import Field from "./Field.svelte";
   import Button from "../../../components/Button.svelte";
+  import LogicBuilder from "./LogicBuilder.svelte";
 
   export let field: IField;
   export let config: FieldEditConfig;
@@ -41,6 +42,7 @@
           field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required: true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:8080/field-types.json' } }}
         />
         <FieldTypeEditor {field} />
+        <LogicBuilder field={field}/>
       </div>
     {/if}
   </div>

@@ -12,6 +12,7 @@
   import DynamicForm from "./DynamicForm.svelte";
   import { shiftArray } from "../../../util/Array";
   import formStore from "store/FormStore";
+  import {set} from "util/Selection"
 
   let form: IForm = null;
   let dropped = false;
@@ -104,6 +105,10 @@
       localStorage.setItem("form", JSON.stringify(form));
     });
 
+    subscribe("get_form_fields", () => {
+      return form.fields;
+    })
+
     subscribe("block_dropped", (e) => {
       let newActive = '';
       const items = e.detail.items.map((i, index) => {
@@ -168,7 +173,7 @@
       formStore.set(field);
 
       if(field.configTarget && field.configTarget === "form") {
-        form[field.configFieldTarget] = field.value;
+        set(form, field.configFieldTarget, field.value)
         return;
       }
 
@@ -176,7 +181,8 @@
         const toUpdate = form.fields.findIndex(
           (w) => w.id === field.configTarget
         );
-        form.fields[toUpdate][field.configFieldTarget] = field.value;
+
+        set(form.fields[toUpdate], field.configFieldTarget, field.value)
         dispatchFieldChange(form.fields[toUpdate], true);
         formStore.set(form.fields[toUpdate]);
       }

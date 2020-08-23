@@ -50,11 +50,11 @@
 </div>
 
 <Dialog />
-<Footer />
+<Footer/>
 
 <style>
   .main {
-    height: 150vh;
+    height: 100%;
     width: 50%;
     margin-top: 1em;
   }
@@ -70,7 +70,8 @@
 
   .right-sidebar {
     width: 32%;
-    height: 25vh;
+    min-height: 25vh;
+    height: 100%;
     margin-right: -30px;
     position: -webkit-sticky;
     position: sticky;
