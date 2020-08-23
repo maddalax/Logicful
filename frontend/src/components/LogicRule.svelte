@@ -106,7 +106,7 @@
 </script>
 
 <div>
-    <div class="container">
+    <div class="container" style="padding-left: 0em; padding-right: 0em;">
         {#each rules as option, i}
             <div class="card" style="margin-bottom: 1em">
                 <div class="card-body">

@@ -190,7 +190,7 @@
   }
 
   tr.active {
-    background-color: #f0f0f0 !important;
+    background-color: #f5f5f5 !important;
     border-radius: 0.45rem;
   }
 

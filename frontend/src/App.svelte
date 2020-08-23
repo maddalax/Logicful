@@ -5,10 +5,11 @@
   import FormSidebar from "./features/form/edit/FormSidebar.svelte";
   import FieldEditSidebar from "./features/form/edit/FieldEditSidebar.svelte";
   import Dialog from "components/Dialog.svelte";
-  import { onMount } from "svelte";
-  import { subscribe } from "event/EventBus";
+  import {onMount} from "svelte";
+  import {subscribe} from "event/EventBus";
   import Sidebar from "./components/Sidebar.svelte";
   import Preloader from "./components/Preloader.svelte";
+  import LogicAccordion from "./features/form/edit/LogicAccordion.svelte";
 
   let main: any;
   let rightSidebar;
@@ -40,6 +41,7 @@
     </Sidebar>
   </div>
   <div class="main">
+<!--    <LogicAccordion/>-->
     <svelte:component this={main} />
   </div>
   <div class="right-sidebar">

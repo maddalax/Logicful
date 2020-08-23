@@ -27,12 +27,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="coombo box fixed">
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/LogicAccordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_14_2020_3_00_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_14_2020_3_00_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RemoteTable.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/Field.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/inputs/ComboBox.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/inputs/TextArea.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +57,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/form/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -63,68 +67,71 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/api/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.logs">
-    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/api/package.json" />
+  <component name="RunManager" selected="npm.pretty">
+    <configuration name="build:watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/logicful/package.json" />
       <command value="run" />
       <scripts>
-        <script value="deploy" />
+        <script value="build:watch" />
       </scripts>
-      <node-interpreter value="project" />
+      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/info-site/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
     <configuration name="http-server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/form/package.json" />
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="run" />
       <scripts>
         <script value="http-server" />
       </scripts>
-      <node-interpreter value="project" />
+      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="logs" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/api/package.json" />
+    <configuration name="pretty" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="run" />
       <scripts>
-        <script value="logs" />
+        <script value="pretty" />
       </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="package" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/api/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="package" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="studio" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/api/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="studio" />
-      </scripts>
-      <node-interpreter value="project" />
+      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.logs" />
-        <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.studio" />
-        <item itemvalue="npm.package" />
+        <item itemvalue="npm.pretty" />
+        <item itemvalue="npm.dev (1)" />
+        <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.http-server" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="" />
@@ -139,6 +146,12 @@
       <workItem from="1597356907561" duration="6578000" />
       <workItem from="1597851169076" duration="165000" />
       <workItem from="1597851363755" duration="15000" />
+      <workItem from="1597948911226" duration="153000" />
+      <workItem from="1597949102231" duration="30000" />
+      <workItem from="1597949252389" duration="40000" />
+      <workItem from="1597949375376" duration="9218000" />
+      <workItem from="1598021726272" duration="1000" />
+      <workItem from="1598105675697" duration="27490000" />
     </task>
     <task id="LOCAL-00001" summary="server side work for storing/getting option sets">
       <created>1597285292287</created>
@@ -189,7 +202,77 @@
       <option name="project" value="LOCAL" />
       <updated>1597365099555</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="static site start">
+      <created>1598014224374</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1598014224374</updated>
+    </task>
+    <task id="LOCAL-00009" summary="main index">
+      <created>1598109983417</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1598109983417</updated>
+    </task>
+    <task id="LOCAL-00010" summary="landing page">
+      <created>1598199192098</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1598199192098</updated>
+    </task>
+    <task id="LOCAL-00011" summary="delete field button">
+      <created>1598203992084</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598203992084</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fixed">
+      <created>1598204518961</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1598204518961</updated>
+    </task>
+    <task id="LOCAL-00013" summary="padding">
+      <created>1598208083574</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1598208083574</updated>
+    </task>
+    <task id="LOCAL-00014" summary="padding">
+      <created>1598210246124</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1598210246124</updated>
+    </task>
+    <task id="LOCAL-00015" summary="spinner">
+      <created>1598211843757</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1598211843757</updated>
+    </task>
+    <task id="LOCAL-00016" summary="form configs">
+      <created>1598213019529</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1598213019529</updated>
+    </task>
+    <task id="LOCAL-00017" summary="require">
+      <created>1598218107824</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1598218107824</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,13 +311,26 @@
     <MESSAGE value="aadd dynamodb" />
     <MESSAGE value="new combo box" />
     <MESSAGE value="coombo box fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="coombo box fixed" />
+    <MESSAGE value="static site start" />
+    <MESSAGE value="main index" />
+    <MESSAGE value="landing page" />
+    <MESSAGE value="delete field button" />
+    <MESSAGE value="fixed" />
+    <MESSAGE value="padding" />
+    <MESSAGE value="spinner" />
+    <MESSAGE value="form configs" />
+    <MESSAGE value="require" />
+    <option name="LAST_COMMIT_MESSAGE" value="require" />
   </component>
   <component name="WindowStateProjectService">
     <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="443" y="184" key="#Plugins/0.23.1680.1027@0.23.1680.1027" timestamp="1597269381088" />
+    <state x="571" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598218364811">
+      <screen x="0" y="23" width="1680" height="972" />
+    </state>
+    <state x="571" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.972@0.23.1680.972" timestamp="1598218364811" />
     <state x="656" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1597281330077">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -247,47 +343,62 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="589" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1680.1027@0.23.1680.1027" timestamp="1597270011188" />
+    <state x="427" y="82" key="CommitChangelistDialog2" timestamp="1598218107303">
+      <screen x="0" y="23" width="1680" height="972" />
+    </state>
+    <state x="427" y="82" key="CommitChangelistDialog2/0.23.1680.972@0.23.1680.972" timestamp="1598218107303" />
     <state x="100" y="123" width="1348" height="824" key="DiffContextDialog" timestamp="1597361828645">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="100" y="123" width="1348" height="824" key="DiffContextDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597361828645" />
-    <state x="631" y="298" key="FileChooserDialogImpl" timestamp="1597314874690">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="631" y="283" key="FileChooserDialogImpl" timestamp="1598108367113">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state x="631" y="298" key="FileChooserDialogImpl/0.23.1680.1027@0.23.1680.1027" timestamp="1597314874690" />
-    <state width="1717" height="380" key="GridCell.Tab.0.bottom" timestamp="1597444850102">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="631" y="283" key="FileChooserDialogImpl/0.23.1680.972@0.23.1680.972" timestamp="1598108367113" />
+    <state width="1638" height="210" key="GridCell.Tab.0.bottom" timestamp="1598223866322">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837325" />
-    <state width="1717" height="380" key="GridCell.Tab.0.center" timestamp="1597444850102">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1638" height="210" key="GridCell.Tab.0.bottom/0.23.1680.972@0.23.1680.972" timestamp="1598223866322" />
+    <state width="1638" height="210" key="GridCell.Tab.0.center" timestamp="1598223866316">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837324" />
-    <state width="1717" height="380" key="GridCell.Tab.0.left" timestamp="1597444850102">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1638" height="210" key="GridCell.Tab.0.center/0.23.1680.972@0.23.1680.972" timestamp="1598223866316" />
+    <state width="1638" height="210" key="GridCell.Tab.0.left" timestamp="1598223866313">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837324" />
-    <state width="1717" height="380" key="GridCell.Tab.0.right" timestamp="1597444850102">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1638" height="210" key="GridCell.Tab.0.left/0.23.1680.972@0.23.1680.972" timestamp="1598223866313" />
+    <state width="1638" height="210" key="GridCell.Tab.0.right" timestamp="1598223866317">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837325" />
+    <state width="1638" height="210" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1598223866317" />
     <state x="524" y="207" key="SettingsEditor" timestamp="1597439572258">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="524" y="207" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597439572258" />
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
-    <state x="441" y="276" key="Vcs.Push.Dialog.v2" timestamp="1597365101576">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="441" y="262" key="Vcs.Push.Dialog.v2" timestamp="1598218109949">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597365101576" />
-    <state x="186" y="90" width="1239" height="898" key="find.popup" timestamp="1597317906040">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="441" y="262" key="Vcs.Push.Dialog.v2/0.23.1680.972@0.23.1680.972" timestamp="1598218109949" />
+    <state x="641" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598223568657">
+      <screen x="0" y="23" width="1680" height="972" />
+    </state>
+    <state x="641" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.972@0.23.1680.972" timestamp="1598223568657" />
+    <state x="271" y="97" width="1239" height="850" key="find.popup" timestamp="1598220709732">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state x="186" y="90" width="1239" height="898" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597317906040" />
+    <state x="271" y="97" width="1239" height="850" key="find.popup/0.23.1680.972@0.23.1680.972" timestamp="1598220709732" />
     <state x="621" y="248" key="run.anything.popup" timestamp="1597317121190">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -296,10 +407,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="643" y="401" width="501" height="379" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1597270006099" />
-    <state x="774" y="309" width="1021" height="922" key="search.everywhere.popup" timestamp="1597438945021">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="508" y="238" width="671" height="641" key="search.everywhere.popup" timestamp="1598216029543">
+      <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state x="774" y="309" width="1021" height="922" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597438945021" />
     <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597364704060" />
+    <state x="508" y="238" width="671" height="641" key="search.everywhere.popup/0.23.1680.972@0.23.1680.972" timestamp="1598216029543" />
   </component>
 </project>

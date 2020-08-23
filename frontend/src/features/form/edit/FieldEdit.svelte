@@ -3,6 +3,8 @@
   import {afterUpdate, onMount} from "svelte";
   import {randomString} from "util/Generate";
   import FieldTypeEditor from "./FieldTypeEditor.svelte";
+  import LogicAccordion from "./LogicAccordion.svelte";
+
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
   import type {FieldEditConfig} from "views/builder/models/FieldEditConfig";
   import Field from "./Field.svelte";
@@ -44,9 +46,9 @@
           field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required: true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:8080/field-types.json' } }}
         />
         <FieldTypeEditor {field} />
-        <LogicBuilder field={field}/>
       </div>
     {/if}
+    <LogicAccordion field={field}/>
   </div>
 </div>
 

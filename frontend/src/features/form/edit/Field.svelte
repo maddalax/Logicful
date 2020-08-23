@@ -142,13 +142,13 @@
 
 <style>
   .wrapper:hover {
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     cursor: pointer;
     border-radius: 0.45rem;
   }
 
   .selected {
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     cursor: pointer;
     border-radius: 0.45rem;
   }
