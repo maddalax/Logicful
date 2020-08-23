@@ -31,7 +31,6 @@
       w.selected = false;
       return w;
     });
-    scrollToBottom();
   }
 
   onMount(async () => {

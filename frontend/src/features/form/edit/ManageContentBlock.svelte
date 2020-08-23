@@ -102,6 +102,7 @@
             } }}
             />
             <Field
+                    editor={true}
                     config={{
                         onChange : (d) => {
                             data = d;
@@ -111,8 +112,7 @@
             value : data,
             id : randomString(),
             name : block.name,
-            type : 'block-editor',
-            configTarget : randomString()
+            type : 'block-editor'
         }}/>
         </div>
     {/if}

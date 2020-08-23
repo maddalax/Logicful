@@ -22,34 +22,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add sapper">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/models/ContentBlock.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dev/tables/content-blocks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/list-content-block/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/list-content-block/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/list-content-block/main_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/set-content-block/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/set-content-block/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/set-content-block/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/set-content-block/main_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/data/contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/data/contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="content block edit stuff">
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageContentBlock.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/local-env.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/create-option-set/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/create-option-set/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/list-content-block/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-content-block/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/list-forms/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-forms/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/list-option-set/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/set-content-block/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/set-content-block/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/set-form/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/set-form/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../svelte-dnd-action/src/action.js" beforeDir="false" afterPath="$PROJECT_DIR$/../svelte-dnd-action/src/action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../svelte-dnd-action/src/helpers/styler.js" beforeDir="false" afterPath="$PROJECT_DIR$/../svelte-dnd-action/src/helpers/styler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,19 +77,12 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lambda/list-content-block" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lambda/api" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../frontend/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lambda/list-content-block" />
-      <recent name="$PROJECT_DIR$/lambda" />
-      <recent name="$PROJECT_DIR$/../info-site/static" />
-      <recent name="$PROJECT_DIR$/../frontend/src" />
-      <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\views\builder" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\features\form\edit" />
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src" />
@@ -107,8 +90,15 @@
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\components" />
       <recent name="$PROJECT_DIR$/../frontend/public" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lambda/api" />
+      <recent name="$PROJECT_DIR$/lambda/list-content-block" />
+      <recent name="$PROJECT_DIR$/lambda" />
+      <recent name="$PROJECT_DIR$/../info-site/static" />
+      <recent name="$PROJECT_DIR$/../frontend/src" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.dev (1)">
+  <component name="RunManager" selected="npm.build:watch">
     <configuration name="Debug" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" port="5986">
       <method v="2" />
     </configuration>
@@ -127,6 +117,16 @@
       <command value="run" />
       <scripts>
         <script value="build:watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -152,31 +152,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$USER_HOME$/Downloads/Hyper_v3.3.0/hyper/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Go Remote.Debug" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.dev (1)" />
       <item itemvalue="npm.http-server (1)" />
-      <item itemvalue="npm.start" />
+      <item itemvalue="npm.deploy" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.build:watch" />
+        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.dev (1)" />
         <item itemvalue="npm.http-server (1)" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +199,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="drag updates" />
     <MESSAGE value="fix drag and drop" />
     <MESSAGE value="dd updates" />
     <MESSAGE value="field type fix" />
@@ -234,7 +223,8 @@
     <MESSAGE value="datetime sidebar" />
     <MESSAGE value="add sapper for static site" />
     <MESSAGE value="add sapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sapper" />
+    <MESSAGE value="content block edit stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="content block edit stuff" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -280,30 +270,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1598107754233">
+    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1598194053119">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598107754233" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1598107754232">
+    <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598194053119" />
+    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1598194053118">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598107754232" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1598107754231">
+    <state width="1638" height="214" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598194053118" />
+    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1598194053118">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598107754231" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1598107754232">
+    <state width="1638" height="214" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598194053118" />
+    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1598194053119">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598107754232" />
+    <state width="1638" height="214" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598194053119" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -377,15 +367,15 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1597929333312">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598108077988">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597929333312" />
-    <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597786338592">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598108077988" />
+    <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598194754498">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597786338592" />
+    <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598194754498" />
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597501355761">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -395,16 +385,16 @@
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598016320414" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1598018761285">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1598188989307">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598018761285" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598107917627">
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598188989307" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598196087622">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598107917627" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598196087622" />
   </component>
 </project>

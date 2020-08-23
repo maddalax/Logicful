@@ -11,9 +11,10 @@ import (
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/gateway"
-	"os"
 	"time"
 )
+
+var instance = db.New()
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
@@ -29,13 +30,11 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	set.CreateBy = "maddox"
 	set.ChangeBy = "maddox"
 
-	instance := db.New()
-
 	_, err = instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String(os.Getenv("CLIENTS_TABLE")),
+					TableName: aws.String("clients"),
 					Key: map[string]*dynamodb.AttributeValue{
 						"name": {
 							S: aws.String("maddox"),
@@ -54,7 +53,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String(os.Getenv("OPTION_SETS_TABLE")),
+					TableName: aws.String("option_sets"),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(set.Id),

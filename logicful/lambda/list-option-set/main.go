@@ -9,15 +9,14 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/gateway"
-	"os"
 )
+
+var instance = db.New()
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
-	instance := db.New()
-
 	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String(os.Getenv("CLIENTS_TABLE")),
+		TableName: aws.String("clients"),
 		Key: map[string]*dynamodb.AttributeValue{
 			"name": {
 				S: aws.String("maddox"),

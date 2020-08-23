@@ -22,12 +22,13 @@
   let state = LoadState.NotStarted;
   let value: any;
   let lastValue: any;
+  export let editor : boolean = false;
   export let config: any;
 
   onMount(load);
 
   function select() {
-    if (field.configTarget) {
+    if (field.configTarget || editor) {
       return;
     }
     field.selected = !field.selected;
@@ -41,7 +42,6 @@
     if (field.value != null) {
       state = LoadState.Loading;
       try {
-        console.log("LOADING", field.value);
         const loader = new FieldValueLoader();
         const result = await loader.load(field);
         value = result;
@@ -62,7 +62,7 @@
 <div
   on:click={select}
   style="margin-top: .3em"
-  class:wrapper={!field.configTarget}
+  class:wrapper={!field.configTarget && !editor}
   class:selected={field.selected}
 >
   <div style="padding: .75em 0.6em; border-radius: 1em;">
