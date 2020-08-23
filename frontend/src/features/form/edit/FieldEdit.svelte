@@ -25,19 +25,21 @@
       <ContentBlockEditor {field} expanded={field.expanded} />
     {:else}
       <div id={`field-button-${field.id}`}>
-        <h5 style="padding-left: 0.4em;">{field.label}</h5>
+          {#if !cantBeRequired.includes(field.type)}
+            <Field
+              config={{ search: false }}
+              field={{ id: randomString(), customCss: 'padding-bottom: 0em;', label: 'Required', value: { type: 'local', value: field.required }, type: 'switch', configFieldTarget: 'required', configTarget: field.id, options: { type: 'local', value: [{ label: 'Yes', value: true }, { label: 'No', value: false }] } }}
+            />
+          {/if}
         <Field
           field={{ id: randomString(), label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }}
         />
         <Field
           field={{ id: randomString(), label: 'Label', value: field.label, type: 'string', configFieldTarget: 'label', configTarget: field.id }}
         />
-        {#if !cantBeRequired.includes(field.type)}
-          <Field
-            config={{ search: false }}
-            field={{ id: randomString(), label: 'Required', value: { type: 'local', value: field.required }, type: 'switch', configFieldTarget: 'required', configTarget: field.id, options: { type: 'local', value: [{ label: 'Yes', value: true }, { label: 'No', value: false }] } }}
-          />
-        {/if}
+        <Field
+          field={{ id: randomString(), label: 'Helper Text', value: field.helperText, type: 'string', configFieldTarget: 'helperText', configTarget: field.id }}
+        />
         <Field
           field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required: true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:8080/field-types.json' } }}
         />

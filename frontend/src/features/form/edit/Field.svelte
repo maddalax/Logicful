@@ -80,46 +80,56 @@
   }
 </script>
 
-<div
-  on:click={select}
-  style="margin-top: .3em"
-  class:wrapper={!field.configTarget && !editor}
-  class:selected={field.selected}
->
-  {#if field.selected}
-    <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
-      <button on:click={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
-        <span class="icon-brand"><span class="far fa-clone"></span></span>
-      </button>
-      <button on:click={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
-        <span class="icon-brand"><span class="fas fa-trash"></span></span>
-      </button>
-    </div>
-  {/if}
-  <div style="padding: .75em 0.6em; border-radius: 1em;">
-    {#if field.type === 'address'}
-      <Address {field} {value} />
-    {:else if field.type === 'string'}
-      <TextInput {field} />
-    {:else if field.type === 'number'}
-      <TextInput {field} type={'number'} />
-    {:else if field.type === 'combobox'}
-      <ComboBox {field} {...config} />
-    {:else if field.type === 'block'}
-      <RichTextDisplay {field} />
-    {:else if field.type === 'block-editor'}
-      <TextArea {field} {...config}/>
-    {:else if field.type === 'spacer'}
-      <Spacer {field} />
-    {:else if field.type === 'switch'}
-      <Switch {field} {...config} />
-    {:else if field.type === 'date'}
-      <DatePicker {field} {...config} />
-    {:else}
-      <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
+{#if field.configTarget && field.customCss}
+    {#if field.type === 'switch'}
+      <div style="{field.customCss} padding-left: 0.6em">
+        <Switch {field} {...config} />
+      </div>
     {/if}
+
+{:else}
+  <div
+      on:click={select}
+      style="margin-top: .3em"
+      class:wrapper={!field.configTarget && !editor}
+      class:selected={field.selected}
+  >
+    {#if field.selected}
+      <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
+        <button on:click={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+          <span class="icon-brand"><span class="far fa-clone"></span></span>
+        </button>
+        <button on:click={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+          <span class="icon-brand"><span class="fas fa-trash"></span></span>
+        </button>
+      </div>
+    {/if}
+    <div style="padding: .75em 0.6em; border-radius: 1em;">
+      {#if field.type === 'address'}
+        <Address {field} {value} />
+      {:else if field.type === 'string'}
+        <TextInput {field} />
+      {:else if field.type === 'number'}
+        <TextInput {field} type={'number'} />
+      {:else if field.type === 'combobox'}
+        <ComboBox {field} {...config} />
+      {:else if field.type === 'block'}
+        <RichTextDisplay {field} />
+      {:else if field.type === 'block-editor'}
+        <TextArea {field} {...config}/>
+      {:else if field.type === 'spacer'}
+        <Spacer {field} />
+      {:else if field.type === 'switch'}
+        <Switch {field} {...config} />
+      {:else if field.type === 'date'}
+        <DatePicker {field} {...config} />
+      {:else}
+        <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
+      {/if}
+    </div>
   </div>
-</div>
+{/if}
+
 
 <style>
   .wrapper:hover {
