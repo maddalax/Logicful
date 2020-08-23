@@ -23,19 +23,36 @@
 
 <div class="form-group">
   <Label {field} />
-  <input
-    on:click|stopPropagation
-    on:input={(e) => {
+  {#if field.rows}
+    <textarea
+            rows={field.rows}
+            on:click|stopPropagation
+            on:input={(e) => {
       field.value = e.target.value ?? '';
       dispatchFieldChange(field, true);
       field.onChange?.(e.target.value);
     }}
-    class={field.properties?.className ?? 'form-control'}
-    id={field.id}
-    {value}
-    name={field.name}
-    {type}
-  />
+            class={field.properties?.className ?? 'form-control'}
+            id={field.id}
+            {value}
+            name={field.name}
+            {type}
+    ></textarea>
+  {:else}
+    <input
+            on:click|stopPropagation
+            on:input={(e) => {
+      field.value = e.target.value ?? '';
+      dispatchFieldChange(field, true);
+      field.onChange?.(e.target.value);
+    }}
+            class={field.properties?.className ?? 'form-control'}
+            id={field.id}
+            {value}
+            name={field.name}
+            {type}
+    />
+  {/if}
   {#if field.helperText}
     <small class="form-text text-muted">
       {@html field.helperText ?? ''}

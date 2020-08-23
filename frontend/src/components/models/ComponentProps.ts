@@ -4,7 +4,12 @@ export interface DialogOptions {
     props? : any
     title : string,
     save? : boolean,
-    onBack? : () => any
+    onBack? : () => any,
+    buttons : {
+        label : string,
+        onClick : () => any,
+        type : string
+    }[]
 }
 
 export interface DropdownButtonAction {

@@ -9,7 +9,9 @@
 
 <div>
   {#if field.type === 'string'}
-    <p>String</p>
+    <Field
+      field={{ id: randomString(), type: 'number', label: 'Rows', value: { type: 'local', value: field.rows || 0 }, configFieldTarget: 'rows', configTarget: field.id }}
+    />
   {:else if field.type === 'combobox'}
     <ComboBoxOptionsEditor {field} />
   {:else if field.type === 'address'}

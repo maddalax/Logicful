@@ -26,7 +26,6 @@
     props = propsContainer[propsIndex];
   });
 
-
   subscribe("user_change", () => {
     if (isOpen && props.confirmCloseOnDirty) {
       dirty = true;
@@ -75,12 +74,18 @@
     isOpen = false;
     confirm = false;
     dirty = false;
+    modal.hide();
   }
 
   function onBack() {
     propsContainer.splice(propsIndex, 1);
     propsIndex--;
     props = propsContainer[propsIndex];
+  }
+
+  async function executeButton(button) {
+    await button.onClick();
+    close();
   }
 
 </script>
@@ -113,29 +118,20 @@
       <div class="modal-body">
         <svelte:component this={props?.child} {...props?.props} />
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        {#if props?.save}
-          <button type="button" class="btn btn-primary">Save changes</button>
-        {/if}
-      </div>
+      {#if props?.buttons?.length > 0}
+        <div class="modal-footer">
+          {#each props.buttons as button}
+            <button type="button" class={`btn ${button.type}`} on:click={() => executeButton(button)}>
+              {button.label}
+            </button>
+          {/each}
+        </div>
+      {/if}
     </div>
   </div>
 </div>
 
 <style>
-  .modal-title {
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-  }
-
-  .modal-dialog {
-    width: 80%;
-    max-width: 1000px;
-  }
-
   #dialog-back {
     cursor: pointer;
   }
