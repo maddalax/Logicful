@@ -6,11 +6,11 @@
 
   let isOpen = false;
   let propsContainer: DialogOptions[] = [];
-  let propsIndex : number = 0;
+  let propsIndex: number = 0;
   let confirm = false;
   let dirty = false;
   let saving: boolean = false;
-  let props : DialogOptions
+  let props: DialogOptions;
 
   subscribe("dialog_show", (p: DialogOptions) => {
     propsContainer = [];
@@ -21,7 +21,7 @@
   });
 
   subscribe("dialog_push", (p: DialogOptions) => {
-    propsContainer = propsContainer.concat([p])
+    propsContainer = propsContainer.concat([p]);
     propsIndex++;
     props = propsContainer[propsIndex];
   });
@@ -68,9 +68,9 @@
       return;
     }
     dispatch("dialog_close", {});
-    propsContainer = []
+    propsContainer = [];
     propsIndex = 0;
-    props = null
+    props = null;
     isOpen = false;
     confirm = false;
     dirty = false;
@@ -87,7 +87,6 @@
     await button.onClick();
     close();
   }
-
 </script>
 
 <div
@@ -102,7 +101,11 @@
       <div class="modal-header">
         <h5 class="modal-title" id="app-dialog-label">
           {#if propsContainer.length > 1 && propsIndex > 0}
-            <span class="fas fa-arrow-left" id="dialog-back" on:click={onBack}></span>
+            <span
+              class="fas fa-arrow-left"
+              id="dialog-back"
+              on:click={onBack}
+            />
           {/if}
           {props?.title ?? ''}
         </h5>
@@ -121,7 +124,11 @@
       {#if props?.buttons?.length > 0}
         <div class="modal-footer">
           {#each props.buttons as button}
-            <button type="button" class={`btn ${button.type}`} on:click={() => executeButton(button)}>
+            <button
+              type="button"
+              class={`btn ${button.type}`}
+              on:click={() => executeButton(button)}
+            >
               {button.label}
             </button>
           {/each}

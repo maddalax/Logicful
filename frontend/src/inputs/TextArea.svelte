@@ -5,7 +5,7 @@
 
   import formStore from "store/FormStore";
   import Quill from "quill";
-  let element : any;
+  let element: any;
 
   export let field: IField;
   export let value = { blocks: [] };
@@ -18,33 +18,32 @@
   }
 
   onMount(() => {
-    value = formStore.get(field.configTarget ?? field.id) ?? '';
+    value = formStore.get(field.configTarget ?? field.id) ?? "";
     subscribeFieldChange((newField) => {
       if (newField.id === field.id) {
-        value = newField.value ?? ''
+        value = newField.value ?? "";
       }
     });
 
     var toolbarOptions = [
-      ['bold', 'italic', 'underline', 'strike'],
+      ["bold", "italic", "underline", "strike"],
 
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ list: "ordered" }, { list: "bullet" }],
 
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] },
-       { 'color': [] }, { 'align': [] }],
-      ['clean']
+      [{ header: [1, 2, 3, 4, 5, 6, false] }, { color: [] }, { align: [] }],
+      ["clean"],
     ];
     let quill = new Quill(element, {
-      theme: 'snow',
-      placeholder: 'Start typing and see the preview on the left side.',
+      theme: "snow",
+      placeholder: "Start typing and see the preview on the left side.",
       modules: {
-        toolbar: toolbarOptions
-      }
+        toolbar: toolbarOptions,
+      },
     });
 
     quill.container.firstChild.innerHTML = value;
 
-    quill.on('text-change', function(delta, oldDelta, source) {
+    quill.on("text-change", function (delta, oldDelta, source) {
       field.value = quill.container.firstChild.innerHTML;
       dispatchFieldChange(field, true);
     });
@@ -52,6 +51,5 @@
 </script>
 
 <div>
-  <div bind:this={element} >
-  </div>
+  <div bind:this={element} />
 </div>

@@ -3,14 +3,13 @@
   import { subscribeFieldChange } from "event/FieldEvent";
   import { onMount } from "svelte";
   import formStore from "store/FormStore";
-  import {isString} from "guards/Guard";
+  import { isString } from "guards/Guard";
 
   export let field: IField;
   let value = "";
   let lastUrl = "";
 
   onMount(async () => {
-
     let url = formStore.get(field.configTarget ?? field.id);
 
     subscribeFieldChange((newField) => {
@@ -27,10 +26,10 @@
     if (!url) {
       return;
     }
-    if(!isString(url)) {
+    if (!isString(url)) {
       return;
     }
-    if(url.startsWith("http")) {
+    if (url.startsWith("http")) {
       lastUrl = url;
       const response = await fetch(url);
       const html = await response.text();
@@ -40,12 +39,6 @@
     }
   }
 </script>
-
-<style>
-  :global(p){
-    margin-block-end: 0;
-  }
-</style>
 
 <div>
   {#if value === '' || value == null}
@@ -57,3 +50,9 @@
     {@html value}
   {/if}
 </div>
+
+<style>
+  :global(p) {
+    margin-block-end: 0;
+  }
+</style>

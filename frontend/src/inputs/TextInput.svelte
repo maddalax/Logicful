@@ -23,34 +23,34 @@
 
 <div class="form-group">
   <Label {field} />
-  {#if field.rows}
+  {#if field.rows && field.rows > 1}
     <textarea
-            rows={field.rows}
-            on:click|stopPropagation
-            on:input={(e) => {
-      field.value = e.target.value ?? '';
-      dispatchFieldChange(field, true);
-      field.onChange?.(e.target.value);
-    }}
-            class={field.properties?.className ?? 'form-control'}
-            id={field.id}
-            {value}
-            name={field.name}
-            {type}
-    ></textarea>
+      rows={field.rows}
+      on:click|stopPropagation
+      on:input={(e) => {
+        field.value = e.target.value ?? '';
+        dispatchFieldChange(field, true);
+        field.onChange?.(e.target.value);
+      }}
+      class={field.properties?.className ?? 'form-control'}
+      id={field.id}
+      {value}
+      name={field.name}
+      {type}
+    />
   {:else}
     <input
-            on:click|stopPropagation
-            on:input={(e) => {
-      field.value = e.target.value ?? '';
-      dispatchFieldChange(field, true);
-      field.onChange?.(e.target.value);
-    }}
-            class={field.properties?.className ?? 'form-control'}
-            id={field.id}
-            {value}
-            name={field.name}
-            {type}
+      on:click|stopPropagation
+      on:input={(e) => {
+        field.value = e.target.value ?? '';
+        dispatchFieldChange(field, true);
+        field.onChange?.(e.target.value);
+      }}
+      class={field.properties?.className ?? 'form-control'}
+      id={field.id}
+      {value}
+      name={field.name}
+      {type}
     />
   {/if}
   {#if field.helperText}
