@@ -32,7 +32,7 @@
 </script>
 
 <Field
-  field={{ id: randomString(), loadTransformer: loadTransformer, label: 'Content Block', value: { type: 'local', value: field.value }, type: 'combobox', configFieldTarget: 'value', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:3000/content-block/list' } }}
+  field={{ id: randomString(), required : true, loadTransformer: loadTransformer, label: 'Content Block', value: { type: 'local', value: field.value }, type: 'combobox', configFieldTarget: 'value', configTarget: field.id, options: { type: 'remote', value: 'http://localhost:3000/content-block/list' } }}
 />
 <div style="width: 90%; margin-left: 10px;">
     <button class="btn btn-primary" on:click={manageBlocks}>Manage Content Blocks</button>

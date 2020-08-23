@@ -34,7 +34,6 @@
         onChange: () => {
           editor.save().then((data) => {
             field.value = data;
-            console.log("EDITORJs CHANGED");
             dispatchFieldChange(field, true);
             onFieldChange(data);
           });

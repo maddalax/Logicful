@@ -5,15 +5,27 @@
   import { subscribeFieldChange } from "event/FieldEvent";
 
   let isOpen = false;
-  let props: DialogOptions;
+  let propsContainer: DialogOptions[] = [];
+  let propsIndex : number = 0;
   let confirm = false;
   let dirty = false;
   let saving: boolean = false;
+  let props : DialogOptions
 
   subscribe("dialog_show", (p: DialogOptions) => {
-    props = p;
+    propsContainer = [];
+    propsContainer = propsContainer.concat([p]);
+    propsIndex = 0;
+    props = propsContainer[propsIndex];
     open();
   });
+
+  subscribe("dialog_push", (p: DialogOptions) => {
+    propsContainer = propsContainer.concat([p])
+    propsIndex++;
+    props = propsContainer[propsIndex];
+  });
+
 
   subscribe("user_change", () => {
     if (isOpen && props.confirmCloseOnDirty) {
@@ -57,11 +69,20 @@
       return;
     }
     dispatch("dialog_close", {});
-    props.child = null;
+    propsContainer = []
+    propsIndex = 0;
+    props = null
     isOpen = false;
     confirm = false;
     dirty = false;
   }
+
+  function onBack() {
+    propsContainer.splice(propsIndex, 1);
+    propsIndex--;
+    props = propsContainer[propsIndex];
+  }
+
 </script>
 
 <div
@@ -74,7 +95,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{props?.title ?? ''}</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+          {#if propsContainer.length > 1 && propsIndex > 0}
+            <span class="fas fa-arrow-left" id="dialog-back" on:click={onBack}></span>
+          {/if}
+          {props?.title ?? ''}
+        </h5>
         <button
           type="button"
           class="close"
@@ -108,5 +134,9 @@
   .modal-dialog {
     width: 80%;
     max-width: 1000px;
+  }
+
+  #dialog-back {
+    cursor: pointer;
   }
 </style>

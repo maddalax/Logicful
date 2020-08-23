@@ -8,7 +8,7 @@
     export let type = "Selector";
 
     function createNew() {
-        dispatch("dialog_show", {
+        dispatch("dialog_push", {
             child: ManageContentBlock,
             title: "New Content Block",
             save: false,
@@ -42,7 +42,7 @@
         {getRows}
         {hidden}
         onEdit={async (row) => {
-      dispatch('dialog_show', {
+      dispatch('dialog_push', {
         child: ManageContentBlock,
         title: 'Modifying Content Block',
         save: false,
@@ -51,6 +51,6 @@
         },
       });
     }}
-        onDelete={() => {alert('delete')}
+     onDelete={() => {alert('delete')}
   }
 />
