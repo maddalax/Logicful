@@ -24,6 +24,7 @@
       <ContentBlockEditor {field} expanded={field.expanded} />
     {:else}
       <div id={`field-button-${field.id}`}>
+        <h5 style="padding-left: 0.4em;">{field.label}</h5>
         <Field
           field={{ id: randomString(), label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }}
         />
