@@ -140,6 +140,10 @@
         return;
       }
 
+      const index = form.fields.findIndex((w) => w.id === field.id);
+      form.fields[index] = field;
+      formStore.set(field);
+
       if(field.configTarget && field.configTarget === "form") {
         form[field.configFieldTarget] = field.value;
         return;
@@ -154,10 +158,6 @@
         formStore.set(form.fields[toUpdate]);
       }
 
-      const index = form.fields.findIndex((w) => w.id === field.id);
-
-      form.fields[index] = field;
-      formStore.set(field);
     });
   });
 </script>

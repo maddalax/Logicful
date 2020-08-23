@@ -266,6 +266,9 @@ export function dndzone(node, options) {
         }
     }
     function handleMouseDown(e) {
+        if(e.button !== 0) {
+            return;
+        }
         if (isWorkingOnPreviousDrag) {
             console.debug('cannot start a new drag before finalizing previous one');
             return;
