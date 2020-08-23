@@ -66,15 +66,13 @@
   class:selected={field.selected}
 >
   {#if field.selected}
-    <div class="btn-group" role="group" aria-label="Selected" style="position: absolute; margin-left: 28em; margin-top: -0.5em;">
-    <div class="btn-group" role="group" aria-label="Selected" style="position: relative;">
+    <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
       <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"><span class="far fa-clone"></span></span>
       </button>
       <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"><span class="fas fa-trash"></span></span>
       </button>
-    </div>
     </div>
   {/if}
   <div style="padding: .75em 0.6em; border-radius: 1em;">
