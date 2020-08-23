@@ -14,7 +14,6 @@
   let cantBeRequired = ["switch"];
 </script>
 
-<h4 class="text-center">Field Configuration</h4>
 <div>
   <div>
     {#if field.type === 'spacer'}

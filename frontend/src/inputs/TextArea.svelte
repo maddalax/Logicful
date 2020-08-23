@@ -2,18 +2,15 @@
   import type { IField } from "models/IField";
   import { dispatchFieldChange, subscribeFieldChange } from "event/FieldEvent";
   import { onMount } from "svelte";
-  import EditorJS from "@editorjs/editorjs";
-  import Header from "@editorjs/header";
-  import Paragraph from "@editorjs/paragraph";
-  import List from "@editorjs/list";
-  import Alert from "editorjs-alert";
 
   import formStore from "store/FormStore";
+  import Quill from "quill";
+  let element : any;
 
   export let field: IField;
   export let value = { blocks: [] };
   export let onChange: (value: any) => any;
-  let editor: EditorJS;
+  let editor: Quill;
 
   function onFieldChange(data) {
     console.log("on", onChange);
@@ -21,61 +18,40 @@
   }
 
   onMount(() => {
-    value = formStore.get(field.configTarget ?? field.id);
-
+    value = formStore.get(field.configTarget ?? field.id) ?? '';
     subscribeFieldChange((newField) => {
       if (newField.id === field.id) {
-        value = newField.value ?? { blocks: [] };
+        value = newField.value ?? ''
       }
     });
 
-    setTimeout(() => {
-      editor = new EditorJS({
-        onChange: () => {
-          editor.save().then((data) => {
-            field.value = data;
-            dispatchFieldChange(field, true);
-            onFieldChange(data);
-          });
-        },
-        data: value,
-        placeholder:
-          "Click here and start typing your content. You will see the live preview of how it will be formatted on the right side.",
-        holder: `${field.id}-content-block-editor`,
-        tools: {
-          paragraph: {
-            class: Paragraph,
-            inlineToolbar: true,
-          },
-          list: {
-            class: List,
-            inlineToolbar: true,
-          },
-          alert: {
-            class: Alert,
-            inlineToolbar: true,
-            shortcut: "CMD+SHIFT+A",
-            config: {
-              defaultType: "primary",
-              messagePlaceholder: "Enter something",
-            },
-          },
-          header: {
-            class: Header,
-            inlineToolbar: true,
-          },
-        },
-      });
-    }, 200);
+    var toolbarOptions = [
+      ['bold', 'italic', 'underline', 'strike'],
+
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] },
+       { 'color': [] }, { 'align': [] }],
+      ['clean']
+    ];
+    let quill = new Quill(element, {
+      theme: 'snow',
+      placeholder: 'Start typing and see the preview on the left side.',
+      modules: {
+        toolbar: toolbarOptions
+      }
+    });
+
+    quill.container.firstChild.innerHTML = value;
+
+    quill.on('text-change', function(delta, oldDelta, source) {
+      field.value = quill.container.firstChild.innerHTML;
+      dispatchFieldChange(field, true);
+    });
   });
 </script>
 
 <div>
-  <div id={`${field.id}-content-block-editor`} />
+  <div bind:this={element}>
+  </div>
 </div>
-
-<style>
-  :global(.ce-block__content) {
-    max-width: unset;
-  }
-</style>
