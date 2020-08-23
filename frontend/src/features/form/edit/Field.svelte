@@ -17,7 +17,9 @@
   import { dispatch } from "event/EventBus";
   import Switch from "./Switch.svelte";
   import { subscribe } from "event/EventBus";
-  import DatePicker from "../../../components/DatePicker.svelte";
+  import DatePicker from "components/DatePicker.svelte";
+  import {promptConfirm} from "util/Confirm";
+  import {firstNotEmpty} from "util/Format";
 
   let state = LoadState.NotStarted;
   let value: any;
@@ -26,6 +28,14 @@
   export let config: any;
 
   onMount(load);
+
+  function onDelete() {
+    promptConfirm("Confirm Deletion", `Are you sure you want to delete field <strong>${firstNotEmpty(field.label, field.name)}</strong>?`, () => {
+      dispatch("field_delete", {
+        field
+      });
+    });
+  }
 
   function select() {
     if (field.configTarget || editor) {
@@ -70,7 +80,7 @@
       <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"><span class="far fa-clone"></span></span>
       </button>
-      <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+      <button on:click={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"><span class="fas fa-trash"></span></span>
       </button>
     </div>

@@ -56,15 +56,15 @@
 </script>
 
 <div style="padding-left: 0.5em;">
-  <h4>Preview</h4>
+  <h4>Form Preview</h4>
+  <hr>
 </div>
 <form
-  style="min-height: 89vh"
   on:submit|preventDefault={onSubmit}
   class="preview-padding"
 >
   <div
-    style="min-height: 89vh"
+    style="padding-bottom: 1em"
     use:dndzone={{ items: form.fields, flipDurationMs: 300,       transformDraggedElement : (el, data) => {
           if(data.name === 'string') {
             el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
@@ -95,10 +95,7 @@
       </div>
     {/each}
   </div>
-
-  {#if mode === DynamicFormMode.Live}
-    <button class="btn btn-primary" type="submit">Submit Form</button>
-  {/if}
+  <button style="margin-left: 0.5em" class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 <style>

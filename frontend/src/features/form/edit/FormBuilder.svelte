@@ -37,6 +37,13 @@
   onMount(async () => {
     loadForm();
 
+    subscribe("field_delete", (params) => {
+      const index = form.fields.findIndex((w) => w.id === params.field.id);
+      const temp = [...form.fields];
+      temp.splice(index, 1);
+      form.fields = temp;
+    })
+
     subscribe("save_form", (params) => {
       console.log(JSON.stringify(form, null, 2));
       localStorage.setItem("form", JSON.stringify(form));
