@@ -32,6 +32,9 @@
       w.selected = false;
       return w;
     });
+    dispatch("form_loaded", {
+      form
+    })
   }
 
   onMount(async () => {
@@ -42,6 +45,12 @@
       const temp = [...form.fields];
       temp.splice(index, 1);
       form.fields = temp;
+    })
+
+    subscribe("right_sidebar_loaded", () => {
+      form && dispatch("form_loaded", {
+        form
+      })
     })
 
     subscribe("field_clone", (params) => {
@@ -128,6 +137,11 @@
 
     subscribeFieldChange(async (field: IField) => {
       if (!form) {
+        return;
+      }
+
+      if(field.configTarget && field.configTarget === "form") {
+        form[field.configFieldTarget] = field.value;
         return;
       }
 

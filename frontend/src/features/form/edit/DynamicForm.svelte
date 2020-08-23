@@ -56,7 +56,7 @@
 </script>
 
 <div style="padding-left: 0.5em;">
-  <h4>Form Preview</h4>
+  <h4>{form.title ?? 'Form Title'}</h4>
   <hr>
 </div>
 <form
