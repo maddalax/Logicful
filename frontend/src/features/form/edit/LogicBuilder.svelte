@@ -24,6 +24,6 @@
 
 <Field
  config={{ search: false }}
- field={{ id: randomString(), label: 'Action', value: { type: 'local', value: field.logic?.action }, type: 'combobox', required: true, configFieldTarget: 'logic.action', configTarget: field.id, options: { type: 'local', value: actions } }}
+ field={{ id: randomString(), label: 'Logic', value: { type: 'local', value: field.logic?.action }, type: 'combobox', required: true, configFieldTarget: 'logic.action', configTarget: field.id, options: { type: 'local', value: actions } }}
 />
 <LogicRule field={field}/>
