@@ -4,20 +4,19 @@
   import { onMount } from "svelte";
   import EditorJS from "@editorjs/editorjs";
   import Header from "@editorjs/header";
-  import Paragraph from "@editorjs/paragraph"
-  import List from "@editorjs/list"
-  import Alert from "editorjs-alert"
-
+  import Paragraph from "@editorjs/paragraph";
+  import List from "@editorjs/list";
+  import Alert from "editorjs-alert";
 
   import formStore from "store/FormStore";
 
   export let field: IField;
   export let value = { blocks: [] };
-  export let onChange : (value : any) => any
+  export let onChange: (value: any) => any;
   let editor: EditorJS;
 
   function onFieldChange(data) {
-    console.log('on', onChange)
+    console.log("on", onChange);
     onChange?.(data);
   }
 
@@ -35,7 +34,7 @@
         onChange: () => {
           editor.save().then((data) => {
             field.value = data;
-            console.log("EDITORJs CHANGED")
+            console.log("EDITORJs CHANGED");
             dispatchFieldChange(field, true);
             onFieldChange(data);
           });
@@ -56,10 +55,10 @@
           alert: {
             class: Alert,
             inlineToolbar: true,
-            shortcut: 'CMD+SHIFT+A',
+            shortcut: "CMD+SHIFT+A",
             config: {
-              defaultType: 'primary',
-              messagePlaceholder: 'Enter something',
+              defaultType: "primary",
+              messagePlaceholder: "Enter something",
             },
           },
           header: {

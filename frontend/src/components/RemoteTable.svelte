@@ -22,8 +22,8 @@
   let lastSelectedIndex = -1;
 
   export let headerActions: TableButtonAction[];
-  export let onEdit : (row : any) => any
-  export let onDelete : (row : any) => any
+  export let onEdit: (row: any) => any;
+  export let onDelete: (row: any) => any;
   export let hidden = new Set<string>();
 
   function createFuse(): Fuse<{}> {

@@ -144,8 +144,7 @@
   function onKeyDown(e) {
     if (e.key === "Escape") {
       doClose();
-    }
-    else if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown") {
       e.preventDefault();
       const option = document.getElementById(`${field.id}-option-0`);
       option.focus({

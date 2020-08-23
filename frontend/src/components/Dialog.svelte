@@ -21,10 +21,10 @@
     }
   });
 
-  let modal : bootstrap.Modal;
+  let modal: bootstrap.Modal;
 
   onMount(() => {
-    modal = new bootstrap.Modal(document.getElementById('exampleModal'))
+    modal = new bootstrap.Modal(document.getElementById("exampleModal"));
 
     subscribeFieldChange((_, userChange) => {
       if (isOpen && props.confirmCloseOnDirty && userChange) {
@@ -64,24 +64,37 @@
   }
 </script>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{props?.title ?? ""}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">{props?.title ?? ''}</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <svelte:component this={props?.child} {...props?.props} />
       </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          {#if props?.save}
-            <button type="button" class="btn btn-primary">Save changes</button>
-          {/if}
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        {#if props?.save}
+          <button type="button" class="btn btn-primary">Save changes</button>
+        {/if}
+      </div>
     </div>
   </div>
 </div>

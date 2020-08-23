@@ -28,15 +28,17 @@
     lastUrl = url;
     const response = await fetch(url);
     const json = await response.json();
-    value = richTextBlocksToHtml(json) ?? '';
+    value = richTextBlocksToHtml(json) ?? "";
   }
 </script>
 
 <div>
   {#if value === '' || value == null}
     <h5>Content Placeholder</h5>
-    <p>From the field configuration settings, select a content block to display.</p>
+    <p>
+      From the field configuration settings, select a content block to display.
+    </p>
   {:else}
-      {@html value}
+    {@html value}
   {/if}
 </div>
