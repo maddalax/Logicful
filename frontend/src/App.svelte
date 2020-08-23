@@ -60,7 +60,7 @@
   }
 
   .left-sidebar {
-    width: 20%;
+    width: 18%;
     height: 25vh;
     margin-left: -13px;
     position: -webkit-sticky;
@@ -69,7 +69,7 @@
   }
 
   .right-sidebar {
-    width: 30%;
+    width: 32%;
     height: 25vh;
     margin-right: -30px;
     position: -webkit-sticky;
