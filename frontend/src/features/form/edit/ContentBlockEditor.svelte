@@ -31,7 +31,9 @@
 
 </script>
 
-<h4 class="text-center">Content Editor</h4>
+<div style="padding-left: 0.55em;">
+    <h5>Block Editor</h5>
+</div>
 <Field
         editor={true}
         field={{
