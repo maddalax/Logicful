@@ -15,7 +15,7 @@
 
   let form: IForm = null;
   let dropped = false;
-  let active: number = -1;
+  let active: string = '';
   let loadingActive: boolean = false;
   let order = [];
 
@@ -44,16 +44,39 @@
       form.fields = temp;
     })
 
+    subscribe("field_clone", (params) => {
+      const index = form.fields.findIndex((w) => w.id === params.field.id);
+      const copy = {...form.fields[index]};
+      copy.name = copy.name + '-' + randomStringSmall()
+      copy.label = copy.label + " Copy"
+      copy.id = randomString();
+      copy.selected = true;
+      const temp = [...form.fields];
+      temp.splice(index + 1, 0, copy)
+      form.fields = temp;
+      active = copy.id;
+      dispatch("edit_field", {
+        form,
+        active : ''
+      });
+      setTimeout(() => {
+        dispatch("edit_field", {
+          form,
+          active : copy.id
+        });
+      }, 800)
+    })
+
     subscribe("save_form", (params) => {
       console.log(JSON.stringify(form, null, 2));
       localStorage.setItem("form", JSON.stringify(form));
     });
 
     subscribe("block_dropped", (e) => {
-      let newActive = -1;
+      let newActive = '';
       const items = e.detail.items.map((i, index) => {
         if (!i.type) {
-          newActive = index;
+          newActive = i.id;
           i = {
             ...i,
             ...{
@@ -93,9 +116,9 @@
         });
       }
       if (field.selected) {
-        active = index;
+        active = field.id;
       } else {
-        active = -1;
+        active = '';
       }
       dispatch("edit_field", {
         form,

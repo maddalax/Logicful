@@ -30,11 +30,22 @@
   onMount(load);
 
   function onDelete() {
-    promptConfirm("Confirm Deletion", `Are you sure you want to delete field <strong>${firstNotEmpty(field.label, field.name)}</strong>?`, () => {
-      dispatch("field_delete", {
-        field
-      });
+    promptConfirm({
+      title : "Confirm Deletion",
+      message : `Are you sure you want to delete field <strong>${firstNotEmpty(field.label, field.name)}</strong>?`,
+      confirmText : 'Delete',
+      callback : () => {
+        dispatch("field_delete", {
+          field
+        });
+      }
     });
+  }
+
+  function onClone() {
+    dispatch("field_clone", {
+      field
+    })
   }
 
   function select() {
@@ -77,7 +88,7 @@
 >
   {#if field.selected}
     <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
-      <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+      <button on:click={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"><span class="far fa-clone"></span></span>
       </button>
       <button on:click={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">

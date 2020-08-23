@@ -7,7 +7,7 @@
   import { fade, slide } from "svelte/transition";
 
   let form: IForm;
-  let active: number = -1;
+  let active: string = '';
 
   onMount(() => {
     subscribe("edit_field", (props) => {
@@ -19,10 +19,10 @@
 </script>
 
 <div>
-  {#if active !== -1}
+  {#if active !== ''}
     <div class="col-md no-gutters">
-      {#each form.fields as field, i}
-        {#if i === active}
+      {#each form.fields as field(field.id)}
+        {#if field.id === active}
           <div transition:slide={{ duration: 500 }}>
             <FieldEdit {field} />
           </div>

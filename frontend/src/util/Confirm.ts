@@ -2,7 +2,7 @@ import {dispatch} from "event/EventBus";
 import type {DialogOptions} from "components/models/ComponentProps";
 import Html from 'components/Html.svelte'
 
-export function promptConfirm(title : string, message : string, callback : () => any) {
+export function promptConfirm({title, message, confirmText, callback} : {title : string, message : string, confirmText : string, callback : () => any}) {
     dispatch("dialog_show", {
         child : Html,
         title : title,
@@ -11,7 +11,7 @@ export function promptConfirm(title : string, message : string, callback : () =>
             type : 'btn-primary',
             onClick : () => {}
         }, {
-           label : 'Confirm',
+           label : confirmText,
            type : 'btn-danger',
            onClick : callback
         }],
