@@ -106,10 +106,8 @@
 </script>
 
 <div>
-    <div class="container" style="padding-left: 0em; padding-right: 0em;">
+    <div class="container" style="padding-left: 0.4em; padding-right: 0.4em;">
         {#each rules as option, i}
-            <div class="card" style="margin-bottom: 1em">
-                <div class="card-body">
                     <div class="row">
                         <div class="col-11">
                             <Field
@@ -131,20 +129,17 @@
                                         field={{ id: randomString(), label: 'Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }}
                                 />
                             </div>
+                            {#if field.logic?.rules?.[i]?.condition}
+                                <div class="col">
+                                    <Field
+                                            config={{ search: false }}
+                                            field={{ id: randomString(), label: 'Value', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
+                                    />
+                                </div>
+                            {/if}
                         </div>
                     {/if}
-                    {#if field.logic?.rules?.[i]?.condition}
-                        <div class="row">
-                            <div class="col">
-                                <Field
-                                        config={{ search: false }}
-                                        field={{ id: randomString(), label: 'Value', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
-                                />
-                            </div>
-                        </div>
-                    {/if}
-                </div>
-            </div>
+
         {/each}
     </div>
     {#if helperText}
