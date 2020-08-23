@@ -39,7 +39,7 @@
       {/each}
     </div>
   {:else}
-    <div style="margin-left: 1em">
+    <div class="col-md no-gutters">
       {#if form}
         <FormEdit form={form}/>
       {/if}
