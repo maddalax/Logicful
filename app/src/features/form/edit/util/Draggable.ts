@@ -1,4 +1,4 @@
-export function transformDraggedElement(el, data) {
+export function transformDraggedElement(el : any, data : any, index : number) {
     if(data.name === 'string') {
         el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
     }

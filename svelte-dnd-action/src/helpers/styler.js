@@ -12,7 +12,6 @@ function trs(property) {
  * clones the given element and applies proper styles and transitions to the dragged element
  * @param {HTMLElement} originalElement
  * @return {Node} - the cloned, styled element
- *
  */
 export function createDraggedElementFrom(originalElement) {
     const rect = originalElement.getBoundingClientRect();
@@ -51,15 +50,13 @@ export function moveDraggedElementToWasDroppedState(draggedEl) {
  * @param {number} currentMouseX
  * @param {number} currentMouseY
  * @param {function} transformDraggedElement - function to transform the dragged element when it enters the dropzone.
- * @param {object} draggedElData - the data of the dragged element from the items array.
  */
-export function morphDraggedElementToBeLike(draggedEl, copyFromEl, currentMouseX, currentMouseY, transformDraggedElement, draggedElData) {
+export function morphDraggedElementToBeLike(draggedEl, copyFromEl, currentMouseX, currentMouseY, transformDraggedElement) {
     const newRect = copyFromEl.getBoundingClientRect();
     const draggedElRect = draggedEl.getBoundingClientRect();
     const widthChange = newRect.width - draggedElRect.width;
     const heightChange = newRect.height - draggedElRect.height;
-    if (draggedElData.morph && (widthChange || heightChange)) {
-
+    if (widthChange || heightChange) {
         const relativeDistanceOfMousePointerFromDraggedSides = {
             left: (currentMouseX - draggedElRect.left) / draggedElRect.width,
             top: (currentMouseY - draggedElRect.top) / draggedElRect.height
@@ -79,10 +76,7 @@ export function morphDraggedElementToBeLike(draggedEl, copyFromEl, currentMouseX
             draggedEl.style.setProperty(s, computedStyle.getPropertyValue(s), computedStyle.getPropertyPriority(s))
         );
 
-    if(transformDraggedElement) {
-        transformDraggedElement(draggedEl, draggedElData);
-    }
-
+    transformDraggedElement(draggedEl);
 }
 
 /**
