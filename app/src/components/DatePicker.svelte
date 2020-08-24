@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import { onMount } from "svelte";
   import type { IField } from "models/IField";
   import Label from "../inputs/Label.svelte";
@@ -8,10 +8,10 @@
   let picker: any;
 
   onMount(() => {
-    const flatpickr = require('flatpickr');
+    const flatpickr = require("flatpickr");
     require("flatpickr/dist/flatpickr.min.css");
     picker = flatpickr(document.getElementById(field.id!)!, {
-      onChange: (selectedDates : any, dateStr : any, instance : any) => {
+      onChange: (selectedDates: any, dateStr: any, instance: any) => {
         console.log(selectedDates, dateStr, instance);
         value = dateStr;
       },
@@ -34,8 +34,7 @@
     type="text"
     class="form-control date-input-hidden"
     value={value ?? ''}
-    placeholder="Select a date..."
-  />
+    placeholder="Select a date..." />
   <span on:click={clearDate} class="input-group-text">
     <i class="fas fa-times" />
   </span>

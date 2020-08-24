@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import Field from "./Field.svelte";
   import type { IForm } from "models/IForm";
   import type { IField } from "models/IField";
@@ -11,11 +11,10 @@
   import {LogicBuilder} from "services/LogicBuilder";
 
   export let form: IForm;
-  export let fields: IField[];
   export let mode: DynamicFormMode = DynamicFormMode.Live;
   let values: { [key: string]: any } = {};
 
-  function handler(e) {
+  function handler(e : any) {
     dispatchSync("block_dropped", e);
   }
 
@@ -66,8 +65,7 @@
 >
   <div
     style="padding-bottom: 1em"
-    use:dndzone={
-{ items: form.fields, flipDurationMs: 300, transformDraggedElement, dropTargetStyle: { outline: 'white solid 0px' } }}
+    use:dndzone={{ items: form.fields, flipDurationMs: 300, transformDraggedElement, dropTargetStyle: { outline: 'white solid 0px' } }}
     on:consider={handler}
     on:finalize={handler}
   >

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import { dispatchFieldChange, subscribeFieldChange } from "event/FieldEvent";
   import { onMount } from "svelte";
@@ -11,20 +11,19 @@
   export let onChange: (value: any) => any;
   let editor: any;
 
-  function onFieldChange(data : any) {
+  function onFieldChange(data: any) {
     console.log("on", onChange);
     onChange?.(data);
   }
 
   onMount(() => {
-
-    if(!process.browser) {
+    if (!process.browser) {
       return;
     }
 
-    const Quill = require('quill');
-    require('quill/dist/quill.min');
-    require('quill/dist/quill.snow.css')
+    const Quill = require("quill");
+    require("quill/dist/quill.min");
+    require("quill/dist/quill.snow.css");
 
     value = formStore.get(field.configTarget ?? field.id) ?? "";
     subscribeFieldChange((newField) => {
@@ -51,7 +50,7 @@
 
     quill.container.firstChild.innerHTML = value;
 
-    quill.on("text-change", function (delta : any, oldDelta : any, source : any) {
+    quill.on("text-change", function (delta: any, oldDelta: any, source: any) {
       field.value = quill.container.firstChild.innerHTML;
       dispatchFieldChange(field, true);
     });

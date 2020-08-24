@@ -26,7 +26,8 @@
 		"dev": "cross-env NODE_PATH=src PORT=5000 run-p validate:dev sapper:dev",
 		"prod": "run-s validate sapper:build",
 		"start": "node __sapper__/build",
-		"export": "run-s validate sapper:export"
+		"export": "run-s validate sapper:export",
+		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*.svelte"
 	},
 	"dependencies": {
 		"compression": "^1.7.4",

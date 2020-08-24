@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import RemoteTable from "components/RemoteTable.svelte";
   import type { TableRow } from "components/models/RemoteTableProps";
   import type { OptionSet } from "models/OptionSet";

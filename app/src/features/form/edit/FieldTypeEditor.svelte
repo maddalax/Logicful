@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import ComboBoxOptionsEditor from "./ComboBoxOptionsEditor.svelte";
   import Field from "./Field.svelte";

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import { firstNotEmpty } from "util/Format";
   export let field: IField;

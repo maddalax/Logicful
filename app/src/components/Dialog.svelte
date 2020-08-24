@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import { onMount } from "svelte";
   import { subscribe, dispatch } from "event/EventBus";
   import type { DialogOptions } from "./models/ComponentProps";
@@ -32,7 +32,7 @@
     }
   });
 
-  let modal : any
+  let modal: any;
 
   onMount(() => {
     //@ts-ignore
@@ -84,7 +84,7 @@
     props = propsContainer[propsIndex];
   }
 
-  async function executeButton(button : any) {
+  async function executeButton(button: any) {
     await button.onClick();
     close();
   }
@@ -92,31 +92,28 @@
 
 {#if process.browser}
   <div
-          class="modal fade"
-          id="app-dialog"
-          tabindex="-1"
-          aria-labelledby="app-dialog-label"
-          aria-hidden="true"
-  >
+    class="modal fade"
+    id="app-dialog"
+    tabindex="-1"
+    aria-labelledby="app-dialog-label"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="app-dialog-label">
             {#if propsContainer.length > 1 && propsIndex > 0}
-            <span
-                    class="fas fa-arrow-left"
-                    id="dialog-back"
-                    on:click={onBack}
-            />
+              <span
+                class="fas fa-arrow-left"
+                id="dialog-back"
+                on:click={onBack} />
             {/if}
             {props?.title ?? ''}
           </h5>
           <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-          >
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -127,10 +124,9 @@
           <div class="modal-footer">
             {#each props.buttons as button}
               <button
-                      type="button"
-                      class={`btn ${button.type}`}
-                      on:click={() => executeButton(button)}
-              >
+                type="button"
+                class={`btn ${button.type}`}
+                on:click={() => executeButton(button)}>
                 {button.label}
               </button>
             {/each}
@@ -140,8 +136,6 @@
     </div>
   </div>
 {/if}
-
-
 
 <style>
   #dialog-back {

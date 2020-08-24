@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type {
     TableRow,
     TableButtonAction,
@@ -7,7 +7,6 @@
   import Fuse from "fuse.js";
   import { LoadState } from "models/LoadState";
   import { randomString } from "util/Generate";
-  import Accordion from "./Accordion.svelte";
 
   export let getRows: () => Promise<TableRow[]>;
 
@@ -28,7 +27,7 @@
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
-      const result : any = {};
+      const result: any = {};
       Object.keys(r).forEach((key) => {
         result[key] = r[key];
       });
@@ -90,8 +89,7 @@
       <input
         class="form-control search-bar container-fluid"
         placeholder={searchPlaceHolder}
-        bind:value={query}
-      />
+        bind:value={query} />
     </div>
     <div class="text-right button">
 
@@ -100,8 +98,7 @@
           <button
             class="btn btn-primary"
             style="padding-left: 1em; width: 200px;"
-            on:click={action.onClick}
-          >
+            on:click={action.onClick}>
             {action.label}
           </button>
         {/each}
@@ -139,8 +136,7 @@
             <tr
               class:active={row.meta_selected}
               on:click={() => onRowClick(row, index)}
-              style="vertical-align: middle;"
-            >
+              style="vertical-align: middle;">
               {#each columns as column}
                 <td>
                   <div class="text">{row[column]}</div>

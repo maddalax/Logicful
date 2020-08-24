@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import { subscribeFieldChange } from "event/FieldEvent";
   import { onMount } from "svelte";

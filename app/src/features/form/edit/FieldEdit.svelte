@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type {IField} from "models/IField";
   import {afterUpdate, onMount} from "svelte";
   import {randomString} from "util/Generate";
@@ -6,13 +6,13 @@
   import LogicAccordion from "./LogicAccordion.svelte";
 
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
-  import type {FieldEditConfig} from "views/builder/models/FieldEditConfig";
   import Field from "./Field.svelte";
   import Button from "../../../components/Button.svelte";
   import LogicBuilder from "./LogicBuilder.svelte";
+  import type { FieldEditConfig } from "./models/FieldEditConfig";
 
   export let field: IField;
-  export let config: FieldEditConfig;
+  export let config: FieldEditConfig = {};
 
   let cantBeRequired = ["switch"];
 </script>

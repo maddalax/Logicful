@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
     import type {IForm} from "models/IForm";
 
     export let form : IForm;

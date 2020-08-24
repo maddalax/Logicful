@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
     import RemoteTable from "components/RemoteTable.svelte";
     import type { TableRow } from "components/models/RemoteTableProps";
     import type { ContentBlock } from "models/ContentBlock";
@@ -26,7 +26,7 @@
                 id : block.id,
                 Name: block.name,
                 Value: block.value,
-                "Last Updated": new Date(block.changeTime).toLocaleString(),
+                "Last Updated": new Date(block.changeTime ?? new Date()).toLocaleString(),
                 "Modified By": block.changeBy,
                 "Forms Using": 3,
                 Status: "Published",

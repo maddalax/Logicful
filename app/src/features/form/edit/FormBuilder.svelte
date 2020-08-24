@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import { randomStringSmall, randomString } from "util/Generate";
   import type { IForm } from "models/IForm";
@@ -108,7 +108,7 @@
 
     subscribe("block_dropped", (e) => {
       let newActive = '';
-      const items = e.detail.items.map((i, index) => {
+      const items = e.detail.items.map((i : any, index : number) => {
         if (!i.type) {
           newActive = i.id;
           i = {

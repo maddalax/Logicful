@@ -1,7 +1,7 @@
 export interface IField {
     id : string,
     name? : string,
-    label : string,
+    label? : string,
     type : string,
     [key : string] : any,
     display? : IFieldCondition,

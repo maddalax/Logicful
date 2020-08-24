@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import { onMount } from "svelte";
   import Field from "./Field.svelte";
   import type { OptionSet } from "models/OptionSet";
@@ -8,6 +8,7 @@
   import DropdownButton from "components/DropdownButton.svelte";
   import OptionSetsList from "./OptionSetsList.svelte";
   import { dispatch } from "event/EventBus";
+import { isString } from "guards/Guard";
 
   let sets: OptionSet[] = [];
   let loading = false;
@@ -127,6 +128,7 @@
     const { message } = await response.json();
     return message;
   }
+
 </script>
 
 <div>
@@ -178,7 +180,7 @@
           Failed to load, please try re-opening this dialog.
         {:else}
           <Repeater
-            options={set.value}
+            options={isString(set.value) ? [] : set.value}
             onChange={(data) => {
               onRepeaterChange(data, index);
             }}

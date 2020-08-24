@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
     import type {IField} from "models/IField";
     import Field from "./Field.svelte";
     import {randomString} from "util/Generate";

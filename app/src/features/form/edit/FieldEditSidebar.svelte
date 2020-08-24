@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import {onMount} from "svelte";
   import FieldEdit from "./FieldEdit.svelte";
   import type {IField} from "models/IField";

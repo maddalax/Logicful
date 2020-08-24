@@ -1,3 +1,3 @@
 export interface FieldEditConfig {
-    expanded : boolean
+    expanded? : boolean
 }

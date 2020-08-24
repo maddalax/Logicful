@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField, LabelValue } from "models/IField";
   import { afterUpdate, onMount, tick } from "svelte";
   import { LoadState } from "models/LoadState";
@@ -10,7 +10,7 @@
   import { subscribe } from "event/EventBus";
   import Fuse from "fuse.js";
   import formStore from "store/FormStore";
-  import {nullOrEmpty} from "util/Compare";
+  import { nullOrEmpty } from "util/Compare";
   import Label from "inputs/Label.svelte";
 
   let initialized = false;
@@ -229,7 +229,7 @@
 
   {#if state === LoadState.Loading}
     <div>
-      <div class="spinner-border" role="status" >
+      <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
@@ -239,21 +239,22 @@
     <div class="form-group dropdown" on:keydown|stopPropagation>
       <div id="input_container">
         <input
-                class="form-select"
-                readonly
-                on:click|stopPropagation={() => (open ? doClose() : doOpen())}
-                on:keydown|stopPropagation={inputOnKeyDown}
-                value={options?.find((w) => w.value === value)?.label ?? ''}
-        />
+          class="form-select"
+          readonly
+          on:click|stopPropagation={() => (open ? doClose() : doOpen())}
+          on:keydown|stopPropagation={inputOnKeyDown}
+          value={options?.find((w) => w.value === value)?.label ?? ''} />
         {#if !nullOrEmpty(options?.find((w) => w.value === value)?.label)}
-          <i class="fas fa-times input-svg input-svg-2" on:click={() => {
-            value = ''
-            field.value = undefined;
-            dispatchFieldChange(field, true);
-          }}></i>
-          <i class="fas fa-caret-down input-svg" on:click={doOpen}></i>
+          <i
+            class="fas fa-times input-svg input-svg-2"
+            on:click={() => {
+              value = '';
+              field.value = undefined;
+              dispatchFieldChange(field, true);
+            }} />
+          <i class="fas fa-caret-down input-svg" on:click={doOpen} />
         {:else}
-          <i class="fas fa-caret-down input-svg" on:click={doOpen}></i>
+          <i class="fas fa-caret-down input-svg" on:click={doOpen} />
         {/if}
       </div>
       {#if filtered != null}
@@ -270,8 +271,7 @@
                 onSearch();
               }}
               on:keydown|stopPropagation|preventDefault={onKeyDown}
-              on:click|stopPropagation
-            />
+              on:click|stopPropagation />
           {/if}
           {#if filtered.length === 0}
             <a class="dropdown-item" href="javascript:void(0)">
@@ -285,8 +285,7 @@
               href="javascript:void(0)"
               on:keypress={(e) => optionOnKeyPress(e, option, i)}
               on:keydown={(e) => optionOnKeyDown(e, option, i)}
-              on:click|stopPropagation={() => select(option)}
-            >
+              on:click|stopPropagation={() => select(option)}>
               {option.label}
             </a>
           {/each}
@@ -313,7 +312,7 @@
   }
 
   #input_container {
-    position:relative;
+    position: relative;
   }
 
   .form-select {
@@ -322,7 +321,7 @@
   }
 
   .input-svg {
-    position:absolute;
+    position: absolute;
     bottom: -3px;
     right: -5px;
     width: 32px;

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { DropdownButtonAction } from "./models/ComponentProps";
 
   export let label: string;
@@ -30,8 +30,7 @@
   <button
     type="button"
     class={`btn btn-primary`}
-    onclick={() => executeAction(actions[0])}
-  >
+    onclick={() => executeAction(actions[0])}>
     {processing ? `${processingLabel}` : actions[0].label}
   </button>
   <button
@@ -39,8 +38,7 @@
     class="btn btn-primary dropdown-toggle dropdown-toggle-split"
     data-toggle="dropdown"
     aria-haspopup="true"
-    aria-expanded="false"
-  >
+    aria-expanded="false">
     <span class="fas fa-angle-down dropdown-arrow" />
     <span class="sr-only">Toggle Dropdown</span>
   </button>
@@ -52,8 +50,7 @@
         <a
           class="dropdown-item"
           href="#"
-          on:click={() => executeAction(action)}
-        >
+          on:click={() => executeAction(action)}>
           {action.label}
         </a>
       {/if}

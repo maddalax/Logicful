@@ -22,25 +22,54 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="update port">
-      <change beforePath="$PROJECT_DIR$/../app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package-lock.json" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix css">
+      <change beforePath="$PROJECT_DIR$/../app/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/rollup.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/util/Draggable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/util/Draggable.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/static/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_7_10_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_7_14_AM_[Default_Changelist]/shared-local-instance.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_7_14_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_7_15_AM_[Default_Changelist]/shared-local-instance.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_7_15_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20__7_10_AM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20__7_14_AM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20__7_15_AM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Accordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Accordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/DatePicker.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/DatePicker.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Dialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/DropdownButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/DropdownButton.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/ExampleComponent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/ExampleComponent.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Footer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Html.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Html.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/LogicRule.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/LogicRule.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Nav.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Nav.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Preloader.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Preloader.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Repeater.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Sidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Sidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/Field.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEditSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEditSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldTypeEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/LogicAccordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/LogicAccordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/LogicBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/LogicBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ManageContentBlock.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/Switch.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/Switch.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Address.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/ComboBox.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Label.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/RichTextDisplay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Spacer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/StateSelector.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/TextArea.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/TextInput.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/models/ContentBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/models/ContentBlock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/models/IField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/models/IField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/_error.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_error.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/index.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../svelte-dnd-action/src/action.js" beforeDir="false" afterPath="$PROJECT_DIR$/../svelte-dnd-action/src/action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../svelte-dnd-action/src/helpers/styler.js" beforeDir="false" afterPath="$PROJECT_DIR$/../svelte-dnd-action/src/helpers/styler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +131,7 @@
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev (2)">
+  <component name="RunManager" selected="npm.pretty">
     <configuration name="Debug" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" port="5986">
       <method v="2" />
     </configuration>
@@ -136,11 +165,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="prod" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="pretty" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/../app/package.json" />
       <command value="run" />
       <scripts>
-        <script value="prod" />
+        <script value="pretty" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -159,18 +188,18 @@
     <list>
       <item itemvalue="Go Remote.Debug" />
       <item itemvalue="npm.dev (2)" />
-      <item itemvalue="npm.prod" />
       <item itemvalue="npm.eslint:fix" />
       <item itemvalue="npm.validate:dev" />
       <item itemvalue="npm.build" />
+      <item itemvalue="npm.pretty" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.pretty" />
         <item itemvalue="npm.dev (2)" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.validate:dev" />
         <item itemvalue="npm.eslint:fix" />
-        <item itemvalue="npm.prod" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +232,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="content block edit stuff" />
     <MESSAGE value="move db out of handler, recursive fix on manage content block" />
     <MESSAGE value="dialog back button" />
     <MESSAGE value="rich text updates" />
@@ -228,7 +256,8 @@
     <MESSAGE value="logic builder select def value" />
     <MESSAGE value="sapper ssr working" />
     <MESSAGE value="update port" />
-    <option name="LAST_COMMIT_MESSAGE" value="update port" />
+    <MESSAGE value="fix css" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix css" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -274,30 +303,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1625" height="315" key="GridCell.Tab.0.bottom" timestamp="1598298362374">
+    <state width="1625" height="315" key="GridCell.Tab.0.bottom" timestamp="1598300514277">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1625" height="315" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598298362374" />
-    <state width="1625" height="315" key="GridCell.Tab.0.center" timestamp="1598298362372">
+    <state width="1625" height="315" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598300514277" />
+    <state width="1625" height="315" key="GridCell.Tab.0.center" timestamp="1598300514277">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1625" height="315" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598298362372" />
-    <state width="1625" height="315" key="GridCell.Tab.0.left" timestamp="1598298362371">
+    <state width="1625" height="315" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598300514277" />
+    <state width="1625" height="315" key="GridCell.Tab.0.left" timestamp="1598300514277">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1625" height="315" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598298362371" />
-    <state width="1625" height="315" key="GridCell.Tab.0.right" timestamp="1598298362373">
+    <state width="1625" height="315" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598300514277" />
+    <state width="1625" height="315" key="GridCell.Tab.0.right" timestamp="1598300514277">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1625" height="315" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598298362373" />
+    <state width="1625" height="315" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598300514277" />
     <state width="614" height="245" key="GridCell.Tab.1.bottom" timestamp="1597516008790">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -371,11 +400,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598276995620">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598298588879">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598276995620" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598298588879" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

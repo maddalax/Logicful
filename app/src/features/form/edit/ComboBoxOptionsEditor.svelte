@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import { dispatch } from "event/EventBus";
   import OptionSetsList from "./OptionSetsList.svelte";

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
     import {onMount} from "svelte";
     import Field from "./Field.svelte";
     import type {ContentBlock} from "models/ContentBlock";
@@ -29,6 +29,9 @@
         const response = await fetch("http://localhost:3000/content-block/list");
         const blocks: ContentBlock[] = await response.json();
         const result = blocks.find((w) => w.id === id);
+        if(!result) {
+            return;
+        }
         data = await convertUrlToLocal(result);
         block = result;
         console.log(data);
@@ -85,6 +88,10 @@
         const {message} = await response.json();
         return message;
     }
+
+    function onChange(blockData : any) {
+        data = blockData;
+    }
 </script>
 
 <div>
@@ -103,11 +110,7 @@
             />
             <Field
                     editor={true}
-                    config={{
-                        onChange : (d) => {
-                            data = d;
-                        }
-                    }}
+                    config={{onChange}}
                     field={{
             value : data,
             id : randomString(),
@@ -118,7 +121,6 @@
     {/if}
     <div class="float-right">
         <DropdownButton
-                position="float-right"
                 label={'Save'}
                 processingLabel={'Saving...'}
                 actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}

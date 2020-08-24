@@ -1,4 +1,6 @@
-<script lang="ts"></script>
+<script lang="typescript">
+
+</script>
 
 <footer class="footer bg-primary text-white">
   <div class="container">
@@ -8,8 +10,7 @@
           class="navbar-brand-dark mb-4"
           height="35"
           src="/assets/img/brand/light.svg"
-          alt="Logo light"
-        />
+          alt="Logo light" />
       </div>
       <div class="col-7 col-md-2 mb-5 mb-lg-0">
         <span class="h5">Themesberg</span>
@@ -25,8 +26,7 @@
           <li>
             <a
               href="https://themesberg.com/docs/pixel-bootstrap/getting-started/overview/"
-              target="_blank"
-            >
+              target="_blank">
               Docs
               <span class="badge badge-sm bg-tertiary ml-2">v4.0</span>
             </a>
@@ -39,8 +39,7 @@
             <a
               href="https://twitter.com/themesberg"
               aria-label="twitter social link"
-              class="icon-white mr-2"
-            >
+              class="icon-white mr-2">
               <span class="fab fa-twitter" />
             </a>
           </li>
@@ -48,8 +47,7 @@
             <a
               href="https://www.facebook.com/themesberg/"
               class="icon-white mr-2"
-              aria-label="facebook social link"
-            >
+              aria-label="facebook social link">
               <span class="fab fa-facebook" />
             </a>
           </li>
@@ -57,8 +55,7 @@
             <a
               href="https://github.com/themesberg"
               aria-label="github social link"
-              class="icon-white mr-2"
-            >
+              class="icon-white mr-2">
               <span class="fab fa-github" />
             </a>
           </li>
@@ -66,8 +63,7 @@
             <a
               href="https://dribbble.com/themesberg"
               class="icon-white"
-              aria-label="dribbble social link"
-            >
+              aria-label="dribbble social link">
               <span class="fab fa-dribbble" />
             </a>
           </li>

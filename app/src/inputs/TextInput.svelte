@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
   import type { IField } from "models/IField";
   import { subscribeFieldChange } from "event/FieldEvent";
   import Label from "./Label.svelte";
@@ -36,8 +36,7 @@
       id={field.id}
       {value}
       name={field.name}
-      {type}
-    />
+      {type} />
   {:else}
     <input
       on:click|stopPropagation
@@ -50,8 +49,7 @@
       id={field.id}
       {value}
       name={field.name}
-      {type}
-    />
+      {type} />
   {/if}
   {#if field.helperText}
     <small class="form-text text-muted">

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="typescript">
     import LogicBuilder from "./LogicBuilder.svelte";
     import type {IField} from "models/IField";
 

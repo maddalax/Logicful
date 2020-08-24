@@ -1,9 +1,8 @@
-<script lang="ts">
-  import Trash from "@fortawesome/fontawesome-free/svgs/regular/trash-alt.svg";
+<script lang="typescript">
   import type { LabelValue } from "models/IField";
   import { dispatch } from "event/EventBus";
   export let onChange: (data: LabelValue[]) => any;
-  export let helperText: string | undefined;
+  export let helperText: string = '';
   export let options: LabelValue[] = [
     {
       label: "",
@@ -43,8 +42,7 @@
             type="text"
             on:blur={onRepeaterChange}
             bind:value={option.label}
-            placeholder={'Display'}
-          />
+            placeholder={'Display'} />
         </div>
         <div class="col">
           <input
@@ -53,13 +51,12 @@
             type="text"
             on:blur={onRepeaterChange}
             bind:value={option.value}
-            placeholder={'Value'}
-          />
+            placeholder={'Value'} />
 
         </div>
         <div class="col-1">
           <span class="icon baseline trash-icon" on:click={() => remove(i)}>
-            {@html Trash}
+            <i class="fas fa-trash"></i>
           </span>
         </div>
       </div>
