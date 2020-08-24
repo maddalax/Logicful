@@ -38,6 +38,9 @@
     const response = await fetch("http://localhost:3000/option-set/list");
     const data: OptionSet[] = await response.json();
     const result = data.find((w) => w.name === name);
+    if(!result) {
+        return;
+    }
     if (result.type === "local") {
       result.localSaveId = result.value as string;
       result.value = await convertUrlToLocal(result);
@@ -106,7 +109,7 @@
   }
 
   async function generateInlineUrl(set: OptionSet): Promise<string> {
-    const body = {};
+    const body : any = {};
     const v = set.value as LabelValue[];
     v.forEach((s) => {
       body[s.label] = s.value;
@@ -187,7 +190,6 @@
   {/each}
   <div class="float-right">
     <DropdownButton
-      position="float-right"
       label={'Save'}
       processingLabel={'Saving...'}
       actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}

@@ -10,7 +10,7 @@
   let confirm = false;
   let dirty = false;
   let saving: boolean = false;
-  let props: DialogOptions;
+  let props: DialogOptions | null;
 
   subscribe("dialog_show", (p: DialogOptions) => {
     propsContainer = [];
@@ -27,18 +27,19 @@
   });
 
   subscribe("user_change", () => {
-    if (isOpen && props.confirmCloseOnDirty) {
+    if (isOpen && props?.confirmCloseOnDirty) {
       dirty = true;
     }
   });
 
-  let modal: bootstrap.Modal;
+  let modal : any
 
   onMount(() => {
+    //@ts-ignore
     modal = new bootstrap.Modal(document.getElementById("app-dialog"));
 
     subscribeFieldChange((_, userChange) => {
-      if (isOpen && props.confirmCloseOnDirty && userChange) {
+      if (isOpen && props?.confirmCloseOnDirty && userChange) {
         dirty = true;
       }
     });
@@ -63,7 +64,7 @@
   }
 
   function close() {
-    if (props.confirmCloseOnDirty && !confirm && dirty) {
+    if (props?.confirmCloseOnDirty && !confirm && dirty) {
       confirm = true;
       return;
     }
@@ -83,7 +84,7 @@
     props = propsContainer[propsIndex];
   }
 
-  async function executeButton(button) {
+  async function executeButton(button : any) {
     await button.onClick();
     close();
   }
@@ -122,7 +123,7 @@
         <div class="modal-body">
           <svelte:component this={props?.child} {...props?.props} />
         </div>
-        {#if props?.buttons?.length > 0}
+        {#if props && props.buttons?.length > 0}
           <div class="modal-footer">
             {#each props.buttons as button}
               <button

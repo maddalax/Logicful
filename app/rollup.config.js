@@ -8,8 +8,8 @@ import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
 import sveltePreprocess from "svelte-preprocess";
+import svg from "rollup-plugin-svg";
 import pkg from "./package.json";
-import svg from 'rollup-plugin-svg'
 
 const { defaults } = require("./svelte.config.js");
 
@@ -32,13 +32,18 @@ const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && 
 
 export default {
 	client: {
-		input: config.client.input().replace(/\.js$/, ".ts"),
-		output: { ...config.client.output(), sourcemap },
+		input: config.client.input()
+			.replace(/\.js$/, ".ts"),
+		output: {
+			...config.client.output(),
+			sourcemap,
+		},
 		plugins: [
 			replace({
 				"process.browser": true,
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
+			svg(),
 			svelte({
 				dev,
 				hydratable: true,
@@ -49,8 +54,8 @@ export default {
 				browser: true,
 				dedupe: ["svelte"],
 				customResolveOptions: {
-						paths: process.env.NODE_PATH.split(/[;:]/)
-				}
+					paths: process.env.NODE_PATH.split(/[;:]/),
+				},
 			}),
 			commonjs({
 				sourceMap: !!sourcemap,
@@ -60,7 +65,6 @@ export default {
 				sourceMap: !!sourcemap,
 			}),
 			json(),
-		  svg(),
 			legacy && babel({
 				extensions: [".js", ".mjs", ".html", ".svelte"],
 				babelHelpers: "runtime",
@@ -88,14 +92,22 @@ export default {
 	},
 
 	server: {
-		input: { server: config.server.input().server.replace(/\.js$/, ".ts") },
-		output: { ...config.server.output(), sourcemap },
+		input: {
+			server: config.server.input()
+				.server
+				.replace(/\.js$/, ".ts"),
+		},
+		output: {
+			...config.server.output(),
+			sourcemap,
+		},
 		plugins: [
 			replace({
 				"process.browser": false,
 				"process.env.NODE_ENV": JSON.stringify(mode),
 				"module.require": "require",
 			}),
+			svg(), 
 			svelte({
 				generate: "ssr",
 				dev,
@@ -104,8 +116,8 @@ export default {
 			resolve({
 				dedupe: ["svelte"],
 				customResolveOptions: {
-						paths: process.env.NODE_PATH.split(/[;:]/)
-				}
+					paths: process.env.NODE_PATH.split(/[;:]/),
+				},
 			}),
 			commonjs({
 				sourceMap: !!sourcemap,
@@ -114,20 +126,24 @@ export default {
 				noEmitOnError: !dev,
 				sourceMap: !!sourcemap,
 			}),
-			svg(),
 			json(),
 		],
-		external: Object.keys(pkg.dependencies).concat(
-			require("module").builtinModules || Object.keys(process.binding("natives")), // eslint-disable-line global-require
-		),
+		external: Object.keys(pkg.dependencies)
+			.concat(
+				require("module").builtinModules || Object.keys(process.binding("natives")), // eslint-disable-line global-require
+			),
 
 		preserveEntrySignatures: "strict",
 		onwarn,
 	},
 
 	serviceworker: {
-		input: config.serviceworker.input().replace(/\.js$/, ".ts"),
-		output: { ...config.serviceworker.output(), sourcemap },
+		input: config.serviceworker.input()
+			.replace(/\.js$/, ".ts"),
+		output: {
+			...config.serviceworker.output(),
+			sourcemap,
+		},
 		plugins: [
 			resolve(),
 			replace({

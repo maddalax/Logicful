@@ -30,22 +30,22 @@
     });
 
     function remove(option: number) {
-        const temp = [...field.logic.rules];
+        const temp = [...field.logic!.rules];
         temp.slice(option, 1);
-        field.logic.rules = temp;
+        field.logic!.rules = temp;
         dispatchFieldChange(field, true);
     }
 
     function addNew() {
-        field.logic.rules = field.logic.rules.concat([{
-            field : fields[0]?.id ?? undefined,
+        field.logic!.rules = field.logic!.rules?.concat([{
+            field : fields[0]?.id,
             value : '',
             condition : 'eq'
         }]);
     }
 
     function shouldShowValue(index : number) {
-        const condition = field.logic?.rules?.[index]?.condition;
+        const condition = field.logic?.rules?.[index]?.condition ?? '';
         const toNotShow = ["hasValue", "isTrue", "isFalse"];
         if(toNotShow.includes(condition)) {
             return false;

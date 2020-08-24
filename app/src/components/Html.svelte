@@ -1,5 +1,5 @@
 <script>
-  export let value;
+  export let value : any;
 </script>
 
 {@html value}

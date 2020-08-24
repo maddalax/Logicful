@@ -3,7 +3,7 @@
 
   export let label: string;
   export let actions: DropdownButtonAction[] = [];
-  export let processing: boolean;
+  export let processing: boolean = false;
   export let processingLabel: string = "Processing...";
 
   let showing = false;

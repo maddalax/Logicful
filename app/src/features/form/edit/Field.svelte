@@ -25,7 +25,7 @@
   let value: any;
   let lastValue: any;
   export let editor : boolean = false;
-  export let config: any;
+  export let config: any = {};
   export let hidden : boolean = false;
 
   onMount(load);

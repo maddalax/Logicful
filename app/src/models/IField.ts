@@ -1,6 +1,6 @@
 export interface IField {
-    id? : string,
-    name : string,
+    id : string,
+    name? : string,
     label : string,
     type : string,
     [key : string] : any,

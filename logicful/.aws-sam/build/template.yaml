@@ -1,0 +1,120 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'logicful
+
+  Sample SAM Template for logicful
+
+  '
+Globals:
+  Api:
+    Cors:
+      AllowMethods: '''*'''
+      AllowHeaders: '''*'''
+      AllowOrigin: '''*'''
+  Function:
+    Timeout: 15
+    Environment:
+      Variables:
+        S3_ENDPOINT: nyc3.digitaloceanspaces.com
+        S3_KEY: 2RW3Y47LMJ7EYRBDSY7V
+        S3_SECRET: N0+EBLQwNe78QV8Swyj+oXbVuFsP7eOeh6uzgd5Xam0
+        S3_BUCKET: logicful
+        DYNAMO_REGION: us-east-1
+        DYNAMO_IS_LOCAL: false
+        DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
+Resources:
+  CreateOptionSet:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: CreateOptionSet
+      Handler: create-option-set
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /option-set/set
+            Method: POST
+  ListOptionSet:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: ListOptionSet
+      Handler: list-option-set
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /option-set/list
+            Method: GET
+  S3SetJson:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: S3SetJson
+      Handler: s3-set-json
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /s3/json/set
+            Method: POST
+  SetForm:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: SetForm
+      Handler: set-form
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /form/set
+            Method: POST
+  ListForms:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ListForms
+      Handler: list-forms
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /form/list
+            Method: GET
+  CreateContentBlock:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: CreateContentBlock
+      Handler: set-content-block
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /content-block/set
+            Method: POST
+  ListContentBlock:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies: AmazonDynamoDBFullAccess
+      CodeUri: ListContentBlock
+      Handler: list-content-block
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /content-block/list
+            Method: GET

@@ -6,52 +6,52 @@
   import { onMount } from "svelte";
 
   function defaultBlocks() {
-    return [
-      { id: randomString(), name: "string", morph : true },
-      { id: randomString(), name: "combobox", morph : true },
-      { id: randomString(), name: "switch" },
-      { id: randomString(), name: "spacer" },
-      { id: randomString(), name: "date", morph : true },
-      { id: randomString(), name: "block", morph : true },
-    ];
+  	return [
+  		{ id: randomString(), name: "string", morph: true },
+  		{ id: randomString(), name: "combobox", morph: true },
+  		{ id: randomString(), name: "switch" },
+  		{ id: randomString(), name: "spacer" },
+  		{ id: randomString(), name: "date", morph: true },
+  		{ id: randomString(), name: "block", morph: true },
+  	];
   }
 
   let blocks = defaultBlocks();
 
   function handler(e) {
-    if (e.type === "consider") {
-      blocks = e.detail.items;
-    } else {
-      blocks = defaultBlocks();
-    }
+  	if (e.type === "consider") {
+  		blocks = e.detail.items;
+  	} else {
+  		blocks = defaultBlocks();
+  	}
   }
 
   function addField(block) {
-    dispatch("add_field", {
-      type : block.name
-    })
+  	dispatch("add_field", {
+  		type: block.name,
+  	});
   }
 
   function saveDraft() {
-    dispatch("save_form", {
-      status: "draft",
-    });
+  	dispatch("save_form", {
+  		status: "draft",
+  	});
   }
 
   function saveAndPublish() {}
 
   onMount(() => {
-    window.onunhandledrejection = (e) => {
-      console.log("we got exception, but the app has crashed", e);
-      // here we should gracefully show some fallback error or previous good known state
-      // this does not work though:
-      // current = C1;
+  	window.onunhandledrejection = (e) => {
+  		console.log("we got exception, but the app has crashed", e);
+  		// here we should gracefully show some fallback error or previous good known state
+  		// this does not work though:
+  		// current = C1;
 
-      // todo: This is unexpected error, send error to log server
-      // only way to reload page so that users can try again until error is resolved
-      // uncomment to reload page:
-      // window.location = "/oi-oi-oi";
-    };
+  		// todo: This is unexpected error, send error to log server
+  		// only way to reload page so that users can try again until error is resolved
+  		// uncomment to reload page:
+  		// window.location = "/oi-oi-oi";
+  	};
   });
 </script>
 
@@ -62,14 +62,16 @@
 </div>
 <h5 style="padding-bottom:0.5em">Add Field</h5>
 <div
-  use:dndzone={{ items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }}
+  use:dndzone={{
+ items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: "white solid 0px" },
+}}
   on:consider={handler}
   on:finalize={handler}
 >
   {#each blocks as block (block.id)}
     <div animate:flip={{ duration: 1000 }}>
       <div on:click={() => addField(block)}>
-        {#if block.name === 'string'}
+        {#if block.name === "string"}
           <div class="d-flex px-3 block">
             <div>
               <div class="icon icon-sm icon-secondary">
@@ -80,7 +82,7 @@
               <h6 class="h6">Add Text Input</h6>
             </div>
           </div>
-        {:else if block.name === 'spacer'}
+        {:else if block.name === "spacer"}
           <div class="d-flex px-2 block">
             <div>
               <div class="icon icon-sm icon-secondary">
@@ -91,7 +93,7 @@
               <h6 class="h6">Add Spacer</h6>
             </div>
           </div>
-        {:else if block.name === 'switch'}
+        {:else if block.name === "switch"}
           <div class="d-flex px-2 block">
             <div>
               <div class="icon icon-sm icon-secondary">
@@ -102,7 +104,7 @@
               <h6 class="h6">Add Toggle</h6>
             </div>
           </div>
-        {:else if block.name === 'combobox'}
+        {:else if block.name === "combobox"}
           <div class="d-flex px-2 block">
             <div>
               <div class="icon icon-sm icon-secondary">
@@ -113,7 +115,7 @@
               <h6 class="h6">Add Dropdown</h6>
             </div>
           </div>
-        {:else if block.name === 'block'}
+        {:else if block.name === "block"}
           <div class="d-flex px-2 block">
             <div>
               <div class="icon icon-sm icon-secondary">
@@ -124,7 +126,7 @@
               <h6 class="h6">Add Content</h6>
             </div>
           </div>
-        {:else if block.name === 'date'}
+        {:else if block.name === "date"}
           <div class="d-flex px-2 block">
             <div>
               <div class="icon icon-sm icon-secondary">

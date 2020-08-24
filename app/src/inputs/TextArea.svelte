@@ -9,9 +9,9 @@
   export let field: IField;
   export let value = { blocks: [] };
   export let onChange: (value: any) => any;
-  let editor: Quill;
+  let editor: any;
 
-  function onFieldChange(data) {
+  function onFieldChange(data : any) {
     console.log("on", onChange);
     onChange?.(data);
   }
@@ -51,7 +51,7 @@
 
     quill.container.firstChild.innerHTML = value;
 
-    quill.on("text-change", function (delta, oldDelta, source) {
+    quill.on("text-change", function (delta : any, oldDelta : any, source : any) {
       field.value = quill.container.firstChild.innerHTML;
       dispatchFieldChange(field, true);
     });

@@ -28,7 +28,7 @@
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
-      const result = {};
+      const result : any = {};
       Object.keys(r).forEach((key) => {
         result[key] = r[key];
       });
@@ -77,7 +77,7 @@
 
   function onRowClick(row: any, index: number) {
     if (lastSelectedIndex !== -1) {
-      filtered[lastSelectedIndex]?.meta_selected = false;
+      filtered[lastSelectedIndex].meta_selected = false;
     }
     lastSelectedIndex = index;
     filtered[index].meta_selected = true;

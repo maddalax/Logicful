@@ -1,17 +1,17 @@
 <script lang="ts">
-  import flatpickr from "flatpickr";
-  import "flatpickr/dist/flatpickr.min.css";
   import { onMount } from "svelte";
   import type { IField } from "models/IField";
   import Label from "../inputs/Label.svelte";
 
   export let field: IField;
   let value: string = "";
-  let picker: flatpickr;
+  let picker: any;
 
   onMount(() => {
-    picker = flatpickr(document.getElementById(field.id), {
-      onChange: (selectedDates, dateStr, instance) => {
+    const flatpickr = require('flatpickr');
+    require("flatpickr/dist/flatpickr.min.css");
+    picker = flatpickr(document.getElementById(field.id!)!, {
+      onChange: (selectedDates : any, dateStr : any, instance : any) => {
         console.log(selectedDates, dateStr, instance);
         value = dateStr;
       },

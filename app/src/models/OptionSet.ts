@@ -1,11 +1,11 @@
 import type { LabelValue } from "./IField";
 
 export interface OptionSet {
-    name : string,
+    name? : string,
     type : 'local' | 'remote',
-    value : string | LabelValue[],
+    value : string | LabelValue[] | undefined,
     localSaveId? : string,
-    remoteUrl? : string,
+    remoteUrl? : string | any,
     [key : string] : any,
-    lastModified : number
+    lastModified? : number
 }
