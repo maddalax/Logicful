@@ -13,11 +13,6 @@
 
     export let onChange: (data: LogicRule[]) => any;
     export let helperText: string | undefined;
-    export let rules: LogicRule[] = [{
-        field : undefined,
-        value : undefined,
-        condition : undefined
-    }];
     export let field : IField
 
     let fields: IField[] = []
@@ -27,35 +22,26 @@
         subscribeFieldChange((newField) => {
             if(field.id === newField.id) {
                 field = newField;
-                rules = field.logic?.rules ?? [];
             }
         })
 
         fields = await dispatchSingle("get_form_fields", {});
         fields = fields.filter(w => w.id !== field.id);
-        rules = field.logic?.rules ?? [];
     });
 
-    function onRepeaterChange() {
-        dispatch("user_change", rules);
-        onChange?.(rules);
-    }
-
     function remove(option: number) {
-        rules.splice(option, 1);
-        rules = [...rules];
-        field.logic.rules = rules;
+        const temp = [...field.logic.rules];
+        temp.slice(option, 1);
+        field.logic.rules = temp;
         dispatchFieldChange(field, true);
     }
 
     function addNew() {
-        rules = rules.concat([
-            {
-                field : undefined,
-                value : undefined,
-                condition : undefined
-            },
-        ]);
+        field.logic.rules = field.logic.rules.concat([{
+            field : fields[0]?.id ?? undefined,
+            value : '',
+            condition : 'eq'
+        }]);
     }
 
     function shouldShowValue(index : number) {
@@ -131,7 +117,7 @@
 
 <div>
     <div class="container" style="padding-left: 0.4em; padding-right: 0.4em;">
-        {#each rules as option, i}
+        {#each (field.logic?.rules ?? []) as option, i}
             <div class="row">
                 <div class="col-11">
                     <div class="row">
