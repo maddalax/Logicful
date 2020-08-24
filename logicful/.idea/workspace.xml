@@ -22,9 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="card dropdox fix">
-      <change beforePath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/event/EventBus.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/store/FormStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/FormStore.ts" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="remove logs">
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +184,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="update field types" />
     <MESSAGE value="datetime picker" />
     <MESSAGE value="datetime sidebar" />
     <MESSAGE value="add sapper for static site" />
@@ -210,7 +208,8 @@
     <MESSAGE value="additional logic checks" />
     <MESSAGE value="switch toggle" />
     <MESSAGE value="card dropdox fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="card dropdox fix" />
+    <MESSAGE value="remove logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove logs" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -353,11 +352,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598226457563">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598226598027">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598226457563" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598226598027" />
     <state x="100" y="123" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598194754498">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -376,11 +375,11 @@
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598226540161" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598226543856">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598228653961">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598226543856" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598228653961" />
   </component>
 </project>

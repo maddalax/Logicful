@@ -10,6 +10,7 @@
   import { subscribe } from "../event/EventBus";
   import Fuse from "fuse.js";
   import formStore from "../store/FormStore";
+  import {nullOrEmpty} from "util/Compare";
   import Label from "inputs/Label.svelte";
 
   let initialized = false;
@@ -236,13 +237,25 @@
     <p>Failed to load.</p>
   {:else}
     <div class="form-group dropdown" on:keydown|stopPropagation>
-      <input
-        class="form-select"
-        readonly
-        on:click|stopPropagation={() => (open ? doClose() : doOpen())}
-        on:keydown|stopPropagation={inputOnKeyDown}
-        value={options?.find((w) => w.value === value)?.label ?? ''}
-      />
+      <div id="input_container">
+        <input
+                class="form-select"
+                readonly
+                on:click|stopPropagation={() => (open ? doClose() : doOpen())}
+                on:keydown|stopPropagation={inputOnKeyDown}
+                value={options?.find((w) => w.value === value)?.label ?? ''}
+        />
+        {#if !nullOrEmpty(options?.find((w) => w.value === value)?.label)}
+          <i class="fas fa-times input-svg input-svg-2" on:click={() => {
+            value = ''
+            field.value = undefined;
+            dispatchFieldChange(field, true);
+          }}></i>
+          <i class="fas fa-caret-down input-svg" on:click={doOpen}></i>
+        {:else}
+          <i class="fas fa-caret-down input-svg" on:click={doOpen}></i>
+        {/if}
+      </div>
       {#if filtered != null}
         <div class="dropdown-menu" class:show={open}>
           {#if search}
@@ -297,5 +310,32 @@
 
   .padding {
     padding-left: 7em;
+  }
+
+  #input_container {
+    position:relative;
+  }
+
+  .form-select {
+    padding-right: 30px;
+    width: 100%;
+  }
+
+  .input-svg {
+    position:absolute;
+    bottom: -3px;
+    right: -5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+
+  .input-svg-2 {
+    right: 11px;
+  }
+
+  .form-select {
+    cursor: pointer;
+    background-image: none;
   }
 </style>
