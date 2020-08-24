@@ -132,48 +132,39 @@
 <div>
     <div class="container" style="padding-left: 0.4em; padding-right: 0.4em;">
         {#each rules as option, i}
+            <div class="row">
+                <div class="col-11">
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col">
                             <Field
-                                    config={{ search: true }}
-                                    field={{ id: randomString(), label: 'Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: fields.map(w => ({label : w.label, value : w.id})) } }}
+                                config={{ search: true }}
+                                field={{ id: randomString(), label: 'Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: fields.map(w => ({label : w.label, value : w.id})) } }}
                             />
                         </div>
-                        <div class="col-1">
-                        <span class="icon baseline trash-icon" on:click={() => remove(i)}>
-                            {@html Trash}
-                        </span>
-                        </div>
                     </div>
-                    {#if field.logic?.rules?.[i]?.field}
-                        <div class="row">
-                            <div class="col">
-                                <Field
-                                        config={{ search: true }}
-                                        field={{ id: randomString(), label: 'Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }}
-                                />
-                            </div>
-                        </div>
-                    {/if}
-                    {#if field.logic?.rules?.[i]?.condition && shouldShowValue(i)}
-                        <div class="row">
-                            <div class="col">
-                                <Field
-                                        field={{ id: randomString(), label: 'Value', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
-                                />
-                            </div>
-                        </div>
-                    {/if}
-                            {#if field.logic?.rules?.[i]?.condition}
-                                <div class="col">
-                                    <Field
-                                            config={{ search: false }}
-                                            field={{ id: randomString(), label: 'Value', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
-                                    />
-                                </div>
-                            {/if}
+                    <div class="row">
+                        {#if field.logic?.rules?.[i]?.field}
+                            <Field
+                                config={{ search: true }}
+                                field={{ id: randomString(), label: 'Condition',  value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }}
+                            />
+                        {/if}
 
-
+                    </div>
+                    <div class="row">
+                        {#if field.logic?.rules?.[i]?.condition && shouldShowValue(i)}
+                            <Field
+                                field={{ id: randomString(), label: 'Value', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
+                            />
+                        {/if}
+                    </div>
+                </div>
+                <div class="col-1">
+                    <span class="icon baseline trash-icon" on:click={() => remove(i)}>
+                        {@html Trash}
+                    </span>
+                </div>
+            </div>
         {/each}
     </div>
     {#if helperText}
