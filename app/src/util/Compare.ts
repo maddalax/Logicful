@@ -10,12 +10,12 @@ export function stringEquals(str1 : string, str2 : string) {
     return str1 === str2;
 }
 
-export function toNumberOrDefault(value) {
+export function toNumberOrDefault(value : any) {
     const parsed = parseFloat(value)
     return isNaN(parsed) ? 0 : parsed;
 }
 
-export function nullOrEmpty(str : string) {
+export function nullOrEmpty(str : any) {
     return str == null || str === '';
 }   
 

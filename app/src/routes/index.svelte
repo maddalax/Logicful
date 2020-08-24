@@ -1,38 +1,35 @@
 <script lang="typescript">
-  import Footer from "components/Footer.svelte";
-  import Navbar from "components/Navbar.svelte";
-  import FormBuilder from "features/form/edit/FormBuilder.svelte";
-  import FormSidebar from "features/form/edit/FormSidebar.svelte";
-  import FieldEditSidebar from "features/form/edit/FieldEditSidebar.svelte";
-  import Dialog from "components/Dialog.svelte";
-  import { onMount } from "svelte";
-  import { subscribe } from "event/EventBus";
-  import Sidebar from "components/Sidebar.svelte";
-  import Preloader from "components/Preloader.svelte";
+  import Footer from 'components/Footer.svelte'
+  import Navbar from 'components/Navbar.svelte'
+  import FormBuilder from 'features/form/edit/FormBuilder.svelte'
+  import FormSidebar from 'features/form/edit/FormSidebar.svelte'
+  import FieldEditSidebar from 'features/form/edit/FieldEditSidebar.svelte'
+  import Dialog from 'components/Dialog.svelte'
+  import { onMount } from 'svelte'
+  import { subscribe } from 'event/EventBus'
+  import Sidebar from 'components/Sidebar.svelte'
+  import Preloader from 'components/Preloader.svelte'
 
-  let main: any;
-  let rightSidebar;
+  let main: any
+  let rightSidebar
 
   onMount(() => {
-    main = FormBuilder;
-    rightSidebar = FieldEditSidebar;
-    subscribe("show_main_content", (props) => {
-      main = props.component;
-    });
-    subscribe("show_right_sidebar", (props) => {
-      rightSidebar = props.component;
-    });
-  });
+    main = FormBuilder
+    rightSidebar = FieldEditSidebar
+    subscribe('show_main_content', (props) => {
+      main = props.component
+    })
+    subscribe('show_right_sidebar', (props) => {
+      rightSidebar = props.component
+    })
+  })
 </script>
 
 <Preloader />
 
 <Navbar />
 
-<div
-  class="container-fluid clearfix"
-  id="main-container"
-  style="margin-top: 3.9em;">
+<div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
   <div class="left-sidebar">
     <Sidebar>
       <FormSidebar />

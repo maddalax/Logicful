@@ -27,7 +27,8 @@
 		"prod": "run-s validate sapper:build",
 		"start": "node __sapper__/build",
 		"export": "run-s validate sapper:export",
-		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*.svelte"
+		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*.svelte",
+		"http-server": "cd src/data && http-server --cors"
 	},
 	"dependencies": {
 		"compression": "^1.7.4",

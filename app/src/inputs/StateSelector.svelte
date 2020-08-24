@@ -1,11 +1,11 @@
 <script lang="typescript">
-  import ComboBox from "inputs/ComboBox.svelte";
-  import type { FormValue } from "models/IField";
+  import ComboBox from 'inputs/ComboBox.svelte'
+  import type { FormValue } from 'models/IField'
 
-  export let label: string = "State";
-  export let value: FormValue = "";
-  export let name: string;
-  export let id: string;
+  export let label: string = 'State'
+  export let value: FormValue = ''
+  export let name: string
+  export let id: string
 </script>
 
 <ComboBox

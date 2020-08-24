@@ -1,216 +1,210 @@
 <script lang="typescript">
-  import type { IField, LabelValue } from "models/IField";
-  import { afterUpdate, onMount, tick } from "svelte";
-  import { LoadState } from "models/LoadState";
-  import { stringEquals, shallowEquals } from "util/Compare";
-  import { subscribeFieldChange } from "event/FieldEvent";
-  import { isString } from "guards/Guard";
-  import { randomString } from "util/Generate";
-  import { dispatchFieldChange } from "event/FieldEvent";
-  import { subscribe } from "event/EventBus";
-  import Fuse from "fuse.js";
-  import formStore from "store/FormStore";
-  import { nullOrEmpty } from "util/Compare";
-  import Label from "inputs/Label.svelte";
+  import type { IField, LabelValue } from 'models/IField'
+  import { afterUpdate, onMount, tick } from 'svelte'
+  import { LoadState } from 'models/LoadState'
+  import { stringEquals, shallowEquals } from 'util/Compare'
+  import { subscribeFieldChange } from 'event/FieldEvent'
+  import { isString } from 'guards/Guard'
+  import { randomString } from 'util/Generate'
+  import { dispatchFieldChange } from 'event/FieldEvent'
+  import { subscribe } from 'event/EventBus'
+  import Fuse from 'fuse.js'
+  import formStore from 'store/FormStore'
+  import { nullOrEmpty } from 'util/Compare'
+  import Label from 'inputs/Label.svelte'
 
-  let initialized = false;
-  let dropdownId;
-  let open = false;
-  let fuse: Fuse<{}>;
-  let query = "";
-  export let search = true;
+  let initialized = false
+  let dropdownId
+  let open = false
+  let fuse: Fuse<{}>
+  let query = ''
+  export let search = true
 
-  export let field: IField;
+  export let field: IField
 
-  let prevOptions = null;
+  let prevOptions: any = null
 
   onMount(async () => {
-    subscribe("show_field_config", (props) => {
-      value = "";
-      options = [];
-      setup();
-    });
+    subscribe('show_field_config', (props) => {
+      value = ''
+      options = []
+      setup()
+    })
 
-    dropdownId = `${field.name}-${randomString()}`;
-    initialized = false;
-    subscribe("option_set_modified", (set) => {
+    dropdownId = `${field.name}-${randomString()}`
+    initialized = false
+    subscribe('option_set_modified', (set) => {
       if (set.value === field.options) {
-        setup();
+        setup()
       }
       if (field.configTarget) {
-        setup();
+        setup()
       }
-    });
+    })
 
     subscribeFieldChange((newField) => {
       if (newField.id === field.id) {
-        value = newField.value ?? "";
-        normalizeValue();
+        value = newField.value ?? ''
+        normalizeValue()
       }
-    });
-    await setup();
-  });
+    })
+    await setup()
+  })
 
   $: {
     if (!shallowEquals(prevOptions, field.options)) {
-      prevOptions = field.options;
-      setup();
+      prevOptions = field.options
+      setup()
     }
   }
 
   function createFuse(): Fuse<{}> {
     if (!options) {
-      return new Fuse([]);
+      return new Fuse([])
     }
     return new Fuse(options, {
-      keys: ["label", "value"],
-    });
+      keys: ['label', 'value'],
+    })
   }
 
   async function setup() {
-    state = LoadState.Loading;
-    options = [];
+    state = LoadState.Loading
+    options = []
     try {
-      if (
-        field.options?.type === "remote" ||
-        isString(field.options) ||
-        (field.options?.type === "local" && isString(field.options.value))
-      ) {
-        const url = field.options.value || field.options;
-        const result = await fetch(url);
-        const data = await result.json();
+      if (field.options?.type === 'remote' || isString(field.options) || (field.options?.type === 'local' && isString(field.options.value))) {
+        const url = field.options.value || field.options
+        const result = await fetch(url)
+        const data = await result.json()
         if (!data) {
-          return;
+          return
         }
-        const parsed = [];
+        const parsed: any[] = []
         if (field.loadTransformer) {
-          options = field.loadTransformer(data);
+          options = field.loadTransformer(data)
         } else {
           Object.keys(data).forEach((key) => {
-            parsed.push({ value: data[key], label: key });
-          });
-          options = parsed;
+            parsed.push({ value: data[key], label: key })
+          })
+          options = parsed
         }
       } else {
-        options = field.options?.value;
+        options = field.options?.value
       }
-      filtered = options ?? [];
-      fuse = createFuse();
-      normalizeValue();
-      state = LoadState.Finished;
+      filtered = options ?? []
+      fuse = createFuse()
+      normalizeValue()
+      state = LoadState.Finished
     } catch (ex) {
-      console.log(ex);
-      options = [];
-      state = LoadState.Failed;
+      console.log(ex)
+      options = []
+      state = LoadState.Failed
     }
   }
 
-  let state: LoadState = LoadState.Loading;
-  let value = "";
-  let options: LabelValue[] = [];
-  let filtered: LabelValue[] = [];
+  let state: LoadState = LoadState.Loading
+  let value = ''
+  let options: LabelValue[] = []
+  let filtered: LabelValue[] = []
 
   function normalizeValue() {
-    const option = options?.find(
-      (w) => stringEquals(w.label, value) || stringEquals(w.value, value)
-    );
+    const option = options?.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value))
     if (option) {
-      value = option.value ?? "";
+      value = option.value ?? ''
     }
   }
 
   function select(option: LabelValue) {
-    doClose();
-    value = option.value;
-    field.value = option.value;
-    dispatchFieldChange(field, true);
-    field.onChange?.(e.target.value);
+    doClose()
+    value = option.value
+    field.value = option.value
+    dispatchFieldChange(field, true)
+    field.onChange?.(field.value)
   }
 
   function onBodyClick() {
-    doClose();
+    doClose()
   }
 
   function onSearch() {
     if (options.length === 0) {
-      filtered = options;
-    } else if (query == null || query === "") {
-      filtered = options;
+      filtered = options
+    } else if (query == null || query === '') {
+      filtered = options
     } else {
-      const result = fuse.search(query);
-      filtered = result.map((r) => r.item);
+      const result = fuse.search(query)
+      filtered = result.map((r) => r.item as LabelValue)
     }
   }
 
-  function onKeyDown(e) {
-    if (e.key === "Escape") {
-      doClose();
-    } else if (e.key === "ArrowDown") {
-      e.preventDefault();
-      const option = document.getElementById(`${field.id}-option-0`);
-      option.focus({
+  function onKeyDown(e: any) {
+    if (e.key === 'Escape') {
+      doClose()
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      const option = document.getElementById(`${field.id}-option-0`)
+      option?.focus({
         preventScroll: true,
-      });
+      })
     }
   }
 
-  function inputOnKeyDown(e) {
-    e.preventDefault();
-    if (e.key === "Escape") {
-      doClose();
+  function inputOnKeyDown(e: any) {
+    e.preventDefault()
+    if (e.key === 'Escape') {
+      doClose()
     }
-    if (e.key === "ArrowDown") {
+    if (e.key === 'ArrowDown') {
       if (open) {
-        const input = document.getElementById(`${field.id}-search-input`);
+        const input = document.getElementById(`${field.id}-search-input`)
         if (!input) {
-          return;
+          return
         }
         input.focus({
           preventScroll: true,
-        });
+        })
       } else {
-        doOpen();
+        doOpen()
       }
     }
   }
 
   function doOpen() {
-    open = true;
+    open = true
   }
 
   function doClose() {
-    open = false;
-    query = "";
-    filtered = options;
+    open = false
+    query = ''
+    filtered = options
   }
 
-  function optionOnKeyPress(e, option, index) {
-    if (index === 0 && e.key === "ArrowUp") {
-      const input = document.getElementById(`${field.id}-search-input`);
+  function optionOnKeyPress(e: any, option: LabelValue, index: number) {
+    if (index === 0 && e.key === 'ArrowUp') {
+      const input = document.getElementById(`${field.id}-search-input`)
       if (!input) {
-        return;
+        return
       }
       input.focus({
         preventScroll: true,
-      });
+      })
     }
-    if (e.key === "Escape") {
-      open = false;
+    if (e.key === 'Escape') {
+      open = false
     }
-    if (e.key === "Enter") {
-      select(option);
+    if (e.key === 'Enter') {
+      select(option)
     }
   }
 
-  function optionOnKeyDown(e, option, index) {
-    if (index === 0 && e.key === "ArrowUp") {
-      const input = document.getElementById(`${field.id}-search-input`);
+  function optionOnKeyDown(e: any, option: LabelValue, index: number) {
+    if (index === 0 && e.key === 'ArrowUp') {
+      const input = document.getElementById(`${field.id}-search-input`)
       if (!input) {
-        return;
+        return
       }
       input.focus({
         preventScroll: true,
-      });
+      })
     }
   }
 </script>
@@ -219,7 +213,7 @@
   on:click={onBodyClick}
   on:keydown={(e) => {
     if (e.key === 'Escape') {
-      doClose();
+      doClose()
     }
   }} />
 
@@ -248,9 +242,9 @@
           <i
             class="fas fa-times input-svg input-svg-2"
             on:click={() => {
-              value = '';
-              field.value = undefined;
-              dispatchFieldChange(field, true);
+              value = ''
+              field.value = undefined
+              dispatchFieldChange(field, true)
             }} />
           <i class="fas fa-caret-down input-svg" on:click={doOpen} />
         {:else}
@@ -267,16 +261,14 @@
               placeholder="Search..."
               value={query}
               on:input={(e) => {
-                query = e.target.value;
-                onSearch();
+                query = e.target.value
+                onSearch()
               }}
               on:keydown|stopPropagation|preventDefault={onKeyDown}
               on:click|stopPropagation />
           {/if}
           {#if filtered.length === 0}
-            <a class="dropdown-item" href="javascript:void(0)">
-              No options to display.
-            </a>
+            <a class="dropdown-item" href="javascript:void(0)">No options to display.</a>
           {/if}
           {#each filtered as option, i}
             <a

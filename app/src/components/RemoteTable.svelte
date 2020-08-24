@@ -1,106 +1,95 @@
 <script lang="typescript">
-  import type {
-    TableRow,
-    TableButtonAction,
-  } from "components/models/RemoteTableProps";
-  import { onMount } from "svelte";
-  import Fuse from "fuse.js";
-  import { LoadState } from "models/LoadState";
-  import { randomString } from "util/Generate";
+  import type { TableRow, TableButtonAction } from 'components/models/RemoteTableProps'
+  import { onMount } from 'svelte'
+  import Fuse from 'fuse.js'
+  import { LoadState } from 'models/LoadState'
+  import { randomString } from 'util/Generate'
 
-  export let getRows: () => Promise<TableRow[]>;
+  export let getRows: () => Promise<TableRow[]>
 
-  let caption: string = "";
-  let searchPlaceHolder = "Search";
-  let rows: TableRow[] = [];
-  let filtered: TableRow[] = [];
-  let columns: string[] = [];
-  let query = "";
-  let fuse: Fuse<{}>;
-  let state = LoadState.Loading;
-  let lastSelectedIndex = -1;
+  let caption: string = ''
+  let searchPlaceHolder = 'Search'
+  let rows: TableRow[] = []
+  let filtered: TableRow[] = []
+  let columns: string[] = []
+  let query = ''
+  let fuse: Fuse<{}>
+  let state = LoadState.Loading
+  let lastSelectedIndex = -1
 
-  export let headerActions: TableButtonAction[];
-  export let onEdit: (row: any) => any;
-  export let onDelete: (row: any) => any;
-  export let hidden = new Set<string>();
+  export let headerActions: TableButtonAction[]
+  export let onEdit: (row: any) => any
+  export let onDelete: (row: any) => any
+  export let hidden = new Set<string>()
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
-      const result: any = {};
+      const result: any = {}
       Object.keys(r).forEach((key) => {
-        result[key] = r[key];
-      });
-      return result;
-    });
+        result[key] = r[key]
+      })
+      return result
+    })
     return new Fuse(list, {
       keys: Object.keys(rows[0]),
-    });
+    })
   }
 
   onMount(() => {
-    hidden.add("table_meta_id");
-    load();
-  });
+    hidden.add('table_meta_id')
+    load()
+  })
 
   $: {
     if (rows.length === 0) {
-      filtered = rows;
-    } else if (query === "") {
-      filtered = rows;
+      filtered = rows
+    } else if (query === '') {
+      filtered = rows
     } else {
-      const result = fuse.search(query);
-      filtered = result.map((r) => r.item);
+      const result = fuse.search(query)
+      filtered = result.map((r) => r.item)
     }
   }
 
   async function load() {
     try {
-      rows = await getRows();
+      rows = await getRows()
       if (rows.length === 0) {
-        state = LoadState.Finished;
-        return;
+        state = LoadState.Finished
+        return
       }
       rows.map((w) => {
-        w.table_meta_id = randomString();
-        return w;
-      });
-      fuse = createFuse();
-      filtered = rows;
-      columns = Object.keys(rows[0] ?? {}).filter((w) => !hidden.has(w));
-      state = LoadState.Finished;
+        w.table_meta_id = randomString()
+        return w
+      })
+      fuse = createFuse()
+      filtered = rows
+      columns = Object.keys(rows[0] ?? {}).filter((w) => !hidden.has(w))
+      state = LoadState.Finished
     } catch (ex) {
-      state = LoadState.Failed;
+      state = LoadState.Failed
     }
   }
 
   function onRowClick(row: any, index: number) {
     if (lastSelectedIndex !== -1) {
-      filtered[lastSelectedIndex].meta_selected = false;
+      filtered[lastSelectedIndex].meta_selected = false
     }
-    lastSelectedIndex = index;
-    filtered[index].meta_selected = true;
+    lastSelectedIndex = index
+    filtered[index].meta_selected = true
   }
 </script>
 
 <div>
   <div class="d-flex container-fluid">
     <div class="container-fluid" style="padding-left: 0em;">
-      <input
-        class="form-control search-bar container-fluid"
-        placeholder={searchPlaceHolder}
-        bind:value={query} />
+      <input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} />
     </div>
     <div class="text-right button">
 
       {#if headerActions}
         {#each headerActions as action}
-          <button
-            class="btn btn-primary"
-            style="padding-left: 1em; width: 200px;"
-            on:click={action.onClick}>
-            {action.label}
-          </button>
+          <button class="btn btn-primary" style="padding-left: 1em; width: 200px;" on:click={action.onClick}>{action.label}</button>
         {/each}
       {/if}
     </div>
@@ -133,10 +122,7 @@
             {/if}
           </tr>
           {#each filtered as row, index}
-            <tr
-              class:active={row.meta_selected}
-              on:click={() => onRowClick(row, index)}
-              style="vertical-align: middle;">
+            <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
               {#each columns as column}
                 <td>
                   <div class="text">{row[column]}</div>

@@ -1,32 +1,32 @@
 <script lang="typescript">
-  import type { LabelValue } from "models/IField";
-  import { dispatch } from "event/EventBus";
-  export let onChange: (data: LabelValue[]) => any;
-  export let helperText: string = '';
+  import type { LabelValue } from 'models/IField'
+  import { dispatch } from 'event/EventBus'
+  export let onChange: (data: LabelValue[]) => any
+  export let helperText: string = ''
   export let options: LabelValue[] = [
     {
-      label: "",
-      value: "",
+      label: '',
+      value: '',
     },
-  ];
+  ]
 
   function onRepeaterChange() {
-    dispatch("user_change", options);
-    onChange?.(options);
+    dispatch('user_change', options)
+    onChange?.(options)
   }
 
   function remove(option: number) {
-    options.splice(option, 1);
-    options = [...options];
+    options.splice(option, 1)
+    options = [...options]
   }
 
   function addNew() {
     options = options.concat([
       {
-        label: "",
-        value: "",
+        label: '',
+        value: '',
       },
-    ]);
+    ])
   }
 </script>
 
@@ -36,27 +36,15 @@
     {#each options as option, i}
       <div class="row">
         <div class="col">
-          <input
-            class="form-control"
-            name="display"
-            type="text"
-            on:blur={onRepeaterChange}
-            bind:value={option.label}
-            placeholder={'Display'} />
+          <input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Display'} />
         </div>
         <div class="col">
-          <input
-            class="form-control"
-            name="value"
-            type="text"
-            on:blur={onRepeaterChange}
-            bind:value={option.value}
-            placeholder={'Value'} />
+          <input class="form-control" name="value" type="text" on:blur={onRepeaterChange} bind:value={option.value} placeholder={'Value'} />
 
         </div>
         <div class="col-1">
           <span class="icon baseline trash-icon" on:click={() => remove(i)}>
-            <i class="fas fa-trash"></i>
+            <i class="fas fa-trash" />
           </span>
         </div>
       </div>
@@ -67,9 +55,7 @@
       {@html helperText ?? ''}
     </div>
   {/if}
-  <button class="btn-primary btn" style="margin-top: 1em" on:click={addNew}>
-    Add New
-  </button>
+  <button class="btn-primary btn" style="margin-top: 1em" on:click={addNew}>Add New</button>
 </div>
 
 <style>
