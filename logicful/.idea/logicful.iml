@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../app" />
     <content url="file://$MODULE_DIR$/../form">
       <excludeFolder url="file://$MODULE_DIR$/../form/public/build" />
     </content>
     <content url="file://$MODULE_DIR$/../frontend">
+      <excludeFolder url="file://$MODULE_DIR$/../frontend" />
       <excludeFolder url="file://$MODULE_DIR$/../frontend/public/build" />
     </content>
-    <content url="file://$MODULE_DIR$/../info-site" />
+    <content url="file://$MODULE_DIR$/../info-site">
+      <excludeFolder url="file://$MODULE_DIR$/../info-site" />
+    </content>
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.aws-sam" />
     </content>
     <content url="file://$MODULE_DIR$/../pixel-pro-v5.1.0">
       <excludeFolder url="file://$MODULE_DIR$/../pixel-pro-v5.1.0" />
     </content>
+    <content url="file://$MODULE_DIR$/../sapper-typescript-graphql-template" />
     <content url="file://$MODULE_DIR$/../svelte-dnd-action" />
     <content url="file://$USER_HOME$/Downloads/pixel-pro-v5.1.0" />
     <orderEntry type="inheritedJdk" />

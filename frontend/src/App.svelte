@@ -26,33 +26,35 @@
   });
 </script>
 
-<Preloader />
+<div>
+  <Preloader />
 
-<Navbar />
+  <Navbar />
 
-<div
-  class="container-fluid clearfix"
-  id="main-container"
-  style="margin-top: 3.9em;"
->
-  <div class="left-sidebar">
-    <Sidebar>
-      <FormSidebar />
-    </Sidebar>
+  <div
+          class="container-fluid clearfix"
+          id="main-container"
+          style="margin-top: 3.9em;"
+  >
+    <div class="left-sidebar">
+      <Sidebar>
+        <FormSidebar />
+      </Sidebar>
+    </div>
+    <div class="main">
+      <!--    <LogicAccordion/>-->
+      <svelte:component this={main} />
+    </div>
+    <div class="right-sidebar">
+      <Sidebar>
+        <svelte:component this={rightSidebar} />
+      </Sidebar>
+    </div>
   </div>
-  <div class="main">
-<!--    <LogicAccordion/>-->
-    <svelte:component this={main} />
-  </div>
-  <div class="right-sidebar">
-    <Sidebar>
-      <svelte:component this={rightSidebar} />
-    </Sidebar>
-  </div>
+
+  <Dialog />
+  <Footer/>
 </div>
-
-<Dialog />
-<Footer/>
 
 <style>
   .main {

@@ -6,7 +6,7 @@
     navbar-dark"
 	>
 		<div class="container position-relative">
-			<a class="navbar-brand mr-lg-5" href="../../index.html">
+			<a class="navbar-brand mr-lg-5" href="/">
 				<img
 						class="navbar-brand-dark"
 						src="/assets/img/brand/light.svg"
@@ -22,7 +22,7 @@
 				<div class="navbar-collapse-header">
 					<div class="row">
 						<div class="col-6 collapse-brand">
-							<a href="../../index.html">
+							<a href="/">
 								<img src="/assets/img/brand/dark.svg" alt="Themesberg logo" />
 							</a>
 						</div>
