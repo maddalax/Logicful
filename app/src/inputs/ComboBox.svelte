@@ -295,13 +295,6 @@
     margin-top: -9px;
     color: #929292;
   }
-  .logicful-dropdown {
-    position: relative;
-  }
-
-  .padding {
-    padding-left: 7em;
-  }
 
   #input_container {
     position: relative;
