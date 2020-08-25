@@ -8,7 +8,6 @@
   import { LoadState } from "models/LoadState";
   import { FieldValueLoader } from "loader/FieldValueLoader";
   import Address from "inputs/Address.svelte";
-  import { dispatchFieldChange } from "event/FieldEvent";
   import TextArea from "inputs/TextArea.svelte";
   import Spacer from "inputs/Spacer.svelte";
   import formStore from "store/FormStore";
@@ -69,9 +68,6 @@
         value = result;
         field.value = result;
         formStore.set(field);
-        if (result != null) {
-          dispatchFieldChange(field, false);
-        }
         state = LoadState.Finished;
       } catch (e) {
         console.error(e);

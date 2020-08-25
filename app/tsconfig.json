@@ -6,7 +6,9 @@
             "WebWorker"
         ],
         "baseUrl": "src",
-        "target": "es2017",
+        "target": "es6",
+        "module": "esnext",
+        "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,

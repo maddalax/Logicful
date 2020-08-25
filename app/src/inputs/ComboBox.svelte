@@ -6,7 +6,6 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { isString } from 'guards/Guard'
   import { randomString } from 'util/Generate'
-  import { dispatchFieldChange } from 'event/FieldEvent'
   import { subscribe } from 'event/EventBus'
   import Fuse from 'fuse.js'
   import formStore from 'store/FormStore'
@@ -117,7 +116,7 @@
     doClose()
     value = option.value
     field.value = option.value
-    dispatchFieldChange(field, true)
+    formStore.set(field, true);
     field.onChange?.(field.value)
   }
 
@@ -244,7 +243,7 @@
             on:click={() => {
               value = ''
               field.value = undefined
-              dispatchFieldChange(field, true)
+              formStore.set(field, true);
             }} />
           <i class="fas fa-caret-down input-svg" on:click={doOpen} />
         {:else}

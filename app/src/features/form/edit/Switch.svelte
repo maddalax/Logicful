@@ -3,7 +3,6 @@
   import { onMount } from "svelte";
   import formStore from "store/FormStore";
   import { subscribeFieldChange } from "event/FieldEvent";
-  import { dispatchFieldChange } from "event/FieldEvent";
   import { firstNotEmpty } from "util/Format";
 
   export let config: any;
@@ -38,7 +37,7 @@
       e.preventDefault();
       e.stopPropagation();
       field.value = e.target.checked;
-      dispatchFieldChange(field, true);
+      formStore.set(field, true);
       field.onChange?.(field.value);
     }}
   />

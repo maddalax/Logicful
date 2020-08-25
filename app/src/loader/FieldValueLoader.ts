@@ -42,7 +42,7 @@ export class FieldValueLoader {
         return this.loadValue(value[w]);
     });
     const results = await Promise.all(promises);
-    const response = {};
+    const response : any = {};
     for(let i = 0; i < keys.length; i++) {
         response[keys[i]] = results[i];
     }

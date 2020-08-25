@@ -1,6 +1,6 @@
 <script lang="typescript">
   import type { IField } from 'models/IField'
-  import { dispatchFieldChange, subscribeFieldChange } from 'event/FieldEvent'
+  import { subscribeFieldChange } from 'event/FieldEvent'
   import { onMount } from 'svelte'
 
   import formStore from 'store/FormStore'
@@ -45,7 +45,7 @@
     quill.on('text-change', function (delta: any, oldDelta: any, source: any) {
       //@ts-ignore
       field.value = quill.container.firstChild.innerHTML
-      dispatchFieldChange(field, true)
+      formStore.set(field, true);
     })
   })
 </script>

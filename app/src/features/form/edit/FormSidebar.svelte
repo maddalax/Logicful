@@ -1,4 +1,5 @@
-<script>
+<script lang="typescript">
+  // @ts-nocheck
   import { dispatch } from "event/EventBus";
   import { flip } from "svelte/animate";
   import { dndzone } from "svelte-dnd-action";
@@ -53,12 +54,6 @@
       // window.location = "/oi-oi-oi";
     };
   });
-
-  const dndProps : any = {
-    "use:dndzone" : { items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } },
-    "on:consider" : handler,
-    "on:finalize" : handler
-  }
 </script>
 
 <style>

@@ -5,6 +5,9 @@ import formStore from "../store/FormStore";
 export class LogicBuilder {
 
     evaluate(field : IField) : boolean {
+        if(!field.logic) {
+            return true;
+        }
         if(!field.logic.rules || field.logic.rules.length === 0) {
             return true;
         }
@@ -60,6 +63,8 @@ export class LogicBuilder {
             }
             return true;
         }
+
+        return false;
     }
 
     private evaluateCondition(rule : LogicRule, value : any) : boolean {
@@ -86,6 +91,8 @@ export class LogicBuilder {
                 return value != null && value == true
             case "isFalse":
                 return value != null && value == false
+            default:
+                return false;
         }
     }
 

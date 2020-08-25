@@ -4,7 +4,6 @@
   import Label from './Label.svelte'
   import { onMount } from 'svelte'
   import formStore from 'store/FormStore'
-  import { dispatchFieldChange } from 'event/FieldEvent'
 
   export let field: IField
   export let value = ''
@@ -29,7 +28,7 @@
       on:click|stopPropagation
       on:input={(e) => {
         field.value = e.target.value ?? ''
-        dispatchFieldChange(field, true)
+        formStore.set(field, true);
         field.onChange?.(e.target.value)
       }}
       class={field.properties?.className ?? 'form-control'}
@@ -42,7 +41,7 @@
       on:click|stopPropagation
       on:input={(e) => {
         field.value = e.target.value ?? ''
-        dispatchFieldChange(field, true)
+        formStore.set(field, true);
         field.onChange?.(e.target.value)
       }}
       class={field.properties?.className ?? 'form-control'}

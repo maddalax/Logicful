@@ -1,4 +1,4 @@
-export function getUrlParameter(name, url? : string) {
+export function getUrlParameter(name : string, url? : string) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     let regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
     let results = regex.exec(url ?? location.search);

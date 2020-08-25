@@ -8,7 +8,7 @@
   import Field from 'features/form/edit/Field.svelte'
   import { randomString } from 'util/Generate'
   import { subscribeFieldChange } from 'event/FieldEvent'
-  import { dispatchFieldChange } from 'event/FieldEvent'
+import formStore from 'store/FormStore';
 
   export let helperText: string = ''
   export let field: IField
@@ -29,8 +29,8 @@
   function remove(option: number) {
     const temp = [...field.logic!.rules]
     temp.slice(option, 1)
-    field.logic!.rules = temp
-    dispatchFieldChange(field, true)
+    field.logic!.rules = temp;
+    formStore.set(field, true);
   }
 
   function addNew() {

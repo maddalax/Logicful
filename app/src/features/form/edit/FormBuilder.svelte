@@ -3,7 +3,7 @@
   import { randomStringSmall, randomString } from "util/Generate";
   import type { IForm } from "models/IForm";
   import { onMount } from "svelte";
-  import { subscribeFieldChange, dispatchFieldChange } from "event/FieldEvent";
+  import { subscribeFieldChange } from "event/FieldEvent";
   import { dispatch, subscribe } from "event/EventBus";
   import DynamicForm from "./DynamicForm.svelte";
   import formStore from "store/FormStore";
@@ -11,7 +11,7 @@
   import { DynamicFormMode } from "components/models/ComponentProps";
 
 
-  let form: IForm = null;
+  let form: IForm = {fields : []};
   let dropped = false;
   let active: string = '';
   let loadingActive: boolean = false;
@@ -180,8 +180,7 @@
         );
 
         set(form.fields[toUpdate], field.configFieldTarget, field.value)
-        dispatchFieldChange(form.fields[toUpdate], true);
-        formStore.set(form.fields[toUpdate]);
+        formStore.set(form.fields[toUpdate], true);
       }
 
     });
@@ -198,7 +197,7 @@
           <DynamicForm {form} mode={DynamicFormMode.Preview} />
         </div>
         {#if loadingActive}
-          <div class="col" transition:fade={{ duration: 200 }}>
+          <div class="col">
             <div class="spinner-border" role="status">
               <span class="sr-only">Loading...</span>
             </div>

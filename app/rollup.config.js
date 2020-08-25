@@ -5,7 +5,6 @@ import json from "@rollup/plugin-json";
 import typescript from "@rollup/plugin-typescript";
 import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
-import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
 import sveltePreprocess from "svelte-preprocess";
 import svg from "rollup-plugin-svg";
@@ -83,10 +82,6 @@ export default {
 										}],
 								],
 						}),
-
-						!dev && terser({
-								module: true,
-						}),
 				],
 
 				preserveEntrySignatures: false,
@@ -158,8 +153,7 @@ export default {
 						typescript({
 								noEmitOnError: !dev,
 								sourceMap: !!sourcemap,
-						}),
-						!dev && terser(),
+						})
 				],
 
 				preserveEntrySignatures: false,

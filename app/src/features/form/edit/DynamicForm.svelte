@@ -1,4 +1,5 @@
 <script lang="typescript">
+  // @ts-nocheck
   import Field from "./Field.svelte";
   import type { IForm } from "models/IForm";
   import type { IField } from "models/IField";

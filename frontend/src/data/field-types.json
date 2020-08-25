@@ -1,6 +1,0 @@
-{
-    "Text": "string",
-    "Dropdown": "combobox",
-    "Toggle" : "switch",
-    "Date" : "date"
-}

@@ -23,53 +23,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix css">
-      <change beforePath="$PROJECT_DIR$/../app/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Accordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Accordion.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/DatePicker.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/DatePicker.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/DropdownButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/DropdownButton.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/ExampleComponent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/ExampleComponent.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Footer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Html.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Html.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/LogicRule.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/LogicRule.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Nav.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Nav.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Navbar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Preloader.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Preloader.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Repeater.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Sidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Sidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/rollup.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/event/EventBus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/event/EventBus.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/Field.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEditSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEditSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldTypeEditor.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormEdit.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/LogicAccordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/LogicAccordion.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/LogicBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/LogicBuilder.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ManageContentBlock.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/Switch.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/Switch.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Address.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/ComboBox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Label.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/RichTextDisplay.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Spacer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/StateSelector.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/TextArea.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/TextInput.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/models/ContentBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/models/ContentBlock.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/models/IField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/models/IField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/_error.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_error.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/loader/FieldValueLoader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/loader/FieldValueLoader.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/models/IForm.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/service-worker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/service-worker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/services/LogicBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/services/LogicBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/util/Http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/util/Http.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Accordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Accordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/DatePicker.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/DatePicker.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/DropdownButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/DropdownButton.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/LogicRule.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/LogicRule.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Repeater.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/Field.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEditSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldEditSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FieldTypeEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/FormEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/LogicAccordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/LogicAccordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/LogicBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/LogicBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageContentBlock.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/features/form/edit/Switch.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/features/form/edit/Switch.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/Address.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/ComboBox.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/Label.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/RichTextDisplay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/Spacer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/StateSelector.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/TextArea.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/inputs/TextInput.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_1_52_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_17_20,_3_49_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,11 +190,11 @@
     </configuration>
     <list>
       <item itemvalue="Go Remote.Debug" />
+      <item itemvalue="npm.build" />
       <item itemvalue="npm.dev (2)" />
       <item itemvalue="npm.eslint:fix" />
-      <item itemvalue="npm.validate:dev" />
-      <item itemvalue="npm.build" />
       <item itemvalue="npm.pretty" />
+      <item itemvalue="npm.validate:dev" />
     </list>
     <recent_temporary>
       <list>
