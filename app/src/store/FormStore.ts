@@ -3,6 +3,7 @@ import { dispatchFieldChange } from "event/FieldEvent";
 import type { IField } from "models/IField";
 import type { IForm } from "models/IForm";
 import { fastClone, fastEquals } from "util/Compare";
+import { set } from "util/Selection";
 
 let configStore: { [key: string]: IField } = {};
 
@@ -12,7 +13,6 @@ let store: {
 } = {
     fields: {}
 };
-
 export class FormStore {
     setForm(form: IForm) {
         const copy: IForm = fastClone(form);
@@ -32,6 +32,13 @@ export class FormStore {
         });
     }
     set(field: IField, userChange: boolean = false) {
+        if (field.configTarget === 'form') {
+            set(store, field.configFieldTarget, field.value);
+            dispatch("form_updated", {
+                form: this.getForm()
+            })
+            return
+        }
 
         if (field.configTarget) {
             const isSame = fastEquals(configStore[field.id], field);
@@ -39,9 +46,13 @@ export class FormStore {
             if (isSame) {
                 return;
             }
+
+            set(store.fields[field.configTarget], field.configFieldTarget, field.value)
             const copy = fastClone(field);
             configStore[field.id] = copy;
             dispatchFieldChange(copy, true);
+            const newField = store.fields[field.configTarget];
+            dispatchFieldChange(fastClone(newField), true)
             return;
         }
 
@@ -87,4 +98,10 @@ export class FormStore {
 }
 
 const formStore = new FormStore();
+
+if (globalThis != null) {
+    //@ts-ignore
+    globalThis.formStore = formStore.getForm
+}
+
 export default formStore;

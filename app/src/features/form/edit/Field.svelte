@@ -19,6 +19,8 @@
   import DatePicker from "components/DatePicker.svelte";
   import {promptConfirm} from "util/Confirm";
   import {firstNotEmpty} from "util/Format";
+import { subscribeFieldChange } from "event/FieldEvent";
+import { fastClone } from "util/Compare";
 
   let state = LoadState.NotStarted;
   let value: any;
@@ -28,7 +30,7 @@
   export let hidden : boolean = false;
 
   onMount(load);
-
+  
   function onDelete() {
     promptConfirm({
       title : "Confirm Deletion",
@@ -53,9 +55,7 @@
       return;
     }
     field.selected = !field.selected;
-    dispatch("field_selected_change", {
-      field,
-    });
+    formStore.set(field);
   }
 
   async function load() {
@@ -94,10 +94,10 @@
   >
     {#if field.selected}
       <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
-        <button on:click={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+        <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
           <span class="icon-brand"><span class="far fa-clone"></span></span>
         </button>
-        <button on:click={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+        <button on:click|stopPropagation={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
           <span class="icon-brand"><span class="fas fa-trash"></span></span>
         </button>
       </div>

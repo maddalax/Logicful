@@ -1,8 +1,8 @@
 import type { IField } from '../models/IField';
-import { subscribe, dispatch } from 'event/EventBus';
+import { subscribe, dispatchSync } from 'event/EventBus';
 
 export function dispatchFieldChange(field : IField, userChange : boolean) {
-    dispatch("field_changed", {
+    dispatchSync("field_changed", {
         field,
         userChange
     })

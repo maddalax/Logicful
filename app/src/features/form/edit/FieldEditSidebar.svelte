@@ -1,47 +1,40 @@
 <script lang="typescript">
-  import {onMount} from "svelte";
-  import FieldEdit from "./FieldEdit.svelte";
-  import type {IField} from "models/IField";
-  import {subscribe} from "event/EventBus";
-  import type {IForm} from "models/IForm";
-  import {fade, slide} from "svelte/transition";
-  import FormEdit from "./FormEdit.svelte";
-  import {dispatch} from "event/EventBus";
+  import { onMount } from 'svelte'
+  import FieldEdit from './FieldEdit.svelte'
+  import type { IField } from 'models/IField'
+  import { subscribe } from 'event/EventBus'
+  import type { IForm } from 'models/IForm'
+  import { fade, slide } from 'svelte/transition'
+  import FormEdit from './FormEdit.svelte'
+  import { dispatch } from 'event/EventBus'
+  import { subscribeFieldChange } from 'event/FieldEvent'
+  import { fastClone } from 'util/Compare'
 
-  let form: IForm;
-  let active: string = '';
+  let field: IField
+  let fieldId: string
 
   onMount(() => {
-
-    subscribe("form_loaded", (props) => {
-      form = props.form;
+    subscribeFieldChange((newField: IField) => {
+      if (newField.selected) {
+        field = fastClone(newField)
+        fieldId = field.id
+      }
     })
-
-    dispatch("right_sidebar_loaded", {})
-
-    subscribe("edit_field", (props) => {
-      form = props.form;
-      active = props.active;
-    });
-  });
+  })
 </script>
 
 <div>
-  {#if active !== ''}
-    <div class="col-md no-gutters">
-      {#each form.fields as field(field.id)}
-        {#if field.id === active}
-          <div transition:slide={{ duration: 500 }}>
-            <FieldEdit {field} />
-          </div>
-        {/if}
-      {/each}
-    </div>
+  {#if field}
+    {#each [field] as f (fieldId)}
+      <div class="col-md no-gutters">
+        <div transition:slide={{ duration: 500 }}>
+          <FieldEdit field={f} />
+        </div>
+      </div>
+    {/each}
   {:else}
     <div class="col-md no-gutters">
-      {#if form}
-        <FormEdit form={form}/>
-      {/if}
+      <FormEdit />
     </div>
   {/if}
 </div>

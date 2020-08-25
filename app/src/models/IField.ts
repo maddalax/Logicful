@@ -10,6 +10,7 @@ export interface IField {
     value? : FormValue | undefined | any,
     onChange? : (value : any) => any,
     configTarget? : string,
+    selected? : boolean,
     loadTransformer? : (value : any) => any,
     logic? : {
         action : string,

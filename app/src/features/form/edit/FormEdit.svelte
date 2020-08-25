@@ -1,22 +1,32 @@
 <script lang="typescript">
-    import type {IForm} from "models/IForm";
+  import type { IForm } from 'models/IForm'
 
-    export let form : IForm;
-    import Field from "./Field.svelte";
-    import {randomString} from "util/Generate";
+  let form: IForm
+  import Field from './Field.svelte'
+  import { randomString } from 'util/Generate'
+  import { onMount } from 'svelte'
+  import { subscribe } from 'event/EventBus'
+  import formStore from 'store/FormStore'
 
+  onMount(() => {
+    form = formStore.getForm()
+    subscribe('form_updated', (props) => {
+      form = props.form
+    })
+  })
 </script>
 
-<div style="padding-left: 0.5em;">
+{#if form}
+  <div style="padding-left: 0.5em;">
     <h5 style="padding-bottom: 0.2em;">Form Configurations</h5>
-    <hr>
-</div>
+    <hr />
+  </div>
 
-<div style="padding-right: 1.5em;">
+  <div style="padding-right: 1.5em;">
+    <Field field={{ id: randomString(), required: true, label: 'Form Title', value: { type: 'local', value: form.title }, type: 'string', configFieldTarget: 'title', configTarget: 'form' }} />
     <Field
-        field={{ id: randomString(), required : true, label: 'Form Title', value: { type: 'local', value: form.title }, type: 'string', configFieldTarget: 'title', configTarget: 'form'}}
-    />
-    <Field
-        field={{ id: randomString(), type: 'switch', label: 'Enable Logic For Preview', value: { type: 'local', value: form.enableLogic ?? true}, configFieldTarget: 'enableLogic', configTarget: 'form' }}
-    />
-</div>
+      field={{ id: randomString(), type: 'switch', label: 'Enable Logic For Preview', value: { type: 'local', value: form.enableLogic ?? true }, configFieldTarget: 'enableLogic', configTarget: 'form' }} />
+  </div>
+{:else}
+  <div class="spinner" />
+{/if}

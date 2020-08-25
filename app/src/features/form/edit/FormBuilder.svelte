@@ -9,9 +9,9 @@
   import formStore from 'store/FormStore'
   import { set } from 'util/Selection'
   import { DynamicFormMode } from 'components/models/ComponentProps'
+  import { fastClone } from 'util/Compare'
 
   let dropped = false
-  let active: string = ''
   let loadingActive: boolean = false
   let order = []
   let form: IForm
@@ -62,7 +62,6 @@
         w.selected = false
         return w
       })
-      active = ''
       const id = randomString()
       form.fields = form.fields.concat([
         {
@@ -76,35 +75,19 @@
         },
       ])
       formStore.setForm(form)
-      active = id
-      dispatch('edit_field', {
-        form,
-        active,
-      })
     })
 
     subscribe('field_clone', (params) => {
       const index = form.fields.findIndex((w) => w.id === params.field.id)
-      const copy = { ...form.fields[index] }
+      const copy = fastClone(form.fields[index])
       copy.name = copy.name + '-' + randomStringSmall()
       copy.label = copy.label + ' Copy'
       copy.id = randomString()
       copy.selected = true
-      const temp = [...form.fields]
+      const temp = fastClone(form.fields)
       temp.splice(index + 1, 0, copy)
       form.fields = temp
-      active = copy.id
-      formStore.setForm(form)
-      dispatch('edit_field', {
-        form,
-        active: '',
-      })
-      setTimeout(() => {
-        dispatch('edit_field', {
-          form,
-          active: copy.id,
-        })
-      }, 800)
+      formStore.set(copy)
     })
 
     subscribe('save_form', (params) => {
@@ -117,10 +100,8 @@
     })
 
     subscribe('block_dropped', (e) => {
-      let newActive = ''
       const items = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
-          newActive = i.id
           i = {
             ...i,
             ...{
@@ -142,56 +123,33 @@
       })
       form.fields = items
       formStore.setForm(form)
-      if (e.type === 'finalize') {
-        active = newActive
-        dispatch('edit_field', {
-          form,
-          active,
-        })
-      }
     })
 
-    subscribe('field_selected_change', (params) => {
-      const field: IField = params.field
-      const index = form.fields.findIndex((w) => w.id === field.id)
-      if (field.selected) {
-        form.fields = form.fields.map((f, i) => {
-          f.selected = i === index
-          return f
-        })
+    subscribeFieldChange((newField: IField) => {
+      if (!newField.selected) {
+        return
       }
-      if (field.selected) {
-        active = field.id
-      } else {
-        active = ''
-      }
-      formStore.setForm(form)
-      dispatch('edit_field', {
-        form,
-        active,
+      form.fields = form.fields.map((f) => {
+        if (f.id !== newField.id) {
+          f.selected = false
+          formStore.set(f)
+        }
+        return f
       })
+    })
+
+    subscribe("form_updated", (params) => {
+      form = params.form;
     })
 
     subscribeFieldChange(async (field: IField) => {
       if (!form || !form.fields) {
-          return
-        }
-
-        const index = form.fields.findIndex((w) => w.id === field.id)
+        return
+      }
+      const index = form.fields.findIndex((w) => w.id === field.id)
+      if (index !== -1) {
         form.fields[index] = field
-        formStore.set(field)
-
-        if (field.configTarget && field.configTarget === 'form') {
-          set(form, field.configFieldTarget, field.value)
-          formStore.setForm(form)
-          return
-        }
-
-        if (field.configTarget) {
-          const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget)
-          set(form.fields[toUpdate], field.configFieldTarget, field.value)
-          formStore.set(form.fields[toUpdate], true)
-        }
+      }
     })
   })
 </script>
@@ -202,8 +160,8 @@
   {:else}
     <div class="container" style="padding-left: 0.4em; padding-top: 0.5em;">
       <div class="row">
-        <div class={active != null ? 'col' : 'col-md no-gutters max-width'}>
-          <DynamicForm form={form} mode={DynamicFormMode.Preview} />
+        <div class={'col-md no-gutters max-width'}>
+          <DynamicForm {form} mode={DynamicFormMode.Preview} />
         </div>
         {#if loadingActive}
           <div class="col">
