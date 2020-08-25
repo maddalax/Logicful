@@ -10,7 +10,7 @@
   export let type = 'text'
 
   onMount(() => {
-    value = formStore.get(field.configTarget ?? field.id) ?? ''
+    value = formStore.getValue(field.configTarget ?? field.id) ?? ''
 
     subscribeFieldChange((newField) => {
       if (newField.id === field.id) {

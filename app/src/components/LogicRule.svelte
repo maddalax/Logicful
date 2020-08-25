@@ -8,7 +8,8 @@
   import Field from 'features/form/edit/Field.svelte'
   import { randomString } from 'util/Generate'
   import { subscribeFieldChange } from 'event/FieldEvent'
-import formStore from 'store/FormStore';
+  import formStore from 'store/FormStore'
+  import { isObject } from 'guards/Guard'
 
   export let helperText: string = ''
   export let field: IField
@@ -21,26 +22,42 @@ import formStore from 'store/FormStore';
         field = newField
       }
     })
+  })
 
+  async function getFields() : Promise<IField[]> {
+    if(fields.length > 0) {
+      return fields;
+    }
     fields = await dispatchSingle('get_form_fields', {})
     fields = fields.filter((w) => w.id !== field.id)
-  })
+    return fields;
+  }
 
   function remove(option: number) {
     const temp = [...field.logic!.rules]
     temp.slice(option, 1)
-    field.logic!.rules = temp;
-    formStore.set(field, true);
+    field.logic!.rules = temp
+    formStore.set(field, true)
   }
 
   function addNew() {
-    field.logic!.rules = field.logic!.rules?.concat([
+    if (!field.logic) {
+      field.logic = {
+        rules: [],
+        action: '',
+      }
+    }
+    if (!field.logic.rules) {
+      field.logic.rules = []
+    }
+    field.logic!.rules = field.logic!.rules.concat([
       {
         field: fields[0]?.id,
         value: '',
         condition: 'eq',
       },
     ])
+    formStore.set(field, true)
   }
 
   function shouldShowValue(index: number) {
@@ -52,11 +69,13 @@ import formStore from 'store/FormStore';
     return true
   }
 
-  function conditions(index: number): LabelValue[] {
+  async function conditions(index: number): Promise<LabelValue[]> {
     const targetFieldId = field.logic?.rules?.[index]?.field
     if (!targetFieldId) {
       return []
     }
+    const fields = await getFields();
+    console.log("FIELDS", fields);
     const targetField = fields.find((w) => w.id === targetFieldId)
     if (!targetField) {
       return []
@@ -174,13 +193,3 @@ import formStore from 'store/FormStore';
   {/if}
   <button class="btn-primary btn" style="margin-top: 1em" on:click={addNew}>New Rule</button>
 </div>
-
-<style>
-  .trash-icon {
-    height: 1.1em;
-    width: 1.1em;
-    margin-top: 3.3em;
-    display: inline-block;
-    cursor: pointer;
-  }
-</style>

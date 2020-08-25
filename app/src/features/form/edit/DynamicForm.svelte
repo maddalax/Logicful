@@ -10,6 +10,7 @@
   import {transformDraggedElement} from "./util/Draggable";
   import formStore from "store/FormStore";
   import {LogicBuilder} from "services/LogicBuilder";
+import { fastClone } from "util/Compare";
 
   export let form: IForm;
   export let mode: DynamicFormMode = DynamicFormMode.Live;
@@ -20,13 +21,17 @@
   }
 
   subscribeFieldChange((updatedField: IField) => {
+    if(!form || !form.fields) {
+      return;
+    }
     const index = form.fields.findIndex((w) => w.id === updatedField.id);
+    console.log("INDEXX", index);
     if (index === -1) {
       return;
     }
     form.fields[index].updated = !form.fields[index].updated;
     const fieldsWithRules = form.fields.filter(w => {
-      if(!w.logic) {
+      if(!w.logic || !w.logic.rules) {
         return false;
       }
       const hasRule = w.logic.rules.find(rule => rule.field === updatedField.id);
@@ -73,11 +78,11 @@
     {#each form.fields as field (field.id)}
       {#if display(field)}
         <div>
-          <Field {field} />
+          <Field field={fastClone(field)} />
         </div>
       {:else}
         <div>
-          <Field {field} hidden={true} />
+          <Field field={fastClone(field)} hidden={true} />
         </div>
       {/if}
     {/each}

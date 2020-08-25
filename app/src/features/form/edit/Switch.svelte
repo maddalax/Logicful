@@ -11,7 +11,7 @@
   export let value = true;
 
   onMount(() => {
-    value = formStore.get(field.configTarget ?? field.id);
+    value = formStore.getValue(field.configTarget ?? field.id);
     value = value == null ? field.defaultValue ?? false : value;
 
     subscribeFieldChange((newField) => {

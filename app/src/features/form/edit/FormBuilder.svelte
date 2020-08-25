@@ -1,190 +1,201 @@
 <script lang="typescript">
-  import type { IField } from "models/IField";
-  import { randomStringSmall, randomString } from "util/Generate";
-  import type { IForm } from "models/IForm";
-  import { onMount } from "svelte";
-  import { subscribeFieldChange } from "event/FieldEvent";
-  import { dispatch, subscribe } from "event/EventBus";
-  import DynamicForm from "./DynamicForm.svelte";
-  import formStore from "store/FormStore";
-  import {set} from "util/Selection"
-  import { DynamicFormMode } from "components/models/ComponentProps";
+  import type { IField } from 'models/IField'
+  import { randomStringSmall, randomString } from 'util/Generate'
+  import type { IForm } from 'models/IForm'
+  import { onMount } from 'svelte'
+  import { subscribeFieldChange } from 'event/FieldEvent'
+  import { dispatch, subscribe } from 'event/EventBus'
+  import DynamicForm from './DynamicForm.svelte'
+  import formStore from 'store/FormStore'
+  import { set } from 'util/Selection'
+  import { DynamicFormMode } from 'components/models/ComponentProps'
 
-
-  let form: IForm = {fields : []};
-  let dropped = false;
-  let active: string = '';
-  let loadingActive: boolean = false;
-  let order = [];
+  let dropped = false
+  let active: string = ''
+  let loadingActive: boolean = false
+  let order = []
+  let form: IForm
 
   async function loadForm() {
     //const response = await fetch("http://127.0.0.1:3000/form/list");
     //const forms = await response.json();
     //const temp = forms.find(w => w.name === 'main');
-    let temp = localStorage.getItem("form");
+    let temp = localStorage.getItem('form')
     if (!temp) {
-      temp = JSON.stringify({ fields: [] });
+      temp = JSON.stringify({ fields: [] })
     }
-    form = JSON.parse(temp);
-    form.fields = form.fields.map((w) => {
-      w.selected = false;
-      return w;
-    });
-    dispatch("form_loaded", {
-      form
+    form = JSON.parse(temp)
+    form.fields = form.fields.map((w: IField) => {
+      w.selected = false
+      return w
+    })
+    formStore.setForm(form)
+    dispatch('form_loaded', {
+      form,
     })
   }
 
   onMount(async () => {
-    loadForm();
+    loadForm()
 
-    subscribe("field_delete", (params) => {
-      const index = form.fields.findIndex((w) => w.id === params.field.id);
-      const temp = [...form.fields];
-      temp.splice(index, 1);
-      form.fields = temp;
+    subscribe('form_updated', (props) => {
+      console.log("UPDATED FORM", props.form)
+      form = props.form
     })
 
-    subscribe("right_sidebar_loaded", () => {
-      form && dispatch("form_loaded", {
-        form
-      })
+    subscribe('field_delete', (params) => {
+      const index = form.fields.findIndex((w) => w.id === params.field.id)
+      const temp = [...form.fields]
+      temp.splice(index, 1)
+      form.fields = temp
+      formStore.setForm(form)
     })
 
-    subscribe("add_field", (params) => {
-      form.fields = form.fields.map(w => {
-        w.selected = false;
-        return w;
+    subscribe('right_sidebar_loaded', () => {
+      form &&
+        dispatch('form_loaded', {
+          form,
+        })
+    })
+
+    subscribe('add_field', (params) => {
+      form.fields = form.fields.map((w) => {
+        w.selected = false
+        return w
       })
-      active = '';
-      const id = randomString();
-      form.fields = form.fields.concat([{
-        name: "new-field-" + randomStringSmall(),
-        label: "New Field " + randomStringSmall(),
-        type: params.type,
-        id,
-        selected: true,
-        value: undefined,
-        expanded: true,
-      }]);
-      active = id;
-      dispatch("edit_field", {
+      active = ''
+      const id = randomString()
+      form.fields = form.fields.concat([
+        {
+          name: 'new-field-' + randomStringSmall(),
+          label: 'New Field ' + randomStringSmall(),
+          type: params.type,
+          id,
+          selected: true,
+          value: undefined,
+          expanded: true,
+        },
+      ])
+      formStore.setForm(form)
+      active = id
+      dispatch('edit_field', {
         form,
         active,
-      });
-    });
+      })
+    })
 
-    subscribe("field_clone", (params) => {
-      const index = form.fields.findIndex((w) => w.id === params.field.id);
-      const copy = {...form.fields[index]};
+    subscribe('field_clone', (params) => {
+      const index = form.fields.findIndex((w) => w.id === params.field.id)
+      const copy = { ...form.fields[index] }
       copy.name = copy.name + '-' + randomStringSmall()
-      copy.label = copy.label + " Copy"
-      copy.id = randomString();
-      copy.selected = true;
-      const temp = [...form.fields];
+      copy.label = copy.label + ' Copy'
+      copy.id = randomString()
+      copy.selected = true
+      const temp = [...form.fields]
       temp.splice(index + 1, 0, copy)
-      form.fields = temp;
-      active = copy.id;
-      dispatch("edit_field", {
+      form.fields = temp
+      active = copy.id
+      formStore.setForm(form)
+      dispatch('edit_field', {
         form,
-        active : ''
-      });
+        active: '',
+      })
       setTimeout(() => {
-        dispatch("edit_field", {
+        dispatch('edit_field', {
           form,
-          active : copy.id
-        });
+          active: copy.id,
+        })
       }, 800)
     })
 
-    subscribe("save_form", (params) => {
-      console.log(JSON.stringify(form, null, 2));
-      localStorage.setItem("form", JSON.stringify(form));
-    });
-
-    subscribe("get_form_fields", () => {
-      return form.fields;
+    subscribe('save_form', (params) => {
+      const form = formStore.getForm()
+      console.log(JSON.stringify(form, null, 2))
+      localStorage.setItem('form', JSON.stringify(form))
     })
 
-    subscribe("block_dropped", (e) => {
-      let newActive = '';
-      const items = e.detail.items.map((i : any, index : number) => {
+    subscribe('get_form_fields', () => {
+      return form.fields
+    })
+
+    subscribe('block_dropped', (e) => {
+      let newActive = ''
+      const items = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
-          newActive = i.id;
+          newActive = i.id
           i = {
             ...i,
             ...{
-              name: "new-field-" + randomStringSmall(),
-              label: "New Field " + randomStringSmall(),
+              name: 'new-field-' + randomStringSmall(),
+              label: 'New Field ' + randomStringSmall(),
               type: i.name,
               selected: true,
               value: undefined,
               expanded: true,
             },
-          };
+          }
         } else {
           // Deselect all other fields and select the one that was dropped.
-          if (e.type === "finalize") {
-            i.selected = false;
+          if (e.type === 'finalize') {
+            i.selected = false
           }
         }
-        return { ...i };
-      });
-      form.fields = items;
-      if (e.type === "finalize") {
-        active = newActive;
-        dispatch("edit_field", {
+        return { ...i }
+      })
+      form.fields = items
+      formStore.setForm(form)
+      if (e.type === 'finalize') {
+        active = newActive
+        dispatch('edit_field', {
           form,
           active,
-        });
+        })
       }
-    });
+    })
 
-    subscribe("field_selected_change", (params) => {
-      const field: IField = params.field;
-      const index = form.fields.findIndex((w) => w.id === field.id);
+    subscribe('field_selected_change', (params) => {
+      const field: IField = params.field
+      const index = form.fields.findIndex((w) => w.id === field.id)
       if (field.selected) {
         form.fields = form.fields.map((f, i) => {
-          f.selected = i === index;
-          return f;
-        });
+          f.selected = i === index
+          return f
+        })
       }
       if (field.selected) {
-        active = field.id;
+        active = field.id
       } else {
-        active = '';
+        active = ''
       }
-      dispatch("edit_field", {
+      formStore.setForm(form)
+      dispatch('edit_field', {
         form,
         active,
-      });
-    });
+      })
+    })
 
     subscribeFieldChange(async (field: IField) => {
-      if (!form) {
-        return;
-      }
+      if (!form || !form.fields) {
+          return
+        }
 
-      const index = form.fields.findIndex((w) => w.id === field.id);
-      form.fields[index] = field;
-      formStore.set(field);
+        const index = form.fields.findIndex((w) => w.id === field.id)
+        form.fields[index] = field
+        formStore.set(field)
 
-      if(field.configTarget && field.configTarget === "form") {
-        set(form, field.configFieldTarget, field.value)
-        return;
-      }
+        if (field.configTarget && field.configTarget === 'form') {
+          set(form, field.configFieldTarget, field.value)
+          formStore.setForm(form)
+          return
+        }
 
-      if (field.configTarget) {
-        const toUpdate = form.fields.findIndex(
-          (w) => w.id === field.configTarget
-        );
-
-        set(form.fields[toUpdate], field.configFieldTarget, field.value)
-        formStore.set(form.fields[toUpdate], true);
-      }
-
-    });
-  });
+        if (field.configTarget) {
+          const toUpdate = form.fields.findIndex((w) => w.id === field.configTarget)
+          set(form.fields[toUpdate], field.configFieldTarget, field.value)
+          formStore.set(form.fields[toUpdate], true)
+        }
+    })
+  })
 </script>
 
 <div>
@@ -194,7 +205,7 @@
     <div class="container" style="padding-left: 0.4em; padding-top: 0.5em;">
       <div class="row">
         <div class={active != null ? 'col' : 'col-md no-gutters max-width'}>
-          <DynamicForm {form} mode={DynamicFormMode.Preview} />
+          <DynamicForm form={form} mode={DynamicFormMode.Preview} />
         </div>
         {#if loadingActive}
           <div class="col">

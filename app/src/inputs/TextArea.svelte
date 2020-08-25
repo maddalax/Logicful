@@ -23,7 +23,7 @@
     import('quill/dist/quill.snow.css')
     const Quill = (await import('quill')).default
 
-    value = formStore.get(field.configTarget ?? field.id) ?? ''
+    value = formStore.getValue(field.configTarget ?? field.id) ?? ''
     subscribeFieldChange((newField) => {
       if (newField.id === field.id) {
         value = newField.value ?? ''

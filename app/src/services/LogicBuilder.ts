@@ -1,6 +1,7 @@
 import type {LogicRule} from "../models/LogicBuilder";
 import type {IField} from "../models/IField";
 import formStore from "../store/FormStore";
+import { nullOrEmpty } from "util/Compare";
 
 export class LogicBuilder {
 
@@ -8,13 +9,24 @@ export class LogicBuilder {
         if(!field.logic) {
             return true;
         }
-        if(!field.logic.rules || field.logic.rules.length === 0) {
+        if(!field.logic.rules) {
+            return true;
+        }
+
+        const rules = field.logic.rules.filter(r => {
+            if(nullOrEmpty(r.field) || nullOrEmpty(r.condition)) {
+                return false;
+            }
+            return true;
+        });
+
+        if(rules.length === 0) {
             return true;
         }
 
         if (field.logic.action === "show-any-match") {
-            for (let rule of field.logic.rules) {
-                const fieldTargetValue = formStore.get(rule.field);
+            for (let rule of rules) {
+                const fieldTargetValue = formStore.getValue(rule.field);
                 if(fieldTargetValue == null) {
                     continue;
                 }
@@ -26,8 +38,8 @@ export class LogicBuilder {
         }
 
         if (field.logic.action === "show-all-match") {
-            for (let rule of field.logic.rules) {
-                const fieldTargetValue = formStore.get(rule.field);
+            for (let rule of rules) {
+                const fieldTargetValue = formStore.getValue(rule.field);
                 if(fieldTargetValue == null) {
                     return false;
                 }
@@ -39,8 +51,8 @@ export class LogicBuilder {
         }
 
         if (field.logic.action === "hide-all-match") {
-            for (let rule of field.logic.rules) {
-                const fieldTargetValue = formStore.get(rule.field);
+            for (let rule of rules) {
+                const fieldTargetValue = formStore.getValue(rule.field);
                 if(fieldTargetValue == null) {
                     return true;
                 }
@@ -52,8 +64,8 @@ export class LogicBuilder {
         }
 
         if (field.logic.action === "hide-any-match") {
-            for (let rule of field.logic.rules) {
-                const fieldTargetValue = formStore.get(rule.field);
+            for (let rule of rules) {
+                const fieldTargetValue = formStore.getValue(rule.field);
                 if(fieldTargetValue == null) {
                     continue;
                 }

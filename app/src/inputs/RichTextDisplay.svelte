@@ -10,7 +10,7 @@
   let lastUrl = ''
 
   onMount(async () => {
-    let url = formStore.get(field.configTarget ?? field.id)
+    let url = formStore.getValue(field.configTarget ?? field.id)
 
     subscribeFieldChange((newField) => {
       if (newField.id === field.id && lastUrl !== newField.value) {

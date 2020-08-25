@@ -2,11 +2,11 @@
   import type { IField, LabelValue } from 'models/IField'
   import { afterUpdate, onMount, tick } from 'svelte'
   import { LoadState } from 'models/LoadState'
-  import { stringEquals, shallowEquals } from 'util/Compare'
+  import { stringEquals, fastEquals } from 'util/Compare'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { isString } from 'guards/Guard'
   import { randomString } from 'util/Generate'
-  import { subscribe } from 'event/EventBus'
+  import { dispatch, subscribe } from 'event/EventBus'
   import Fuse from 'fuse.js'
   import formStore from 'store/FormStore'
   import { nullOrEmpty } from 'util/Compare'
@@ -28,6 +28,12 @@
       value = ''
       options = []
       setup()
+    })
+    
+    subscribe("combobox_open", (props) => {
+      if(props.id !== field.id) {
+        doClose();
+      }
     })
 
     dropdownId = `${field.name}-${randomString()}`
@@ -51,7 +57,7 @@
   })
 
   $: {
-    if (!shallowEquals(prevOptions, field.options)) {
+    if (!fastEquals(prevOptions, field.options)) {
       prevOptions = field.options
       setup()
     }
@@ -87,7 +93,7 @@
           options = parsed
         }
       } else {
-        options = field.options?.value
+        options = await field.options?.value
       }
       filtered = options ?? []
       fuse = createFuse()
@@ -116,7 +122,7 @@
     doClose()
     value = option.value
     field.value = option.value
-    formStore.set(field, true);
+    formStore.set(field, true)
     field.onChange?.(field.value)
   }
 
@@ -168,6 +174,9 @@
   }
 
   function doOpen() {
+    dispatch("combobox_open", {
+      id : field.id
+    });
     open = true
   }
 
@@ -238,16 +247,21 @@
           on:keydown|stopPropagation={inputOnKeyDown}
           value={options?.find((w) => w.value === value)?.label ?? ''} />
         {#if !nullOrEmpty(options?.find((w) => w.value === value)?.label)}
-          <i
-            class="fas fa-times input-svg input-svg-2"
+          <div
             on:click={() => {
               value = ''
               field.value = undefined
-              formStore.set(field, true);
-            }} />
-          <i class="fas fa-caret-down input-svg" on:click={doOpen} />
+              formStore.set(field, true)
+            }}>
+            <i class="fas fa-times input-svg input-svg-2" />
+          </div>
+          <div on:click={() => (open ? doClose() : doOpen())}>
+            <i class="fas fa-caret-down input-svg" />
+          </div>
         {:else}
-          <i class="fas fa-caret-down input-svg" on:click={doOpen} />
+          <div on:click={() => (open ? doClose() : doOpen())}>
+            <i class="fas fa-caret-down input-svg" />
+          </div>
         {/if}
       </div>
       {#if filtered != null}
@@ -283,6 +297,11 @@
         </div>
       {/if}
     </div>
+    {#if field.helperText}
+      <small class="form-text text-muted">
+        {@html field.helperText ?? ''}
+      </small>
+    {/if}
   {/if}
 
 </div>
@@ -306,15 +325,15 @@
 
   .input-svg {
     position: absolute;
-    bottom: -3px;
-    right: -5px;
-    width: 32px;
-    height: 32px;
+    bottom: 13px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
     cursor: pointer;
   }
 
   .input-svg-2 {
-    right: 11px;
+    right: 23px;
   }
 
   .form-select {

@@ -19,6 +19,10 @@ export function nullOrEmpty(str : any) {
     return str == null || str === '';
 }   
 
-export function shallowEquals(any : any, any2 : any) {
+export function fastEquals(any : any, any2 : any) {
     return JSON.stringify(any) === JSON.stringify(any2);
+}
+
+export function fastClone(any : any) {
+    return JSON.parse(JSON.stringify(any));
 }

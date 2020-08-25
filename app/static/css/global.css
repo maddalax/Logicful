@@ -27,3 +27,7 @@
 .ql-toolbar.ql-snow .ql-formats {
     margin-right: unset;
 }
+
+.icon span, .icon svg {
+    font-size: unset;
+}
