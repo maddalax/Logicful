@@ -29,10 +29,10 @@
       options = []
       setup()
     })
-    
-    subscribe("combobox_open", (props) => {
-      if(props.id !== field.id) {
-        doClose();
+
+    subscribe('combobox_open', (props) => {
+      if (props.id !== field.id) {
+        doClose()
       }
     })
 
@@ -174,9 +174,9 @@
   }
 
   function doOpen() {
-    dispatch("combobox_open", {
-      id : field.id
-    });
+    dispatch('combobox_open', {
+      id: field.id,
+    })
     open = true
   }
 

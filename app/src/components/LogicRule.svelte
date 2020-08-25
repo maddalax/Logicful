@@ -24,13 +24,13 @@
     })
   })
 
-  async function getFields() : Promise<IField[]> {
-    if(fields.length > 0) {
-      return fields;
+  async function getFields(): Promise<IField[]> {
+    if (fields.length > 0) {
+      return fields
     }
     fields = await dispatchSingle('get_form_fields', {})
     fields = fields.filter((w) => w.id !== field.id)
-    return fields;
+    return fields
   }
 
   function remove(option: number) {
@@ -74,8 +74,7 @@
     if (!targetFieldId) {
       return []
     }
-    const fields = await getFields();
-    console.log("FIELDS", fields);
+    const fields = await getFields()
     const targetField = fields.find((w) => w.id === targetFieldId)
     if (!targetField) {
       return []

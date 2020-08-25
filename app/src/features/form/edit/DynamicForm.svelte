@@ -25,7 +25,6 @@ import { fastClone } from "util/Compare";
       return;
     }
     const index = form.fields.findIndex((w) => w.id === updatedField.id);
-    console.log("INDEXX", index);
     if (index === -1) {
       return;
     }

@@ -34,8 +34,6 @@
         }
         data = await convertUrlToLocal(result);
         block = result;
-        console.log(data);
-        console.log(block);
         loading = false;
     }
 

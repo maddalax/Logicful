@@ -11,7 +11,7 @@
   import Preloader from 'components/Preloader.svelte'
 
   let main: any
-  let rightSidebar : any
+  let rightSidebar: any
 
   onMount(() => {
     main = FormBuilder

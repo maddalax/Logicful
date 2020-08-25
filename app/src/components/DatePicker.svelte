@@ -12,7 +12,6 @@
     require('flatpickr/dist/flatpickr.min.css')
     picker = flatpickr(document.getElementById(field.id!)!, {
       onChange: (selectedDates: any, dateStr: any, instance: any) => {
-        console.log(selectedDates, dateStr, instance)
         value = dateStr
       },
       altInput: true,

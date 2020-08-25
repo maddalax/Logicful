@@ -28,7 +28,7 @@
       on:click|stopPropagation
       on:input={(e) => {
         field.value = e.target.value ?? ''
-        formStore.set(field, true);
+        formStore.set(field, true)
         field.onChange?.(e.target.value)
       }}
       class={field.properties?.className ?? 'form-control'}
@@ -41,7 +41,7 @@
       on:click|stopPropagation
       on:input={(e) => {
         field.value = e.target.value ?? ''
-        formStore.set(field, true);
+        formStore.set(field, true)
         field.onChange?.(e.target.value)
       }}
       class={field.properties?.className ?? 'form-control'}

@@ -116,7 +116,6 @@ d.addEventListener("DOMContentLoaded", function(event) {
     }
 
     if (d.getElementById('input-slider-range')) {
-        console.log(d.getElementById('input-slider-range'));
         var c = d.getElementById("input-slider-range"),
             low = d.getElementById("input-slider-range-value-low"),
             e = d.getElementById("input-slider-range-value-high"),

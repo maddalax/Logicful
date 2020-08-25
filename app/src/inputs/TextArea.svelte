@@ -12,7 +12,6 @@
   let editor: any
 
   function onFieldChange(data: any) {
-    console.log('on', onChange)
     onChange?.(data)
   }
 
@@ -45,7 +44,7 @@
     quill.on('text-change', function (delta: any, oldDelta: any, source: any) {
       //@ts-ignore
       field.value = quill.container.firstChild.innerHTML
-      formStore.set(field, true);
+      formStore.set(field, true)
     })
   })
 </script>

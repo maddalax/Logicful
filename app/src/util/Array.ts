@@ -13,6 +13,5 @@ export function orderBy(arr : any[], arr2 : any[], property : string) {
     arr.sort((a, b) => {
         return arr2.indexOf(a[property]) - arr2.indexOf(b[property]);
     });
-    console.log(arr);
     return arr;
 }

@@ -20,7 +20,6 @@
     dispatch("right_sidebar_loaded", {})
 
     subscribe("edit_field", (props) => {
-      console.log(props);
       form = props.form;
       active = props.active;
     });

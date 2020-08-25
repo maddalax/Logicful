@@ -39,7 +39,6 @@
     loadForm()
 
     subscribe('form_updated', (props) => {
-      console.log("UPDATED FORM", props.form)
       form = props.form
     })
 
@@ -110,7 +109,6 @@
 
     subscribe('save_form', (params) => {
       const form = formStore.getForm()
-      console.log(JSON.stringify(form, null, 2))
       localStorage.setItem('form', JSON.stringify(form))
     })
 
