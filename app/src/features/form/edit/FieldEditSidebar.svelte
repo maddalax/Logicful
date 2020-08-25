@@ -10,14 +10,19 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
 
-  let field: IField
-  let fieldId: string
+  let field: IField | undefined
+  let fieldId: string | undefined
 
   onMount(() => {
     subscribeFieldChange((newField: IField) => {
+      if(newField.id === fieldId && !newField.selected) {
+        field = undefined;
+        fieldId = undefined;
+        return;
+      }
       if (newField.selected) {
         field = fastClone(newField)
-        fieldId = field.id
+        fieldId = field!.id
       }
     })
   })
