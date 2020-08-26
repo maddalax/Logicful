@@ -4,7 +4,7 @@
   import { LoadState } from 'models/LoadState'
   import { stringEquals, fastEquals } from 'util/Compare'
   import { subscribeFieldChange } from 'event/FieldEvent'
-  import { isString } from 'guards/Guard'
+  import { isFunction, isString } from 'guards/Guard'
   import { randomString } from 'util/Generate'
   import { dispatch, subscribe } from 'event/EventBus'
   import Fuse from 'fuse.js'
@@ -93,7 +93,9 @@
           options = parsed
         }
       } else {
-        options = await field.options?.value
+        const value = field.options?.value;
+        const data = isFunction(value) ? await value() : await value;
+        options = field.loadTransformer ? field.loadTransformer(data) : data
       }
       filtered = options ?? []
       fuse = createFuse()
@@ -122,7 +124,11 @@
     doClose()
     value = option.value
     field.value = option.value
-    formStore.set(field, true)
+    formStore.set(field, {
+      field : 'value',
+      value : option.value,
+      fromUser : true
+    })
     field.onChange?.(field.value)
   }
 
@@ -251,7 +257,11 @@
             on:click={() => {
               value = ''
               field.value = undefined
-              formStore.set(field, true)
+              formStore.set(field, {
+                field : 'value',
+                value : undefined,
+                fromUser : true
+              })
             }}>
             <i class="fas fa-times input-svg input-svg-2" />
           </div>

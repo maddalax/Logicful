@@ -10,26 +10,31 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import formStore from 'store/FormStore'
   import { isObject } from 'guards/Guard'
+  import Label from 'inputs/Label.svelte'
+  import { firstNotEmpty } from 'util/Format'
+  import { assertExists } from 'util/Selection'
+  import { isEmptyOrNull } from 'util/Compare'
 
   export let helperText: string = ''
   export let field: IField
 
-  let fields: IField[] = []
-
   onMount(async () => {
-    subscribeFieldChange((newField) => {
+    subscribeFieldChange((newField, change) => {
+      if(change.field === 'value') {
+        return;
+      }
       if (field.id === newField.id) {
         field = newField
+        if (field.logic?.action && isEmptyOrNull(field.logic?.rules)) {
+          addNew()
+        }
       }
     })
   })
 
-  async function getFields(): Promise<IField[]> {
-    if (fields.length > 0) {
-      return fields
-    }
-    fields = await dispatchSingle('get_form_fields', {})
-    fields = fields.filter((w) => w.id !== field.id)
+  function getFields(): IField[] {
+    let fields = dispatchSingle<IField[]>('get_form_fields', {})
+    fields = fields.filter((w) => w.id !== field.id && w.type !== "spacer")
     return fields
   }
 
@@ -37,27 +42,22 @@
     const temp = [...field.logic!.rules]
     temp.slice(option, 1)
     field.logic!.rules = temp
-    formStore.set(field, true)
+    formStore.set(field)
   }
 
   function addNew() {
-    if (!field.logic) {
-      field.logic = {
-        rules: [],
-        action: '',
-      }
-    }
-    if (!field.logic.rules) {
+    if (!field.logic?.rules) {
+      field.logic = field.logic ?? { rules: [], action: '' }
       field.logic.rules = []
     }
     field.logic!.rules = field.logic!.rules.concat([
       {
-        field: fields[0]?.id,
+        field: '',
         value: '',
-        condition: 'eq',
+        condition: '',
       },
     ])
-    formStore.set(field, true)
+    formStore.set(field)
   }
 
   function shouldShowValue(index: number) {
@@ -74,7 +74,7 @@
     if (!targetFieldId) {
       return []
     }
-    const fields = await getFields()
+    const fields = getFields()
     const targetField = fields.find((w) => w.id === targetFieldId)
     if (!targetField) {
       return []
@@ -146,6 +146,15 @@
 
     return []
   }
+
+  function fieldsTransformer(fields: IField[]): LabelValue[] {
+    return fields.map((f) => {
+      return {
+        label: `${firstNotEmpty(f.label, f.name)} - ${f.type}`,
+        value: f.id,
+      }
+    })
+  }
 </script>
 
 <div>
@@ -157,9 +166,7 @@
             <div class="col">
               <Field
                 config={{ search: true }}
-                field={{ id: randomString(), label: 'Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: fields.map(
-                      (w) => ({ label: w.label, value: w.id }),
-                    ) } }} />
+                field={{ id: randomString(), loadTransformer: fieldsTransformer, label: 'Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
             </div>
           </div>
           <div class="row">

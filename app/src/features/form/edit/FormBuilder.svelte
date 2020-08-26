@@ -29,9 +29,41 @@
       w.selected = false
       return w
     })
+
+    addPlaceHolder()
+
     formStore.setForm(form)
     dispatch('form_loaded', {
       form,
+    })
+  }
+
+  function removePlaceHolder() {
+    const placeholder = form.fields.findIndex((w) => w.type === 'placeholder')
+    if (placeholder !== -1) {
+      const temp = fastClone(form.fields)
+      temp.splice(placeholder, 1)
+      form.fields = temp
+      dispatch('form_placeholder_changed', {
+        added: false,
+      })
+    }
+  }
+
+  function addPlaceHolder() {
+    if (form.fields.length !== 0) {
+      return
+    }
+    form.fields = form.fields.concat([
+      {
+        name: 'placeholder-field',
+        label: 'You have no fields',
+        type: 'placeholder',
+        id: 'placeholder',
+      },
+    ])
+    dispatch('form_placeholder_changed', {
+      added: true,
     })
   }
 
@@ -40,6 +72,7 @@
 
     subscribe('form_updated', (props) => {
       form = props.form
+      addPlaceHolder()
     })
 
     subscribe('field_delete', (params) => {
@@ -74,6 +107,7 @@
           expanded: true,
         },
       ])
+      removePlaceHolder()
       formStore.setForm(form)
     })
 
@@ -122,6 +156,7 @@
         return { ...i }
       })
       form.fields = items
+      removePlaceHolder()
       formStore.setForm(form)
     })
 
@@ -130,7 +165,7 @@
         return
       }
       form.fields = form.fields.map((f) => {
-        if (f.id !== newField.id) {
+        if (f.id !== newField.id && f.selected) {
           f.selected = false
           formStore.set(f)
         }
@@ -138,8 +173,8 @@
       })
     })
 
-    subscribe("form_updated", (params) => {
-      form = params.form;
+    subscribe('form_updated', (params) => {
+      form = params.form
     })
 
     subscribeFieldChange(async (field: IField) => {

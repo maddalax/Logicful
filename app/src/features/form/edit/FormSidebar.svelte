@@ -20,6 +20,9 @@
   let blocks = defaultBlocks();
 
   function handler(e: any) {
+    dispatch("drag_event", {
+      type : e.type
+    });
     if (e.type === "consider") {
       blocks = e.detail.items;
     } else {

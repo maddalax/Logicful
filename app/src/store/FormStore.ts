@@ -13,6 +13,13 @@ let store: {
 } = {
     fields: {}
 };
+
+export type FieldChange = {
+    field : string,
+    value : any,
+    fromUser : boolean
+}
+
 export class FormStore {
     setForm(form: IForm) {
         const copy: IForm = fastClone(form);
@@ -31,7 +38,7 @@ export class FormStore {
             form: this.getForm()
         });
     }
-    set(field: IField, userChange: boolean = false) {
+    set(field: IField, change : FieldChange = {field : '', value : '', fromUser : false}) {
         if (field.configTarget === 'form') {
             set(store, field.configFieldTarget, field.value);
             dispatch("form_updated", {
@@ -50,9 +57,13 @@ export class FormStore {
             set(store.fields[field.configTarget], field.configFieldTarget, field.value)
             const copy = fastClone(field);
             configStore[field.id] = copy;
-            dispatchFieldChange(copy, true);
+            dispatchFieldChange(copy, change);
             const newField = store.fields[field.configTarget];
-            dispatchFieldChange(fastClone(newField), true)
+            dispatchFieldChange(fastClone(newField), {
+                field : field.configFieldTarget,
+                value : field.value,
+                fromUser : change.fromUser
+            })
             return;
         }
 
@@ -64,7 +75,7 @@ export class FormStore {
 
         const copy = fastClone(field)
         store.fields[field.id] = copy;
-        dispatchFieldChange(copy, userChange);
+        dispatchFieldChange(copy, change);
     }
     get(fieldId: string) {
         const field = store.fields[fieldId];

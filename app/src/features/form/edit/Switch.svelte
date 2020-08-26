@@ -37,7 +37,11 @@
       e.preventDefault();
       e.stopPropagation();
       field.value = e.target.checked;
-      formStore.set(field, true);
+      formStore.set(field, {
+        fromUser : true,
+        value : field.value,
+        field : 'value'
+      });
       field.onChange?.(field.value);
     }}
   />

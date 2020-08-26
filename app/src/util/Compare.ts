@@ -15,6 +15,16 @@ export function toNumberOrDefault(value : any) {
     return isNaN(parsed) ? 0 : parsed;
 }
 
+export function isEmptyOrNull(value : any) : boolean {
+    if(value == null) {
+        return true;
+    }
+    if(!Array.isArray(value)) {
+        return true;
+    }
+    return value.length === 0;
+}
+
 export function nullOrEmpty(str : any) {
     return str == null || str === '';
 }   

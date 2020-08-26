@@ -44,7 +44,11 @@
     quill.on('text-change', function (delta: any, oldDelta: any, source: any) {
       //@ts-ignore
       field.value = quill.container.firstChild.innerHTML
-      formStore.set(field, true)
+      formStore.set(field, {
+        fromUser : true,
+        value : field.value,
+        field : 'value'
+      })
     })
   })
 </script>
