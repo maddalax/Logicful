@@ -39,42 +39,26 @@
     <!--    <LogicAccordion/>-->
     <svelte:component this={main} />
   </div>
-  <div class="right-sidebar">
-    <Sidebar>
-      <svelte:component this={rightSidebar} />
-    </Sidebar>
-  </div>
 </div>
 
 <Dialog />
-<Footer />
 
 <style>
   .main {
     height: 100%;
-    width: 50%;
+    width: 65%;
     margin-top: 1em;
   }
 
   .left-sidebar {
-    width: 18%;
+    width: 40%;
+    max-width: 400px;
     height: 25vh;
     margin-left: -13px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
   }
-
-  .right-sidebar {
-    width: 32%;
-    min-height: 25vh;
-    height: 100%;
-    margin-right: -30px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-  }
-
   #main-container {
     display: flex;
     justify-content: space-between;

@@ -7,10 +7,11 @@
   let value: string = ''
   let picker: any
 
-  onMount(() => {
-    const flatpickr = require('flatpickr')
-    require('flatpickr/dist/flatpickr.min.css')
-    picker = flatpickr(document.getElementById(field.id!)!, {
+  onMount(async () => {
+    const flatpickr = await import('flatpickr');
+    //@ts-ignore
+    import('flatpickr/dist/flatpickr.min.css')
+    picker = flatpickr.default(document.getElementById(field.id!)!, {
       onChange: (selectedDates: any, dateStr: any, instance: any) => {
         value = dateStr
       },

@@ -32,6 +32,7 @@
     })
   })
 
+
   function getFields(): IField[] {
     let fields = dispatchSingle<IField[]>('get_form_fields', {})
     fields = fields.filter((w) => w.id !== field.id && w.type !== "spacer")

@@ -134,7 +134,8 @@
     })
 
     subscribe('block_dropped', (e) => {
-      const items = e.detail.items.map((i: any, index: number) => {
+      removePlaceHolder()
+      const items: IField[] = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
           i = {
             ...i,
@@ -149,14 +150,20 @@
           }
         } else {
           // Deselect all other fields and select the one that was dropped.
-          if (e.type === 'finalize') {
+          if (e.type === 'finalize' && i.selected) {
             i.selected = false
+            formStore.set(i)
           }
         }
         return { ...i }
       })
+      if (e.type === 'finalize') {
+        const selected = items.find((w) => w.selected)
+        if (selected) {
+          formStore.set(selected)
+        }
+      }
       form.fields = items
-      removePlaceHolder()
       formStore.setForm(form)
     })
 
