@@ -17,5 +17,14 @@ export function transformDraggedElement(el : any, data : any, index : number) {
     if(data.name === 'block') {
         el.innerHTML = "<div style='background-color: #f0f0f0;margin-top:5px;padding: 10px 10px 3px;border-radius: 0.45em'><h5>New Content Block</h5><p>Content will display here.</p></div>"
     }
+    if(data.name === 'file') {
+        el.innerHTML = `<label>New File</label><div class="form-file">
+        <input type="file" class="form-file-input" />
+        <label class="form-file-label">
+          <span class="form-file-text">Choose a file...</span>
+          <span class="form-file-button">Browse</span>
+        </label>
+      </div>`
+    }
     return el
 }
