@@ -7,6 +7,8 @@ import { set } from "util/Selection";
 
 let configStore: { [key: string]: IField } = {};
 
+let files : {[key : string] : File} = {}
+
 let store: {
     [key: string]: any
     fields: { [key: string]: IField }
@@ -105,6 +107,15 @@ export class FormStore {
             form.fields.push(fastClone(field));
         })
         return form;
+    }
+    setFile(id : string, file : File) {
+        files[id] = file;
+    }
+    clearFile(id : string) {
+        delete files[id]
+    }
+    getFile(id : string) : File | undefined {
+        return files[id];
     }
 }
 

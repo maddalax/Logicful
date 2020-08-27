@@ -33,6 +33,7 @@
     type="checkbox"
     id={`${field.id}`}
     checked={value}
+    on:click|stopPropagation
     on:input={(e) => {
       e.preventDefault();
       e.stopPropagation();

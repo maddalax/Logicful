@@ -18,6 +18,7 @@
       { id: randomString(), name: 'spacer' },
       { id: randomString(), name: 'date', morph: true },
       { id: randomString(), name: 'block', morph: true },
+      { id: randomString(), name: 'file', morph: true },
     ]
   }
 
@@ -161,6 +162,17 @@
               </div>
               <div class="pl-3">
                 <h6 class="h6">Add Date</h6>
+              </div>
+            </div>
+          {:else if block.name === 'file'}
+            <div class="d-flex px-2 block">
+              <div>
+                <div class="icon icon-sm icon-secondary">
+                  <span class="fas fa-file-upload"></span>
+                </div>
+              </div>
+              <div class="pl-3">
+                <h6 class="h6">Add File Upload</h6>
               </div>
             </div>
           {/if}

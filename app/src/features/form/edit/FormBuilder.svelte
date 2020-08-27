@@ -184,6 +184,16 @@
       form = params.form
     })
 
+    subscribe("document_click", () => {
+      form.fields = form.fields.map(f => {
+        if(f.selected) {
+          f.selected = false;
+          formStore.set(f);
+        }
+        return f;
+      });
+    })
+
     subscribeFieldChange(async (field: IField) => {
       if (!form || !form.fields) {
         return

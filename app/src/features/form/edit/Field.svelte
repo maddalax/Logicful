@@ -21,6 +21,7 @@
   import { firstNotEmpty } from 'util/Format'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
+import FileUpload from 'inputs/FileUpload.svelte'
 
   let state = LoadState.NotStarted
   let value: any
@@ -93,7 +94,7 @@
   {/if}
 
 {:else}
-  <div on:click={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor} class:selected={field.selected}>
+  <div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor} class:selected={field.selected}>
     {#if field.selected}
       <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
         <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
@@ -133,6 +134,8 @@
         <div class="placeholder">
           <p>You have no fields, drag one from the left sidebar to get started.</p>
         </div>
+      {:else if field.type === 'file'}
+        <FileUpload {field}/>
       {:else}
         <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
       {/if}
