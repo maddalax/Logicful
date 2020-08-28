@@ -18,10 +18,13 @@
   let considering: boolean = false
   let values: { [key: string]: any } = {}
   let hasPlaceholder: boolean = false
+  let fromSidebar = false
 
   function handler(e: any) {
-    considering = e.type === 'consider'
-    setDropZoneStyles()
+    if (fromSidebar) {
+      considering = e.type === 'consider'
+      setDropZoneStyles()
+    }
     dispatchSync('block_dropped', e)
   }
 
@@ -31,12 +34,12 @@
   }
 
   onMount(() => {
-    subscribe("form_placeholder_changed", (props) => {
-      console.log("CHANGED", props)
-      hasPlaceholder = props.added;
-      setDropZoneStyles();
+    subscribe('form_placeholder_changed', (props) => {
+      hasPlaceholder = props.added
+      setDropZoneStyles()
     })
     subscribe('drag_event', (props) => {
+      fromSidebar = props.type === 'consider'
       considering = props.type === 'consider'
       setDropZoneStyles()
     })
@@ -88,13 +91,13 @@
     if (form.fields.length === 1 && form.fields[0].type === 'placeholder') {
       return 'background-color: white'
     }
-    if(hasPlaceholder) {
+    if (hasPlaceholder) {
       return 'background-color: white'
     }
     if (considering) {
-      return 'background-color: #f5f5f5; padding-top: 5em; padding-bottom: 5em;'
+      return 'background-color: #f5f5f5; padding-top: 3em; padding-bottom: 3em;'
     }
-    return 'background-color: #f5f5f5; padding-top: 5em; padding-bottom: 5em;'
+    return 'background-color: #f5f5f5; padding-top: 3em; padding-bottom: 3em;'
   }
 </script>
 

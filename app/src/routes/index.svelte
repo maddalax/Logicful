@@ -53,7 +53,8 @@
   .left-sidebar {
     width: 40%;
     max-width: 400px;
-    height: 25vh;
+    height: 100vh;
+    overflow: auto;
     margin-left: -13px;
     position: -webkit-sticky;
     position: sticky;

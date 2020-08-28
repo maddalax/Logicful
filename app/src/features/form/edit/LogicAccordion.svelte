@@ -47,6 +47,10 @@
         padding-bottom: 1em;
     }
 
+    .accordion > .card {
+        overflow: visible;
+    }
+
     .accordion .card:hover {
         background-color: white;
     }

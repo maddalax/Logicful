@@ -31,3 +31,16 @@
 .icon span, .icon svg {
     font-size: unset;
 }
+
+
+.tooltip-inner {
+    padding: 0.25rem 0.5rem;
+    color: #ffffff !important;
+    text-align: center;
+    background-color: #1b1b1b !important;
+    border-radius: 0.45rem;
+  }
+
+  .tooltip-arrow {
+    display: none !important;
+}   

@@ -12,7 +12,6 @@
 
 <style>
   .sidebar {
-    padding-bottom: 3em;
     padding-top: 1em;
     min-height: 100vh;
   }

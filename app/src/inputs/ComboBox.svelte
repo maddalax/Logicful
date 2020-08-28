@@ -1,6 +1,6 @@
 <script lang="typescript">
   import type { IField, LabelValue } from 'models/IField'
-  import { afterUpdate, onMount, tick } from 'svelte'
+  import { afterUpdate, onDestroy, onMount, tick } from 'svelte'
   import { LoadState } from 'models/LoadState'
   import { stringEquals, fastEquals } from 'util/Compare'
   import { subscribeFieldChange } from 'event/FieldEvent'
@@ -22,6 +22,11 @@
   export let field: IField
 
   let prevOptions: any = null
+  let activeToolTip: any
+
+  onDestroy(() => {
+    disposeToolTip();
+  })
 
   onMount(async () => {
     subscribe('show_field_config', (props) => {
@@ -93,8 +98,8 @@
           options = parsed
         }
       } else {
-        const value = field.options?.value;
-        const data = isFunction(value) ? await value() : await value;
+        const value = field.options?.value
+        const data = isFunction(value) ? await value() : await value
         options = field.loadTransformer ? field.loadTransformer(data) : data
       }
       filtered = options ?? []
@@ -125,9 +130,9 @@
     value = option.value
     field.value = option.value
     formStore.set(field, {
-      field : 'value',
-      value : option.value,
-      fromUser : true
+      field: 'value',
+      value: option.value,
+      fromUser: true,
     })
     field.onChange?.(field.value)
   }
@@ -187,6 +192,7 @@
   }
 
   function doClose() {
+    disposeToolTip();
     open = false
     query = ''
     filtered = options
@@ -220,6 +226,32 @@
         preventScroll: true,
       })
     }
+  }
+
+  function disposeToolTip() {
+    if (activeToolTip) {
+      try {
+        activeToolTip.dispose()
+      } catch (ex) {}
+    }
+    activeToolTip = undefined;
+  }
+
+  function showTooltip(option : LabelValue, id : string) {
+    //@ts-ignore
+    activeToolTip = new bootstrap.Tooltip(document.getElementById(id), {
+      title: option.label,
+      placement: 'top',
+      trigger: 'manual',
+    })
+    setTimeout(() => {
+      activeToolTip.show()
+    }, 600)
+  }
+
+  function onMouseDown(option: LabelValue, id: string) {
+    disposeToolTip();
+    showTooltip(option, id);
   }
 </script>
 
@@ -257,11 +289,7 @@
             on:click={() => {
               value = ''
               field.value = undefined
-              formStore.set(field, {
-                field : 'value',
-                value : undefined,
-                fromUser : true
-              })
+              formStore.set(field, { field: 'value', value: undefined, fromUser: true })
             }}>
             <i class="fas fa-times input-svg input-svg-2" />
           </div>
@@ -296,6 +324,8 @@
           {#each filtered as option, i}
             <a
               class="dropdown-item"
+              on:mouseover={() => onMouseDown(option, `${field.id}-option-${i}`)}
+              on:mouseout={disposeToolTip}
               id={`${field.id}-option-${i}`}
               href="javascript:void(0)"
               on:keypress={(e) => optionOnKeyPress(e, option, i)}
@@ -349,5 +379,15 @@
   .form-select {
     cursor: pointer;
     background-image: none;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .dropdown-item {
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 </style>
