@@ -17,7 +17,7 @@
 
   export let helperText: string = ''
   export let field: IField
-  let options : LogicRuleOptions[] = [];
+  let options: LogicRuleOptions[] = []
 
   onMount(async () => {
     subscribeFieldChange((newField, change) => {
@@ -29,9 +29,9 @@
         if (field.logic?.action && isEmptyOrNull(field.logic?.rules)) {
           addNew()
         }
-        if(field.logic?.rules) {
+        if (field.logic?.rules) {
           field.logic.rules.forEach((f, i) => {
-            options[i] = getOptions(i);
+            options[i] = getOptions(i)
           })
         }
       }
@@ -66,7 +66,7 @@
     formStore.set(field)
   }
 
-  function shouldShowValue(index : number) {
+  function shouldShowValue(index: number) {
     const condition = field.logic?.rules?.[index]?.condition ?? ''
     const toNotShow = ['hasValue', 'isTrue', 'isFalse', 'notHaveValue']
     if (toNotShow.includes(condition)) {
@@ -75,24 +75,24 @@
     return true
   }
 
-  function getOptions(index : number) : LogicRuleOptions {
+  function getOptions(index: number): LogicRuleOptions {
     const value = field.logic?.rules?.[index]?.condition
-    const condition = conditions(index).find((w) => w.value === value);
-    if(!condition) {
+    const condition = conditions(index).find((w) => w.value === value)
+    if (!condition) {
       return {
-        valueType : 'text',
-        showValue : false,
-        options : () => Promise.resolve([]),
-        helperText : '',
-        placeholder : ''
+        valueType: 'text',
+        showValue: false,
+        options: () => Promise.resolve([]),
+        helperText: '',
+        placeholder: '',
       }
     }
     return {
-      valueType : condition.valueInput ?? 'text',
-      showValue : shouldShowValue(index),
-      options : () => loadOptions(index),
-      helperText : condition.helper ?? '',
-      placeholder : condition.placeholder ?? ''
+      valueType: condition.valueInput ?? 'text',
+      showValue: shouldShowValue(index),
+      options: () => loadOptions(index),
+      helperText: condition.helper ?? '',
+      placeholder: condition.placeholder ?? '',
     }
   }
 
@@ -105,7 +105,6 @@
       id,
     })
   }
-
 
   function conditions(index: number): LogicConditional[] {
     const targetFieldId = field.logic?.rules?.[index]?.field
@@ -156,9 +155,9 @@
           options: loadOptions,
         },
         {
-          label : 'Has Selected Option',
-          value : 'hasValue'
-        }
+          label: 'Has Selected Option',
+          value: 'hasValue',
+        },
       ]
     }
     if (targetField.type === 'switch') {
@@ -229,6 +228,10 @@
     return []
   }
 
+  function customCss(){
+    return "padding-top: 0em; padding-left: 0.6em; padding-right: 0.6em; padding-bottom: 0.7em;"
+  }
+
   function fieldsTransformer(fields: IField[]): LabelValue[] {
     return fields.map((f) => {
       return {
@@ -240,49 +243,54 @@
 </script>
 
 <div>
-  <div class="container" style="padding-left: 0.4em; padding-right: 0.4em;">
-    {#each field.logic?.rules ?? [] as option, i}
-      <div class="row" style="background-color: rgb(245 249 253)">
-        <div class="col-12">
-          <div class="row">
-            <div class="col">
-              <Field
-                config={{ search: true }}
-                field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
+  {#each field.logic?.rules ?? [] as option, i}
+    <div class="container" style="background-color: rgb(245 249 253); padding-left: 0.3em; padding-right: 0.3em;">
+        <div class="row">
+          <div class="col">
+            <div class="float-right" style="position: relative; display: inline-flex; vertical-align: middle; top: 0.8em; right: 0.6em;">
+              <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+                <span class="icon-brand">
+                  <span class="fas fa-trash" />
+                </span>
+              </button>
             </div>
-          </div>
-          <div class="row">
-            {#if field.logic?.rules?.[i]?.field}
-              <Field
-                config={{ search: true }}
-                field={{ id: randomString(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
-            {/if}
-
-          </div>
-          <div class="row">
-            {#if field.logic?.rules?.[i]?.condition && options[i]?.showValue}
-              {#if options[i].valueType === "text"}
-                <Field
-                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
-              {:else if options[i].valueType === "combobox"}
-                <Field
-                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
-              {/if}
-            {/if}
+            <Field
+              config={{ search: true }}
+              field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
           </div>
         </div>
+        <div class="row">
+          {#if field.logic?.rules?.[i]?.field}
+            <Field
+              config={{ search: true }}
+              field={{ id: randomString(), customCss: customCss(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
+          {/if}
+        </div>
+        <div class="row">
+        {#if field.logic?.rules?.[i]?.condition && options[i]?.showValue}
+          {#if options[i].valueType === 'text'}
+            <Field
+              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
+          {:else if options[i].valueType === 'combobox'}
+            <Field
+              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
+          {/if}
+        {/if}
       </div>
-      <br />
-    {/each}
-  </div>
+    </div>
+    <br />
+  {/each}
   {#if helperText}
     <div class="helper-text">
       {@html helperText ?? ''}
     </div>
   {/if}
-  <button class="btn-primary btn" style="margin-top: 1em" on:click={addNew}>New Rule</button>
+  <button class="btn-primary btn" style="" on:click={addNew}>Add Rule</button>
 </div>
 
 <style>
-
+  .what {
+    display: inline-flex;
+    vertical-align: middle;
+  }
 </style>

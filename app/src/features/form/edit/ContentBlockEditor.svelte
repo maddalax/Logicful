@@ -32,11 +32,12 @@
 </script>
 
 <div>
-<div style="padding-left: 0.55em;">
+<div>
     <h5>Block Editor</h5>
 </div>
 <Field
         editor={true}
+        padding={false}
         field={{
             id : randomString(),
             type : 'block-editor',
@@ -56,8 +57,7 @@
 
 <style>
     .blocks-button {
-        margin-top: 0.5em;
-        margin-left: 0.6em;
+        margin-top: 0.8em;
     }
 </style>
 

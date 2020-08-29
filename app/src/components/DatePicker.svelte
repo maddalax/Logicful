@@ -8,7 +8,7 @@
   let picker: any
 
   onMount(async () => {
-    const flatpickr = await import('flatpickr');
+    const flatpickr = await import('flatpickr')
     //@ts-ignore
     import('flatpickr/dist/flatpickr.min.css')
     picker = flatpickr.default(document.getElementById(field.id!)!, {
@@ -29,7 +29,6 @@
 
 <Label {field} />
 <input id={field.id} type="text" class="form-control date-input-hidden" value={value ?? ''} placeholder="Select a date..." />
-
 
 <style>
   .date-input-hidden {

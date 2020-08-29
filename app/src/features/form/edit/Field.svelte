@@ -29,6 +29,7 @@ import FileUpload from 'inputs/FileUpload.svelte'
   export let editor: boolean = false
   export let config: any = {}
   export let hidden: boolean = false
+  export let padding: boolean = true
 
   onMount(load)
 
@@ -49,6 +50,19 @@ import FileUpload from 'inputs/FileUpload.svelte'
     dispatch('field_clone', {
       field,
     })
+  }
+
+  function styles() {
+    let style = ""
+    if (padding){
+      style = `padding: .75em 0.6em; border-radius: 1em;`
+    }
+
+    if(field.customCss){
+      style += ` ${field.customCss} padding-left: 0.6em;`
+    }
+
+    return style
   }
 
   function select() {
@@ -86,14 +100,7 @@ import FileUpload from 'inputs/FileUpload.svelte'
   }
 </script>
 
-{#if field.configTarget && field.customCss}
-  {#if field.type === 'switch'}
-    <div style="{field.customCss} padding-left: 0.6em">
-      <Switch {field} {...config} />
-    </div>
-  {/if}
 
-{:else}
   <div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor} class:selected={field.selected}>
     {#if field.selected}
       <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
@@ -109,7 +116,7 @@ import FileUpload from 'inputs/FileUpload.svelte'
         </button>
       </div>
     {/if}
-    <div style="padding: .75em 0.6em; border-radius: 1em;">
+    <div style={styles()}>
       {#if hidden}
         <p>{firstNotEmpty(field.label, field.name)} is hidden by rules defined in logic. This message is only displayed on this preview.</p>
       {:else if field.type === 'address'}
@@ -141,7 +148,7 @@ import FileUpload from 'inputs/FileUpload.svelte'
       {/if}
     </div>
   </div>
-{/if}
+
 
 <style>
   .wrapper:hover {
@@ -165,4 +172,15 @@ import FileUpload from 'inputs/FileUpload.svelte'
   .hidden {
     opacity: 0.7;
   }
+
+  .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-group:not(:last-child) > .btn {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .btn-group > .btn:nth-child(n + 3), .btn-group > :not(.btn-check) + .btn, .btn-group > .btn-group:not(:first-child) > .btn {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
 </style>

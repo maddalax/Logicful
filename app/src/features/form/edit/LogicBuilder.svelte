@@ -24,6 +24,7 @@
 
 <Field
  field={{ id: randomString(), label: 'Select Action', helperText : 'What should happen when all or some of your rules are matched.', value: { type: 'local', value: field.logic?.action }, type: 'combobox', required: true, configFieldTarget: 'logic.action', configTarget: field.id, options: { type: 'local', value: actions } }}
+ padding={false}
 />
 <hr>
 <LogicRule field={field}/>
