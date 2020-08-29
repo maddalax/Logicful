@@ -21,7 +21,9 @@
 </script>
 
 <div class="form-group">
-  <Label {field} />
+  {#if !field.hideLabel}
+    <Label {field} />
+  {/if}
   {#if field.rows && field.rows > 1}
     <textarea
       rows={field.rows}

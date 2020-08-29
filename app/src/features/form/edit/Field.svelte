@@ -9,6 +9,7 @@
   import { FieldValueLoader } from 'loader/FieldValueLoader'
   import Address from 'inputs/Address.svelte'
   import TextArea from 'inputs/TextArea.svelte'
+  import Checkboxes from 'inputs/Checkboxes.svelte'
   import Spacer from 'inputs/Spacer.svelte'
   import formStore from 'store/FormStore'
   import { fade } from 'svelte/transition'
@@ -143,6 +144,8 @@ import FileUpload from 'inputs/FileUpload.svelte'
         </div>
       {:else if field.type === 'file'}
         <FileUpload {field}/>
+      {:else if field.type === 'checkboxes'}
+        <Checkboxes {field}/>
       {:else}
         <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
       {/if}

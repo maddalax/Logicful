@@ -301,7 +301,9 @@
 
 <div>
 
-  <Label {field} />
+  {#if !field.hideLabel}
+    <Label {field} />
+  {/if}
 
   {#if state === LoadState.Loading}
     <div>
@@ -325,7 +327,6 @@
       </div>
     {/if}
   {/if}
-
 </div>
 
 <style>

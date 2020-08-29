@@ -6,6 +6,10 @@
   import LogicAccordion from "./LogicAccordion.svelte";
 
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
+  import AddressEditor from "./AddressEditor.svelte";
+  import CheckboxesEditor from "./CheckboxesEditor.svelte";
+
+
   import Field from "./Field.svelte";
   import Button from "../../../components/Button.svelte";
   import LogicBuilder from "./LogicBuilder.svelte";
@@ -25,6 +29,10 @@
       />
     {:else if field.type === 'block'}
       <ContentBlockEditor {field} expanded={field.expanded} />
+    {:else if field.type === 'address'}
+      <AddressEditor {field} expanded={field.expanded} />
+    {:else if field.type === 'checkboxes'}
+      <CheckboxesEditor {field} expanded={field.expanded} />
     {:else}
       <div id={`field-button-${field.id}`}>
           {#if !cantBeRequired.includes(field.type)}
