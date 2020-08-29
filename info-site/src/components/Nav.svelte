@@ -545,8 +545,7 @@
 			</div>
 			<div class="d-flex align-items-center">
 				<a
-						href="https://themesberg.com/product/ui-kit/pixel-pro-premium-bootstrap-5-ui-kit"
-						target="_blank"
+						href="./account/sign-in"
 						class="btn btn-outline-soft animate-up-2"
 				>
 					<span class="fas fa-book mr-2" />
