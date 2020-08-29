@@ -39,6 +39,11 @@
     <!--    <LogicAccordion/>-->
     <svelte:component this={main} />
   </div>
+  <div class="right-sidebar">
+    <Sidebar>
+      <svelte:component this={rightSidebar} />
+    </Sidebar>
+  </div>
 </div>
 
 <Dialog />
@@ -46,12 +51,12 @@
 <style>
   .main {
     height: 100%;
-    width: 65%;
+    width: 53%;
     margin-top: 1em;
   }
 
   .left-sidebar {
-    width: 40%;
+    width: 15%;
     max-width: 400px;
     height: 100vh;
     overflow: auto;
@@ -63,5 +68,15 @@
   #main-container {
     display: flex;
     justify-content: space-between;
+  }
+
+  .right-sidebar {
+    width: 32%;
+    min-height: 25vh;
+    height: 100%;
+    margin-right: -30px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
   }
 </style>

@@ -43,10 +43,10 @@
         value = url
       }
     } catch (ex) {
-      state = LoadState.Failed;
+      state = LoadState.Failed
     } finally {
-      if(state !== LoadState.Failed) {
-        state = LoadState.Finished;
+      if (state !== LoadState.Failed) {
+        state = LoadState.Finished
       }
     }
   }
@@ -61,11 +61,11 @@
   {:else if state === LoadState.Failed}
     <p>Failed to load content.</p>
   {:else}
-  <div class="d-flex justify-content-center">
-    <div class="spinner-border text-dark" role="status">
-      <span class="sr-only">Loading...</span>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
-  </div>
   {/if}
 </div>
 

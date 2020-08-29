@@ -35,9 +35,9 @@
       setup()
     })
 
-    subscribe("combobox_get_options", (props) => {
-      if(props.id === field.id) {
-        return options;
+    subscribe('combobox_get_options', (props) => {
+      if (props.id === field.id) {
+        return options
       }
     })
 
@@ -48,8 +48,8 @@
     })
 
     dropdownId = `${field.name}-${randomString()}`
-    initialized = false;
-    value = formStore.getValue(field.id);
+    initialized = false
+    value = formStore.getValue(field.id)
 
     subscribe('option_set_modified', (set) => {
       if (set.value === field.options) {
@@ -123,9 +123,9 @@
   let state: LoadState = LoadState.Loading
   let value = ''
   let selectedValue: LabelValue
-  let options: LabelValue[] = [];
-  let filteredBy = '';
-  let filtered: Set<string> = new Set<string>();
+  let options: LabelValue[] = []
+  let filteredBy = ''
+  let filtered: Set<string> = new Set<string>()
 
   function normalizeValue() {
     const option = options?.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value))
@@ -151,16 +151,16 @@
     doClose()
   }
 
-  function onSearch(query : string) {
+  function onSearch(query: string) {
     if (options.length === 0) {
-      filtered = new Set<string>();
+      filtered = new Set<string>()
     } else if (query == null || query === '') {
-      filtered = new Set<string>();
+      filtered = new Set<string>()
     } else {
       const result = fuse.search(query)
-      filteredBy = '';
+      filteredBy = ''
       filtered = new Set(result.map((r) => (r.item as LabelValue).value))
-      filteredBy = query;
+      filteredBy = query
     }
   }
 
@@ -195,8 +195,8 @@
   function doClose() {
     disposeToolTip()
     open = false
-    filtered.clear();
-    filteredBy = '';
+    filtered.clear()
+    filteredBy = ''
   }
 
   function optionOnKeyPress(e: any, option: LabelValue, index: number) {
@@ -250,15 +250,15 @@
     }, 600)
   }
 
-  function itemFilter(label : string, filterText : string, option : any) {
-    if(filteredBy != filterText) {
-      onSearch(filterText);
+  function itemFilter(label: string, filterText: string, option: any) {
+    if (filteredBy != filterText) {
+      onSearch(filterText)
     }
-    return filtered.has(option.value);
+    return filtered.has(option.value)
   }
 
   function onSelect(e: any): any {
-    e.stopPropagation();
+    e.stopPropagation()
     field.value = e.detail.value
     formStore.set(field, {
       field: 'value',
@@ -282,10 +282,12 @@
   }
 
   async function loadOptions() {
-    return [{
-      value : 'test',
-      label : 'test'
-    }];
+    return [
+      {
+        value: 'test',
+        label: 'test',
+      },
+    ]
   }
 </script>
 
@@ -299,7 +301,9 @@
 
 <div>
 
-  <Label {field} />
+  {#if !field.hideLabel}
+    <Label {field} />
+  {/if}
 
   {#if state === LoadState.Loading}
     <div>
@@ -312,20 +316,20 @@
   {:else}
     {#if options}
       <div class="themed" on:click|stopPropagation|preventDefault>
-        <Select items={options} isVirtualList={options.length > 25} itemFilter={itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
+        <Select items={options} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
       </div>
     {/if}
     {#if field.helperText}
+      <div  style="padding-top: 0.3em;">
       <small class="form-text text-muted">
         {@html field.helperText ?? ''}
       </small>
+      </div>
     {/if}
   {/if}
-
 </div>
 
 <style>
- .themed {
-
+  .themed {
   }
 </style>

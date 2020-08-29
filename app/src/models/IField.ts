@@ -2,6 +2,7 @@ export interface IField {
     id : string,
     name? : string,
     label? : string,
+    hideLabel? :boolean,
     type : string,
     [key : string] : any,
     display? : IFieldCondition,

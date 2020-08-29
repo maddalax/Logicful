@@ -26,5 +26,26 @@ export function transformDraggedElement(el : any, data : any, index : number) {
         </label>
       </div>`
     }
+    if(data.name === 'address') {
+        el.innerHTML = `<label>New File</label>
+<input class="form-control"/>
+
+<input class="form-control"/>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+<input class="form-control"/>
+    </div>
+    <div class="col">
+<select class='form-control shadow'><option>Select State</option></select>
+    </div>
+  </div>
+</div>
+
+<input class="form-control"/>
+
+      </div>`
+    }
     return el
 }

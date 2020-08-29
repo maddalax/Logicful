@@ -45,9 +45,9 @@
       //@ts-ignore
       field.value = quill.container.firstChild.innerHTML
       formStore.set(field, {
-        fromUser : true,
-        value : field.value,
-        field : 'value'
+        fromUser: true,
+        value: field.value,
+        field: 'value',
       })
     })
   })

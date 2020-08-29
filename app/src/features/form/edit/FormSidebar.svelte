@@ -21,8 +21,12 @@
       { id: randomString(), name: 'date', morph: true },
       { id: randomString(), name: 'block', morph: true },
       { id: randomString(), name: 'file', morph: true },
-    ]
+      { id: randomString(), name: 'address', morph: true},
+      { id: randomString(), name: 'checkbox-group', morph: true},
+      { id: randomString(), name: 'radio-group', morph: true}
+  ]
   }
+
 
   let blocks = defaultBlocks()
 
@@ -53,23 +57,6 @@
 
   function saveAndPublish() {}
 
-  let field: IField | undefined
-  let fieldId: string | undefined
-
-  onMount(() => {
-    subscribeFieldChange((newField: IField) => {
-      if (newField.id === fieldId && !newField.selected) {
-        field = undefined
-        fieldId = undefined
-        return
-      }
-      if (newField.selected) {
-        field = fastClone(newField)
-        fieldId = field!.id
-      }
-    })
-  })
-
   onMount(() => {
     window.onunhandledrejection = (e: any) => {
       console.log('we got exception, but the app has crashed', e)
@@ -89,18 +76,10 @@
   {#if saving}
     <button class="save-button btn btn-light" type="button" disabled>Saving...</button>
   {:else}
-    <button class="save-button btn btn-light" type="button" on:click={saveDraft}>Save</button>
+    <button class="save-button btn btn-light" type="button" on:click={saveDraft}>Save Form</button>
   {/if}
 </div>
-{#if field}
-  {#each [field] as f (fieldId)}
-    <div class="col-md no-gutters">
-      <div transition:slide={{ duration: 500 }}>
-        <FieldEdit field={f} />
-      </div>
-    </div>
-  {/each}
-{:else}
+<div style="padding-left: 1em;">
   <h5 style="padding-bottom:0.5em">Add Field</h5>
   <div use:dndzone={{ items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }} on:consider={handler} on:finalize={handler}>
     {#each blocks as block (block.id)}
@@ -183,6 +162,39 @@
                 <h6 class="h6">Add File Upload</h6>
               </div>
             </div>
+          {:else if block.name === 'address'}
+            <div class="d-flex px-2 block">
+              <div>
+                <div class="icon icon-sm icon-secondary">
+                  <span class="far fa-address-card"></span>
+                </div>
+              </div>
+              <div class="pl-3">
+                <h6 class="h6">Add Address Block</h6>
+              </div>
+            </div>
+          {:else if block.name === 'checkbox-group'}
+            <div class="d-flex px-2 block">
+              <div>
+                <div class="icon icon-sm icon-secondary">
+                  <span class="far fa-check-square"></span>
+                </div>
+              </div>
+              <div class="pl-3">
+                <h6 class="h6">Add Checkboxes</h6>
+              </div>
+            </div>
+          {:else if block.name === 'radio-group'}
+            <div class="d-flex px-2 block">
+              <div>
+                <div class="icon icon-sm icon-secondary">
+                  <span class="fas fa-dot-circle"></span>
+                </div>
+              </div>
+              <div class="pl-3">
+                <h6 class="h6">Add Radio Buttons</h6>
+              </div>
+            </div>
           {/if}
         </div>
       </div>
@@ -223,7 +235,8 @@
       </ul>
     </div>
   </div>
-{/if}
+</div>
+
 
 <style>
   .block {

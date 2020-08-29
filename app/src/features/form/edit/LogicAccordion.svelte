@@ -6,15 +6,13 @@
 </script>
 
 
-<div class="section section-md pt-0">
-    <div class="row justify-content-center mt-4">
-        <div class="accordion" id="accordionExample" style="padding-left: 1.45em; padding-right: 1.45em;">
+        <div class="accordion mt-4" id="accordionExample">
             <div class="card border-light mb-0">
-                    <div class="card-header accordionHeader" id="headingTwo">
+                <div class="card-header accordionHeader" id="headingTwo">
                     <h2 class="mb-0">
                         <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <span class="h6 mb-0 font-weight-bold">Logic</span>
-                            <span class="icon"><span class="fas fa-plus"></span></span>
+                            <span class="icon"><span class="fas fa-plus" style="font-size: 1em;"></span></span>
                         </button>
                     </h2>
                 </div>
@@ -27,8 +25,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 <style>
     .accordionHeader{
@@ -42,9 +38,6 @@
     .card-body{
         padding-top: 0.75em;
         padding-bottom: 0.75em;
-        padding-left: 1em;
-        padding-left: 1em;
-        padding-bottom: 1em;
     }
 
     .accordion > .card {
@@ -54,9 +47,10 @@
     .accordion .card:hover {
         background-color: white;
     }
-    
-    .card {
-        max-width: 363px;
+
+    .card-body{
+        padding-right: 0.8em;
+        padding-left: 0.8em;
     }
 </style>
 

@@ -29,17 +29,17 @@
 </script>
 
 <div>
+  <div class="col-md no-gutters" style="padding-left: 0.55em; padding-right: 0.55em;">
+
   {#if field}
-    {#each [field] as f (fieldId)}
-      <div class="col-md no-gutters">
-        <div transition:slide={{ duration: 500 }}>
-          <FieldEdit field={f} />
-        </div>
+  {#each [field] as f (fieldId)}
+      <div transition:slide={{ duration: 500 }}>
+        <FieldEdit field={f} />
       </div>
-    {/each}
-  {:else}
-    <div class="col-md no-gutters">
+  {/each}
+{:else}
       <FormEdit />
-    </div>
   {/if}
+  </div>
+
 </div>
