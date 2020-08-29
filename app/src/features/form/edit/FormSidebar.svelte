@@ -22,9 +22,11 @@
       { id: randomString(), name: 'block', morph: true },
       { id: randomString(), name: 'file', morph: true },
       { id: randomString(), name: 'address', morph: true},
-      { id: randomString(), name: 'checkboxes', morph: true}
-    ]
+      { id: randomString(), name: 'checkbox-group', morph: true},
+      { id: randomString(), name: 'radio-group', morph: true}
+  ]
   }
+
 
   let blocks = defaultBlocks()
 
@@ -171,7 +173,7 @@
                 <h6 class="h6">Add Address Block</h6>
               </div>
             </div>
-          {:else if block.name === 'checkboxes'}
+          {:else if block.name === 'checkbox-group'}
             <div class="d-flex px-2 block">
               <div>
                 <div class="icon icon-sm icon-secondary">
@@ -180,6 +182,17 @@
               </div>
               <div class="pl-3">
                 <h6 class="h6">Add Checkboxes</h6>
+              </div>
+            </div>
+          {:else if block.name === 'radio-group'}
+            <div class="d-flex px-2 block">
+              <div>
+                <div class="icon icon-sm icon-secondary">
+                  <span class="fas fa-dot-circle"></span>
+                </div>
+              </div>
+              <div class="pl-3">
+                <h6 class="h6">Add Radio Buttons</h6>
               </div>
             </div>
           {/if}

@@ -4,12 +4,10 @@
   import {randomString} from "util/Generate";
   import FieldTypeEditor from "./FieldTypeEditor.svelte";
   import LogicAccordion from "./LogicAccordion.svelte";
-
   import ContentBlockEditor from "./ContentBlockEditor.svelte";
   import AddressEditor from "./AddressEditor.svelte";
-  import CheckboxesEditor from "./CheckboxesEditor.svelte";
-
-
+  import CheckboxGroupEditor from "./CheckboxGroupEditor.svelte";
+  import RadioGroupEditor from "./RadioGroupEditor.svelte";
   import Field from "./Field.svelte";
   import Button from "../../../components/Button.svelte";
   import LogicBuilder from "./LogicBuilder.svelte";
@@ -17,7 +15,6 @@
 
   export let field: IField;
   export let config: FieldEditConfig = {};
-
   let cantBeRequired = ["switch"];
 </script>
 
@@ -31,8 +28,10 @@
       <ContentBlockEditor {field} expanded={field.expanded} />
     {:else if field.type === 'address'}
       <AddressEditor {field} expanded={field.expanded} />
-    {:else if field.type === 'checkboxes'}
-      <CheckboxesEditor {field} expanded={field.expanded} />
+    {:else if field.type === 'checkbox-group'}
+      <CheckboxGroupEditor {field} expanded={field.expanded} />
+    {:else if field.type === 'radio-group'}
+      <RadioGroupEditor {field} expanded={field.expanded} />
     {:else}
       <div id={`field-button-${field.id}`}>
           {#if !cantBeRequired.includes(field.type)}
@@ -60,6 +59,3 @@
   </div>
 </div>
 
-<style>
-
-</style>
