@@ -1,4 +1,4 @@
-import { isString } from '../guards/Guard';
+import { isObject, isString } from '../guards/Guard';
 
 export function stringEquals(str1 : any, str2 : any) {
     if(str1 == null && str2 == null) {
@@ -34,5 +34,8 @@ export function fastEquals(any : any, any2 : any) {
 }
 
 export function fastClone(any : any) {
+    if(any == null || !isObject(any)) {
+        return any;
+    }
     return JSON.parse(JSON.stringify(any));
 }
