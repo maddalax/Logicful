@@ -2,6 +2,8 @@ package main
 
 import (
 	"encoding/json"
+	"time"
+
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
@@ -11,7 +13,6 @@ import (
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/gateway"
-	"time"
 )
 
 var instance = db.New()
@@ -19,6 +20,7 @@ var instance = db.New()
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
 	block := models.ContentBlock{}
+
 	err := json.Unmarshal([]byte(request.Body), &block)
 
 	if block.Id == "" {

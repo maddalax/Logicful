@@ -8,11 +8,12 @@
       return {}
     }
     console.log(formId)
-    const url = `https://logicful.nyc3.digitaloceanspaces.com/${formId}.json`
+    const url = `https://logicful-forms.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore
     console.log(url);
     const res = await this.fetch(url)
     const form = await res.json();
+    form.id = formId;
     formStore.setForm(form)
     dispatch('form_loaded', {
       form,
@@ -34,7 +35,7 @@
   export let form: IForm
 
   onMount(() => {
-
+    formStore.setForm(form);
   })
 </script>
 

@@ -12,7 +12,6 @@
   import { LogicBuilder } from 'services/LogicBuilder'
   import { fastClone } from 'util/Compare'
   import { onMount } from 'svelte'
-  import {submitForm} from 'features/form/edit/services/SubmitForm'
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live

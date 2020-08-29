@@ -36,6 +36,7 @@ export class FormStore {
             //@ts-ignore
             store[f] = copy[f];
         })
+        console.log("STORE", store.id);
         dispatch("form_updated", {
             form: this.getForm()
         });
@@ -92,6 +93,7 @@ export class FormStore {
         return copy?.value ?? undefined
     }
     getForm(): IForm {
+        console.log("STORE GET FORM", store);
         const form: any = { fields: [] }
         Object.keys(store).forEach(k => {
             if (k === "fields") {
@@ -106,6 +108,7 @@ export class FormStore {
             }
             form.fields.push(fastClone(field));
         })
+        console.log("GET FORM", form);
         return form;
     }
     setFile(id : string, file : File) {
@@ -120,10 +123,4 @@ export class FormStore {
 }
 
 const formStore = new FormStore();
-
-if (globalThis != null) {
-    //@ts-ignore
-    globalThis.formStore = formStore.getForm
-}
-
 export default formStore;

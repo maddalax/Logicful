@@ -10,7 +10,7 @@
   import { set } from 'util/Selection'
   import { DynamicFormMode } from 'components/models/ComponentProps'
   import { fastClone } from 'util/Compare'
-  import {submitForm} from 'features/form/edit/services/SubmitForm'
+import { saveForm } from './services/SaveForm';
 
   let dropped = false
   let loadingActive: boolean = false
@@ -127,7 +127,7 @@
     })
 
     subscribe('save_form', async (params) => {
-      await submitForm();
+      await saveForm();
     })
 
     subscribe('get_form_fields', () => {

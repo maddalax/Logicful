@@ -5,7 +5,7 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/google/uuid"
 	"github.com/logicful/service/gateway"
-	"github.com/logicful/service/s3"
+	"github.com/logicful/service/storage"
 )
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -15,7 +15,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		id = uuid.New().String()
 	}
 	name := "maddox-" + id + ".json"
-	path, err := s3.SetJson(request.Body, name)
+	path, err := storage.SetJson(request.Body, name, "json-data", "public-read")
 
 	if err != nil {
 		return gateway.BadRequest(err.Error())

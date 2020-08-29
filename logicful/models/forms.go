@@ -14,7 +14,20 @@ type Form struct {
 	Name string `json:"name"`
 	Changeable
 	Creatable
-	Fields []Field `json:"fields"`
+	Fields      []Field `json:"fields"`
+	Submissions []LeanSubmission
+}
+
+type LeanSubmission struct {
+	Id string
+	Creatable
+}
+
+type Submission struct {
+	FormId  string      `json:"formId"`
+	Id      string      `json:"id"`
+	Details interface{} `json:"details"`
+	Creatable
 }
 
 type Field struct {
