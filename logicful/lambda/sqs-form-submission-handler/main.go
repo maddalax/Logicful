@@ -47,7 +47,7 @@ func onSubmission(submission models.Submission) error {
 	if err != nil {
 		return err
 	}
-	println(len(current))
+
 	current = append(current, submission)
 	serialized, err := json.Marshal(current)
 
@@ -55,13 +55,12 @@ func onSubmission(submission models.Submission) error {
 		return err
 	}
 
-	location, err := storage.SetJson(string(serialized), name, "logicful-form-submissions", "private")
+	_, err = storage.SetJson(string(serialized), name, "logicful-form-submissions", "private")
 
 	if err != nil {
 		return err
 	}
 
-	println(location)
 	return nil
 }
 
@@ -75,8 +74,6 @@ func currentSubmissions(name string) ([]models.Submission, error) {
 			return nil, err
 		}
 	}
-
-	println(len(bytes))
 
 	var submissions []models.Submission
 	err = json.Unmarshal(bytes, &submissions)
@@ -126,19 +123,10 @@ func acquireLock(formId string, worker string) error {
 }
 
 func releaseLock(formId string, worker string) error {
-	_, err := instance.PutItem(&dynamodb.PutItemInput{
-		Item: map[string]*dynamodb.AttributeValue{
+	_, err := instance.DeleteItem(&dynamodb.DeleteItemInput{
+		Key: map[string]*dynamodb.AttributeValue{
 			"id": {
 				S: aws.String(formId),
-			},
-			"active": {
-				BOOL: aws.Bool(false),
-			},
-			"worker": {
-				S: aws.String(worker),
-			},
-			"timestamp": {
-				N: aws.String(strconv.FormatInt(time.Now().Unix(), 10)),
 			},
 		},
 		ConditionExpression: aws.String("worker = :worker"),
