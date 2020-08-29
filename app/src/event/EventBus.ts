@@ -11,8 +11,9 @@ export function subscribe(event : string, subscriber : (((payload : any) => any)
 }
 
 export function dispatchSingle<T>(event : string, payload : any) : T {
-  console.debug("dispatch_event_single", event, payload);
-  return dispatchSync(event, payload)[0] as T;
+  const result = dispatchSync(event, payload)[0] as T;
+  console.debug("dispatch_event_single", event, payload, result);
+  return result;
 }
 
 export async function dispatch(event : string, payload : any) {

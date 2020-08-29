@@ -54,5 +54,9 @@
     .accordion .card:hover {
         background-color: white;
     }
+    
+    .card {
+        max-width: 363px;
+    }
 </style>
 

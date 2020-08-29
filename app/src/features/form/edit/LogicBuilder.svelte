@@ -8,21 +8,22 @@
     export let field: IField;
 
     const actions = [{
-        label: 'Show when all rule(s) match',
+        label: 'Show this field when all rule(s) match',
         value: 'show-all-match'
     }, {
-        label: 'Show when any rule(s) match',
+        label: 'Show this field when any rule(s) match',
         value: 'show-any-match'
     }, {
-        label: 'Hide when any rule(s) match',
+        label: 'Hide this field when any rule(s) match',
         value: 'hide-any-match'
     }, {
-        label: 'Hide when all rule(s) match',
+        label: 'Hide this field when all rule(s) match',
         value: 'hide-all-match'
     }]
 </script>
 
 <Field
- field={{ id: randomString(), label: 'Action', value: { type: 'local', value: field.logic?.action }, type: 'combobox', required: true, configFieldTarget: 'logic.action', configTarget: field.id, options: { type: 'local', value: actions } }}
+ field={{ id: randomString(), label: 'Select Action', helperText : 'What should happen when all or some of your rules are matched.', value: { type: 'local', value: field.logic?.action }, type: 'combobox', required: true, configFieldTarget: 'logic.action', configTarget: field.id, options: { type: 'local', value: actions } }}
 />
+<hr>
 <LogicRule field={field}/>

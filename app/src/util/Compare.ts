@@ -1,6 +1,6 @@
 import { isString } from '../guards/Guard';
 
-export function stringEquals(str1 : string, str2 : string) {
+export function stringEquals(str1 : any, str2 : any) {
     if(str1 == null && str2 == null) {
         return true;
     }

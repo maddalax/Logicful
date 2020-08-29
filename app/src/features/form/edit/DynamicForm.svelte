@@ -69,7 +69,7 @@
 
   function display(field: IField): boolean {
     if (!form.enableLogic) {
-      return true
+      //return true
     }
     if (!field.logic) {
       return true

@@ -11,12 +11,12 @@
   import formStore from 'store/FormStore'
   import { nullOrEmpty } from 'util/Compare'
   import Label from 'inputs/Label.svelte'
+  import Select from 'svelte-select'
 
   let initialized = false
   let dropdownId
   let open = false
   let fuse: Fuse<{}>
-  let query = ''
   export let search = true
 
   export let field: IField
@@ -25,7 +25,7 @@
   let activeToolTip: any
 
   onDestroy(() => {
-    disposeToolTip();
+    disposeToolTip()
   })
 
   onMount(async () => {
@@ -35,6 +35,12 @@
       setup()
     })
 
+    subscribe("combobox_get_options", (props) => {
+      if(props.id === field.id) {
+        return options;
+      }
+    })
+
     subscribe('combobox_open', (props) => {
       if (props.id !== field.id) {
         doClose()
@@ -42,7 +48,9 @@
     })
 
     dropdownId = `${field.name}-${randomString()}`
-    initialized = false
+    initialized = false;
+    value = formStore.getValue(field.id);
+
     subscribe('option_set_modified', (set) => {
       if (set.value === field.options) {
         setup()
@@ -102,7 +110,6 @@
         const data = isFunction(value) ? await value() : await value
         options = field.loadTransformer ? field.loadTransformer(data) : data
       }
-      filtered = options ?? []
       fuse = createFuse()
       normalizeValue()
       state = LoadState.Finished
@@ -115,13 +122,16 @@
 
   let state: LoadState = LoadState.Loading
   let value = ''
-  let options: LabelValue[] = []
-  let filtered: LabelValue[] = []
+  let selectedValue: LabelValue
+  let options: LabelValue[] = [];
+  let filteredBy = '';
+  let filtered: Set<string> = new Set<string>();
 
   function normalizeValue() {
     const option = options?.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value))
     if (option) {
-      value = option.value ?? ''
+      value = option.label ?? ''
+      selectedValue = option
     }
   }
 
@@ -141,14 +151,16 @@
     doClose()
   }
 
-  function onSearch() {
+  function onSearch(query : string) {
     if (options.length === 0) {
-      filtered = options
+      filtered = new Set<string>();
     } else if (query == null || query === '') {
-      filtered = options
+      filtered = new Set<string>();
     } else {
       const result = fuse.search(query)
-      filtered = result.map((r) => r.item as LabelValue)
+      filteredBy = '';
+      filtered = new Set(result.map((r) => (r.item as LabelValue).value))
+      filteredBy = query;
     }
   }
 
@@ -165,22 +177,11 @@
   }
 
   function inputOnKeyDown(e: any) {
-    e.preventDefault()
     if (e.key === 'Escape') {
       doClose()
     }
     if (e.key === 'ArrowDown') {
-      if (open) {
-        const input = document.getElementById(`${field.id}-search-input`)
-        if (!input) {
-          return
-        }
-        input.focus({
-          preventScroll: true,
-        })
-      } else {
-        doOpen()
-      }
+      doOpen()
     }
   }
 
@@ -192,10 +193,10 @@
   }
 
   function doClose() {
-    disposeToolTip();
+    disposeToolTip()
     open = false
-    query = ''
-    filtered = options
+    filtered.clear();
+    filteredBy = '';
   }
 
   function optionOnKeyPress(e: any, option: LabelValue, index: number) {
@@ -234,10 +235,10 @@
         activeToolTip.dispose()
       } catch (ex) {}
     }
-    activeToolTip = undefined;
+    activeToolTip = undefined
   }
 
-  function showTooltip(option : LabelValue, id : string) {
+  function showTooltip(option: LabelValue, id: string) {
     //@ts-ignore
     activeToolTip = new bootstrap.Tooltip(document.getElementById(id), {
       title: option.label,
@@ -249,9 +250,41 @@
     }, 600)
   }
 
+  function itemFilter(label : string, filterText : string, option : any) {
+    if(filteredBy != filterText) {
+      onSearch(filterText);
+    }
+    return filtered.has(option.value);
+  }
+
+  function onSelect(e: any): any {
+    field.value = e.detail.value
+    formStore.set(field, {
+      field: 'value',
+      value: field.value,
+      fromUser: true,
+    })
+  }
+
+  function onClear(): any {
+    field.value = undefined
+    formStore.set(field, {
+      field: 'value',
+      value: undefined,
+      fromUser: true,
+    })
+  }
+
   function onMouseDown(option: LabelValue, id: string) {
-    disposeToolTip();
-    showTooltip(option, id);
+    disposeToolTip()
+    showTooltip(option, id)
+  }
+
+  async function loadOptions() {
+    return [{
+      value : 'test',
+      label : 'test'
+    }];
   }
 </script>
 
@@ -276,67 +309,11 @@
   {:else if state === LoadState.Failed}
     <p>Failed to load.</p>
   {:else}
-    <div class="form-group dropdown" on:keydown|stopPropagation>
-      <div id="input_container">
-        <input
-          class="form-select"
-          readonly
-          on:click|stopPropagation={() => (open ? doClose() : doOpen())}
-          on:keydown|stopPropagation={inputOnKeyDown}
-          value={options?.find((w) => w.value === value)?.label ?? ''} />
-        {#if !nullOrEmpty(options?.find((w) => w.value === value)?.label)}
-          <div
-            on:click={() => {
-              value = ''
-              field.value = undefined
-              formStore.set(field, { field: 'value', value: undefined, fromUser: true })
-            }}>
-            <i class="fas fa-times input-svg input-svg-2" />
-          </div>
-          <div on:click={() => (open ? doClose() : doOpen())}>
-            <i class="fas fa-caret-down input-svg" />
-          </div>
-        {:else}
-          <div on:click={() => (open ? doClose() : doOpen())}>
-            <i class="fas fa-caret-down input-svg" />
-          </div>
-        {/if}
-      </div>
-      {#if filtered != null}
-        <div class="dropdown-menu" class:show={open}>
-          {#if search}
-            <input
-              class="form-control search dropdown-item"
-              autocomplete="off"
-              id={`${field.id}-search-input`}
-              placeholder="Search..."
-              value={query}
-              on:input={(e) => {
-                query = e.target.value
-                onSearch()
-              }}
-              on:keydown|stopPropagation|preventDefault={onKeyDown}
-              on:click|stopPropagation />
-          {/if}
-          {#if filtered.length === 0}
-            <a class="dropdown-item" href="javascript:void(0)">No options to display.</a>
-          {/if}
-          {#each filtered as option, i}
-            <a
-              class="dropdown-item"
-              on:mouseover={() => onMouseDown(option, `${field.id}-option-${i}`)}
-              on:mouseout={disposeToolTip}
-              id={`${field.id}-option-${i}`}
-              href="javascript:void(0)"
-              on:keypress={(e) => optionOnKeyPress(e, option, i)}
-              on:keydown={(e) => optionOnKeyDown(e, option, i)}
-              on:click|stopPropagation={() => select(option)}>
-              {option.label}
-            </a>
-          {/each}
-        </div>
-      {/if}
+    {#if options}
+      <div class="themed">
+      <Select items={options} isVirtualList={options.length > 25} itemFilter={itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
     </div>
+    {/if}
     {#if field.helperText}
       <small class="form-text text-muted">
         {@html field.helperText ?? ''}
@@ -347,47 +324,7 @@
 </div>
 
 <style>
-  .search {
-    border: 0.0625rem solid #e6e6e6;
-    border-radius: 0;
-    margin-top: -9px;
-    color: #929292;
-  }
+ .themed {
 
-  #input_container {
-    position: relative;
-  }
-
-  .form-select {
-    padding-right: 30px;
-    width: 100%;
-  }
-
-  .input-svg {
-    position: absolute;
-    bottom: 13px;
-    right: 4px;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
-
-  .input-svg-2 {
-    right: 23px;
-  }
-
-  .form-select {
-    cursor: pointer;
-    background-image: none;
-  }
-
-  .dropdown-menu {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .dropdown-item {
-    text-overflow: ellipsis;
-    overflow: hidden;
   }
 </style>

@@ -57,6 +57,7 @@
 		"sirv-cli": "^1.0.0",
 		"smooth-scroll": "^16.1.0",
 		"svelte-dnd-action": "file:../svelte-dnd-action",
+		"svelte-select": "^3.11.1",
 		"uuid": "^8.3.0",
 		"vivus": "^0.4.5",
 		"waypoints": "4.0.1"

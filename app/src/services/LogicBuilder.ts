@@ -2,6 +2,7 @@ import type {LogicRule} from "../models/LogicBuilder";
 import type {IField} from "../models/IField";
 import formStore from "../store/FormStore";
 import { nullOrEmpty } from "util/Compare";
+import { isLabelValue } from "guards/Guard";
 
 export class LogicBuilder {
 
@@ -80,15 +81,18 @@ export class LogicBuilder {
     }
 
     private evaluateCondition(rule : LogicRule, value : any) : boolean {
+        if(isLabelValue(value)) {
+            return this.evaluateCondition(rule, value.value) || this.evaluateCondition(rule, value.label)
+        }
         switch (rule.condition) {
             case "contains":
-                return value?.toString()?.includes(rule.value?.toString())
+                return this.toLowerCase(value).includes(this.toLowerCase(rule.value))
             case "startsWith":
-                return value?.toString()?.startsWith(rule.value?.toString())
+                return this.toLowerCase(value).startsWith(this.toLowerCase(rule.value))
             case "endsWith":
-                return value?.toString()?.endsWith(rule.value?.toString())
+                return this.toLowerCase(value).endsWith(this.toLowerCase(rule.value))
             case "eq":
-                return value?.toString() == rule.value?.toString()
+                return this.toLowerCase(value) == this.toLowerCase(rule.value)
             case "gt":
                 return parseFloat(value) > parseFloat(rule.value)
             case "lt":
@@ -98,14 +102,55 @@ export class LogicBuilder {
             case "gte":
                 return parseFloat(value) >= parseFloat(rule.value)
             case "hasValue":
-                return value != null && value != ""
+                return this.hasValue(value)
+            case "notHaveValue":
+                return !this.hasValue(value)
             case "isTrue":
                 return value != null && value == true
             case "isFalse":
                 return value != null && value == false
+            case "isFileExtension": 
+                return this.isFileExtension(value, rule) 
+            case "isNotFileExtension": 
+                return !this.isFileExtension(value, rule)
             default:
                 return false;
         }
+    }
+
+    private hasValue(value : any) : boolean {
+        return value != null && value != ""
+    }
+
+    private isFileExtension(value : any, rule : LogicRule) : boolean {
+        if(!this.hasValue(value)) {
+            return false;
+        }
+        const file = formStore.getFile(value);
+        if(!file) {
+            return false;
+        }
+        const fileName = file.name;
+        const split = fileName.split(".");
+        if(split.length < 2) {
+            return false;
+        }
+        const rules = rule.value.split(",").map((r : string) => {
+            return r.replace(" ", "").replace(".", "")
+        });
+        for(let r of rules) {
+            if(r === split[split.length - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private toLowerCase(value : any) {
+        if(!this.hasValue(value)) {
+            return '';
+        }
+        return value.toString().toLowerCase();
     }
 
 }

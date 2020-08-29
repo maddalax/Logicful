@@ -38,6 +38,7 @@
       class={field.properties?.className ?? 'form-control'}
       id={field.id}
       {value}
+      placeholder={field.placeholder ?? ''}
       name={field.name}
       {type} />
   {:else}
@@ -55,6 +56,7 @@
       class={field.properties?.className ?? 'form-control'}
       id={field.id}
       {value}
+      placeholder={field.placeholder ?? ''}
       name={field.name}
       {type} />
   {/if}

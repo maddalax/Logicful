@@ -28,12 +28,8 @@
 </script>
 
 <Label {field} />
-<div class="input-group">
-  <input id={field.id} type="text" class="form-control date-input-hidden" value={value ?? ''} placeholder="Select a date..." />
-  <span on:click={clearDate} class="input-group-text">
-    <i class="fas fa-times" />
-  </span>
-</div>
+<input id={field.id} type="text" class="form-control date-input-hidden" value={value ?? ''} placeholder="Select a date..." />
+
 
 <style>
   .date-input-hidden {

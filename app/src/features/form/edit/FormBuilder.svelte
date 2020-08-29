@@ -52,6 +52,7 @@
 
   function addPlaceHolder() {
     if (form.fields.length !== 0) {
+      removePlaceHolder();
       return
     }
     form.fields = form.fields.concat([
