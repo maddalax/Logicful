@@ -10,6 +10,7 @@
   import { set } from 'util/Selection'
   import { DynamicFormMode } from 'components/models/ComponentProps'
   import { fastClone } from 'util/Compare'
+  import {submitForm} from 'features/form/edit/services/SubmitForm'
 
   let dropped = false
   let loadingActive: boolean = false
@@ -125,9 +126,8 @@
       formStore.set(copy)
     })
 
-    subscribe('save_form', (params) => {
-      const form = formStore.getForm()
-      localStorage.setItem('form', JSON.stringify(form))
+    subscribe('save_form', async (params) => {
+      await submitForm();
     })
 
     subscribe('get_form_fields', () => {

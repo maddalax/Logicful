@@ -3,9 +3,20 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min";
 import { dispatch } from "event/EventBus";
 
-sapper.start({
-	target: document.querySelector("#sapper"),
-});
+function init() : any {
+	const target = document.querySelector("#sapper");
+	if(!target) {
+		setTimeout(() => {
+			init();
+		}, 10)
+		return;
+	}
+	sapper.start({
+		target
+	});
+}
+
+init();
 
 document.addEventListener("click", (e) => {
 	dispatch("document_click", e);

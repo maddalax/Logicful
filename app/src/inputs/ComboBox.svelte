@@ -258,6 +258,7 @@
   }
 
   function onSelect(e: any): any {
+    e.stopPropagation();
     field.value = e.detail.value
     formStore.set(field, {
       field: 'value',
@@ -310,9 +311,9 @@
     <p>Failed to load.</p>
   {:else}
     {#if options}
-      <div class="themed">
-      <Select items={options} isVirtualList={options.length > 25} itemFilter={itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
-    </div>
+      <div class="themed" on:click|stopPropagation|preventDefault>
+        <Select items={options} isVirtualList={options.length > 25} itemFilter={itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
+      </div>
     {/if}
     {#if field.helperText}
       <small class="form-text text-muted">

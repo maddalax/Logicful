@@ -10,6 +10,8 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
 
+  let saving = false
+
   function defaultBlocks() {
     return [
       { id: randomString(), name: 'string', morph: true },
@@ -41,10 +43,12 @@
     })
   }
 
-  function saveDraft() {
-    dispatch('save_form', {
+  async function saveDraft() {
+    saving = true
+    await dispatch('save_form', {
       status: 'draft',
     })
+    saving = false
   }
 
   function saveAndPublish() {}
@@ -82,7 +86,11 @@
 </script>
 
 <div style="text-align:center;">
-  <button class="save-button btn btn-light" type="button" on:click={saveDraft}>Save</button>
+  {#if saving}
+    <button class="save-button btn btn-light" type="button" disabled>Saving...</button>
+  {:else}
+    <button class="save-button btn btn-light" type="button" on:click={saveDraft}>Save</button>
+  {/if}
 </div>
 {#if field}
   {#each [field] as f (fieldId)}
@@ -168,7 +176,7 @@
             <div class="d-flex px-2 block">
               <div>
                 <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-file-upload"></span>
+                  <span class="fas fa-file-upload" />
                 </div>
               </div>
               <div class="pl-3">

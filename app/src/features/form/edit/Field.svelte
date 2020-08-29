@@ -14,7 +14,7 @@
   import { fade } from 'svelte/transition'
   import RichTextDisplay from 'inputs/RichTextDisplay.svelte'
   import { dispatch } from 'event/EventBus'
-  import Switch from './Switch.svelte'
+  import Switch from '../../../inputs/Switch.svelte'
   import { subscribe } from 'event/EventBus'
   import DatePicker from 'components/DatePicker.svelte'
   import { promptConfirm } from 'util/Confirm'
@@ -123,7 +123,7 @@ import FileUpload from 'inputs/FileUpload.svelte'
       {:else if field.type === 'block'}
         <RichTextDisplay {field} />
       {:else if field.type === 'block-editor'}
-        <TextArea {field} {...config} />
+        <TextArea {field} {...config} isPreview={true} />
       {:else if field.type === 'spacer'}
         <Spacer {field} />
       {:else if field.type === 'switch'}
