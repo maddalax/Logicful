@@ -1,6 +1,6 @@
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark">
-    <div class="container position-relative">
+    <div class="container position-relative" style="max-width: none; padding-right: 5em; padding-left: 5em;">
       <a class="navbar-brand mr-lg-5" href="/">
         <img class="navbar-brand-dark" src="/assets/img/brand/light.svg" alt="Logo light" />
         <img class="navbar-brand-light" src="/assets/img/brand/dark.svg" alt="Logo dark" />
@@ -100,9 +100,9 @@
       </div>
       <div class="d-flex align-items-center">
         <a href="./account-settings" class="btn btn-outline-soft animate-up-2">
-          <span class="fas fa-book mr-2" />
           My Account
         </a>
+        
         <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" />
         </button>

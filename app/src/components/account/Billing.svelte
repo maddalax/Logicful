@@ -8,7 +8,7 @@
             </div>
         </div>
         <form action="#" method="post" class="card border-light p-3 mb-4">
-            <div class="card-header border-light p-3 mb-4 mb-md-0">
+            <div class="card-header bg-white border-light p-3 mb-4 mb-md-0">
                 <h3 class="h5 mb-0">Billing details</h3>
             </div>
             <div class="card-body p-0 p-md-4">
@@ -16,27 +16,8 @@
                     <div class="col-12 col-lg-6">
                         <!-- Form -->
                         <div class="mb-4">
-                            <label for="cartInputEmail1">Email address *</label>
-                            <input type="email" class="form-control" placeholder="example@company.com" id="cartInputEmail1" required>
-                        </div>
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-12 col-lg-6 mb-4">
-                        <!--Form-->
-                        <label class="my-1 mr-2" for="inlineFormCustomSelectBilling">Country</label>
-                        <select class="form-select" id="inlineFormCustomSelectBilling" aria-label="Messages select example">
-                            <option selected>Choose...</option>
-                            <option value="1">United States</option>
-                            <option value="2">Germany</option>
-                            <option value="3">Canada</option>
-                        </select>
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <!-- Form -->
-                        <div class="mb-4">
                             <label for="cartInputAddress1">Address</label>
-                            <input type="text" placeholder="Texas" class="form-control" id="cartInputAddress1">
+                            <input type="text" placeholder="123 4th St" class="form-control" id="cartInputAddress1">
                         </div>
                         <!-- End of Form -->
                     </div>
@@ -59,17 +40,20 @@
                     <div class="col-12 col-lg-6">
                         <!-- Form -->
                         <div class="mb-4">
-                            <label for="cartInputCompany1">Company Name *</label>
+                            <label for="cartInputCompany1">Company Name</label>
                             <input type="text" placeholder="Company LLC" class="form-control" id="cartInputCompany1" required>
                         </div>
                         <!-- End of Form -->
                     </div>
-                    <div class="col-12 col-lg-6">
-                        <!-- Form -->
-                        <div class="mb-4">
-                            <label for="cartInputVAT1">VAT ID</label>
-                            <input type="number" placeholder="NL232142" class="form-control" id="cartInputVAT1">
-                        </div>
+                    <div class="col-12 col-lg-6 mb-4">
+                        <!--Form-->
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectBilling">Country</label>
+                        <select class="form-select" id="inlineFormCustomSelectBilling" aria-label="Messages select example">
+                            <option selected>Choose...</option>
+                            <option value="1">United States</option>
+                            <option value="2">Germany</option>
+                            <option value="3">Canada</option>
+                        </select>
                         <!-- End of Form -->
                     </div>
                     <div class="col-12 col-lg-6">

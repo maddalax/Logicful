@@ -3,9 +3,8 @@
 </script>
 
 <div class="card border-light p-2">
-    <div class="card-header bg-white border-0 text-center">
-        <h2 class="h5 mt-3">Hi, Sydne!</h2>
-        <a href="#" class="btn btn-gray btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+    <div class="card-header bg-white border-0">
+        <h2 class="h5 mt-3">Sydne Anschutz</h2>
     </div>
     <div class="card-body p-2">
         <div class="list-group dashboard-menu list-group-sm">
@@ -15,3 +14,18 @@
         </div>
     </div>
 </div>
+
+<style>
+  .active {
+    color: #26304c !important;
+    border-radius: 0.3em;
+  }
+
+  .card {
+    border-radius: 0.3em;
+  }
+
+  .list-group.dashboard-menu .list-group-item:hover {
+    border-radius: 0.3em;
+  }
+</style>

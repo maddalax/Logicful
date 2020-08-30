@@ -52,7 +52,7 @@
          form2 = {title: 'Form 2c', id: 'yeet', lastUpdated: 'Oct 12 3:30 PM', fields: []};
          form3 = {title: 'Form 3c', id: 'yeet', lastUpdated: 'Oct 22 3:30 PM', fields: []};
       }
-    return { name: folderName, forms: [form1, form2, form3] }
+    return { name: folderName, forms: [form1, form2, form3], id: '12345' }
 
   }
 </script>

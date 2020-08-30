@@ -6,7 +6,7 @@
 </script>
 
 
-        <div class="accordion mt-4" id="accordionExample">
+        <div class="accordion mt-4" id="accordionExample" style="margin-bottom: 3rem;">
             <div class="card border-light mb-0">
                 <div class="card-header accordionHeader" id="headingTwo">
                     <h2 class="mb-0">
