@@ -6,7 +6,8 @@
     "debug": "sam build && sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 23451 --debugger-path debug --debug-args \"-delveAPI=2\"",
     "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
     "deploy": "sam build && sam deploy",
-    "sqs:formSubmission" : "sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionQueueHandler"
+    "sqs:formSubmission" : "sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionQueueHandler",
+    "build:function" : "sam build FUNCTION_NAME"
   },
   "devDependencies": {
     "chokidar": "^3.4.2",

@@ -1,6 +1,9 @@
 <script lang="typescript">
-  import { afterUpdate } from 'svelte'
+import { subscribePrivate } from 'event/EventBus';
 
+  import { afterUpdate, onMount } from 'svelte'
+
+  export let id = '';
   export let rowsPerPage = 10
   export let page = 1
   export let count = 0
@@ -13,6 +16,12 @@
 
   afterUpdate(() => {
     onChange()
+  })
+
+  onMount(() => {
+      subscribePrivate(id, 'on_sort', () => {
+        page = 1;
+      });
   })
 
   function onChange() {

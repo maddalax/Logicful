@@ -1,13 +1,16 @@
 <script lang="typescript">
   import type { TableRow, TableButtonAction } from 'components/models/RemoteTableProps'
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import Fuse from 'fuse.js'
   import { LoadState } from 'models/LoadState'
   import { randomString } from 'util/Generate'
   import Pagination from './Pagination.svelte'
+  import { dispatchPrivate } from 'event/EventBus'
+  import { fastEquals } from 'util/Compare'
 
   export let getRows: () => Promise<TableRow[]>
 
+  let id: string = ''
   let caption: string = ''
   let searchPlaceHolder = 'Search'
   let rows: TableRow[] = []
@@ -20,6 +23,8 @@
   let range: { min: number; max: number } = { min: 1, max: 1 }
   let widths: { [key: string]: number } = {}
   let canvasContext: any
+  let sort = ''
+  let sortDirection = ''
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
@@ -41,6 +46,7 @@
   }
 
   onMount(() => {
+    id = randomString()
     hidden.add('table_meta_id')
     const element = document.createElement('canvas')
     canvasContext = element.getContext('2d')
@@ -80,7 +86,39 @@
     }
   }
 
-  function sort(column: string) {}
+  function sortColumn(column: string) {
+    if (sort === column) {
+      sort = column
+      sortDirection = sortDirection === 'asc' ? 'desc' : 'asc'
+    } else {
+      sort = column
+      sortDirection = 'desc'
+    }
+    dispatchPrivate(id, 'on_sort', { sort, sortDirection })
+    filtered = filtered.sort(function (a, b) {
+      var nameA = a[sort]?.toString()?.toUpperCase()
+      var nameB = b[sort]?.toString()?.toUpperCase()
+      if(nameA == null && nameB == null) {
+        return 0;
+      }
+      if(nameA == null) { 
+        return 1;
+      }
+      if(nameB == null) {
+        return 1;
+      }
+      if (nameA < nameB) {
+        return 1
+      }
+      if (nameA > nameB) {
+        return -1
+      }
+      return 0
+    })
+    if (sortDirection === 'asc') {
+      filtered = filtered.reverse()
+    }
+  }
 
   function headerStyle(column: string) {
     if (widths[column]) {
@@ -90,20 +128,20 @@
 
   function setWidths() {
     let values = filtered.slice(range.min, range.max)
-    widths = {};
+    widths = {}
     values.forEach((value) => {
       columns.forEach((c) => {
         const v = value[c]
         let width = getTextWidth(v, '')
-        console.log(v, width);
+        console.log(v, width)
         if (width < 150) {
           width = 150
         }
         if (width > 400) {
           width = 400
         }
-        if((widths[c] ?? 0) < width) {
-          widths[c] = width;
+        if ((widths[c] ?? 0) < width) {
+          widths[c] = width
         }
       })
     })
@@ -164,8 +202,21 @@
           <!-- svelte-ignore empty-block -->
           <tbody>
             <tr>
-              {#each columns as column}
-                <th scope="col" style={headerStyle(column)} on:click={() => sort(column)}>{column}</th>
+              {#each columns as column (column)}
+                <th scope="col" style={headerStyle(column)} on:click={() => sortColumn(column)}>
+                  {column}
+                  <span>
+                    {#if sort === column && sortDirection === 'asc'}
+                   <span>
+                    <span class="fas fa-chevron-up" />
+                   </span>
+                  {:else if sort === column && sortDirection === 'desc'}
+                   <span>
+                    <span class="fas fa-chevron-down" />
+                    </span>
+                  {/if}
+                  </span>
+                </th>
               {/each}
               {#if onDelete || onEdit}
                 <th scope="col" />
@@ -200,10 +251,15 @@
         </table>
       </div>
       <Pagination
+        {id}
         count={filtered.length}
         onRangeChange={(r) => {
+          console.log(r, range)
+          if (fastEquals(r, range)) {
+            return
+          }
           range = r
-          setWidths();
+          setWidths()
           columns = columns
         }} />
     {/if}

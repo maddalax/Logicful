@@ -50,6 +50,7 @@
           delete d.details[key]
         }
       })
+      d.details["Submission Date"] = new Date(d.createTime).toLocaleString();
       return d.details
     });
   }
