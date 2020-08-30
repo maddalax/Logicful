@@ -4,7 +4,7 @@
     if (!formId) {
       return {}
     }
-    const url = `https://logicful-forms.s3.us-west-002.backblazeb2.com/${formId}.json`
+    const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore
     const res = await this.fetch(url)
     const form = await res.json();
@@ -32,13 +32,8 @@
   let filtered: any[] = []
 
   async function getRows(): Promise<TableRow[]> {
-    const local = localStorage.getItem('submissions')!
-    if (!local) {
-      let response = await fetch(`http://localhost:3000/form/${formId}/submissions`)
-      const submissions: any[] = await response.json()
-      localStorage.setItem('submissions', JSON.stringify(submissions))
-    }
-    submissions = JSON.parse(localStorage.getItem('submissions')!)
+    let response = await fetch(`http://localhost:3000/form/${formId}/submissions`)
+    const submissions: any[] = await response.json()
     const labels: { [key: string]: string } = {}
 
     form.fields.forEach((f) => {

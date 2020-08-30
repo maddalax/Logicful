@@ -4,7 +4,7 @@ import formStore from "store/FormStore";
 export async function saveForm() {
     const form = formStore.getForm();
     const url = await save(form);
-    const id = url.replace('https://logicful-forms.s3.us-west-002.backblazeb2.com/', "").replace(".json", "");
+    const id = url.replace('https://json-data.s3.us-west-002.backblazeb2.com/', "").replace(".json", "");
     form.id = id;
     localStorage.setItem("form", JSON.stringify(form));
     window.open("http://localhost:5000/preview/" + id);

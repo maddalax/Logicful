@@ -7,7 +7,7 @@
     if (!formId) {
       return {}
     }
-    const url = `https://logicful-forms.s3.us-west-002.backblazeb2.com/${formId}.json`
+    const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore
     console.log(url);
     const res = await this.fetch(url)
