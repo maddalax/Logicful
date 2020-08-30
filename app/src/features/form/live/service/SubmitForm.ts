@@ -1,18 +1,40 @@
 import formStore from "store/FormStore"
+import Bowser from "bowser";
+
+const excluded = ['block']
 
 export async function submitForm() {
     const form = formStore.getForm();
-    console.log("FORM", form);
     const results : {[key : string] : any} = {}
+    const fieldMeta : {[key : string] : any} = {};
+    const meta : {[key : string] : any} = {}
     form.fields.forEach(f => {
-        if(!f.name) {
+        if(f.name == null) {
             return;
         }
-        results[f.name] = f.value
+        if(excluded.includes(f.type)) {
+            return;
+        }
+        results[f.name] = f.value ?? f.defaultValue ?? null;
+        if(!fieldMeta[f.name]) {
+            fieldMeta[f.name] = {};
+        }
+        if(f.value == null) {
+            fieldMeta[f.name].userSelectedValue = false;
+        }
+        fieldMeta[f.name].type = f.type;
     });
+    
+    try {
+        meta["env"] = Bowser.getParser(window.navigator.userAgent).getResult();
+    } catch(ex) {
+
+    }
     const submission = {
         formId : form.id!,
-        details : results
+        details : results,
+        fieldMeta,
+        meta
     }
     const result = await fetch(`http://localhost:3000/form/${form.id}/submit`, {
         method : 'POST',
