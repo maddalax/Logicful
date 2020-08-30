@@ -48,7 +48,26 @@ func onSubmission(submission models.Submission) error {
 		return err
 	}
 
-	current = append(current, submission)
+	println(len(current))
+
+	if submission.Status == "deleted" {
+		var before = len(current)
+		current = remove(current, submission)
+		if (len(current)) == before {
+			println("already deleted.")
+			return nil
+		}
+	} else {
+		// Already exists, just return.
+		for i := range current {
+			if current[i].Id == submission.Id {
+				println("already exists.")
+				return nil
+			}
+		}
+		current = append(current, submission)
+	}
+
 	serialized, err := json.Marshal(current)
 
 	if err != nil {
@@ -83,6 +102,18 @@ func currentSubmissions(name string) ([]models.Submission, error) {
 	}
 
 	return submissions, nil
+}
+
+func remove(s []models.Submission, submission models.Submission) []models.Submission {
+	i := 0
+	for _, x := range s {
+		if x.Id != submission.Id {
+			s[i] = x
+			i++
+		}
+	}
+	s = s[:i]
+	return s
 }
 
 func acquireLock(formId string, worker string) error {

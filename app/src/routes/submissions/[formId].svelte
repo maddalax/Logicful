@@ -51,6 +51,7 @@
         }
       })
       d.details["Submission Date"] = new Date(d.createTime).toLocaleString();
+      d.details["submission_id"] = d.id;
       return d.details
     });
   }
@@ -60,6 +61,22 @@
       return form.fields.findIndex(f => f.label === a) - form.fields.findIndex(f => f.label === b)
     });
   }
+
+  async function onDelete(rows : any[]) {
+    const ids = rows.map(r => r["submission_id"]).filter(r => r != null);
+    const result = await fetch(`http://localhost:3000/form/${formId}/submissions/delete`, {
+      method : 'DELETE',
+      body : JSON.stringify(ids),
+      headers : {
+        'Content-Type' : 'application/json'
+      }
+    });
+    if(!result.ok) {
+      const body = await result.json();
+      throw new Error(body.message);
+    }
+  }
+
 </script>
 
 <Preloader />
@@ -70,7 +87,7 @@
   <div class="main">
     <h1>Submissions</h1>
     <div>
-      <RemoteTable {getRows} sortColumns={sortColumns} />
+      <RemoteTable {getRows} sortColumns={sortColumns} onDelete={onDelete} />
     </div>
   </div>
 </div>

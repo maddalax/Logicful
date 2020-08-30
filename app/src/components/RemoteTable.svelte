@@ -35,7 +35,7 @@
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
-  export let onDelete: ((row: any) => any) | undefined = undefined
+  export let onDelete: ((rows: any[]) => any) | undefined = undefined
   export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
 
@@ -197,6 +197,11 @@
   }
 
   async function deleteEntries() {
+    const selected = filtered.filter(w => w.meta_selected)
+    if(selected.length !== selectedCount) {
+      throw new Error("Selection count did not match actual selected.")
+    }
+    await onDelete?.(selected);
     dispatch("show_toast", {
       title : 'Deletion Started',
       message : 'Your entries have been queued for deletion.'
@@ -275,9 +280,6 @@
                   </span>
                 </th>
               {/each}
-              {#if onDelete || onEdit}
-                <th scope="col" />
-              {/if}
             </tr>
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}

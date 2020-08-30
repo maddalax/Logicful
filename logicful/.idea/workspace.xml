@@ -23,9 +23,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix form submission, add additional data to submission">
+      <change afterPath="$PROJECT_DIR$/lambda/delete-submission/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambda/delete-submission/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambda/delete-submission/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambda/delete-submission/main_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambda/sqs-form-submission-delete-handler/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambda/sqs-form-submission-delete-handler/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lambda/sqs-form-submission-delete-handler/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/static/css/pixel.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/pixel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/submissions/[formId].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/submissions/[formId].svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/CreateContentBlock/set-content-block" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/CreateContentBlock/set-content-block" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/CreateOptionSet/create-option-set" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/CreateOptionSet/create-option-set" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/FormSubmissionQueueHandler/sqs-form-submission-handler" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/FormSubmissionQueueHandler/sqs-form-submission-handler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListContentBlock/list-content-block" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/ListContentBlock/list-content-block" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListFormSubmissions/list-form-submissions" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/ListFormSubmissions/list-form-submissions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListForms/list-forms" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/ListForms/list-forms" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListOptionSet/list-option-set" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/ListOptionSet/list-option-set" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/SetForm/set-form" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/SetForm/set-form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/SubmitForm/submit-form" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/SubmitForm/submit-form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.aws-sam/build/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/template.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/events/sqs/form_submission.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/events/sqs/form_submission.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/events/sqs/form_submission_body.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/events/sqs/form_submission_body.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/local-env.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-handler/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs-form-submission-handler/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/submit-form/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/submit-form/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +89,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dev/tables" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lambda" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -73,9 +99,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lambda" />
       <recent name="$PROJECT_DIR$/dev/tables" />
       <recent name="$PROJECT_DIR$/lambda/sqs-form-submission-handler" />
-      <recent name="$PROJECT_DIR$/lambda" />
       <recent name="$PROJECT_DIR$/../sapper-typescript-graphql-template/static" />
       <recent name="$PROJECT_DIR$/../sapper-typescript-graphql-template/src" />
     </key>
@@ -87,7 +113,7 @@
       <recent name="C:\Users\Maddox\Development\LowCode\frontend\src\components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build:watch">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
       <method v="2" />
     </configuration>
@@ -121,16 +147,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="pretty" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/../app/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="pretty" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="sqs:formSubmission" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -141,21 +157,31 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="sqs:formSubmissionDelete" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="sqs:formSubmissionDelete" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Go Remote.Unnamed" />
-      <item itemvalue="npm.pretty" />
       <item itemvalue="npm.debug" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.sqs:formSubmission" />
       <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.sqs:formSubmissionDelete" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.sqs:formSubmissionDelete" />
         <item itemvalue="npm.sqs:formSubmission" />
         <item itemvalue="npm.debug" />
-        <item itemvalue="npm.pretty" />
       </list>
     </recent_temporary>
   </component>
@@ -259,30 +285,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1638" height="254" key="GridCell.Tab.0.bottom" timestamp="1598795324252">
+    <state width="1638" height="237" key="GridCell.Tab.0.bottom" timestamp="1598827197243">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="254" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598795324252" />
-    <state width="1638" height="254" key="GridCell.Tab.0.center" timestamp="1598795324251">
+    <state width="1638" height="237" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1598827197243" />
+    <state width="1638" height="237" key="GridCell.Tab.0.center" timestamp="1598827197242">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="254" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598795324251" />
-    <state width="1638" height="254" key="GridCell.Tab.0.left" timestamp="1598795324250">
+    <state width="1638" height="237" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1598827197242" />
+    <state width="1638" height="237" key="GridCell.Tab.0.left" timestamp="1598827197242">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="254" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598795324250" />
-    <state width="1638" height="254" key="GridCell.Tab.0.right" timestamp="1598795324251">
+    <state width="1638" height="237" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1598827197242" />
+    <state width="1638" height="237" key="GridCell.Tab.0.right" timestamp="1598827197243">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="254" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598795324251" />
+    <state width="1638" height="237" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1598827197243" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -373,21 +399,21 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598733248082">
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598820361199">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598733248082" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598820361199" />
     <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1598728403059">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598728403059" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598795485061">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598827944363">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598795485061" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598827944363" />
   </component>
 </project>
