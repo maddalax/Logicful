@@ -1,21 +1,13 @@
-export interface DialogOptions {
-    child? : any,
-    confirmCloseOnDirty? : boolean,
-    props? : any
-    title? : string,
-    save? : boolean,
-    onBack? : () => any,
-    buttons? : {
-        label : string,
-        onClick : () => any,
-        type : string
-    }[]
-}
-
 export interface DropdownButtonAction {
     label : string,
     onClick : () => any
 }
+
+export interface ButtonAction {
+    label : string,
+    type : string,
+    onClick? : (() => Promise<any>) | (() => any)
+  }
 
 export enum DynamicFormMode {
     Preview,
