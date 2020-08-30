@@ -16,12 +16,19 @@
   })
 
   function onChange() {
-    pages = Math.floor(count / rowsPerPage)
+    pages = Math.ceil(count / rowsPerPage)
     hasNext = page < pages
     hasPrevious = page > 1
-    showing = `Showing ${Math.floor(page * rowsPerPage)} / ${Math.floor(count)} Entries`
+    let showingCount = Math.floor(page * rowsPerPage);
+    showingCount = showingCount >= count ? Math.floor(count) : showingCount
+    showing = `Showing ${showingCount} / ${Math.floor(count)} Entries`
     onRangeChange(range())
     console.log('count', count, 'pages', pages, 'page', page, 'hasNext', hasNext, 'hasPrev', hasPrevious, 'range', range())
+  }
+
+  function setRowsPerPage(newValue : number) {
+    rowsPerPage = newValue;
+    page = 1;
   }
 
   function setPage(newPage: number) {
@@ -46,7 +53,7 @@
           {#each rowsPerPageEntries as entry}
             <li>
               <a class="dropdown-item" href="javascript:void(0)" on:click={() => {
-                rowsPerPage = entry      
+                setRowsPerPage(entry)    
             }}>Show {entry} Entires</a>
             </li>
           {/each}

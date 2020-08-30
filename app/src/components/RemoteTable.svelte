@@ -112,7 +112,8 @@
         </div>
       </div>
     {:else}
-      <table class="table table-hover" style="width: 100%; margin: unset">
+     <div class="table-responsive">
+      <table class="table table-hover">
         <caption>{caption}</caption>
         <!-- svelte-ignore empty-block -->
         <tbody>
@@ -125,7 +126,7 @@
             {/if}
           </tr>
           {#each filtered as row, index}
-            {#if index > range.min && index < range.max}
+            {#if index >= range.min && index <= range.max}
               <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
                 {#each columns as column}
                   <td>
@@ -133,14 +134,14 @@
                   </td>
                 {/each}
                 {#if onEdit}
-                  <button class="btn" on:click={() => onEdit(row)}>
+                  <button class="btn" on:click={() => onEdit?.(row)}>
                     <div class="icon icon-sm icon-secondary">
                       <span class="fas fa-pencil-alt" />
                     </div>
                   </button>
                 {/if}
                 {#if onDelete}
-                  <button class="btn" on:click={() => onDelete(row)}>
+                  <button class="btn" on:click={() => onDelete?.(row)}>
                     <div class="icon icon-sm icon-secondary">
                       <span class="fas fa-trash" />
                     </div>
@@ -151,8 +152,9 @@
           {/each}
         </tbody>
       </table>
+     </div>
       <Pagination
-        count={rows.length}
+        count={filtered.length}
         onRangeChange={(r) => {
           range = r
         }} />
@@ -166,7 +168,6 @@
 
 <style>
   .table-hover {
-    width: 95% !important;
     margin-top: 1em !important;
     margin-right: auto !important;
     margin-left: auto !important;

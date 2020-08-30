@@ -107,11 +107,9 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		return gateway.BadRequest(err.Error())
 	}
 
-	for i := 0; i < 100; i++ {
-		err = sqs.SendMessage(submission, os.Getenv("FORM_SUBMISSION_QUEUE"))
-		if err != nil {
-			return gateway.BadRequest(err.Error())
-		}
+	err = sqs.SendMessage(submission, os.Getenv("FORM_SUBMISSION_QUEUE"))
+	if err != nil {
+		return gateway.BadRequest(err.Error())
 	}
 
 	return gateway.NoContent()
