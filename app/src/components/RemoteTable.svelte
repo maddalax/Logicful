@@ -204,7 +204,7 @@
     await onDelete?.(selected);
     dispatch("show_toast", {
       title : 'Deletion Started',
-      message : 'Your entries have been queued for deletion.'
+      message : 'Your entries have been queued for deletion. This may take up to 2 minutes to show.'
     })
   }
 </script>
