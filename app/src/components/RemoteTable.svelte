@@ -7,6 +7,7 @@
   import Pagination from './Pagination.svelte'
   import { dispatchPrivate } from 'event/EventBus'
   import { fastEquals } from 'util/Compare'
+  import Dialog from './Dialog.svelte'
 
   export let getRows: () => Promise<TableRow[]>
 
@@ -16,6 +17,7 @@
   let rows: TableRow[] = []
   let filtered: TableRow[] = []
   let columns: string[] = []
+  let filteredColumns: string[] = []
   let query = ''
   let fuse: Fuse<{}>
   let state = LoadState.Loading
@@ -25,11 +27,12 @@
   let canvasContext: any
   let sort = ''
   let sortDirection = ''
+  let editingColumns = false
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
   export let onDelete: ((row: any) => any) | undefined = undefined
-  export let hidden = new Set<string>()
+  export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
 
   function createFuse(): Fuse<{}> {
@@ -77,8 +80,9 @@
       })
       fuse = createFuse()
       filtered = rows
-      columns = Object.keys(rows[rows.length - 1] ?? {}).filter((w) => !hidden.has(w))
+      columns = Object.keys(rows[rows.length - 1] ?? {})
       columns = sortColumns?.(columns) ?? columns
+      filteredColumns = columns.filter((w) => !hidden.has(w))
       state = LoadState.Finished
     } catch (ex) {
       console.error(ex)
@@ -98,14 +102,14 @@
     filtered = filtered.sort(function (a, b) {
       var nameA = a[sort]?.toString()?.toUpperCase()
       var nameB = b[sort]?.toString()?.toUpperCase()
-      if(nameA == null && nameB == null) {
-        return 0;
+      if (nameA == null && nameB == null) {
+        return 0
       }
-      if(nameA == null) { 
-        return 1;
+      if (nameA == null) {
+        return 1
       }
-      if(nameB == null) {
-        return 1;
+      if (nameB == null) {
+        return 1
       }
       if (nameA < nameB) {
         return 1
@@ -157,6 +161,15 @@
     return canvasContext.measureText(text).width
   }
 
+  function showHideColumns() {
+    editingColumns = true
+  }
+
+  function toggleColumn(checked: boolean, column: string) {
+    checked ? hidden.delete(column) : hidden.add(column)
+    filteredColumns = columns.filter((w) => !hidden.has(w))
+  }
+
   function onRowClick(row: any, index: number) {
     if (lastSelectedIndex !== -1) {
       filtered[lastSelectedIndex].meta_selected = false
@@ -167,21 +180,21 @@
 </script>
 
 <div>
-  <div class="d-flex container-fluid">
-    <div class="container-fluid" style="padding-left: 0em;">
-      <input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} />
+  <div class="d-flex bd-highlight mb-3">
+    <div class="mr-auto p-2 bd-highlight">
+      <input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" />
     </div>
-    <div class="text-right button">
-
-      {#if headerActions}
-        {#each headerActions as action}
-          <button class="btn btn-primary" style="padding-left: 1em; width: 200px;" on:click={action.onClick}>{action.label}</button>
-        {/each}
-      {/if}
+    <div class="p-2 bd-highlight">
+      <div style="pointer: cursor;" on:click={showHideColumns}>
+        <i class="fas fa-cog" />
+      </div>
     </div>
-
+    <div class="p-2 bd-highlight">
+      <div style="pointer: cursor;" on:click={showHideColumns}>
+        <i class="fas fa-columns" />
+      </div>
+    </div>
   </div>
-
   {#if state === LoadState.Loading}
     <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
       <div class="spinner-border text-secondary" role="status">
@@ -202,19 +215,19 @@
           <!-- svelte-ignore empty-block -->
           <tbody>
             <tr>
-              {#each columns as column (column)}
+              {#each filteredColumns as column (column)}
                 <th scope="col" style={headerStyle(column)} on:click={() => sortColumn(column)}>
                   {column}
                   <span>
                     {#if sort === column && sortDirection === 'asc'}
-                   <span>
-                    <span class="fas fa-chevron-up" />
-                   </span>
-                  {:else if sort === column && sortDirection === 'desc'}
-                   <span>
-                    <span class="fas fa-chevron-down" />
-                    </span>
-                  {/if}
+                      <span>
+                        <span class="fas fa-chevron-up" />
+                      </span>
+                    {:else if sort === column && sortDirection === 'desc'}
+                      <span>
+                        <span class="fas fa-chevron-down" />
+                      </span>
+                    {/if}
                   </span>
                 </th>
               {/each}
@@ -225,7 +238,7 @@
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}
                 <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
-                  {#each columns as column}
+                  {#each filteredColumns as column}
                     <td>
                       <div class="text">{renderValue(row, column)}</div>
                     </td>
@@ -268,6 +281,31 @@
       <p>Failed to load rows, please try refreshing the page.</p>
     </div>
   {/if}
+  {#if editingColumns}
+    <Dialog
+      props={{ title: 'Toggle Column Visibility' }}
+      isOpen={true}
+      onClose={() => {
+        editingColumns = false
+      }}>
+      {#each columns as column}
+        {#if column !== 'table_meta_id'}
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              checked={!hidden.has(column)}
+              on:change={(e) => {
+                toggleColumn(e.target.checked, column)
+              }}
+              id={'toggle-' + column} />
+            <label class="form-check-label" for={'toggle-' + column}>{column}</label>
+          </div>
+        {/if}
+      {/each}
+    </Dialog>
+  {/if}
 </div>
 
 <style>
@@ -308,6 +346,15 @@
     cursor: pointer;
   }
 
-  .save-btn {
+  .fa-columns {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .fa-cog {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
   }
 </style>

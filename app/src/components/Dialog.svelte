@@ -4,13 +4,14 @@
   import type { DialogOptions } from './models/ComponentProps'
   import { subscribeFieldChange } from 'event/FieldEvent'
 
-  let isOpen = false
+  export let isOpen: boolean = false
+  export let onClose = () => {}
   let propsContainer: DialogOptions[] = []
   let propsIndex: number = 0
   let confirm = false
   let dirty = false
   let saving: boolean = false
-  let props: DialogOptions | null
+  export let props: DialogOptions | null = null
 
   subscribe('dialog_show', (p: DialogOptions) => {
     propsContainer = []
@@ -35,8 +36,17 @@
   let modal: any
 
   onMount(() => {
+    const dialog = document.getElementById('app-dialog');
     //@ts-ignore
-    modal = new bootstrap.Modal(document.getElementById('app-dialog'))
+    modal = new bootstrap.Modal(dialog)
+
+    dialog!.addEventListener('hidden.bs.modal', function (e : any) {
+      close();
+    })
+
+    if (isOpen) {
+      open()
+    }
 
     subscribeFieldChange((_, userChange) => {
       if (isOpen && props?.confirmCloseOnDirty && userChange) {
@@ -76,6 +86,7 @@
     confirm = false
     dirty = false
     modal.hide()
+    onClose?.()
   }
 
   function onBack() {
@@ -106,7 +117,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <svelte:component this={props?.child} {...props?.props} />
+          {#if props?.child}
+            <svelte:component this={props?.child} {...props?.props} />
+          {:else}
+            <slot />
+          {/if}
         </div>
         {#if props && props.buttons?.length > 0}
           <div class="modal-footer">
