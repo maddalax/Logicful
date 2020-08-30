@@ -15,8 +15,6 @@
 <script lang="typescript">
   import { onMount, tick } from 'svelte'
   import { LoadState } from 'models/LoadState'
-  import Navbar from 'components/Navbar.svelte'
-  import Preloader from 'components/Preloader.svelte'
   import RemoteTable from 'components/RemoteTable.svelte'
   import type { TableRow } from 'components/models/RemoteTableProps'
   import { randomString, randomStringSmall } from 'util/Generate'
@@ -61,9 +59,6 @@
   }
 </script>
 
-<Preloader />
-
-<Navbar />
 
 <div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
   <div class="main">

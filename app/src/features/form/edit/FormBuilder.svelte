@@ -10,7 +10,7 @@
   import { set } from 'util/Selection'
   import { DynamicFormMode } from 'components/models/ComponentProps'
   import { fastClone } from 'util/Compare'
-import { saveForm } from './services/SaveForm';
+  import { saveForm } from './services/SaveForm'
 
   let dropped = false
   let loadingActive: boolean = false
@@ -53,7 +53,7 @@ import { saveForm } from './services/SaveForm';
 
   function addPlaceHolder() {
     if (form.fields.length !== 0) {
-      removePlaceHolder();
+      removePlaceHolder()
       return
     }
     form.fields = form.fields.concat([
@@ -127,7 +127,7 @@ import { saveForm } from './services/SaveForm';
     })
 
     subscribe('save_form', async (params) => {
-      await saveForm();
+      await saveForm()
     })
 
     subscribe('get_form_fields', () => {
@@ -185,14 +185,14 @@ import { saveForm } from './services/SaveForm';
       form = params.form
     })
 
-    subscribe("document_click", () => {
-      form.fields = form.fields.map(f => {
-        if(f.selected) {
-          f.selected = false;
-          formStore.set(f);
+    subscribe('document_click', () => {
+      form.fields = form.fields.map((f) => {
+        if (f.selected) {
+          f.selected = false
+          formStore.set(f)
         }
-        return f;
-      });
+        return f
+      })
     })
 
     subscribeFieldChange(async (field: IField) => {

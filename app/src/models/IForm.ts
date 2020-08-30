@@ -4,5 +4,6 @@ export type IForm = {
     fields : IField[],
     title? : string,
     enableLogic? : boolean
-    id? : string
+    id? : string,
+    lastUpdated? : string
 }
