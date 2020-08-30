@@ -4,7 +4,11 @@
     if (!formId) {
       return {}
     }
-    return { formId }
+    const url = `https://logicful-forms.s3.us-west-002.backblazeb2.com/${formId}.json`
+    //@ts-ignore
+    const res = await this.fetch(url)
+    const form = await res.json();
+    return { formId, form }
   }
 </script>
 
@@ -15,9 +19,13 @@
   import Preloader from 'components/Preloader.svelte'
   import RemoteTable from 'components/RemoteTable.svelte'
   import type { TableRow } from 'components/models/RemoteTableProps'
-import { randomString } from 'util/Generate';
+  import { randomString, randomStringSmall } from 'util/Generate'
+  import type { IForm } from 'models/IForm'
+  import { isString } from 'guards/Guard'
 
   export let formId = ''
+  export let form: IForm
+
   let state: LoadState = LoadState.NotStarted
   let container: any
   let submissions: any[] = []
@@ -31,10 +39,30 @@ import { randomString } from 'util/Generate';
       localStorage.setItem('submissions', JSON.stringify(submissions))
     }
     submissions = JSON.parse(localStorage.getItem('submissions')!)
-    return submissions.map((d) => {
-      d.details.id = randomString();
-      return d.details
+    const labels: { [key: string]: string } = {}
+
+    form.fields.forEach((f) => {
+      if (f.name) {
+        labels[f.name] = f.label ?? f.name
+      }
     })
+
+    return submissions.map((d) => {
+      Object.keys(d.details).forEach((key) => {
+        if (labels[key]) {
+          const label = labels[key]
+          d.details[label] = d.details[key]
+          delete d.details[key]
+        }
+      })
+      return d.details
+    });
+  }
+
+  function sortColumns(columns : string[]) {
+    return columns.sort((a, b) => {
+      return form.fields.findIndex(f => f.label === a) - form.fields.findIndex(f => f.label === b)
+    });
   }
 </script>
 
@@ -46,7 +74,7 @@ import { randomString } from 'util/Generate';
   <div class="main">
     <h1>Submissions</h1>
     <div>
-      <RemoteTable {getRows} />
+      <RemoteTable {getRows} sortColumns={sortColumns} />
     </div>
   </div>
 </div>

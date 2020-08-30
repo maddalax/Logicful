@@ -17,6 +17,9 @@
 
   function onChange() {
     pages = Math.ceil(count / rowsPerPage)
+    if(page > pages) {
+        page = pages || 1;
+    }
     hasNext = page < pages
     hasPrevious = page > 1
     let showingCount = Math.floor(page * rowsPerPage);

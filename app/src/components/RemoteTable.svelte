@@ -18,11 +18,14 @@
   let state = LoadState.Loading
   let lastSelectedIndex = -1
   let range: { min: number; max: number } = { min: 1, max: 1 }
+  let widths: { [key: string]: number } = {}
+  let canvasContext: any
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
   export let onDelete: ((row: any) => any) | undefined = undefined
   export let hidden = new Set<string>()
+  export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
@@ -39,6 +42,8 @@
 
   onMount(() => {
     hidden.add('table_meta_id')
+    const element = document.createElement('canvas')
+    canvasContext = element.getContext('2d')
     load()
   })
 
@@ -67,10 +72,51 @@
       fuse = createFuse()
       filtered = rows
       columns = Object.keys(rows[rows.length - 1] ?? {}).filter((w) => !hidden.has(w))
+      columns = sortColumns?.(columns) ?? columns
       state = LoadState.Finished
     } catch (ex) {
+      console.error(ex)
       state = LoadState.Failed
     }
+  }
+
+  function sort(column: string) {}
+
+  function headerStyle(column: string) {
+    if (widths[column]) {
+      return 'width: ' + widths[column] + 'px;'
+    }
+  }
+
+  function setWidths() {
+    let values = filtered.slice(range.min, range.max)
+    widths = {};
+    values.forEach((value) => {
+      columns.forEach((c) => {
+        const v = value[c]
+        let width = getTextWidth(v, '')
+        console.log(v, width);
+        if (width < 150) {
+          width = 150
+        }
+        if (width > 400) {
+          width = 400
+        }
+        if((widths[c] ?? 0) < width) {
+          widths[c] = width;
+        }
+      })
+    })
+  }
+
+  function renderValue(row: any, column: string) {
+    const value = row[column] ?? ''
+    return value
+  }
+
+  function getTextWidth(text: string, font: string) {
+    canvasContext.font = 'bold 1em arial'
+    return canvasContext.measureText(text).width
   }
 
   function onRowClick(row: any, index: number) {
@@ -105,6 +151,7 @@
       </div>
     </div>
   {:else if state === LoadState.Finished}
+    <canvas id="canvas" style="display: none" />
     {#if rows.length === 0}
       <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
         <div class="text-secondary">
@@ -112,51 +159,52 @@
         </div>
       </div>
     {:else}
-     <div class="table-responsive">
-      <table class="table table-hover">
-        <caption>{caption}</caption>
-        <!-- svelte-ignore empty-block -->
-        <tbody>
-          <tr>
-            {#each columns as column}
-              <th scope="col">{column}</th>
+      <div class="table-responsive">
+        <table class="table table-hover" style="table-layout: fixed;">
+          <!-- svelte-ignore empty-block -->
+          <tbody>
+            <tr>
+              {#each columns as column}
+                <th scope="col" style={headerStyle(column)} on:click={() => sort(column)}>{column}</th>
+              {/each}
+              {#if onDelete || onEdit}
+                <th scope="col" />
+              {/if}
+            </tr>
+            {#each filtered as row, index}
+              {#if index >= range.min && index <= range.max}
+                <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
+                  {#each columns as column}
+                    <td>
+                      <div class="text">{renderValue(row, column)}</div>
+                    </td>
+                  {/each}
+                  {#if onEdit}
+                    <button class="btn" on:click={() => onEdit?.(row)}>
+                      <div class="icon icon-sm icon-secondary">
+                        <span class="fas fa-pencil-alt" />
+                      </div>
+                    </button>
+                  {/if}
+                  {#if onDelete}
+                    <button class="btn" on:click={() => onDelete?.(row)}>
+                      <div class="icon icon-sm icon-secondary">
+                        <span class="fas fa-trash" />
+                      </div>
+                    </button>
+                  {/if}
+                </tr>
+              {/if}
             {/each}
-            {#if onDelete || onEdit}
-              <th scope="col" />
-            {/if}
-          </tr>
-          {#each filtered as row, index}
-            {#if index >= range.min && index <= range.max}
-              <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
-                {#each columns as column}
-                  <td>
-                    <div class="text">{row[column]}</div>
-                  </td>
-                {/each}
-                {#if onEdit}
-                  <button class="btn" on:click={() => onEdit?.(row)}>
-                    <div class="icon icon-sm icon-secondary">
-                      <span class="fas fa-pencil-alt" />
-                    </div>
-                  </button>
-                {/if}
-                {#if onDelete}
-                  <button class="btn" on:click={() => onDelete?.(row)}>
-                    <div class="icon icon-sm icon-secondary">
-                      <span class="fas fa-trash" />
-                    </div>
-                  </button>
-                {/if}
-              </tr>
-            {/if}
-          {/each}
-        </tbody>
-      </table>
-     </div>
+          </tbody>
+        </table>
+      </div>
       <Pagination
         count={filtered.length}
         onRangeChange={(r) => {
           range = r
+          setWidths();
+          columns = columns
         }} />
     {/if}
   {:else if state === LoadState.Failed}
@@ -188,16 +236,22 @@
   }
 
   td {
-    max-width: 350px;
+    max-width: 500px;
+    width: 500px !important;
   }
 
   .text {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
+
+  :global(th) {
+    cursor: pointer;
+  }
+
   .save-btn {
   }
 </style>

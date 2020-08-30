@@ -7,7 +7,6 @@
     if (!formId) {
       return {}
     }
-    console.log(formId)
     const url = `https://logicful-forms.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore
     console.log(url);

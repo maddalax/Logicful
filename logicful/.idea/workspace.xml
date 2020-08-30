@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="delete lock">
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Pagination.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Pagination.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/submit-form/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/submit-form/main.go" afterDir="false" />
-    </list>
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="delete lock" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
