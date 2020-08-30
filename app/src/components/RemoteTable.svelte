@@ -4,6 +4,7 @@
   import Fuse from 'fuse.js'
   import { LoadState } from 'models/LoadState'
   import { randomString } from 'util/Generate'
+  import Pagination from './Pagination.svelte'
 
   export let getRows: () => Promise<TableRow[]>
 
@@ -16,10 +17,11 @@
   let fuse: Fuse<{}>
   let state = LoadState.Loading
   let lastSelectedIndex = -1
+  let range: { min: number; max: number } = { min: 1, max: 1 }
 
-  export let headerActions: TableButtonAction[]
-  export let onEdit: (row: any) => any
-  export let onDelete: (row: any) => any
+  export let headerActions: TableButtonAction[] = []
+  export let onEdit: ((row: any) => any) | undefined = undefined
+  export let onDelete: ((row: any) => any) | undefined = undefined
   export let hidden = new Set<string>()
 
   function createFuse(): Fuse<{}> {
@@ -64,7 +66,7 @@
       })
       fuse = createFuse()
       filtered = rows
-      columns = Object.keys(rows[0] ?? {}).filter((w) => !hidden.has(w))
+      columns = Object.keys(rows[rows.length - 1] ?? {}).filter((w) => !hidden.has(w))
       state = LoadState.Finished
     } catch (ex) {
       state = LoadState.Failed
@@ -112,6 +114,7 @@
     {:else}
       <table class="table table-hover" style="width: 100%; margin: unset">
         <caption>{caption}</caption>
+        <!-- svelte-ignore empty-block -->
         <tbody>
           <tr>
             {#each columns as column}
@@ -122,30 +125,37 @@
             {/if}
           </tr>
           {#each filtered as row, index}
-            <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
-              {#each columns as column}
-                <td>
-                  <div class="text">{row[column]}</div>
-                </td>
-              {/each}
-              {#if onEdit}
-                <button class="btn" on:click={() => onEdit(row)}>
-                  <div class="icon icon-sm icon-secondary">
-                    <span class="fas fa-pencil-alt" />
-                  </div>
-                </button>
-              {/if}
-              {#if onDelete}
-                <button class="btn" on:click={() => onDelete(row)}>
-                  <div class="icon icon-sm icon-secondary">
-                    <span class="fas fa-trash" />
-                  </div>
-                </button>
-              {/if}
-            </tr>
+            {#if index > range.min && index < range.max}
+              <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
+                {#each columns as column}
+                  <td>
+                    <div class="text">{row[column]}</div>
+                  </td>
+                {/each}
+                {#if onEdit}
+                  <button class="btn" on:click={() => onEdit(row)}>
+                    <div class="icon icon-sm icon-secondary">
+                      <span class="fas fa-pencil-alt" />
+                    </div>
+                  </button>
+                {/if}
+                {#if onDelete}
+                  <button class="btn" on:click={() => onDelete(row)}>
+                    <div class="icon icon-sm icon-secondary">
+                      <span class="fas fa-trash" />
+                    </div>
+                  </button>
+                {/if}
+              </tr>
+            {/if}
           {/each}
         </tbody>
       </table>
+      <Pagination
+        count={rows.length}
+        onRangeChange={(r) => {
+          range = r
+        }} />
     {/if}
   {:else if state === LoadState.Failed}
     <div style="padding-top:1em; padding-left: 1em;">
