@@ -4,11 +4,11 @@
   import Fuse from 'fuse.js'
   import { LoadState } from 'models/LoadState'
   import { randomString } from 'util/Generate'
-  import Pagination from './Pagination.svelte'
+  import Pagination from 'components/Pagination.svelte'
   import { dispatch, dispatchPrivate } from 'event/EventBus'
   import { fastEquals } from 'util/Compare'
-  import Dialog from './Dialog.svelte'
-  import ToastManager from './ToastManager.svelte'
+  import Dialog from 'components/layout/Dialog.svelte'
+  import ToastManager from 'components/ToastManager.svelte'
 
   export let getRows: () => Promise<TableRow[]>
 

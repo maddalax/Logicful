@@ -27,17 +27,17 @@
           </div>
         </div>
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               Dashboard
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <a href="./folder" class="nav-link">
               My Forms
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <a href="./builder" class="nav-link">
               Builder
             </a>

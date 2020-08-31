@@ -58,10 +58,16 @@
   </div>
 {:else}
   <div class="form-file" on:click|stopPropagation>
-    <input bind:files type="file" class="form-file-input" id={`${field.id}-file-input`} />
+    <input bind:files type="file" class="form-file-input" id={`${field.id}-file-input`} on:click|stopPropagation/>
     <label class="form-file-label" for="customFile">
       <span class="form-file-text">{placeholder}</span>
       <span class="form-file-button">Browse</span>
     </label>
   </div>
 {/if}
+
+<style>
+  .form-file-input {
+    z-index: unset;
+  }
+</style>

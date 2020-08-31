@@ -17,8 +17,7 @@
   let dropdownId
   let open = false
   let fuse: Fuse<{}>
-  export let search = true
-
+  
   export let field: IField
 
   let prevOptions: any = null
@@ -71,7 +70,7 @@
 
   $: {
     if (!fastEquals(prevOptions, field.options)) {
-      prevOptions = field.options
+      prevOptions = field.options ?? []
       setup()
     }
   }
@@ -98,17 +97,17 @@
         }
         const parsed: any[] = []
         if (field.loadTransformer) {
-          options = field.loadTransformer(data)
+          options = field.loadTransformer(data) ?? []
         } else {
           Object.keys(data).forEach((key) => {
             parsed.push({ value: data[key], label: key })
           })
-          options = parsed
+          options = parsed ?? []
         }
       } else {
         const value = field.options?.value
         const data = isFunction(value) ? await value() : await value
-        options = field.loadTransformer ? field.loadTransformer(data) : data
+        options = (field.loadTransformer ? field.loadTransformer(data) : data) ?? []
       }
       fuse = createFuse()
       normalizeValue()
@@ -176,15 +175,6 @@
     }
   }
 
-  function inputOnKeyDown(e: any) {
-    if (e.key === 'Escape') {
-      doClose()
-    }
-    if (e.key === 'ArrowDown') {
-      doOpen()
-    }
-  }
-
   function doOpen() {
     dispatch('combobox_open', {
       id: field.id,
@@ -197,36 +187,6 @@
     open = false
     filtered.clear()
     filteredBy = ''
-  }
-
-  function optionOnKeyPress(e: any, option: LabelValue, index: number) {
-    if (index === 0 && e.key === 'ArrowUp') {
-      const input = document.getElementById(`${field.id}-search-input`)
-      if (!input) {
-        return
-      }
-      input.focus({
-        preventScroll: true,
-      })
-    }
-    if (e.key === 'Escape') {
-      open = false
-    }
-    if (e.key === 'Enter') {
-      select(option)
-    }
-  }
-
-  function optionOnKeyDown(e: any, option: LabelValue, index: number) {
-    if (index === 0 && e.key === 'ArrowUp') {
-      const input = document.getElementById(`${field.id}-search-input`)
-      if (!input) {
-        return
-      }
-      input.focus({
-        preventScroll: true,
-      })
-    }
   }
 
   function disposeToolTip() {
@@ -280,24 +240,7 @@
     disposeToolTip()
     showTooltip(option, id)
   }
-
-  async function loadOptions() {
-    return [
-      {
-        value: 'test',
-        label: 'test',
-      },
-    ]
-  }
 </script>
-
-<svelte:body
-  on:click={onBodyClick}
-  on:keydown={(e) => {
-    if (e.key === 'Escape') {
-      doClose()
-    }
-  }} />
 
 <div>
 
@@ -315,9 +258,7 @@
     <p>Failed to load.</p>
   {:else}
     {#if options}
-      <div class="themed" on:click|stopPropagation|preventDefault>
-        <Select items={options} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
-      </div>
+    <Select items={options} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
     {/if}
     {#if field.helperText}
       <div style="padding-top: 0.3em;">

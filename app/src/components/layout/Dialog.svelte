@@ -3,7 +3,7 @@
   import { subscribe, dispatch } from 'event/EventBus'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { randomString } from 'util/Generate'
-  import type { ButtonAction } from './models/ComponentProps'
+  import type { ButtonAction } from 'components/models/ComponentProps'
   export let title: string = ''
   export let isOpen: boolean = false
   export let onClose = () => {}
@@ -49,35 +49,33 @@
   }
 </script>
 
-{#if process.browser}
-  <div class="modal fade" bind:this={container} tabindex="-1" aria-labelledby="app-dialog-label" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="app-dialog-label">{title}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <slot />
-        </div>
-        {#if actions.length > 0}
-          <div class="modal-footer">
-            {#each actions as action, index}
-              {#if processing === index}
-                {#if failed}
-                  <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>Failed To Run, Click To Try Again</button>
-                {:else}
-                  <button class={'btn btn-' + action.type} disabled={true}>Processing...</button>
-                {/if}
-              {:else}
-                <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>{action.label}</button>
-              {/if}
-            {/each}
-          </div>
-        {/if}
+<div class="modal fade" bind:this={container} tabindex="-1" aria-labelledby="app-dialog-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="app-dialog-label">{title}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <slot />
+      </div>
+      {#if actions.length > 0}
+        <div class="modal-footer">
+          {#each actions as action, index}
+            {#if processing === index}
+              {#if failed}
+                <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>Failed To Run, Click To Try Again</button>
+              {:else}
+                <button class={'btn btn-' + action.type} disabled={true}>Processing...</button>
+              {/if}
+            {:else}
+              <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>{action.label}</button>
+            {/if}
+          {/each}
+        </div>
+      {/if}
     </div>
   </div>
-{/if}
+</div>
