@@ -10,6 +10,7 @@
   import { onMount } from 'svelte'
   import { submitForm } from 'features/form/live/service/SubmitForm'
   import { LoadState } from 'models/LoadState'
+  import { fade } from 'svelte/transition';
 
   export let form: IForm
   export let mode : 'local' | '' = ''
@@ -64,7 +65,7 @@
   <div style="padding-bottom: 1em">
     {#each form.fields as field (field.id)}
       {#if display(field)}
-        <div>
+        <div transition:fade>
           <LiveField field={fastClone(field)} />
         </div>
       {:else}

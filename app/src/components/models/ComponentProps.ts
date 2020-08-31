@@ -6,6 +6,7 @@ export interface DropdownButtonAction {
 export interface ButtonAction {
     label : string,
     type : string,
+    focus? : boolean
     onClick? : (() => Promise<any>) | (() => any)
   }
 
