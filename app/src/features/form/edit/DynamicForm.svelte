@@ -85,7 +85,7 @@
     if(form.id) {
       window.open(`./preview/${form.id}?mode=local`, "_blank")
     } else {
-      window.open(`./preview/local`, "_blank")
+      window.open(`./preview/local?mode=local`, "_blank")
     }
   }
 
