@@ -24,9 +24,11 @@ type LeanSubmission struct {
 }
 
 type Submission struct {
-	FormId  string      `json:"formId"`
-	Id      string      `json:"id"`
-	Details interface{} `json:"details"`
+	FormId    string      `json:"formId"`
+	Id        string      `json:"id"`
+	Details   interface{} `json:"details"`
+	Meta      interface{} `json:"meta"`
+	FieldMeta interface{} `json:"fieldMeta"`
 	Creatable
 }
 

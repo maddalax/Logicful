@@ -1,18 +1,23 @@
 <script lang="typescript">
   import type { TableRow, TableButtonAction } from 'components/models/RemoteTableProps'
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import Fuse from 'fuse.js'
   import { LoadState } from 'models/LoadState'
   import { randomString } from 'util/Generate'
   import Pagination from './Pagination.svelte'
+  import { dispatchPrivate } from 'event/EventBus'
+  import { fastEquals } from 'util/Compare'
+  import Dialog from './Dialog.svelte'
 
   export let getRows: () => Promise<TableRow[]>
 
+  let id: string = ''
   let caption: string = ''
   let searchPlaceHolder = 'Search'
   let rows: TableRow[] = []
   let filtered: TableRow[] = []
   let columns: string[] = []
+  let filteredColumns: string[] = []
   let query = ''
   let fuse: Fuse<{}>
   let state = LoadState.Loading
@@ -20,11 +25,14 @@
   let range: { min: number; max: number } = { min: 1, max: 1 }
   let widths: { [key: string]: number } = {}
   let canvasContext: any
+  let sort = ''
+  let sortDirection = ''
+  let editingColumns = false
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
   export let onDelete: ((row: any) => any) | undefined = undefined
-  export let hidden = new Set<string>()
+  export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
 
   function createFuse(): Fuse<{}> {
@@ -41,6 +49,7 @@
   }
 
   onMount(() => {
+    id = randomString()
     hidden.add('table_meta_id')
     const element = document.createElement('canvas')
     canvasContext = element.getContext('2d')
@@ -71,8 +80,9 @@
       })
       fuse = createFuse()
       filtered = rows
-      columns = Object.keys(rows[rows.length - 1] ?? {}).filter((w) => !hidden.has(w))
+      columns = Object.keys(rows[rows.length - 1] ?? {})
       columns = sortColumns?.(columns) ?? columns
+      filteredColumns = columns.filter((w) => !hidden.has(w))
       state = LoadState.Finished
     } catch (ex) {
       console.error(ex)
@@ -80,7 +90,39 @@
     }
   }
 
-  function sort(column: string) {}
+  function sortColumn(column: string) {
+    if (sort === column) {
+      sort = column
+      sortDirection = sortDirection === 'asc' ? 'desc' : 'asc'
+    } else {
+      sort = column
+      sortDirection = 'desc'
+    }
+    dispatchPrivate(id, 'on_sort', { sort, sortDirection })
+    filtered = filtered.sort(function (a, b) {
+      var nameA = a[sort]?.toString()?.toUpperCase()
+      var nameB = b[sort]?.toString()?.toUpperCase()
+      if (nameA == null && nameB == null) {
+        return 0
+      }
+      if (nameA == null) {
+        return 1
+      }
+      if (nameB == null) {
+        return 1
+      }
+      if (nameA < nameB) {
+        return 1
+      }
+      if (nameA > nameB) {
+        return -1
+      }
+      return 0
+    })
+    if (sortDirection === 'asc') {
+      filtered = filtered.reverse()
+    }
+  }
 
   function headerStyle(column: string) {
     if (widths[column]) {
@@ -90,20 +132,20 @@
 
   function setWidths() {
     let values = filtered.slice(range.min, range.max)
-    widths = {};
+    widths = {}
     values.forEach((value) => {
       columns.forEach((c) => {
         const v = value[c]
         let width = getTextWidth(v, '')
-        console.log(v, width);
+        console.log(v, width)
         if (width < 150) {
           width = 150
         }
         if (width > 400) {
           width = 400
         }
-        if((widths[c] ?? 0) < width) {
-          widths[c] = width;
+        if ((widths[c] ?? 0) < width) {
+          widths[c] = width
         }
       })
     })
@@ -119,6 +161,15 @@
     return canvasContext.measureText(text).width
   }
 
+  function showHideColumns() {
+    editingColumns = true
+  }
+
+  function toggleColumn(checked: boolean, column: string) {
+    checked ? hidden.delete(column) : hidden.add(column)
+    filteredColumns = columns.filter((w) => !hidden.has(w))
+  }
+
   function onRowClick(row: any, index: number) {
     if (lastSelectedIndex !== -1) {
       filtered[lastSelectedIndex].meta_selected = false
@@ -129,21 +180,21 @@
 </script>
 
 <div>
-  <div class="d-flex container-fluid">
-    <div class="container-fluid" style="padding-left: 0em;">
-      <input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} />
+  <div class="d-flex bd-highlight mb-3">
+    <div class="mr-auto p-2 bd-highlight">
+      <input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" />
     </div>
-    <div class="text-right button">
-
-      {#if headerActions}
-        {#each headerActions as action}
-          <button class="btn btn-primary" style="padding-left: 1em; width: 200px;" on:click={action.onClick}>{action.label}</button>
-        {/each}
-      {/if}
+    <div class="p-2 bd-highlight">
+      <div style="pointer: cursor;" on:click={showHideColumns}>
+        <i class="fas fa-cog" />
+      </div>
     </div>
-
+    <div class="p-2 bd-highlight">
+      <div style="pointer: cursor;" on:click={showHideColumns}>
+        <i class="fas fa-columns" />
+      </div>
+    </div>
   </div>
-
   {#if state === LoadState.Loading}
     <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
       <div class="spinner-border text-secondary" role="status">
@@ -164,8 +215,21 @@
           <!-- svelte-ignore empty-block -->
           <tbody>
             <tr>
-              {#each columns as column}
-                <th scope="col" style={headerStyle(column)} on:click={() => sort(column)}>{column}</th>
+              {#each filteredColumns as column (column)}
+                <th scope="col" style={headerStyle(column)} on:click={() => sortColumn(column)}>
+                  {column}
+                  <span>
+                    {#if sort === column && sortDirection === 'asc'}
+                      <span>
+                        <span class="fas fa-chevron-up" />
+                      </span>
+                    {:else if sort === column && sortDirection === 'desc'}
+                      <span>
+                        <span class="fas fa-chevron-down" />
+                      </span>
+                    {/if}
+                  </span>
+                </th>
               {/each}
               {#if onDelete || onEdit}
                 <th scope="col" />
@@ -174,7 +238,7 @@
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}
                 <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
-                  {#each columns as column}
+                  {#each filteredColumns as column}
                     <td>
                       <div class="text">{renderValue(row, column)}</div>
                     </td>
@@ -200,10 +264,15 @@
         </table>
       </div>
       <Pagination
+        {id}
         count={filtered.length}
         onRangeChange={(r) => {
+          console.log(r, range)
+          if (fastEquals(r, range)) {
+            return
+          }
           range = r
-          setWidths();
+          setWidths()
           columns = columns
         }} />
     {/if}
@@ -211,6 +280,31 @@
     <div style="padding-top:1em; padding-left: 1em;">
       <p>Failed to load rows, please try refreshing the page.</p>
     </div>
+  {/if}
+  {#if editingColumns}
+    <Dialog
+      props={{ title: 'Toggle Column Visibility' }}
+      isOpen={true}
+      onClose={() => {
+        editingColumns = false
+      }}>
+      {#each columns as column}
+        {#if column !== 'table_meta_id'}
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              checked={!hidden.has(column)}
+              on:change={(e) => {
+                toggleColumn(e.target.checked, column)
+              }}
+              id={'toggle-' + column} />
+            <label class="form-check-label" for={'toggle-' + column}>{column}</label>
+          </div>
+        {/if}
+      {/each}
+    </Dialog>
   {/if}
 </div>
 
@@ -252,6 +346,15 @@
     cursor: pointer;
   }
 
-  .save-btn {
+  .fa-columns {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .fa-cog {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
   }
 </style>

@@ -7,7 +7,7 @@ import { set } from "util/Selection";
 
 let configStore: { [key: string]: IField } = {};
 
-let files : {[key : string] : File} = {}
+let files: { [key: string]: File } = {}
 
 let store: {
     [key: string]: any
@@ -17,9 +17,9 @@ let store: {
 };
 
 export type FieldChange = {
-    field : string,
-    value : any,
-    fromUser : boolean
+    field: string,
+    value: any,
+    fromUser: boolean
 }
 
 export class FormStore {
@@ -27,8 +27,12 @@ export class FormStore {
         const copy: IForm = fastClone(form);
         store = { fields: {} };
         copy.fields.forEach(f => {
-            store.fields[f.id] = f;
-        });
+            formStore.set(f, {
+                fromUser: false,
+                field: '',
+                value: ''
+            })
+        })
         Object.keys(copy).forEach(f => {
             if (f === "fields") {
                 return;
@@ -36,12 +40,11 @@ export class FormStore {
             //@ts-ignore
             store[f] = copy[f];
         })
-        console.log("STORE", store.id);
         dispatch("form_updated", {
             form: this.getForm()
         });
     }
-    set(field: IField, change : FieldChange = {field : '', value : '', fromUser : false}) {
+    set(field: IField, change: FieldChange = { field: '', value: '', fromUser: false }) {
         if (field.configTarget === 'form') {
             set(store, field.configFieldTarget, field.value);
             dispatch("form_updated", {
@@ -63,9 +66,9 @@ export class FormStore {
             dispatchFieldChange(copy, change);
             const newField = store.fields[field.configTarget];
             dispatchFieldChange(fastClone(newField), {
-                field : field.configFieldTarget,
-                value : field.value,
-                fromUser : change.fromUser
+                field: field.configFieldTarget,
+                value: field.value,
+                fromUser: change.fromUser
             })
             return;
         }
@@ -93,7 +96,6 @@ export class FormStore {
         return copy?.value ?? undefined
     }
     getForm(): IForm {
-        console.log("STORE GET FORM", store);
         const form: any = { fields: [] }
         Object.keys(store).forEach(k => {
             if (k === "fields") {
@@ -108,16 +110,15 @@ export class FormStore {
             }
             form.fields.push(fastClone(field));
         })
-        console.log("GET FORM", form);
         return form;
     }
-    setFile(id : string, file : File) {
+    setFile(id: string, file: File) {
         files[id] = file;
     }
-    clearFile(id : string) {
+    clearFile(id: string) {
         delete files[id]
     }
-    getFile(id : string) : File | undefined {
+    getFile(id: string): File | undefined {
         return files[id];
     }
 }

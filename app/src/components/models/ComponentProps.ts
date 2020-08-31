@@ -1,11 +1,11 @@
 export interface DialogOptions {
-    child : any,
-    confirmCloseOnDirty : boolean,
+    child? : any,
+    confirmCloseOnDirty? : boolean,
     props? : any
-    title : string,
+    title? : string,
     save? : boolean,
     onBack? : () => any,
-    buttons : {
+    buttons? : {
         label : string,
         onClick : () => any,
         type : string
