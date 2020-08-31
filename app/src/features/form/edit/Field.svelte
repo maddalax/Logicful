@@ -23,7 +23,8 @@
   import { firstNotEmpty } from 'util/Format'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
-import FileUpload from 'inputs/FileUpload.svelte'
+  import FileUpload from 'inputs/FileUpload.svelte'
+  import Dialog from 'components/layout/Dialog.svelte'
 
   let state = LoadState.NotStarted
   let value: any
@@ -32,24 +33,9 @@ import FileUpload from 'inputs/FileUpload.svelte'
   export let config: any = {}
   export let hidden: boolean = false
   export let padding: boolean = true
+  let deleting = false
 
   onMount(load)
-
-  function onDelete() {
-    // todo field confirm delete
-    /*
-    promptConfirm({
-      title: 'Confirm Deletion',
-      message: `Are you sure you want to delete field <strong>${firstNotEmpty(field.label, field.name)}</strong>?`,
-      confirmText: 'Delete',
-      callback: () => {
-        dispatch('field_delete', {
-          field,
-        })
-      },
-    })
-    */
-  }
 
   function onClone() {
     dispatch('field_clone', {
@@ -58,12 +44,12 @@ import FileUpload from 'inputs/FileUpload.svelte'
   }
 
   function styles() {
-    let style = ""
-    if (padding){
+    let style = ''
+    if (padding) {
       style = `padding: .75em 0.6em; border-radius: 1em;`
     }
 
-    if(field.customCss){
+    if (field.customCss) {
       style += ` ${field.customCss} padding-left: 0.6em;`
     }
 
@@ -105,59 +91,53 @@ import FileUpload from 'inputs/FileUpload.svelte'
   }
 </script>
 
-
-  <div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor} class:selected={field.selected}>
-    {#if field.selected}
-      <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
-        <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
-          <span class="icon-brand">
-            <span class="far fa-clone" />
-          </span>
-        </button>
-        <button on:click|stopPropagation={onDelete} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
-          <span class="icon-brand">
-            <span class="fas fa-trash" />
-          </span>
-        </button>
-      </div>
-    {/if}
-    <div style={styles()}>
-      {#if hidden}
-        <p>{firstNotEmpty(field.label, field.name)} is hidden by rules defined in logic. This message is only displayed on this preview.</p>
-      {:else if field.type === 'address'}
-        <Address {field} {value} />
-      {:else if field.type === 'string'}
-        <TextInput {field} />
-      {:else if field.type === 'number'}
-        <TextInput {field} type={'number'} />
-      {:else if field.type === 'combobox'}
-        <ComboBox {field} {...config} />
-      {:else if field.type === 'block'}
-        <RichTextDisplay {field} />
-      {:else if field.type === 'block-editor'}
-        <TextArea {field} {...config} isPreview={true} />
-      {:else if field.type === 'spacer'}
-        <Spacer {field} />
-      {:else if field.type === 'switch'}
-        <Switch {field} {...config} />
-      {:else if field.type === 'date'}
-        <DatePicker {field} {...config} />
-      {:else if field.type === 'placeholder'}
-        <div class="placeholder">
-          <p>You have no fields, drag one from the left sidebar to get started.</p>
-        </div>
-      {:else if field.type === 'file'}
-        <FileUpload {field}/>
-      {:else if field.type === 'checkbox-group'}
-        <CheckboxGroup {field}/>
-      {:else if field.type === 'radio-group'}
-        <RadioGroup {field}/>
-      {:else}
-        <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
-      {/if}
+<div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor} class:selected={field.selected}>
+  {#if field.selected}
+    <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
+      <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+        <span class="icon-brand"> <span class="far fa-clone" /> </span>
+      </button>
+      <button on:click|stopPropagation={() => dispatch("confirm_field_deletion", {})} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+        <span class="icon-brand"> <span class="fas fa-trash" /> </span>
+      </button>
     </div>
+  {/if}
+  <div style={styles()}>
+    {#if hidden}
+      <p>{firstNotEmpty(field.label, field.name)} is hidden by rules defined in logic. This message is only displayed on this preview.</p>
+    {:else if field.type === 'address'}
+      <Address {field} {value} />
+    {:else if field.type === 'string'}
+      <TextInput {field} />
+    {:else if field.type === 'number'}
+      <TextInput {field} type={'number'} />
+    {:else if field.type === 'combobox'}
+      <ComboBox {field} {...config} />
+    {:else if field.type === 'block'}
+      <RichTextDisplay {field} />
+    {:else if field.type === 'block-editor'}
+      <TextArea {field} {...config} isPreview={true} />
+    {:else if field.type === 'spacer'}
+      <Spacer {field} />
+    {:else if field.type === 'switch'}
+      <Switch {field} {...config} />
+    {:else if field.type === 'date'}
+      <DatePicker {field} {...config} />
+    {:else if field.type === 'placeholder'}
+      <div class="placeholder">
+        <p>You have no fields, drag one from the left sidebar to get started.</p>
+      </div>
+    {:else if field.type === 'file'}
+      <FileUpload {field} />
+    {:else if field.type === 'checkbox-group'}
+      <CheckboxGroup {field} />
+    {:else if field.type === 'radio-group'}
+      <RadioGroup {field} />
+    {:else}
+      <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
+    {/if}
   </div>
-
+</div>
 
 <style>
   .wrapper:hover {
@@ -182,14 +162,16 @@ import FileUpload from 'inputs/FileUpload.svelte'
     opacity: 0.7;
   }
 
-  .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-group:not(:last-child) > .btn {
+  .btn-group > .btn:not(:last-child):not(.dropdown-toggle),
+  .btn-group > .btn-group:not(:last-child) > .btn {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
 
-  .btn-group > .btn:nth-child(n + 3), .btn-group > :not(.btn-check) + .btn, .btn-group > .btn-group:not(:first-child) > .btn {
+  .btn-group > .btn:nth-child(n + 3),
+  .btn-group > :not(.btn-check) + .btn,
+  .btn-group > .btn-group:not(:first-child) > .btn {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
-
 </style>

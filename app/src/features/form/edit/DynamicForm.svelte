@@ -13,6 +13,7 @@
   import { fastClone } from 'util/Compare'
   import { onMount } from 'svelte'
   import { goto } from '@sapper/app'
+  import Dialog from 'components/layout/Dialog.svelte'
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live
@@ -20,6 +21,7 @@
   let values: { [key: string]: any } = {}
   let hasPlaceholder: boolean = false
   let fromSidebar = false
+  let deleting = false
 
   function handler(e: any) {
     if (fromSidebar) {
@@ -35,6 +37,9 @@
   }
 
   onMount(() => {
+    subscribe('confirm_field_deletion', () => {
+      deleting = true
+    })
     subscribe('form_placeholder_changed', (props) => {
       hasPlaceholder = props.added
       setDropZoneStyles()
@@ -80,16 +85,23 @@
   }
 
   function onFormPreview() {
-    const form = formStore.getForm();
-    localStorage.setItem("form", JSON.stringify(form))
-    if(form.id) {
-      window.open(`./preview/${form.id}?mode=local`, "_blank")
+    const form = formStore.getForm()
+    localStorage.setItem('form', JSON.stringify(form))
+    if (form.id) {
+      window.open(`./preview/${form.id}?mode=local`, '_blank')
     } else {
-      window.open(`./preview/local?mode=local`, "_blank")
+      window.open(`./preview/local?mode=local`, '_blank')
     }
   }
 
-  function onSubmit() {}
+  function onDelete() {
+    const selected = form.fields.find((w) => w.selected)
+    if (selected) {
+      dispatch('field_delete', {
+        field,
+      })
+    }
+  }
 
   function dropzoneStyles() {
     if (!considering) {
@@ -108,16 +120,26 @@
   }
 </script>
 
+{#if deleting}
+  <Dialog
+    title={'Confirm Deletion'}
+    isOpen={true}
+    actions={[{ label: `Delete Field`, type: 'danger', onClick: onDelete, focus: true }, { label: 'Cancel', type: 'secondary' }]}
+    onClose={() => {
+      deleting = false
+    }}>
+    <p>Are you sure you want to delete this field? Deletion is permanent and cannot be reversed.</p>
+    <p>Changes will be applied after the form is saved.</p>
+  </Dialog>
+{/if}
 <div class="row" style="padding-left: 0.5em; display: flex">
   <div class="col">
     <h4>{form.title ?? 'Form Title'}</h4>
   </div>
-  <div class="col-auto" style="text-align: right">
-    <button on:click={onFormPreview} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</button>
-  </div>
+  <div class="col-auto" style="text-align: right"><button on:click={onFormPreview} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</button></div>
 </div>
 <hr style="margin: 0.5rem;" />
-<form on:submit|preventDefault={onSubmit} class="preview-padding" id="form-preview">
+<form class="preview-padding" id="form-preview">
   <div
     style="padding-bottom: 1em"
     use:dndzone={{ items: form.fields, flipDurationMs: 300, transformDraggedElement, dropTargetStyle: { 'background-color': 'white' } }}
