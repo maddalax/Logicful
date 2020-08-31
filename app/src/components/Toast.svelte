@@ -38,10 +38,11 @@
 <style>
   .toast-container {
     position: fixed;
-    min-height: 200px;
+    max-height: 0px;
     right: 15px;
     left: 0;
     top: 85px;
+    z-index: 100000;
   }
 
   .toast {
@@ -49,12 +50,16 @@
     background-color: #424767;
     opacity: 1;
     color: white;
-    font-size: 13pt !important;
+    font-size: 12pt !important;
     min-width: 250px;
   }
 
   :global(.toast-header) {
     color: #ffffff !important;
     background-color: #52547a !important;
+  }
+
+  :global(.close > span:not(.sr-only)) {
+    color: #ffffff !important
   }
 </style>

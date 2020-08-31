@@ -11,6 +11,7 @@
   import { DynamicFormMode } from 'components/models/ComponentProps'
   import { fastClone } from 'util/Compare'
   import { saveForm } from './services/SaveForm'
+  import ToastManager from 'components/ToastManager.svelte'
 
   let dropped = false
   let loadingActive: boolean = false
@@ -211,6 +212,7 @@
 </script>
 
 <div>
+  <ToastManager/>
   {#if form == null}
     <div class="loader" />
   {:else}

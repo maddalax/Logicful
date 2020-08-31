@@ -9,7 +9,7 @@
     toasts = toasts.concat([{ id, message: props.message, title: props.title }])
     setTimeout(() => {
       removeById(id)
-    }, props.timeout || 5000)
+    }, props.timeout || 4000)
   })
 
   subscribe('toast_closed', (props) => {
