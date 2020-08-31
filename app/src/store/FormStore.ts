@@ -1,5 +1,6 @@
 import { dispatch } from "event/EventBus";
 import { dispatchFieldChange } from "event/FieldEvent";
+import get from "lodash.get";
 import type { IField } from "models/IField";
 import type { IForm } from "models/IForm";
 import { fastClone, fastEquals } from "util/Compare";
@@ -64,7 +65,7 @@ export class FormStore {
             const copy = fastClone(field);
             configStore[field.id] = copy;
             dispatchFieldChange(copy, change);
-            const newField = store.fields[field.configTarget];
+            const newField = get(store.fields, field.configTarget);
             dispatchFieldChange(fastClone(newField), {
                 field: field.configFieldTarget,
                 value: field.value,
@@ -73,14 +74,15 @@ export class FormStore {
             return;
         }
 
-        const isSame = fastEquals(field, store.fields[field.id]);
+        const isSame = fastEquals(field, get(store.fields, field.id));
 
         if (isSame) {
             return;
         }
 
+
         const copy = fastClone(field)
-        store.fields[field.id] = copy;
+        set(store.fields, field.id, copy)
         dispatchFieldChange(copy, change);
     }
     get(fieldId: string) {

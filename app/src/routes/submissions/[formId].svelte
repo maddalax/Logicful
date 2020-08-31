@@ -19,14 +19,14 @@
   import type { TableRow } from 'components/models/RemoteTableProps'
   import { randomString, randomStringSmall } from 'util/Generate'
   import type { IForm } from 'models/IForm'
-  import { isString } from 'guards/Guard'
+  import { isObject, isString } from 'guards/Guard'
 
   export let formId = ''
   export let form: IForm
 
   let state: LoadState = LoadState.NotStarted
   let container: any
-  let submissions: any[] = []
+  let types : {[key : string] : string} = {}
   let filtered: any[] = []
 
   async function getRows(): Promise<TableRow[]> {
@@ -45,6 +45,7 @@
         if (labels[key]) {
           const label = labels[key]
           d.details[label] = d.details[key]
+          types[label] = form.fields.find(w => w.label === label)?.type ?? '';
           delete d.details[key]
         }
       })
@@ -58,6 +59,16 @@
     return columns.sort((a, b) => {
       return form.fields.findIndex(f => f.label === a) - form.fields.findIndex(f => f.label === b)
     });
+  }
+
+  function format(column : string, value : any) {
+    const type = types[column];
+    if(type === 'address' && isObject(value)) {
+      let result = ``;
+      const results = [value?.address1?.value, value?.address2?.value, value?.state?.value, value?.city?.value, value?.zip?.value]
+      return results.filter(r => r).join(" ");
+    }
+    return undefined;
   }
 
   async function onDelete(rows : any[]) {
@@ -82,7 +93,7 @@
   <div class="main">
     <h1>Submissions</h1>
     <div>
-      <RemoteTable {getRows} sortColumns={sortColumns} onDelete={onDelete} />
+      <RemoteTable {getRows} sortColumns={sortColumns} onDelete={onDelete} onFormat={format}/>
     </div>
   </div>
 </div>
