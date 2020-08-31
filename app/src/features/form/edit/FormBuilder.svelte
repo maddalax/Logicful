@@ -169,6 +169,7 @@
 
     subscribe('block_dropped', (e) => {
       removePlaceHolder()
+      console.log(e.detail.items.length);
       const items: IField[] = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
           const clone = fastClone(i)

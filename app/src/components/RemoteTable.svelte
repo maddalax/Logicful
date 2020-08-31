@@ -9,6 +9,7 @@
   import { fastEquals } from 'util/Compare'
   import Dialog from 'components/layout/Dialog.svelte'
   import ToastManager from 'components/ToastManager.svelte'
+import { isObject } from 'guards/Guard';
 
   export let getRows: () => Promise<TableRow[]>
 
@@ -38,12 +39,13 @@
   export let onDelete: ((rows: any[]) => any) | undefined = undefined
   export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
+  export let onFormat : (column : string, row : any) => any = () => undefined
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
       const result: any = {}
       Object.keys(r).forEach((key) => {
-        result[key] = r[key]
+        result[key] = isObject(r[key]) ? JSON.stringify(r[key]) : r[key]
       })
       return result
     })
@@ -171,8 +173,9 @@
   }
 
   function renderValue(row: any, column: string) {
-    const value = row[column] ?? ''
-    return value
+    let value = row[column] ?? ''
+    value = onFormat(column, row[column]) ?? value
+    return isObject(value) || Array.isArray(value) ? JSON.stringify(value) : value
   }
 
   function getTextWidth(text: string, font: string) {

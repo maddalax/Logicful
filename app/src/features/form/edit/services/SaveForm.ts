@@ -4,6 +4,7 @@ import formStore from "store/FormStore";
 
 export async function saveForm() {
     const form = formStore.getForm();
+    console.log("FINAL", form);
     const url = await save(form);
     const id = url.replace('https://json-data.s3.us-west-002.backblazeb2.com/', "").replace(".json", "");
     form.id = id;

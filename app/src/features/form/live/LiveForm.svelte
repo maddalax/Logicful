@@ -48,9 +48,7 @@
   async function onSubmit() {
     state = LoadState.Loading
     try {
-      if(mode !== 'local') {
-        await submitForm()
-      }
+      await submitForm()
       state = LoadState.Finished
     } catch (ex) {
       state = LoadState.Failed
