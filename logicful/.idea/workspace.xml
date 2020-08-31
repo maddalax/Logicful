@@ -23,15 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix form submission, add additional data to submission">
-      <change beforePath="$PROJECT_DIR$/../app/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/layout/Dialog.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/ComboBox.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/s3-set-json/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/s3-set-json/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,11 +385,11 @@
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598728403059" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598876319720">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1598883538781">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598876319720" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598883538781" />
   </component>
 </project>

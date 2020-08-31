@@ -7,6 +7,7 @@ export async function saveForm() {
     const id = url.replace('https://json-data.s3.us-west-002.backblazeb2.com/', "").replace(".json", "");
     form.id = id;
     localStorage.setItem("form", JSON.stringify(form));
+    formStore.setForm(form);
     window.open("http://localhost:5000/preview/" + id);
 }
 

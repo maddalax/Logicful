@@ -258,7 +258,7 @@
     <p>Failed to load.</p>
   {:else}
     {#if options}
-      <Select items={options} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
+      <Select items={options} on:select={onSelect} on:clear={onClear} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} />
     {/if}
     {#if field.helperText}
       <div style="padding-top: 0.3em;">

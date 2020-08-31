@@ -14,7 +14,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	if id == "" {
 		id = uuid.New().String()
 	}
-	name := "maddox-" + id + ".json"
+	name := id + ".json"
 	path, err := storage.SetJson(request.Body, name, "json-data", "public-read")
 
 	if err != nil {

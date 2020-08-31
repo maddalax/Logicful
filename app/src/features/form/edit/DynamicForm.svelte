@@ -12,7 +12,7 @@
   import { LogicBuilder } from 'services/LogicBuilder'
   import { fastClone } from 'util/Compare'
   import { onMount } from 'svelte'
-  import { goto } from '@sapper/app';
+  import { goto } from '@sapper/app'
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live
@@ -79,8 +79,9 @@
     return builder.evaluate(field)
   }
 
-  function onFormPreview(formId : string){
-    goto(`./preview/${formId}`);
+  function onFormPreview(formId: string) {
+    console.log(formId)
+    goto(`./preview/${formId}`)
   }
 
   function onSubmit() {}
@@ -107,14 +108,10 @@
     <h4>{form.title ?? 'Form Title'}</h4>
   </div>
   <div class="col-auto" style="text-align: right">
-    <div>
-    <button on:click={()=>{onFormPreview(form.id)}} class="btn btn-xs btn-outline-dark">
-      <span>Preview Form</span>
-    </button>
-  </div>
+    <a href={`/preview/${form.id}`} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</a>
   </div>
 </div>
-<hr style="margin: 0.5rem;"/>
+<hr style="margin: 0.5rem;" />
 <form on:submit|preventDefault={onSubmit} class="preview-padding" id="form-preview">
   <div
     style="padding-bottom: 1em"
