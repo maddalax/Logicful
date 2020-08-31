@@ -17,7 +17,7 @@
   let dropdownId
   let open = false
   let fuse: Fuse<{}>
-  
+
   export let field: IField
 
   let prevOptions: any = null
@@ -258,7 +258,7 @@
     <p>Failed to load.</p>
   {:else}
     {#if options}
-    <Select items={options} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
+      <Select items={options} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} on:select={onSelect} on:clear={onClear} />
     {/if}
     {#if field.helperText}
       <div style="padding-top: 0.3em;">
@@ -269,8 +269,3 @@
     {/if}
   {/if}
 </div>
-
-<style>
-  .themed {
-  }
-</style>

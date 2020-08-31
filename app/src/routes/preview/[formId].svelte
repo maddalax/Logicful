@@ -9,7 +9,6 @@
     }
     const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore
-    console.log(url);
     const res = await this.fetch(url)
     const form = await res.json();
     form.id = formId;
