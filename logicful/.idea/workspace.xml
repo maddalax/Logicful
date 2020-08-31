@@ -24,11 +24,14 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix form submission, add additional data to submission">
       <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Repeater.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/layout/Dialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/CheckboxGroupEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/CheckboxGroupEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FieldTypeEditor.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/services/SaveForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/services/SaveForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/live/LiveForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/live/LiveForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/live/service/SubmitForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/live/service/SubmitForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/inputs/Address.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/store/FormStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/store/FormStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/types/global/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/types/global/index.d.ts" afterDir="false" />
