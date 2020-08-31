@@ -228,8 +228,8 @@
     return []
   }
 
-  function customCss(){
-    return "padding-top: 0em; padding-left: 0.6em; padding-right: 0.6em; padding-bottom: 0.7em;"
+  function customCss() {
+    return 'padding-top: 0em; padding-left: 0.6em; padding-right: 0.6em; padding-bottom: 0.7em;'
   }
 
   function fieldsTransformer(fields: IField[]): LabelValue[] {
@@ -245,28 +245,28 @@
 <div>
   {#each field.logic?.rules ?? [] as option, i}
     <div class="container" style="background-color: rgb(245 249 253); padding-left: 0.3em; padding-right: 0.3em;">
-        <div class="row">
-          <div class="col">
-            <div class="float-right" style="position: relative; display: inline-flex; vertical-align: middle; top: 0.8em; right: 0.6em;">
-              <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
-                <span class="icon-brand">
-                  <span class="fas fa-trash" />
-                </span>
-              </button>
-            </div>
-            <Field
-              config={{ search: true }}
-              field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
+      <div class="row">
+        <div class="col">
+          <div class="float-right" style="position: relative; display: inline-flex; vertical-align: middle; top: 0.8em; right: 0.6em;">
+            <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+              <span class="icon-brand">
+                <span class="fas fa-trash" />
+              </span>
+            </button>
           </div>
+          <Field
+            config={{ search: true }}
+            field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
         </div>
-        <div class="row">
-          {#if field.logic?.rules?.[i]?.field}
-            <Field
-              config={{ search: true }}
-              field={{ id: randomString(), customCss: customCss(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
-          {/if}
-        </div>
-        <div class="row">
+      </div>
+      <div class="row">
+        {#if field.logic?.rules?.[i]?.field}
+          <Field
+            config={{ search: true }}
+            field={{ id: randomString(), customCss: customCss(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
+        {/if}
+      </div>
+      <div class="row">
         {#if field.logic?.rules?.[i]?.condition && options[i]?.showValue}
           {#if options[i].valueType === 'text'}
             <Field

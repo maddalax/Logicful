@@ -38,4 +38,3 @@
     }} />
   <label class="form-check-label" for={`${field.id}`} style="margin-bottom: .2rem;">{firstNotEmpty(field.label, field.name)}</label>
 </div>
-

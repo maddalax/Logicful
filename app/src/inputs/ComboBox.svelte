@@ -320,10 +320,10 @@
       </div>
     {/if}
     {#if field.helperText}
-      <div  style="padding-top: 0.3em;">
-      <small class="form-text text-muted">
-        {@html field.helperText ?? ''}
-      </small>
+      <div style="padding-top: 0.3em;">
+        <small class="form-text text-muted">
+          {@html field.helperText ?? ''}
+        </small>
       </div>
     {/if}
   {/if}

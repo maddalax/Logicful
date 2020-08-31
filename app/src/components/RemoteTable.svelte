@@ -8,7 +8,7 @@
   import { dispatch, dispatchPrivate } from 'event/EventBus'
   import { fastEquals } from 'util/Compare'
   import Dialog from './Dialog.svelte'
-  import ToastManager from './ToastManager.svelte';
+  import ToastManager from './ToastManager.svelte'
 
   export let getRows: () => Promise<TableRow[]>
 
@@ -197,20 +197,20 @@
   }
 
   async function deleteEntries() {
-    const selected = filtered.filter(w => w.meta_selected)
-    if(selected.length !== selectedCount) {
-      throw new Error("Selection count did not match actual selected.")
+    const selected = filtered.filter((w) => w.meta_selected)
+    if (selected.length !== selectedCount) {
+      throw new Error('Selection count did not match actual selected.')
     }
-    await onDelete?.(selected);
-    dispatch("show_toast", {
-      title : 'Deletion Started',
-      message : 'Your entries have been queued for deletion. This may take up to 2 minutes to show.'
+    await onDelete?.(selected)
+    dispatch('show_toast', {
+      title: 'Deletion Started',
+      message: 'Your entries have been queued for deletion. This may take up to 2 minutes to show.',
     })
   }
 </script>
 
 <div>
-  <ToastManager/>
+  <ToastManager />
   <div class="d-flex bd-highlight mb-3">
     <div class="mr-auto p-2 bd-highlight">
       <input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" />
@@ -353,14 +353,7 @@
     <Dialog
       title={'Confirm Deletion'}
       isOpen={true}
-      actions={[{
-        label : `Delete ${selectedCount} Entries`,
-        type : 'danger',
-        onClick: deleteEntries
-      }, {
-        label : 'Cancel',
-        type : 'secondary'
-      }]}
+      actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
       onClose={() => {
         modal = ''
       }}>

@@ -8,7 +8,6 @@
   export let id: string
   export let helperText: string
   export let hideLabel: boolean
-
 </script>
 
 <ComboBox

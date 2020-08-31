@@ -18,9 +18,7 @@
     console.log(selected)
   })
 
-  function newFolder(){
-
-  }
+  function newFolder() {}
 </script>
 
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
@@ -32,16 +30,16 @@
   </div>
   {#each folders as folder}
     <div class="card-body p-2">
-      <div class="list-group dashboard-menu list-group-sm" >
+      <div class="list-group dashboard-menu list-group-sm">
         <a href="./folder/{folder}" class="d-flex list-group-item border-0 list-group-item-action {folder === selected ? 'active' : ''}" style="padding-bottom: 0.5em; padding-top: 0.5em;">
           {#if folder === 'uncategorized'}
-          <span class="fas fa-folder-minus" style="font-size: 1.3em;"/>
+            <span class="fas fa-folder-minus" style="font-size: 1.3em;" />
           {:else}
-          <span class="far fa-folder" style="font-size: 1.2em;"/>
-         {/if}
+            <span class="far fa-folder" style="font-size: 1.2em;" />
+          {/if}
           <span style="padding-left: 0.5em;">{folder}</span>
           {#if folder === selected}
-          <span class="icon icon-xs ml-auto">
+            <span class="icon icon-xs ml-auto">
               <span class="fas fa-chevron-right" />
             </span>
           {/if}
@@ -50,17 +48,18 @@
     </div>
   {/each}
   <button on:click={newFolder} class="btn btn-outline-dark">
-    <span class="fas fa-folder-plus" style="font-size: 1.2em;"/> <span style="font-weight: 400;">New Folder</span>
-</button>
+    <span class="fas fa-folder-plus" style="font-size: 1.2em;" />
+    <span style="font-weight: 400;">New Folder</span>
+  </button>
 </div>
 
 <style>
-    .card-header-title{
-        padding-left: 0.9em;
-        padding-right: 1em;
-        padding-top: 1em;
-        padding-bottom: 0.5em;
-    }
+  .card-header-title {
+    padding-left: 0.9em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+  }
   .list-group.dashboard-menu .list-group-item:hover {
     border-radius: 0.3em;
   }
@@ -82,9 +81,8 @@
     font-size: 1em;
   }
 
-  .list-group-item{
+  .list-group-item {
     color: #26304c !important;
-
   }
 
   .p-2 {
@@ -93,7 +91,7 @@
     padding-bottom: 0rem !important;
   }
 
-  .btn-outline-dark{
+  .btn-outline-dark {
     margin-right: 0.9em;
     margin-left: 0.9em;
     padding-top: 0.4em;

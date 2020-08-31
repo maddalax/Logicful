@@ -8,12 +8,12 @@
     const id = randomString()
     toasts = toasts.concat([{ id, message: props.message, title: props.title }])
     setTimeout(() => {
-      removeById(id);
+      removeById(id)
     }, props.timeout || 5000)
   })
 
   subscribe('toast_closed', (props) => {
-      removeById(props.id);
+    removeById(props.id)
   })
 
   function removeById(id: string) {
