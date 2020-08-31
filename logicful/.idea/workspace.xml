@@ -23,11 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix form submission, add additional data to submission">
-      <change beforePath="$PROJECT_DIR$/../app/src/components/Toast.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/Toast.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/ToastManager.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/ToastManager.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/services/SaveForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/services/SaveForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/preview/[formId].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/preview/[formId].svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

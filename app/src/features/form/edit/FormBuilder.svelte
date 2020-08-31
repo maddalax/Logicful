@@ -71,12 +71,10 @@
       }
       const current = localStorage.getItem('form')
       if (current && current === JSON.stringify(form)) {
-        console.log('no changes, retrning')
         return
       }
-      console.log('saving')
       localStorage.setItem('form', JSON.stringify(form))
-    }, 1000)
+    }, 500)
   }
 
   function addPlaceHolder() {
