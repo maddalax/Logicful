@@ -12,6 +12,7 @@
   import { LogicBuilder } from 'services/LogicBuilder'
   import { fastClone } from 'util/Compare'
   import { onMount } from 'svelte'
+  import { goto } from '@sapper/app';
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live
@@ -78,8 +79,11 @@
     return builder.evaluate(field)
   }
 
-  function onSubmit() {
+  function onFormPreview(formId : string){
+    goto(`./preview/${formId}`);
   }
+
+  function onSubmit() {}
 
   function dropzoneStyles() {
     if (!considering) {
@@ -98,10 +102,19 @@
   }
 </script>
 
-<div style="padding-left: 0.5em;">
-  <h4>{form.title ?? 'Form Title'}</h4>
-  <hr />
+<div class="row" style="padding-left: 0.5em; display: flex">
+  <div class="col">
+    <h4>{form.title ?? 'Form Title'}</h4>
+  </div>
+  <div class="col-auto" style="text-align: right">
+    <div>
+    <button on:click={()=>{onFormPreview(form.id)}} class="btn btn-xs btn-outline-dark">
+      <span>Preview Form</span>
+    </button>
+  </div>
+  </div>
 </div>
+<hr style="margin: 0.5rem;"/>
 <form on:submit|preventDefault={onSubmit} class="preview-padding" id="form-preview">
   <div
     style="padding-bottom: 1em"
