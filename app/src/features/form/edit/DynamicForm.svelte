@@ -79,9 +79,14 @@
     return builder.evaluate(field)
   }
 
-  function onFormPreview(formId: string) {
-    console.log(formId)
-    goto(`./preview/${formId}`)
+  function onFormPreview() {
+    const form = formStore.getForm();
+    localStorage.setItem("form", JSON.stringify(form))
+    if(form.id) {
+      window.open(`./preview/${form.id}?mode=local`, "_blank")
+    } else {
+      window.open(`./preview/local`, "_blank")
+    }
   }
 
   function onSubmit() {}
@@ -108,7 +113,7 @@
     <h4>{form.title ?? 'Form Title'}</h4>
   </div>
   <div class="col-auto" style="text-align: right">
-    <a href={`/preview/${form.id}`} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</a>
+    <button on:click={onFormPreview} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</button>
   </div>
 </div>
 <hr style="margin: 0.5rem;" />

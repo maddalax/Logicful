@@ -4,6 +4,10 @@
   // the data we need to render the page
   export async function preload(page: any, session: any) {
     const { formId } = page.params
+    const mode = page.query?.mode
+    if(mode === 'local') {
+      return { mode }
+    }
     if (!formId) {
       return {}
     }
@@ -31,15 +35,35 @@
   import { onMount } from 'svelte'
 
   export let form: IForm
+  export let mode : 'local' | '' = ''
 
   onMount(() => {
+    if(mode === 'local') {
+      const item = localStorage.getItem("form");
+      if(!item) {
+        return;
+      }
+      form = JSON.parse(item);
+      window.onstorage = (e : any) => {
+        if(e.key === "form" && e.newValue) {
+          form = JSON.parse(e.newValue);
+        }
+      }
+    }
     formStore.setForm(form);
   })
 </script>
 
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  You are viewing the live preview of how your form will display and act once it is published. <strong>Submitting</strong> will not
+  post real results in preview mode.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <div class="container" style="margin-top: 2em">
   {#if form}
-    <LiveForm {form} />
+    <LiveForm {form} mode={mode}/>
   {:else}
     <div class="d-flex justify-content-center">
       <div class="spinner-border text-dark" style="width: 3rem; height: 3rem;" role="status">

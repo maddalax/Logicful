@@ -4,12 +4,20 @@
   import Label from './Label.svelte'
   import { onMount } from 'svelte'
   import formStore from 'store/FormStore'
+  import { debounce } from 'util/Debounce'
 
   export let field: IField
   export let value = ''
   export let type = 'text'
+  let debouncedOnChange: any
 
   onMount(() => {
+    debouncedOnChange = debounce((e: any) => {
+      field.value = e.target.value ?? ''
+      formStore.set(field, { fromUser: true, field: 'value', value: field.value })
+      field.onChange?.(e.target.value)
+    }, 500)
+
     value = formStore.getValue(field.configTarget ?? field.id) ?? ''
 
     subscribeFieldChange((newField) => {
@@ -28,11 +36,7 @@
     <textarea
       rows={field.rows}
       on:click|stopPropagation
-      on:input={(e) => {
-        field.value = e.target.value ?? ''
-        formStore.set(field, { fromUser: true, field: 'value', value: field.value })
-        field.onChange?.(e.target.value)
-      }}
+      on:input={debouncedOnChange}
       class={field.properties?.className ?? 'form-control'}
       id={field.id}
       {value}
@@ -42,11 +46,7 @@
   {:else}
     <input
       on:click|stopPropagation
-      on:input={(e) => {
-        field.value = e.target.value ?? ''
-        formStore.set(field, { fromUser: true, field: 'value', value: field.value })
-        field.onChange?.(e.target.value)
-      }}
+      on:input={debouncedOnChange}
       class={field.properties?.className ?? 'form-control'}
       id={field.id}
       {value}

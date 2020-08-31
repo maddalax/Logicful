@@ -9,10 +9,6 @@ export async function saveForm() {
     form.id = id;
     localStorage.setItem("form", JSON.stringify(form));
     formStore.setForm(form);
-    dispatch("show_toast", {
-      title : 'Form Updated Successfully',
-      message : 'Form has been saved as a draft.'
-    })
 }
 
 async function save(form : IForm): Promise<string> {

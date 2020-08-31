@@ -2,7 +2,7 @@
   import type { IField } from 'models/IField'
   import { randomStringSmall, randomString } from 'util/Generate'
   import type { IForm } from 'models/IForm'
-  import { onMount } from 'svelte'
+  import { onDestroy, onMount } from 'svelte'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { dispatch, subscribe } from 'event/EventBus'
   import DynamicForm from './DynamicForm.svelte'
@@ -12,11 +12,14 @@
   import { fastClone } from 'util/Compare'
   import { saveForm } from './services/SaveForm'
   import ToastManager from 'components/ToastManager.svelte'
+  import { debounce } from 'util/Debounce'
 
   let dropped = false
   let loadingActive: boolean = false
   let order = []
   let form: IForm
+  let saveInterval: number
+  let isDragging = false
 
   async function loadForm() {
     //const response = await fetch("http://127.0.0.1:3000/form/list");
@@ -38,6 +41,8 @@
     dispatch('form_loaded', {
       form,
     })
+
+    startSaveInterval()
   }
 
   function removePlaceHolder() {
@@ -52,13 +57,35 @@
     }
   }
 
+  function startSaveInterval() {
+    if (saveInterval) {
+      return
+    }
+    saveInterval = setInterval(() => {
+      if (!document.hasFocus() || isDragging) {
+        return
+      }
+      const form = formStore.getForm()
+      if (!form) {
+        return
+      }
+      const current = localStorage.getItem('form')
+      if (current && current === JSON.stringify(form)) {
+        console.log('no changes, retrning')
+        return
+      }
+      console.log('saving')
+      localStorage.setItem('form', JSON.stringify(form))
+    }, 1000)
+  }
+
   function addPlaceHolder() {
-    if (form.fields.filter(w => w.type !== "placeholder").length !== 0) {
+    if (form.fields.filter((w) => w.type !== 'placeholder').length !== 0) {
       removePlaceHolder()
       return
     }
-    if(form.fields.find(w => w.type === 'placeholder')) {
-      return;
+    if (form.fields.find((w) => w.type === 'placeholder')) {
+      return
     }
     form.fields = form.fields.concat([
       {
@@ -132,6 +159,10 @@
 
     subscribe('save_form', async (params) => {
       await saveForm()
+    })
+
+    subscribe('drag_event', (props) => {
+      isDragging = props.type === 'consider'
     })
 
     subscribe('get_form_fields', () => {
@@ -209,10 +240,14 @@
       }
     })
   })
+
+  onDestroy(() => {
+    saveInterval && clearInterval(saveInterval)
+  })
 </script>
 
 <div>
-  <ToastManager/>
+  <ToastManager />
   {#if form == null}
     <div class="loader" />
   {:else}
@@ -223,9 +258,7 @@
         </div>
         {#if loadingActive}
           <div class="col">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
+            <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
           </div>
         {/if}
       </div>

@@ -58,8 +58,4 @@
     color: #ffffff !important;
     background-color: #52547a !important;
   }
-
-  :global(.close > span:not(.sr-only)) {
-    color: #ffffff !important
-  }
 </style>

@@ -12,6 +12,7 @@
   import { LoadState } from 'models/LoadState'
 
   export let form: IForm
+  export let mode : 'local' | '' = ''
   let state = LoadState.NotStarted
 
   subscribeFieldChange((updatedField: IField) => {
@@ -47,7 +48,9 @@
   async function onSubmit() {
     state = LoadState.Loading
     try {
-      await submitForm()
+      if(mode !== 'local') {
+        await submitForm()
+      }
       state = LoadState.Finished
     } catch (ex) {
       state = LoadState.Failed
