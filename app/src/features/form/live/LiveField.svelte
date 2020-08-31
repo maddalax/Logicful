@@ -17,7 +17,6 @@
   import { subscribe } from 'event/EventBus'
   import Switch from 'inputs/Switch.svelte'
   import DatePicker from 'components/DatePicker.svelte'
-  import { promptConfirm } from 'util/Confirm'
   import { firstNotEmpty } from 'util/Format'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
@@ -81,7 +80,6 @@
     {:else}{/if}
   </div>
 </div>
-
 
 <style>
   .hidden {

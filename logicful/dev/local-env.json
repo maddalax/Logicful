@@ -4,6 +4,7 @@
     "DYNAMO_REGION": "localhost",
     "DYNAMO_ENDPOINT" : "http://dynamodb-local:8000",
     "FORM_SUBMISSION_QUEUE": "https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_submission",
+    "FORM_SUBMISSIONS_DELETED" : "https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_delete_submissions",
     "AWS_ACCESS_KEY_ID": "AKIAQPVAMC7JZKV47CF2",
     "AWS_SECRET_ACCESS_KEY": "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"
   }

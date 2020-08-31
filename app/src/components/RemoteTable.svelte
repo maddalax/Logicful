@@ -5,9 +5,10 @@
   import { LoadState } from 'models/LoadState'
   import { randomString } from 'util/Generate'
   import Pagination from './Pagination.svelte'
-  import { dispatchPrivate } from 'event/EventBus'
+  import { dispatch, dispatchPrivate } from 'event/EventBus'
   import { fastEquals } from 'util/Compare'
   import Dialog from './Dialog.svelte'
+  import ToastManager from './ToastManager.svelte';
 
   export let getRows: () => Promise<TableRow[]>
 
@@ -28,10 +29,13 @@
   let sort = ''
   let sortDirection = ''
   let editingColumns = false
+  let allRowsSelected = false
+  let selectedCount = 0
+  let modal: 'delete' | 'toggle_column' | '' = ''
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
-  export let onDelete: ((row: any) => any) | undefined = undefined
+  export let onDelete: ((rows: any[]) => any) | undefined = undefined
   export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
 
@@ -65,6 +69,22 @@
       const result = fuse.search(query)
       filtered = result.map((r) => r.item)
     }
+  }
+
+  function selectAllRows() {
+    for (let i = 0; i < filtered.length; i++) {
+      if (i >= range.min && i <= range.max) {
+        filtered[i].meta_selected = allRowsSelected ? false : true
+      }
+    }
+    allRowsSelected = !allRowsSelected
+    let count = 0
+    for (let i = 0; i < filtered.length; i++) {
+      if (filtered[i].meta_selected) {
+        count++
+      }
+    }
+    selectedCount = count
   }
 
   async function load() {
@@ -137,7 +157,6 @@
       columns.forEach((c) => {
         const v = value[c]
         let width = getTextWidth(v, '')
-        console.log(v, width)
         if (width < 150) {
           width = 150
         }
@@ -161,36 +180,61 @@
     return canvasContext.measureText(text).width
   }
 
-  function showHideColumns() {
-    editingColumns = true
-  }
-
   function toggleColumn(checked: boolean, column: string) {
     checked ? hidden.delete(column) : hidden.add(column)
     filteredColumns = columns.filter((w) => !hidden.has(w))
   }
 
-  function onRowClick(row: any, index: number) {
-    if (lastSelectedIndex !== -1) {
-      filtered[lastSelectedIndex].meta_selected = false
+  function onRowClick(row: any) {
+    const index = filtered.findIndex((w) => w.table_meta_id === row.table_meta_id)
+    if (filtered[index].meta_selected) {
+      selectedCount--
+      filtered[index].meta_selected = false
+    } else {
+      selectedCount++
+      filtered[index].meta_selected = true
     }
-    lastSelectedIndex = index
-    filtered[index].meta_selected = true
+  }
+
+  async function deleteEntries() {
+    const selected = filtered.filter(w => w.meta_selected)
+    if(selected.length !== selectedCount) {
+      throw new Error("Selection count did not match actual selected.")
+    }
+    await onDelete?.(selected);
+    dispatch("show_toast", {
+      title : 'Deletion Started',
+      message : 'Your entries have been queued for deletion. This may take up to 2 minutes to show.'
+    })
   }
 </script>
 
 <div>
+  <ToastManager/>
   <div class="d-flex bd-highlight mb-3">
     <div class="mr-auto p-2 bd-highlight">
       <input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" />
     </div>
+    {#if selectedCount > 0}
+      <div class="p-2 bd-highlight">
+        <div style="margin-top: 5px;">
+          Selected:
+          <strong>{selectedCount} of {filtered.length}</strong>
+        </div>
+      </div>
+      <div class="p-2 bd-highlight">
+        <div style="pointer: cursor;" on:click={() => (modal = 'delete')}>
+          <i class="fas fa-trash-alt" />
+        </div>
+      </div>
+    {/if}
     <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;" on:click={showHideColumns}>
+      <div style="pointer: cursor;">
         <i class="fas fa-cog" />
       </div>
     </div>
     <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;" on:click={showHideColumns}>
+      <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}>
         <i class="fas fa-columns" />
       </div>
     </div>
@@ -215,6 +259,11 @@
           <!-- svelte-ignore empty-block -->
           <tbody>
             <tr>
+              <th scope="col" style="width: 50px">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" checked={allRowsSelected} on:change={selectAllRows} id={'row-toggle-all'} />
+                </div>
+              </th>
               {#each filteredColumns as column (column)}
                 <th scope="col" style={headerStyle(column)} on:click={() => sortColumn(column)}>
                   {column}
@@ -231,32 +280,28 @@
                   </span>
                 </th>
               {/each}
-              {#if onDelete || onEdit}
-                <th scope="col" />
-              {/if}
             </tr>
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}
-                <tr class:active={row.meta_selected} on:click={() => onRowClick(row, index)} style="vertical-align: middle;">
+                <tr class:active={row.meta_selected} style="vertical-align: middle;">
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        checked={row.meta_selected}
+                        on:change={(e) => {
+                          onRowClick(row)
+                        }}
+                        id={'row-toggle-' + index} />
+                    </div>
+                  </td>
                   {#each filteredColumns as column}
                     <td>
                       <div class="text">{renderValue(row, column)}</div>
                     </td>
                   {/each}
-                  {#if onEdit}
-                    <button class="btn" on:click={() => onEdit?.(row)}>
-                      <div class="icon icon-sm icon-secondary">
-                        <span class="fas fa-pencil-alt" />
-                      </div>
-                    </button>
-                  {/if}
-                  {#if onDelete}
-                    <button class="btn" on:click={() => onDelete?.(row)}>
-                      <div class="icon icon-sm icon-secondary">
-                        <span class="fas fa-trash" />
-                      </div>
-                    </button>
-                  {/if}
                 </tr>
               {/if}
             {/each}
@@ -267,7 +312,6 @@
         {id}
         count={filtered.length}
         onRangeChange={(r) => {
-          console.log(r, range)
           if (fastEquals(r, range)) {
             return
           }
@@ -281,12 +325,12 @@
       <p>Failed to load rows, please try refreshing the page.</p>
     </div>
   {/if}
-  {#if editingColumns}
+  {#if modal === 'toggle_column'}
     <Dialog
-      props={{ title: 'Toggle Column Visibility' }}
+      title={'Toggle Column Visibility'}
       isOpen={true}
       onClose={() => {
-        editingColumns = false
+        modal = ''
       }}>
       {#each columns as column}
         {#if column !== 'table_meta_id'}
@@ -304,6 +348,23 @@
           </div>
         {/if}
       {/each}
+    </Dialog>
+  {:else if modal === 'delete'}
+    <Dialog
+      title={'Confirm Deletion'}
+      isOpen={true}
+      actions={[{
+        label : `Delete ${selectedCount} Entries`,
+        type : 'danger',
+        onClick: deleteEntries
+      }, {
+        label : 'Cancel',
+        type : 'secondary'
+      }]}
+      onClose={() => {
+        modal = ''
+      }}>
+      <p>Are you sure you want to delete {selectedCount} entries?</p>
     </Dialog>
   {/if}
 </div>
@@ -353,6 +414,11 @@
   }
 
   .fa-cog {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+  .fa-trash-alt {
     cursor: pointer;
     height: 1.5em;
     width: 1.5em;

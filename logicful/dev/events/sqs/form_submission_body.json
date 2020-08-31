@@ -1,17 +1,4 @@
 {
   "formId": "maddox-5a7014a9-40dc-4ce7-add2-3d3d8df0caf1",
-  "id": "392bb0d0-8a7d-4c47-8cfe-074c1b19448b",
-  "details": {
-    "new-field-07y5": true,
-    "new-field-4uyo": "<h4><strong>Please fill out this form to register for this job.</strong></h4>",
-    "new-field-6fwd": "Im cool",
-    "new-field-7qr0": "Today",
-    "new-field-b0q6": "se-3",
-    "new-field-fei3": "<p>If you have any other additional comments or concerns, please fill them out below.</p>",
-    "new-field-g494": "80000",
-    "new-field-j9vn": "Sydne Anschutz",
-    "new-field-tv4x": true
-  },
-  "createTime": "2020-08-29T17:26:30Z",
-  "createBy": "maddox"
+  "ids": ["392bb0d0-8a7d-4c47-8cfe-074c1b19448b", "b4f381a5-2dc8-4615-8876-57df9de36231"]
 }

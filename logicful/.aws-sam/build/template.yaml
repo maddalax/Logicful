@@ -25,6 +25,7 @@ Globals:
         DYNAMO_IS_LOCAL: false
         DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
         FORM_SUBMISSION_QUEUE: https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_submission
+        FORM_SUBMISSIONS_DELETED: https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_delete_submissions,
 Resources:
   CreateOptionSet:
     Type: AWS::Serverless::Function
@@ -151,6 +152,20 @@ Resources:
           Properties:
             Path: /form/{id}/submissions
             Method: GET
+  DeleteFormSubmissions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: DeleteFormSubmissions
+      Policies: AmazonDynamoDBFullAccess
+      Handler: delete-submission
+      Runtime: go1.x
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /form/{id}/submissions/delete
+            Method: DELETE
   FormSubmissionQueueHandler:
     Type: AWS::Serverless::Function
     Properties:
@@ -167,4 +182,21 @@ Resources:
           Type: SQS
           Properties:
             Queue: arn:aws:sqs:us-east-1:033622333395:logicful_form_submission
+            BatchSize: 10
+  FormSubmissionDeleteQueueHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies:
+      - AmazonDynamoDBFullAccess
+      - SQSPollerPolicy:
+          QueueName: logicful_form_delete_submissions
+      CodeUri: FormSubmissionDeleteQueueHandler
+      Handler: sqs-form-submission-delete-handler
+      Runtime: go1.x
+      Timeout: 600
+      Events:
+        Sqs:
+          Type: SQS
+          Properties:
+            Queue: arn:aws:sqs:us-east-1:033622333395:logicful_form_delete_submissions
             BatchSize: 10

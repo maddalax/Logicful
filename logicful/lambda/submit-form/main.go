@@ -47,20 +47,6 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		return gateway.BadRequest(err.Error())
 	}
 
-	lean, err := dynamodbattribute.Marshal([]models.LeanSubmission{{
-		Id: submission.Id,
-		Creatable: models.Creatable{
-			CreateTime: submission.CreateTime,
-			CreateBy:   "maddox",
-		},
-	}})
-
-	if err != nil {
-		return gateway.BadRequest(err.Error())
-	}
-
-	emptyList := make([]*dynamodb.AttributeValue, 0)
-
 	_, err = instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
@@ -71,11 +57,10 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 							S: aws.String(submission.FormId),
 						},
 					},
-					UpdateExpression: aws.String("SET #submissions = list_append(if_not_exists(#submissions, :empty_list), :submission)"),
+					UpdateExpression: aws.String("ADD #submissions :submission"),
 					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-						":submission": lean,
-						":empty_list": {
-							L: emptyList,
+						":submission": {
+							SS: aws.StringSlice([]string{submission.Id}),
 						},
 					},
 					ExpressionAttributeNames: map[string]*string{

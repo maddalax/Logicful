@@ -20,7 +20,6 @@
   import Switch from '../../../inputs/Switch.svelte'
   import { subscribe } from 'event/EventBus'
   import DatePicker from 'components/DatePicker.svelte'
-  import { promptConfirm } from 'util/Confirm'
   import { firstNotEmpty } from 'util/Format'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
@@ -37,6 +36,8 @@ import FileUpload from 'inputs/FileUpload.svelte'
   onMount(load)
 
   function onDelete() {
+    // todo field confirm delete
+    /*
     promptConfirm({
       title: 'Confirm Deletion',
       message: `Are you sure you want to delete field <strong>${firstNotEmpty(field.label, field.name)}</strong>?`,
@@ -47,6 +48,7 @@ import FileUpload from 'inputs/FileUpload.svelte'
         })
       },
     })
+    */
   }
 
   function onClone() {

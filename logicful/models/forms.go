@@ -21,6 +21,7 @@ type Form struct {
 type LeanSubmission struct {
 	Id string
 	Creatable
+	Status string
 }
 
 type Submission struct {
@@ -29,7 +30,13 @@ type Submission struct {
 	Details   interface{} `json:"details"`
 	Meta      interface{} `json:"meta"`
 	FieldMeta interface{} `json:"fieldMeta"`
+	Status string		  `json:"status"`
 	Creatable
+}
+
+type SubmissionsDeleted struct {
+	FormId string `json:"formId"`
+	Ids []string `json:"ids"`
 }
 
 type Field struct {
