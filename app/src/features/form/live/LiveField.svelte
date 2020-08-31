@@ -57,27 +57,31 @@
   <div style="padding: .75em 0.6em; border-radius: 1em;">
     {#if hidden}
       <span />
-    {:else if field.type === 'address'}
-      <Address {field} {value} />
-    {:else if field.type === 'string'}
-      <TextInput {field} />
-    {:else if field.type === 'number'}
-      <TextInput {field} type={'number'} />
-    {:else if field.type === 'combobox'}
-      <ComboBox {field} {...config} />
-    {:else if field.type === 'block'}
-      <RichTextDisplay {field} />
-    {:else if field.type === 'block-editor'}
-      <TextArea {field} {...config} />
-    {:else if field.type === 'spacer'}
-      <Spacer {field} />
-    {:else if field.type === 'switch'}
-      <Switch {field} {...config} />
-    {:else if field.type === 'date'}
-      <DatePicker {field} {...config} />
-    {:else if field.type === 'file'}
-      <FileUpload {field} />
-    {:else}{/if}
+    {:else}
+      <div transition:fade={{duration : 300}}>
+        {#if field.type === 'address'}
+          <Address {field} {value} />
+        {:else if field.type === 'string'}
+          <TextInput {field} />
+        {:else if field.type === 'number'}
+          <TextInput {field} type={'number'} />
+        {:else if field.type === 'combobox'}
+          <ComboBox {field} {...config} />
+        {:else if field.type === 'block'}
+          <RichTextDisplay {field} />
+        {:else if field.type === 'block-editor'}
+          <TextArea {field} {...config} />
+        {:else if field.type === 'spacer'}
+          <Spacer {field} />
+        {:else if field.type === 'switch'}
+          <Switch {field} {...config} />
+        {:else if field.type === 'date'}
+          <DatePicker {field} {...config} />
+        {:else if field.type === 'file'}
+          <FileUpload {field} />
+        {/if}
+      </div>
+    {/if}
   </div>
 </div>
 
