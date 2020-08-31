@@ -1,5 +1,4 @@
 export function transformDraggedElement(el: any, data: any, index: number) {
-  console.log(el, data);
   if (data.name === 'string') {
     el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
   }

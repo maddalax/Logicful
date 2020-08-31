@@ -171,17 +171,13 @@
       removePlaceHolder()
       const items: IField[] = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
-          i = {
-            ...i,
-            ...{
-              name: 'new-field-' + randomStringSmall(),
-              label: 'New Field ' + randomStringSmall(),
-              type: i.name,
-              selected: true,
-              value: undefined,
-              expanded: true,
-            },
-          }
+          const clone = fastClone(i)
+          clone.name = 'new-field-' + randomStringSmall()
+          clone.label = 'New Field ' + randomStringSmall()
+          clone.type = i.name
+          clone.selected = true
+          clone.value = undefined
+          i = clone
         } else {
           // Deselect all other fields and select the one that was dropped.
           if (e.type === 'finalize' && i.selected) {
@@ -189,7 +185,7 @@
             formStore.set(i)
           }
         }
-        return { ...i }
+        return i;
       })
       if (e.type === 'finalize') {
         const selected = items.find((w) => w.selected)
