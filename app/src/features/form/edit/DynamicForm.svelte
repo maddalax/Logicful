@@ -6,7 +6,7 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { DynamicFormMode } from 'components/models/ComponentProps'
   import { dndzone } from 'svelte-dnd-action'
-  import { dispatchSync, subscribe } from 'event/EventBus'
+  import { dispatch, dispatchSync, subscribe } from 'event/EventBus'
   import { transformDraggedElement } from './util/Draggable'
   import formStore from 'store/FormStore'
   import { LogicBuilder } from 'services/LogicBuilder'
@@ -98,7 +98,7 @@
     const selected = form.fields.find((w) => w.selected)
     if (selected) {
       dispatch('field_delete', {
-        field,
+        field : selected
       })
     }
   }

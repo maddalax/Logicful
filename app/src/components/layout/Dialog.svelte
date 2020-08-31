@@ -53,6 +53,7 @@
       processing = -1
       close()
     } catch (ex) {
+      console.error(ex);
       failed = true
     }
   }
@@ -71,14 +72,15 @@
       {#if actions.length > 0}
         <div class="modal-footer">
           {#each actions as action, index}
-            <!-- svelte-ignore a11y-autofocus -->
             {#if processing === index}
               {#if failed}
                 <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>Failed To Run, Click To Try Again</button>
               {:else}<button class={'btn btn-' + action.type} disabled={true}>Processing...</button>{/if}
             {:else if action.focus}
               <button class={'btn btn-' + action.type} bind:this={focusable} on:click={() => runAction(action, index)}>{action.label}</button>
-            {:else}<button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>{action.label}</button>{/if}
+            {:else}
+            <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>{action.label}</button>
+            {/if}
           {/each}
         </div>
       {/if}
