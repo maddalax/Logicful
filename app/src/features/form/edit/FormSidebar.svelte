@@ -22,8 +22,8 @@
       { id: randomString(), name: 'block', morph: true },
       { id: randomString(), name: 'file', morph: true },
       { id: randomString(), name: 'address', morph: true },
-      { id: randomString(), name: 'checkbox-group', morph: true },
-      { id: randomString(), name: 'radio-group', morph: true },
+      { id: randomString(), name: 'checkbox-group' },
+      { id: randomString(), name: 'radio-group' },
     ]
   }
 

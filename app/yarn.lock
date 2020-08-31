@@ -4429,8 +4429,8 @@ svelte-check@^1.0.20:
     vscode-languageserver-types "3.15.1"
     vscode-uri "2.1.2"
 
-"svelte-dnd-action@file:../svelte-dnd-action":
-  version "0.2.12"
+svelte-dnd-action@./../svelte-dnd-action:
+  version "0.3.0"
   dependencies:
     acorn "^7.1.1"
     builtin-modules "^3.1.0"
@@ -4474,8 +4474,10 @@ svelte-preprocess@^4.1.1, svelte-preprocess@~4.2.0:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
-"svelte-select@file:../svelte-select":
+svelte-select@^3.11.1:
   version "3.11.1"
+  resolved "https://registry.yarnpkg.com/svelte-select/-/svelte-select-3.11.1.tgz#e596900b7a60a059654e41edf9e2879a4b2de198"
+  integrity sha512-fva5VRmZT/MnqTMXOlwkEnX+ultdTKdMyguTOngzt77NsXjvPxA7+/M8cUlxyQkAJEqI1RdxCq2RRAAxaJxNBg==
 
 svelte2tsx@*:
   version "0.1.98"

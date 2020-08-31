@@ -11,7 +11,7 @@ import {
     hideOriginalDragTarget
 } from "./helpers/styler";
 import { DRAGGED_ENTERED_EVENT_NAME, DRAGGED_LEFT_EVENT_NAME, DRAGGED_LEFT_DOCUMENT_EVENT_NAME, DRAGGED_OVER_INDEX_EVENT_NAME, dispatchConsiderEvent, dispatchFinalizeEvent } from './helpers/dispatcher';
-import { toString } from "./helpers/util";
+import {areObjectsShallowEqual, toString} from "./helpers/util";
 
 const ITEM_ID_KEY = "id";
 const DEFAULT_DROP_ZONE_TYPE = '--any--';
@@ -33,6 +33,7 @@ let shadowElDropZone;
 let dragStartMousePosition;
 let currentMousePosition;
 let isWorkingOnPreviousDrag = false;
+let finalizingPreviousDrag = false;
 
 // a map from type to a set of drop-zones
 const typeToDropZones = new Map();
@@ -139,6 +140,7 @@ function handleMouseMove(e) {
 
 function handleDrop() {
     console.debug('dropped');
+    finalizingPreviousDrag = true;
     // cleanup
     window.removeEventListener('mousemove', handleMouseMove);
     window.removeEventListener('touchmove', handleMouseMove);
@@ -210,6 +212,7 @@ function cleanupPostDrop() {
     dragStartMousePosition = undefined;
     currentMousePosition = undefined;
     isWorkingOnPreviousDrag = false;
+    finalizingPreviousDrag = false;
 }
 
 /**
@@ -267,9 +270,6 @@ export function dndzone(node, options) {
         }
     }
     function handleMouseDown(e) {
-        if(e.button !== 0) {
-            return;
-        }
         if (isWorkingOnPreviousDrag) {
             console.debug('cannot start a new drag before finalizing previous one');
             return;
@@ -329,15 +329,15 @@ export function dndzone(node, options) {
     }
 
     function configure({
-        items = [],
-        flipDurationMs:dropAnimationDurationMs = 0,
-        type:newType = DEFAULT_DROP_ZONE_TYPE,
-        dragDisabled = false,
-        dropFromOthersDisabled = false,
-        dropTargetStyle = DEFAULT_DROP_TARGET_STYLE,
-        transformDraggedElement = () => {},
-        ...rest
-    }) {
+                           items = [],
+                           flipDurationMs:dropAnimationDurationMs = 0,
+                           type:newType = DEFAULT_DROP_ZONE_TYPE,
+                           dragDisabled = false,
+                           dropFromOthersDisabled = false,
+                           dropTargetStyle = DEFAULT_DROP_TARGET_STYLE,
+                           transformDraggedElement = () => {},
+                           ...rest
+                       }) {
         if (Object.keys(rest).length > 0) {
             console.warn(`dndzone will ignore unknown options`, rest);
         }
@@ -351,7 +351,10 @@ export function dndzone(node, options) {
         config.items = [...items];
 
         config.dragDisabled = dragDisabled;
-
+        if (isWorkingOnPreviousDrag && !finalizingPreviousDrag && !areObjectsShallowEqual(dropTargetStyle, config.dropTargetStyle)) {
+            styleInActiveDropZones([node], () => config.dropTargetStyle);
+            styleActiveDropZones([node], () => dropTargetStyle);
+        }
         config.dropTargetStyle = dropTargetStyle;
 
         config.transformDraggedElement = transformDraggedElement;
@@ -369,7 +372,7 @@ export function dndzone(node, options) {
             const draggableEl = node.children[idx];
             styleDraggable(draggableEl, dragDisabled);
             if (config.items[idx].hasOwnProperty('isDndShadowItem')) {
-                morphDraggedElementToBeLike(draggedEl, draggableEl, currentMousePosition.x, currentMousePosition.y, () => config.transformDraggedElement(draggedEl, draggedElData, idx));
+                morphDraggedElementToBeLike(draggedEl, draggableEl, currentMousePosition.x, currentMousePosition.y, () => config.transformDraggedElement(draggedEl, draggedElData, idx), draggedElData.morph);
                 styleShadowEl(draggableEl);
                 continue;
             }

@@ -56,8 +56,8 @@
 
 {#if mode === 'local'}
   <div class="alert alert-info alert-dismissible fade show" role="alert">
-    You are viewing a live preview of how your form will display and act once it is published. This preview will <strong>live update</strong> when changes are made from the form builder, no save neeed. <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-        aria-hidden="true">&times;</span> </button>
+    You are viewing a live preview of how your form will display and act once it is published. This preview will <strong>live update</strong> when changes are made from the form builder, no save neeed.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
   </div>
 {/if}
 <div class="container" style="margin-top: 2em">
