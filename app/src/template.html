@@ -22,14 +22,12 @@
 	<!-- Sapper generates a <style> tag containing critical CSS
 	     for the current page. CSS for the rest of the app is
 	     lazily loaded when it precaches secondary pages -->
-	%sapper.styles%
-
-	<link type="text/css" href="/css/site.css" rel="stylesheet">
 	<link type="text/css" href="/css/global.css" rel="stylesheet">
 	<link type="text/css" href="/css/pixel.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css"
-		integrity="sha512-49xW99xceMN8dDoWaoCaXvuVMjnUctHv/jOlZxzFSMJYhqDZmSF/UnM6pLJjQu0YEBLSdO1DP0er6rUdm8/VqA=="
-		crossorigin="anonymous" />
+	<link type="text/css" href="/css/site.css" rel="stylesheet">
+
+
+	%sapper.styles%
 
 	<!-- This contains the contents of the <svelte:head> component, if
 	     the current page has one -->
@@ -41,9 +39,6 @@
 	<!-- Core -->
 	<script src="/vendor/popper.js/dist/umd/popper.min.js"></script>
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"
-		integrity="sha512-T1BAtwCRE7TI7k5m9Pd8El1ARLK06yBaFEHsiIX8JXTtS8wQ5fBknAeLsDrYD3I0UJEwhUgIlugLUOc1nRXUVA=="
-		crossorigin="anonymous"></script>
 	<!-- The application will be rendered inside this element,
      because `src/client.js` references it -->
 	<div id="sapper">%sapper.html%</div>

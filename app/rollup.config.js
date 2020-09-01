@@ -105,6 +105,7 @@ export default {
 								"module.require": "require",
 						}),
 						svg(),
+						css({ output: "static/css/site.css" }),
 						svelte({
 								generate: "ssr",
 								dev,

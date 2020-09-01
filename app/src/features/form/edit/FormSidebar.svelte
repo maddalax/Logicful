@@ -2,7 +2,6 @@
   // @ts-nocheck
   import { dispatch, subscribe } from 'event/EventBus'
   import { flip } from 'svelte/animate'
-  import { dndzone } from 'svelte-dnd-action'
   import { randomString } from 'util/Generate'
   import { onMount, tick } from 'svelte'
   import FieldEdit from './FieldEdit.svelte'
@@ -14,6 +13,7 @@
 
   let saving = false
   let drake: any = null
+  let dragula: any
 
   function defaultBlocks() {
     return [
@@ -33,6 +33,10 @@
   let blocks = defaultBlocks()
 
   const loadDragula = debounce(async () => {
+    if (!dragula) {
+      dragula = (await import('dragula')).default
+      await tick();
+    }
     if (drake) {
       drake.destroy()
     }
@@ -46,19 +50,19 @@
       },
     })
       .on('drag', function (el) {
-        if(el.id && el.id.startsWith("form-field-")) {
-          return;
+        if (el.id && el.id.startsWith('form-field-')) {
+          return
         }
         const container = document.getElementById('form-preview-fields')
-        if (container && !container.className.includes("ex-over")) {
+        if (container && !container.className.includes('ex-over')) {
           container.className += ' ex-over'
         }
       })
       .on('over', function (el, container) {
-        if(el.id && el.id.startsWith("form-field-")) {
-          return;
+        if (el.id && el.id.startsWith('form-field-')) {
+          return
         }
-        if (container.id === 'form-preview-fields' && !container.className.includes("ex-over")) {
+        if (container.id === 'form-preview-fields' && !container.className.includes('ex-over')) {
           container.className += ' ex-over'
         }
         dispatch('drag_over', container)
@@ -95,7 +99,8 @@
 
   function saveAndPublish() {}
 
-  onMount(() => {
+  onMount(async () => {
+    import('dragula/dist/dragula.css')
     subscribe('form_updated', () => {
       loadDragula()
     })

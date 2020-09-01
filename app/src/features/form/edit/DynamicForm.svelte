@@ -5,7 +5,6 @@
   import type { IField } from 'models/IField'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { DynamicFormMode } from 'components/models/ComponentProps'
-  import { dndzone } from 'svelte-dnd-action'
   import { dispatch, dispatchSync, subscribe } from 'event/EventBus'
   import { transformDraggedElement } from './util/Draggable'
   import formStore from 'store/FormStore'

@@ -1,4 +1,5 @@
 <script lang="typescript">
+  import 'dragula/dist/dragula.min.css'
   import FormBuilder from 'features/form/edit/FormBuilder.svelte'
   import FormSidebar from 'features/form/edit/FormSidebar.svelte'
   import FieldEditSidebar from 'features/form/edit/FieldEditSidebar.svelte'
@@ -8,7 +9,7 @@
 
   let main: any
   let rightSidebar: any
-  let rightSidebarProps : any = {};
+  let rightSidebarProps: any = {}
 
   onMount(() => {
     main = FormBuilder
@@ -16,9 +17,9 @@
     subscribe('show_main_content', (props) => {
       main = props.component
     })
-    subscribe('show_right_sidebar', ({component, ...other}) => {
+    subscribe('show_right_sidebar', ({ component, ...other }) => {
       rightSidebar = component
-      rightSidebarProps = other ?? {};
+      rightSidebarProps = other ?? {}
     })
   })
 </script>
@@ -38,8 +39,6 @@
     </Sidebar>
   </div>
 </div>
-
-
 
 <style>
   .main {
