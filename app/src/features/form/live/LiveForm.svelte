@@ -60,6 +60,7 @@
 
 <div style="padding-left: 0.5em;">
   <h4>{form.title ?? 'Form Title'}</h4>
+  <small class="text-gray-700">{form.description ?? ''}</small>
   <hr />
 </div>
 <form on:submit|preventDefault={onSubmit}>

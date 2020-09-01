@@ -35,14 +35,14 @@
           <span class="fas fa-chevron-right" />
         </span>
       </a>
-      <a href="./submissions/{form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'submissions' ? 'active' : ''}">
-        Submissions
+      <a href="./form-settings/{form.id}/notifications" class="d-flex list-group-item border-0 list-group-item-action {selected === 'submission-notification' ? 'active' : ''}">
+        Submission Notifications
         <span class="icon icon-xs ml-auto">
           <span class="fas fa-chevron-right" />
         </span>
       </a>
-      <a href="./form-settings/{form.id}/notifications" class="d-flex list-group-item border-0 list-group-item-action {selected === 'submission-notification' ? 'active' : ''}">
-        Submission Notifications
+      <a href="./form-settings/{form.id}/scoring" class="d-flex list-group-item border-0 list-group-item-action {selected === 'workflows' ? 'active' : ''}">
+        Scoring 
         <span class="icon icon-xs ml-auto">
           <span class="fas fa-chevron-right" />
         </span>
