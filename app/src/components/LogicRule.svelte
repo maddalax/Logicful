@@ -13,7 +13,7 @@
   import Label from 'inputs/Label.svelte'
   import { firstNotEmpty } from 'util/Format'
   import { assertExists } from 'util/Selection'
-  import { isEmptyOrNull } from 'util/Compare'
+  import { fastClone, isEmptyOrNull } from 'util/Compare'
 
   export let helperText: string = ''
   export let field: IField
@@ -45,8 +45,8 @@
   }
 
   function remove(option: number) {
-    const temp = [...field.logic!.rules]
-    temp.slice(option, 1)
+    const temp = fastClone(field.logic!.rules)
+    temp.splice(option, 1)
     field.logic!.rules = temp
     formStore.set(field)
   }
@@ -248,10 +248,8 @@
       <div class="row">
         <div class="col">
           <div class="float-right" style="position: relative; display: inline-flex; vertical-align: middle; top: 0.8em; right: 0.6em;">
-            <button type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
-              <span class="icon-brand">
-                <span class="fas fa-trash" />
-              </span>
+            <button type="button" on:click={() => remove(i)} class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+              <span class="icon-brand"> <span class="fas fa-trash" /> </span>
             </button>
           </div>
           <Field

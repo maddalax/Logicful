@@ -10,6 +10,10 @@ export function dispatchFieldChange(field : IField, change : {field : string, va
 
 export function subscribeFieldChange(callback : (field : IField, change : {field : string, value : any, fromUser : boolean}) => any) {
     subscribe("field_changed", (payload) => {       
+        if(!payload.field) {
+            console.error("Field change was undefined.", payload)
+            return;
+        }
         callback(payload.field, payload.change);
     });
 }
