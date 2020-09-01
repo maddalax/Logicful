@@ -11,7 +11,7 @@
   function onDelete(formId: string) {}
 
   function onViewSubmissions(formId: string) {
-    formId = 'maddox-maddox-maddox-maddox-maddox-maddox-e8bb5bcf-9751-48dc-91f3-e9fa0f4ff933'
+    formId = 'e8bb5bcf-9751-48dc-91f3-e9fa0f4ff933'
     goto(`./submissions/${formId}`)
   }
 </script>

@@ -21,7 +21,7 @@
   })
 
   function onWorkflows(){
-    goto(`./form-settings/${form.id}`)
+    goto(`./form-settings/${form.id}/workflows`)
   }
 
   function onGroupSettings() {
