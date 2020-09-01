@@ -26,14 +26,24 @@ export function transformDraggedElement(el: any, data: any, index: number) {
         </label>
       </div>`
   }
-  if(data.name === 'checkbox-group') {
-    el.innerHTML = `<div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="checkboxOne" />
-    <label class="form-check-label" for="defaultCheck1">Checkbox One</label>
+  if (data.name === 'checkbox-group') {
+    el.innerHTML = `<label>New Checkbox Group</label><div class="form-check">
+    <input class="form-check-input" type="checkbox" checked="true" value="" id="checkboxOne" />
+    <label class="form-check-label" for="defaultCheck1">Option 1</label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkboxTwo" />
-    <label class="form-check-label" for="defaultCheck2">Checkbox Two</label>
+    <label class="form-check-label" for="defaultCheck2">Option 2</label>
+  </div>`
+  }
+  if (data.name === 'radio-group') {
+    el.innerHTML = `<label>New Radio Group</label><div class="form-check">
+    <input class="form-check-input" type="radio" value="" checked="true" id="checkboxOne" />
+    <label class="form-check-label" for="defaultCheck1">Option One</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" value="" id="checkboxTwo" />
+    <label class="form-check-label" for="defaultCheck2">Option Two</label>
   </div>`
   }
   if (data.name === 'address') {

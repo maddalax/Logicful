@@ -14,14 +14,14 @@
 
   function defaultBlocks() {
     return [
-      { id: randomString(), name: 'string', morph: true },
-      { id: randomString(), name: 'combobox', morph: true },
+      { id: randomString(), name: 'string' },
+      { id: randomString(), name: 'combobox',  },
       { id: randomString(), name: 'switch' },
       { id: randomString(), name: 'spacer' },
-      { id: randomString(), name: 'date', morph: true },
-      { id: randomString(), name: 'block', morph: true },
-      { id: randomString(), name: 'file', morph: true },
-      { id: randomString(), name: 'address', morph: true },
+      { id: randomString(), name: 'date',  },
+      { id: randomString(), name: 'block',  },
+      { id: randomString(), name: 'file',  },
+      { id: randomString(), name: 'address',  },
       { id: randomString(), name: 'checkbox-group' },
       { id: randomString(), name: 'radio-group' },
       { id: randomString(), name: 'full-name' }
