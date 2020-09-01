@@ -1,47 +1,51 @@
 <script lang="typescript">
-    import type { IField } from "models/IField";
-    import type { ContentBlock } from "models/ContentBlock";
+  import type { IField, LabelValue } from 'models/IField'
+  import type { ContentBlock } from 'models/ContentBlock'
 
-    import Field from "./Field.svelte";
-    import { randomString } from "util/Generate";
-    import {dispatch} from "event/EventBus";
-    import ContentBlockList from "./ContentBlockList.svelte";
+  import Field from './Field.svelte'
+  import { randomString } from 'util/Generate'
+  import { dispatch } from 'event/EventBus'
+  import ContentBlockList from './ContentBlockList.svelte'
+  import Repeater from 'components/Repeater.svelte'
+  import formStore from 'store/FormStore'
+  import { isEmptyOrNull } from 'util/Compare'
 
-    export let field: IField;
-    export let expanded: boolean;
+  export let field: IField
+  export let expanded: boolean
 
-    function manageBlocks() {
-        dispatch("dialog_show", {
-            child: ContentBlockList,
-            closeOnOutsideClick: false,
-            confirmCloseOnDirty: true,
-            title: "Manage Content Blocks",
-            save: false,
-        });
+  function onOptionsChange(options: string[] | LabelValue[]) {
+    if (options.length === 0) {
+      options = ['Radio Item 1']
     }
+    field.options = options
+    formStore.set(field, {
+      fromUser: true,
+      field: 'options',
+      value: options,
+    })
+  }
 
-    function loadTransformer(value: ContentBlock[]) {
-        return value.map((v) => {
-            return {
-                label: v.name,
-                value: v.value,
-            };
-        });
+  function loadTransformer(value: ContentBlock[]) {
+    return value.map((v) => {
+      return {
+        label: v.name,
+        value: v.value,
+      }
+    })
+  }
+
+  function options(): LabelValue[] {
+    if (isEmptyOrNull(field.options)) {
+      return [{ label: 'Radio Item 1', value: 'Radio Item 1' }]
     }
+    return field.options?.map((w: string) => {
+      return { label: w, value: w }
+    })
+  }
 </script>
 
 <div>
-    <div>
-        <h5>Address Editor</h5>
-    </div>
-    <Field
-            config={{ search: false }}
-            field={{ id: randomString(), customCss: 'padding-bottom: 0em;', label: 'Required', value: { type: 'local', value: field.required }, type: 'switch', configFieldTarget: 'required', configTarget: field.id, options: { type: 'local', value: [{ label: 'Yes', value: true }, { label: 'No', value: false }] } }}
-    />
-    <Field
-            field={{ id: randomString(), label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }}
-    />
-    <Field
-            field={{ id: randomString(), label: 'Label', value: field.label, type: 'string', configFieldTarget: 'label', configTarget: field.id }}
-    />
+  <Repeater options={options()} onlyLabel={true} label={'Radio Options'} onChange={onOptionsChange} />
+  <Field
+    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />
 </div>

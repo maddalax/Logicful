@@ -8,24 +8,14 @@
   import ContentBlockList from './ContentBlockList.svelte'
   import Repeater from 'components/Repeater.svelte'
   import formStore from 'store/FormStore'
-import { isEmptyOrNull } from 'util/Compare';
+  import { isEmptyOrNull } from 'util/Compare'
 
   export let field: IField
   export let expanded: boolean
 
-  function manageBlocks() {
-    dispatch('dialog_show', {
-      child: ContentBlockList,
-      closeOnOutsideClick: false,
-      confirmCloseOnDirty: true,
-      title: 'Manage Content Blocks',
-      save: false,
-    })
-  }
-
   function onOptionsChange(options: string[] | LabelValue[]) {
-    if(options.length === 0) {
-        options = ["Checkbox Item 1"]
+    if (options.length === 0) {
+      options = ['Checkbox Item 1']
     }
     field.options = options
     formStore.set(field, {
@@ -45,8 +35,8 @@ import { isEmptyOrNull } from 'util/Compare';
   }
 
   function options(): LabelValue[] {
-    if(isEmptyOrNull(field.options)) {
-        return [{label : 'Checkbox Item 1', value : 'Checkbox Item 1'}]
+    if (isEmptyOrNull(field.options)) {
+      return [{ label: 'Checkbox Item 1', value: 'Checkbox Item 1' }]
     }
     return field.options?.map((w: string) => {
       return { label: w, value: w }

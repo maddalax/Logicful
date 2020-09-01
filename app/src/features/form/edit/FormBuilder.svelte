@@ -14,6 +14,7 @@
   import ToastManager from 'components/ToastManager.svelte'
   import { debounce } from 'util/Debounce'
   import { startPreviewSaver } from 'features/form/edit/services/PreviewSaver'
+  import { setFieldDefaults } from 'features/form/edit/services/DefaultFieldValueFactory'
 
   let dropped = false
   let loadingActive: boolean = false
@@ -107,17 +108,17 @@
         return w
       })
       const id = randomString()
-      form.fields = form.fields.concat([
-        {
-          name: 'new-field-' + randomStringSmall(),
-          label: 'New Field ' + randomStringSmall(),
-          type: params.type,
-          id,
-          selected: true,
-          value: undefined,
-          expanded: true,
-        },
-      ])
+      let field: IField = {
+        name: 'new-field-' + randomStringSmall(),
+        label: 'New Field ' + randomStringSmall(),
+        type: params.type,
+        id,
+        selected: true,
+        value: undefined,
+        expanded: true,
+      }
+      field = setFieldDefaults(field)
+      form.fields = form.fields.concat(field)
       removePlaceHolder()
       formStore.setForm(form)
     })
@@ -169,9 +170,9 @@
         return i
       })
       if (e.type === 'finalize') {
-        console.log(items)
-        const selected = items.find((w) => w.selected)
+        let selected = items.find((w) => w.selected)
         if (selected) {
+          selected = setFieldDefaults(selected)
           formStore.set(selected)
         }
       }
