@@ -242,6 +242,17 @@
   }
 </script>
 
+
+<style>
+
+  .themed {
+    --border: 3px solid red;
+    --borderRadius: 0.3em;
+    --placeholderColor: red;
+  }
+
+</style>
+
 <div>
 
   {#if !field.hideLabel}
@@ -258,7 +269,7 @@
     <p>Failed to load.</p>
   {:else}
     {#if options}
-      <div on:click|stopPropagation>
+      <div on:click|stopPropagation class="themed">
         <Select items={options} on:select={onSelect} on:clear={onClear} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} />
       </div>
     {/if}
