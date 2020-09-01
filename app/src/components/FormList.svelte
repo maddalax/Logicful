@@ -57,9 +57,8 @@
   </ul>
 </div>
 
-
 <style>
-  .radius-0{
+  .radius-0 {
     border-radius: 0rem !important;
     padding-left: 0.5em;
   }
