@@ -19,13 +19,17 @@
 </script>
 
 <div>
-  <div>
+  <div style="max-height: 95vh; overflow: auto;">
     {#if field.type === 'spacer'}
       <Field
         field={{ id: randomString(), label: 'Increase value to add more spacing between the previous and next field.', required: true, value: field.value, type: 'number', configFieldTarget: 'value', configTarget: field.id }} />
     {:else if field.type === 'block'}
       <ContentBlockEditor {field} expanded={field.expanded} />
     {:else}
+      <div style="padding-left: 0.5em;">
+        <h5 style="padding-bottom: 0.2em;">Field Settings</h5>
+        <hr />
+      </div>
       <div id={`field-button-${field.id}`}>
         {#if !cantBeRequired.includes(field.type)}
           <Field

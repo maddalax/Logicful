@@ -1,6 +1,6 @@
 <script lang="typescript">
   // @ts-nocheck
-  import { dispatch } from 'event/EventBus'
+  import { dispatch, subscribe } from 'event/EventBus'
   import { flip } from 'svelte/animate'
   import { dndzone } from 'svelte-dnd-action'
   import { randomString } from 'util/Generate'
@@ -24,6 +24,7 @@
       { id: randomString(), name: 'address', morph: true },
       { id: randomString(), name: 'checkbox-group' },
       { id: randomString(), name: 'radio-group' },
+      { id: randomString(), name: 'full-name' }
     ]
   }
 
@@ -73,9 +74,9 @@
 
 <div style="text-align:center;">
   {#if saving}
-    <button class="save-button btn btn-light" type="button" disabled>Saving...</button>
+    <button class="btn save-button btn-primary" type="button" disabled>Saving...</button>
   {:else}
-    <button class="save-button btn btn-light" type="button" on:click={saveDraft}>Save Form</button>
+    <button class="btn save-button btn-primary" type="button" on:click={saveDraft}>Save Form</button>
   {/if}
 </div>
 <div style="padding-left: 0.2em;">
@@ -173,6 +174,17 @@
                 <h6 class="h6">Address Block</h6>
               </div>
             </div>
+          {:else if block.name === 'full-name'}
+          <div class="d-flex px-2 block">
+            <div>
+              <div class="icon icon-sm icon-secondary">
+                <span class="far fa-address-card" />
+              </div>
+            </div>
+            <div class="pl-3">
+              <h6 class="h6">Full Name</h6>
+            </div>
+          </div>
           {:else if block.name === 'checkbox-group'}
             <div class="d-flex px-2 block">
               <div>

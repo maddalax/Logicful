@@ -21,6 +21,7 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
   import FileUpload from 'inputs/FileUpload.svelte'
+import FullName from 'inputs/FullName.svelte';
 
   let state = LoadState.NotStarted
   let value: any
@@ -79,6 +80,8 @@
           <DatePicker {field} {...config} />
         {:else if field.type === 'file'}
           <FileUpload {field} />
+        {:else if field.type === 'full-name'}
+          <FullName {field} {value} />
         {/if}
       </div>
     {/if}

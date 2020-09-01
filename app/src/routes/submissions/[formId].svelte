@@ -92,6 +92,7 @@
 <div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
   <div class="main">
     <h1>Submissions</h1>
+    <hr />
     <div>
       <RemoteTable {getRows} sortColumns={sortColumns} onDelete={onDelete} onFormat={format}/>
     </div>

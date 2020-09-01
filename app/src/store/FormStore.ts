@@ -34,6 +34,9 @@ export class FormStore {
                 value: ''
             })
         })
+        console.log("FIELDS", form.fields);
+        const formListeners = form.fields.filter(w => w.configTarget === 'form')
+        console.log('listeners', formListeners);
         Object.keys(copy).forEach(f => {
             if (f === "fields") {
                 return;
@@ -47,11 +50,20 @@ export class FormStore {
     }
     set(field: IField, change: FieldChange = { field: '', value: '', fromUser: false }) {
         if (field.configTarget === 'form') {
+            const isSame = fastEquals(configStore[field.id], field);
+
+            if (isSame) {
+                return;
+            }
+
             set(store, field.configFieldTarget, field.value);
-            dispatch("form_updated", {
-                form: this.getForm()
+            dispatch("form_updated", this.getForm())
+            dispatchFieldChange(fastClone(field), {
+                field: field.configFieldTarget,
+                value: field.value,
+                fromUser: change.fromUser
             })
-            return
+            return;
         }
 
         if (field.configTarget) {

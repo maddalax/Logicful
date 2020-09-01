@@ -1,5 +1,5 @@
-<script>
-    export let page = ''
+<script lang="typescript">
+  export let page: string = ''
 </script>
 
 <div class="card border-light p-2">

@@ -2,6 +2,7 @@
   import GettingStarted from './GettingStarted.svelte'
   import RecentForms from './RecentForms.svelte'
   import { goto } from '@sapper/app'
+import SubmissionsDash from './SubmissionsDash.svelte';
 
   function folders() {
     goto(`./folder`)
@@ -46,7 +47,7 @@
       <div class="col-12 col-sm-6 mb-4">
         <div class="card border-light">
           <div class="card-body d-block d-md-flex align-items-center">
-            <GettingStarted />
+            <SubmissionsDash />
           </div>
         </div>
       </div>

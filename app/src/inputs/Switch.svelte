@@ -22,7 +22,7 @@
   })
 </script>
 
-<div class="form-check form-switch" style="margin-bottom: 0;">
+<div class="form-check form-switch" style="margin-bottom: 0; vertical-align: middle;">
   <input
     class="form-check-input"
     type="checkbox"
@@ -36,5 +36,5 @@
       formStore.set(field, { fromUser: true, value: field.value, field: 'value' })
       field.onChange?.(field.value)
     }} />
-  <label class="form-check-label" for={`${field.id}`} style="margin-bottom: .2rem;">{firstNotEmpty(field.label, field.name)}</label>
+  <label class="form-check-label" for={`${field.id}`} style="padding-top: 0.16em;">{firstNotEmpty(field.label, field.name)}</label>
 </div>

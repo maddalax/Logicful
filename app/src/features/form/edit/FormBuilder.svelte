@@ -189,6 +189,7 @@
         return i;
       })
       if (e.type === 'finalize') {
+        console.log(items);
         const selected = items.find((w) => w.selected)
         if (selected) {
           formStore.set(selected)

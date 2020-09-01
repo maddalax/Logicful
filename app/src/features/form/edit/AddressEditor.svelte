@@ -31,8 +31,9 @@
 </script>
 
 <div>
-    <div>
-        <h5>Address Editor</h5>
+    <div style="padding-left: 0.5em;">
+        <h5 style="padding-bottom: 0.2em;">Address Settings</h5>
+        <hr />
     </div>
     <Field
         config={{ search: false }}

@@ -7,7 +7,7 @@
   import { LoadState } from 'models/LoadState'
 
   export let field: IField
-  export let isPreview = false
+  export let isPreview: Boolean = false
   let value = ''
   let lastUrl = ''
   let state = LoadState.NotStarted

@@ -8,9 +8,9 @@
   export let value: { [key: string]: string }
 </script>
 
-<div class="row">
+<Label field={{ label: 'Address', type : 'address', id : randomString() }} />
+<div class="row" style="width: 100%;">
   <div class="col">
-    <Label field={{ label: 'Address', type : 'address', id : randomString() }} />
     <div class="row">
       <TextInput field={{ required: true, name: `${field.name}.address1`, id: `${field.id}.value.address1`, helperText: 'Address Line 1', hideLabel: true, value: value?.address1 ?? '', type: 'string' }} />
     </div>
