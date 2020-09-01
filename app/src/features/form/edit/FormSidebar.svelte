@@ -45,11 +45,34 @@
         return target !== document.getElementById('block-container')
       },
     })
-      .on('drag', function (el) {})
+      .on('drag', function (el) {
+        if(el.id && el.id.startsWith("form-field-")) {
+          return;
+        }
+        const container = document.getElementById('form-preview-fields')
+        if (container && !container.className.includes("ex-over")) {
+          container.className += ' ex-over'
+        }
+      })
+      .on('over', function (el, container) {
+        if(el.id && el.id.startsWith("form-field-")) {
+          return;
+        }
+        if (container.id === 'form-preview-fields' && !container.className.includes("ex-over")) {
+          container.className += ' ex-over'
+        }
+        dispatch('drag_over', container)
+      })
       .on('drop', function (el) {
+        console.log('drop')
+        const container = document.getElementById('form-preview-fields')
+        if (container) {
+          container.className = container.className.replace('ex-over', '')
+        }
         const fields = Array.from(document.querySelector('#form-preview-fields').childNodes).filter((w) => w.id?.startsWith('sidebar-block') || w.id?.startsWith('form-field-'))
         dispatch('drag_finished', fields)
         el.remove()
+
         setTimeout(() => {
           drake.destroy()
         }, 100)

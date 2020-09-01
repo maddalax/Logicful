@@ -124,5 +124,11 @@
 </form>
 
 <style>
-
+  :global(.ex-over) {
+    background-color: #f5f5f5;
+    height: 100%;
+    min-height: 60vh;
+    padding-top: 3em;
+    padding-bottom: 3em !important;
+  }
 </style>

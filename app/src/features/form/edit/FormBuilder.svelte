@@ -149,17 +149,24 @@
       return form.fields
     })
 
+    subscribe("drag_over", () => {
+      removePlaceHolder();
+    })
+
     subscribe('drag_finished', async (elements) => {
       removePlaceHolder()
+      console.log(elements);
 
-      const fields: IField = elements.map((e: Element) => {
+      let fields: IField[] = elements.filter((w : any) => w).map((e: Element) => {
+        if(e.id === 'form-field-placeholder') {
+          return undefined;
+        }
         if (e.id.startsWith('form-field-')) {
-          return form.fields
-            .find((w) => w.id === e.id.replace('form-field-', ''))!
-            .map((field: IField) => {
-              field.selected = false
-              return field
-            })
+         const field = form.fields.find((w) => w.id === e.id.replace('form-field-', ''));
+         if(field) {
+           field.selected = false;
+         }
+         return field;
         }
         if (e.id.startsWith('sidebar-block-')) {
           const type = e.id.replace('sidebar-block-', '')
@@ -175,10 +182,14 @@
           return field
         }
       })
+      fields = fields.filter(w => w != null);
       form.fields = fastClone(fields)
       dragForm = fastClone(form)
       await tick()
       dragForm = undefined
+      if(form.fields.length === 0) {
+        addPlaceHolder();
+      }
       formStore.setForm(form)
     })
 

@@ -34,9 +34,6 @@ export class FormStore {
                 value: ''
             })
         })
-        console.log("FIELDS", form.fields);
-        const formListeners = form.fields.filter(w => w.configTarget === 'form')
-        console.log('listeners', formListeners);
         Object.keys(copy).forEach(f => {
             if (f === "fields") {
                 return;
@@ -53,7 +50,6 @@ export class FormStore {
             if (isSame) {
                 return;
             }
-            console.log(field, change)
             set(store, field.configFieldTarget, field.value);
             dispatch("form_updated", this.getForm())
             dispatchFieldChange(fastClone(field), {
