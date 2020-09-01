@@ -13,7 +13,7 @@ import FormEditSettings from './FormEditSettings.svelte';
     form = formStore.getForm()
     console.log(form);
     subscribe('form_updated', (props) => {
-      form = props.form
+      form = props
     })
   })
 </script>

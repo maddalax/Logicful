@@ -44,9 +44,7 @@ export class FormStore {
             //@ts-ignore
             store[f] = copy[f];
         })
-        dispatch("form_updated", {
-            form: this.getForm()
-        });
+        dispatch("form_updated", this.getForm());
     }
     set(field: IField, change: FieldChange = { field: '', value: '', fromUser: false }) {
         if (field.configTarget === 'form') {

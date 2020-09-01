@@ -102,7 +102,7 @@
     loadForm()
 
     subscribe('form_updated', (props) => {
-      form = props.form
+      form = props
       addPlaceHolder()
     })
 
@@ -213,7 +213,7 @@
     })
 
     subscribe('form_updated', (params) => {
-      form = params.form
+      form = params
     })
 
     subscribe('document_click', () => {
