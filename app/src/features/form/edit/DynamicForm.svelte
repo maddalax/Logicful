@@ -14,7 +14,8 @@
   import { onMount } from 'svelte'
   import { goto } from '@sapper/app'
   import Dialog from 'components/layout/Dialog.svelte'
-import { randomString } from 'util/Generate';
+  import { randomString } from 'util/Generate'
+  import { saveToLocalStorage } from './services/SaveForm'
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live
@@ -56,7 +57,7 @@ import { randomString } from 'util/Generate';
 
   function display(field: IField): boolean {
     if (!form.enableLogic) {
-      //return true
+      return true
     }
     if (!field.logic) {
       return true
@@ -67,7 +68,7 @@ import { randomString } from 'util/Generate';
 
   function onFormPreview() {
     const form = formStore.getForm()
-    localStorage.setItem('form', JSON.stringify(form))
+    saveToLocalStorage(form)
     if (form.id) {
       window.open(`./preview/${form.id}?mode=local`, '_blank')
     } else {
@@ -82,23 +83,6 @@ import { randomString } from 'util/Generate';
         field: selected,
       })
     }
-  }
-
-
-  function dropzoneStyles() {
-    if (!dragging) {
-      return ''
-    }
-    if (form.fields.length === 1 && form.fields[0].type === 'placeholder') {
-      return 'background-color: white'
-    }
-    if (hasPlaceholder) {
-      return 'background-color: white'
-    }
-    if (dragging) {
-      return 'background-color: #f5f5f5; padding-top: 3em; padding-bottom: 3em;'
-    }
-    return 'background-color: #f5f5f5; padding-top: 3em; padding-bottom: 3em;'
   }
 </script>
 
