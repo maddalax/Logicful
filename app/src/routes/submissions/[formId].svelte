@@ -28,6 +28,7 @@
   let container: any
   let types: { [key: string]: string } = {}
   let filtered: any[] = []
+  let hidden = new Set(["submission_id"])
 
   async function getRows(): Promise<TableRow[]> {
     let response = await fetch(`http://localhost:3000/form/${formId}/submissions`)
@@ -99,7 +100,7 @@
   <div class="main">
     <h1>Submissions</h1>
     <div>
-      <RemoteTable {getRows} {sortColumns} {onDelete} onFormat={format} />
+      <RemoteTable {getRows} {sortColumns} {onDelete} onFormat={format} hidden={hidden} />
     </div>
   </div>
 </div>
