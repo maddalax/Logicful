@@ -7,7 +7,8 @@
   import { dispatch } from 'event/EventBus'
   import ContentBlockList from './ContentBlockList.svelte'
   import Repeater from 'components/Repeater.svelte'
-import formStore from 'store/FormStore';
+  import formStore from 'store/FormStore'
+import { isEmptyOrNull } from 'util/Compare';
 
   export let field: IField
   export let expanded: boolean
@@ -23,12 +24,15 @@ import formStore from 'store/FormStore';
   }
 
   function onOptionsChange(options: string[] | LabelValue[]) {
-      field.options = options;
-      formStore.set(field, {
-          fromUser : true,
-          field : 'options',
-          value : options
-      })
+    if(options.length === 0) {
+        options = ["Checkbox Item 1"]
+    }
+    field.options = options
+    formStore.set(field, {
+      fromUser: true,
+      field: 'options',
+      value: options,
+    })
   }
 
   function loadTransformer(value: ContentBlock[]) {
@@ -40,17 +44,18 @@ import formStore from 'store/FormStore';
     })
   }
 
-  function options() : LabelValue[] {
-    return field.options?.map((w : string) => {
-        return {label : w, value : w}
+  function options(): LabelValue[] {
+    if(isEmptyOrNull(field.options)) {
+        return [{label : 'Checkbox Item 1', value : 'Checkbox Item 1'}]
+    }
+    return field.options?.map((w: string) => {
+      return { label: w, value: w }
     })
   }
 </script>
 
 <div>
-  <Repeater
-    options={options()}
-    onlyLabel={true}
-    label={'Checkbox Options'}
-    onChange={onOptionsChange} />
+  <Repeater options={options()} onlyLabel={true} label={'Checkbox Options'} onChange={onOptionsChange} />
+  <Field
+    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />
 </div>

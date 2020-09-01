@@ -11,7 +11,6 @@ const excluded = ['block']
 export async function submitForm() {
     const form = formStore.getForm();
     const clone = fastClone(form);
-    console.log("FORM BEFORE EDIT", clone);
     const id = form.id;
     const results: { [key: string]: any } = {}
     const fieldMeta: { [key: string]: any } = {};
@@ -57,8 +56,6 @@ export async function submitForm() {
             if(last === 'value') {
                 return;
             }
-            //@ts-ignore
-            console.log(this.path, last, this.key)
             //@ts-ignore
             this.delete();
         }

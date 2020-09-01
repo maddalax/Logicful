@@ -12,7 +12,6 @@
   let debouncedOnChange: any
 
   onMount(() => {
-    console.log('FIELD', field)
     debouncedOnChange = debounce((e: any) => {
       field.value = e.target.value ?? ''
       formStore.set(field, { fromUser: true, field: 'value', value: field.value })

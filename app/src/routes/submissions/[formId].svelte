@@ -74,8 +74,8 @@
       const results = [value?.address1?.value, value?.address2?.value, value?.state?.value, value?.city?.value, value?.zip?.value]
       return results.filter((r) => r).join(' ')
     }
-    if (type === 'checkbox-group' && Array.isArray(value)) {
-      return value.filter((v) => v != null).join(', ')
+    if (type === 'checkbox-group' && isObject(value)) {
+      return Object.values(value).filter(v => v != null).join(", ")
     }
     return undefined
   }

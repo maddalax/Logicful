@@ -1,6 +1,7 @@
 <script lang="typescript">
   import type { LabelValue } from 'models/IField'
   import { dispatch } from 'event/EventBus'
+import { onMount } from 'svelte';
   export let onChange: (data: LabelValue[] | string[]) => any
   export let helperText: string = ''
   export let onlyLabel: boolean = false
@@ -12,13 +13,17 @@
     },
   ]
 
-  function onRepeaterChange() {
+  onMount(() => [
+    onRepeaterChange(false)
+  ])
+
+  function onRepeaterChange(user : boolean = true) {
     if (onlyLabel) {
       const labels = options.map((m) => m.label)
-      dispatch('user_change', labels)
+      user && dispatch('user_change', labels)
       onChange?.(labels)
     } else {
-      dispatch('user_change', options)
+      user && dispatch('user_change', options)
       onChange?.(options)
     }
   }
@@ -26,7 +31,15 @@
   function remove(option: number) {
     options.splice(option, 1)
     options = [...options]
-    onRepeaterChange();
+    onRepeaterChange()
+    if (options.length === 0) {
+      options = [
+        {
+          label: '',
+          value: '',
+        },
+      ]
+    }
   }
 
   function addNew() {
@@ -44,27 +57,13 @@
   {#each options as option, i}
     <div class="d-flex flex-row bd-highlight justify-end">
       {#if onlyLabel}
-        <div class="p-1 bd-highlight" style="width: 100%;">
-          <input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Option'} />
-        </div>
+        <div class="p-1 bd-highlight" style="width: 100%;"><input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Option'} /></div>
       {:else}
-        <div class="p-1 bd-highlight" style="width: 100%;">
-          <input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Display'} />
-        </div>
-        <div class="p-1 bd-highlight" style="width: 100%;">
-          <input class="form-control" name="value" type="text" on:blur={onRepeaterChange} bind:value={option.value} placeholder={'Value'} />
-        </div>
+        <div class="p-1 bd-highlight" style="width: 100%;"><input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Display'} /></div>
+        <div class="p-1 bd-highlight" style="width: 100%;"><input class="form-control" name="value" type="text" on:blur={onRepeaterChange} bind:value={option.value} placeholder={'Value'} /></div>
       {/if}
-      <div class="bd-highlight">
-        <span class="icon baseline" on:click={addNew}>
-          <span class="fas fa-plus" />
-        </span>
-      </div>
-      <div class="bd-highlight">
-        <span class="icon baseline" on:click={() => remove(i)}>
-          <span class="fas fa-trash" />
-        </span>
-      </div>
+      <div class="bd-highlight"><span class="icon baseline" on:click={addNew}> <span class="fas fa-plus" /> </span></div>
+      <div class="bd-highlight"><span class="icon baseline" on:click={() => remove(i)}> <span class="fas fa-trash" /> </span></div>
     </div>
   {/each}
   {#if helperText}

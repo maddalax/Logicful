@@ -15,7 +15,7 @@ export function toNumberOrDefault(value : any) {
     return isNaN(parsed) ? 0 : parsed;
 }
 
-export function isEmptyOrNull(value : any) : boolean {
+export function isEmptyOrNull(value : any[] | undefined | null) : boolean {
     if(value == null) {
         return true;
     }
