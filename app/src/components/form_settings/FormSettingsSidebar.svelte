@@ -1,26 +1,25 @@
 <script lang="typescript">
-import { subscribe } from 'event/EventBus';
-
+  import { subscribe } from 'event/EventBus'
   import type { IForm } from 'models/IForm'
-import { onMount } from 'svelte';
+  import { onMount } from 'svelte'
 
   export let form: IForm
   export let selected: string
 
-  onMount(()=>{
-        subscribe('form_loaded',(updatedForm)=>{
-            form = updatedForm;
-        })
-        subscribe('form_updated', (updatedForm)=>{
-            form = updatedForm;
-        })
+  onMount(() => {
+    subscribe('form_loaded', (updatedForm) => {
+      form = updatedForm
     })
+    subscribe('form_updated', (updatedForm) => {
+      form = updatedForm
+    })
+  })
 </script>
 
 <div class="card border-light p-2">
   <div class="card-header bg-white border-0" style="padding-bottom: 0.5em;">
     <div style="display: flex;">
-        <h2 class="h4 mt-3">Form Settings</h2>
+      <h2 class="h4 mt-3">Form Settings</h2>
       <div class="ml-auto" style="padding-top: 1.1em;">
         <span class="h4 fas fa-cogs" />
       </div>

@@ -12,6 +12,7 @@
   import Button from '../../../components/Button.svelte'
   import LogicBuilder from './LogicBuilder.svelte'
   import type { FieldEditConfig } from './models/FieldEditConfig'
+import GroupAccordion from './GroupAccordion.svelte'
 
   export let field: IField
   export let config: FieldEditConfig = {}
@@ -45,5 +46,6 @@
       </div>
     {/if}
     <LogicAccordion {field} />
+    <GroupAccordion {field} />
   </div>
 </div>
