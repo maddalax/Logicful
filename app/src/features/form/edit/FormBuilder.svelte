@@ -21,7 +21,6 @@
   let order = []
   let form: IForm
   let dragForm: IForm | undefined
-  let isDragging = false
   let lastLength = 0
 
   async function loadForm() {
@@ -37,7 +36,10 @@
       w.selected = false
       return w
     })
-    form.groups = [{value: '123', label: 'Personal Details'}, {value: '456', label: 'Experience Questions'}]
+    form.groups = [
+      { value: '123', label: 'Personal Details' },
+      { value: '456', label: 'Experience Questions' },
+    ]
 
     addPlaceHolder()
 
@@ -143,23 +145,25 @@
       await saveForm()
     })
 
-    subscribe('drag_event', (props) => {
-      isDragging = props.type === 'consider'
-    })
-
     subscribe('get_form_fields', () => {
       return form.fields
     })
 
     subscribe('drag_finished', async (elements) => {
-      console.log(elements)
+      removePlaceHolder()
+
       const fields: IField = elements.map((e: Element) => {
         if (e.id.startsWith('form-field-')) {
-          return form.fields.find((w) => w.id === e.id.replace('form-field-', ''))
+          return form.fields
+            .find((w) => w.id === e.id.replace('form-field-', ''))!
+            .map((field: IField) => {
+              field.selected = false
+              return field
+            })
         }
         if (e.id.startsWith('sidebar-block-')) {
           const type = e.id.replace('sidebar-block-', '')
-          return {
+          let field: IField = {
             id: randomString(),
             type: type,
             name: 'new-field-' + randomStringSmall(),
@@ -167,53 +171,14 @@
             selected: true,
             value: undefined,
           }
+          field = setFieldDefaults(field)
+          return field
         }
       })
       form.fields = fastClone(fields)
       dragForm = fastClone(form)
       await tick()
       dragForm = undefined
-      formStore.setForm(form)
-    })
-
-    subscribe('block_dropped', (e) => {
-      removePlaceHolder()
-
-      if (lastLength > 0 && e.detail.items.length != lastLength) {
-        console.log('FIELD DELETED!', lastLength, e.detail.items.length, e.detail.items, '...', form.fields)
-        debugger
-        return
-      }
-
-      lastLength = e.detail.items.length
-      console.log(e.detail.items.length)
-      const items: IField[] = e.detail.items.map((i: any, index: number) => {
-        if (!i.type) {
-          const clone = fastClone(i)
-          clone.name = 'new-field-' + randomStringSmall()
-          clone.label = 'New Field ' + randomStringSmall()
-          clone.type = i.name
-          clone.selected = true
-          clone.value = undefined
-          i = clone
-        } else {
-          // Deselect all other fields and select the one that was dropped.
-          if (e.type === 'finalize' && i.selected) {
-            i.selected = false
-            formStore.set(i)
-          }
-        }
-        return i
-      })
-      if (e.type === 'finalize') {
-        lastLength = 0
-        let selected = items.find((w) => w.selected)
-        if (selected) {
-          selected = setFieldDefaults(selected)
-          formStore.set(selected)
-        }
-      }
-      form.fields = items
       formStore.setForm(form)
     })
 

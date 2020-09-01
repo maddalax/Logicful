@@ -13,23 +13,20 @@
   import { debounce } from 'util/Debounce'
 
   let saving = false
-
-  let style = ''
   let drake: any = null
 
   function defaultBlocks() {
     return [
-      { id: randomString(), name: 'string' },
-      { id: randomString(), name: 'combobox' },
-      { id: randomString(), name: 'switch' },
-      { id: randomString(), name: 'spacer' },
-      { id: randomString(), name: 'date' },
-      { id: randomString(), name: 'block' },
-      { id: randomString(), name: 'file' },
-      { id: randomString(), name: 'address' },
-      { id: randomString(), name: 'checkbox-group' },
-      { id: randomString(), name: 'radio-group' },
-      { id: randomString(), name: 'full-name' },
+      { name: 'string' },
+      { name: 'switch' },
+      { name: 'spacer' },
+      { name: 'date' },
+      { name: 'block' },
+      { name: 'file' },
+      { name: 'address' },
+      { name: 'checkbox-group' },
+      { name: 'radio-group' },
+      { name: 'full-name' },
     ]
   }
 
@@ -59,17 +56,6 @@
       })
   }, 500)
 
-  function handler(e: any) {
-    dispatch('drag_event', {
-      type: e.type,
-    })
-    if (e.type === 'consider') {
-      blocks = e.detail.items
-    } else {
-      blocks = defaultBlocks()
-    }
-  }
-
   function addField(block: any) {
     dispatch('add_field', {
       type: block.name,
@@ -90,18 +76,6 @@
     subscribe('form_updated', () => {
       loadDragula()
     })
-
-    window.onunhandledrejection = (e: any) => {
-      console.log('we got exception, but the app has crashed', e)
-      // here we should gracefully show some fallback error or previous good known state
-      // this does not work though:
-      // current = C1;
-
-      // todo: This is unexpected error, send error to log server
-      // only way to reload page so that users can try again until error is resolved
-      // uncomment to reload page:
-      // window.location = "/oi-oi-oi";
-    }
   })
 </script>
 
