@@ -1,9 +1,9 @@
 export function transformDraggedElement(el: any, data: any, index: number) {
   if (data.name === 'string') {
-    el.innerHTML = "<label>New Text Input</label><input class='form-control shadow'/>";
+    el.innerHTML = "<label>New Text Input</label><input class='form-control'/>";
   }
   if (data.name === 'combobox') {
-    el.innerHTML = "<label>New Dropdown</label><select class='form-control shadow'><option>Dropdown Value</option></select>";
+    el.innerHTML = "<label>New Dropdown</label><select class='form-control'><option>Dropdown Value</option></select>";
   }
   if (data.name === 'switch') {
     el.innerHTML = `<div class="form-check form-switch">

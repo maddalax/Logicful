@@ -14,6 +14,7 @@
   import { onMount } from 'svelte'
   import { goto } from '@sapper/app'
   import Dialog from 'components/layout/Dialog.svelte'
+import { randomString } from 'util/Generate';
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live
@@ -22,32 +23,12 @@
   let hasPlaceholder: boolean = false
   let fromSidebar = false
   let deleting = false
-
-  function handler(e: any) {
-    if (fromSidebar) {
-      considering = e.type === 'consider'
-      setDropZoneStyles()
-    }
-    dispatchSync('block_dropped', e)
-  }
-
-  function setDropZoneStyles() {
-    const element = document.getElementById('form-preview').childNodes.item(0)
-    element.style = dropzoneStyles()
-  }
-
   onMount(() => {
     subscribe('confirm_field_deletion', () => {
       deleting = true
     })
     subscribe('form_placeholder_changed', (props) => {
       hasPlaceholder = props.added
-      setDropZoneStyles()
-    })
-    subscribe('drag_event', (props) => {
-      fromSidebar = props.type === 'consider'
-      considering = props.type === 'consider'
-      setDropZoneStyles()
     })
   })
 
@@ -98,13 +79,14 @@
     const selected = form.fields.find((w) => w.selected)
     if (selected) {
       dispatch('field_delete', {
-        field : selected
+        field: selected,
       })
     }
   }
 
+
   function dropzoneStyles() {
-    if (!considering) {
+    if (!dragging) {
       return ''
     }
     if (form.fields.length === 1 && form.fields[0].type === 'placeholder') {
@@ -113,7 +95,7 @@
     if (hasPlaceholder) {
       return 'background-color: white'
     }
-    if (considering) {
+    if (dragging) {
       return 'background-color: #f5f5f5; padding-top: 3em; padding-bottom: 3em;'
     }
     return 'background-color: #f5f5f5; padding-top: 3em; padding-bottom: 3em;'
@@ -140,18 +122,14 @@
 </div>
 <hr style="margin-top: 0.5rem; margin-bottom: 0.7rem;" />
 <form class="preview-padding" id="form-preview">
-  <div
-    style="padding-bottom: 1em"
-    use:dndzone={{ items: form.fields, flipDurationMs: 300, transformDraggedElement, dropTargetStyle: { 'background-color': 'white' } }}
-    on:consider={handler}
-    on:finalize={handler}>
+  <div style="padding-bottom: 1em" id="form-preview-fields">
     {#each form.fields as field (field.id)}
       {#if display(field)}
-        <div>
+        <div id={`form-field-${field.id}`}>
           <Field field={fastClone(field)} />
         </div>
       {:else}
-        <div>
+        <div id={`form-field-${field.id}`}>
           <Field field={fastClone(field)} hidden={true} />
         </div>
       {/if}
