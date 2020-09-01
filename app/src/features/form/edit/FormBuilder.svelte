@@ -10,15 +10,15 @@
   import { set } from 'util/Selection'
   import { DynamicFormMode } from 'components/models/ComponentProps'
   import { fastClone } from 'util/Compare'
-  import { saveForm } from './services/SaveForm'
+  import { saveForm, saveToLocalStorage } from './services/SaveForm'
   import ToastManager from 'components/ToastManager.svelte'
   import { debounce } from 'util/Debounce'
+  import { startPreviewSaver } from 'features/form/edit/services/PreviewSaver'
 
   let dropped = false
   let loadingActive: boolean = false
   let order = []
   let form: IForm
-  let saveInterval: number
   let isDragging = false
 
   async function loadForm() {
@@ -42,7 +42,7 @@
       form,
     })
 
-    startSaveInterval()
+    startPreviewSaver()
   }
 
   function removePlaceHolder() {
@@ -55,26 +55,6 @@
         added: false,
       })
     }
-  }
-
-  function startSaveInterval() {
-    if (saveInterval) {
-      return
-    }
-    saveInterval = setInterval(() => {
-      if (!document.hasFocus() || isDragging) {
-        return
-      }
-      const form = formStore.getForm()
-      if (!form) {
-        return
-      }
-      const current = localStorage.getItem('form')
-      if (current && current === JSON.stringify(form)) {
-        return
-      }
-      localStorage.setItem('form', JSON.stringify(form))
-    }, 500)
   }
 
   function addPlaceHolder() {
@@ -169,7 +149,7 @@
 
     subscribe('block_dropped', (e) => {
       removePlaceHolder()
-      console.log(e.detail.items.length);
+      console.log(e.detail.items.length)
       const items: IField[] = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
           const clone = fastClone(i)
@@ -186,10 +166,10 @@
             formStore.set(i)
           }
         }
-        return i;
+        return i
       })
       if (e.type === 'finalize') {
-        console.log(items);
+        console.log(items)
         const selected = items.find((w) => w.selected)
         if (selected) {
           formStore.set(selected)
@@ -235,10 +215,6 @@
         form.fields[index] = field
       }
     })
-  })
-
-  onDestroy(() => {
-    saveInterval && clearInterval(saveInterval)
   })
 </script>
 

@@ -4,7 +4,7 @@ import {select} from "util/Selection";
 
 export class FieldValueLoader {
   public async load(field: IField): Promise<any | undefined> {
-    return await this.loadValue(field.value);
+    return await this.loadValue(field.value ?? field.defaultValue);
   }
 
   private async loadValue(value: FormValue): Promise<any | undefined> {

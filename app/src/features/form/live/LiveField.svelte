@@ -35,7 +35,7 @@ import FullName from 'inputs/FullName.svelte';
 
   async function load() {
     lastValue = field.value
-    if (field.value != null) {
+    if ((field.value ?? field.defaultValue) != null) {
       state = LoadState.Loading
       try {
         const loader = new FieldValueLoader()
