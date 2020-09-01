@@ -8,6 +8,8 @@
   import { LoadState } from 'models/LoadState'
   import { FieldValueLoader } from 'loader/FieldValueLoader'
   import Address from 'inputs/Address.svelte'
+  import FullName from 'inputs/FullName.svelte'
+
   import TextArea from 'inputs/TextArea.svelte'
   import CheckboxGroup from 'inputs/CheckboxGroup.svelte'
   import Spacer from 'inputs/Spacer.svelte'
@@ -133,6 +135,8 @@
       <CheckboxGroup {field} />
     {:else if field.type === 'radio-group'}
       <RadioGroup {field} />
+    {:else if field.type === 'full-name'}
+      <FullName {field} {value} />
     {:else}
       <p>No field found for field. {JSON.stringify(field, null, 2)}</p>
     {/if}
@@ -143,19 +147,19 @@
   .wrapper:hover {
     background-color: #f5f5f5;
     cursor: pointer;
-    border-radius: 0.45rem;
+    border-radius: 0.3rem;
   }
 
   .selected {
     background-color: #f5f5f5;
     cursor: pointer;
-    border-radius: 0.45rem;
+    border-radius: 0.3rem;
   }
 
   .placeholder {
     background-color: #f5f5f5 !important;
     padding: 4em !important;
-    border-radius: 0.45rem;
+    border-radius: 0.3rem;
   }
 
   .hidden {

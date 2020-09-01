@@ -138,7 +138,7 @@
   </div>
   <div class="col-auto" style="text-align: right"><button on:click={onFormPreview} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</button></div>
 </div>
-<hr style="margin: 0.5rem;" />
+<hr style="margin-top: 0.5rem; margin-bottom: 0.7rem;" />
 <form class="preview-padding" id="form-preview">
   <div
     style="padding-bottom: 1em"

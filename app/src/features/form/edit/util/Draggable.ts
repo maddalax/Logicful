@@ -37,25 +37,34 @@ export function transformDraggedElement(el: any, data: any, index: number) {
   </div>`
   }
   if (data.name === 'address') {
-    el.innerHTML = `<label>New File</label>
-        <input class="form-control"/>
-
-<input class="form-control"/>
-
-<div class="container">
-  <div class="row">
+    el.innerHTML = `<div class="row">
     <div class="col">
-<input class="form-control"/>
+      <label class="form-check-label" for="defaultCheck1">Address</label>
+      <div class="row">
+        <input class="form-control" />
+        <small class="form-text text-muted">Address Line 1</small>
+      </div>
+      <div class="row" style="padding-top: 0.8em;">
+        <input class="form-control" />
+        <small class="form-text text-muted">Address Line 2</small>
+      </div>
+      <div class="row" style="padding-top: 0.8em;">
+        <div class="col-5">
+          <input class="form-control" />
+          <small class="form-text text-muted">City</small>
+        </div>
+        <div class="col-3">
+          <select class="form-control shadow">
+            <option>Select State</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <input class="form-control" />
+          <small class="form-text text-muted">Zip Code</small>
+        </div>
+      </div>
     </div>
-    <div class="col">
-<select class='form-control shadow'><option>Select State</option></select>
-    </div>
-  </div>
-</div>
-
-<input class="form-control"/>
-
-      </div>`
+  </div>`
   }
   return el
 }

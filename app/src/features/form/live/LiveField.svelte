@@ -21,6 +21,7 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
   import FileUpload from 'inputs/FileUpload.svelte'
+import FullName from 'inputs/FullName.svelte';
   import CheckboxGroup from 'inputs/CheckboxGroup.svelte'
   import RadioGroup from 'inputs/RadioGroup.svelte'
 
@@ -85,6 +86,8 @@
           <CheckboxGroup {field} />
         {:else if field.type === 'radio-group'}
           <RadioGroup {field} />
+        {:else if field.type === 'full-name'}
+          <FullName {field} {value} />
         {/if}
       </div>
     {/if}

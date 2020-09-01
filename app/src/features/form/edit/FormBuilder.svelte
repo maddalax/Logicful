@@ -102,7 +102,7 @@
     loadForm()
 
     subscribe('form_updated', (props) => {
-      form = props.form
+      form = props
       addPlaceHolder()
     })
 
@@ -189,6 +189,7 @@
         return i;
       })
       if (e.type === 'finalize') {
+        console.log(items);
         const selected = items.find((w) => w.selected)
         if (selected) {
           formStore.set(selected)
@@ -212,7 +213,7 @@
     })
 
     subscribe('form_updated', (params) => {
-      form = params.form
+      form = params
     })
 
     subscribe('document_click', () => {

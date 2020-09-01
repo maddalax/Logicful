@@ -29,16 +29,20 @@
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <span class="fas fa-columns" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;"/>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
+            <div style="display: flex; vertical-align: middle;">
             <a href="./folder" class="nav-link">
+              <span class="fas fa-bars" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;"/>
               My Forms
             </a>
           </li>
           <li class="nav-item">
             <a href="./builder" class="nav-link">
+              <span class="fas fa-hammer" style="color: white; font-size: 1.1em; width: none; padding-right: 0.2em;"/>
               Builder
             </a>
           </li>
@@ -99,7 +103,7 @@
         </ul>
       </div>
       <div class="d-flex align-items-center">
-        <a href="./account-settings" class="btn btn-outline-soft animate-up-2">
+        <a href="./account-settings" class="btn btn-sm btn-outline-soft animate-up-2">
           My Account
         </a>
         

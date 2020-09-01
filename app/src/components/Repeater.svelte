@@ -14,7 +14,7 @@
 
   function onRepeaterChange() {
     if (onlyLabel) {
-      const labels = options.map(m => m.label);
+      const labels = options.map((m) => m.label)
       dispatch('user_change', labels)
       onChange?.(labels)
     } else {
@@ -44,13 +44,27 @@
   {#each options as option, i}
     <div class="d-flex flex-row bd-highlight justify-end">
       {#if onlyLabel}
-        <div class="p-1 bd-highlight"><input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Option'} /></div>
+        <div class="p-1 bd-highlight">
+          <input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Option'} />
+        </div>
       {:else}
-        <div class="p-1 bd-highlight"><input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Display'} /></div>
-        <div class="p-1 bd-highlight"><input class="form-control" name="value" type="text" on:blur={onRepeaterChange} bind:value={option.value} placeholder={'Value'} /></div>
+        <div class="p-1 bd-highlight">
+          <input class="form-control" name="display" type="text" on:blur={onRepeaterChange} bind:value={option.label} placeholder={'Display'} />
+        </div>
+        <div class="p-1 bd-highlight">
+          <input class="form-control" name="value" type="text" on:blur={onRepeaterChange} bind:value={option.value} placeholder={'Value'} />
+        </div>
       {/if}
-      <div class="bd-highlight"><span class="icon baseline" on:click={addNew}><i class="fas fa-plus" /> </span></div>
-      <div class="bd-highlight"><span class="icon baseline" on:click={() => remove(i)}><i class="fas fa-trash" /> </span></div>
+      <div class="bd-highlight">
+        <span class="icon baseline" on:click={addNew}>
+          <i class="fas fa-plus" />
+        </span>
+      </div>
+      <div class="bd-highlight">
+        <span class="icon baseline" on:click={() => remove(i)}>
+          <i class="fas fa-trash" />
+        </span>
+      </div>
     </div>
   {/each}
   {#if helperText}

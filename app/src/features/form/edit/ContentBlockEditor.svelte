@@ -32,8 +32,9 @@
 </script>
 
 <div>
-<div>
-    <h5>Block Editor</h5>
+<div style="padding-left: 0.5em;">
+    <h5 style="padding-bottom: 0.2em;">Content Block Settings</h5>
+    <hr />
 </div>
 <Field
         editor={true}

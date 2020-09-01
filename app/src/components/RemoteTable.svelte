@@ -9,7 +9,7 @@
   import { fastEquals } from 'util/Compare'
   import Dialog from 'components/layout/Dialog.svelte'
   import ToastManager from 'components/ToastManager.svelte'
-import { isObject } from 'guards/Guard';
+  import { isObject } from 'guards/Guard'
 
   export let getRows: () => Promise<TableRow[]>
 
@@ -39,7 +39,7 @@ import { isObject } from 'guards/Guard';
   export let onDelete: ((rows: any[]) => any) | undefined = undefined
   export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
-  export let onFormat : (column : string, row : any) => any = () => undefined
+  export let onFormat: (column: string, row: any) => any = () => undefined
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
