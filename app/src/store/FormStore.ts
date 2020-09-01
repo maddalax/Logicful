@@ -53,7 +53,7 @@ export class FormStore {
             if (isSame) {
                 return;
             }
-
+            console.log(field, change)
             set(store, field.configFieldTarget, field.value);
             dispatch("form_updated", this.getForm())
             dispatchFieldChange(fastClone(field), {

@@ -8,6 +8,7 @@
 
   let main: any
   let rightSidebar: any
+  let rightSidebarProps : any = {};
 
   onMount(() => {
     main = FormBuilder
@@ -15,8 +16,9 @@
     subscribe('show_main_content', (props) => {
       main = props.component
     })
-    subscribe('show_right_sidebar', (props) => {
-      rightSidebar = props.component
+    subscribe('show_right_sidebar', ({component, ...other}) => {
+      rightSidebar = component
+      rightSidebarProps = other ?? {};
     })
   })
 </script>
@@ -32,7 +34,7 @@
   </div>
   <div class="right-sidebar">
     <Sidebar>
-      <svelte:component this={rightSidebar} />
+      <svelte:component this={rightSidebar} {...rightSidebarProps} />
     </Sidebar>
   </div>
 </div>

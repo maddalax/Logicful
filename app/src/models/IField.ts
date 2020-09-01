@@ -13,6 +13,7 @@ export interface IField {
     configTarget? : string,
     selected? : boolean,
     loadTransformer? : (value : any) => any,
+    groupId? : string,
     logic? : {
         action : string,
         rules : {

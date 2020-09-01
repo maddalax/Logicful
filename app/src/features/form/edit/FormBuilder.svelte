@@ -35,6 +35,7 @@
       w.selected = false
       return w
     })
+    form.groups = [{value: '123', label: 'Personal Details'}, {value: '456', label: 'Experience Questions'}]
 
     addPlaceHolder()
 

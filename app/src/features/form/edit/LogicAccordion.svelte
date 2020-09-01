@@ -6,17 +6,17 @@
 </script>
 
 
-        <div class="accordion mt-4" id="accordionExample" style="margin-bottom: 3rem;">
+        <div class="accordion mt-4" id="accordionLogic" style="margin-bottom: 1em;">
             <div class="card border-light mb-0">
-                <div class="card-header accordionHeader" id="headingTwo">
+                <div class="card-header accordionHeader" id="headingOne">
                     <h2 class="mb-0">
-                        <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             <span class="h6 mb-0 font-weight-bold">Logic</span>
                             <span class="icon"><span class="fas fa-plus" style="font-size: 1em;"></span></span>
                         </button>
                     </h2>
                 </div>
-                    <div id="collapseTwo" class="collapse accordionCollapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div id="collapseOne" class="collapse accordionCollapse" aria-labelledby="headingOne" data-parent="#accordionLogic">
                     <div class="card-body">
                         <p class="mb-0">
                             <LogicBuilder field={field}/>
