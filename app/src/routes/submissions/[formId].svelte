@@ -77,6 +77,9 @@
     if (type === 'checkbox-group' && isObject(value)) {
       return Object.values(value).filter(v => v != null).join(", ")
     }
+    if (type === 'radio-group' && isObject(value)) {
+      return Object.values(value).find(v => v != null)
+    }
     return undefined
   }
 

@@ -2,7 +2,7 @@
   import type { IField } from 'models/IField'
   import { randomStringSmall, randomString } from 'util/Generate'
   import type { IForm } from 'models/IForm'
-  import { onDestroy, onMount } from 'svelte'
+  import { onDestroy, onMount, tick } from 'svelte'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { dispatch, subscribe } from 'event/EventBus'
   import DynamicForm from './DynamicForm.svelte'
@@ -20,7 +20,9 @@
   let loadingActive: boolean = false
   let order = []
   let form: IForm
+  let dragForm: IForm | undefined
   let isDragging = false
+  let lastLength = 0
 
   async function loadForm() {
     //const response = await fetch("http://127.0.0.1:3000/form/list");
@@ -149,8 +151,41 @@
       return form.fields
     })
 
+    subscribe('drag_finished', async (elements) => {
+      console.log(elements)
+      const fields: IField = elements.map((e: Element) => {
+        if (e.id.startsWith('form-field-')) {
+          return form.fields.find((w) => w.id === e.id.replace('form-field-', ''))
+        }
+        if (e.id.startsWith('sidebar-block-')) {
+          const type = e.id.replace('sidebar-block-', '')
+          return {
+            id: randomString(),
+            type: type,
+            name: 'new-field-' + randomStringSmall(),
+            label: 'New Field ' + randomStringSmall(),
+            selected: true,
+            value: undefined,
+          }
+        }
+      })
+      form.fields = fastClone(fields)
+      dragForm = fastClone(form)
+      await tick()
+      dragForm = undefined
+      formStore.setForm(form)
+    })
+
     subscribe('block_dropped', (e) => {
       removePlaceHolder()
+
+      if (lastLength > 0 && e.detail.items.length != lastLength) {
+        console.log('FIELD DELETED!', lastLength, e.detail.items.length, e.detail.items, '...', form.fields)
+        debugger
+        return
+      }
+
+      lastLength = e.detail.items.length
       console.log(e.detail.items.length)
       const items: IField[] = e.detail.items.map((i: any, index: number) => {
         if (!i.type) {
@@ -171,6 +206,7 @@
         return i
       })
       if (e.type === 'finalize') {
+        lastLength = 0
         let selected = items.find((w) => w.selected)
         if (selected) {
           selected = setFieldDefaults(selected)
@@ -227,9 +263,15 @@
   {:else}
     <div class="container" style="padding-left: 0.4em; padding-top: 0.5em;">
       <div class="row">
-        <div class={'col-md no-gutters max-width'}>
-          <DynamicForm {form} mode={DynamicFormMode.Preview} />
-        </div>
+        {#if dragForm}
+          <div class={'col-md no-gutters max-width'}>
+            <DynamicForm form={dragForm} mode={DynamicFormMode.Preview} />
+          </div>
+        {:else}
+          <div class={'col-md no-gutters max-width'}>
+            <DynamicForm {form} mode={DynamicFormMode.Preview} />
+          </div>
+        {/if}
         {#if loadingActive}
           <div class="col">
             <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>

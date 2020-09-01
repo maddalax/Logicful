@@ -4,31 +4,60 @@
   import { flip } from 'svelte/animate'
   import { dndzone } from 'svelte-dnd-action'
   import { randomString } from 'util/Generate'
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import FieldEdit from './FieldEdit.svelte'
   import { slide } from 'svelte/transition'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
+  import { transformDraggedElement } from './util/Draggable'
+  import { debounce } from 'util/Debounce'
 
   let saving = false
+
+  let style = ''
+  let drake: any = null
 
   function defaultBlocks() {
     return [
       { id: randomString(), name: 'string' },
-      { id: randomString(), name: 'combobox',  },
+      { id: randomString(), name: 'combobox' },
       { id: randomString(), name: 'switch' },
       { id: randomString(), name: 'spacer' },
-      { id: randomString(), name: 'date',  },
-      { id: randomString(), name: 'block',  },
-      { id: randomString(), name: 'file',  },
-      { id: randomString(), name: 'address',  },
+      { id: randomString(), name: 'date' },
+      { id: randomString(), name: 'block' },
+      { id: randomString(), name: 'file' },
+      { id: randomString(), name: 'address' },
       { id: randomString(), name: 'checkbox-group' },
       { id: randomString(), name: 'radio-group' },
-      { id: randomString(), name: 'full-name' }
+      { id: randomString(), name: 'full-name' },
     ]
   }
 
   let blocks = defaultBlocks()
+
+  const loadDragula = debounce(async () => {
+    if (drake) {
+      drake.destroy()
+    }
+    await tick()
+    drake = dragula([document.querySelector('#block-container'), document.querySelector('#form-preview-fields')], {
+      copy: function (el, source) {
+        return source === document.getElementById('block-container')
+      },
+      accepts: function (el, target) {
+        return target !== document.getElementById('block-container')
+      },
+    })
+      .on('drag', function (el) {})
+      .on('drop', function (el) {
+        const fields = Array.from(document.querySelector('#form-preview-fields').childNodes).filter((w) => w.id?.startsWith('sidebar-block') || w.id?.startsWith('form-field-'))
+        dispatch('drag_finished', fields)
+        el.remove()
+        setTimeout(() => {
+          drake.destroy()
+        }, 100)
+      })
+  }, 500)
 
   function handler(e: any) {
     dispatch('drag_event', {
@@ -58,6 +87,10 @@
   function saveAndPublish() {}
 
   onMount(() => {
+    subscribe('form_updated', () => {
+      loadDragula()
+    })
+
     window.onunhandledrejection = (e: any) => {
       console.log('we got exception, but the app has crashed', e)
       // here we should gracefully show some fallback error or previous good known state
@@ -75,158 +108,126 @@
 <div style="text-align:center;">
   {#if saving}
     <button class="btn save-button btn-primary" type="button" disabled>Saving...</button>
-  {:else}
-    <button class="btn save-button btn-primary" type="button" on:click={saveDraft}>Save Form</button>
-  {/if}
+  {:else}<button class="btn save-button btn-primary" type="button" on:click={saveDraft}>Save Form</button>{/if}
 </div>
 <div style="padding-left: 0.2em;">
   <h5 style="">Add Field</h5>
-  <hr style="margin-right: 0.7em !important;"/>
-  <div use:dndzone={{ items: blocks, flipDurationMs: 300, dropFromOthersDisabled: true, dropTargetStyle: { outline: 'white solid 0px' } }} on:consider={handler} on:finalize={handler}>
-    {#each blocks as block (block.id)}
-      <div animate:flip={{ duration: 1000 }}>
-        <div on:click={() => addField(block)}>
-          {#if block.name === 'string'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fas fa-i-cursor" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Text Input</h6>
-              </div>
-            </div>
-          {:else if block.name === 'spacer'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-rocket" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Spacer</h6>
-              </div>
-            </div>
-          {:else if block.name === 'switch'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-toggle-off" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Toggle</h6>
-              </div>
-            </div>
-          {:else if block.name === 'combobox'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="far fa-caret-square-down" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Dropdown</h6>
-              </div>
-            </div>
-          {:else if block.name === 'block'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-indent" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Content</h6>
-              </div>
-            </div>
-          {:else if block.name === 'date'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-calendar-day" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Date</h6>
-              </div>
-            </div>
-          {:else if block.name === 'file'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-file-upload" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">File Upload</h6>
-              </div>
-            </div>
-          {:else if block.name === 'address'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="far fa-address-card" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Address Block</h6>
-              </div>
-            </div>
-          {:else if block.name === 'full-name'}
-          <div class="d-flex px-2 block">
-            <div>
-              <div class="icon icon-sm icon-secondary">
-                <span class="far fa-address-card" />
-              </div>
-            </div>
-            <div class="pl-3">
-              <h6 class="h6">Full Name</h6>
-            </div>
+  <hr style="margin-right: 0.7em !important;" />
+  <div id="block-container">
+    {#each blocks as block}
+      {#if block.name === 'string'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fas fa-i-cursor" /></div>
           </div>
-          {:else if block.name === 'checkbox-group'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="far fa-check-square" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Checkboxes</h6>
-              </div>
-            </div>
-          {:else if block.name === 'radio-group'}
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-dot-circle" />
-                </div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Radio Buttons</h6>
-              </div>
-            </div>
-          {/if}
+          <div class="pl-3">
+            <h6 class="h6">Text Input</h6>
+          </div>
         </div>
-      </div>
+      {:else if block.name === 'spacer'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Spacer</h6>
+          </div>
+        </div>
+      {:else if block.name === 'switch'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-toggle-off" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Toggle</h6>
+          </div>
+        </div>
+      {:else if block.name === 'combobox'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-caret-square-down" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Dropdown</h6>
+          </div>
+        </div>
+      {:else if block.name === 'block'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-indent" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Content</h6>
+          </div>
+        </div>
+      {:else if block.name === 'date'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-calendar-day" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Date</h6>
+          </div>
+        </div>
+      {:else if block.name === 'file'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-file-upload" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">File Upload</h6>
+          </div>
+        </div>
+      {:else if block.name === 'address'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Address Block</h6>
+          </div>
+        </div>
+      {:else if block.name === 'full-name'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Full Name</h6>
+          </div>
+        </div>
+      {:else if block.name === 'checkbox-group'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-check-square" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Checkboxes</h6>
+          </div>
+        </div>
+      {:else if block.name === 'radio-group'}
+        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-dot-circle" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Radio Buttons</h6>
+          </div>
+        </div>
+      {/if}
     {/each}
   </div>
 
   <div class="d-flex px-2 collapsed" href="#submenu-app" data-toggle="collapse" data-target="#submenu-app" aria-expanded="false">
     <div>
-      <div class="icon icon-sm icon-secondary">
-        <span class="fas fa-palette" />
-      </div>
+      <div class="icon icon-sm icon-secondary"><span class="fas fa-palette" /></div>
     </div>
     <div class="pl-3">
       <h6 class="h6">Styling</h6>
     </div>
     <div class="pl-3" />
     <div>
-      <div class="icon icon-sm icon-secondary link-arrow">
-        <span class="fas fa-chevron-right"  style="font-size: 1em;"/>
-      </div>
+      <div class="icon icon-sm icon-secondary link-arrow"><span class="fas fa-chevron-right" style="font-size: 1em;" /></div>
     </div>
   </div>
   <div>
@@ -236,9 +237,7 @@
           <a class="nav-link" id="address" href="#" style="padding-left: 0em;">
             <div class="d-flex px-2 block">
               <div>
-                <div class="icon icon-sm icon-secondary">
-                  <span class="fas fa-rocket" />
-                </div>
+                <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
               </div>
               <div class="pl-3">
                 <h6 class="h6">Spacer</h6>
@@ -254,6 +253,7 @@
 <style>
   .block {
     margin-bottom: 1em;
+    cursor: pointer;
   }
 
   .save-button {
@@ -268,11 +268,11 @@
     padding-left: 1em;
   }
 
-  .h6{
+  .h6 {
     font-weight: 400;
   }
 
   .pl-3 {
     padding-left: 0.7rem !important;
-}
+  }
 </style>
