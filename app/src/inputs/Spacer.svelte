@@ -10,7 +10,7 @@
   onMount(() => {
     subscribeFieldChange((newField) => {
       if (newField.id === field.id) {
-        value = toNumberOrDefault(field.value)
+        value = toNumberOrDefault(newField.value ?? 1)
       }
     })
   })

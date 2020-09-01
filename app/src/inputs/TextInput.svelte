@@ -15,7 +15,7 @@
     debouncedOnChange = debounce((e: any) => {
       field.value = e.target.value ?? ''
       formStore.set(field, { fromUser: true, field: 'value', value: field.value })
-      field.onChange?.(e.target.value)
+      field.onChange?.(field.value)
     }, 500)
 
     value = formStore.getValue(field.configTarget ?? field.id) ?? ''
