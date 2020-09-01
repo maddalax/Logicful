@@ -26,6 +26,7 @@
   function remove(option: number) {
     options.splice(option, 1)
     options = [...options]
+    onRepeaterChange();
   }
 
   function addNew() {
