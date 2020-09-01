@@ -7,7 +7,7 @@
     const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore
     const res = await this.fetch(url)
-    const form = await res.json();
+    const form = await res.json()
     return { formId, form }
   }
 </script>
@@ -26,8 +26,9 @@
 
   let state: LoadState = LoadState.NotStarted
   let container: any
-  let types : {[key : string] : string} = {}
+  let types: { [key: string]: string } = {}
   let filtered: any[] = []
+  let hidden = new Set(["submission_id"])
 
   async function getRows(): Promise<TableRow[]> {
     let response = await fetch(`http://localhost:3000/form/${formId}/submissions`)
@@ -45,56 +46,62 @@
         if (labels[key]) {
           const label = labels[key]
           d.details[label] = d.details[key]
-          types[label] = form.fields.find(w => w.label === label)?.type ?? '';
+          types[label] = form.fields.find((w) => w.label === label)?.type ?? ''
           delete d.details[key]
+        } else {
+          const fieldByName = form.fields.find((w) => w.name === key)?.type
+          if (fieldByName) {
+            types[key] = fieldByName
+          }
         }
       })
-      d.details["Submission Date"] = new Date(d.createTime).toLocaleString();
-      d.details["submission_id"] = d.id;
+      d.details['Submission Date'] = new Date(d.createTime).toLocaleString()
+      d.details['submission_id'] = d.id
       return d.details
-    });
+    })
   }
 
-  function sortColumns(columns : string[]) {
+  function sortColumns(columns: string[]) {
     return columns.sort((a, b) => {
-      return form.fields.findIndex(f => f.label === a) - form.fields.findIndex(f => f.label === b)
-    });
+      return form.fields.findIndex((f) => f.label === a) - form.fields.findIndex((f) => f.label === b)
+    })
   }
 
-  function format(column : string, value : any) {
-    const type = types[column];
-    if(type === 'address' && isObject(value)) {
-      let result = ``;
+  function format(column: string, value: any) {
+    const type = types[column]
+    if (type === 'address' && isObject(value)) {
+      let result = ``
       const results = [value?.address1?.value, value?.address2?.value, value?.state?.value, value?.city?.value, value?.zip?.value]
-      return results.filter(r => r).join(" ");
+      return results.filter((r) => r).join(' ')
     }
-    return undefined;
+    if (type === 'checkbox-group' && Array.isArray(value)) {
+      return value.filter((v) => v != null).join(', ')
+    }
+    return undefined
   }
 
-  async function onDelete(rows : any[]) {
-    const ids = rows.map(r => r["submission_id"]).filter(r => r != null);
+  async function onDelete(rows: any[]) {
+    const ids = rows.map((r) => r['submission_id']).filter((r) => r != null)
     const result = await fetch(`http://localhost:3000/form/${formId}/submissions/delete`, {
-      method : 'DELETE',
-      body : JSON.stringify(ids),
-      headers : {
-        'Content-Type' : 'application/json'
-      }
-    });
-    if(!result.ok) {
-      const body = await result.json();
-      throw new Error(body.message);
+      method: 'DELETE',
+      body: JSON.stringify(ids),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    if (!result.ok) {
+      const body = await result.json()
+      throw new Error(body.message)
     }
   }
-
 </script>
-
 
 <div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
   <div class="main">
     <h1>Submissions</h1>
     <hr />
     <div>
-      <RemoteTable {getRows} sortColumns={sortColumns} onDelete={onDelete} onFormat={format}/>
+      <RemoteTable {getRows} {sortColumns} {onDelete} onFormat={format} hidden={hidden} />
     </div>
   </div>
 </div>

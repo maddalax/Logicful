@@ -7,6 +7,7 @@
   import { dispatch } from 'event/EventBus'
   import ContentBlockList from './ContentBlockList.svelte'
   import Repeater from 'components/Repeater.svelte'
+import formStore from 'store/FormStore';
 
   export let field: IField
   export let expanded: boolean
@@ -22,7 +23,12 @@
   }
 
   function onOptionsChange(options: string[] | LabelValue[]) {
-      console.log(field);
+      field.options = options;
+      formStore.set(field, {
+          fromUser : true,
+          field : 'options',
+          value : options
+      })
   }
 
   function loadTransformer(value: ContentBlock[]) {
@@ -33,10 +39,17 @@
       }
     })
   }
+
+  function options() : LabelValue[] {
+    return field.options?.map((w : string) => {
+        return {label : w, value : w}
+    })
+  }
 </script>
 
 <div>
   <Repeater
+    options={options()}
     onlyLabel={true}
     label={'Checkbox Options'}
     onChange={onOptionsChange} />

@@ -4,11 +4,14 @@ import traverse from 'traverse'
 import set from "lodash.set";
 import { isObject } from "guards/Guard";
 import has from "lodash.has";
+import { fastClone } from "util/Compare";
 
 const excluded = ['block']
 
 export async function submitForm() {
     const form = formStore.getForm();
+    const clone = fastClone(form);
+    console.log("FORM BEFORE EDIT", clone);
     const id = form.id;
     const results: { [key: string]: any } = {}
     const fieldMeta: { [key: string]: any } = {};
@@ -49,6 +52,13 @@ export async function submitForm() {
         }
         //@ts-ignore
         if (!ignored.includes(this.key)) {
+            //@ts-ignore
+            const last = this.path[this.path.length - 2];
+            if(last === 'value') {
+                return;
+            }
+            //@ts-ignore
+            console.log(this.path, last, this.key)
             //@ts-ignore
             this.delete();
         }

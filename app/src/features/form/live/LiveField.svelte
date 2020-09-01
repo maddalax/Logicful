@@ -22,6 +22,8 @@
   import { fastClone } from 'util/Compare'
   import FileUpload from 'inputs/FileUpload.svelte'
 import FullName from 'inputs/FullName.svelte';
+  import CheckboxGroup from 'inputs/CheckboxGroup.svelte'
+  import RadioGroup from 'inputs/RadioGroup.svelte'
 
   let state = LoadState.NotStarted
   let value: any
@@ -59,7 +61,7 @@ import FullName from 'inputs/FullName.svelte';
     {#if hidden}
       <span />
     {:else}
-      <div transition:fade={{duration : 300}}>
+      <div transition:fade={{ duration: 300 }}>
         {#if field.type === 'address'}
           <Address {field} {value} />
         {:else if field.type === 'string'}
@@ -80,6 +82,10 @@ import FullName from 'inputs/FullName.svelte';
           <DatePicker {field} {...config} />
         {:else if field.type === 'file'}
           <FileUpload {field} />
+        {:else if field.type === 'checkbox-group'}
+          <CheckboxGroup {field} />
+        {:else if field.type === 'radio-group'}
+          <RadioGroup {field} />
         {:else if field.type === 'full-name'}
           <FullName {field} {value} />
         {/if}

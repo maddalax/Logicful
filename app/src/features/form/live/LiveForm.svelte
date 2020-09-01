@@ -52,6 +52,7 @@
       await submitForm()
       state = LoadState.Finished
     } catch (ex) {
+      console.error(ex);
       state = LoadState.Failed
     }
   }
