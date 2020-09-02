@@ -28,7 +28,7 @@ func Set(block models.ContentBlock) error {
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("clients"),
+					TableName: aws.String(db.Clients()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"name": {
 							S: aws.String("maddox"),
@@ -47,7 +47,7 @@ func Set(block models.ContentBlock) error {
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("content_blocks"),
+					TableName: aws.String(db.ContentBlocks()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(block.Id),
@@ -95,27 +95,25 @@ func Set(block models.ContentBlock) error {
 }
 
 func List() ([]models.ContentBlock, error) {
-	field := "content_blocks"
-
 	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String("clients"),
+		TableName: aws.String(db.Clients()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"name": {
 				S: aws.String("maddox"),
 			},
 		},
-		ProjectionExpression: aws.String(field),
+		ProjectionExpression: aws.String("content_blocks"),
 	})
 
 	if err != nil {
 		return nil, err
 	}
 
-	if item == nil || item.Item[field] == nil {
+	if item == nil || item.Item["content_blocks"] == nil {
 		return make([]models.ContentBlock, 0), nil
 	}
 
-	ids := item.Item[field].SS
+	ids := item.Item["content_blocks"].SS
 	var keys []map[string]*dynamodb.AttributeValue
 	for id := range ids {
 		k := map[string]*dynamodb.AttributeValue{
@@ -126,7 +124,7 @@ func List() ([]models.ContentBlock, error) {
 
 	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
 		RequestItems: map[string]*dynamodb.KeysAndAttributes{
-			field: {
+			db.ContentBlocks(): {
 				Keys: keys,
 			},
 		},
@@ -136,7 +134,7 @@ func List() ([]models.ContentBlock, error) {
 		return nil, err
 	}
 
-	results := items.Responses[field]
+	results := items.Responses[db.ContentBlocks()]
 
 	var recs []models.ContentBlock
 

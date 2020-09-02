@@ -22,106 +22,32 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix form submission, add additional data to submission">
-      <change afterPath="$PROJECT_DIR$/lambda/api/api.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/contentblock/content-block-handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/contentblock/content-block-service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/form/form-handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/form/form-service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-delete-service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/optionset/option-set-handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/s3store/s3-store-handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lambda/api/features/s3store/s3-store-service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requests/api.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/env/env.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/httpextensions/http-reader-extentions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/components/FolderContent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/FolderContent.svelte" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="update api to just be a single function">
       <change beforePath="$PROJECT_DIR$/../app/src/components/FormList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/FormList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/components/dashboard/SubmissionsDash.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/components/dashboard/SubmissionsDash.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ManageContentBlock.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/edit/services/SaveForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/edit/services/SaveForm.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/features/form/live/service/SubmitForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/features/form/live/service/SubmitForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/models/Folder.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/models/IForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/builder/[form].svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/builder/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/builder/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/folder/[folder].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/folder/[folder].svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/routes/submissions/[formId].svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/submissions/[formId].svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/static/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/CreateContentBlock/set-content-block" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/CreateOptionSet/create-option-set" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/DeleteFormSubmissions/delete-submission" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/FormSubmissionDeleteQueueHandler/sqs-form-submission-delete-handler" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/FormSubmissionQueueHandler/sqs-form-submission-handler" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListContentBlock/list-content-block" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListFormSubmissions/list-form-submissions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListForms/list-forms" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/ListOptionSet/list-option-set" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/S3SetJson/s3-set-json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/SetForm/set-form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/SubmitForm/submit-form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.aws-sam/build/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.aws-sam/build/template.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/logicful.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logicful.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/local-env.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/create-option-set/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/create-option-set/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/create-option-set/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/optionset/option-set-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/create-option-set/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/delete-submission/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/delete-submission/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/delete-submission/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/delete-submission/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-content-block/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-content-block/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-content-block/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-content-block/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-form-submissions/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-form-submissions/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-form-submissions/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-form-submissions/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-forms/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-forms/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-forms/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-forms/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/list-option-set/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/s3-set-json/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/s3-set-json/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/s3-set-json/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/s3-set-json/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-content-block/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-content-block/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-content-block/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-content-block/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-form/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-form/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-form/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/set-form/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-delete-handler/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-delete-handler/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-delete-handler/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-handler/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-handler/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs-form-submission-handler/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/submit-form/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/submit-form/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/submit-form/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/submit-form/main_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/api/features/contentblock/content-block-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/contentblock/content-block-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/api/features/form/form-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/form/form-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-delete-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-delete-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/formsubmission/form-submission-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/api/features/optionset/option-set-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/features/optionset/option-set-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/gateway/gateway.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/storage/s3.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/storage/s3.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/db/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,11 +170,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build:watch">
+  <component name="RunManager" selected="npm.deploy:staging">
     <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
-      <method v="2" />
-    </configuration>
-    <configuration name="api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/requests/api.http" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="api#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/requests/api.http" index="2" runType="Run single request">
@@ -277,21 +200,31 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="deploy:staging" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy:staging" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Go Remote.Unnamed" />
-      <item itemvalue="HTTP Request.api#1" />
       <item itemvalue="HTTP Request.api#2" />
       <item itemvalue="HTTP Request.api#3" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.deploy:staging" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.deploy" />
         <item itemvalue="HTTP Request.api#3" />
         <item itemvalue="HTTP Request.api#2" />
-        <item itemvalue="HTTP Request.api#1" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +257,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="confirm delete" />
     <MESSAGE value="copy field" />
     <MESSAGE value="pretty" />
     <MESSAGE value="ability to edit form values" />
@@ -349,7 +281,8 @@
     <MESSAGE value="submissions and sqs submissions handler" />
     <MESSAGE value="delete lock" />
     <MESSAGE value="fix form submission, add additional data to submission" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix form submission, add additional data to submission" />
+    <MESSAGE value="update api to just be a single function" />
+    <option name="LAST_COMMIT_MESSAGE" value="update api to just be a single function" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -395,30 +328,30 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1638" height="196" key="GridCell.Tab.0.bottom" timestamp="1599072646939">
+    <state width="1638" height="297" key="GridCell.Tab.0.bottom" timestamp="1599084532566">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="196" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599072646939" />
-    <state width="1638" height="196" key="GridCell.Tab.0.center" timestamp="1599072646938">
+    <state width="1638" height="297" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599084532566" />
+    <state width="1638" height="297" key="GridCell.Tab.0.center" timestamp="1599084532566">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="196" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599072646938" />
-    <state width="1638" height="196" key="GridCell.Tab.0.left" timestamp="1599072646937">
+    <state width="1638" height="297" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599084532566" />
+    <state width="1638" height="297" key="GridCell.Tab.0.left" timestamp="1599084532565">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="196" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599072646937" />
-    <state width="1638" height="196" key="GridCell.Tab.0.right" timestamp="1599072646938">
+    <state width="1638" height="297" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599084532565" />
+    <state width="1638" height="297" key="GridCell.Tab.0.right" timestamp="1599084532566">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="2030" height="276" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597663542447" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="196" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599072646938" />
+    <state width="1638" height="297" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599084532566" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -471,14 +404,14 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="243" height="457" key="HiddenNamespacesPopup/0.23.1680.1027@0.23.1680.1027" timestamp="1597494755080" />
-    <state x="2" y="23" width="1678" height="1027" key="MergeDialog" timestamp="1598220207596">
+    <state x="2" y="23" width="1678" height="1027" key="MergeDialog" timestamp="1599073127254">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="2" y="23" width="1678" height="1027" key="MergeDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598220207596" />
-    <state x="478" y="303" key="MultipleFileMergeDialog" timestamp="1598220207641">
+    <state x="2" y="23" width="1678" height="1027" key="MergeDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599073127254" />
+    <state x="478" y="303" key="MultipleFileMergeDialog" timestamp="1599073127310">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="478" y="303" key="MultipleFileMergeDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598220207641" />
+    <state x="478" y="303" key="MultipleFileMergeDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599073127310" />
     <state x="628" y="244" key="RollbackChangesDialog" timestamp="1598213039172">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -492,11 +425,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1598795100252">
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1599073132243">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598795100252" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599073132243" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -509,25 +442,25 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598960872861">
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599073081152">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1598960872861" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1599053288572">
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599073081152" />
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1599085030673">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599053288572" />
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599085030673" />
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog" timestamp="1599072033112">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599072701171">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599084967623">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597664862686" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599072701171" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599084967623" />
   </component>
 </project>

@@ -51,7 +51,7 @@ func Delete(ids []string, formId string) error {
 	err := sqs.SendMessage(models.SubmissionsDeleted{
 		FormId: formId,
 		Ids:    ids,
-	}, os.Getenv("FORM_SUBMISSIONS_DELETED"))
+	}, os.Getenv("FORM_SUBMISSIONS_DELETED_QUEUE"))
 
 	if err != nil {
 		return err
@@ -65,7 +65,7 @@ func remove(formId string, id string, errors chan error) {
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("forms"),
+					TableName: aws.String(db.Forms()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(formId),
@@ -84,7 +84,7 @@ func remove(formId string, id string, errors chan error) {
 			},
 			{
 				Delete: &dynamodb.Delete{
-					TableName: aws.String("form_submissions"),
+					TableName: aws.String(db.Submissions()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(id),

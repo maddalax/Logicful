@@ -20,6 +20,7 @@
   import { randomString, randomStringSmall } from 'util/Generate'
   import type { IForm } from 'models/IForm'
   import { isObject, isString } from 'guards/Guard'
+import { deleteApi, getApi } from 'services/ApiService';
 
   export let formId = ''
   export let form: IForm
@@ -31,8 +32,7 @@
   let hidden = new Set(["submission_id"])
 
   async function getRows(): Promise<TableRow[]> {
-    let response = await fetch(`http://localhost:3000/api/form/${formId}/submission`)
-    const submissions: any[] = await response.json()
+    const submissions: any[] = await getApi(`form/${formId}/submission`)
     const labels: { [key: string]: string } = {}
 
     form.fields.forEach((f) => {
@@ -85,17 +85,7 @@
 
   async function onDelete(rows: any[]) {
     const ids = rows.map((r) => r['submission_id']).filter((r) => r != null)
-    const result = await fetch(`http://localhost:3000/api/form/${formId}/submission`, {
-      method: 'DELETE',
-      body: JSON.stringify(ids),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    if (!result.ok) {
-      const body = await result.json()
-      throw new Error(body.message)
-    }
+    await deleteApi(`form/${formId}/submission`, ids);
   }
 </script>
 

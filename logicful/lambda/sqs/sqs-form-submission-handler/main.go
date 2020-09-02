@@ -68,13 +68,7 @@ func onSubmission(submission models.Submission) error {
 		current = append(current, submission)
 	}
 
-	serialized, err := json.Marshal(current)
-
-	if err != nil {
-		return err
-	}
-
-	_, err = storage.SetJson(string(serialized), name, "logicful-form-submissions", "private")
+	_, err = storage.SetJson(current, name, "logicful-form-submissions", "private")
 
 	if err != nil {
 		return err

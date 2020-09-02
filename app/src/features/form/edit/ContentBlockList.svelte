@@ -4,6 +4,7 @@
     import type { ContentBlock } from "models/ContentBlock";
     import { dispatch } from "event/EventBus";
     import ManageContentBlock from "./ManageContentBlock.svelte";
+import { getApi } from "services/ApiService";
 
     export let type = "Selector";
 
@@ -19,8 +20,7 @@
     }
 
     async function getRows(): Promise<TableRow[]> {
-        const response = await fetch("http://localhost:3000/api/content-block");
-        const blocks: ContentBlock[] = await response.json();
+        const blocks: ContentBlock[] = await getApi("content-block");
         return blocks.map((block) => {
             return {
                 id : block.id,

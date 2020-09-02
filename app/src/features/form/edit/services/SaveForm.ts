@@ -1,4 +1,5 @@
 import type { IForm } from "models/IForm";
+import { postApi, putApi } from "services/ApiService";
 import formStore from "store/FormStore";
 import { fastClone } from "util/Compare";
 
@@ -25,13 +26,5 @@ function removeValues(form : IForm) : IForm {
 }
 
 async function save(form: IForm): Promise<IForm> {
-  const saveUrl = `http://localhost:3000/api/form/save`;
-  const response = await fetch(saveUrl, {
-    method: form.id ? "PUT" : "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form),
-  });
-  return await response.json();
+  return await (form.id ? putApi("form", form) : postApi("form", form))
 }

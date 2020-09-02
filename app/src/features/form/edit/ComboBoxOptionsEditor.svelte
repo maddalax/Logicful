@@ -4,6 +4,7 @@
   import OptionSetsList from "./OptionSetsList.svelte";
   import Field from "./Field.svelte";
   import { randomString } from "util/Generate";
+import { apiEndpoint } from "services/ApiService";
 
   export let field: IField;
 
@@ -29,7 +30,7 @@
 
 <div>
   <Field
-    field={{ id: randomString(), loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: 'http://localhost:3000/api/option-set' }, configFieldTarget: 'options', configTarget: field.id }}
+    field={{ id: randomString(), loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: `${apiEndpoint()}option-set` }, configFieldTarget: 'options', configTarget: field.id }}
   />
   <button
     on:click={manageSets}

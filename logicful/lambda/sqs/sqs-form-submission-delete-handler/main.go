@@ -66,15 +66,8 @@ func onSubmission(submission models.SubmissionsDeleted) error {
 		}
 	}
 	current = current[:i]
-	println(len(current))
 
-	serialized, err := json.Marshal(current)
-
-	if err != nil {
-		return err
-	}
-
-	_, err = storage.SetJson(string(serialized), name, "logicful-form-submissions", "private")
+	_, err = storage.SetJson(current, name, "logicful-form-submissions", "private")
 
 	if err != nil {
 		return err
@@ -133,7 +126,7 @@ func acquireLock(formId string, worker string) error {
 		ExpressionAttributeNames: map[string]*string{
 			"#timestamp": aws.String("timestamp"),
 		},
-		TableName: aws.String("submissions_queue_locks"),
+		TableName: aws.String(db.SubmissionQueueLocks()),
 	})
 	if err != nil {
 		return err
@@ -154,7 +147,7 @@ func releaseLock(formId string, worker string) error {
 				S: aws.String(worker),
 			},
 		},
-		TableName: aws.String("submissions_queue_locks"),
+		TableName: aws.String(db.SubmissionQueueLocks()),
 	})
 	if err != nil {
 		return err

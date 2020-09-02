@@ -36,7 +36,7 @@ func Set(form models.Form) (models.Form, error) {
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("clients"),
+					TableName: aws.String(db.Clients()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"name": {
 							S: aws.String("maddox"),
@@ -55,7 +55,7 @@ func Set(form models.Form) (models.Form, error) {
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("forms"),
+					TableName: aws.String(db.Forms()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(form.Id),
@@ -93,13 +93,11 @@ func Set(form models.Form) (models.Form, error) {
 		},
 	})
 
-	serialized, err := json.Marshal(form)
-
 	if err != nil {
 		return models.Form{}, err
 	}
 
-	_, err = storage.SetJson(string(serialized), form.Id, "logicful-forms", "public-read")
+	_, err = storage.SetJson(form, form.Id, "logicful-forms", "public-read")
 
 	if err != nil {
 		return models.Form{}, err
@@ -110,7 +108,7 @@ func Set(form models.Form) (models.Form, error) {
 
 func List(lean bool) ([]models.Form, error) {
 	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String("clients"),
+		TableName: aws.String(db.Forms()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"name": {
 				S: aws.String("maddox"),
@@ -147,7 +145,7 @@ func List(lean bool) ([]models.Form, error) {
 
 	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
 		RequestItems: map[string]*dynamodb.KeysAndAttributes{
-			"forms": {
+			db.Forms(): {
 				Keys:                     keys,
 				ProjectionExpression:     projection,
 				ExpressionAttributeNames: projectionNames,
@@ -159,7 +157,7 @@ func List(lean bool) ([]models.Form, error) {
 		return nil, err
 	}
 
-	results := items.Responses["forms"]
+	results := items.Responses[db.Forms()]
 
 	var recs []models.Form
 

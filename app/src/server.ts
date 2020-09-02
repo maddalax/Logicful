@@ -11,7 +11,14 @@ const app = express();
 app.use(
 	compression({ threshold: 0 }),
 	sirv("static", { dev }),
-	sapper.middleware(),
+	sapper.middleware({
+		session : () => {
+			return {
+				//API_ENDPOINT : "http://localhost:3000/api/"
+				API_ENDPOINT : 'https://jpn0nvloz3.execute-api.us-east-1.amazonaws.com/dev/api/'
+			}
+		}
+	}),
 );
 
 app.listen(PORT, (err?: any): void => { // eslint-disable-line

@@ -15,6 +15,7 @@
   import { debounce } from 'util/Debounce'
   import { startPreviewSaver } from 'features/form/edit/services/PreviewSaver'
   import { setFieldDefaults } from 'features/form/edit/services/DefaultFieldValueFactory'
+import { getApi } from 'services/ApiService';
 
   let dropped = false
   let loadingActive: boolean = false
@@ -31,10 +32,7 @@
       if (formId === 'new') {
         form = { fields: [], title: 'My New Form' }
       } else {
-        const url = `http://localhost:3000/api/form/${formId}`
-        //@ts-ignore
-        const res = await fetch(url)
-        form = await res.json()
+        form = await getApi(`form/${formId}`)
       }
 
       if (!form) {

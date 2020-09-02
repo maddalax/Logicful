@@ -5,6 +5,7 @@ import set from "lodash.set";
 import { isObject } from "guards/Guard";
 import has from "lodash.has";
 import { fastClone } from "util/Compare";
+import { postApi } from "services/ApiService";
 
 const excluded = ['block']
 
@@ -90,16 +91,5 @@ export async function submitForm() {
         meta
     }
     
-    const result = await fetch(`http://localhost:3000/api/form/${id}/submission`, {
-        method : 'POST',
-        body : JSON.stringify(submission),
-        headers : {
-            'Content-Type' : 'application/json'
-        }
-    });
-
-    if(!result.ok) {
-        const json = await result.json();
-        throw new Error(json.message);
-    }
+    await postApi(`form/${id}/submission`, submission)
 }

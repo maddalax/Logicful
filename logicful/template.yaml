@@ -5,7 +5,11 @@ Description: >
 
   Sample SAM Template for logicful
 
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Parameters:
+  Stage:
+    Type: String
+    Default: dev
+
 Globals:
   Api:
     Cors:
@@ -16,22 +20,110 @@ Globals:
     Timeout: 15
     Environment:
       Variables:
+        ENV: !Ref Stage
         S3_ENDPOINT: s3.us-west-002.backblazeb2.com
         S3_KEY: 002bde636d6efa60000000001
         S3_SECRET: K002RflL669GuhXI0qdWnID+wkO9oAA
-        S3_BUCKET: logicful-forms
         DYNAMO_REGION: us-east-1
-        SQS_REGION: us-east-1
-        SQS_ENDPOINT: https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_submission
         DYNAMO_IS_LOCAL: false
         DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
-        FORM_SUBMISSION_QUEUE: https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_submission
-        FORM_SUBMISSIONS_DELETED: https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_delete_submissions,
+        FORM_SUBMISSION_QUEUE: !Ref FormSubmissionQueue
+        FORM_SUBMISSIONS_DELETED_QUEUE: !Ref FormSubmissionDeleteQueue
+        FORMS_TABLE: !Ref FormsTable
+        FORM_SUBMISSIONS_TABLE: !Ref FormsSubmissionsTable
+        CLIENTS_TABLE: !Ref ClientsTable
+        OPTION_SETS_TABLE: !Ref OptionSetsTable
+        SUBMISSION_QUEUE_LOCKS_TABLE: !Ref SubmissionsQueueLocksTable
+        CONTENT_BLOCKS_TABLE: !Ref ContentBlocksTable
 
 Resources:
 
+  FormsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  FormsSubmissionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  ClientsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: name
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  OptionSetsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  SubmissionsQueueLocksTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+
+  ContentBlocksTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  StagingApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Stage
+
   Api:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
     Properties:
       Policies: AmazonDynamoDBFullAccess
       CodeUri: lambda/api
@@ -39,11 +131,26 @@ Resources:
       Runtime: go1.x
       Tracing: Active
       Events:
-        CatchAll:
+        Api:
           Type: Api
           Properties:
             Path: /api/{proxy+}
             Method: ANY
+            RestApiId: !Ref StagingApi
+
+  FormSubmissionQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      VisibilityTimeout: 600
+      DelaySeconds: 20
+      ReceiveMessageWaitTimeSeconds: 10
+
+  FormSubmissionDeleteQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      VisibilityTimeout: 600
+      DelaySeconds: 20
+      ReceiveMessageWaitTimeSeconds: 10
 
   FormSubmissionQueueHandler:
     Type: AWS::Serverless::Function
@@ -52,7 +159,7 @@ Resources:
         - AmazonDynamoDBFullAccess
         - SQSPollerPolicy:
             QueueName:
-              logicful_form_submission
+              !GetAtt FormSubmissionDeleteQueue.QueueName
       CodeUri: lambda/sqs/sqs-form-submission-handler/
       Handler: sqs-form-submission-handler
       Runtime: go1.x
@@ -61,7 +168,7 @@ Resources:
         Sqs:
           Type: SQS
           Properties:
-            Queue: arn:aws:sqs:us-east-1:033622333395:logicful_form_submission
+            Queue: !GetAtt FormSubmissionQueue.Arn
             BatchSize: 10
 
   FormSubmissionDeleteQueueHandler:
@@ -71,7 +178,7 @@ Resources:
         - AmazonDynamoDBFullAccess
         - SQSPollerPolicy:
             QueueName:
-              logicful_form_delete_submissions
+              !GetAtt FormSubmissionDeleteQueue.QueueName
       CodeUri: lambda/sqs/sqs-form-submission-delete-handler/
       Handler: sqs-form-submission-delete-handler
       Runtime: go1.x
@@ -80,5 +187,11 @@ Resources:
         Sqs:
           Type: SQS
           Properties:
-            Queue: arn:aws:sqs:us-east-1:033622333395:logicful_form_delete_submissions
+            Queue: !GetAtt FormSubmissionDeleteQueue.Arn
             BatchSize: 10
+
+
+Outputs:
+  StagingApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${StagingApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/api/"

@@ -3,13 +3,13 @@
   import { goto } from '@sapper/app'
   import type { IFolder } from 'models/IFolder'
   import { onMount } from 'svelte'
+import { getApi } from 'services/ApiService';
 
   let forms: IForm[] = []
   export let folder: IFolder
 
   onMount(async () => {
-    const response = await fetch('http://localhost:3000/api/form?lean=true')
-    forms = await response.json()
+    forms = await getApi("form?lean=true");
   })
 
   function onDelete(formId: string) {}

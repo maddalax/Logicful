@@ -1,5 +1,8 @@
 <script context="module">
-  export const preload = () => {}
+  import { setConfig } from "store/ConfigStore"
+  export const preload = (page : any, session : any) => {
+    setConfig("API_ENDPOINT", session['API_ENDPOINT'])
+  }
 </script>
 
 <script>

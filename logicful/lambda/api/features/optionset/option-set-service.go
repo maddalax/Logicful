@@ -28,7 +28,7 @@ func Set(set models.OptionSet) error {
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("clients"),
+					TableName: aws.String(db.Clients()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"name": {
 							S: aws.String("maddox"),
@@ -47,7 +47,7 @@ func Set(set models.OptionSet) error {
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("option_sets"),
+					TableName: aws.String(db.OptionSets()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(set.Id),
@@ -101,7 +101,7 @@ func Set(set models.OptionSet) error {
 func List() ([]models.OptionSet, error) {
 
 	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String("clients"),
+		TableName: aws.String(db.Clients()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"name": {
 				S: aws.String("maddox"),
@@ -129,7 +129,7 @@ func List() ([]models.OptionSet, error) {
 
 	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
 		RequestItems: map[string]*dynamodb.KeysAndAttributes{
-			"option_sets": {
+			db.OptionSets(): {
 				Keys: keys,
 			},
 		},

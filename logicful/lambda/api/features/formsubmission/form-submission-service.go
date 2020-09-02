@@ -51,7 +51,7 @@ func Add(submission models.Submission) error {
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("forms"),
+					TableName: aws.String(db.Forms()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(submission.FormId),
@@ -70,7 +70,7 @@ func Add(submission models.Submission) error {
 			},
 			{
 				Update: &dynamodb.Update{
-					TableName: aws.String("form_submissions"),
+					TableName: aws.String(db.Submissions()),
 					Key: map[string]*dynamodb.AttributeValue{
 						"id": {
 							S: aws.String(submission.Id),

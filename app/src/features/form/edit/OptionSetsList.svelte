@@ -4,6 +4,7 @@
   import type { OptionSet } from "models/OptionSet";
   import { dispatch } from "event/EventBus";
   import ManageOptionSets from "./ManageOptionSets.svelte";
+import { getApi } from "services/ApiService";
 
   export let type = "Selector";
 
@@ -19,8 +20,7 @@
   }
 
   async function getRows(): Promise<TableRow[]> {
-    const response = await fetch("http://localhost:3000/api/option-set");
-    const data: OptionSet[] = await response.json();
+    const data: OptionSet[] = await getApi("option-set")
     return data.map((d) => {
       return {
         id: d.id,
