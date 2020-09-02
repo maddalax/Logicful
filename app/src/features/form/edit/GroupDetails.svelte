@@ -29,7 +29,7 @@ import GroupEditSidebar from './GroupEditSidebar.svelte';
 <div>
 <Field
 config={{ search: true }}
-field={{ id: randomString(), label: 'Specify Group', value: { type: 'local', value: field.groupId }, type: 'combobox', required: true, configFieldTarget: `groupId`, configTarget: field.id, options: { type: 'local', value: getGroups } }} />
+field={{ id: randomString(), label: 'Specify Group', helperText: 'Link fields together via a group', value: { type: 'local', value: field.groupId }, type: 'combobox', required: true, configFieldTarget: `groupId`, configTarget: field.id, options: { type: 'local', value: getGroups } }} />
 <div class="d-flex bd-highlight justify-end" style="padding: .75em 0.6em;">
 <button on:click={onGroupSettings} target="_blank" class="btn btn-sm btn-outline-dark">
     <span class="fas fa-cog" />

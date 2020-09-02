@@ -13,6 +13,7 @@ export type IForm = {
     disableSubmissions? : Boolean,
     maxSubmissions? : number,
     openDateTime?: string,
-    closeDateTime?: string
+    closeDateTime?: string,
+    emailOnSubmission? : Boolean
     url? : string
 }

@@ -29,26 +29,26 @@
   </div>
   <div class="card-body p-2">
     <div class="list-group dashboard-menu list-group-sm">
-      <a href="./form-settings" class="d-flex list-group-item border-0 list-group-item-action {selected === 'general' ? 'active' : ''}">
+      <a href="./form-settings/{form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'general' ? 'active' : ''}">
         General
-        <span class="icon icon-xs ml-auto">
-          <span class="fas fa-chevron-right" />
-        </span>
-      </a>
-      <a href="./form-settings/{form.id}/notifications" class="d-flex list-group-item border-0 list-group-item-action {selected === 'submission-notification' ? 'active' : ''}">
-        Submission Notifications
-        <span class="icon icon-xs ml-auto">
-          <span class="fas fa-chevron-right" />
-        </span>
-      </a>
-      <a href="./form-settings/{form.id}/scoring" class="d-flex list-group-item border-0 list-group-item-action {selected === 'workflows' ? 'active' : ''}">
-        Scoring 
         <span class="icon icon-xs ml-auto">
           <span class="fas fa-chevron-right" />
         </span>
       </a>
       <a href="./form-settings/{form.id}/workflows" class="d-flex list-group-item border-0 list-group-item-action {selected === 'workflows' ? 'active' : ''}">
         Workflows
+        <span class="icon icon-xs ml-auto">
+          <span class="fas fa-chevron-right" />
+        </span>
+      </a>
+      <a href="./form-settings/{form.id}/emails" class="d-flex list-group-item border-0 list-group-item-action {selected === 'emails' ? 'active' : ''}">
+        Emails
+        <span class="icon icon-xs ml-auto">
+          <span class="fas fa-chevron-right" />
+        </span>
+      </a>
+      <a href="./form-settings/{form.id}/scoring" class="d-flex list-group-item border-0 list-group-item-action {selected === 'scoring' ? 'active' : ''}">
+        Scoring 
         <span class="icon icon-xs ml-auto">
           <span class="fas fa-chevron-right" />
         </span>
