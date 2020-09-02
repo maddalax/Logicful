@@ -6,8 +6,6 @@
 
   function onSettings(folderId: string) {}
 
-  function onCreateForm() {}
-
   function onImportForm() {}
 </script>
 
@@ -35,11 +33,11 @@
               </button>
             </div>
             <button on:click={onImportForm} class="btn btn-xs btn-outline-dark"> <span class="fas fa-file-import" /> <span>Import Form</span> </button>
-            <button on:click={onCreateForm} class="btn btn-xs btn-outline-dark"> <span class="fas fa-plus" /> <span>Create Form</span> </button>
+            <a href="/builder/new" class="btn btn-xs btn-outline-dark"> <span class="fas fa-plus" /><span>Create Form</span></a>
           </div>
         </div>
       </div>
-      <FormList folder={folder} />
+      <FormList {folder} />
     </div>
   </div>
 </div>

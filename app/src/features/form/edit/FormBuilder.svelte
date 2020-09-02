@@ -39,6 +39,10 @@ import { getApi } from 'services/ApiService';
         return
       }
 
+      if(!form.fields) {
+        form.fields = [];
+      }
+
       form.fields = form.fields.map((w: IField) => {
         w.selected = false
         return w

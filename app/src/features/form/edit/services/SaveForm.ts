@@ -2,13 +2,20 @@ import type { IForm } from "models/IForm";
 import { postApi, putApi } from "services/ApiService";
 import formStore from "store/FormStore";
 import { fastClone } from "util/Compare";
+import {goto} from '@sapper/app'
+import { dispatch } from "event/EventBus";
 
 export async function saveForm() {
   const form = formStore.getForm();
+  const isNew = form.id == null;
   removeValues(form);
   const saved : IForm = await save(form);
   form.id = saved.id;
   saveToLocalStorage(form);
+  formStore.setForm(form);
+  if(isNew) {
+    goto('/builder/' + form.id)
+  }
 }
 
 export function saveToLocalStorage(form: IForm) {
@@ -26,5 +33,5 @@ function removeValues(form : IForm) : IForm {
 }
 
 async function save(form: IForm): Promise<IForm> {
-  return await (form.id ? putApi("form", form) : postApi("form", form))
+  return await (form.id ? putApi(`form/${form.id}`, form) : postApi("form", form))
 }
