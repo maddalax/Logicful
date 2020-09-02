@@ -10,7 +10,7 @@ import (
 
 func AddHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var submission = models.Submission{}
-	if !httpextensions.ReadJson(submission, w, r) {
+	if !httpextensions.ReadJson(&submission, w, r) {
 		return
 	}
 	submission.FormId = ps.ByName("formId")
@@ -33,7 +33,7 @@ func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func DeleteHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var ids []string
-	if !httpextensions.ReadJson(ids, w, r) {
+	if !httpextensions.ReadJson(&ids, w, r) {
 		return
 	}
 	err := Delete(ids, ps.ByName("formId"))

@@ -10,7 +10,7 @@ import (
 
 func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var block = models.ContentBlock{}
-	if !httpextensions.ReadJson(block, w, r) {
+	if !httpextensions.ReadJson(&block, w, r) {
 		return
 	}
 	block.Id = ps.ByName("id")

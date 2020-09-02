@@ -10,7 +10,7 @@ import (
 
 func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var form = models.Form{}
-	if !httpextensions.ReadJson(form, w, r) {
+	if !httpextensions.ReadJson(&form, w, r) {
 		return
 	}
 	form.Id = ps.ByName("formId")

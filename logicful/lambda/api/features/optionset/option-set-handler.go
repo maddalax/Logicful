@@ -10,7 +10,7 @@ import (
 
 func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var set = models.OptionSet{}
-	if !httpextensions.ReadJson(set, w, r) {
+	if !httpextensions.ReadJson(&set, w, r) {
 		return
 	}
 	set.Id = ps.ByName("id")
