@@ -23,8 +23,8 @@ func Set(form models.Form) (models.Form, error) {
 
 	form.CreateTime = date.ISO8601(time.Now())
 	form.ChangeTime = date.ISO8601(time.Now())
-	form.CreateBy = "maddox"
-	form.ChangeBy = "maddox"
+	form.CreateBy = "maddox2"
+	form.ChangeBy = "maddox2"
 
 	fields, err := dynamodbattribute.Marshal(form.Fields)
 
@@ -108,7 +108,7 @@ func Set(form models.Form) (models.Form, error) {
 
 func List(lean bool) ([]models.Form, error) {
 	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String(db.Forms()),
+		TableName: aws.String(db.Clients()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"name": {
 				S: aws.String("maddox"),
@@ -143,6 +143,8 @@ func List(lean bool) ([]models.Form, error) {
 		}
 	}
 
+	println(db.Forms())
+
 	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
 		RequestItems: map[string]*dynamodb.KeysAndAttributes{
 			db.Forms(): {
@@ -156,6 +158,8 @@ func List(lean bool) ([]models.Form, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	println(items.Responses)
 
 	results := items.Responses[db.Forms()]
 
