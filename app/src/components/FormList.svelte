@@ -1,17 +1,20 @@
 <script lang="typescript">
   import type { IForm } from 'models/IForm'
   import { goto } from '@sapper/app'
+  import type { IFolder } from 'models/IFolder'
+  import { onMount } from 'svelte'
 
-  export let forms: IForm[] = []
+  let forms: IForm[] = []
+  export let folder: IFolder
 
-  function onEdit(formId: string) {
-    goto(`./builder/${formId}`)
-  }
+  onMount(async () => {
+    const response = await fetch('http://localhost:3000/api/form?lean=true')
+    forms = await response.json()
+  })
 
   function onDelete(formId: string) {}
 
   function onViewSubmissions(formId: string) {
-    formId = 'maddox-maddox-maddox-maddox-maddox-maddox-e8bb5bcf-9751-48dc-91f3-e9fa0f4ff933'
     goto(`./submissions/${formId}`)
   }
 </script>
@@ -22,11 +25,9 @@
       <li class="list-group-item border-bottom py-3 radius-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="h6 mb-1">
-              <a href="./invoice.html">{form.title}</a>
-            </h3>
+            <h3 class="h6 mb-1"><a href="./invoice.html">{form.title}</a></h3>
             <!-- Text -->
-            <small class="text-gray-700">{form.lastUpdated}</small>
+            <small class="text-gray-700">{form.changeTime}</small>
           </div>
           <div class="col-auto">
             <button
@@ -36,13 +37,7 @@
               class="btn btn-xs btn-outline-dark">
               Submissions
             </button>
-            <button
-              on:click={() => {
-                onEdit(form.id || '')
-              }}
-              class="btn btn-xs btn-outline-dark">
-              Edit
-            </button>
+            <a href={`/builder/${form.id}`} class="btn btn-xs btn-outline-dark">Edit</a>
             <button class="btn btn-xs btn-outline-dark">
               <span
                 on:click={() => {

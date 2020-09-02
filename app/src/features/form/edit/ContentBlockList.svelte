@@ -19,7 +19,7 @@
     }
 
     async function getRows(): Promise<TableRow[]> {
-        const response = await fetch("http://localhost:3000/content-block/list");
+        const response = await fetch("http://localhost:3000/api/content-block");
         const blocks: ContentBlock[] = await response.json();
         return blocks.map((block) => {
             return {

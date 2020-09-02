@@ -19,36 +19,46 @@
   let dropped = false
   let loadingActive: boolean = false
   let order = []
-  let form: IForm
   let dragForm: IForm | undefined
   let lastLength = 0
 
+  let form: IForm
+  export let formId: string
+
   async function loadForm() {
-    //const response = await fetch("http://127.0.0.1:3000/form/list");
-    //const forms = await response.json();
-    //const temp = forms.find(w => w.name === 'main');
-    let temp = localStorage.getItem('form')
-    if (!temp) {
-      temp = JSON.stringify({ fields: [] })
+    loadingActive = true
+    try {
+      if (formId === 'new') {
+        form = { fields: [], title: 'My New Form' }
+      } else {
+        const url = `http://localhost:3000/api/form/${formId}`
+        //@ts-ignore
+        const res = await fetch(url)
+        form = await res.json()
+      }
+
+      if (!form) {
+        return
+      }
+
+      form.fields = form.fields.map((w: IField) => {
+        w.selected = false
+        return w
+      })
+      // todo remove this, just for testing
+      form.groups = [
+        { value: '123', label: 'Personal Details' },
+        { value: '456', label: 'Experience Questions' },
+      ]
+      addPlaceHolder()
+      formStore.setForm(form)
+      dispatch('form_loaded', {
+        form,
+      })
+      startPreviewSaver()
+    } finally {
+      loadingActive = false
     }
-    form = JSON.parse(temp)
-    form.fields = form.fields.map((w: IField) => {
-      w.selected = false
-      return w
-    })
-    form.groups = [
-      { value: '123', label: 'Personal Details' },
-      { value: '456', label: 'Experience Questions' },
-    ]
-
-    addPlaceHolder()
-
-    formStore.setForm(form)
-    dispatch('form_loaded', {
-      form,
-    })
-
-    startPreviewSaver()
   }
 
   function removePlaceHolder() {
@@ -85,8 +95,6 @@
   }
 
   onMount(async () => {
-    loadForm()
-
     subscribe('form_updated', (props) => {
       form = props
       addPlaceHolder()
@@ -149,46 +157,48 @@
       return form.fields
     })
 
-    subscribe("drag_over", () => {
-      removePlaceHolder();
+    subscribe('drag_over', () => {
+      removePlaceHolder()
     })
 
     subscribe('drag_finished', async (elements) => {
       removePlaceHolder()
-      console.log(elements);
+      console.log(elements)
 
-      let fields: IField[] = elements.filter((w : any) => w).map((e: Element) => {
-        if(e.id === 'form-field-placeholder') {
-          return undefined;
-        }
-        if (e.id.startsWith('form-field-')) {
-         const field = form.fields.find((w) => w.id === e.id.replace('form-field-', ''));
-         if(field) {
-           field.selected = false;
-         }
-         return field;
-        }
-        if (e.id.startsWith('sidebar-block-')) {
-          const type = e.id.replace('sidebar-block-', '')
-          let field: IField = {
-            id: randomString(),
-            type: type,
-            name: 'new-field-' + randomStringSmall(),
-            label: 'New Field ' + randomStringSmall(),
-            selected: true,
-            value: undefined,
+      let fields: IField[] = elements
+        .filter((w: any) => w)
+        .map((e: Element) => {
+          if (e.id === 'form-field-placeholder') {
+            return undefined
           }
-          field = setFieldDefaults(field)
-          return field
-        }
-      })
-      fields = fields.filter(w => w != null);
+          if (e.id.startsWith('form-field-')) {
+            const field = form.fields.find((w) => w.id === e.id.replace('form-field-', ''))
+            if (field) {
+              field.selected = false
+            }
+            return field
+          }
+          if (e.id.startsWith('sidebar-block-')) {
+            const type = e.id.replace('sidebar-block-', '')
+            let field: IField = {
+              id: randomString(),
+              type: type,
+              name: 'new-field-' + randomStringSmall(),
+              label: 'New Field ' + randomStringSmall(),
+              selected: true,
+              value: undefined,
+            }
+            field = setFieldDefaults(field)
+            return field
+          }
+        })
+      fields = fields.filter((w) => w != null)
       form.fields = fastClone(fields)
       dragForm = fastClone(form)
       await tick()
       dragForm = undefined
-      if(form.fields.length === 0) {
-        addPlaceHolder();
+      if (form.fields.length === 0) {
+        addPlaceHolder()
       }
       formStore.setForm(form)
     })
@@ -229,13 +239,21 @@
         form.fields[index] = field
       }
     })
+
+    loadForm()
   })
 </script>
 
 <div>
   <ToastManager />
-  {#if form == null}
-    <div class="loader" />
+  {#if form == null || loadingActive}
+  <div class="flex-column justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 2em" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
   {:else}
     <div class="container" style="padding-left: 0.4em; padding-top: 0.5em;">
       <div class="row">
@@ -246,11 +264,6 @@
         {:else}
           <div class={'col-md no-gutters max-width'}>
             <DynamicForm {form} mode={DynamicFormMode.Preview} />
-          </div>
-        {/if}
-        {#if loadingActive}
-          <div class="col">
-            <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
           </div>
         {/if}
       </div>

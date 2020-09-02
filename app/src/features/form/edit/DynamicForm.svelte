@@ -99,7 +99,7 @@
 {/if}
 <div class="row" style="padding-left: 0.5em; display: flex">
   <div class="col">
-    <h4>{form.title ?? 'Form Title'}yoooo</h4>
+    <h4>{form.title || 'Form Title'}</h4>
     <small class="text-gray-700">{form.description ?? ''}</small>
   </div>
   <div class="col-auto" style="text-align: right"><button on:click={onFormPreview} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</button></div>

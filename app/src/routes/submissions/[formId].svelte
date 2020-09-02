@@ -31,7 +31,7 @@
   let hidden = new Set(["submission_id"])
 
   async function getRows(): Promise<TableRow[]> {
-    let response = await fetch(`http://localhost:3000/form/${formId}/submissions`)
+    let response = await fetch(`http://localhost:3000/api/form/${formId}/submission`)
     const submissions: any[] = await response.json()
     const labels: { [key: string]: string } = {}
 
@@ -85,7 +85,7 @@
 
   async function onDelete(rows: any[]) {
     const ids = rows.map((r) => r['submission_id']).filter((r) => r != null)
-    const result = await fetch(`http://localhost:3000/form/${formId}/submissions/delete`, {
+    const result = await fetch(`http://localhost:3000/api/form/${formId}/submission`, {
       method: 'DELETE',
       body: JSON.stringify(ids),
       headers: {

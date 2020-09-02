@@ -19,7 +19,7 @@
   }
 
   async function getRows(): Promise<TableRow[]> {
-    const response = await fetch("http://localhost:3000/option-set/list");
+    const response = await fetch("http://localhost:3000/api/option-set");
     const data: OptionSet[] = await response.json();
     return data.map((d) => {
       return {

@@ -10,12 +10,12 @@ type OptionSet struct {
 }
 
 type Form struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
+	Id    string `json:"id"`
+	Title string `json:"title"`
 	Changeable
 	Creatable
-	Fields      []Field `json:"fields"`
-	Submissions []LeanSubmission
+	Fields      []Field          `json:"fields"`
+	Submissions []LeanSubmission `json:"submissions,omitempty"`
 }
 
 type LeanSubmission struct {
@@ -30,13 +30,13 @@ type Submission struct {
 	Details   interface{} `json:"details"`
 	Meta      interface{} `json:"meta"`
 	FieldMeta interface{} `json:"fieldMeta"`
-	Status string		  `json:"status"`
+	Status    string      `json:"status"`
 	Creatable
 }
 
 type SubmissionsDeleted struct {
-	FormId string `json:"formId"`
-	Ids []string `json:"ids"`
+	FormId string   `json:"formId"`
+	Ids    []string `json:"ids"`
 }
 
 type Field struct {
@@ -44,8 +44,8 @@ type Field struct {
 	Label   string      `json:"label"`
 	Type    string      `json:"type"`
 	Id      string      `json:"id"`
-	Options interface{} `json:"options"`
-	Value   interface{} `json:"value"`
+	Options interface{} `json:"options,omitempty"`
+	Value   interface{} `json:"value,omitempty"`
 }
 
 type ContentBlock struct {

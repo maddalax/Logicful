@@ -2,6 +2,7 @@ package storage
 
 import (
 	"bytes"
+	"encoding/json"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -10,7 +11,18 @@ import (
 	"os"
 )
 
-func SetJson(json string, name string, bucket string, acl string) (string, error) {
+func SetJson(value interface{}, name string, bucket string, acl string) (string, error) {
+
+	serialized, err := json.Marshal(value)
+
+	if err != nil {
+		return "", err
+	}
+
+	return SetJsonBytes(serialized, name, bucket, acl)
+}
+
+func SetJsonBytes(value []byte, name string, bucket string, acl string) (string, error) {
 
 	uploader := s3manager.NewUploader(createSession())
 
@@ -19,7 +31,7 @@ func SetJson(json string, name string, bucket string, acl string) (string, error
 		Key:         aws.String(name),
 		ACL:         aws.String(acl),
 		ContentType: aws.String("application/json"),
-		Body:        bytes.NewReader([]byte(json)),
+		Body:        bytes.NewReader(value),
 	})
 
 	if err != nil {

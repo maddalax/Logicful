@@ -36,7 +36,7 @@ import { isString } from "guards/Guard";
 
   async function load() {
     loading = true;
-    const response = await fetch("http://localhost:3000/option-set/list");
+    const response = await fetch("http://localhost:3000/api/option-set");
     const data: OptionSet[] = await response.json();
     const result = data.find((w) => w.name === name);
     if(!result) {
@@ -93,7 +93,7 @@ import { isString } from "guards/Guard";
       return s;
     });
     const toSave = await Promise.all(promises);
-    await fetch("http://localhost:3000/option-set/set", {
+    await fetch("http://localhost:3000/api/option-set/set", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -117,7 +117,7 @@ import { isString } from "guards/Guard";
     });
     const saveId = getUrlParameter("id", set.localSaveId);
     const qs = saveId ? `?id=${saveId}` : "";
-    const saveUrl = `http://localhost:3000/s3/json/set${qs}`;
+    const saveUrl = `http://localhost:3000/api/s3/json${qs}`;
     const response = await fetch(saveUrl, {
       method: "POST",
       headers: {

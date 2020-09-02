@@ -1,5 +1,5 @@
 import type { Group } from './Group';
-import type { IField, LabelValue } from './IField';
+import type { IField } from './IField';
 
 export type IForm = {
     fields : IField[],
@@ -7,10 +7,12 @@ export type IForm = {
     description? : string,
     enableLogic? : boolean
     id? : string,
-    lastUpdated? : string,
+    changeTime? : string,
+    changeBy? : string
     groups? : Group[],
     disableSubmissions? : Boolean,
     maxSubmissions? : number,
     openDateTime?: string,
     closeDateTime?: string
+    url? : string
 }

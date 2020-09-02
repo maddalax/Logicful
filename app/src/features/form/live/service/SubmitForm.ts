@@ -90,7 +90,7 @@ export async function submitForm() {
         meta
     }
     
-    const result = await fetch(`http://localhost:3000/form/${id}/submit`, {
+    const result = await fetch(`http://localhost:3000/api/form/${id}/submission`, {
         method : 'POST',
         body : JSON.stringify(submission),
         headers : {

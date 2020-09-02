@@ -1,8 +1,8 @@
 <script lang="typescript">
-  import type { Folder } from '../models/Folder'
+  import type { IFolder } from '../models/IFolder'
   import FormList from './FormList.svelte'
 
-  export let folder: Folder
+  export let folder: IFolder
 
   function onSettings(folderId: string) {}
 
@@ -21,9 +21,8 @@
             {#if folder.name === 'uncategorized'}
               <p class="small">Uncategorized forms have not been assigned a folder yet.</p>
             {:else}
-              <p class="small">{folder.forms.length} form submissions</p>
+              <p class="small">{folder.forms.length} Submissions</p>
             {/if}
-
           </div>
           <div class="col-auto">
             <div class="align-items-center" style="padding-bottom: 0.3em; text-align: right !important;">
@@ -35,18 +34,12 @@
                 <span class="fas fa-cog" />
               </button>
             </div>
-            <button on:click={onImportForm} class="btn btn-xs btn-outline-dark">
-              <span class="fas fa-file-import" />
-              <span>Import Form</span>
-            </button>
-            <button on:click={onCreateForm} class="btn btn-xs btn-outline-dark">
-              <span class="fas fa-plus" />
-              <span>Create Form</span>
-            </button>
+            <button on:click={onImportForm} class="btn btn-xs btn-outline-dark"> <span class="fas fa-file-import" /> <span>Import Form</span> </button>
+            <button on:click={onCreateForm} class="btn btn-xs btn-outline-dark"> <span class="fas fa-plus" /> <span>Create Form</span> </button>
           </div>
         </div>
       </div>
-      <FormList forms={folder.forms} />
+      <FormList folder={folder} />
     </div>
   </div>
 </div>

@@ -30,154 +30,20 @@ Globals:
 
 Resources:
 
-  CreateOptionSet:
+  Api:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: lambda/create-option-set/
-      Handler: create-option-set
+      CodeUri: lambda/api
+      Handler: api
       Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Tracing: Active
       Events:
         CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api
           Properties:
-            Path: /option-set/set
-            Method: POST
-
-  ListOptionSet:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      Policies: AmazonDynamoDBFullAccess
-      CodeUri: lambda/list-option-set/
-      Handler: list-option-set
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /option-set/list
-            Method: GET
-
-  S3SetJson:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: lambda/s3-set-json/
-      Handler: s3-set-json
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /s3/json/set
-            Method: POST
-
-  SetForm:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: lambda/set-form/
-      Policies: AmazonDynamoDBFullAccess
-      Handler: set-form
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /form/set
-            Method: POST
-
-  ListForms:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: lambda/list-forms/
-      Policies: AmazonDynamoDBFullAccess
-      Handler: list-forms
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /form/list
-            Method: GET
-
-  CreateContentBlock:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      Policies: AmazonDynamoDBFullAccess
-      CodeUri: lambda/set-content-block/
-      Handler: set-content-block
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /content-block/set
-            Method: POST
-
-  ListContentBlock:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      Policies: AmazonDynamoDBFullAccess
-      CodeUri: lambda/list-content-block/
-      Handler: list-content-block
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /content-block/list
-            Method: GET
-
-  SubmitForm:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      Policies: AmazonDynamoDBFullAccess
-      CodeUri: lambda/submit-form/
-      Handler: submit-form
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /form/{id}/submit
-            Method: POST
-
-  ListFormSubmissions:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: lambda/list-form-submissions/
-      Policies: AmazonDynamoDBFullAccess
-      Handler: list-form-submissions
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /form/{id}/submissions
-            Method: GET
-
-  DeleteFormSubmissions:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: lambda/delete-submission/
-      Policies: AmazonDynamoDBFullAccess
-      Handler: delete-submission
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
-      Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /form/{id}/submissions/delete
-            Method: DELETE
+            Path: /api/{proxy+}
+            Method: ANY
 
   FormSubmissionQueueHandler:
     Type: AWS::Serverless::Function
@@ -187,7 +53,7 @@ Resources:
         - SQSPollerPolicy:
             QueueName:
               logicful_form_submission
-      CodeUri: lambda/sqs-form-submission-handler/
+      CodeUri: lambda/sqs/sqs-form-submission-handler/
       Handler: sqs-form-submission-handler
       Runtime: go1.x
       Timeout: 600
@@ -206,7 +72,7 @@ Resources:
         - SQSPollerPolicy:
             QueueName:
               logicful_form_delete_submissions
-      CodeUri: lambda/sqs-form-submission-delete-handler/
+      CodeUri: lambda/sqs/sqs-form-submission-delete-handler/
       Handler: sqs-form-submission-delete-handler
       Runtime: go1.x
       Timeout: 600

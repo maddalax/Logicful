@@ -26,7 +26,7 @@
 
     async function load() {
         loading = true;
-        const response = await fetch("http://localhost:3000/content-block/list");
+        const response = await fetch("http://localhost:3000/api/content-block");
         const blocks: ContentBlock[] = await response.json();
         const result = blocks.find((w) => w.id === id);
         if(!result) {
@@ -56,7 +56,7 @@
 
     async function save() {
         block.value = await generateInlineUrl();
-        await fetch("http://localhost:3000/content-block/set", {
+        await fetch("http://localhost:3000/api/content-block/set", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +75,7 @@
     async function generateInlineUrl(): Promise<string> {
         const saveId = getUrlParameter("id", block.value);
         const qs = saveId ? `?id=${saveId}` : "";
-        const saveUrl = `http://localhost:3000/s3/json/set${qs}`;
+        const saveUrl = `http://localhost:3000/api/s3/json${qs}`;
         const response = await fetch(saveUrl, {
             method: "POST",
             headers: {
