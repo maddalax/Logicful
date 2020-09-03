@@ -1,0 +1,115 @@
+POST http://localhost:3000/api/api/option-set/set
+Content-Type: application/json
+
+  "value": "https://test.com",
+  "name" : "testing",
+  "type" : "remote"
+}
+
+<> 2020-09-02T114847.400.json
+
+###
+
+POST http://localhost:3000/api/api/option-set/set
+Content-Type: application/json
+
+  "value": "https://test.com",
+  "name" : "testing",
+  "type" : "remote"
+}
+
+###
+
+POST http://localhost:3000/api/api/option-set/set
+Content-Type: application/json
+
+  "value": "https://test.com",
+  "name" : "testing",
+  "type" : "remote"
+}
+
+###
+
+POST http://localhost:3000/api/api/option-set/set
+Content-Type: application/json
+
+{
+  "value": "https://test.com",
+  "name" : "testing",
+  "type" : "remote"
+}
+
+###
+
+GET http://localhost:3000/api/api/option-set
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T114059.200.json
+
+###
+
+GET http://localhost:3000/api/api/option-set
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T114055.200.json
+
+###
+
+GET http://localhost:3000/api/api/option-set
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T114049.200.json
+
+###
+
+GET http://localhost:3000/api/api/option-set
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T114029.200.json
+
+###
+
+GET http://localhost:3000/api/api/option-set
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T113926.200.json
+
+###
+
+GET http://localhost:3000/api/api/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T113914.200.json
+
+###
+
+GET http://localhost:3000/api/api/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T113547.200.json
+
+###
+
+GET http://localhost:3000/api/api/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T112932.200.json
+
+###
+
+GET http://localhost:3000/api/api/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-09-02T112924.200.json
+
+###
+
