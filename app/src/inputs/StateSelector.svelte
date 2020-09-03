@@ -11,4 +11,5 @@
 </script>
 
 <ComboBox
-  field={{ id: id, name: name, label: label, helperText: 'Zip Code', hideLabel: true, required: true, type: 'combobox', value: value, options: { type: 'remote', value: 'https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_hash.json' } }} />
+  field={{ id: id, name: name, label: label, helperText: 'Zip Code', hideLabel: true, required: true, type: 'combobox', value: value, options: { type: 'remote', value: 'https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_hash.json' } }}
+/>

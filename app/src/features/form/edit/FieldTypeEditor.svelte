@@ -3,9 +3,9 @@
   import ComboBoxOptionsEditor from './ComboBoxOptionsEditor.svelte'
   import Field from './Field.svelte'
   import { randomString } from 'util/Generate'
-import AddressEditor from './AddressEditor.svelte';
-import CheckboxGroupEditor from './CheckboxGroupEditor.svelte';
-import RadioGroupEditor from './RadioGroupEditor.svelte';
+  import AddressEditor from './AddressEditor.svelte'
+  import CheckboxGroupEditor from './CheckboxGroupEditor.svelte'
+  import RadioGroupEditor from './RadioGroupEditor.svelte'
 
   export let field: IField
 </script>
@@ -23,6 +23,7 @@ import RadioGroupEditor from './RadioGroupEditor.svelte';
     <RadioGroupEditor {field} expanded={field.expanded} />
   {:else if field.type === 'switch'}
     <Field
-      field={{ id: randomString(), type: 'switch', label: 'Default Value', value: { type: 'local', value: field.defaultValue || false }, configFieldTarget: 'defaultValue', configTarget: field.id }} />
+      field={{ id: randomString(), type: 'switch', label: 'Default Value', value: { type: 'local', value: field.defaultValue || false }, configFieldTarget: 'defaultValue', configTarget: field.id }}
+    />
   {/if}
 </div>

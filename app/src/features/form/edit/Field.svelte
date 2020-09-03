@@ -99,7 +99,7 @@
       <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"> <span class="far fa-clone" /> </span>
       </button>
-      <button on:click|stopPropagation={() => dispatch("confirm_field_deletion", {})} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
+      <button on:click|stopPropagation={() => dispatch('confirm_field_deletion', {})} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
         <span class="icon-brand"> <span class="fas fa-trash" /> </span>
       </button>
     </div>

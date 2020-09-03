@@ -11,17 +11,16 @@
   })
 
   function getRecentFroms() {
-
     return []
   }
 </script>
 
 <div style="width: 100%">
-    <h5 class="h5">Recently Viewed Forms</h5>
+  <h5 class="h5">Recently Viewed Forms</h5>
 </div>
 
 <style>
-    .h5{
-        padding-bottom: 0.2em;
-    }
+  .h5 {
+    padding-bottom: 0.2em;
+  }
 </style>

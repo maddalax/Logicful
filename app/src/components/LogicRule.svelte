@@ -252,24 +252,28 @@
           </div>
           <Field
             config={{ search: true }}
-            field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
+            field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }}
+          />
         </div>
       </div>
       <div class="row">
         {#if field.logic?.rules?.[i]?.field}
           <Field
             config={{ search: true }}
-            field={{ id: randomString(), customCss: customCss(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
+            field={{ id: randomString(), customCss: customCss(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }}
+          />
         {/if}
       </div>
       <div class="row">
         {#if field.logic?.rules?.[i]?.condition && options[i]?.showValue}
           {#if options[i].valueType === 'text'}
             <Field
-              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
+              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }}
+            />
           {:else if options[i].valueType === 'combobox'}
             <Field
-              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
+              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }}
+            />
           {/if}
         {/if}
       </div>

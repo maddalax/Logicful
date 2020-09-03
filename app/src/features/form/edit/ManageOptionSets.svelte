@@ -131,7 +131,8 @@
         <Field
           field={{ id: `${set.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: set.name, onChange: (value) => {
               set.name = value
-            } }} />
+            } }}
+        />
         <Field
           field={{ onChange: (value) => {
               if (value === 'local') {
@@ -147,13 +148,15 @@
                 set.value = set.remoteUrl
               }
               set.type = value
-            }, id: `${set.id}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
+            }, id: `${set.id}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }}
+        />
 
         {#if set.type === 'remote'}
           <Field
             field={{ helperText: 'See <a href="test" target="_blank">Remote Option Set Guide</a> for information on how to structure your endpoint response.', onChange: (value) => {
                 set.value = value
-              }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url', required: true }} />
+              }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url', required: true }}
+          />
         {:else if loading}
           <div class="loader" />
         {:else if errored}
@@ -163,7 +166,8 @@
             options={isString(set.value) ? [] : set.value}
             onChange={(data) => {
               onRepeaterChange(data, index)
-            }} />
+            }}
+          />
         {/if}
       </div>
     </div>
@@ -172,6 +176,7 @@
     <DropdownButton
       label={'Save'}
       processingLabel={'Saving...'}
-      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]} />
+      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
+    />
   </div>
 </div>

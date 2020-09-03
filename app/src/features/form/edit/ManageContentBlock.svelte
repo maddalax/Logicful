@@ -88,17 +88,16 @@
       <Field
         field={{ id: `${block.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: block.name, onChange: (value) => {
             block.name = value
-          } }} />
-      <Field
-        editor={true}
-        config={{ onChange }}
-        field={{ value: data, id: randomString(), name: block.name, type: 'block-editor' }} />
+          } }}
+      />
+      <Field editor={true} config={{ onChange }} field={{ value: data, id: randomString(), name: block.name, type: 'block-editor' }} />
     </div>
   {/if}
   <div class="float-right">
     <DropdownButton
       label={'Save'}
       processingLabel={'Saving...'}
-      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]} />
+      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]}
+    />
   </div>
 </div>

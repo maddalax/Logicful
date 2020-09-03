@@ -37,7 +37,8 @@
   {#if config.middleInitial}
     <div class="col-1 padding">
       <TextInput
-        field={{ required: true, name: `${field.name}.middleInitial`, id: `${field.id}.value.middleInitial`, helperText: 'M.I.', hideLabel: true, value: value?.middleInitial ?? '', type: 'string' }} />
+        field={{ required: true, name: `${field.name}.middleInitial`, id: `${field.id}.value.middleInitial`, helperText: 'M.I.', hideLabel: true, value: value?.middleInitial ?? '', type: 'string' }}
+      />
     </div>
   {/if}
   {#if config.last}

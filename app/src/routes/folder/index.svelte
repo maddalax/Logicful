@@ -31,7 +31,6 @@
   })
 
   function getFolder(folderName: string) {
-  
     return { name: folderName, forms: [], id: '12345' }
   }
 </script>
@@ -54,5 +53,4 @@
 </div>
 
 <style>
-
 </style>

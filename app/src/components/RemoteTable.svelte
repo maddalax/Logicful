@@ -215,38 +215,25 @@
 <div>
   <ToastManager />
   <div class="d-flex bd-highlight mb-3">
-    <div class="mr-auto p-2 bd-highlight">
-      <input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" />
-    </div>
+    <div class="mr-auto p-2 bd-highlight"><input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" /></div>
     {#if selectedCount > 0}
       <div class="p-2 bd-highlight">
-        <div style="margin-top: 5px;">
-          Selected:
-          <strong>{selectedCount} of {filtered.length}</strong>
-        </div>
+        <div style="margin-top: 5px;">Selected: <strong>{selectedCount} of {filtered.length}</strong></div>
       </div>
       <div class="p-2 bd-highlight">
-        <div style="pointer: cursor;" on:click={() => (modal = 'delete')}>
-          <i class="fas fa-trash-alt" />
-        </div>
+        <div style="pointer: cursor;" on:click={() => (modal = 'delete')}><i class="fas fa-trash-alt" /></div>
       </div>
     {/if}
     <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;">
-        <i class="fas fa-cog" />
-      </div>
+      <div style="pointer: cursor;"><i class="fas fa-cog" /></div>
     </div>
     <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}>
-        <i class="fas fa-columns" />
-      </div>
+      <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}><i class="fas fa-columns" /></div>
     </div>
   </div>
   {#if state === LoadState.Loading}
     <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
-      <div class="spinner-border text-secondary" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+      <div class="spinner-border text-secondary" role="status"><span class="sr-only">Loading...</span></div>
     </div>
   {:else if state === LoadState.Finished}
     <canvas id="canvas" style="display: none" />
@@ -263,23 +250,15 @@
           <tbody>
             <tr>
               <th scope="col" style="width: 50px">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" checked={allRowsSelected} on:change={selectAllRows} id={'row-toggle-all'} />
-                </div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" value="" checked={allRowsSelected} on:change={selectAllRows} id={'row-toggle-all'} /></div>
               </th>
               {#each filteredColumns as column (column)}
                 <th scope="col" style={headerStyle(column)} on:click={() => sortColumn(column)}>
                   {column}
                   <span>
                     {#if sort === column && sortDirection === 'asc'}
-                      <span>
-                        <span class="fas fa-chevron-up" />
-                      </span>
-                    {:else if sort === column && sortDirection === 'desc'}
-                      <span>
-                        <span class="fas fa-chevron-down" />
-                      </span>
-                    {/if}
+                      <span> <span class="fas fa-chevron-up" /> </span>
+                    {:else if sort === column && sortDirection === 'desc'}<span> <span class="fas fa-chevron-down" /> </span>{/if}
                   </span>
                 </th>
               {/each}
@@ -297,7 +276,8 @@
                         on:change={(e) => {
                           onRowClick(row)
                         }}
-                        id={'row-toggle-' + index} />
+                        id={'row-toggle-' + index}
+                      />
                     </div>
                   </td>
                   {#each filteredColumns as column}
@@ -321,7 +301,8 @@
           range = r
           setWidths()
           columns = columns
-        }} />
+        }}
+      />
     {/if}
   {:else if state === LoadState.Failed}
     <div style="padding-top:1em; padding-left: 1em;">
@@ -334,7 +315,8 @@
       isOpen={true}
       onClose={() => {
         modal = ''
-      }}>
+      }}
+    >
       {#each columns as column}
         {#if column !== 'table_meta_id'}
           <div class="form-check">
@@ -346,7 +328,8 @@
               on:change={(e) => {
                 toggleColumn(e.target.checked, column)
               }}
-              id={'toggle-' + column} />
+              id={'toggle-' + column}
+            />
             <label class="form-check-label" for={'toggle-' + column}>{column}</label>
           </div>
         {/if}
@@ -359,7 +342,8 @@
       actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
       onClose={() => {
         modal = ''
-      }}>
+      }}
+    >
       <p>Are you sure you want to delete {selectedCount} entries?</p>
     </Dialog>
   {/if}

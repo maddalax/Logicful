@@ -12,10 +12,10 @@
   let debouncedOnChange: any
 
   subscribeFieldChange(onMount, (newField) => {
-      if (newField.id === field.id) {
-        value = newField.value ?? ''
-      }
-    })
+    if (newField.id === field.id) {
+      value = newField.value ?? ''
+    }
+  })
 
   onMount(() => {
     debouncedOnChange = debounce((e: any) => {
@@ -42,7 +42,8 @@
       {value}
       placeholder={field.placeholder ?? ''}
       name={field.name}
-      {type} />
+      {type}
+    />
   {:else}
     <input
       on:click|stopPropagation
@@ -52,7 +53,8 @@
       {value}
       placeholder={field.placeholder ?? ''}
       name={field.name}
-      {type} />
+      {type}
+    />
   {/if}
   {#if field.helperText}
     <small class="form-text text-muted">

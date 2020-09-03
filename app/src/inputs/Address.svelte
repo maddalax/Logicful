@@ -13,11 +13,13 @@
   <div class="col">
     <div class="row">
       <TextInput
-        field={{ required: true, name: `${field.name}.address1`, id: `${field.id}.value.address1`, helperText: 'Address Line 1', hideLabel: true, value: value?.address1 ?? '', type: 'string' }} />
+        field={{ required: true, name: `${field.name}.address1`, id: `${field.id}.value.address1`, helperText: 'Address Line 1', hideLabel: true, value: value?.address1 ?? '', type: 'string' }}
+      />
     </div>
     <div class="row" style="padding-top: 0.8em;">
       <TextInput
-        field={{ required: true, name: `${field.name}.address2`, id: `${field.id}.value.address2`, helperText: 'Address Line 2', hideLabel: true, value: value?.address2 ?? '', type: 'string' }} />
+        field={{ required: true, name: `${field.name}.address2`, id: `${field.id}.value.address2`, helperText: 'Address Line 2', hideLabel: true, value: value?.address2 ?? '', type: 'string' }}
+      />
     </div>
     <div class="row" style="padding-top: 0.8em;">
       <div class="col-5">
@@ -28,7 +30,8 @@
       </div>
       <div class="col-4">
         <TextInput
-          field={{ required: true, name: `${field.name}.zip`, id: `${field.id}.value.zip`, helperText: 'Zip Code', hideLabel: true, value: value?.zip ?? '', type: 'string', properties: { pattern: '[d]{5}(-[d]{4})?' } }} />
+          field={{ required: true, name: `${field.name}.zip`, id: `${field.id}.value.zip`, helperText: 'Zip Code', hideLabel: true, value: value?.zip ?? '', type: 'string', properties: { pattern: '[d]{5}(-[d]{4})?' } }}
+        />
       </div>
     </div>
   </div>

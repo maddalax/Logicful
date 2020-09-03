@@ -1,3 +1,2 @@
 <script lang="typescript">
-    
 </script>

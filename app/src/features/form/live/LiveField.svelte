@@ -21,7 +21,7 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { fastClone } from 'util/Compare'
   import FileUpload from 'inputs/FileUpload.svelte'
-import FullName from 'inputs/FullName.svelte';
+  import FullName from 'inputs/FullName.svelte'
   import CheckboxGroup from 'inputs/CheckboxGroup.svelte'
   import RadioGroup from 'inputs/RadioGroup.svelte'
 

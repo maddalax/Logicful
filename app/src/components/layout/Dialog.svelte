@@ -53,7 +53,7 @@
       processing = -1
       close()
     } catch (ex) {
-      console.error(ex);
+      console.error(ex)
       failed = true
     }
   }
@@ -78,9 +78,7 @@
               {:else}<button class={'btn btn-' + action.type} disabled={true}>Processing...</button>{/if}
             {:else if action.focus}
               <button class={'btn btn-' + action.type} bind:this={focusable} on:click={() => runAction(action, index)}>{action.label}</button>
-            {:else}
-            <button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>{action.label}</button>
-            {/if}
+            {:else}<button class={'btn btn-' + action.type} on:click={() => runAction(action, index)}>{action.label}</button>{/if}
           {/each}
         </div>
       {/if}

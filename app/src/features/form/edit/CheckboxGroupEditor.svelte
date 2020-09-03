@@ -47,5 +47,6 @@
 <div>
   <Repeater options={options()} onlyLabel={true} label={'Checkbox Options'} onChange={onOptionsChange} />
   <Field
-    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />
+    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }}
+  />
 </div>

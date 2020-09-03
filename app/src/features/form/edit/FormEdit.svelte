@@ -42,7 +42,8 @@
   <div style="padding-right: 1.5em;">
     <div class="" style="padding: 0.75em 0.4em;"><button on:click={onWorkflows} target="_blank" class="btn btn-sm btn-outline-dark"><span class="fas fa-cog" /> Manage Workflows</button></div>
     <Field
-      field={{ id: randomString(), type: 'switch', label: 'Enable Logic For Preview', value: { type: 'local', value: form.enableLogic ?? true }, configFieldTarget: 'enableLogic', configTarget: 'form' }} />
+      field={{ id: randomString(), type: 'switch', label: 'Enable Logic For Preview', value: { type: 'local', value: form.enableLogic ?? true }, configFieldTarget: 'enableLogic', configTarget: 'form' }}
+    />
     <FormEditSettings {form} />
   </div>
 {:else}

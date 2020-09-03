@@ -6,34 +6,29 @@
   import { dispatch, dispatchSingle } from 'event/EventBus'
   import { firstNotEmpty } from 'util/Format'
   import { onMount } from 'svelte'
-import formStore from 'store/FormStore';
-import GroupEditSidebar from './GroupEditSidebar.svelte';
+  import formStore from 'store/FormStore'
+  import GroupEditSidebar from './GroupEditSidebar.svelte'
 
   export let field: IField
 
-    function getGroups(): LabelValue[] {
-       let form = formStore.getForm();
-       return form.groups ?? []
-    }
+  function getGroups(): LabelValue[] {
+    let form = formStore.getForm()
+    return form.groups ?? []
+  }
 
-    function onGroupSettings(){
+  function onGroupSettings() {
+    dispatch('show_right_sidebar', { component: GroupEditSidebar, groupId: field.groupId })
+  }
 
-        dispatch('show_right_sidebar', {component: GroupEditSidebar, groupId: field.groupId})
-    }
-
-  onMount(() => {
-
-  })
+  onMount(() => {})
 </script>
 
 <div>
-<Field
-config={{ search: true }}
-field={{ id: randomString(), label: 'Specify Group', helperText: 'Link fields together via a group', value: { type: 'local', value: field.groupId }, type: 'combobox', required: true, configFieldTarget: `groupId`, configTarget: field.id, options: { type: 'local', value: getGroups } }} />
-<div class="d-flex bd-highlight justify-end" style="padding: .75em 0.6em;">
-<button on:click={onGroupSettings} target="_blank" class="btn btn-sm btn-outline-dark">
-    <span class="fas fa-cog" />
-    Group Settings
-</button>
-</div>
+  <Field
+    config={{ search: true }}
+    field={{ id: randomString(), label: 'Specify Group', helperText: 'Link fields together via a group', value: { type: 'local', value: field.groupId }, type: 'combobox', required: true, configFieldTarget: `groupId`, configTarget: field.id, options: { type: 'local', value: getGroups } }}
+  />
+  <div class="d-flex bd-highlight justify-end" style="padding: .75em 0.6em;">
+    <button on:click={onGroupSettings} target="_blank" class="btn btn-sm btn-outline-dark"> <span class="fas fa-cog" /> Group Settings </button>
+  </div>
 </div>

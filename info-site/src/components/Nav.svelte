@@ -2,7 +2,7 @@
 	<nav
 			id="navbar-main"
 			aria-label="Primary navigation"
-			class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom
+			class="navbar navbar-main navbar-expand-lg navbar-theme-primary
     navbar-dark"
 	>
 		<div class="container position-relative">

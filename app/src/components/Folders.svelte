@@ -22,35 +22,20 @@
 </script>
 
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
-  <div class="container-fluid p-2 mt-3" style="padding-left: 0em;">
-    <input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} />
-  </div>
-  <div class="card-header card-header-title bg-white border-0" style="display: flex;">
-    <span class="title">Your Folders</span>
-  </div>
+  <div class="container-fluid p-2 mt-3" style="padding-left: 0em;"><input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} /></div>
+  <div class="card-header card-header-title bg-white border-0" style="display: flex;"><span class="title">Your Folders</span></div>
   {#each folders as folder}
     <div class="card-body p-2">
       <div class="list-group dashboard-menu list-group-sm">
         <a href="./folder/{folder}" class="d-flex list-group-item border-0 list-group-item-action {folder === selected ? 'active' : ''}" style="padding-bottom: 0.5em; padding-top: 0.5em;">
-          {#if folder === 'uncategorized'}
-            <span class="fas fa-folder-minus" style="font-size: 1.3em;" />
-          {:else}
-            <span class="far fa-folder" style="font-size: 1.2em;" />
-          {/if}
+          {#if folder === 'uncategorized'}<span class="fas fa-folder-minus" style="font-size: 1.3em;" />{:else}<span class="far fa-folder" style="font-size: 1.2em;" />{/if}
           <span style="padding-left: 0.5em;">{folder}</span>
-          {#if folder === selected}
-            <span class="icon icon-xs ml-auto">
-              <span class="fas fa-chevron-right" />
-            </span>
-          {/if}
+          {#if folder === selected}<span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>{/if}
         </a>
       </div>
     </div>
   {/each}
-  <button on:click={newFolder} class="btn btn-outline-dark">
-    <span class="fas fa-folder-plus" style="font-size: 1.2em;" />
-    <span style="font-weight: 400;">New Folder</span>
-  </button>
+  <button on:click={newFolder} class="btn btn-outline-dark"> <span class="fas fa-folder-plus" style="font-size: 1.2em;" /> <span style="font-weight: 400;">New Folder</span> </button>
 </div>
 
 <style>

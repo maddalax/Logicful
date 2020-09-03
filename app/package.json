@@ -28,7 +28,7 @@
 		"prod": "cross-env NODE_PATH=src run-s validate sapper:build",
 		"start": "node __sapper__/build",
 		"export": "run-s validate sapper:export",
-		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*.svelte",
+		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*{.svelte,.ts}",
 		"http-server": "cd src/data && http-server --cors"
 	},
 	"dependencies": {
@@ -45,7 +45,6 @@
 		"express": "^4.17.1",
 		"flatpickr": "^4.6.6",
 		"fuse.js": "6.4.1",
-		"headroom.js": "0.10.3",
 		"lodash.get": "4.4.2",
 		"lodash.has": "4.5.2",
 		"lodash.set": "4.3.2",

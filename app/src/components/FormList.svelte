@@ -33,7 +33,8 @@
                 on:click={() => {
                   onDelete(form.id || '')
                 }}
-                class="fas fa-trash" />
+                class="fas fa-trash"
+              />
             </button>
           </div>
         </div>

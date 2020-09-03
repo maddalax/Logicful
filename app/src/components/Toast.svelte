@@ -27,9 +27,7 @@
   <div class="toast" bind:this={component} style="position: absolute; top: 0; right: 0;">
     <div class="toast-header">
       <strong class="mr-auto">{title}</strong>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
     </div>
     <div class="toast-body">{message}</div>
   </div>

@@ -10,10 +10,10 @@
   import { onMount } from 'svelte'
   import { submitForm } from 'features/form/live/service/SubmitForm'
   import { LoadState } from 'models/LoadState'
-  import { fade } from 'svelte/transition';
+  import { fade } from 'svelte/transition'
 
   export let form: IForm
-  export let mode : 'local' | '' = ''
+  export let mode: 'local' | '' = ''
   let state = LoadState.NotStarted
 
   subscribeFieldChange(onMount, (updatedField: IField) => {
@@ -52,7 +52,7 @@
       await submitForm()
       state = LoadState.Finished
     } catch (ex) {
-      console.error(ex);
+      console.error(ex)
       state = LoadState.Failed
     }
   }
@@ -83,11 +83,8 @@
     <button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" type="submit">Failed to Submit, Click To Try Again</button>
   {:else if state === LoadState.Loading}
     <button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>Submitting...</button>
-  {:else if state === LoadState.Finished}
-    <button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>Submitted Successfully.</button>
-  {/if}
+  {:else if state === LoadState.Finished}<button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>Submitted Successfully.</button>{/if}
 </form>
 
 <style>
-
 </style>

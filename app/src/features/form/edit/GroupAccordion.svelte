@@ -1,13 +1,11 @@
 <script lang="typescript">
   import LogicBuilder from './LogicBuilder.svelte'
   import type { IField, LabelValue } from 'models/IField'
-import GroupDetails from './GroupDetails.svelte';
-import { firstNotEmpty } from 'util/Format';
-import { dispatchSingle } from 'event/EventBus';
+  import GroupDetails from './GroupDetails.svelte'
+  import { firstNotEmpty } from 'util/Format'
+  import { dispatchSingle } from 'event/EventBus'
 
   export let field: IField
-
-
 </script>
 
 <div class="accordion" id="accordionGroup" style="margin-bottom: 3rem;">
@@ -20,11 +18,10 @@ import { dispatchSingle } from 'event/EventBus';
           data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="false"
-          aria-controls="collapseTwo">
+          aria-controls="collapseTwo"
+        >
           <span class="h6 mb-0 font-weight-bold">Group</span>
-          <span class="icon">
-            <span class="fas fa-plus" style="font-size: 1em;" />
-          </span>
+          <span class="icon"> <span class="fas fa-plus" style="font-size: 1em;" /> </span>
         </button>
       </h2>
     </div>

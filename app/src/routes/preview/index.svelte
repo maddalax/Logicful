@@ -1,6 +1,6 @@
 <script context="module">
   import { getUrlParameter } from 'util/Http'
-  
+
   export async function preload(page: any, session: any) {
     const formId = getUrlParameter('formId')
     const mode = page.query?.mode

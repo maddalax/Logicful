@@ -40,6 +40,7 @@
       field.value = e.target.checked
       formStore.set(field, { fromUser: true, value: field.value, field: 'value' })
       field.onChange?.(field.value)
-    }} />
+    }}
+  />
   <label class="form-check-label" for={`${field.id}`} style="padding-top: 0.16em;">{firstNotEmpty(field.label, field.name)}</label>
 </div>

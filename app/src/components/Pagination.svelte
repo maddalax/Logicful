@@ -67,7 +67,8 @@
                 href="javascript:void(0)"
                 on:click={() => {
                   setRowsPerPage(entry)
-                }}>
+                }}
+              >
                 Show {entry} Entires
               </a>
             </li>
@@ -76,37 +77,23 @@
       </div>
     </li>
     {#if hasPrevious}
-      <li class="page-item">
-        <a class="page-link" on:click={() => setPage(page - 1)} href="javascript:void(0)" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
+      <li class="page-item"><a class="page-link" on:click={() => setPage(page - 1)} href="javascript:void(0)" tabindex="-1" aria-disabled="true">Previous</a></li>
     {/if}
     {#if !hasNext && hasPrevious && page - 2 != 0}
-      <li class="page-item">
-        <a class="page-link" on:click={() => setPage(page - 2)} href="javascript:void(0)">{page - 2}</a>
-      </li>
+      <li class="page-item"><a class="page-link" on:click={() => setPage(page - 2)} href="javascript:void(0)">{page - 2}</a></li>
     {/if}
     {#if page > 1}
-      <li class="page-item">
-        <a class="page-link" on:click={() => setPage(page - 1)} href="javascript:void(0)">{page - 1}</a>
-      </li>
+      <li class="page-item"><a class="page-link" on:click={() => setPage(page - 1)} href="javascript:void(0)">{page - 1}</a></li>
     {/if}
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="javascript:void(0)">{page}</a>
-    </li>
+    <li class="page-item active" aria-current="page"><a class="page-link" href="javascript:void(0)">{page}</a></li>
     {#if hasNext}
-      <li class="page-item">
-        <a class="page-link" on:click={() => setPage(page + 1)} href="javascript:void(0)">{page + 1}</a>
-      </li>
+      <li class="page-item"><a class="page-link" on:click={() => setPage(page + 1)} href="javascript:void(0)">{page + 1}</a></li>
     {/if}
     {#if page === 1 && pages >= 3}
-      <li class="page-item">
-        <a class="page-link" on:click={() => setPage(page + 2)} href="javascript:void(0)">{page + 2}</a>
-      </li>
+      <li class="page-item"><a class="page-link" on:click={() => setPage(page + 2)} href="javascript:void(0)">{page + 2}</a></li>
     {/if}
     {#if hasNext}
-      <li class="page-item">
-        <a class="page-link" on:click={() => setPage(page + 1)} href="javascript:void(0)">Next</a>
-      </li>
+      <li class="page-item"><a class="page-link" on:click={() => setPage(page + 1)} href="javascript:void(0)">Next</a></li>
     {/if}
   </ul>
 </nav>

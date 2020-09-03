@@ -7,12 +7,11 @@
   import FormEditSettings from 'features/form/edit/FormEditSettings.svelte'
   import FormSettingsDetails from 'components/form_settings/FormSettingsDetails.svelte'
   import type { IField } from 'models/IField'
-  import { saveForm } from 'features/form/edit/services/SaveForm';
+  import { saveForm } from 'features/form/edit/services/SaveForm'
   import FormSettings from 'components/form_settings/FormSettings.svelte'
 
   export let form: IForm
   let selected: string = 'general'
-
 
   onMount(() => {
     getForm()
@@ -36,10 +35,8 @@
 
     form
   }
-
-
 </script>
 
 <div style="background-color: #f5f9fe;">
-  <FormSettings {form} {selected}/>
+  <FormSettings {form} {selected} />
 </div>

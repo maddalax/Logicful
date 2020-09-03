@@ -91,7 +91,8 @@
     actions={[{ label: `Delete Field`, type: 'danger', onClick: onDelete, focus: true }, { label: 'Cancel', type: 'secondary' }]}
     onClose={() => {
       deleting = false
-    }}>
+    }}
+  >
     <p>Are you sure you want to delete this field? Deletion is permanent and cannot be reversed.</p>
     <p>Changes will be applied after the form is saved.</p>
   </Dialog>
