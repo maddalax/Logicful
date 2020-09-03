@@ -6,26 +6,13 @@ import (
 	"api/features/formsubmission"
 	"api/features/optionset"
 	"api/features/s3store"
-	"api/gateway"
+	"github.com/apex/gateway"
 	"github.com/julienschmidt/httprouter"
 	"log"
-	"net/http"
 )
 
 func main() {
 	router := httprouter.New()
-
-	router.GlobalOPTIONS = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Header.Get("Access-Control-Request-Method") != "" || r.Header.Get("access-control-request-method") != ""  {
-			println("writing cors headers")
-			// Set CORS headers
-			header := w.Header()
-			header.Set("Access-Control-Allow-Origin", "*")
-			header.Set("Access-Control-Request-Method", "*")
-			header.Set("Access-Control-Request-Headers", "*")
-		}
-	})
-
 	addOptionSetHandlers(router)
 	addContentBlockHandlers(router)
 	addFormHandlers(router)

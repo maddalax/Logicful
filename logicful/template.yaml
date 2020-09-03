@@ -3,6 +3,13 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   logicful
 
+  Sample SAM Template for logicful
+
+Parameters:
+  Stage:
+    Type: String
+    Default: dev
+
 Globals:
   Api:
     Cors:
@@ -13,6 +20,7 @@ Globals:
     Timeout: 15
     Environment:
       Variables:
+        ENV: !Ref Stage
         S3_ENDPOINT: s3.us-west-002.backblazeb2.com
         S3_KEY: 002bde636d6efa60000000001
         S3_SECRET: K002RflL669GuhXI0qdWnID+wkO9oAA
@@ -109,6 +117,11 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
 
+  StagingApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Stage
+
   Api:
     Type: AWS::Serverless::Function
     Properties:
@@ -117,6 +130,13 @@ Resources:
       Handler: api
       Runtime: go1.x
       Tracing: Active
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /api/{proxy+}
+            Method: ANY
+            RestApiId: !Ref StagingApi
 
   FormSubmissionQueue:
     Type: AWS::SQS::Queue
@@ -169,3 +189,9 @@ Resources:
           Properties:
             Queue: !GetAtt FormSubmissionDeleteQueue.Arn
             BatchSize: 10
+
+
+Outputs:
+  StagingApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${StagingApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/api/"

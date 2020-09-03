@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build:watch": "sam build && concurrently npm:dev*",
-    "dev:setup": "docker-compose -f ./dev/docker-compose.yaml up -d && ./dev/setup.sh",
+    "dev:setup": "docker-compose -f ./dev/docker-compose.yaml up -d && powershell ./dev/setup.ps1",
     "dev:watch": "chokidar \"**/*.go\" -c \"sam build Api\"",
     "debug": "sam build && sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 23451 --debugger-path debug --debug-args \"-delveAPI=2\"",
     "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
