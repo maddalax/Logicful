@@ -13,10 +13,10 @@
   import { saveForm, saveToLocalStorage } from './services/SaveForm'
   import ToastManager from 'components/ToastManager.svelte'
   import { debounce } from 'util/Debounce'
-  import { startPreviewSaver } from 'features/form/edit/services/PreviewSaver'
   import { setFieldDefaults } from 'features/form/edit/services/DefaultFieldValueFactory'
   import { getApi } from 'services/ApiService'
   import { getUrlParameter } from 'util/Http'
+import { startPreviewSaver } from './services/PreviewSaver';
 
   let dropped = false
   let loadingActive: boolean = false

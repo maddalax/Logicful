@@ -34,7 +34,7 @@
               </button>
             </div>
             <button on:click={onImportForm} class="btn btn-xs btn-outline-dark"> <span class="fas fa-file-import"> <span>Import Form</span> </span></button>
-            <a href="/builder" class="btn btn-xs btn-outline-dark"> <span class="fas fa-plus" /><span>Create Form</span></a>
+            <a href="/form/form/builder" class="btn btn-xs btn-outline-dark"> <span class="fas fa-plus" /><span>Create Form</span></a>
           </div>
         </div>
       </div>

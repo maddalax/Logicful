@@ -2,14 +2,15 @@
   import { getUrlParameter } from 'util/Http'
 
   export async function preload(page: any, session: any) {
-    const formId = getUrlParameter('formId')
+    const formId = page.query.formId;
     if (!formId) {
       return {}
     }
-    const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
+    const url = `https://f002.backblazeb2.com/file/json-data/${formId}.json`
     //@ts-ignore
     const res = await this.fetch(url)
     const form = await res.json()
+    console.log(form);
     return { formId, form }
   }
 </script>

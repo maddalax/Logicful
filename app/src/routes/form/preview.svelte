@@ -1,14 +1,14 @@
 <script context="module">
   import { getUrlParameter } from 'util/Http'
 
-  export async function preload(page: any, session: any) {
-    const formId = getUrlParameter('formId')
+  export async function preload(this: any, page: any, session: any) {
+    const formId = page.query.formId
     const mode = page.query?.mode
     if (mode === 'local') {
       return { mode }
     }
-    if (!formId) {
-      return {}
+    if (!formId || formId == 'undefined' || formId == 'null') {
+      return this.error(400, 'Invalid Form Id')
     }
     const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
     //@ts-ignore

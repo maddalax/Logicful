@@ -33,9 +33,9 @@
 <div class="row mb-5">
   <div class="col-12 mb-4">
     <div class="d-flex justify-content-end" style="padding-bottom: 1em; padding-left: 0; display: flex; text-align: right;">
-      <div style="text-align: right;"><a href={`/submissions?formId=${form.id}`} target="_blank" class="btn btn-outline-dark">View Submissions</a></div>
-      <div style="text-align: right; padding-left: 0.5em;"><a href={`/builder?formId=${form.id}`} target="_blank" class="btn btn-outline-dark"> <span class="fas fa-pencil-alt" /> Edit Form </a></div>
-      <div style="text-align: right; padding-left: 0.5em;"><a href={`/preview?formId=${form.id}`} target="_blank" class="btn btn-outline-dark">Preview Form</a></div>
+      <div style="text-align: right;"><a href={`/form/submissions?formId=${form.id}`} target="_blank" class="btn btn-outline-dark">View Submissions</a></div>
+      <div style="text-align: right; padding-left: 0.5em;"><a href={`/form/builder?formId=${form.id}`} target="_blank" class="btn btn-outline-dark"> <span class="fas fa-pencil-alt" /> Edit Form </a></div>
+      <div style="text-align: right; padding-left: 0.5em;"><a href={`/form/preview?formId=${form.id}&mode=local`} target="_blank" class="btn btn-outline-dark">Preview Form</a></div>
     </div>
     <form action="#" method="post" class="card border-light p-3 mb-4">
       {#if selected === 'general'}

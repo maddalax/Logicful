@@ -14,7 +14,7 @@ export async function saveForm() {
   saveToLocalStorage(form)
   formStore.setForm(form)
   if (isNew) {
-    goto('/builder?formId=' + form.id)
+    goto('/form/builder?formId=' + form.id)
   }
 }
 

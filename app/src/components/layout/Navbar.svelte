@@ -30,7 +30,7 @@
               <a href="/folder" class="nav-link"> <span class="fas fa-bars" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;" /> My Forms </a>
             </div>
           </li>
-          <li class="nav-item"><a href="/builder" class="nav-link"> <span class="fas fa-hammer" style="color: white; font-size: 1.1em; width: none; padding-right: 0.2em;" /> Builder </a></li>
+          <li class="nav-item"><a href="/form/builder" class="nav-link"> <span class="fas fa-hammer" style="color: white; font-size: 1.1em; width: none; padding-right: 0.2em;" /> Builder </a></li>
         </ul>
       </div>
       <div class="d-flex align-items-center">

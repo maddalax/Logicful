@@ -64,16 +64,6 @@
     return builder.evaluate(field)
   }
 
-  function onFormPreview() {
-    const form = formStore.getForm()
-    saveToLocalStorage(form)
-    if (form.id) {
-      window.open(`./preview/${form.id}?mode=local`, '_blank')
-    } else {
-      window.open(`./preview/local?mode=local`, '_blank')
-    }
-  }
-
   function onDelete() {
     const selected = form.fields.find((w) => w.selected)
     if (selected) {
@@ -102,7 +92,7 @@
     <h4>{form.title || 'Form Title'}</h4>
     <small class="text-gray-700">{form.description ?? ''}</small>
   </div>
-  <div class="col-auto" style="text-align: right"><a href={`/preview?formId=${form.id}`} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</a></div>
+  <div class="col-auto" style="text-align: right"><a href={`/form/preview?formId=${form.id == null ? '' : form.id}&mode=local`} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</a></div>
 </div>
 <hr style="margin-top: 0.5rem; margin-bottom: 0.7rem;" />
 <form class="preview-padding" id="form-preview">

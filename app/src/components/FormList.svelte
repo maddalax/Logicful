@@ -26,8 +26,8 @@
             <small class="text-gray-700">{form.changeTime}</small>
           </div>
           <div class="col-auto">
-            <a href={`/submissions?formId=${form.id}`} class="btn btn-xs btn-outline-dark"> Submissions </a>
-            <a href={`/builder?formId=${form.id}`} class="btn btn-xs btn-outline-dark">Edit</a>
+            <a href={`/form/submissions?formId=${form.id}`} class="btn btn-xs btn-outline-dark"> Submissions </a>
+            <a href={`/form/builder?formId=${form.id}`} class="btn btn-xs btn-outline-dark">Edit</a>
             <button class="btn btn-xs btn-outline-dark">
               <span
                 on:click={() => {
