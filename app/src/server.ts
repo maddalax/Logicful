@@ -15,7 +15,7 @@ app.use(
 		session : () => {
 			return {
 				//API_ENDPOINT : "http://localhost:3000/api/"
-				API_ENDPOINT : 'https://9ejyrgtwpj.execute-api.us-east-1.amazonaws.com/dev/api/'
+				API_ENDPOINT : 'https://staging-api.logicful.org/api/'
 			}
 		}
 	}),
