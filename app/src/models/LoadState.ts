@@ -1,6 +1,6 @@
 export enum LoadState {
-    Loading,
-    Failed,
-    Finished,
-    NotStarted
+  Loading,
+  Failed,
+  Finished,
+  NotStarted,
 }

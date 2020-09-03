@@ -35,11 +35,7 @@
     <h5 style="padding-bottom: 0.2em;">Content Block Settings</h5>
     <hr />
   </div>
-  <Field
-    editor={true}
-    padding={false}
-    field={{ id: randomString(), type: 'block-editor', value: field.value, configTarget: field.id, configFieldTarget: 'value' }}
-  />
+  <Field editor={true} padding={false} field={{ id: randomString(), type: 'block-editor', value: field.value, configTarget: field.id, configFieldTarget: 'value' }} />
   <div class="flex"><button class="blocks-button btn btn-light" type="button"> Select Block </button> <button class="blocks-button btn btn-light" type="button"> Save Block </button></div>
 </div>
 

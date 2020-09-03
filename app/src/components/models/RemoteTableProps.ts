@@ -1,8 +1,8 @@
 export interface TableRow {
-    [key : string] : any
+  [key: string]: any
 }
 
 export interface TableButtonAction {
-    label  : string
-    onClick : () => any
+  label: string
+  onClick: () => any
 }
