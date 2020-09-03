@@ -20,7 +20,7 @@ const preprocess = [
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
-const sourcemap = dev ? "inline" : false;
+const sourcemap = false;
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const warningIsIgnored = (warning) => warning.message.includes(
@@ -44,7 +44,7 @@ export default {
 								"process.env.NODE_ENV": JSON.stringify(mode),
 						}),
 						svg(),
-						css({ output: "static/css/site.css" }),
+						css(),
 						svelte({
 								dev,
 								hydratable: true,
@@ -105,7 +105,7 @@ export default {
 								"module.require": "require",
 						}),
 						svg(),
-						css({ output: "static/css/site.css" }),
+						css(),
 						svelte({
 								generate: "ssr",
 								dev,

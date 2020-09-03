@@ -2,3 +2,5 @@
 .DS_Store
 /.history
 /node_modules
+__sapper__
+/src/node_modules

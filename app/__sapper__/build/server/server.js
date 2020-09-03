@@ -12012,7 +12012,7 @@ const PORT = process.env.PORT; // eslint-disable-line prefer-destructuring
 const mode = "production";
 const dev = mode === "development";
 const app = express__default['default']();
-app.use(compression__default['default']({ threshold: 0 }), sirv__default['default']("static", { dev }), middleware({
+app.use("/logicful-app-site", compression__default['default']({ threshold: 0 }), sirv__default['default']("static", { dev }), middleware({
     session: () => {
         return {
             //API_ENDPOINT : "http://localhost:3000/api/"
