@@ -31,6 +31,7 @@ func WriteJson(writer http.ResponseWriter, data interface{}) {
 }
 
 func WriteNoContent(writer http.ResponseWriter) {
+	writeCorsHeaders(writer)
 	writer.WriteHeader(204)
 }
 
