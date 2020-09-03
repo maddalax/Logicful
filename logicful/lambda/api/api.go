@@ -6,7 +6,7 @@ import (
 	"api/features/formsubmission"
 	"api/features/optionset"
 	"api/features/s3store"
-	"github.com/apex/gateway"
+	"api/gateway"
 	"github.com/julienschmidt/httprouter"
 	"log"
 )
