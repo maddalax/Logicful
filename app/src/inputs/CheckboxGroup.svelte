@@ -13,6 +13,13 @@
   let otherText: string = ''
   let debouncedOnChange: any
 
+  subscribeFieldChange(onMount, (newField) => {
+    if (newField.id === field.id) {
+      value = newField.value ?? {}
+      otherText = value.other ?? ''
+    }
+  })
+
   onMount(() => {
     debouncedOnChange = debounce((field: IField) => {
       formStore.set(field, { fromUser: true, field: 'value', value: field.value })
@@ -20,30 +27,23 @@
 
     value = formStore.getValue(field.configTarget ?? field.id) ?? {}
     otherText = value.other ?? ''
-
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id) {
-        value = newField.value ?? {}
-        otherText = value.other ?? ''
-      }
-    })
   })
 
   function onOtherChange(e: any) {
     otherText = e.target.value
     if (otherText === '' || otherText == null) {
-      delete value.other;
+      delete value.other
     } else {
-      value.other = otherText ?? '';
+      value.other = otherText ?? ''
     }
-    field.value = value;
+    field.value = value
     debouncedOnChange(field)
   }
 
   function onChange(e: any, option: any) {
     e.stopPropagation()
     if (e.target.checked) {
-      value[option] = option;
+      value[option] = option
     } else {
       delete value[option]
     }
@@ -55,7 +55,7 @@
     })
   }
 
-  function isChecked(option : any) {
+  function isChecked(option: any) {
     return value[option] != null && value[option] != ''
   }
 </script>

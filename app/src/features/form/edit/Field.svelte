@@ -20,7 +20,7 @@
   import RichTextDisplay from 'inputs/RichTextDisplay.svelte'
   import { dispatch } from 'event/EventBus'
   import Switch from '../../../inputs/Switch.svelte'
-  import { subscribe } from 'event/EventBus'
+  import { subscribeComponent } from 'event/EventBus'
   import DatePicker from 'components/DatePicker.svelte'
   import { firstNotEmpty } from 'util/Format'
   import { subscribeFieldChange } from 'event/FieldEvent'

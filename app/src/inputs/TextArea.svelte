@@ -15,6 +15,12 @@
     onChange?.(data)
   }
 
+  subscribeFieldChange(onMount, (newField) => {
+    if (newField.id === field.id) {
+      value = newField.value ?? ''
+    }
+  })
+
   onMount(async () => {
     //@ts-ignore
     import('quill/dist/quill.js')
@@ -23,11 +29,6 @@
     const Quill = (await import('quill')).default
 
     value = formStore.getValue(field.configTarget ?? field.id) ?? ''
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id) {
-        value = newField.value ?? ''
-      }
-    })
 
     var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], [{ list: 'ordered' }, { list: 'bullet' }], [{ header: [1, 2, 3, 4, 5, 6, false] }, { color: [] }, { align: [] }], ['clean']]
     let quill = new Quill(element, {

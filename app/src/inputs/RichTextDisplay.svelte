@@ -11,16 +11,17 @@
   let value = ''
   let lastUrl = ''
   let state = LoadState.NotStarted
+  let url
+
+  subscribeFieldChange(onMount, (newField) => {
+    if (newField.id === field.id && lastUrl !== newField.value) {
+      url = newField.value
+      load(url)
+    }
+  })
 
   onMount(async () => {
-    let url = formStore.getValue(field.configTarget ?? field.id)
-
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id && lastUrl !== newField.value) {
-        url = newField.value
-        load(url)
-      }
-    })
+    url = formStore.getValue(field.configTarget ?? field.id)
 
     load(url)
   })
@@ -62,9 +63,7 @@
     <p>Failed to load content.</p>
   {:else}
     <div class="d-flex justify-content-center">
-      <div class="spinner-border text-dark" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+      <div class="spinner-border text-dark" role="status"><span class="sr-only">Loading...</span></div>
     </div>
   {/if}
 </div>

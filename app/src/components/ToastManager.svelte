@@ -1,10 +1,11 @@
 <script lang="typescript">
-  import { subscribe } from 'event/EventBus'
+  import { subscribeComponent } from 'event/EventBus'
+  import { onMount } from 'svelte'
   import { randomString } from 'util/Generate'
   import Toast from './Toast.svelte'
   let toasts: { id: string; message: string; title: string }[] = []
 
-  subscribe('show_toast', (props) => {
+  subscribeComponent('show_toast', (props) => {
     const id = randomString()
     toasts = toasts.concat([{ id, message: props.message, title: props.title }])
     setTimeout(() => {
@@ -12,7 +13,7 @@
     }, props.timeout || 4000)
   })
 
-  subscribe('toast_closed', (props) => {
+  subscribeComponent('toast_closed', (props) => {
     removeById(props.id)
   })
 

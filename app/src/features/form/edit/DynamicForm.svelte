@@ -5,7 +5,7 @@
   import type { IField } from 'models/IField'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { DynamicFormMode } from 'components/models/ComponentProps'
-  import { dispatch, dispatchSync, subscribe } from 'event/EventBus'
+  import { dispatch, dispatchSync, subscribeComponent } from 'event/EventBus'
   import { transformDraggedElement } from './util/Draggable'
   import formStore from 'store/FormStore'
   import { LogicBuilder } from 'services/LogicBuilder'
@@ -23,16 +23,15 @@
   let hasPlaceholder: boolean = false
   let fromSidebar = false
   let deleting = false
-  onMount(() => {
-    subscribe('confirm_field_deletion', () => {
-      deleting = true
-    })
-    subscribe('form_placeholder_changed', (props) => {
-      hasPlaceholder = props.added
-    })
+
+  subscribeComponent('confirm_field_deletion', () => {
+    deleting = true
+  })
+  subscribeComponent('form_placeholder_changed', (props) => {
+    hasPlaceholder = props.added
   })
 
-  subscribeFieldChange((updatedField: IField) => {
+  subscribeFieldChange(onMount, (updatedField: IField) => {
     if (!form || !form.fields) {
       return
     }

@@ -4,7 +4,7 @@
   import FormSidebar from 'features/form/edit/FormSidebar.svelte'
   import FieldEditSidebar from 'features/form/edit/FieldEditSidebar.svelte'
   import { onMount } from 'svelte'
-  import { subscribe } from 'event/EventBus'
+  import { subscribe, subscribeComponent } from 'event/EventBus'
   import Sidebar from 'components/Sidebar.svelte'
   import type { IForm } from 'models/IForm'
   import { getUrlParameter } from 'util/Http'
@@ -12,12 +12,13 @@
   let rightSidebar: any
   let rightSidebarProps: any = {}
 
+  subscribeComponent('show_right_sidebar', ({ component, ...other }) => {
+    rightSidebar = component
+    rightSidebarProps = other ?? {}
+  })
+
   onMount(() => {
     rightSidebar = FieldEditSidebar
-    subscribe('show_right_sidebar', ({ component, ...other }) => {
-      rightSidebar = component
-      rightSidebarProps = other ?? {}
-    })
   })
 </script>
 
@@ -28,7 +29,7 @@
     </Sidebar>
   </div>
   <div class="main">
-    <FormBuilder/>
+    <FormBuilder />
   </div>
   <div class="right-sidebar">
     <Sidebar>

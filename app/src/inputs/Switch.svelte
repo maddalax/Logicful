@@ -4,26 +4,26 @@
   import formStore from 'store/FormStore'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { firstNotEmpty } from 'util/Format'
-import { subscribe } from 'event/EventBus';
+  import { subscribeComponent } from 'event/EventBus'
 
   export let config: any
   export let field: IField
 
-  export let value : boolean | undefined = undefined
-  let defaultValue = false;
+  export let value: boolean | undefined = undefined
+  let defaultValue = false
+
+  subscribeFieldChange(onMount, (newField, change) => {
+    if (newField.id === field.id) {
+      if (change.field === 'defaultValue') {
+        value = newField.defaultValue
+      } else {
+        value = newField.value
+      }
+    }
+  })
 
   onMount(() => {
     value = formStore.getValue(field.configTarget ?? field.id)
-
-    subscribeFieldChange((newField, change) => {
-      if (newField.id === field.id) {
-        if(change.field === "defaultValue") {
-          value = newField.defaultValue;
-        } else {
-          value = newField.value;
-        }
-      }
-    })
   })
 </script>
 

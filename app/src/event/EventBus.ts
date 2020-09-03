@@ -1,48 +1,89 @@
-const map = new Map<string, any[]>();
+import { randomString } from "util/Generate";
+import { onMount } from "svelte";
 
-export function subscribe(event : string, subscriber : (((payload : any) => any) | ((payload : any) => Promise<any>))) {
+const map = new Map<string, { [key: string]: any }>();
+
+export function subscribe(event: string, subscriber: (((payload: any) => any) | ((payload: any) => Promise<any>))): string {
+  let id = randomString();
   if (!map.has(event)) {
-    map.set(event, [subscriber]);
+    const subscribers = {
+      [id]: subscriber
+    }
+    map.set(event, subscribers);
   } else {
     const subscribers = map.get(event);
-    subscribers!.push(subscriber);
+    subscribers![id] = subscriber;
     map.set(event, subscribers!);
   }
+  return id;
 }
 
-export function subscribePrivate(id : string, event : string, subscriber : (((payload : any) => any) | ((payload : any) => Promise<any>))) {
+export function unsubscribe(event: string, id: string) {
+  if (!map.has(event) || !map.get(event)) {
+    return;
+  }
+  const result = map.get(event)!;
+  delete result[id];
+  map.set(event, result);
+}
+
+export function subscribeComponent(event: string, subscriber: (((payload: any) => any) | ((payload: any) => Promise<any>))) {
+  onMount(() => {
+    const id = subscribe(event, subscriber);
+    return () => {
+      unsubscribe(event, id);
+    }
+  })
+}
+
+export function subscribePrivateComponent(id: string, event: string, subscriber: (((payload: any) => any) | ((payload: any) => Promise<any>))) {
+  onMount(() => {
+    const unsubscribeId = subscribePrivate(id, event, subscriber);
+    return () => {
+      unsubscribe(event, unsubscribeId);
+    }
+  })
+}
+
+export function subscribePrivate(id: string, event: string, subscriber: (((payload: any) => any) | ((payload: any) => Promise<any>))): string {
   const e = `${id}-${event}`;
-  subscribe(e, subscriber);
+  return subscribe(e, subscriber);
 }
 
-export async function dispatchPrivate(id : string, event : string, payload : any) {
+export async function dispatchPrivate(id: string, event: string, payload: any) {
   const e = `${id}-${event}`;
   console.debug("dispatch_event_private", e, payload);
   dispatch(e, payload);
 }
 
-export function dispatchSingle<T>(event : string, payload : any) : T {
+export function dispatchSingle<T>(event: string, payload: any): T {
   const result = dispatchSync(event, payload)[0] as T;
   console.debug("dispatch_event_single", event, payload, result);
   return result;
 }
 
-export async function dispatch(event : string, payload : any) {
+export async function dispatch(event: string, payload: any) {
   console.debug("dispatch_event", event, payload);
   if (map.has(event)) {
-    const subscribers = map.get(event); 
-    const promises = subscribers!.map((subscriber) => {
-      return subscriber(payload);
-    });
+    const subscribers = map.get(event);
+    if (!subscribers) {
+      return;
+    }
+    const promises = Object.values(subscribers).map(s => {
+      return s(payload);
+    })
     await Promise.all(promises);
   }
 }
 
-export function dispatchSync(event : string, payload : any) {
+export function dispatchSync(event: string, payload: any) {
   console.debug("dispatch_event_sync", event, payload);
   if (map.has(event)) {
     const subscribers = map.get(event);
-    return subscribers!.map((subscriber) => {
+    if (!subscribers) {
+      return [];
+    }
+    return Object.values(subscribers).map((subscriber) => {
       return subscriber(payload);
     });
   }

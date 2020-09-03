@@ -1,6 +1,6 @@
 <script lang="typescript">
   // @ts-nocheck
-  import { dispatch, subscribe } from 'event/EventBus'
+  import { dispatch, subscribeComponent } from 'event/EventBus'
   import { flip } from 'svelte/animate'
   import { randomString } from 'util/Generate'
   import { onMount, tick } from 'svelte'
@@ -35,7 +35,7 @@
   const loadDragula = debounce(async () => {
     if (!dragula) {
       dragula = (await import('dragula')).default
-      await tick();
+      await tick()
     }
     if (drake) {
       drake.destroy()
@@ -99,11 +99,12 @@
 
   function saveAndPublish() {}
 
+  subscribeComponent('form_updated', () => {
+    loadDragula()
+  })
+
   onMount(async () => {
     import('dragula/dist/dragula.css')
-    subscribe('form_updated', () => {
-      loadDragula()
-    })
   })
 </script>
 

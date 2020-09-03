@@ -12,7 +12,17 @@
   export let value: { [key: string]: string } = {}
   let otherText: string = ''
   let debouncedOnChange: any
-  let otherSelected = false;
+  let otherSelected = false
+
+  subscribeFieldChange(onMount, (newField) => {
+    if (newField.id === field.id) {
+      value = newField.value ?? {}
+      if (otherText && !value.other) {
+        return
+      }
+      otherText = value.other ?? ''
+    }
+  })
 
   onMount(() => {
     debouncedOnChange = debounce((field: IField) => {
@@ -22,16 +32,6 @@
     value = formStore.getValue(field.configTarget ?? field.id) ?? {}
     otherText = value.other ?? ''
     otherSelected = otherText != null && otherText != ''
-
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id) {
-        value = newField.value ?? {}
-        if(otherText && !value.other) {
-          return;
-        }
-        otherText = value.other ?? ''
-      }
-    })
   })
 
   function onOtherChange(e: any) {
@@ -45,9 +45,9 @@
   }
 
   function onOtherRadioChange() {
-    otherSelected = true;
-    value = {other : otherText}
-    field.value = value;
+    otherSelected = true
+    value = { other: otherText }
+    field.value = value
     formStore.set(field, {
       fromUser: true,
       field: 'value',
@@ -59,7 +59,7 @@
     e.stopPropagation()
     value = {}
     value[option] = option
-    otherSelected = false;
+    otherSelected = false
     field.value = value
     formStore.set(field, {
       fromUser: true,

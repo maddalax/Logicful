@@ -11,6 +11,12 @@
   export let type = 'text'
   let debouncedOnChange: any
 
+  subscribeFieldChange(onMount, (newField) => {
+      if (newField.id === field.id) {
+        value = newField.value ?? ''
+      }
+    })
+
   onMount(() => {
     debouncedOnChange = debounce((e: any) => {
       field.value = e.target.value ?? ''
@@ -19,12 +25,6 @@
     }, 500)
 
     value = formStore.getValue(field.configTarget ?? field.id) ?? ''
-
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id) {
-        value = newField.value ?? ''
-      }
-    })
   })
 </script>
 

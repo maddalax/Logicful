@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import { dispatch, subscribe } from 'event/EventBus'
+  import { dispatch, subscribeComponent } from 'event/EventBus'
   import { afterUpdate, onMount } from 'svelte'
   import type { IForm } from 'models/IForm'
   import FormSettingsSidebar from 'components/form_settings/FormSettingsSidebar.svelte'

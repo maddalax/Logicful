@@ -1,5 +1,5 @@
 import type { IField } from '../models/IField';
-import { subscribe, dispatchSync } from 'event/EventBus';
+import { dispatchSync, subscribeComponent } from 'event/EventBus';
 
 export function dispatchFieldChange(field : IField, change : {field : string, value : any, fromUser : boolean}) {
     dispatchSync("field_changed", {
@@ -8,8 +8,8 @@ export function dispatchFieldChange(field : IField, change : {field : string, va
     })
 }
 
-export function subscribeFieldChange(callback : (field : IField, change : {field : string, value : any, fromUser : boolean}) => any) {
-    subscribe("field_changed", (payload) => {       
+export function subscribeFieldChange(onMount : any, callback : (field : IField, change : {field : string, value : any, fromUser : boolean}) => any) {
+    subscribeComponent("field_changed", (payload) => {       
         if(!payload.field) {
             console.error("Field change was undefined.", payload)
             return;

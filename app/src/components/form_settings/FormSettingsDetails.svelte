@@ -1,6 +1,6 @@
 <script lang="typescript">
   import type { IForm } from 'models/IForm'
-  import { dispatch, subscribe } from 'event/EventBus'
+  import { dispatch, subscribe, subscribeComponent } from 'event/EventBus'
 
   import FormEdit from 'features/form/edit/FormEdit.svelte'
   import FormEditSettings from 'features/form/edit/FormEditSettings.svelte'
@@ -21,7 +21,7 @@
     saving = false
   }
 
-  subscribe('save_form', async (params) => {
+  subscribeComponent('save_form', async (params) => {
     await saveForm()
   })
 

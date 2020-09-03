@@ -14,7 +14,7 @@
   import { fade } from 'svelte/transition'
   import RichTextDisplay from 'inputs/RichTextDisplay.svelte'
   import { dispatch } from 'event/EventBus'
-  import { subscribe } from 'event/EventBus'
+  import { subscribeComponent } from 'event/EventBus'
   import Switch from 'inputs/Switch.svelte'
   import DatePicker from 'components/DatePicker.svelte'
   import { firstNotEmpty } from 'util/Format'

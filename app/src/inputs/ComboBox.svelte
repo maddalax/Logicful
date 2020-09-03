@@ -7,7 +7,7 @@
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { isFunction, isString } from 'guards/Guard'
   import { randomString } from 'util/Generate'
-  import { dispatch, subscribe } from 'event/EventBus'
+  import { dispatch, subscribeComponent } from 'event/EventBus'
   import Fuse from 'fuse.js'
   import formStore from 'store/FormStore'
   import { nullOrEmpty } from 'util/Compare'
@@ -28,44 +28,44 @@
     disposeToolTip()
   })
 
-  onMount(async () => {
-    subscribe('show_field_config', (props) => {
-      value = ''
-      options = []
+  subscribeComponent('show_field_config', (props) => {
+    value = ''
+    options = []
+    setup()
+  })
+
+  subscribeComponent('combobox_get_options', (props) => {
+    if (props.id === field.id) {
+      return options
+    }
+  })
+
+  subscribeComponent('combobox_open', (props) => {
+    if (props.id !== field.id) {
+      doClose()
+    }
+  })
+
+  subscribeComponent('option_set_modified', (set) => {
+    if (set.value === field.options) {
       setup()
-    })
+    }
+    if (field.configTarget) {
+      setup()
+    }
+  })
 
-    subscribe('combobox_get_options', (props) => {
-      if (props.id === field.id) {
-        return options
-      }
-    })
+  subscribeFieldChange(onMount, (newField) => {
+    if (newField.id === field.id) {
+      value = newField.value ?? ''
+      normalizeValue()
+    }
+  })
 
-    subscribe('combobox_open', (props) => {
-      if (props.id !== field.id) {
-        doClose()
-      }
-    })
-
+  onMount(async () => {
     dropdownId = `${field.name}-${randomString()}`
     initialized = false
     value = formStore.getValue(field.id)
-
-    subscribe('option_set_modified', (set) => {
-      if (set.value === field.options) {
-        setup()
-      }
-      if (field.configTarget) {
-        setup()
-      }
-    })
-
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id) {
-        value = newField.value ?? ''
-        normalizeValue()
-      }
-    })
     await setup()
   })
 

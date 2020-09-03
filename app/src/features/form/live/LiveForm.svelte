@@ -16,7 +16,7 @@
   export let mode : 'local' | '' = ''
   let state = LoadState.NotStarted
 
-  subscribeFieldChange((updatedField: IField) => {
+  subscribeFieldChange(onMount, (updatedField: IField) => {
     if (!form || !form.fields) {
       return
     }

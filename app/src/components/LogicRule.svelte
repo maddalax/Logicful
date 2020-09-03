@@ -19,23 +19,21 @@
   export let field: IField
   let options: LogicRuleOptions[] = []
 
-  onMount(async () => {
-    subscribeFieldChange((newField, change) => {
-      if (change.field === 'value') {
-        return
+  subscribeFieldChange(onMount, (newField, change) => {
+    if (change.field === 'value') {
+      return
+    }
+    if (field.id === newField.id) {
+      field = newField
+      if (field.logic?.action && isEmptyOrNull(field.logic?.rules)) {
+        addNew()
       }
-      if (field.id === newField.id) {
-        field = newField
-        if (field.logic?.action && isEmptyOrNull(field.logic?.rules)) {
-          addNew()
-        }
-        if (field.logic?.rules) {
-          field.logic.rules.forEach((f, i) => {
-            options[i] = getOptions(i)
-          })
-        }
+      if (field.logic?.rules) {
+        field.logic.rules.forEach((f, i) => {
+          options[i] = getOptions(i)
+        })
       }
-    })
+    }
   })
 
   function getFields(): IField[] {

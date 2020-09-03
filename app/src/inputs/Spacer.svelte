@@ -7,12 +7,10 @@
   export let field: IField
   export let value = 0
 
-  onMount(() => {
-    subscribeFieldChange((newField) => {
-      if (newField.id === field.id) {
-        value = toNumberOrDefault(newField.value ?? 1)
-      }
-    })
+  subscribeFieldChange(onMount, (newField) => {
+    if (newField.id === field.id) {
+      value = toNumberOrDefault(newField.value ?? 1)
+    }
   })
 </script>
 
