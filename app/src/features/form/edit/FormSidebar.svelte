@@ -54,7 +54,7 @@
           return
         }
         const container = document.getElementById('form-preview-fields')
-        if (container && !container.className.includes('ex-over')) {
+        if (container && !container.className?.includes('ex-over')) {
           container.className += ' ex-over'
         }
       })
@@ -62,7 +62,7 @@
         if (el.id && el.id.startsWith('form-field-')) {
           return
         }
-        if (container.id === 'form-preview-fields' && !container.className.includes('ex-over')) {
+        if (container.id === 'form-preview-fields' && !container.className?.includes('ex-over')) {
           container.className += ' ex-over'
         }
         dispatch('drag_over', container)

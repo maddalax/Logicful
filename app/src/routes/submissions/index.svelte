@@ -1,6 +1,8 @@
 <script context="module">
+  import { getUrlParameter } from 'util/Http'
+
   export async function preload(page: any, session: any) {
-    const { formId } = page.params
+    const formId = getUrlParameter('formId')
     if (!formId) {
       return {}
     }
@@ -20,7 +22,7 @@
   import { randomString, randomStringSmall } from 'util/Generate'
   import type { IForm } from 'models/IForm'
   import { isObject, isString } from 'guards/Guard'
-import { deleteApi, getApi } from 'services/ApiService';
+  import { deleteApi, getApi } from 'services/ApiService'
 
   export let formId = ''
   export let form: IForm
@@ -29,7 +31,7 @@ import { deleteApi, getApi } from 'services/ApiService';
   let container: any
   let types: { [key: string]: string } = {}
   let filtered: any[] = []
-  let hidden = new Set(["submission_id"])
+  let hidden = new Set(['submission_id'])
 
   async function getRows(): Promise<TableRow[]> {
     const submissions: any[] = await getApi(`form/${formId}/submission`)
@@ -75,17 +77,19 @@ import { deleteApi, getApi } from 'services/ApiService';
       return results.filter((r) => r).join(' ')
     }
     if (type === 'checkbox-group' && isObject(value)) {
-      return Object.values(value).filter(v => v != null).join(", ")
+      return Object.values(value)
+        .filter((v) => v != null)
+        .join(', ')
     }
     if (type === 'radio-group' && isObject(value)) {
-      return Object.values(value).find(v => v != null)
+      return Object.values(value).find((v) => v != null)
     }
     return undefined
   }
 
   async function onDelete(rows: any[]) {
     const ids = rows.map((r) => r['submission_id']).filter((r) => r != null)
-    await deleteApi(`form/${formId}/submission`, ids);
+    await deleteApi(`form/${formId}/submission`, ids)
   }
 </script>
 
@@ -94,7 +98,7 @@ import { deleteApi, getApi } from 'services/ApiService';
     <h1>Submissions</h1>
     <hr />
     <div>
-      <RemoteTable {getRows} {sortColumns} {onDelete} onFormat={format} hidden={hidden} />
+      <RemoteTable {getRows} {sortColumns} {onDelete} onFormat={format} {hidden} />
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 <script lang="typescript">
+  //@ts-nocheck
   import type { IField, LabelValue } from 'models/IField'
   import { afterUpdate, onDestroy, onMount, tick } from 'svelte'
   import { LoadState } from 'models/LoadState'
@@ -243,16 +244,13 @@
 </script>
 
 <div>
-
   {#if !field.hideLabel}
     <Label {field} />
   {/if}
 
   {#if state === LoadState.Loading}
     <div>
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+      <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
     </div>
   {:else if state === LoadState.Failed}
     <p>Failed to load.</p>

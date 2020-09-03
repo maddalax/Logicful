@@ -2,7 +2,7 @@
   import type { IField } from 'models/IField'
   import { randomStringSmall, randomString } from 'util/Generate'
   import type { IForm } from 'models/IForm'
-  import { onDestroy, onMount, tick } from 'svelte'
+  import { afterUpdate, onDestroy, onMount, tick } from 'svelte'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { dispatch, subscribe } from 'event/EventBus'
   import DynamicForm from './DynamicForm.svelte'
@@ -16,6 +16,7 @@
   import { startPreviewSaver } from 'features/form/edit/services/PreviewSaver'
   import { setFieldDefaults } from 'features/form/edit/services/DefaultFieldValueFactory'
 import { getApi } from 'services/ApiService';
+import { getUrlParameter } from 'util/Http';
 
   let dropped = false
   let loadingActive: boolean = false
@@ -24,10 +25,10 @@ import { getApi } from 'services/ApiService';
   let lastLength = 0
 
   let form: IForm
-  export let formId: string
 
   async function loadForm() {
     loadingActive = true
+    const formId = getUrlParameter('formId') ?? 'new'
     try {
       if (formId === 'new') {
         form = { fields: [], title: 'My New Form' }

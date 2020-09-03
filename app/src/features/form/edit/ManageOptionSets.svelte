@@ -81,8 +81,8 @@
     }
   }
 
-  function onRepeaterChange(data: LabelValue[], index: number) {
-    sets[index].value = data
+  function onRepeaterChange(data: LabelValue[] | string[], index: number) {
+    sets[index].value = data as LabelValue[]
   }
 
   async function save() {

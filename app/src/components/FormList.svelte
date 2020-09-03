@@ -3,20 +3,16 @@
   import { goto } from '@sapper/app'
   import type { IFolder } from 'models/IFolder'
   import { onMount } from 'svelte'
-import { getApi } from 'services/ApiService';
+  import { getApi } from 'services/ApiService'
 
   let forms: IForm[] = []
   export let folder: IFolder
 
   onMount(async () => {
-    forms = await getApi("form?lean=true");
+    forms = await getApi('form?lean=true')
   })
 
   function onDelete(formId: string) {}
-
-  function onViewSubmissions(formId: string) {
-    goto(`./submissions/${formId}`)
-  }
 </script>
 
 <div class="card-body px-0 pt-0">
@@ -30,14 +26,8 @@ import { getApi } from 'services/ApiService';
             <small class="text-gray-700">{form.changeTime}</small>
           </div>
           <div class="col-auto">
-            <button
-              on:click={() => {
-                onViewSubmissions(form.id || '')
-              }}
-              class="btn btn-xs btn-outline-dark">
-              Submissions
-            </button>
-            <a href={`/builder/${form.id}`} class="btn btn-xs btn-outline-dark">Edit</a>
+            <a href={`/submissions?formId=${form.id}`} class="btn btn-xs btn-outline-dark"> Submissions </a>
+            <a href={`/builder?formId=${form.id}`} class="btn btn-xs btn-outline-dark">Edit</a>
             <button class="btn btn-xs btn-outline-dark">
               <span
                 on:click={() => {

@@ -102,7 +102,7 @@
     <h4>{form.title || 'Form Title'}</h4>
     <small class="text-gray-700">{form.description ?? ''}</small>
   </div>
-  <div class="col-auto" style="text-align: right"><button on:click={onFormPreview} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</button></div>
+  <div class="col-auto" style="text-align: right"><a href={`/preview?formId=${form.id}`} target="_blank" class="btn btn-xs btn-outline-dark">Preview Form</a></div>
 </div>
 <hr style="margin-top: 0.5rem; margin-bottom: 0.7rem;" />
 <form class="preview-padding" id="form-preview">
