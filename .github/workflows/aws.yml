@@ -31,5 +31,5 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
-     - run: cd logicful && npm i && npm run deploy:staging
+    - run: cd logicful && npm i && npm run deploy:staging
 
