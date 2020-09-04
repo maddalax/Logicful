@@ -19,7 +19,7 @@ func main() {
 	addSubmissionHandlers(router)
 	addSetS3Handlers(router)
 
-	log.Fatal(gateway.ListenAndServe(":3000", router))
+	log.Fatal(gateway.ListenAndServe(":3001", router))
 }
 
 func addOptionSetHandlers(router *httprouter.Router) {
