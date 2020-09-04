@@ -5,13 +5,14 @@
     "dev:watch": "chokidar \"**/*.go\" -c \"sam build Api\"",
     "debug": "sam build && sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 23451 --debugger-path debug --debug-args \"-delveAPI=2\"",
     "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
-    "deploy:staging": "sam build && sam deploy --stack-name logicful-staging",
+    "deploy:staging": "cross-env GOOS=linux GOARCH=amd64 sam build && sam deploy --stack-name logicful-staging -no-confirm-changeset",
     "sqs:formSubmission": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionQueueHandler",
     "sqs:formSubmissionDelete": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionDeleteQueueHandler"
   },
   "devDependencies": {
     "chokidar": "^3.4.2",
     "chokidar-cli": "^2.1.0",
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2"
   }
 }

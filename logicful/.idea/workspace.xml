@@ -29,18 +29,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="update endpoints, make export work">
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="revert lb changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/setup.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/api.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/gateway/context.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/gateway/gateway.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/gateway/request.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/gateway/response.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/api/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/api/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +70,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -162,11 +154,19 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build:watch">
-    <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
+  <component name="RunManager" selected="Go Build.go build api">
+    <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="logicful" />
+      <working_directory value="$PROJECT_DIR$/lambda/api" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/lambda/api/api.go" />
+      <package value="api" />
+      <directory value="$PROJECT_DIR$/../app" />
+      <output_directory value="$PROJECT_DIR$/out" />
+      <option name="run" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="api#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/requests/api.http" index="3" runType="Run single request">
+    <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
       <method v="2" />
     </configuration>
     <configuration name="build:watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -210,8 +210,8 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Go Build.go build api" />
       <item itemvalue="Go Remote.Unnamed" />
-      <item itemvalue="HTTP Request.api#3" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.deploy" />
       <item itemvalue="npm.deploy:staging" />
@@ -219,11 +219,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build api" />
+        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.dev:setup" />
-        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.deploy" />
-        <item itemvalue="HTTP Request.api#3" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +268,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="add on form without dragging" />
     <MESSAGE value="quill cleanup" />
     <MESSAGE value="fix height" />
     <MESSAGE value="logic builder" />
@@ -293,7 +292,8 @@
     <MESSAGE value="route fixes" />
     <MESSAGE value="api gateway changes" />
     <MESSAGE value="update endpoints, make export work" />
-    <option name="LAST_COMMIT_MESSAGE" value="update endpoints, make export work" />
+    <MESSAGE value="revert lb changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="revert lb changes" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -312,9 +312,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="459" y="476" key="#Go_Modules/0.0.2560.1400@0.0.2560.1400" timestamp="1597443699002" />
-    <state x="85" y="350" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598711580777">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599225802736">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599225802736" />
     <state x="85" y="350" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598711580777" />
     <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597666458170">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -335,32 +336,32 @@
     <state x="104" y="114" width="1124" height="1056" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599169260933" />
     <state x="59" y="94" width="1381" height="662" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1597667308591" />
     <state x="68" y="106" width="1612" height="776" key="DiffContextDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598233706264" />
-    <state x="284" y="261" key="FileChooserDialogImpl" timestamp="1597624486966">
+    <state x="284" y="261" key="FileChooserDialogImpl" timestamp="1599225640143">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1597624486966" />
-    <state width="1581" height="309" key="GridCell.Tab.0.bottom" timestamp="1599169266200">
+    <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
+    <state width="1581" height="309" key="GridCell.Tab.0.bottom" timestamp="1599225751918">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599169266200" />
+    <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1638" height="325" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304788" />
-    <state width="1581" height="309" key="GridCell.Tab.0.center" timestamp="1599169266200">
+    <state width="1581" height="309" key="GridCell.Tab.0.center" timestamp="1599225751918">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599169266200" />
+    <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1638" height="325" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304787" />
-    <state width="1581" height="309" key="GridCell.Tab.0.left" timestamp="1599169266200">
+    <state width="1581" height="309" key="GridCell.Tab.0.left" timestamp="1599225751918">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599169266200" />
+    <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1638" height="325" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304787" />
-    <state width="1581" height="309" key="GridCell.Tab.0.right" timestamp="1599169266200">
+    <state width="1581" height="309" key="GridCell.Tab.0.right" timestamp="1599225751918">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599169266200" />
+    <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1638" height="325" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304788" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
@@ -436,10 +437,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2" timestamp="1599106411970">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="360" y="342" key="Vcs.Push.Dialog.v2" timestamp="1599169326692">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597631157071" />
+    <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
     <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599106411970" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -453,10 +454,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599073081152">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599226361432">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1597616897428" />
+    <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599226361432" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599073081152" />
     <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1599102650941">
       <screen x="0" y="23" width="1680" height="1027" />
