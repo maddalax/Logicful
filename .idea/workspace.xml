@@ -27,24 +27,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="coombo box fixed">
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/LogicAccordion.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_14_2020_3_00_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_14_2020_3_00_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/Field.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/inputs/ComboBox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/inputs/TextArea.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/contentblock/content-block-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/contentblock/content-block-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/contentblock/content-block-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/contentblock/content-block-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/form/form-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/form/form-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/form/form-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/form/form-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/formsubmission/form-submission-delete-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/formsubmission/form-submission-delete-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/formsubmission/form-submission-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/formsubmission/form-submission-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/formsubmission/form-submission-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/optionset/option-set-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/optionset/option-set-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/optionset/option-set-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/optionset/option-set-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/s3store/s3-store-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/s3store/s3-store-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/s3store/s3-store-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/s3store/s3-store-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/samconfig.toml" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/samconfig.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicful/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="NamedScopeManager">
     <scope name="Unnamed" pattern="file[LowCode]:api//*||file[LowCode]:form//*" />
@@ -57,7 +70,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/logicful/lambda/main" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -67,14 +83,41 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/api/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.pretty">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/logicful/.aws-sam/build" />
+      <recent name="$PROJECT_DIR$/logicful/lambda/main" />
+      <recent name="$PROJECT_DIR$/logicful/lambda" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.build:watch">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/logicful/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build:watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/logicful/package.json" />
       <command value="run" />
       <scripts>
         <script value="build:watch" />
       </scripts>
-      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy:staging" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/logicful/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy:staging" />
+      </scripts>
+      <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
@@ -83,26 +126,6 @@
       <command value="run" />
       <scripts>
         <script value="dev" />
-      </scripts>
-      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/info-site/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="http-server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/frontend/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="http-server" />
       </scripts>
       <node-interpreter value="/Applications/Vbrick/nodejs/bin/node" />
       <envs />
@@ -118,13 +141,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Go Build.go build api/main" />
+      <item itemvalue="npm.build:watch" />
+      <item itemvalue="npm.deploy:staging" />
+      <item itemvalue="npm.dev (1)" />
+      <item itemvalue="npm.pretty" />
+      <item itemvalue="npm.build" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.deploy:staging" />
+        <item itemvalue="npm.build:watch" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.pretty" />
         <item itemvalue="npm.dev (1)" />
-        <item itemvalue="npm.build:watch" />
-        <item itemvalue="npm.http-server" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -322,11 +353,26 @@
     <MESSAGE value="require" />
     <option name="LAST_COMMIT_MESSAGE" value="require" />
   </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
   <component name="WindowStateProjectService">
+    <state x="513" y="452" width="404" height="145" key="#GOROOT" timestamp="1599237902226">
+      <screen x="0" y="27" width="2496" height="1377" />
+    </state>
+    <state x="513" y="452" width="404" height="145" key="#GOROOT/0.27.2496.1377@0.27.2496.1377" timestamp="1599237902226" />
+    <state x="437" y="554" width="400" height="338" key="#Go_Modules" timestamp="1599237915469">
+      <screen x="0" y="27" width="2496" height="1377" />
+    </state>
+    <state x="437" y="554" width="400" height="338" key="#Go_Modules/0.27.2496.1377@0.27.2496.1377" timestamp="1599237915469" />
     <state x="443" y="184" key="#Plugins" timestamp="1597269381088">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="443" y="184" key="#Plugins/0.23.1680.1027@0.23.1680.1027" timestamp="1597269381088" />
+    <state x="252" y="466" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599242078332">
+      <screen x="0" y="27" width="2560" height="1413" />
+    </state>
+    <state x="252" y="466" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1599242078332" />
     <state x="571" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598218364811">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
@@ -351,49 +397,57 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="100" y="123" width="1348" height="824" key="DiffContextDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597361828645" />
-    <state x="631" y="283" key="FileChooserDialogImpl" timestamp="1598108367113">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state x="961" y="389" width="424" height="495" key="FileChooserDialogImpl" timestamp="1599241030053">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="631" y="298" key="FileChooserDialogImpl/0.23.1680.1027@0.23.1680.1027" timestamp="1597314874690" />
     <state x="631" y="283" key="FileChooserDialogImpl/0.23.1680.972@0.23.1680.972" timestamp="1598108367113" />
-    <state width="1638" height="210" key="GridCell.Tab.0.bottom" timestamp="1598223866322">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state x="937" y="391" width="424" height="495" key="FileChooserDialogImpl/0.27.2496.1377@0.27.2496.1377" timestamp="1599237901502" />
+    <state x="961" y="389" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1599241030053" />
+    <state width="1631" height="395" key="GridCell.Tab.0.bottom" timestamp="1599242972631">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837325" />
     <state width="1638" height="210" key="GridCell.Tab.0.bottom/0.23.1680.972@0.23.1680.972" timestamp="1598223866322" />
-    <state width="1638" height="210" key="GridCell.Tab.0.center" timestamp="1598223866316">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state width="1631" height="395" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599242972631" />
+    <state width="1631" height="395" key="GridCell.Tab.0.center" timestamp="1599242972631">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837324" />
     <state width="1638" height="210" key="GridCell.Tab.0.center/0.23.1680.972@0.23.1680.972" timestamp="1598223866316" />
-    <state width="1638" height="210" key="GridCell.Tab.0.left" timestamp="1598223866313">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state width="1631" height="395" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599242972631" />
+    <state width="1631" height="395" key="GridCell.Tab.0.left" timestamp="1599242972631">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837324" />
     <state width="1638" height="210" key="GridCell.Tab.0.left/0.23.1680.972@0.23.1680.972" timestamp="1598223866313" />
-    <state width="1638" height="210" key="GridCell.Tab.0.right" timestamp="1598223866317">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state width="1631" height="395" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599242972631" />
+    <state width="1631" height="395" key="GridCell.Tab.0.right" timestamp="1599242972631">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1717" height="380" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597444850102" />
     <state width="1527" height="279" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837325" />
     <state width="1638" height="210" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1598223866317" />
-    <state x="524" y="207" key="SettingsEditor" timestamp="1597439572258">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1631" height="395" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599242972631" />
+    <state x="511" y="223" width="986" height="741" key="SettingsEditor" timestamp="1599237763304">
+      <screen x="0" y="27" width="2496" height="1377" />
     </state>
     <state x="524" y="207" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597439572258" />
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
+    <state x="511" y="223" width="986" height="741" key="SettingsEditor/0.27.2496.1377@0.27.2496.1377" timestamp="1599237763304" />
     <state x="441" y="262" key="Vcs.Push.Dialog.v2" timestamp="1598218109949">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state x="441" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1597365101576" />
     <state x="441" y="262" key="Vcs.Push.Dialog.v2/0.23.1680.972@0.23.1680.972" timestamp="1598218109949" />
-    <state x="641" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598223568657">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state x="977" y="611" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599318053794">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="641" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.972@0.23.1680.972" timestamp="1598223568657" />
+    <state x="977" y="611" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599318053794" />
     <state x="271" y="97" width="1239" height="850" key="find.popup" timestamp="1598220709732">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
@@ -407,11 +461,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="643" y="401" width="501" height="379" key="scopes/0.23.1680.1027@0.23.1680.1027" timestamp="1597270006099" />
-    <state x="508" y="238" width="671" height="641" key="search.everywhere.popup" timestamp="1598216029543">
-      <screen x="0" y="23" width="1680" height="972" />
+    <state x="774" y="340" width="1023" height="933" key="search.everywhere.popup" timestamp="1599242379344">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="774" y="309" width="1021" height="922" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597438945021" />
     <state x="508" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1597364704060" />
     <state x="508" y="238" width="671" height="641" key="search.everywhere.popup/0.23.1680.972@0.23.1680.972" timestamp="1598216029543" />
+    <state x="755" y="332" width="997" height="909" key="search.everywhere.popup/0.27.2496.1377@0.27.2496.1377" timestamp="1599239262280" />
+    <state x="774" y="340" width="1023" height="933" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599242379344" />
   </component>
 </project>

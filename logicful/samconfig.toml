@@ -2,10 +2,11 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "logicful"
+stack_name = "logicful-staging"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-19p40fjkfi81k"
-s3_prefix = "logicful"
+s3_prefix = "logicful-staging"
 region = "us-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Stage=\"dev\""
 

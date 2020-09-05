@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "build:watch": "sam build && concurrently npm:dev*",
-    "dev:setup": "docker-compose -f ./dev/docker-compose.yaml up -d && powershell ./dev/setup.ps1",
-    "dev:watch": "chokidar \"**/*.go\" -c \"sam build Api\"",
+    "build:watch": "cross-env CGO_ENABLED=0 sam build && concurrently npm:dev*",
+    "dev:setup": "docker-compose -f ./dev/docker-compose.yaml up -d && ./dev/setup.sh",
+    "dev:watch": "cross-env CGO_ENABLED=0 chokidar \"**/*.go\" -c \"sam build Api\"",
     "debug": "sam build && sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 23451 --debugger-path debug --debug-args \"-delveAPI=2\"",
     "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
-    "deploy:staging": "cross-env GOOS=linux GOARCH=amd64 sam build && sam deploy --stack-name logicful-staging -no-confirm-changeset",
+    "deploy:staging": "cross-env CGO_ENABLED=0 sam build && sam deploy",
     "sqs:formSubmission": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionQueueHandler",
     "sqs:formSubmissionDelete": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionDeleteQueueHandler"
   },

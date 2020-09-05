@@ -16,7 +16,7 @@
   import { setFieldDefaults } from 'features/form/edit/services/DefaultFieldValueFactory'
   import { getApi } from 'services/ApiService'
   import { getUrlParameter } from 'util/Http'
-import { startPreviewSaver } from './services/PreviewSaver';
+  import { startPreviewSaver } from './services/PreviewSaver'
 
   let dropped = false
   let loadingActive: boolean = false
@@ -76,10 +76,10 @@ import { startPreviewSaver } from './services/PreviewSaver';
     }
   }
 
-  function addPlaceHolder() {
+  function addPlaceHolder() {       
     if (form.fields.filter((w) => w.type !== 'placeholder').length !== 0) {
       removePlaceHolder()
-      return
+      return  
     }
     if (form.fields.find((w) => w.type === 'placeholder')) {
       return
