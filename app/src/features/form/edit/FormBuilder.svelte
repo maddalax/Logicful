@@ -76,10 +76,10 @@
     }
   }
 
-  function addPlaceHolder() {       
+  function addPlaceHolder() {
     if (form.fields.filter((w) => w.type !== 'placeholder').length !== 0) {
       removePlaceHolder()
-      return  
+      return
     }
     if (form.fields.find((w) => w.type === 'placeholder')) {
       return

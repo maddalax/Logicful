@@ -1,6 +1,6 @@
 export function getUrlParameter(name: string, url?: string) {
-  if(!location) {
-    return undefined;
+  if (!location) {
+    return undefined
   }
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
   let regex = new RegExp('[\\?&]' + name + '=([^&#]*)')

@@ -2,7 +2,7 @@
   import { getUrlParameter } from 'util/Http'
 
   export async function preload(page: any, session: any) {
-    const formId = page.query.formId;
+    const formId = page.query.formId
     if (!formId) {
       return {}
     }
@@ -10,7 +10,7 @@
     //@ts-ignore
     const res = await this.fetch(url)
     const form = await res.json()
-    console.log(form);
+    console.log(form)
     return { formId, form }
   }
 </script>
@@ -105,4 +105,5 @@
 </div>
 
 <style>
+
 </style>
