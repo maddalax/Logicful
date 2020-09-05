@@ -9,3 +9,7 @@ type Creatable struct {
 	CreateTime string `json:"createTime"`
 	CreateBy   string `json:"createBy"`
 }
+
+type Versioned struct {
+	Version int64 `json:"version,omitempty"`
+}

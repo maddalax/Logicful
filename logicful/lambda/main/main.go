@@ -2,6 +2,7 @@ package main
 
 import (
 	"api/main/features/contentblock"
+	"api/main/features/folder"
 	"api/main/features/form"
 	"api/main/features/formsubmission"
 	"api/main/features/optionset"
@@ -16,6 +17,7 @@ func main() {
 	addOptionSetHandlers(router)
 	addContentBlockHandlers(router)
 	addFormHandlers(router)
+	addFolderHandlers(router)
 	addSubmissionHandlers(router)
 	addSetS3Handlers(router)
 
@@ -39,6 +41,12 @@ func addFormHandlers(router *httprouter.Router) {
 	router.GET("/api/form/:formId", form.GetHandler)
 	router.POST("/api/form", form.SetHandler)
 	router.PUT("/api/form/:formId", form.SetHandler)
+}
+
+func addFolderHandlers(router *httprouter.Router) {
+	router.GET("/api/folder", folder.ListHandler)
+	router.POST("/api/folder", folder.SetHandler)
+	router.PUT("/api/folder/:folderId", folder.SetHandler)
 }
 
 func addSubmissionHandlers(router *httprouter.Router) {

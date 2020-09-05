@@ -16,6 +16,23 @@ type Form struct {
 	Creatable
 	Fields      []Field          `json:"fields"`
 	Submissions []LeanSubmission `json:"submissions,omitempty"`
+	Versioned
+}
+
+type Folder struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+	Changeable
+	Creatable
+	Forms  []LeanForm `json:"forms"`
+	Parent string     `json:"parent"`
+	Versioned
+}
+
+type LeanForm struct {
+	Id string
+	Changeable
+	Title string
 }
 
 type LeanSubmission struct {

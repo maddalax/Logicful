@@ -117,7 +117,7 @@ func Add(submission models.Submission) error {
 }
 
 func List(id string) ([]models.Submission, error) {
-	bytes, err := storage.DownloadToBytes("logicful-form-submissions", id+".json")
+	bytes, err := storage.DownloadToBytes("logicful-folder-submissions", id+".json")
 	if aerr, ok := err.(awserr.Error); ok {
 		switch aerr.Code() {
 		case s3.ErrCodeNoSuchKey:

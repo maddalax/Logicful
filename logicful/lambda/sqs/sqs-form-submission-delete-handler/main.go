@@ -67,7 +67,7 @@ func onSubmission(submission models.SubmissionsDeleted) error {
 	}
 	current = current[:i]
 
-	_, err = storage.SetJson(current, name, "logicful-form-submissions", "private")
+	_, err = storage.SetJson(current, name, "logicful-folder-submissions", "private")
 
 	if err != nil {
 		return err
@@ -77,7 +77,7 @@ func onSubmission(submission models.SubmissionsDeleted) error {
 }
 
 func currentSubmissions(name string) ([]models.Submission, error) {
-	bytes, err := storage.DownloadToBytes("logicful-form-submissions", name)
+	bytes, err := storage.DownloadToBytes("logicful-folder-submissions", name)
 	if aerr, ok := err.(awserr.Error); ok {
 		switch aerr.Code() {
 		case s3.ErrCodeNoSuchKey:

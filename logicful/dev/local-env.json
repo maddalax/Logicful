@@ -8,6 +8,7 @@
     "AWS_ACCESS_KEY_ID": "AKIAQPVAMC7JZKV47CF2",
     "AWS_SECRET_ACCESS_KEY": "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",
     "FORMS_TABLE": "forms",
+    "FOLDERS_TABLE": "folders",
     "FORM_SUBMISSIONS_TABLE": "form_submissions",
     "CLIENTS_TABLE": "clients",
     "OPTION_SETS_TABLE": "option_sets",

@@ -28,24 +28,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5751e971-b2df-4123-9dfd-25cca6018ac9" name="Default Changelist" comment="coombo box fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/contentblock/content-block-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/contentblock/content-block-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/contentblock/content-block-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/contentblock/content-block-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/form/form-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/form/form-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/form/form-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/form/form-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/formsubmission/form-submission-delete-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/formsubmission/form-submission-delete-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/formsubmission/form-submission-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/formsubmission/form-submission-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/formsubmission/form-submission-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/optionset/option-set-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/optionset/option-set-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/optionset/option-set-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/optionset/option-set-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/s3store/s3-store-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/s3store/s3-store-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/features/s3store/s3-store-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/main/features/s3store/s3-store-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/lambda/api/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/lambda/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/samconfig.toml" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/samconfig.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicful/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/logicful/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +55,13 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/logicful/lambda/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/logicful" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/api/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -397,13 +379,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="100" y="123" width="1348" height="824" key="DiffContextDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597361828645" />
-    <state x="961" y="389" width="424" height="495" key="FileChooserDialogImpl" timestamp="1599241030053">
+    <state x="961" y="385" width="424" height="495" key="FileChooserDialogImpl" timestamp="1599322041058">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="631" y="298" key="FileChooserDialogImpl/0.23.1680.1027@0.23.1680.1027" timestamp="1597314874690" />
     <state x="631" y="283" key="FileChooserDialogImpl/0.23.1680.972@0.23.1680.972" timestamp="1598108367113" />
     <state x="937" y="391" width="424" height="495" key="FileChooserDialogImpl/0.27.2496.1377@0.27.2496.1377" timestamp="1599237901502" />
-    <state x="961" y="389" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1599241030053" />
+    <state x="961" y="385" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1599322041058" />
     <state width="1631" height="395" key="GridCell.Tab.0.bottom" timestamp="1599242972631">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
@@ -432,12 +414,13 @@
     <state width="1527" height="279" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597364837325" />
     <state width="1638" height="210" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1598223866317" />
     <state width="1631" height="395" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599242972631" />
-    <state x="511" y="223" width="986" height="741" key="SettingsEditor" timestamp="1599237763304">
-      <screen x="0" y="27" width="2496" height="1377" />
+    <state x="524" y="224" width="986" height="741" key="SettingsEditor" timestamp="1599322028645">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="524" y="207" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597439572258" />
     <state x="344" y="175" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1597270158342" />
     <state x="511" y="223" width="986" height="741" key="SettingsEditor/0.27.2496.1377@0.27.2496.1377" timestamp="1599237763304" />
+    <state x="524" y="224" key="SettingsEditor/0.27.2560.1413@0.27.2560.1413" timestamp="1599322028645" />
     <state x="441" y="262" key="Vcs.Push.Dialog.v2" timestamp="1598218109949">
       <screen x="0" y="23" width="1680" height="972" />
     </state>

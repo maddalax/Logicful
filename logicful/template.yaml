@@ -30,6 +30,7 @@ Globals:
         FORM_SUBMISSION_QUEUE: !Ref FormSubmissionQueue
         FORM_SUBMISSIONS_DELETED_QUEUE: !Ref FormSubmissionDeleteQueue
         FORMS_TABLE: !Ref FormsTable
+        FOLDERS_TABLE: !Ref FoldersTable
         FORM_SUBMISSIONS_TABLE: !Ref FormsSubmissionsTable
         CLIENTS_TABLE: !Ref ClientsTable
         OPTION_SETS_TABLE: !Ref OptionSetsTable
@@ -39,6 +40,19 @@ Globals:
 Resources:
 
   FormsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  FoldersTable:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:

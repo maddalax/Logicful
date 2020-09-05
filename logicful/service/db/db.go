@@ -15,6 +15,10 @@ func Forms() string {
 	return os.Getenv("FORMS_TABLE")
 }
 
+func Folders() string {
+	return os.Getenv("FOLDERS_TABLE")
+}
+
 func Clients() string {
 	return os.Getenv("CLIENTS_TABLE")
 }
