@@ -1,7 +1,9 @@
 package form
 
 import (
+	"api/main/features/folder"
 	"encoding/json"
+	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
@@ -27,6 +29,16 @@ func Set(form models.Form) (models.Form, error) {
 	form.ChangeBy = "maddox2"
 
 	fields, err := dynamodbattribute.Marshal(form.Fields)
+
+	if form.Folder != "" {
+		f, err := folder.Get(form.Folder)
+		if err != nil {
+			return models.Form{}, err
+		}
+		if f.Id == "" {
+			return models.Form{}, errors.New("folder does not exist by that id")
+		}
+	}
 
 	if err != nil {
 		return models.Form{}, err
@@ -61,7 +73,7 @@ func Set(form models.Form) (models.Form, error) {
 							S: aws.String(form.Id),
 						},
 					},
-					UpdateExpression: aws.String("SET #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy"),
+					UpdateExpression: aws.String("SET #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy, Folder = :Folder"),
 					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 						":c1e70": {
 							S: aws.String(form.Title),
@@ -78,6 +90,9 @@ func Set(form models.Form) (models.Form, error) {
 						},
 						":CreateBy": {
 							S: aws.String(form.CreateBy),
+						},
+						":Folder": {
+							S: aws.String(form.Folder),
 						},
 					},
 					ExpressionAttributeNames: map[string]*string{

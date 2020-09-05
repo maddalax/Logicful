@@ -14,9 +14,11 @@ type Form struct {
 	Title string `json:"title"`
 	Changeable
 	Creatable
-	Fields      []Field          `json:"fields"`
-	Submissions []LeanSubmission `json:"submissions,omitempty"`
+	Fields          []Field          `json:"fields"`
+	Submissions     []LeanSubmission `json:"submissions,omitempty"`
+	SubmissionCount int64            `json:"submissionCount"`
 	Versioned
+	Folder string `json:"folder"`
 }
 
 type Folder struct {
@@ -24,8 +26,7 @@ type Folder struct {
 	Name string `json:"name"`
 	Changeable
 	Creatable
-	Forms  []LeanForm `json:"forms"`
-	Parent string     `json:"parent"`
+	Parent string `json:"parent"`
 	Versioned
 }
 

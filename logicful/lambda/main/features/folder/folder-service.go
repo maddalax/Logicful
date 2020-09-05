@@ -13,14 +13,33 @@ import (
 
 var instance = db.New()
 
+func Get(id string) (models.Folder, error) {
+	result, err := instance.GetItem(&dynamodb.GetItemInput{
+		TableName: aws.String(db.Folders()),
+		Key: map[string]*dynamodb.AttributeValue{
+			"id": {
+				S: aws.String(id),
+			},
+		},
+	})
+	if err != nil {
+		return models.Folder{}, err
+	}
+
+	var folder = models.Folder{}
+	err = dynamodbattribute.UnmarshalMap(result.Item, &folder)
+
+	if err != nil {
+		return models.Folder{}, err
+	}
+
+	return folder, nil
+}
+
 func Set(folder models.Folder) (models.Folder, error) {
 
 	if folder.Id == "" {
 		folder.Id = uuid.New().String()
-	}
-
-	if folder.Forms == nil {
-		folder.Forms = make([]models.LeanForm, 0)
 	}
 
 	folder.CreateTime = date.ISO8601(time.Now())
@@ -28,13 +47,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 	folder.CreateBy = "maddox2"
 	folder.ChangeBy = "maddox2"
 
-	forms, err := dynamodbattribute.Marshal(folder.Forms)
-
-	if err != nil {
-		return models.Folder{}, err
-	}
-
-	_, err = instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
+	_, err := instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
 		TransactItems: []*dynamodb.TransactWriteItem{
 			{
 				Update: &dynamodb.Update{
@@ -63,7 +76,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 							S: aws.String(folder.Id),
 						},
 					},
-					UpdateExpression: aws.String("ADD Version :version SET #parent = :parent, #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy"),
+					UpdateExpression: aws.String("ADD Version :version SET #parent = :parent, #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy"),
 					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 						":c1e70": {
 							S: aws.String(folder.Name),
@@ -71,7 +84,6 @@ func Set(folder models.Folder) (models.Folder, error) {
 						":c1e71": {
 							S: aws.String(folder.ChangeTime),
 						},
-						":c1e72": forms,
 						":c1e73": {
 							S: aws.String(folder.CreateTime),
 						},
@@ -91,7 +103,6 @@ func Set(folder models.Folder) (models.Folder, error) {
 					ExpressionAttributeNames: map[string]*string{
 						"#c1e70":    aws.String("Name"),
 						"#c1e71":    aws.String("ChangeTime"),
-						"#c1e72":    aws.String("Forms"),
 						"#c1e73":    aws.String("CreateTime"),
 						"#c1e74":    aws.String("CreateTime"),
 						"#CreateBy": aws.String("CreateBy"),

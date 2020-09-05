@@ -57,14 +57,18 @@ func Add(submission models.Submission) error {
 							S: aws.String(submission.FormId),
 						},
 					},
-					UpdateExpression: aws.String("ADD #submissions :submission"),
+					UpdateExpression: aws.String("ADD #submissions :submission, #submissionCount :one"),
 					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 						":submission": {
 							SS: aws.StringSlice([]string{submission.Id}),
 						},
+						":one": {
+							N: aws.String("1"),
+						},
 					},
 					ExpressionAttributeNames: map[string]*string{
-						"#submissions": aws.String("submissions"),
+						"#submissions":     aws.String("Submissions"),
+						"#submissionCount": aws.String("SubmissionCount"),
 					},
 				},
 			},
