@@ -19,7 +19,7 @@ var instance = db.New()
 
 func Set(form models.Form) (models.Form, error) {
 
-	if form.ClientId == "" {
+	if form.TeamId == "" {
 		return models.Form{}, errors.New("client id is required")
 	}
 
@@ -28,10 +28,10 @@ func Set(form models.Form) (models.Form, error) {
 	}
 
 	if form.Folder == "" {
-		form.Folder = form.ClientId + ":" + "uncategorized"
+		form.Folder = form.TeamId + ":" + "uncategorized"
 	} else {
-		if !strings.HasPrefix(form.Folder, form.ClientId) {
-			form.Folder = form.ClientId + ":" + form.Folder
+		if !strings.HasPrefix(form.Folder, form.TeamId) {
+			form.Folder = form.TeamId + ":" + form.Folder
 		}
 	}
 
@@ -50,13 +50,13 @@ func Set(form models.Form) (models.Form, error) {
 		TableName: aws.String(db.Data()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"PK": {
-				S: aws.String("CLIENT#" + form.ClientId),
+				S: aws.String("CLIENT#" + form.TeamId),
 			},
 			"SK": {
 				S: aws.String("FORM#" + form.Id),
 			},
 		},
-		UpdateExpression: aws.String("SET #clientId = :clientId, #formId = :formId, #title = :title, #fields = :fields, #folder = :folder, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
+		UpdateExpression: aws.String("SET #teamId = :teamId, #formId = :formId, #title = :title, #fields = :fields, #folder = :folder, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":title": {
 				S: aws.String(form.Title),
@@ -77,8 +77,8 @@ func Set(form models.Form) (models.Form, error) {
 			":formId": {
 				S: aws.String(form.Id),
 			},
-			":clientId": {
-				S: aws.String(form.ClientId),
+			":teamId": {
+				S: aws.String(form.TeamId),
 			},
 			":folder": {
 				S: aws.String(form.Folder),
@@ -93,7 +93,7 @@ func Set(form models.Form) (models.Form, error) {
 			"#creationDate": aws.String("CreationDate"),
 			"#createBy":     aws.String("CreateBy"),
 			"#formId":       aws.String("FormId"),
-			"#clientId":     aws.String("ClientId"),
+			"#teamId":       aws.String("TeamId"),
 		},
 	})
 

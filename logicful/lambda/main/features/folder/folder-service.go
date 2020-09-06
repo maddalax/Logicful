@@ -16,12 +16,12 @@ var instance = db.New()
 
 func Set(folder models.Folder) (models.Folder, error) {
 
-	if folder.ClientId == "" {
+	if folder.TeamId == "" {
 		return models.Folder{}, errors.New("client id is required")
 	}
 
 	if folder.Id == "" {
-		folder.Id = folder.ClientId + ":" + uuid.New().String()
+		folder.Id = folder.TeamId + ":" + uuid.New().String()
 	}
 
 	folder.CreationDate = date.ISO8601(time.Now())
@@ -33,13 +33,13 @@ func Set(folder models.Folder) (models.Folder, error) {
 		TableName: aws.String(db.Data()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"PK": {
-				S: aws.String("CLIENT#" + folder.ClientId),
+				S: aws.String("CLIENT#" + folder.TeamId),
 			},
 			"SK": {
 				S: aws.String("FOLDER#" + folder.Id),
 			},
 		},
-		UpdateExpression: aws.String("SET #clientId = :clientId, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
+		UpdateExpression: aws.String("SET #teamId = :teamId, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":name": {
 				S: aws.String(folder.Name),
@@ -59,8 +59,8 @@ func Set(folder models.Folder) (models.Folder, error) {
 			":folderId": {
 				S: aws.String(folder.Id),
 			},
-			":clientId": {
-				S: aws.String(folder.ClientId),
+			":teamId": {
+				S: aws.String(folder.TeamId),
 			},
 		},
 		ExpressionAttributeNames: map[string]*string{
@@ -70,7 +70,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 			"#creationDate": aws.String("CreationDate"),
 			"#createBy":     aws.String("CreateBy"),
 			"#folderId":     aws.String("FolderId"),
-			"#clientId":     aws.String("ClientId"),
+			"#teamId":       aws.String("TeamId"),
 		},
 	})
 
@@ -89,10 +89,10 @@ func List(client string) ([]models.Folder, error) {
 
 	results, err := db.New().Query(&dynamodb.QueryInput{
 		TableName:              aws.String(db.Data()),
-		KeyConditionExpression: aws.String("PK = :clientId AND begins_with (SK, :folder)"),
+		KeyConditionExpression: aws.String("PK = :teamId AND begins_with (SK, :folder)"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			":folder":   {S: aws.String("FOLDER#")},
-			":clientId": {S: aws.String("CLIENT#" + client)},
+			":folder": {S: aws.String("FOLDER#")},
+			":teamId": {S: aws.String("CLIENT#" + client)},
 		},
 	})
 	if err != nil {

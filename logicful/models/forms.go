@@ -18,9 +18,9 @@ type Form struct {
 	Submissions     []LeanSubmission `json:"submissions,omitempty"`
 	SubmissionCount int64            `json:"submissionCount"`
 	Versioned
-	Folder   string `json:"folder"`
-	ClientId string `json:"clientId"`
-	FormId   string `json:"formId,omit"`
+	Folder string `json:"folder"`
+	TeamId string `json:"teamId"`
+	FormId string `json:"formId,omit"`
 }
 
 type Folder struct {
@@ -30,7 +30,7 @@ type Folder struct {
 	Creatable
 	Parent string `json:"parent"`
 	Versioned
-	ClientId string `json:"clientId"`
+	TeamId   string `json:"teamId"`
 	FolderId string `json:"folderId"`
 }
 
