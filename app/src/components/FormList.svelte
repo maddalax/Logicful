@@ -5,11 +5,11 @@
   import { onMount } from 'svelte'
   import { getApi } from 'services/ApiService'
 
-  let forms: IForm[] = []
-  export let folder: IFolder
+  export let forms: IForm[] = []
+  // export let folder: IFolder
 
   onMount(async () => {
-    forms = await getApi('form?lean=true')
+    // forms = await getApi('form?lean=true')
   })
 
   function onDelete(formId: string) {}

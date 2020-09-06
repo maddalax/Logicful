@@ -2,11 +2,11 @@
   import { getUrlParameter } from 'util/Http'
 
   export async function preload(page: any, session: any) {
-    const folder = getUrlParameter('folder')
-    if (!folder) {
-      return 'uncategorized'
+    const folderId : string = page.query.folderId
+    if (!folderId) {
+      return 'Uncategorized'
     }
-    return { folderName: folder }
+    return { folderId: folderId }
   }
 </script>
 
@@ -17,21 +17,21 @@
   import FolderContent from '../../components/FolderContent.svelte'
   import type { IFolder } from 'models/IFolder'
   import type { IForm } from 'models/IForm'
+import { randomString } from 'util/Generate';
 
-  export let folderName: string
-
-  let folder: IFolder
+  export let folderId: string
 
   onMount(() => {
-    folder = getFolder(folderName)
+    // folder = getFolder(folderName)
   })
 
   afterUpdate(() => {
-    folder = getFolder(folderName)
+    console.log("after update")
+    // folder = getFolder(folderName)
   })
 
   function getFolder(folderName: string) {
-    return { name: folderName, forms: [], id: '12345' }
+    return { name: folderName, forms: [], id: folderName }
   }
 </script>
 
@@ -40,12 +40,10 @@
     <div class="container">
       <div class="row pt-3 pt-md-0">
         <div class="col-12 col-md-4 d-none d-lg-block">
-          <Folders selected={folderName} />
+          <Folders selected={folderId} />
         </div>
         <div class="col-12 col-lg-8">
-          {#if folder != null}
-            <FolderContent {folder} />
-          {/if}
+            <FolderContent />
         </div>
       </div>
     </div>

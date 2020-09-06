@@ -20,7 +20,7 @@
   })
 
   function onWorkflows() {
-    goto(`./form-settings/${form.id}/workflows`)
+    goto(`/form-settings/workflows?formId=${form.id}`)
   }
 
   function onGroupSettings() {

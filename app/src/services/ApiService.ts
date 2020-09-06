@@ -9,9 +9,9 @@ export function apiEndpoint() {
   return config['API_ENDPOINT']
 }
 
-export async function getApi<T>(path: string): Promise<T> {
+export async function getApi<T>(path: string, fetch: any): Promise<T> {
   const endpoint = apiEndpoint()
-  const response = await instance()(`${endpoint}${path}`)
+  const response = await (fetch ?? instance())(`${endpoint}${path}`)
   if (!response.ok) {
     const body = await response.json()
     throw new Error(body.message)

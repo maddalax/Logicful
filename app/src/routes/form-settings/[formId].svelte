@@ -1,3 +1,23 @@
+<script context="module">
+  import { getUrlParameter } from 'util/Http'
+
+  export async function preload(this: any, page: any, session: any) {
+    const formId = page.query.formId
+    if (!formId || formId == 'undefined' || formId == 'null') {
+      return this.error(400, 'Invalid Form Id')
+    }
+    const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
+    //@ts-ignore
+    const res = await this.fetch(url)
+    const form = await res.json()
+    form.id = formId
+    formStore.setForm(form)
+
+
+    return { form:form }
+  }
+</script>
+
 <script lang="typescript">
   import { dispatch, subscribeComponent } from 'event/EventBus'
   import { afterUpdate, onMount } from 'svelte'
