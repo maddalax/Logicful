@@ -1,0 +1,22 @@
+[{
+  "Create" : "FormFolderIndex",
+  "KeySchema": [
+    {
+      "AttributeName": "folder",
+      "KeyType": "HASH"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 5,
+    "WriteCapacityUnits": 5
+  },
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "id",
+      "AttributeType": "S"
+    }
+  ],
+  "Projection" : {
+    "ProjectionType" : "ALL"
+  }
+}]

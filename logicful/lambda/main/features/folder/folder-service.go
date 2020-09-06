@@ -1,6 +1,7 @@
 package folder
 
 import (
+	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
@@ -13,103 +14,63 @@ import (
 
 var instance = db.New()
 
-func Get(id string) (models.Folder, error) {
-	result, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String(db.Folders()),
-		Key: map[string]*dynamodb.AttributeValue{
-			"id": {
-				S: aws.String(id),
-			},
-		},
-	})
-	if err != nil {
-		return models.Folder{}, err
-	}
-
-	var folder = models.Folder{}
-	err = dynamodbattribute.UnmarshalMap(result.Item, &folder)
-
-	if err != nil {
-		return models.Folder{}, err
-	}
-
-	return folder, nil
-}
-
 func Set(folder models.Folder) (models.Folder, error) {
 
-	if folder.Id == "" {
-		folder.Id = uuid.New().String()
+	if folder.ClientId == "" {
+		return models.Folder{}, errors.New("client id is required")
 	}
 
-	folder.CreateTime = date.ISO8601(time.Now())
-	folder.ChangeTime = date.ISO8601(time.Now())
+	if folder.Id == "" {
+		folder.Id = folder.ClientId + ":" + uuid.New().String()
+	}
+
+	folder.CreationDate = date.ISO8601(time.Now())
+	folder.ChangeDate = date.ISO8601(time.Now())
 	folder.CreateBy = "maddox2"
 	folder.ChangeBy = "maddox2"
 
-	_, err := instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
-		TransactItems: []*dynamodb.TransactWriteItem{
-			{
-				Update: &dynamodb.Update{
-					TableName: aws.String(db.Clients()),
-					Key: map[string]*dynamodb.AttributeValue{
-						"name": {
-							S: aws.String("maddox"),
-						},
-					},
-					UpdateExpression: aws.String("ADD #folders :folders"),
-					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-						":folders": {
-							SS: aws.StringSlice([]string{folder.Id}),
-						},
-					},
-					ExpressionAttributeNames: map[string]*string{
-						"#folders": aws.String("folders"),
-					},
-				},
+	_, err := instance.UpdateItem(&dynamodb.UpdateItemInput{
+		TableName: aws.String(db.Data()),
+		Key: map[string]*dynamodb.AttributeValue{
+			"PK": {
+				S: aws.String("CLIENT#" + folder.ClientId),
 			},
-			{
-				Update: &dynamodb.Update{
-					TableName: aws.String(db.Folders()),
-					Key: map[string]*dynamodb.AttributeValue{
-						"id": {
-							S: aws.String(folder.Id),
-						},
-					},
-					UpdateExpression: aws.String("ADD Version :version SET #parent = :parent, #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy"),
-					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-						":c1e70": {
-							S: aws.String(folder.Name),
-						},
-						":c1e71": {
-							S: aws.String(folder.ChangeTime),
-						},
-						":c1e73": {
-							S: aws.String(folder.CreateTime),
-						},
-						":ChangeBy": {
-							S: aws.String(folder.ChangeBy),
-						},
-						":CreateBy": {
-							S: aws.String(folder.CreateBy),
-						},
-						":parent": {
-							S: aws.String(folder.Parent),
-						},
-						":version": {
-							N: aws.String("1"),
-						},
-					},
-					ExpressionAttributeNames: map[string]*string{
-						"#c1e70":    aws.String("Name"),
-						"#c1e71":    aws.String("ChangeTime"),
-						"#c1e73":    aws.String("CreateTime"),
-						"#c1e74":    aws.String("CreateTime"),
-						"#CreateBy": aws.String("CreateBy"),
-						"#parent":   aws.String("Parent"),
-					},
-				},
+			"SK": {
+				S: aws.String("FOLDER#" + folder.Id),
 			},
+		},
+		UpdateExpression: aws.String("SET #clientId = :clientId, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":name": {
+				S: aws.String(folder.Name),
+			},
+			":changeDate": {
+				S: aws.String(folder.ChangeDate),
+			},
+			":creationDate": {
+				S: aws.String(folder.CreationDate),
+			},
+			":changeBy": {
+				S: aws.String(folder.ChangeBy),
+			},
+			":createBy": {
+				S: aws.String(folder.CreateBy),
+			},
+			":folderId": {
+				S: aws.String(folder.Id),
+			},
+			":clientId": {
+				S: aws.String(folder.ClientId),
+			},
+		},
+		ExpressionAttributeNames: map[string]*string{
+			"#name":         aws.String("Name"),
+			"#changeDate":   aws.String("ChangeDate"),
+			"#changeBy":     aws.String("ChangeBy"),
+			"#creationDate": aws.String("CreationDate"),
+			"#createBy":     aws.String("CreateBy"),
+			"#folderId":     aws.String("FolderId"),
+			"#clientId":     aws.String("ClientId"),
 		},
 	})
 
@@ -120,55 +81,33 @@ func Set(folder models.Folder) (models.Folder, error) {
 	return folder, err
 }
 
-func List() ([]models.Folder, error) {
-	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String(db.Clients()),
-		Key: map[string]*dynamodb.AttributeValue{
-			"name": {
-				S: aws.String("maddox"),
-			},
-		},
-		ProjectionExpression: aws.String("folders"),
-	})
+func List(client string) ([]models.Folder, error) {
 
-	if item == nil || item.Item["folders"] == nil {
-		return make([]models.Folder, 0), nil
+	if client == "" {
+		return nil, errors.New("client is required")
 	}
 
-	if err != nil {
-		return nil, err
-	}
-
-	ids := item.Item["folders"].SS
-	var keys []map[string]*dynamodb.AttributeValue
-	for id := range ids {
-		k := map[string]*dynamodb.AttributeValue{
-			"id": {S: ids[id]},
-		}
-		keys = append(keys, k)
-	}
-
-	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
-		RequestItems: map[string]*dynamodb.KeysAndAttributes{
-			db.Folders(): {
-				Keys: keys,
-			},
+	results, err := db.New().Query(&dynamodb.QueryInput{
+		TableName:              aws.String(db.Data()),
+		KeyConditionExpression: aws.String("PK = :clientId AND begins_with (SK, :folder)"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":folder":   {S: aws.String("FOLDER#")},
+			":clientId": {S: aws.String("CLIENT#" + client)},
 		},
 	})
+	if err != nil {
+		return nil, err
+	}
+	var folders []models.Folder
+	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &folders)
 
 	if err != nil {
 		return nil, err
 	}
 
-	results := items.Responses[db.Folders()]
-
-	var recs []models.Folder
-
-	err = dynamodbattribute.UnmarshalListOfMaps(results, &recs)
-
-	if err != nil {
-		return nil, err
+	for i := range folders {
+		folders[i].Id = folders[i].FolderId
 	}
 
-	return recs, nil
+	return folders, nil
 }

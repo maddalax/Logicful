@@ -1,19 +1,7 @@
-{
-  "TableName": "folders",
-  "KeySchema": [
-    {
-      "AttributeName": "id",
-      "KeyType": "HASH"
+[
+  {
+    "Create": {
+         "IndexName" : "FormFolderIndex"
     }
-  ],
-  "ProvisionedThroughput": {
-    "ReadCapacityUnits": 2,
-    "WriteCapacityUnits": 2
-  },
-  "AttributeDefinitions": [
-    {
-      "AttributeName": "id",
-      "AttributeType": "S"
-    }
-  ]
-}
+  }
+]

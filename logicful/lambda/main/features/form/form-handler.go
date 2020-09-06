@@ -23,7 +23,7 @@ func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	forms, err := List(httpextensions.Query("lean", r) == "true")
+	forms, err := List(httpextensions.Query("folderId", r))
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

@@ -19,8 +19,8 @@ func Set(block models.ContentBlock) error {
 		block.Id = uuid.New().String()
 	}
 
-	block.CreateTime = date.ISO8601(time.Now())
-	block.ChangeTime = date.ISO8601(time.Now())
+	block.CreationDate = date.ISO8601(time.Now())
+	block.ChangeDate = date.ISO8601(time.Now())
 	block.CreateBy = "maddox"
 	block.ChangeBy = "maddox"
 
@@ -59,10 +59,10 @@ func Set(block models.ContentBlock) error {
 							S: aws.String(block.Name),
 						},
 						":c1e71": {
-							S: aws.String(block.ChangeTime),
+							S: aws.String(block.ChangeDate),
 						},
 						":c1e73": {
-							S: aws.String(block.CreateTime),
+							S: aws.String(block.CreationDate),
 						},
 						":value": {
 							S: aws.String(block.Value),
@@ -76,9 +76,9 @@ func Set(block models.ContentBlock) error {
 					},
 					ExpressionAttributeNames: map[string]*string{
 						"#c1e70":    aws.String("name"),
-						"#c1e71":    aws.String("ChangeTime"),
-						"#c1e73":    aws.String("CreateTime"),
-						"#c1e74":    aws.String("CreateTime"),
+						"#c1e71":    aws.String("ChangeDate"),
+						"#c1e73":    aws.String("CreationDate"),
+						"#c1e74":    aws.String("CreationDate"),
 						"#value":    aws.String("value"),
 						"#CreateBy": aws.String("CreateBy"),
 					},

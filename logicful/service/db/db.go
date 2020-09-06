@@ -19,6 +19,10 @@ func Folders() string {
 	return os.Getenv("FOLDERS_TABLE")
 }
 
+func Data() string {
+	return os.Getenv("DATA_TABLE")
+}
+
 func Clients() string {
 	return os.Getenv("CLIENTS_TABLE")
 }

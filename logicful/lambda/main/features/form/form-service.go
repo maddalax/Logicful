@@ -1,7 +1,6 @@
 package form
 
 import (
-	"api/main/features/folder"
 	"encoding/json"
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
@@ -12,6 +11,7 @@ import (
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/storage"
+	"strings"
 	"time"
 )
 
@@ -19,92 +19,81 @@ var instance = db.New()
 
 func Set(form models.Form) (models.Form, error) {
 
+	if form.ClientId == "" {
+		return models.Form{}, errors.New("client id is required")
+	}
+
 	if form.Id == "" {
 		form.Id = uuid.New().String()
 	}
 
-	form.CreateTime = date.ISO8601(time.Now())
-	form.ChangeTime = date.ISO8601(time.Now())
+	if form.Folder == "" {
+		form.Folder = form.ClientId + ":" + "uncategorized"
+	} else {
+		if !strings.HasPrefix(form.Folder, form.ClientId) {
+			form.Folder = form.ClientId + ":" + form.Folder
+		}
+	}
+
+	form.CreationDate = date.ISO8601(time.Now())
+	form.ChangeDate = date.ISO8601(time.Now())
 	form.CreateBy = "maddox2"
 	form.ChangeBy = "maddox2"
 
 	fields, err := dynamodbattribute.Marshal(form.Fields)
 
-	if form.Folder != "" {
-		f, err := folder.Get(form.Folder)
-		if err != nil {
-			return models.Form{}, err
-		}
-		if f.Id == "" {
-			return models.Form{}, errors.New("folder does not exist by that id")
-		}
-	}
-
 	if err != nil {
 		return models.Form{}, err
 	}
 
-	_, err = instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
-		TransactItems: []*dynamodb.TransactWriteItem{
-			{
-				Update: &dynamodb.Update{
-					TableName: aws.String(db.Clients()),
-					Key: map[string]*dynamodb.AttributeValue{
-						"name": {
-							S: aws.String("maddox"),
-						},
-					},
-					UpdateExpression: aws.String("ADD #forms :forms"),
-					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-						":forms": {
-							SS: aws.StringSlice([]string{form.Id}),
-						},
-					},
-					ExpressionAttributeNames: map[string]*string{
-						"#forms": aws.String("forms"),
-					},
-				},
+	_, err = instance.UpdateItem(&dynamodb.UpdateItemInput{
+		TableName: aws.String(db.Data()),
+		Key: map[string]*dynamodb.AttributeValue{
+			"PK": {
+				S: aws.String("CLIENT#" + form.ClientId),
 			},
-			{
-				Update: &dynamodb.Update{
-					TableName: aws.String(db.Forms()),
-					Key: map[string]*dynamodb.AttributeValue{
-						"id": {
-							S: aws.String(form.Id),
-						},
-					},
-					UpdateExpression: aws.String("SET #c1e70 = :c1e70, #c1e71 = :c1e71, #c1e72 = :c1e72, #c1e73 = if_not_exists(#c1e74,:c1e73), CreateBy = if_not_exists(#CreateBy,:CreateBy), ChangeBy = :ChangeBy, Folder = :Folder"),
-					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-						":c1e70": {
-							S: aws.String(form.Title),
-						},
-						":c1e71": {
-							S: aws.String(form.ChangeTime),
-						},
-						":c1e72": fields,
-						":c1e73": {
-							S: aws.String(form.CreateTime),
-						},
-						":ChangeBy": {
-							S: aws.String(form.ChangeBy),
-						},
-						":CreateBy": {
-							S: aws.String(form.CreateBy),
-						},
-						":Folder": {
-							S: aws.String(form.Folder),
-						},
-					},
-					ExpressionAttributeNames: map[string]*string{
-						"#c1e70":    aws.String("Title"),
-						"#c1e71":    aws.String("ChangeTime"),
-						"#c1e72":    aws.String("Fields"),
-						"#c1e73":    aws.String("CreateTime"),
-						"#c1e74":    aws.String("CreateTime"),
-						"#CreateBy": aws.String("CreateBy"),
-					},
-				},
+			"SK": {
+				S: aws.String("FORM#" + form.Id),
 			},
+		},
+		UpdateExpression: aws.String("SET #clientId = :clientId, #formId = :formId, #title = :title, #fields = :fields, #folder = :folder, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":title": {
+				S: aws.String(form.Title),
+			},
+			":changeDate": {
+				S: aws.String(form.ChangeDate),
+			},
+			":fields": fields,
+			":creationDate": {
+				S: aws.String(form.CreationDate),
+			},
+			":changeBy": {
+				S: aws.String(form.ChangeBy),
+			},
+			":createBy": {
+				S: aws.String(form.CreateBy),
+			},
+			":formId": {
+				S: aws.String(form.Id),
+			},
+			":clientId": {
+				S: aws.String(form.ClientId),
+			},
+			":folder": {
+				S: aws.String(form.Folder),
+			},
+		},
+		ExpressionAttributeNames: map[string]*string{
+			"#title":        aws.String("Title"),
+			"#fields":       aws.String("Fields"),
+			"#folder":       aws.String("Folder"),
+			"#changeDate":   aws.String("ChangeDate"),
+			"#changeBy":     aws.String("ChangeBy"),
+			"#creationDate": aws.String("CreationDate"),
+			"#createBy":     aws.String("CreateBy"),
+			"#formId":       aws.String("FormId"),
+			"#clientId":     aws.String("ClientId"),
 		},
 	})
 
@@ -121,72 +110,32 @@ func Set(form models.Form) (models.Form, error) {
 	return form, err
 }
 
-func List(lean bool) ([]models.Form, error) {
-	item, err := instance.GetItem(&dynamodb.GetItemInput{
-		TableName: aws.String(db.Clients()),
-		Key: map[string]*dynamodb.AttributeValue{
-			"name": {
-				S: aws.String("maddox"),
-			},
-		},
-		ProjectionExpression: aws.String("forms"),
-	})
-
-	if item == nil || item.Item["forms"] == nil {
-		return make([]models.Form, 0), nil
+func List(folder string) ([]models.Form, error) {
+	if folder == "" {
+		return nil, errors.New("folder id is required")
 	}
-
-	if err != nil {
-		return nil, err
-	}
-
-	ids := item.Item["forms"].SS
-	var keys []map[string]*dynamodb.AttributeValue
-	for id := range ids {
-		k := map[string]*dynamodb.AttributeValue{
-			"id": {S: ids[id]},
-		}
-		keys = append(keys, k)
-	}
-
-	var projection *string = nil
-	var projectionNames map[string]*string = nil
-	if lean {
-		projection = aws.String("id,#Title,ChangeTime,ChangeBy,CreateTime,CreateBy")
-		projectionNames = map[string]*string{
-			"#Title": aws.String("Title"),
-		}
-	}
-
-	println(db.Forms())
-
-	items, err := instance.BatchGetItem(&dynamodb.BatchGetItemInput{
-		RequestItems: map[string]*dynamodb.KeysAndAttributes{
-			db.Forms(): {
-				Keys:                     keys,
-				ProjectionExpression:     projection,
-				ExpressionAttributeNames: projectionNames,
-			},
+	results, err := db.New().Query(&dynamodb.QueryInput{
+		TableName:              aws.String(db.Data()),
+		IndexName:              aws.String("FormFolderIndex"),
+		KeyConditionExpression: aws.String("Folder = :folder"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":folder": {S: aws.String(folder)},
 		},
 	})
+	if err != nil {
+		return nil, err
+	}
+	var forms []models.Form
+	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &forms)
+
+	for i := range forms {
+		forms[i].Id = forms[i].FormId
+	}
 
 	if err != nil {
 		return nil, err
 	}
-
-	println(items.Responses)
-
-	results := items.Responses[db.Forms()]
-
-	var recs []models.Form
-
-	err = dynamodbattribute.UnmarshalListOfMaps(results, &recs)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return recs, nil
+	return forms, nil
 }
 
 func Get(id string) (models.Form, error) {

@@ -19,8 +19,8 @@ func Set(set models.OptionSet) error {
 		set.Id = uuid.New().String()
 	}
 
-	set.CreateTime = date.ISO8601(time.Now())
-	set.ChangeTime = date.ISO8601(time.Now())
+	set.CreationDate = date.ISO8601(time.Now())
+	set.ChangeDate = date.ISO8601(time.Now())
 	set.CreateBy = "maddox"
 	set.ChangeBy = "maddox"
 
@@ -59,13 +59,13 @@ func Set(set models.OptionSet) error {
 							S: aws.String(set.Name),
 						},
 						":c1e71": {
-							S: aws.String(set.ChangeTime),
+							S: aws.String(set.ChangeDate),
 						},
 						":c1e72": {
 							S: aws.String(set.Type),
 						},
 						":c1e73": {
-							S: aws.String(set.CreateTime),
+							S: aws.String(set.CreationDate),
 						},
 						":value": {
 							S: aws.String(set.Value),
@@ -79,10 +79,10 @@ func Set(set models.OptionSet) error {
 					},
 					ExpressionAttributeNames: map[string]*string{
 						"#c1e70":    aws.String("name"),
-						"#c1e71":    aws.String("ChangeTime"),
+						"#c1e71":    aws.String("ChangeDate"),
 						"#c1e72":    aws.String("type"),
-						"#c1e73":    aws.String("CreateTime"),
-						"#c1e74":    aws.String("CreateTime"),
+						"#c1e73":    aws.String("CreationDate"),
+						"#c1e74":    aws.String("CreationDate"),
 						"#value":    aws.String("value"),
 						"#CreateBy": aws.String("CreateBy"),
 					},

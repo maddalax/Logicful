@@ -36,6 +36,7 @@ Globals:
         OPTION_SETS_TABLE: !Ref OptionSetsTable
         SUBMISSION_QUEUE_LOCKS_TABLE: !Ref SubmissionsQueueLocksTable
         CONTENT_BLOCKS_TABLE: !Ref ContentBlocksTable
+        DATA_TABLE: !Ref DataTable
 
 Resources:
 
@@ -48,6 +49,23 @@ Resources:
       KeySchema:
         - AttributeName: id
           KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  DataTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
