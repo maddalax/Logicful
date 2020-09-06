@@ -20,7 +20,7 @@ var instance = db.New()
 func Set(form models.Form) (models.Form, error) {
 
 	if form.TeamId == "" {
-		return models.Form{}, errors.New("client id is required")
+		return models.Form{}, errors.New("team id is required")
 	}
 
 	if form.Id == "" {
@@ -50,7 +50,7 @@ func Set(form models.Form) (models.Form, error) {
 		TableName: aws.String(db.Data()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"PK": {
-				S: aws.String("CLIENT#" + form.TeamId),
+				S: aws.String("TEAM#" + form.TeamId),
 			},
 			"SK": {
 				S: aws.String("FORM#" + form.Id),

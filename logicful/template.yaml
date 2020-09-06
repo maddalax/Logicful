@@ -40,19 +40,6 @@ Globals:
 
 Resources:
 
-  FormsTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-        - AttributeName: id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: id
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
-
   DataTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -60,6 +47,14 @@ Resources:
         - AttributeName: PK
           AttributeType: S
         - AttributeName: SK
+          AttributeType: S
+        - AttributeName: Folder
+          AttributeType: S
+        - AttributeName: FormId
+          AttributeType: S
+        - AttributeName: SubmissionFormId
+          AttributeType: S
+        - AttributeName: CreationDate
           AttributeType: S
       KeySchema:
         - AttributeName: PK
@@ -69,45 +64,29 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-
-  FoldersTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-        - AttributeName: id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: id
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
-
-  FormsSubmissionsTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-        - AttributeName: id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: id
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
-
-  ClientsTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-        - AttributeName: name
-          AttributeType: S
-      KeySchema:
-        - AttributeName: name
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+      GlobalSecondaryIndexes:
+        - IndexName: FormFolderIndex
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+          KeySchema:
+            - AttributeName: Folder
+              KeyType: HASH
+            - AttributeName: FormId
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: SubmissionsByDate
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+          KeySchema:
+            - AttributeName: SubmissionFormId
+              KeyType: HASH
+            - AttributeName: CreationDate
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
 
   OptionSetsTable:
     Type: AWS::DynamoDB::Table
@@ -134,7 +113,6 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-
 
   ContentBlocksTable:
     Type: AWS::DynamoDB::Table

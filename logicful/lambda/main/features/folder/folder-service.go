@@ -17,7 +17,7 @@ var instance = db.New()
 func Set(folder models.Folder) (models.Folder, error) {
 
 	if folder.TeamId == "" {
-		return models.Folder{}, errors.New("client id is required")
+		return models.Folder{}, errors.New("team id is required")
 	}
 
 	if folder.Id == "" {
@@ -33,7 +33,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 		TableName: aws.String(db.Data()),
 		Key: map[string]*dynamodb.AttributeValue{
 			"PK": {
-				S: aws.String("CLIENT#" + folder.TeamId),
+				S: aws.String("TEAM#" + folder.TeamId),
 			},
 			"SK": {
 				S: aws.String("FOLDER#" + folder.Id),
@@ -81,10 +81,10 @@ func Set(folder models.Folder) (models.Folder, error) {
 	return folder, err
 }
 
-func List(client string) ([]models.Folder, error) {
+func List(team string) ([]models.Folder, error) {
 
-	if client == "" {
-		return nil, errors.New("client is required")
+	if team == "" {
+		return nil, errors.New("team is required")
 	}
 
 	results, err := db.New().Query(&dynamodb.QueryInput{
@@ -92,7 +92,7 @@ func List(client string) ([]models.Folder, error) {
 		KeyConditionExpression: aws.String("PK = :teamId AND begins_with (SK, :folder)"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":folder": {S: aws.String("FOLDER#")},
-			":teamId": {S: aws.String("CLIENT#" + client)},
+			":teamId": {S: aws.String("TEAM#" + team)},
 		},
 	})
 	if err != nil {

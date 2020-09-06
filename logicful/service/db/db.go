@@ -48,6 +48,6 @@ func New() *dynamodb.DynamoDB {
 		conf.Endpoint = aws.String(os.Getenv("DYNAMO_ENDPOINT"))
 	}
 	sess := session.Must(session.NewSession())
-	// Create a DynamoDB client with additional configuration
+	// Create a DynamoDB team with additional configuration
 	return dynamodb.New(sess, &conf)
 }
