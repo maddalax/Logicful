@@ -15,6 +15,10 @@
     form = props
   })
 
+  subscribeComponent("form_loaded", (props) => {
+    form = formStore.getForm()
+  })
+
   onMount(() => {
     form = formStore.getForm()
   })
