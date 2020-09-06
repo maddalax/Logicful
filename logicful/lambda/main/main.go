@@ -7,6 +7,7 @@ import (
 	"api/main/features/formsubmission"
 	"api/main/features/optionset"
 	"api/main/features/s3store"
+	"api/main/features/user"
 	"github.com/apex/gateway"
 	"github.com/julienschmidt/httprouter"
 	"log"
@@ -20,6 +21,7 @@ func main() {
 	addFolderHandlers(router)
 	addSubmissionHandlers(router)
 	addSetS3Handlers(router)
+	addUserRoutes(router)
 
 	log.Fatal(gateway.ListenAndServe(":3000", router))
 }
@@ -57,4 +59,11 @@ func addSubmissionHandlers(router *httprouter.Router) {
 
 func addSetS3Handlers(router *httprouter.Router) {
 	router.POST("/api/s3/json", s3store.SetJsonHandler)
+}
+
+func addUserRoutes(router *httprouter.Router) {
+	router.POST("/api/user/register", user.RegisterHandler)
+	router.POST("/api/user/login", user.LoginHandler)
+	router.GET("/api/user/me", user.MeHandler)
+	router.POST("/api/user/refresh", user.RefreshHandler)
 }

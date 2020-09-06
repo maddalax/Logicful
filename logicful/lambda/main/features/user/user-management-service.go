@@ -1,23 +1,109 @@
 package user
 
 import (
+	"errors"
+	"fmt"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/google/uuid"
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
+	"github.com/logicful/service/db"
+	"github.com/logicful/service/debug"
 	"golang.org/x/crypto/bcrypt"
 	"log"
+	"os"
+	"strings"
 	"time"
 )
 
-func Login() {
+var instance = db.New()
 
+func Login(user models.User) (models.TokenResponse, error) {
+	byEmail, err := ByEmail(user.Email)
+	if err != nil {
+		return models.TokenResponse{}, err
+	}
+	if byEmail.Id == "" || !compare(byEmail.Password, []byte(user.Password)) {
+		return models.TokenResponse{}, errors.New("invalid username or password")
+	}
+	token, err := signToken(byEmail)
+	if err != nil {
+		return models.TokenResponse{}, err
+	}
+	return token, nil
 }
 
-func Register(user models.User) {
-
-	if user.TeamId == "" {
-		user.TeamId = uuid.New().String()
+func RefreshToken(token string) models.TokenResponse {
+	println(token)
+	user := ByToken(token)
+	debug.Debug(user)
+	if user.Id == "" {
+		return models.TokenResponse{}
 	}
+	signed, err := signToken(user)
+	if err != nil {
+		return models.TokenResponse{}
+	}
+	return signed
+}
+
+func ByToken(token string) models.User {
+	if token == "" {
+		return models.User{}
+	}
+	var user = models.UserLoginClaims{}
+	result, err := jwt.ParseWithClaims(token, &user, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+		return []byte(os.Getenv("JWT_SIGN_TOKEN")), nil
+	})
+
+	if err != nil {
+		return models.User{}
+	}
+
+	if !result.Valid {
+		return models.User{}
+	}
+
+	return models.User{
+		Id:        user.Id,
+		Email:     user.Email,
+		FirstName: user.FirstName,
+		LastName:  user.LastName,
+		TeamId:    user.TeamId,
+		Creatable: user.Creatable,
+	}
+}
+
+func ByEmail(email string) (models.User, error) {
+	results, err := db.New().Query(&dynamodb.QueryInput{
+		TableName:              aws.String(db.Data()),
+		IndexName:              aws.String("UserByEmail"),
+		KeyConditionExpression: aws.String("email = :email"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":email": {S: aws.String(email)},
+		},
+	})
+	if err != nil {
+		return models.User{}, err
+	}
+	var users []models.User
+	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &users)
+	if err != nil {
+		return models.User{}, err
+	}
+	if len(users) == 0 {
+		return models.User{}, nil
+	}
+	return users[0], nil
+}
+
+func Register(user models.User) error {
 
 	user = models.User{
 		Email:     user.Email,
@@ -27,87 +113,118 @@ func Register(user models.User) {
 		TeamId:    user.TeamId,
 	}
 
+	user.Email = strings.ToLower(user.Email)
+	user.Email = strings.TrimSpace(user.Email)
+	user.FirstName = strings.TrimSpace(user.FirstName)
+	user.LastName = strings.TrimSpace(user.LastName)
+
+	if user.TeamId == "" {
+		user.TeamId = uuid.New().String()
+	}
+
+	if user.Id == "" {
+		user.Id = uuid.New().String()
+	}
+
+	user.Password = hash([]byte(user.Password))
+
 	user.CreationDate = date.ISO8601(time.Now())
 	user.ChangeDate = date.ISO8601(time.Now())
 
-	/*
-		_, err := db.New().UpdateItem(&dynamodb.UpdateItemInput{
-			TableName: aws.String(db.Data()),
-			Key: map[string]*dynamodb.AttributeValue{
-				"PK": {
-					S: aws.String("TEAM#" + form.TeamId),
-				},
-				"SK": {
-					S: aws.String("FORM#" + form.Id),
-				},
-			},
-			UpdateExpression: aws.String("SET #teamId = :teamId, #formId = :formId, #title = :title, #fields = :fields, #folder = :folder, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
-			ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-				":title": {
-					S: aws.String(form.Title),
-				},
-				":changeDate": {
-					S: aws.String(form.ChangeDate),
-				},
-				":fields": fields,
-				":creationDate": {
-					S: aws.String(form.CreationDate),
-				},
-				":changeBy": {
-					S: aws.String(form.ChangeBy),
-				},
-				":createBy": {
-					S: aws.String(form.CreateBy),
-				},
-				":formId": {
-					S: aws.String(form.Id),
-				},
-				":teamId": {
-					S: aws.String(form.TeamId),
-				},
-				":folder": {
-					S: aws.String(form.Folder),
-				},
-			},
-			ExpressionAttributeNames: map[string]*string{
-				"#title":        aws.String("Title"),
-				"#fields":       aws.String("Fields"),
-				"#folder":       aws.String("Folder"),
-				"#changeDate":   aws.String("ChangeDate"),
-				"#changeBy":     aws.String("ChangeBy"),
-				"#creationDate": aws.String("CreationDate"),
-				"#createBy":     aws.String("CreateBy"),
-				"#formId":       aws.String("FormId"),
-				"#teamId":       aws.String("TeamId"),
-			},
-		})
+	av, err := dynamodbattribute.MarshalMap(user)
 
-		if err != nil {
-			return models.Form{}, err
+	av["PK"] = &dynamodb.AttributeValue{
+		S: aws.String("USER#" + user.Id),
+	}
+
+	av["SK"] = &dynamodb.AttributeValue{
+		S: aws.String("PROFILE#" + user.Id),
+	}
+
+	var created = make(map[string]*dynamodb.AttributeValue)
+
+	created["PK"] = &dynamodb.AttributeValue{
+		S: aws.String("USEREMAIL#" + user.Email),
+	}
+
+	created["SK"] = &dynamodb.AttributeValue{
+		S: aws.String("REGISTERED"),
+	}
+
+	_, err = instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
+		TransactItems: []*dynamodb.TransactWriteItem{
+			{
+				Put: &dynamodb.Put{
+					TableName: aws.String(db.Data()),
+					Item:      av,
+				},
+			},
+			{
+				Put: &dynamodb.Put{
+					TableName:           aws.String(db.Data()),
+					ConditionExpression: aws.String("attribute_not_exists(PK)"),
+					Item:                created,
+				},
+			},
+		},
+	})
+
+	if canceled, ok := err.(*dynamodb.TransactionCanceledException); ok {
+		for i := range canceled.CancellationReasons {
+			code := *canceled.CancellationReasons[i].Code
+			if code == "ConditionalCheckFailed" {
+				return errors.New("email already exists")
+			}
 		}
+	}
 
-		_, err = storage.SetJson(form, form.Id, "logicful-forms", "public-read")
+	if err != nil {
+		return err
+	}
 
-		if err != nil {
-			return models.Form{}, err
-		}
-
-		return form, err
-
-	*/
+	return nil
 }
 
-func Hash(pwd []byte) string {
-
-	// Use GenerateFromPassword to hash & salt pwd.
-	// MinCost is just an integer constant provided by the bcrypt
-	// package along with DefaultCost & MaxCost.
-	// The cost can be any value you want provided it isn't lower
-	// than the MinCost (4)
-	hash, err := bcrypt.GenerateFromPassword(pwd, bcrypt.MinCost)
+func hash(pwd []byte) string {
+	hash, err := bcrypt.GenerateFromPassword(pwd, bcrypt.DefaultCost)
 	if err != nil {
 		log.Println(err)
-	} // GenerateFromPassword returns a byte slice so we need to
-	// convert the bytes to a string and return it
+	}
 	return string(hash)
+}
+
+func compare(hashed string, plain []byte) bool {
+	byteHash := []byte(hashed)
+	err := bcrypt.CompareHashAndPassword(byteHash, plain)
+	if err != nil {
+		return false
+	}
+	return true
+}
+
+func signToken(user models.User) (models.TokenResponse, error) {
+	expiration := time.Now().UTC().Add(time.Hour * 168)
+	claims := models.UserLoginClaims{
+		Id:        user.Id,
+		Email:     user.Email,
+		FirstName: user.FirstName,
+		LastName:  user.LastName,
+		TeamId:    user.TeamId,
+		Creatable: models.Creatable{
+			CreationDate: user.CreationDate,
+		},
+		StandardClaims: jwt.StandardClaims{
+			ExpiresAt: expiration.Unix(),
+			Issuer:    "logicful",
+		},
+	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	str, err := token.SignedString([]byte(os.Getenv("JWT_SIGN_TOKEN")))
+	if err != nil {
+		return models.TokenResponse{}, err
+	}
+	return models.TokenResponse{
+		Token:      str,
+		Expiration: expiration.UnixNano() / 1000000,
+	}, nil
 }

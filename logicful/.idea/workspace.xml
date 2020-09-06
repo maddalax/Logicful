@@ -29,15 +29,23 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="rename client to team">
-      <change afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="rename client to team, add gsi's to teamplate.yaml, start on user registration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/local-env.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/clients.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/folders.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/form-folder-index.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/form_submissions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/forms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/folder/folder-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/form/form-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/form/form-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/requests.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/requests.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/entity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/models/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/db/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
@@ -163,7 +171,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.deploy:staging">
+  <component name="RunManager" selected="npm.build:watch">
     <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$/lambda/api" />
@@ -229,9 +237,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build:watch" />
         <item itemvalue="npm.deploy:staging" />
         <item itemvalue="Shell Script.setup.sh" />
-        <item itemvalue="npm.build:watch" />
         <item itemvalue="Go Build.go build api" />
         <item itemvalue="npm.dev:setup" />
       </list>
@@ -278,7 +286,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="small fix" />
     <MESSAGE value="additional logic checks" />
     <MESSAGE value="switch toggle" />
     <MESSAGE value="card dropdox fix" />
@@ -303,7 +310,8 @@
     <MESSAGE value="change folder to be stored on the form" />
     <MESSAGE value="move stuff to a single table" />
     <MESSAGE value="rename client to team" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename client to team" />
+    <MESSAGE value="rename client to team, add gsi's to teamplate.yaml, start on user registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename client to team, add gsi's to teamplate.yaml, start on user registration" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -351,34 +359,34 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="2227" height="384" key="GridCell.Tab.0.bottom" timestamp="1599409917638">
+    <state width="2229" height="337" key="GridCell.Tab.0.bottom" timestamp="1599420273429">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1638" height="325" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304788" />
-    <state width="2227" height="384" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599409917638" />
-    <state width="2227" height="384" key="GridCell.Tab.0.center" timestamp="1599409917638">
+    <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
+    <state width="2229" height="337" key="GridCell.Tab.0.center" timestamp="1599420273429">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1638" height="325" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304787" />
-    <state width="2227" height="384" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599409917638" />
-    <state width="2227" height="384" key="GridCell.Tab.0.left" timestamp="1599409917638">
+    <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
+    <state width="2229" height="337" key="GridCell.Tab.0.left" timestamp="1599420273429">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1638" height="325" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304787" />
-    <state width="2227" height="384" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599409917638" />
-    <state width="2227" height="384" key="GridCell.Tab.0.right" timestamp="1599409917638">
+    <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
+    <state width="2229" height="337" key="GridCell.Tab.0.right" timestamp="1599420273429">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1638" height="325" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304788" />
-    <state width="2227" height="384" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599409917638" />
+    <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -452,12 +460,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="360" y="356" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1599407266110">
+    <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1599410154953">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
     <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599106411970" />
-    <state x="360" y="356" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599407266110" />
+    <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410154953" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -470,28 +478,28 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="798" y="597" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599406812251">
+    <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599410617437">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599073081152" />
-    <state x="798" y="597" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599406812251" />
-    <state x="43" y="27" width="1122" height="1012" key="find.popup" timestamp="1599408588028">
+    <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
+    <state x="43" y="27" width="1122" height="1012" key="find.popup" timestamp="1599417095215">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
     <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599102650941" />
-    <state x="43" y="27" width="1122" height="1012" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599408588028" />
+    <state x="43" y="27" width="1122" height="1012" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599417095215" />
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog" timestamp="1599072033112">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup" timestamp="1599408526310">
+    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup" timestamp="1599423954112">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
     <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599106134028" />
-    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599408526310" />
+    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
   </component>
 </project>

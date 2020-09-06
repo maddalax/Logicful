@@ -7,14 +7,11 @@
     "FORM_SUBMISSIONS_DELETED_QUEUE" : "https://sqs.us-east-1.amazonaws.com/033622333395/logicful_form_delete_submissions",
     "AWS_ACCESS_KEY_ID": "AKIAQPVAMC7JZKV47CF2",
     "AWS_SECRET_ACCESS_KEY": "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",
-    "FORMS_TABLE": "forms",
-    "FOLDERS_TABLE": "folders",
-    "FORM_SUBMISSIONS_TABLE": "form_submissions",
-    "CLIENTS_TABLE": "clients",
     "OPTION_SETS_TABLE": "option_sets",
     "SUBMISSION_QUEUE_LOCKS_TABLE": "submission_queue_locks",
     "CONTENT_BLOCKS_TABLE": "content_blocks",
     "DATA_TABLE" : "data",
+    "JWT_SIGN_TOKEN" : "XRQ9m99CnEDDU33MOsafGTOXbPbgAm",
     "IS_DEV" : true
   }
 }

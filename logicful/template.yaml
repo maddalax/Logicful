@@ -29,14 +29,11 @@ Globals:
         DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
         FORM_SUBMISSION_QUEUE: !Ref FormSubmissionQueue
         FORM_SUBMISSIONS_DELETED_QUEUE: !Ref FormSubmissionDeleteQueue
-        FORMS_TABLE: !Ref FormsTable
-        FOLDERS_TABLE: !Ref FoldersTable
-        FORM_SUBMISSIONS_TABLE: !Ref FormsSubmissionsTable
-        CLIENTS_TABLE: !Ref ClientsTable
         OPTION_SETS_TABLE: !Ref OptionSetsTable
         SUBMISSION_QUEUE_LOCKS_TABLE: !Ref SubmissionsQueueLocksTable
         CONTENT_BLOCKS_TABLE: !Ref ContentBlocksTable
         DATA_TABLE: !Ref DataTable
+        JWT_SIGN_TOKEN : XRQ9m99CnEDDU33MOsafGTOXbPbgAm
 
 Resources:
 
@@ -55,6 +52,10 @@ Resources:
         - AttributeName: SubmissionFormId
           AttributeType: S
         - AttributeName: CreationDate
+          AttributeType: S
+        - AttributeName: email
+          AttributeType: S
+        - AttributeName: userId
           AttributeType: S
       KeySchema:
         - AttributeName: PK
@@ -84,6 +85,17 @@ Resources:
             - AttributeName: SubmissionFormId
               KeyType: HASH
             - AttributeName: CreationDate
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: UserByEmail
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+          KeySchema:
+            - AttributeName: email
+              KeyType: HASH
+            - AttributeName: userId
               KeyType: RANGE
           Projection:
             ProjectionType: ALL

@@ -13,3 +13,8 @@ type Creatable struct {
 type Versioned struct {
 	Version int64 `json:"version,omitempty"`
 }
+
+type TokenResponse struct {
+	Token      string `json:"token"`
+	Expiration int64  `json:"expiration"`
+}
