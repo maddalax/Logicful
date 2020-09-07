@@ -17,12 +17,14 @@
   import { getApi } from 'services/ApiService'
   import { getUrlParameter } from 'util/Http'
   import { startPreviewSaver } from './services/PreviewSaver'
+  import { goto } from '@sapper/app'
 
   let dropped = false
   let loadingActive: boolean = false
   let order = []
   let dragForm: IForm | undefined
   let lastLength = 0
+  let dirty = false
 
   let form: IForm
 
@@ -33,7 +35,7 @@
       if (formId === 'new') {
         form = { fields: [], title: 'My New Form' }
       } else {
-        form = await getApi(`form/${formId}`)
+        await loadFromApi(formId)
       }
 
       if (!form) {
@@ -58,11 +60,19 @@
       dispatch('form_loaded', {
         form,
       })
+      saveToLocalStorage(form)
       startPreviewSaver()
       //addPlaceHolder()
     } finally {
       loadingActive = false
     }
+  }
+  
+  async function loadFromApi(formId: string) {
+    if (!formId) {
+      return
+    }
+    form = await getApi(`form/${formId}`)
   }
 
   function removePlaceHolder() {
@@ -98,9 +108,24 @@
     })
   }
 
+  subscribeComponent('page_change', (props) => {
+    if (props.query?.formId === form.id) {
+      return
+    }
+    if (dirty) {
+      const confirm = window.confirm('You have unsaved changes, are you sure you want to create a new form?')
+      if (!confirm) {
+        goto('/form/builder?formId=' + form.id)
+        return
+      }
+    }
+    loadForm()
+  })
+
   subscribeComponent('form_updated', (props) => {
     form = props
     addPlaceHolder()
+    dirty = true
   })
 
   subscribeComponent('field_delete', (params) => {
@@ -218,6 +243,10 @@
     })
   })
 
+  subscribeComponent('form_saved', (f) => {
+    dirty = false
+  })
+
   subscribeComponent('form_updated', (params) => {
     form = params
   })
@@ -236,6 +265,7 @@
     if (!form || !form.fields) {
       return
     }
+    dirty = true
     const index = form.fields.findIndex((w) => w.id === field.id)
     if (index !== -1) {
       form.fields[index] = field

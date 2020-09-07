@@ -12,6 +12,7 @@
   import Preloader from 'components/layout/Preloader.svelte'
   import Dialog from '../components/layout/Dialog.svelte'
   import "../scss/pixel.scss";
+import { dispatch } from 'event/EventBus';
 
   // You may not want to use `segment`, but it is passed for the time being and will
   // create a warning if not expected: https://github.com/sveltejs/sapper-template/issues/210
@@ -21,7 +22,15 @@
   if (segment) {
   }
 
-  const { page } = stores()
+  const { page, preloading, session } = stores()
+
+  page.subscribe(({ path, params, query } : any) => {
+    dispatch("page_change", {
+      path,
+      params,
+      query
+    })
+  })
 
   let path: string
   $: path = $page.path.slice(1)
@@ -35,7 +44,7 @@
   <title>{path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Index'}</title>
 </svelte:head>
 
-{#if segment === 'preview' || path === 'account/register' || path === 'account/login'}
+{#if path === 'form/preview' || path === 'account/register' || path === 'account/login'}
   <slot />
 {:else}
   <Preloader />

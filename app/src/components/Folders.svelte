@@ -1,12 +1,14 @@
 <script lang="typescript">
-import { dispatch, subscribe } from 'event/EventBus';
+  import { dispatch, subscribe } from 'event/EventBus'
 
-import type { IFolder } from 'models/IFolder';
-import { getApi, postApi, putApi } from 'services/ApiService';
+  import type { IFolder } from 'models/IFolder'
+import type { User } from 'models/User';
+  import { getApi, postApi, putApi } from 'services/ApiService'
+import { me } from 'services/AuthService';
   import { afterUpdate, onMount } from 'svelte'
-import { randomString } from 'util/Generate';
-import { v1 } from 'uuid';
-import Dialog from './layout/Dialog.svelte';
+  import { randomString } from 'util/Generate'
+  import { v1 } from 'uuid'
+  import Dialog from './layout/Dialog.svelte'
 
   export let selected: string = ''
   let folders: IFolder[] = []
@@ -14,55 +16,50 @@ import Dialog from './layout/Dialog.svelte';
   let query = ''
   let creatingNewFolder = false
   let newFolderName = ''
-
+  let user : User
 
   onMount(async () => {
-    folders = await getFolders()
-    subscribe('folder_content_loaded', ()=>{
-      const s = selectedFolder();
-      if(s){
-       dispatch('folder_selected', {folderId: selected})
-      }
+    user = me();
+    if(!selected) {
+      selected = `${user.teamId}:uncategorized`
+    }
+    folders = await getFolders();
+    subscribe('folder_content_loaded', () => {
+      dispatchFolderSelected();
     })
   })
 
-  function selectedFolder(): IFolder | undefined {
-     let selectedFolder = folders.find((folder)=>{
-       return folder.id === selected
-     })
-     return selectedFolder;
-  }
-
   async function getFolders(): Promise<IFolder[]> {
-
-    // /api/folder GET
-    // /api/folder POST
-    // /api/folder/:id PUT
-
-    const response = await getApi<IFolder[]>("folder?team=maddox");
-    return response;
+    const folders = await getApi<IFolder[]>('folder?team=' + user.teamId)
+    folders.unshift({
+      name : 'Uncategorized',
+      id : `${user.teamId}:uncategorized`
+    })
+    return folders;
   }
 
   afterUpdate(() => {
-    const s = selectedFolder();
-    if(s){
-      dispatch('folder_selected', {folder: s})
-    }
+    dispatchFolderSelected();
   })
+
+  function dispatchFolderSelected() {
+    const s = folders.find(f => f.id === selected)
+    if (s) {
+      dispatch('folder_selected', { folder: s })
+    }
+  }
 
   function newFolderClick() {
     creatingNewFolder = true
-
   }
 
   async function creatNewFolder() {
-    await postApi("folder", {
+    await postApi('folder', {
       name: newFolderName,
-      teamId: 'maddox'
-    });
+      teamId: user.teamId,
+    })
   }
 </script>
-
 
 {#if creatingNewFolder}
   <Dialog
@@ -73,8 +70,8 @@ import Dialog from './layout/Dialog.svelte';
       creatingNewFolder = false
     }}
   >
-  <h6>Folder Name</h6>
-  <input bind:value={newFolderName} class="form-control" type="text" id="folderName" name="folderName" placeholder="">
+    <h6>Folder Name</h6>
+    <input bind:value={newFolderName} class="form-control" type="text" id="folderName" name="folderName" placeholder="" />
   </Dialog>
 {/if}
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
@@ -83,21 +80,18 @@ import Dialog from './layout/Dialog.svelte';
   {#each folders as folder}
     <div class="card-body p-2">
       <div class="list-group dashboard-menu list-group-sm">
-        <a href="/folder?folderId={folder.id}" class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}" style="padding-bottom: 0.5em; padding-top: 0.5em;">
+        <a
+          href="/folder?folderId={folder.id}"
+          class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}"
+          style="padding-bottom: 0.5em; padding-top: 0.5em;"
+        >
           {#if folder.id === selected}
-          <div>
-
-            <span class="fas fa-folder" style="font-size: 1.2em; font-weight: 375;" />
-          </div>
+            <div><span class="fas fa-folder" style="font-size: 1.2em; font-weight: 375;" /></div>
           {:else}
-          <div>
-            <span class="far fa-folder" style="font-size: 1.2em; font-weight: 375;" />
-          </div>
-          {/if} 
-          <span style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
-          {#if folder.id === selected}
-          <span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>
+            <div><span class="far fa-folder" style="font-size: 1.2em; font-weight: 375;" /></div>
           {/if}
+          <span style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
+          {#if folder.id === selected}<span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>{/if}
         </a>
       </div>
     </div>

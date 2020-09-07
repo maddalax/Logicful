@@ -12,6 +12,8 @@
   import { debounce } from 'util/Debounce'
 
   let saving = false
+  let saved = false
+  let loaded = false
   let drake: any = null
   let dragula: any
 
@@ -99,6 +101,17 @@
 
   function saveAndPublish() {}
 
+  subscribeComponent('form_saved', () => {
+    saved = true
+    setTimeout(() => {
+      saved = false
+    }, 1500)
+  })
+
+  subscribeComponent('form_loaded', () => {
+    loaded = true
+  })
+
   subscribeComponent('form_updated', () => {
     loadDragula()
   })
@@ -109,7 +122,11 @@
 </script>
 
 <div style="text-align:center;">
-  {#if saving}
+  {#if !loaded}
+    <button class="btn save-button btn-primary" type="button" disabled>Loading...</button>
+  {:else if saved}
+    <button class="btn save-button btn-primary" type="button" disabled>Saved</button>
+  {:else if saving}
     <button class="btn save-button btn-primary" type="button" disabled>Saving...</button>
   {:else}<button class="btn save-button btn-primary" type="button" on:click={saveDraft}>Save Form</button>{/if}
 </div>

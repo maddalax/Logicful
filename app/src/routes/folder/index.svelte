@@ -2,10 +2,7 @@
   import { getUrlParameter } from 'util/Http'
 
   export async function preload(page: any, session: any) {
-    const folderId : string = page.query.folderId
-    if (!folderId) {
-      return 'Uncategorized'
-    }
+    const folderId: string = page.query.folderId
     return { folderId: folderId }
   }
 </script>
@@ -17,7 +14,7 @@
   import FolderContent from '../../components/FolderContent.svelte'
   import type { IFolder } from 'models/IFolder'
   import type { IForm } from 'models/IForm'
-import { randomString } from 'util/Generate';
+  import { randomString } from 'util/Generate'
 
   export let folderId: string
 
@@ -26,7 +23,7 @@ import { randomString } from 'util/Generate';
   })
 
   afterUpdate(() => {
-    console.log("after update")
+    console.log('after update')
     // folder = getFolder(folderName)
   })
 
@@ -35,18 +32,18 @@ import { randomString } from 'util/Generate';
   }
 </script>
 
-  <div class="section section-lg pt-6 pt-md-6 bg-soft">
-    <div class="container">
-      <div class="row pt-3 pt-md-0">
-        <div class="col-12 col-md-4 d-none d-lg-block">
-          <Folders selected={folderId} />
-        </div>
-        <div class="col-12 col-lg-8">
-            <FolderContent />
-        </div>
+<div class="section section-lg pt-6 pt-md-6 bg-soft">
+  <div class="container">
+    <div class="row pt-3 pt-md-0">
+      <div class="col-12 col-md-4 d-none d-lg-block">
+        <Folders selected={folderId} />
+      </div>
+      <div class="col-12 col-lg-8">
+        <FolderContent />
       </div>
     </div>
   </div>
+</div>
 
 <style type="text/scss">
 

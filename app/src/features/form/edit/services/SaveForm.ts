@@ -5,23 +5,29 @@ import { fastClone } from 'util/Compare'
 import { goto } from '@sapper/app'
 import { dispatch } from 'event/EventBus'
 
-export async function saveForm() {
+export async function saveForm(options: {
+  dispatchEvent: boolean
+} = { dispatchEvent: true }) {
   const form = formStore.getForm()
   const isNew = form.id == null
   removeValues(form)
   const saved: IForm = await save(form)
   form.id = saved.id
   saveToLocalStorage(form)
+  if (!options.dispatchEvent) {
+    return;
+  }
   formStore.setForm(form)
   if (isNew) {
     goto('/form/builder?formId=' + form.id)
   }
+  dispatch("form_saved", form)
 }
 
 export function saveToLocalStorage(form: IForm) {
   let copy = fastClone(form)
   copy = removeValues(copy)
-  localStorage.setItem('form', JSON.stringify(copy))
+  localStorage.setItem("form", JSON.stringify(copy))
 }
 
 function removeValues(form: IForm): IForm {

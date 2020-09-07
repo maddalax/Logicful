@@ -8,7 +8,7 @@ import { onMount } from 'svelte'
 const debounceSave = debounce(() => {
   const form = formStore.getForm()
   saveToLocalStorage(form)
-}, 500)
+}, 300)
 
 export function startPreviewSaver() {
   subscribeFieldChange(onMount, () => {
