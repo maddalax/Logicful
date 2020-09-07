@@ -19,7 +19,7 @@ import Dialog from './layout/Dialog.svelte';
   onMount(async () => {
     folders = await getFolders()
     subscribe('folder_content_loaded', ()=>{
-      // const s = selectedFolder();
+      const s = selectedFolder();
       if(s){
        dispatch('folder_selected', {folderId: selected})
       }
@@ -30,8 +30,6 @@ import Dialog from './layout/Dialog.svelte';
      let selectedFolder = folders.find((folder)=>{
        return folder.id === selected
      })
-     console.log("folders", folders)
-     console.log("selectedFolder", selectedFolder)
      return selectedFolder;
   }
 
@@ -41,28 +39,11 @@ import Dialog from './layout/Dialog.svelte';
     // /api/folder POST
     // /api/folder/:id PUT
 
-    const folders = await getApi<IFolder[]>("folder?team=maddox");
-    return folders;
-
-    // await putApi("folder/asdasd", {
-
-    // })
-
-    let form1 = {title: 'form1', id: '111', fields: []}
-    let form2 = {title: 'form2', id: '222', fields: []}
-    let form3 = {title: 'form3', id: '333', fields: []}
-    let form4 = {title: 'form4', id: '444', fields: []}
-
-    let folder1 : IFolder = {id: 'Uncategorized', name: 'Uncategorized', forms: [form1]}
-    let folder2 : IFolder = {id: '123', name: 'Job Listings', forms: [form2]}
-    let folder3 : IFolder = {id: '456', name: 'Surveys', forms: [form3]}
-    let folder4 : IFolder = {id: '789', name: 'Surveys Subfolder', forms: [form4], parent: '456'}
-
-    // return [folder1, folder2, folder3, folder4]
+    const response = await getApi<IFolder[]>("folder?team=maddox");
+    return response;
   }
 
   afterUpdate(() => {
-    console.log(selected)
     const s = selectedFolder();
     if(s){
       dispatch('folder_selected', {folder: s})
