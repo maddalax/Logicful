@@ -53,12 +53,13 @@
         { value: '123', label: 'Personal Details' },
         { value: '456', label: 'Experience Questions' },
       ]
-      addPlaceHolder()
+
       formStore.setForm(form)
       dispatch('form_loaded', {
         form,
       })
       startPreviewSaver()
+      //addPlaceHolder()
     } finally {
       loadingActive = false
     }
@@ -165,7 +166,6 @@
 
   subscribeComponent('drag_finished', async (elements) => {
     removePlaceHolder()
-    console.log(elements)
 
     let fields: IField[] = elements
       .filter((w: any) => w)

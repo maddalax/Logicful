@@ -9,7 +9,7 @@ export function apiEndpoint() {
   return config['API_ENDPOINT']
 }
 
-export async function getApi<T>(path: string, fetch: any): Promise<T> {
+export async function getApi<T>(path: string, fetch?: any): Promise<T> {
   const endpoint = apiEndpoint()
   const response = await (fetch ?? instance())(`${endpoint}${path}`)
   if (!response.ok) {

@@ -7,7 +7,7 @@
       return this.error(400, 'Invalid Form Id')
     }
     //@ts-ignore
-    const form: IForm = await getApi(`/form/${formId}`, this.fetch)
+    const form: IForm = await getApi(`form/${formId}`, this.fetch)
     form.id = formId
     formStore.setForm(form)
 

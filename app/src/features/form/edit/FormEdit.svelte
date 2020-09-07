@@ -16,16 +16,8 @@
   })
 
   subscribeComponent("form_loaded", (props) => {
-    form = formStore.getForm()
+    form = props.form
   })
-
-  onMount(() => {
-    form = formStore.getForm()
-  })
-
-  function onWorkflows() {
-    goto(`/form-settings/workflows?formId=${form.id}`)
-  }
 
   function onGroupSettings() {
     dispatch('show_right_sidebar', { component: GroupEditSidebar, groupId: '123' })
@@ -33,8 +25,11 @@
 </script>
 
 {#if form}
-  <div style="padding-left: 0.5em;">
+  <div style="padding-left: 0.5em; display: flex;">
     <h5 style="padding-bottom: 0.2em;">Form Settings</h5>
+
+    <div class="" style="padding: 0.75em 0.4em;"><a href={`/form-settings?formId=${form.id}`} target="_blank" class=""><i class="fas fa-cog" /></a></div>
+
 
     <!-- <button on:click={onGroupSettings} target="_blank" class="btn btn-sm btn-outline-dark">
       <span class="fas fa-cog" />
@@ -44,7 +39,6 @@
   </div>
 
   <div style="padding-right: 1.5em;">
-    <div class="" style="padding: 0.75em 0.4em;"><button on:click={onWorkflows} target="_blank" class="btn btn-sm btn-outline-dark"><span class="fas fa-cog" /> Manage Workflows</button></div>
     <Field
       field={{ id: randomString(), type: 'switch', label: 'Enable Logic For Preview', value: { type: 'local', value: form.enableLogic ?? true }, configFieldTarget: 'enableLogic', configTarget: 'form' }}
     />
