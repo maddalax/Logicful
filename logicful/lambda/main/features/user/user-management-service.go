@@ -73,8 +73,8 @@ func ByToken(token string) models.User {
 	return models.User{
 		Id:        user.Id,
 		Email:     user.Email,
-		FirstName: user.FirstName,
-		LastName:  user.LastName,
+		FullName: user.FullName,
+		DisplayName: user.DisplayName,
 		TeamId:    user.TeamId,
 		Creatable: user.Creatable,
 	}
@@ -103,20 +103,20 @@ func ByEmail(email string) (models.User, error) {
 	return users[0], nil
 }
 
-func Register(user models.User) error {
+func Register(user models.User) (models.TokenResponse, error) {
 
 	user = models.User{
 		Email:     user.Email,
-		FirstName: user.FirstName,
-		LastName:  user.LastName,
+		FullName: user.FullName,
+		DisplayName: user.DisplayName,
 		Password:  user.Password,
 		TeamId:    user.TeamId,
 	}
 
 	user.Email = strings.ToLower(user.Email)
 	user.Email = strings.TrimSpace(user.Email)
-	user.FirstName = strings.TrimSpace(user.FirstName)
-	user.LastName = strings.TrimSpace(user.LastName)
+	user.DisplayName = strings.TrimSpace(user.DisplayName)
+	user.FullName = strings.TrimSpace(user.FullName)
 
 	if user.TeamId == "" {
 		user.TeamId = uuid.New().String()
@@ -173,16 +173,22 @@ func Register(user models.User) error {
 		for i := range canceled.CancellationReasons {
 			code := *canceled.CancellationReasons[i].Code
 			if code == "ConditionalCheckFailed" {
-				return errors.New("email already exists")
+				return models.TokenResponse{}, errors.New("email already exists")
 			}
 		}
 	}
 
 	if err != nil {
-		return err
+		return models.TokenResponse{}, err
 	}
 
-	return nil
+	token, err := signToken(user)
+
+	if err != nil {
+		return models.TokenResponse{}, err
+	}
+
+	return token, nil
 }
 
 func hash(pwd []byte) string {
@@ -207,8 +213,8 @@ func signToken(user models.User) (models.TokenResponse, error) {
 	claims := models.UserLoginClaims{
 		Id:        user.Id,
 		Email:     user.Email,
-		FirstName: user.FirstName,
-		LastName:  user.LastName,
+		FullName: user.FullName,
+		DisplayName: user.DisplayName,
 		TeamId:    user.TeamId,
 		Creatable: models.Creatable{
 			CreationDate: user.CreationDate,

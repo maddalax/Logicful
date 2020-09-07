@@ -31,19 +31,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="rename client to team, add gsi's to teamplate.yaml, start on user registration">
       <change beforePath="$PROJECT_DIR$/../app/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-client.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-client.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-server.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-server.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/services/ApiService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/account/register.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/account/register.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -490,12 +483,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599439172346">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599482933650">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599439172346" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599482933650" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

@@ -5,8 +5,8 @@ import "github.com/dgrijalva/jwt-go"
 type User struct {
 	Id        string `json:"id" dynamodbav:"userId"`
 	Email     string `json:"email"`
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
+	FullName string `json:"fullName"`
+	DisplayName  string `json:"displayName"`
 	Password  string `json:"password,omitempty"`
 	TeamId    string `json:"teamId"`
 	Creatable
@@ -16,8 +16,8 @@ type User struct {
 type UserLoginClaims struct {
 	Id        string `json:"id"`
 	Email     string `json:"email"`
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
+	FullName string `json:"fullName"`
+	DisplayName  string `json:"displayName"`
 	TeamId    string `json:"teamId"`
 	Creatable
 	jwt.StandardClaims

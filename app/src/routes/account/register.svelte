@@ -1,36 +1,62 @@
 <script lang="typescript">
-import { postApi } from 'services/ApiService';
-
+  import { postApi } from 'services/ApiService'
+  import { setToken } from 'services/AuthService'
   import { afterUpdate } from 'svelte'
+  import { goto } from '@sapper/app'
+  import type {UserToken} from 'services/AuthService'
 
   let email = ''
   let password = ''
+  let name = ''
+  let displayName = ''
   let agree = false
   let valid = false
   let showPassword = false
-  let creating = false;
+  let creating = false
+  let error = ''
+  let lastName = ''
 
   async function onRegister() {
-    creating = true;
+    error = ''
+    creating = true
+    if (!name && !displayName) {
+      name = email.split('@')[0].trim()
+      displayName = name
+    }
     try {
-        const result = await postApi("user/register", {
-            email,
-            password
-        })
-        console.log(result);
-    } catch(ex) {
-        console.log(ex, ex.message, ex.toString())
-        if(ex.message === 'email already exists') {
-            alert("EMAIL EXISTS")
-        }
+      const result = await postApi<UserToken>('user/register', {
+        email,
+        fullName: name,
+        displayName,
+        password,
+      })
+      if (result.token) {
+        setToken(result)
+        goto('/', {replaceState : true})
+      } else {
+        error = 'Failed to register, unknown response from server.'
+      }
+    } catch (ex) {
+      if (ex.message === 'email already exists') {
+        error = 'Email address is already in use.'
+      } else {
+        error = 'Failed to register, something went wrong.'
+      }
     } finally {
-        creating = false;
+      creating = false
     }
   }
 
   afterUpdate(() => {
     valid = isValid()
   })
+
+  function onNameBlur() {
+    if (name && lastName !== name) {
+      displayName = name.trim().split(' ')[0] ?? ''
+      lastName = name
+    }
+  }
 
   function isValid(): boolean {
     return email != '' && password != '' && agree
@@ -39,7 +65,6 @@ import { postApi } from 'services/ApiService';
   function togglePassword() {
     showPassword = !showPassword
   }
-
 </script>
 
 <!-- Section -->
@@ -48,10 +73,31 @@ import { postApi } from 'services/ApiService';
     <div class="row justify-content-center">
       <div class="col-12 d-flex align-items-center justify-content-center">
         <div class="signin-inner mt-3 mt-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+          {#if error}
+            <div class="alert alert-danger alert-dismissible fade show" style="border-radius: 0;" role="alert">
+              Email address is already in use. <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            </div>
+          {/if}
           <div class="text-center text-md-center mb-4 mt-md-0">
-            <h1 class="mb-0 h3">Create An Account</h1>
+            <h1 class="mb-0 h3">Create an Account</h1>
           </div>
           <form on:submit|preventDefault|stopPropagation={onRegister}>
+            <div class="form-group mb-4">
+              <label for="fullName">Full Name</label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="fas fa-user" /></span>
+                <input type="text" class="form-control" id="fullName" on:blur={onNameBlur} bind:value={name} />
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="displayName">What should we call you?</label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="far fa-address-book" /></span>
+                <input type="text" class="form-control" id="displayName" autocomplete="off" bind:value={displayName} />
+              </div>
+            </div>
+
             <!-- Form -->
             <div class="form-group mb-4">
               <label for="email">Your Email</label>
@@ -68,19 +114,11 @@ import { postApi } from 'services/ApiService';
                 <div class="input-group">
                   <span class="input-group-text" id="basic-addon4"><span class="fas fa-unlock-alt" /></span>
                   {#if showPassword}
-                  <input type="text" minlength="6" placeholder="Password" class="form-control" id="password" bind:value={password} />
-                  {:else}
-                  <input type="password" minlength="6" placeholder="Password" class="form-control" id="password" bind:value={password} />
-                  {/if}
+                    <input type="text" minlength="6" class="form-control" id="password" autocomplete="current-password" bind:value={password} />
+                  {:else}<input type="password" minlength="6" class="form-control" id="password" autocomplete="current-password" bind:value={password} />{/if}
                   {#if !showPassword}
-                  <span on:click={togglePassword}>
-                        <span class="fas fa-eye" style="position:absolute;top:0px;right:10px;margin-top:0.8em;" /> 
-                  </span>
-                  {:else}
-                  <span on:click={togglePassword}>
-                    <span class="fas fa-eye-slash" style="position:absolute;top:0px;right:10px;margin-top:0.8em;" /> 
-              </span>
-                  {/if}
+                    <span on:click={togglePassword}> <span class="fas fa-eye" style="position:absolute;top:0px;right:10px;margin-top:0.8em;" /> </span>
+                  {:else}<span on:click={togglePassword}> <span class="fas fa-eye-slash" style="position:absolute;top:0px;right:10px;margin-top:0.8em;" /> </span>{/if}
                 </div>
                 <div class="form-text">Minimum 6 characters</div>
               </div>
@@ -91,10 +129,8 @@ import { postApi } from 'services/ApiService';
               </div>
             </div>
             {#if !creating}
-            <button type="submit" class="btn btn-block btn-primary" disabled={!valid}>Create Account</button>
-            {:else}
-            <button type="submit" class="btn btn-block btn-primary" disabled={true}>Creating Account...</button>
-            {/if}
+              <button type="submit" class="btn btn-block btn-primary" disabled={!valid}>Create Account</button>
+            {:else}<button type="submit" class="btn btn-block btn-primary" disabled={true}>Creating Account...</button>{/if}
           </form>
           <div class="d-flex justify-content-center align-items-center mt-4">
             <span class="font-weight-normal"> Already have an account? <a href="./account/login" class="font-weight-bold">Login here</a> </span>

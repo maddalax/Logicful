@@ -13,20 +13,12 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Param
 	if !httpextensions.ReadJson(&user, w, r) {
 		return
 	}
-	err := Register(user)
+	token, err := Register(user)
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return
 	}
-	/*
-	if err != nil {
-		//println(err.Error())
-		//httpextensions.WriteError(w, err)
-		return
-	}
-
-	 */
-	httpextensions.WriteNoContent(w)
+	httpextensions.WriteJson(w, token)
 }
 
 func LoginHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
