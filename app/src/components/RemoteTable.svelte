@@ -349,7 +349,7 @@
   {/if}
 </div>
 
-<style>
+<style type="text/scss">
   .table-hover {
     margin-top: 1em !important;
     margin-right: auto !important;

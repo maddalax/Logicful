@@ -121,7 +121,7 @@ import { goto } from '@sapper/app';
 
 
 
-<style>
+<style type="text/scss">
   .card {
     border-radius: 0.3em;
   }

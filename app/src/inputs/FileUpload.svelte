@@ -63,7 +63,7 @@
   </div>
 {/if}
 
-<style>
+<style type="text/scss">
   .form-file-input {
     z-index: unset;
   }

@@ -105,7 +105,7 @@ import Dialog from './layout/Dialog.svelte';
   <button on:click={newFolderClick} class="btn btn-outline-dark"> <span class="fas fa-plus" style="font-size: 0.9em;" /> <span style="font-weight: 400;">New Folder</span> </button>
 </div>
 
-<style>
+<style type="text/scss">
   .card-header-title {
     padding-left: 0.9em;
     padding-right: 1em;

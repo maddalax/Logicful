@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .toast-container {
     position: fixed;
     max-height: 0px;

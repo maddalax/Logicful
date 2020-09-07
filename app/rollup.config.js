@@ -9,7 +9,6 @@ import config from "sapper/config/rollup";
 import sveltePreprocess from "svelte-preprocess";
 import svg from "rollup-plugin-svg";
 import pkg from "./package.json";
-import css from "rollup-plugin-css-only";
 import scss from 'rollup-plugin-scss'
 
 
@@ -46,7 +45,6 @@ export default {
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
 			svg(),
-			css(),
 			scss({
 				output: true,
 				output: './static/css/pixel.css',
@@ -112,7 +110,6 @@ export default {
 				"module.require": "require",
 			}),
 			svg(),
-			css(),
 			scss({
 				output: true,
 				output: './static/css/pixel.css',

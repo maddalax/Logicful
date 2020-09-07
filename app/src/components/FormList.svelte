@@ -46,7 +46,7 @@
   </ul>
 </div>
 
-<style>
+<style type="text/scss">
   .radius-0 {
     border-radius: 0rem !important;
     padding-left: 0.5em;

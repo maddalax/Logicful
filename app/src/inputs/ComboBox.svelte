@@ -270,7 +270,7 @@
   {/if}
 </div>
 
-<style>
+<style type="text/scss">
   :global(.item.active) {
     background: var(--itemIsActiveBG, #cddaec) !important;
     color: var(--itemIsActiveColor, #cddaec) !important;

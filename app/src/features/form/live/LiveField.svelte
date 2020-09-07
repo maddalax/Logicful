@@ -94,7 +94,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .hidden {
     display: none;
   }

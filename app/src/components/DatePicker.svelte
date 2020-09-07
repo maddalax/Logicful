@@ -30,7 +30,7 @@
 <Label {field} />
 <input id={field.id} type="text" class="form-control date-input-hidden" value={value ?? ''} placeholder="Select a date..." />
 
-<style>
+<style type="text/scss">
   .date-input-hidden {
     background-color: white !important;
     opacity: 1;

@@ -272,7 +272,7 @@
   {/if}
 </div>
 
-<style>
+<style type="text/scss">
   .col {
     padding-left: 0.5em;
     padding-right: 0em;

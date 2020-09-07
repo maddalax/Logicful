@@ -77,7 +77,7 @@
   {/if}
 </div>
 
-<style>
+<style type="text/scss">
   .fa-trash {
     height: 0.5em;
     cursor: pointer;

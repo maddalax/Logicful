@@ -143,7 +143,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .wrapper:hover {
     background-color: #f5f5f5;
     cursor: pointer;

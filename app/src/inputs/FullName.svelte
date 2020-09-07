@@ -53,7 +53,7 @@
   {/if}
 </div>
 
-<style>
+<style type="text/scss">
   .padding {
     padding-right: 0em;
   }

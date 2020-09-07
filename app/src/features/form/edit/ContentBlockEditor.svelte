@@ -39,7 +39,7 @@
   <div class="flex"><button class="blocks-button btn btn-light" type="button"> Select Block </button> <button class="blocks-button btn btn-light" type="button"> Save Block </button></div>
 </div>
 
-<style>
+<style type="text/scss">
   .blocks-button {
     margin-top: 0.8em;
   }

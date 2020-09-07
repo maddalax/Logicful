@@ -54,7 +54,7 @@ import { onMount } from "svelte";
 </div>
 {/if}
 
-<style>
+<style type="text/scss">
   .active {
     color: #26304c !important;
     border-radius: 0.3em;

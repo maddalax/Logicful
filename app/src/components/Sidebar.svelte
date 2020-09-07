@@ -10,7 +10,7 @@
   </div>
 </nav>
 
-<style>
+<style type="text/scss">
   .sidebar {
     padding-top: 1em;
     min-height: 100vh;

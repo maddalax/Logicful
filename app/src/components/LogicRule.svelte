@@ -288,7 +288,7 @@
   <button class="btn-primary btn" style="" on:click={addNew}>Add Rule</button>
 </div>
 
-<style>
+<style type="text/scss">
   .what {
     display: inline-flex;
     vertical-align: middle;

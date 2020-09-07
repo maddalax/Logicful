@@ -68,7 +68,7 @@
   {/if}
 </div>
 
-<style>
+<style type="text/scss">
   :global(p) {
     margin-block-end: 0;
   }

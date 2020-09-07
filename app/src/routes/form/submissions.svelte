@@ -104,6 +104,6 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
 
 </style>

@@ -67,7 +67,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .h5 {
     padding-bottom: 0.2em;
   }

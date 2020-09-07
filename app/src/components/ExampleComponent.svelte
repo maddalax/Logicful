@@ -7,7 +7,7 @@
 <h1>{title}</h1>
 <p>{paragraph}</p>
 
-<style>
+<style type="text/scss">
   h1 {
     color: #3f83f8;
     font-size: 1.875rem;

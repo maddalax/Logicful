@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .card {
     border-radius: 0.3em !important;
   }

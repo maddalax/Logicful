@@ -51,7 +51,7 @@ import LogoWhite from './logos/LogoWhite.svelte';
   </nav>
 </header>
 
-<style>
+<style type="text/scss">
   .navbar-dark {
     background-color: #252f4c !important;
   }
