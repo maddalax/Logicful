@@ -1,6 +1,7 @@
 package folder
 
 import (
+	"api/main/handler"
 	_ "encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"github.com/logicful/models"
@@ -14,6 +15,7 @@ func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		return
 	}
 	folder.Id = ps.ByName("folderId")
+	folder.TeamId = handler.User(r).TeamId
 	folder, err := Set(folder)
 	if err != nil {
 		httpextensions.WriteError(w, err)
@@ -23,7 +25,7 @@ func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	folders, err := List(httpextensions.Query("team", r))
+	folders, err := List(handler.User(r).TeamId)
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

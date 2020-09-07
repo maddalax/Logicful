@@ -11,20 +11,10 @@ import (
 	"github.com/apex/gateway"
 	"github.com/julienschmidt/httprouter"
 	"log"
-	"net/http"
 )
 
 func main() {
 	router := httprouter.New()
-
-	router.GlobalOPTIONS = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		println("adding cors headers")
-		// Set CORS headers
-		header := w.Header()
-		header.Set("Access-Control-Allow-Methods", header.Get("Allow"))
-		header.Set("Access-Control-Allow-Origin", "*")
-	})
-
 	addOptionSetHandlers(router)
 	addContentBlockHandlers(router)
 	addFormHandlers(router)
@@ -74,7 +64,6 @@ func addSetS3Handlers(router *httprouter.Router) {
 func addUserRoutes(router *httprouter.Router) {
 	router.POST("/api/user/register", user.RegisterHandler)
 	router.POST("/api/user/login", user.LoginHandler)
-	router.GET("/api/user/me", user.MeHandler)
 	router.POST("/api/user/refresh", user.RefreshHandler)
 	router.POST("/api/user/login/google", user.LoginFromGoogleHandler)
 }

@@ -1,6 +1,7 @@
 package form
 
 import (
+	"api/main/handler"
 	_ "encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"github.com/logicful/models"
@@ -14,6 +15,7 @@ func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		return
 	}
 	form.Id = ps.ByName("formId")
+	form.TeamId = handler.User(r).TeamId
 	form, err := Set(form)
 	if err != nil {
 		httpextensions.WriteError(w, err)

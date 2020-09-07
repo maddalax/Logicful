@@ -47,14 +47,6 @@ func LoginFromGoogleHandler(w http.ResponseWriter, r *http.Request, ps httproute
 	httpextensions.WriteJson(w, token)
 }
 
-func MeHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	var token = r.Header.Get("Authorization")
-	token = strings.Replace(token, "Bearer ", "", 1)
-	token = strings.TrimSpace(token)
-	user := ByToken(token)
-	httpextensions.WriteJson(w, user)
-}
-
 func RefreshHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var token = r.Header.Get("Authorization")
 	token = strings.Replace(token, "Bearer ", "", 1)
