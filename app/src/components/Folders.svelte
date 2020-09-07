@@ -106,14 +106,14 @@ import Dialog from './layout/Dialog.svelte';
           {#if folder.id === selected}
           <div>
 
-            <span class="fas fa-folder" style="font-size: 1.2em;" />
+            <span class="fas fa-folder" style="font-size: 1.2em; font-weight: 375;" />
           </div>
           {:else}
           <div>
-            <span class="far fa-folder" style="font-size: 1.2em;" />
+            <span class="far fa-folder" style="font-size: 1.2em; font-weight: 375;" />
           </div>
           {/if} 
-          <span style="padding-left: 0.5em;">{folder.name}</span>
+          <span style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
           {#if folder.id === selected}
           <span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>
           {/if}

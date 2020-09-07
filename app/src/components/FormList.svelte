@@ -21,13 +21,16 @@
       <li class="list-group-item border-bottom py-3 radius-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="h6 mb-1"><a href="./invoice.html">{form.title}</a></h3>
+            <h3 class="h6 mb-1"><a href="./invoice.html" style="font-weight: 600;">{form.title}</a></h3>
             <!-- Text -->
-            <small class="text-gray-700">{form.changeTime}</small>
+            <small class="text-gray-700" >
+              <a href={`/form/submissions?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Submissions</a>
+              <span>  |  </span>
+              <a href={`/form-settings?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Form Settings</a>
+            </small>
           </div>
           <div class="col-auto">
-            <a href={`/form/submissions?formId=${form.id}`} class="btn btn-xs btn-outline-dark"> Submissions </a>
-            <a href={`/form/builder?formId=${form.id}`} class="btn btn-xs btn-outline-dark">Edit</a>
+            <a href={`/form/builder?formId=${form.id}`} style="font-weight: 400;" class="btn btn-xs btn-outline-dark">Edit</a>
             <button class="btn btn-xs btn-outline-dark">
               <span
                 on:click={() => {

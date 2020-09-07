@@ -79,8 +79,18 @@ import { goto } from '@sapper/app';
       {#if folder}
       <div class="card-header bg-white border-0 p-2" style="display: flex">
         <div class="row">
-          <div class="col">
+          <div class="col" >
+            <div style="display: flex">
             <span class="h5">{folder.name}</span>
+            <div style="padding-left: 0.5em; font-size: 1.2em;"
+            on:click={() => {
+              onSettings(folder.id)
+            }}
+            class=""
+          >
+            <span class="fas fa-cog" />
+          </div>
+          </div>
             {#if folder.id === 'Uncategorized'}
               <p class="small">Uncategorized forms have not been assigned a folder yet.</p>
             {:else}
@@ -89,17 +99,10 @@ import { goto } from '@sapper/app';
           </div>
           <div class="col-auto">
             <div class="align-items-center" style="padding-bottom: 0.3em; text-align: right !important;">
-              <button
-                on:click={() => {
-                  onSettings(folder.id)
-                }}
-                class="btn btn-xs btn-outline-dark"
-              >
-                <span class="fas fa-cog" />
-              </button>
+
             </div>
             <!-- <a href="/form/form/builder" class="btn btn-xs btn-outline-dark"> <span class="fas fa-file-import" /><span style="padding-left: 0.5em">Import Form</span></a> -->
-            <button on:click={createNewFormClick} class="btn btn-xs btn-outline-dark" target="_blank"> <span class="fas fa-plus" /><span style="padding-left: 0.5em">Create Form</span></button>
+            <button on:click={createNewFormClick} class="btn btn-xs btn-outline-dark" target="_blank"> <span class="fas fa-plus" /><span style="padding-left: 0.4em; font-weight: 400;">Create Form</span></button>
           </div>
         </div>
       </div>

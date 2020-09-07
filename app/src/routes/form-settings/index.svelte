@@ -7,7 +7,7 @@
       return this.error(400, 'Invalid Form Id')
     }
     //@ts-ignore
-    const form: IForm = await getApi(`/form/${formId}`, this.fetch)
+    const form: IForm = await getApi(`form/${formId}`, this.fetch)
     form.id = formId
     formStore.setForm(form)
 
@@ -32,27 +32,8 @@ import { getApi } from 'services/ApiService';
   let selected: string = 'general'
 
   onMount(() => {
-    getForm()
   })
 
-  function getForm() {
-    let temp = localStorage.getItem('form')
-    if (!temp) {
-      temp = JSON.stringify({ fields: [] })
-    }
-    form = JSON.parse(temp)
-    form.fields = form.fields.map((w: IField) => {
-      w.selected = false
-      return w
-    })
-
-    formStore.setForm(form)
-    dispatch('form_loaded', {
-      form,
-    })
-
-    form
-  }
 </script>
 
 <div style="background-color: #f5f9fe;">
