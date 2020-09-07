@@ -12,6 +12,8 @@
     "CONTENT_BLOCKS_TABLE": "content_blocks",
     "DATA_TABLE" : "data",
     "JWT_SIGN_TOKEN" : "XRQ9m99CnEDDU33MOsafGTOXbPbgAm",
+    "GOOGLE_OAUTH_CLIENT" : "507014281135-ff3semdge1t7iu6jdi63h3ido0ch4k4q.apps.googleusercontent.com",
+    "GOOGLE_OAUTH_SECRET" : "bzxPS_Ct4UDWyFwcuiuEhnRY",
     "IS_DEV" : true
   }
 }

@@ -13,7 +13,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Param
 	if !httpextensions.ReadJson(&user, w, r) {
 		return
 	}
-	token, err := Register(user)
+	token, err := Register(user, false)
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return
@@ -27,6 +27,19 @@ func LoginHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 		return
 	}
 	token, err := Login(user)
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	httpextensions.WriteJson(w, token)
+}
+
+func LoginFromGoogleHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	var request = models.TokenRequest{}
+	if !httpextensions.ReadJson(&request, w, r) {
+		return
+	}
+	token, err := LoginFromGoogleToken(request.Token)
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

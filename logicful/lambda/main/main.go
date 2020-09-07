@@ -76,4 +76,5 @@ func addUserRoutes(router *httprouter.Router) {
 	router.POST("/api/user/login", user.LoginHandler)
 	router.GET("/api/user/me", user.MeHandler)
 	router.POST("/api/user/refresh", user.RefreshHandler)
+	router.POST("/api/user/login/google", user.LoginFromGoogleHandler)
 }

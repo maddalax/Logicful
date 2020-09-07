@@ -7,7 +7,9 @@ require (
 	github.com/logicful/models v0.0.0-00010101000000-000000000000
 	github.com/logicful/service v0.0.0-00010101000000-000000000000
 	github.com/tj/assert v0.0.3 // indirect
-	golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
+	golang.org/x/net v0.0.0-20200822124328-c89045814202
+	google.golang.org/api v0.31.0
 )
 
 module api

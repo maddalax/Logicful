@@ -5,3 +5,7 @@ type ChangeFormFolderRequest struct {
 	LastFolderId string `json:"lastFolderId"`
 	NewFolderId  string `json:"newFolderId"`
 }
+
+type TokenRequest struct {
+	Token string `json:"token"`
+}

@@ -34,6 +34,8 @@ Globals:
         CONTENT_BLOCKS_TABLE: !Ref ContentBlocksTable
         DATA_TABLE: !Ref DataTable
         JWT_SIGN_TOKEN : XRQ9m99CnEDDU33MOsafGTOXbPbgAm
+        GOOGLE_OAUTH_SECRET: bzxPS_Ct4UDWyFwcuiuEhnRY
+
 
 Resources:
 

@@ -7,7 +7,7 @@ export interface UserToken {
     expiration: number
 }
 
-export function setToken(token: UserToken, remember? : boolean) {
+export function setToken(token: UserToken, remember : boolean = true) {
     localStorage.removeItem("token");
     if(remember) {
         localStorage.setItem("token", JSON.stringify(token))

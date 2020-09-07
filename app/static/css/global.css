@@ -72,3 +72,20 @@ a.btn {
 .form-file-label {
     border-radius: 3px !important;
 }
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #c3c3c3
+}
+.separator::before {
+    margin-right: 1.3em;
+}
+.separator::after {
+    margin-left: 1.3em;
+}

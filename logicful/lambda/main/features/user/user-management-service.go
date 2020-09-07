@@ -26,7 +26,7 @@ func Login(user models.User) (models.TokenResponse, error) {
 	if err != nil {
 		return models.TokenResponse{}, err
 	}
-	if byEmail.Id == "" || !compare(byEmail.Password, []byte(user.Password)) {
+	if byEmail.Id == "" || byEmail.Password == "" || !compare(byEmail.Password, []byte(user.Password)) {
 		return models.TokenResponse{}, errors.New("invalid username or password")
 	}
 	token, err := signToken(byEmail)
@@ -71,12 +71,12 @@ func ByToken(token string) models.User {
 	}
 
 	return models.User{
-		Id:        user.Id,
-		Email:     user.Email,
-		FullName: user.FullName,
+		Id:          user.Id,
+		Email:       user.Email,
+		FullName:    user.FullName,
 		DisplayName: user.DisplayName,
-		TeamId:    user.TeamId,
-		Creatable: user.Creatable,
+		TeamId:      user.TeamId,
+		Creatable:   user.Creatable,
 	}
 }
 
@@ -103,14 +103,14 @@ func ByEmail(email string) (models.User, error) {
 	return users[0], nil
 }
 
-func Register(user models.User) (models.TokenResponse, error) {
+func Register(user models.User, isSocialLogin bool) (models.TokenResponse, error) {
 
 	user = models.User{
-		Email:     user.Email,
-		FullName: user.FullName,
+		Email:       user.Email,
+		FullName:    user.FullName,
 		DisplayName: user.DisplayName,
-		Password:  user.Password,
-		TeamId:    user.TeamId,
+		Password:    user.Password,
+		TeamId:      user.TeamId,
 	}
 
 	user.Email = strings.ToLower(user.Email)
@@ -126,7 +126,11 @@ func Register(user models.User) (models.TokenResponse, error) {
 		user.Id = uuid.New().String()
 	}
 
-	user.Password = hash([]byte(user.Password))
+	if isSocialLogin {
+		user.Password = ""
+	} else {
+		user.Password = hash([]byte(user.Password))
+	}
 
 	user.CreationDate = date.ISO8601(time.Now())
 	user.ChangeDate = date.ISO8601(time.Now())
@@ -211,11 +215,11 @@ func compare(hashed string, plain []byte) bool {
 func signToken(user models.User) (models.TokenResponse, error) {
 	expiration := time.Now().UTC().Add(time.Hour * 168)
 	claims := models.UserLoginClaims{
-		Id:        user.Id,
-		Email:     user.Email,
-		FullName: user.FullName,
+		Id:          user.Id,
+		Email:       user.Email,
+		FullName:    user.FullName,
 		DisplayName: user.DisplayName,
-		TeamId:    user.TeamId,
+		TeamId:      user.TeamId,
 		Creatable: models.Creatable{
 			CreationDate: user.CreationDate,
 		},
