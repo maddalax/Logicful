@@ -1,8 +1,19 @@
 import { config } from 'store/ConfigStore'
+import { getToken } from './AuthService';
 
 function instance() {
   //@ts-ignore
   return fetch ?? this.fetch
+}
+
+function authHeaders() {
+  const token = getToken();
+  if (!token) {
+    return
+  }
+  return {
+    'Authorization': 'Bearer ' + token
+  }
 }
 
 export function apiEndpoint() {
@@ -11,7 +22,9 @@ export function apiEndpoint() {
 
 export async function getApi<T>(path: string, fetch?: any): Promise<T> {
   const endpoint = apiEndpoint()
-  const response = await (fetch ?? instance())(`${endpoint}${path}`)
+  const response = await (fetch ?? instance())(`${endpoint}${path}`, {
+    headers : authHeaders()
+  })
   if (!response.ok) {
     const body = await response.json()
     throw new Error(body.message)
@@ -39,6 +52,7 @@ async function requestApiWithBody<T>(method: string, path: string, body: any): P
       method: method,
       headers: {
         'Content-Type': 'application/json',
+        ...authHeaders()
       },
       body: JSON.stringify(body),
     })

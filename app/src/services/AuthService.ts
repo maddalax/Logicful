@@ -1,18 +1,33 @@
 import type { User } from "models/User";
 
-let memoryToken : string = ''
+let memoryToken: string = ''
 
 export interface UserToken {
     token: string
     expiration: number
 }
 
-export function setToken(token: UserToken, remember : boolean = true) {
+export function setToken(token: UserToken, remember: boolean = true) {
     localStorage.removeItem("token");
-    if(remember) {
+    if (remember) {
         localStorage.setItem("token", JSON.stringify(token))
     } else {
         memoryToken = JSON.stringify(token)
+    }
+}
+
+export function getToken(): string | undefined {
+    const token = localStorage.getItem("token") ?? memoryToken;
+    if (!token) {
+        return undefined
+    }
+    try {
+        const parsed: UserToken = JSON.parse(token);
+        return parsed.token;
+    } catch (ex) {
+        localStorage.removeItem("token")
+        memoryToken = ''
+        return undefined;
     }
 }
 
@@ -24,16 +39,14 @@ export function me(): User {
         id: '',
         teamId: ''
     }
-    const token = localStorage.getItem("token") ?? memoryToken;
-    if (!token) {
-        return emptyUser
+    const token = getToken();
+    if(!token) {
+        return emptyUser;
     }
     try {
-        const parsed: UserToken = JSON.parse(token);
-        const user: User = parseJwt(parsed.token);
-        console.log(user);
-        return user;
-    } catch (ex) {
+        const user: User = parseJwt(token);
+        return user
+    } catch {
         return emptyUser;
     }
 }

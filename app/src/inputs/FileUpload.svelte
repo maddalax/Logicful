@@ -62,9 +62,3 @@
     <label class="form-file-label" for="customFile"> <span class="form-file-text">{placeholder}</span> <span class="form-file-button">Browse</span> </label>
   </div>
 {/if}
-
-<style type="text/scss">
-  .form-file-input {
-    z-index: unset;
-  }
-</style>
