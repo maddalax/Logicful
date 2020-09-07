@@ -11,7 +11,6 @@ import svg from "rollup-plugin-svg";
 import pkg from "./package.json";
 import scss from 'rollup-plugin-scss'
 
-
 const { defaults } = require("./svelte.config.js");
 
 const preprocess = [
@@ -21,7 +20,7 @@ const preprocess = [
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
-const sourcemap = false;
+const sourcemap = dev;
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const warningIsIgnored = (warning) => warning.message.includes(
