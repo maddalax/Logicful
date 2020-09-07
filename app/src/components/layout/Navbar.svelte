@@ -8,7 +8,7 @@ import LogoWhite from './logos/LogoWhite.svelte';
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-dark">
     <div class="container position-relative" style="max-width: none; padding-right: 7em; padding-left: 7em; ">
-      <LogoWhite size={"3%"}/>
+      <LogoWhite size={"2%"}/>
       <span style="padding-right: 1.8em;">
 
       </span>  
