@@ -253,7 +253,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .block {
     margin-bottom: 1em;
     cursor: pointer;

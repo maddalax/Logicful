@@ -86,6 +86,6 @@
   {:else if state === LoadState.Finished}<button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>Submitted Successfully.</button>{/if}
 </form>
 
-<style>
+<style type="text/scss">
 
 </style>

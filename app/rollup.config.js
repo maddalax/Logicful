@@ -9,9 +9,7 @@ import config from "sapper/config/rollup";
 import sveltePreprocess from "svelte-preprocess";
 import svg from "rollup-plugin-svg";
 import pkg from "./package.json";
-import css from "rollup-plugin-css-only";
 import scss from 'rollup-plugin-scss'
-
 
 const { defaults } = require("./svelte.config.js");
 
@@ -22,7 +20,7 @@ const preprocess = [
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
-const sourcemap = false;
+const sourcemap = dev;
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const warningIsIgnored = (warning) => warning.message.includes(
@@ -46,7 +44,6 @@ export default {
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
 			svg(),
-			css(),
 			scss({
 				output: true,
 				output: './static/css/pixel.css',
@@ -112,7 +109,6 @@ export default {
 				"module.require": "require",
 			}),
 			svg(),
-			css(),
 			scss({
 				output: true,
 				output: './static/css/pixel.css',

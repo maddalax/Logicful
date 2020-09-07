@@ -98,7 +98,7 @@
   </ul>
 </nav>
 
-<style>
+<style type="text/scss">
   .rows-page-button {
     height: 40px;
     margin-left: 1em;

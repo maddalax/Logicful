@@ -27,7 +27,7 @@
   $: path = $page.path.slice(1)
 </script>
 
-<style>
+<style type="text/scss">
 
 </style>
 

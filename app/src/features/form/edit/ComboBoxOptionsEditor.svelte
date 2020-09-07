@@ -35,7 +35,7 @@
   <button on:click={manageSets} class="manage-button btn btn-light" type="button"> Manage Option Sets </button>
 </div>
 
-<style>
+<style type="text/scss">
   .manage-button {
     margin-top: 0.5em;
     margin-left: 0.6em;

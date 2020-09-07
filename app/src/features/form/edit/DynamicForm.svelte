@@ -114,7 +114,7 @@
   <button style="margin-left: 0.5em" class="btn btn-primary" type="submit">Submit</button>
 </form>
 
-<style>
+<style type="text/scss">
   :global(.ex-over) {
     background-color: #f5f5f5;
     height: 100%;

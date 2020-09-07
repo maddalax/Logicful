@@ -31,7 +31,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add addtional routes">
       <change beforePath="$PROJECT_DIR$/../app/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-client.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-client.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-server.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-server.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" afterDir="false" />
@@ -218,10 +217,10 @@
     <list>
       <item itemvalue="Go Build.go build api" />
       <item itemvalue="Go Remote.Unnamed" />
+      <item itemvalue="Shell Script.setup.sh" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.deploy:staging" />
       <item itemvalue="npm.dev:setup" />
-      <item itemvalue="Shell Script.setup.sh" />
     </list>
     <recent_temporary>
       <list>
@@ -427,10 +426,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="243" height="457" key="HiddenNamespacesPopup/0.23.1680.1027@0.23.1680.1027" timestamp="1597494755080" />
-    <state x="2" y="23" width="1678" height="1027" key="MergeDialog" timestamp="1599073127254">
+    <state x="2" y="23" width="1678" height="1027" key="MergeDialog" timestamp="1599503408352">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="2" y="23" width="1678" height="1027" key="MergeDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599073127254" />
+    <state x="2" y="23" width="1678" height="1027" key="MergeDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599503408352" />
     <state x="478" y="303" key="MultipleFileMergeDialog" timestamp="1599073127310">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -466,11 +465,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599410617437">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599503401672">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599073081152" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599503401672" />
     <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
     <state x="43" y="27" width="1122" height="1012" key="find.popup" timestamp="1599417095215">
       <screen x="0" y="27" width="2560" height="1413" />
@@ -482,12 +481,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599498685877">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599499841364">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599498685877" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599499841364" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .accordionHeader {
     background-color: transparent;
     padding: 0.25em 0.1em;

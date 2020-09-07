@@ -38,7 +38,7 @@
   </div>
 </div>
 
-<style>
+<style type="text/scss">
   .main {
     height: 100%;
     width: 53%;

@@ -15,7 +15,7 @@
   <pre>{error.stack}</pre>
 {/if}
 
-<style>
+<style type="text/scss">
   section {
     flex: 1 1 0%;
     display: flex;

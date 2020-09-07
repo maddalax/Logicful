@@ -30,7 +30,7 @@
   </div>
 </footer>
 
-<style>
+<style type="text/scss">
   .footer {
     bottom: 0;
     width: 100%;

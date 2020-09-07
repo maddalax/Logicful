@@ -48,6 +48,6 @@ import { randomString } from 'util/Generate';
     </div>
   </div>
 
-<style>
+<style type="text/scss">
 
 </style>
