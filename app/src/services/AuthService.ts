@@ -21,7 +21,8 @@ export function me(): User {
         fullName: '',
         displayName: '',
         email: '',
-        id: ''
+        id: '',
+        teamId: ''
     }
     const token = localStorage.getItem("token") ?? memoryToken;
     if (!token) {

@@ -79,7 +79,7 @@ import Dialog from './layout/Dialog.svelte';
 {/if}
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
   <div class="container-fluid p-2 mt-3" style="padding-left: 0em;"><input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} /></div>
-  <div class="card-header card-header-title bg-white border-0" style="display: flex;"><span class="title">Your Folders</span></div>
+  <div class="card-header card-header-title bg-white border-0" style="display: flex; padding-left: 0.2em;"><span class="title">Your Folders</span></div>
   {#each folders as folder}
     <div class="card-body p-2">
       <div class="list-group dashboard-menu list-group-sm">
@@ -102,7 +102,7 @@ import Dialog from './layout/Dialog.svelte';
       </div>
     </div>
   {/each}
-  <button on:click={newFolderClick} class="btn btn-outline-dark"> <span class="fas fa-folder-plus" style="font-size: 1.2em;" /> <span style="font-weight: 400;">New Folder</span> </button>
+  <button on:click={newFolderClick} class="btn btn-outline-dark"> <span class="fas fa-plus" style="font-size: 0.9em;" /> <span style="font-weight: 400;">New Folder</span> </button>
 </div>
 
 <style>

@@ -4,6 +4,7 @@
   import { afterUpdate, onMount } from 'svelte'
   import { goto } from '@sapper/app'
   import type { UserToken } from 'services/AuthService'
+import LogoDark from 'components/layout/logos/LogoDark.svelte'
 
   let email = ''
   let password = ''
@@ -104,6 +105,9 @@
           {:else}
             <div>
               <div class="text-center text-md-center mb-4 mt-md-0">
+                <a href="/">
+                  <LogoDark size={"10%"}/>
+                </a>
                 <h1 class="mb-0 h3">Sign in to our Platform</h1>
               </div>
               <div style="margin-bottom: 1em">

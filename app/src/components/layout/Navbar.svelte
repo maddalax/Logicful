@@ -2,19 +2,20 @@
   import type { User } from 'models/User'
   import { me } from 'services/AuthService'
   import { onMount } from 'svelte'
+import LogoWhite from './logos/LogoWhite.svelte';
 </script>
 
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-dark">
-    <div class="container position-relative" style="max-width: none; padding-right: 5em; padding-left: 5em;">
-      <a class="navbar-brand mr-lg-5" href="/">
-        <img class="navbar-brand-dark" src="/assets/img/brand/light.svg" alt="Logo light" />
-        <img class="navbar-brand-light" src="/assets/img/brand/dark.svg" alt="Logo dark" />
-      </a>
+    <div class="container position-relative" style="max-width: none; padding-right: 7em; padding-left: 7em; ">
+      <LogoWhite size={"3%"}/>
+      <span style="padding-right: 1.8em;">
+
+      </span>  
       <div class="navbar-collapse collapse mr-auto" id="navbar_global">
         <div class="navbar-collapse-header">
           <div class="row">
-            <div class="col-6 collapse-brand"><a href="../../index.html"> <img src="/assets/img/brand/dark.svg" alt="Themesberg logo" /> </a></div>
+            <div class="col-6 collapse-brand"><a href="/index.html"> <img src="/assets/img/brand/logicful-white.png" alt="logo" /> </a></div>
             <div class="col-6 collapse-close">
               <a
                 href="#navbar_global"
