@@ -34,21 +34,27 @@ export async function deleteApi<T>(path: string, body: any): Promise<T> {
 
 async function requestApiWithBody<T>(method: string, path: string, body: any): Promise<T> {
   const endpoint = apiEndpoint()
-  const response = await instance()(`${endpoint}${path}`, {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
-  if (!response.ok) {
-    const body = await response.json()
-    throw new Error(body.message)
-  }
+  try {
+    const response = await instance()(`${endpoint}${path}`, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+    console.log(response);
+    if (!response.ok) {
+      const body = await response.json()
+      throw new Error(body.message)
+    }
 
-  const result = await response.text()
-  if (result === null || result === '') {
+    const result = await response.text()
+    if (result === null || result === '') {
+      return {} as T
+    }
+    return JSON.parse(result) as T
+  } catch (ex) {
+    throw ex;
     return {} as T
   }
-  return JSON.parse(result) as T
 }

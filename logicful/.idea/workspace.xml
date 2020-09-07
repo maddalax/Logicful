@@ -30,24 +30,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="rename client to team, add gsi's to teamplate.yaml, start on user registration">
+      <change beforePath="$PROJECT_DIR$/../app/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/bundle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-client.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-client.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-server.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/internal/manifest-server.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/_layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/services/ApiService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/local-env.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/tables/clients.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/tables/folders.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/tables/form-folder-index.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/tables/form_submissions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/tables/forms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/entity.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/models/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/db/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.14.7/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
@@ -87,7 +83,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dev/tables" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -321,11 +317,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="616" y="200" key="#GOPATH/0.23.1680.1027@0.23.1680.1027" timestamp="1597450931319" />
-    <state x="928" y="640" width="500" height="145" key="#GOROOT" timestamp="1599322124045">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="609" y="471" width="500" height="145" key="#GOROOT" timestamp="1599437917580">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="928" y="611" key="#GOROOT/0.0.2560.1400@0.0.2560.1400" timestamp="1599167853134" />
-    <state x="609" y="471" key="#GOROOT/0.23.1680.1027@0.23.1680.1027" timestamp="1597794472194" />
+    <state x="609" y="471" key="#GOROOT/0.23.1680.1027@0.23.1680.1027" timestamp="1599437917580" />
     <state x="928" y="640" width="500" height="145" key="#GOROOT/0.27.2560.1413@0.27.2560.1413" timestamp="1599322124045" />
     <state x="459" y="476" key="#Go_Modules" timestamp="1597443699002">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -359,33 +355,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="2229" height="337" key="GridCell.Tab.0.bottom" timestamp="1599420273429">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state width="1638" height="307" key="GridCell.Tab.0.bottom" timestamp="1599437906344">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="325" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304788" />
+    <state width="1638" height="307" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599437906344" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="2229" height="337" key="GridCell.Tab.0.center" timestamp="1599420273429">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state width="1638" height="307" key="GridCell.Tab.0.center" timestamp="1599437906343">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="325" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304787" />
+    <state width="1638" height="307" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599437906343" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="2229" height="337" key="GridCell.Tab.0.left" timestamp="1599420273429">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state width="1638" height="307" key="GridCell.Tab.0.left" timestamp="1599437906342">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="325" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304787" />
+    <state width="1638" height="307" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599437906342" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="2229" height="337" key="GridCell.Tab.0.right" timestamp="1599420273429">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state width="1638" height="307" key="GridCell.Tab.0.right" timestamp="1599437906343">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="325" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599105304788" />
+    <state width="1638" height="307" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599437906343" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -494,12 +490,16 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup" timestamp="1599423954112">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599439172346">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599106134028" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599439172346" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
+    <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599438745324" />
   </component>
 </project>

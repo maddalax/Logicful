@@ -18,6 +18,14 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Param
 		httpextensions.WriteError(w, err)
 		return
 	}
+	/*
+	if err != nil {
+		//println(err.Error())
+		//httpextensions.WriteError(w, err)
+		return
+	}
+
+	 */
 	httpextensions.WriteNoContent(w)
 }
 

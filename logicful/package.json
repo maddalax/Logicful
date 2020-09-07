@@ -10,7 +10,7 @@
     "sqs:formSubmissionDelete": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionDeleteQueueHandler"
   },
   "devDependencies": {
-    "chokidar": "^3.4.2",
+    "chokidar": "^3.42",
     "chokidar-cli": "^2.1.0",
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.2"

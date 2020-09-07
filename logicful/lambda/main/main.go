@@ -11,10 +11,20 @@ import (
 	"github.com/apex/gateway"
 	"github.com/julienschmidt/httprouter"
 	"log"
+	"net/http"
 )
 
 func main() {
 	router := httprouter.New()
+
+	router.GlobalOPTIONS = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		println("adding cors headers")
+		// Set CORS headers
+		header := w.Header()
+		header.Set("Access-Control-Allow-Methods", header.Get("Allow"))
+		header.Set("Access-Control-Allow-Origin", "*")
+	})
+
 	addOptionSetHandlers(router)
 	addContentBlockHandlers(router)
 	addFormHandlers(router)

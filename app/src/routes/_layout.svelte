@@ -30,7 +30,7 @@
   <title>{path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Index'}</title>
 </svelte:head>
 
-{#if segment === 'preview'}
+{#if segment === 'preview' || path === 'account/register' || path === 'account/login'}
   <slot />
 {:else}
   <Preloader />
