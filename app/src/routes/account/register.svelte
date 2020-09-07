@@ -75,7 +75,7 @@
         <div class="signin-inner mt-3 mt-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
           {#if error}
             <div class="alert alert-danger alert-dismissible fade show" style="border-radius: 0;" role="alert">
-              Email address is already in use. <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+              {error} <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
             </div>
           {/if}
           <div class="text-center text-md-center mb-4 mt-md-0">

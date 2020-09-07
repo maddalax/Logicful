@@ -1,4 +1,10 @@
-<!-- Section -->
+<script lang="typescript">
+    let email = '';
+    let password = '';
+    let remember = true;
+</script>
+
+
 <section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="../../assets/img/pages/form-image.jpg">
     <div class="container">
         <div class="row justify-content-center">

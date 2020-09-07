@@ -1,12 +1,19 @@
 import type { User } from "models/User";
 
+let memoryToken : string = ''
+
 export interface UserToken {
     token: string
     expiration: number
 }
 
-export function setToken(token: UserToken) {
-    localStorage.setItem("token", JSON.stringify(token))
+export function setToken(token: UserToken, remember? : boolean) {
+    localStorage.removeItem("token");
+    if(remember) {
+        localStorage.setItem("token", JSON.stringify(token))
+    } else {
+        memoryToken = JSON.stringify(token)
+    }
 }
 
 export function me(): User {
@@ -16,7 +23,7 @@ export function me(): User {
         email: '',
         id: ''
     }
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token") ?? memoryToken;
     if (!token) {
         return emptyUser
     }
