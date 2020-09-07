@@ -15,8 +15,15 @@
     form = props
   })
 
-  subscribeComponent("form_loaded", (props) => {
+  subscribeComponent('form_loaded', (props) => {
     form = props.form
+  })
+
+  onMount(() => {
+    const f = formStore.getForm();
+    if(f.loaded) {
+      form = f;
+    }
   })
 
   function onGroupSettings() {
@@ -29,7 +36,6 @@
     <h5 style="padding-bottom: 0.2em;">Form Settings</h5>
 
     <div class="" style="padding: 0.75em 0.4em;"><a href={`/form-settings?formId=${form.id}`} target="_blank" class=""><i class="fas fa-cog" /></a></div>
-
 
     <!-- <button on:click={onGroupSettings} target="_blank" class="btn btn-sm btn-outline-dark">
       <span class="fas fa-cog" />
@@ -45,5 +51,5 @@
     <FormEditSettings {form} />
   </div>
 {:else}
-  <div class="spinner" />
+  <div class="spinner-border" style="width: 2rem; height: 2rem;" role="status"><span class="sr-only">Loading...</span></div>
 {/if}

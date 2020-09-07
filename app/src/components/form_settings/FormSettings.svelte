@@ -1,16 +1,15 @@
 <script>
   import type { IForm } from 'models/IForm'
-import { onMount } from 'svelte';
+  import { onMount } from 'svelte'
   import FormSettingsDetails from './FormSettingsDetails.svelte'
   import FormSettingsSidebar from './FormSettingsSidebar.svelte'
 
   export let form: IForm
   export let selected: string
 
-  onMount(()=>{
+  onMount(() => {
     console.log(form)
-  }
-  )
+  })
 </script>
 
 <div class="section section-lg pt-6 pt-md-6 bg-soft">

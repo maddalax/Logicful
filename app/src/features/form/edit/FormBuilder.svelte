@@ -56,6 +56,7 @@
         { value: '456', label: 'Experience Questions' },
       ]
 
+      form.loaded = true;
       formStore.setForm(form)
       dispatch('form_loaded', {
         form,
@@ -67,7 +68,7 @@
       loadingActive = false
     }
   }
-  
+
   async function loadFromApi(formId: string) {
     if (!formId) {
       return

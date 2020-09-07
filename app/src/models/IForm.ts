@@ -10,10 +10,11 @@ export type IForm = {
   changeTime?: string
   changeBy?: string
   groups?: Group[]
-  disableSubmissions?: Boolean
+  disableSubmissions?: boolean
   maxSubmissions?: number
   openDateTime?: string
   closeDateTime?: string
-  emailOnSubmission?: Boolean
+  emailOnSubmission?: boolean
+  loaded? : boolean
   url?: string
 }
