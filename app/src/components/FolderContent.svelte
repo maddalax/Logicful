@@ -8,40 +8,39 @@
   import { getApi, postApi } from 'services/ApiService'
   import Dialog from './layout/Dialog.svelte'
   import { goto } from '@sapper/app'
-import type { User } from 'models/User';
-import { me } from 'services/AuthService';
+  import type { User } from 'models/User'
+  import { me } from 'services/AuthService'
+  import { LoadState } from 'models/LoadState';
+import Loader from './Loader.svelte'
 
   let forms: IForm[] = []
   let folderId: string = ''
   let folder: IFolder
   let creatingNewForm = false
   let newFormTitle = ''
-  let user : User
+  let user: User
+  let state : LoadState = LoadState.NotStarted;
 
   function onSettings(folderId: string) {}
 
   function onImportForm() {}
 
   subscribeComponent('folder_selected', async (e: { folder: IFolder; showForms: any }) => {
-    console.log('folder selected', e)
+    forms = [];
+    state = LoadState.Loading;
     folder = e.folder
-    await getForms(e.folder.id)
+    await setForms(e.folder.id)
+    state = LoadState.Finished;
   })
 
-  async function getForms(folderId: string) {
+  async function setForms(folderId: string) {
     forms = await getApi(`form?folderId=${folderId}`)
-    console.log(forms)
   }
 
   onMount(() => {
-    user = me();
+    user = me()
     dispatch('folder_content_loaded', {})
   })
-
-  // function loadFolder(folder: IFolder) {
-  //   folder = folder
-  //   forms = showForms
-  // }
 
   function createNewFormClick() {
     creatingNewForm = true
@@ -69,7 +68,7 @@ import { me } from 'services/AuthService';
     }}
   >
     <h6>Form Title</h6>
-    <input bind:value={newFormTitle} class="form-control" type="text" id="formName" name="formName"/>
+    <input bind:value={newFormTitle} class="form-control" type="text" id="formName" name="formName" />
   </Dialog>
 {/if}
 <div class="row mb-5">
@@ -106,13 +105,14 @@ import { me } from 'services/AuthService';
           </div>
         </div>
         <hr />
+        {#if state === LoadState.Loading}
+          <Loader/>
+        {/if}
         {#if forms}
           <FormList {forms} />
         {:else}
           <p style="padding-left: 0.7em;">Folder Empty</p>
         {/if}
-      {:else}
-        <div class="spinner-border" style="width: 2rem; height: 2rem;" role="status"><span class="sr-only">Loading...</span></div>
       {/if}
     </div>
   </div>

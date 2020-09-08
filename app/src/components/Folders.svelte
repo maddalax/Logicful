@@ -2,13 +2,15 @@
   import { dispatch, subscribe } from 'event/EventBus'
 
   import type { IFolder } from 'models/IFolder'
-import type { User } from 'models/User';
+  import { LoadState } from 'models/LoadState'
+  import type { User } from 'models/User'
   import { getApi, postApi, putApi } from 'services/ApiService'
-import { me } from 'services/AuthService';
+  import { me } from 'services/AuthService'
   import { afterUpdate, onMount } from 'svelte'
   import { randomString } from 'util/Generate'
   import { v1 } from 'uuid'
   import Dialog from './layout/Dialog.svelte'
+  import Loader from './Loader.svelte'
 
   export let selected: string = ''
   let folders: IFolder[] = []
@@ -16,34 +18,37 @@ import { me } from 'services/AuthService';
   let query = ''
   let creatingNewFolder = false
   let newFolderName = ''
-  let user : User
+  let user: User
+  let state = LoadState.NotStarted
 
   onMount(async () => {
-    user = me();
-    if(!selected) {
+    state = LoadState.Loading
+    user = me()
+    if (!selected) {
       selected = `${user.teamId}:uncategorized`
     }
-    folders = await getFolders();
+    folders = await getFolders()
     subscribe('folder_content_loaded', () => {
-      dispatchFolderSelected();
+      dispatchFolderSelected()
     })
+    state = LoadState.Finished
   })
 
   async function getFolders(): Promise<IFolder[]> {
     const folders = await getApi<IFolder[]>('folder?team=' + user.teamId)
     folders.unshift({
-      name : 'Uncategorized',
-      id : `${user.teamId}:uncategorized`
+      name: 'Uncategorized',
+      id: `${user.teamId}:uncategorized`,
     })
-    return folders;
+    return folders
   }
 
   afterUpdate(() => {
-    dispatchFolderSelected();
+    dispatchFolderSelected()
   })
 
   function dispatchFolderSelected() {
-    const s = folders.find(f => f.id === selected)
+    const s = folders.find((f) => f.id === selected)
     if (s) {
       dispatch('folder_selected', { folder: s })
     }
@@ -53,11 +58,12 @@ import { me } from 'services/AuthService';
     creatingNewFolder = true
   }
 
-  async function creatNewFolder() {
+  async function createNewFolder() {
     await postApi('folder', {
       name: newFolderName,
       teamId: user.teamId,
     })
+    folders = await getFolders()
   }
 </script>
 
@@ -65,7 +71,7 @@ import { me } from 'services/AuthService';
   <Dialog
     title={'Create New Folder'}
     isOpen={true}
-    actions={[{ label: `Create Folder`, type: 'secondary', onClick: creatNewFolder }, { label: 'Cancel', type: 'danger' }]}
+    actions={[{ label: `Create Folder`, type: 'secondary', onClick: createNewFolder }, { label: 'Cancel', type: 'danger' }]}
     onClose={() => {
       creatingNewFolder = false
     }}
@@ -77,6 +83,9 @@ import { me } from 'services/AuthService';
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
   <div class="container-fluid p-2 mt-3" style="padding-left: 0em;"><input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} /></div>
   <div class="card-header card-header-title bg-white border-0" style="display: flex; padding-left: 0.2em;"><span class="title">Your Folders</span></div>
+  {#if state === LoadState.Loading}
+    <Loader />
+  {/if}
   {#each folders as folder}
     <div class="card-body p-2">
       <div class="list-group dashboard-menu list-group-sm">

@@ -20,7 +20,7 @@ type Form struct {
 	Versioned
 	Folder string `json:"folder"`
 	TeamId string `json:"teamId"`
-	FormId string `json:"formId,omit"`
+	FormId string `json:"formId,omitempty"`
 }
 
 type Folder struct {

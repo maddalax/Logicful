@@ -1,7 +1,6 @@
 package form
 
 import (
-	"encoding/json"
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -10,7 +9,6 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
-	"github.com/logicful/service/storage"
 	"strings"
 	"time"
 )
@@ -101,12 +99,6 @@ func Set(form models.Form) (models.Form, error) {
 		return models.Form{}, err
 	}
 
-	_, err = storage.SetJson(form, form.Id, "logicful-forms", "public-read")
-
-	if err != nil {
-		return models.Form{}, err
-	}
-
 	return form, err
 }
 
@@ -121,6 +113,7 @@ func List(folder string) ([]models.Form, error) {
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":folder": {S: aws.String(folder)},
 		},
+		ProjectionExpression: aws.String("Title, Folder, ChangeDate, ChangeBy, CreationDate, CreateBy, FormId, TeamId"),
 	})
 	if err != nil {
 		return nil, err
@@ -130,6 +123,7 @@ func List(folder string) ([]models.Form, error) {
 
 	for i := range forms {
 		forms[i].Id = forms[i].FormId
+		forms[i].FormId = ""
 	}
 
 	if err != nil {
@@ -138,21 +132,31 @@ func List(folder string) ([]models.Form, error) {
 	return forms, nil
 }
 
-func Get(id string) (models.Form, error) {
+func Get(id string, user models.User) (models.Form, error) {
+	result, err := instance.GetItem(&dynamodb.GetItemInput{
+		TableName: aws.String(db.Data()),
+		Key: map[string]*dynamodb.AttributeValue{
+			"PK": {
+				S: aws.String("TEAM#" + user.TeamId),
+			},
+			"SK": {
+				S: aws.String("FORM#" + id),
+			},
+		},
+	})
+	if err != nil {
+		return models.Form{}, err
+	}
 
-	bytes, err := storage.DownloadToBytes("logicful-forms", id)
+	var form models.Form
+	err = dynamodbattribute.UnmarshalMap(result.Item, &form)
 
 	if err != nil {
 		return models.Form{}, err
 	}
 
-	var form = models.Form{}
-
-	err = json.Unmarshal(bytes, &form)
-
-	if err != nil {
-		return models.Form{}, err
-	}
+	form.Id = form.FormId
+	form.FormId = ""
 
 	return form, nil
 }

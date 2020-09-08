@@ -14,8 +14,8 @@ app.use(
   sapper.middleware({
     session: () => {
       return {
-        //API_ENDPOINT : "http://localhost:3000/api/"
-        API_ENDPOINT: 'https://logicful.org/api/',
+        API_ENDPOINT : "http://localhost:3000/api/"
+        //API_ENDPOINT: 'https://logicful.org/api/',
       }
     },
   }),
