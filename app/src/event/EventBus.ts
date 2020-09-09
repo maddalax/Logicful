@@ -15,6 +15,7 @@ export function subscribe(event: string, subscriber: ((payload: any) => any) | (
     subscribers![id] = subscriber
     map.set(event, subscribers!)
   }
+  console.log("subscribers", event, Object.keys(map.get(event)!).length)
   return id
 }
 

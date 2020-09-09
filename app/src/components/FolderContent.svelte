@@ -10,27 +10,26 @@
   import { goto } from '@sapper/app'
   import type { User } from 'models/User'
   import { me } from 'services/AuthService'
-  import { LoadState } from 'models/LoadState';
-import Loader from './Loader.svelte'
+  import { LoadState } from 'models/LoadState'
+  import Loader from './Loader.svelte'
 
   let forms: IForm[] = []
   let folderId: string = ''
   let folder: IFolder
-  let creatingNewForm = false
   let newFormTitle = ''
   let user: User
-  let state : LoadState = LoadState.NotStarted;
+  let state: LoadState = LoadState.NotStarted
 
   function onSettings(folderId: string) {}
 
   function onImportForm() {}
 
   subscribeComponent('folder_selected', async (e: { folder: IFolder; showForms: any }) => {
-    forms = [];
-    state = LoadState.Loading;
+    forms = []
+    state = LoadState.Loading
     folder = e.folder
     await setForms(e.folder.id)
-    state = LoadState.Finished;
+    state = LoadState.Finished
   })
 
   async function setForms(folderId: string) {
@@ -41,36 +40,8 @@ import Loader from './Loader.svelte'
     user = me()
     dispatch('folder_content_loaded', {})
   })
-
-  function createNewFormClick() {
-    creatingNewForm = true
-  }
-
-  async function createForm() {
-    const response: IForm = await postApi('form', {
-      title: newFormTitle,
-      fields: [],
-      teamId: user.teamId,
-      folder: folder.id,
-    })
-
-    goto(`/form/builder?formId=${response.id}`)
-  }
 </script>
 
-{#if creatingNewForm}
-  <Dialog
-    title={'Create New Form'}
-    isOpen={true}
-    actions={[{ label: `Create New Form`, type: 'secondary', onClick: createForm }, { label: 'Cancel', type: 'danger' }]}
-    onClose={() => {
-      creatingNewForm = false
-    }}
-  >
-    <h6>Form Title</h6>
-    <input bind:value={newFormTitle} class="form-control" type="text" id="formName" name="formName" />
-  </Dialog>
-{/if}
 <div class="row mb-5">
   <div class="col-12 mb-4">
     <div class="card card-body bg-white border-light p-0 p-md-4">
@@ -90,23 +61,19 @@ import Loader from './Loader.svelte'
                   <span class="fas fa-cog" />
                 </div>
               </div>
-              {#if folder.id === 'Uncategorized'}
-                <p class="small">Uncategorized forms have not been assigned a folder yet.</p>
-              {:else}
-                <p class="small">{forms?.length ?? 0} Forms</p>
-              {/if}
+              <p class="small">{forms?.length ?? 0} Forms</p>
             </div>
             <div class="col-auto">
               <div class="align-items-center" style="padding-bottom: 0.3em; text-align: right !important;" />
-              <!-- <a href="/form/form/builder" class="btn btn-xs btn-outline-dark"> <span class="fas fa-file-import" /><span style="padding-left: 0.5em">Import Form</span></a> -->
-              <button on:click={createNewFormClick} class="btn btn-xs btn-outline-dark" target="_blank">
-                <span class="fas fa-plus" /><span style="padding-left: 0.4em; font-weight: 400;">Create Form</span></button>
+              <a href={`/form/create?folder=${folder?.id}`} class="btn btn-xs btn-outline-dark">
+                <span class="fas fa-plus" /><span style="padding-left: 0.4em; font-weight: 400;">Create Form In This Folder</span>
+              </a>
             </div>
           </div>
         </div>
         <hr />
         {#if state === LoadState.Loading}
-          <Loader/>
+          <Loader />
         {/if}
         {#if forms}
           <FormList {forms} />

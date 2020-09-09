@@ -5,17 +5,20 @@
   import { postApi } from 'services/ApiService'
   import { me } from 'services/AuthService'
   import { goto } from '@sapper/app'
+import { getUrlParameter } from 'util/Http';
 
   let state: LoadState = LoadState.NotStarted
 
   async function createNewForm() {
     state = LoadState.Loading
+    const folder = getUrlParameter("folder")
     try {
       const user = me()
       const response: IForm = await postApi('form', {
         title: 'My New Form',
         fields: [],
         teamId: user.teamId,
+        folder : folder
       })
       goto(`/form/builder?formId=${response.id}`)
       state = LoadState.Finished
@@ -50,7 +53,7 @@
       <div class="card-body">
         <h5 class="card-title">Create From Template</h5>
         <p class="card-text">Create a new form using a premade template.</p>
-        <div style="margin-top: 1em"><button href="#" class="btn btn-primary btn-large">Create Now</button></div>
+        <div style="margin-top: 1em"><button href="#" class="btn btn-primary btn-large" disabled>Coming Soon</button></div>
       </div>
     </div>
   </div>

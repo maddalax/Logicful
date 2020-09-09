@@ -13,7 +13,7 @@
 
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-dark">
-    <a style="margin-left: 2.5em;height:36px;width:100px;position:fixed" href="/"><LogoWhite /></a>
+    <a style="margin-left: 2.5em;height:36px;width:100px;position:absolute" href="/"><LogoWhite /></a>
     <div class="container position-relative" style="max-width: none; padding-right: 2.5em;padding-left: 7.5em;">
       <span style="padding-right: 1.8em;" />
       <div class="navbar-collapse collapse mr-auto" id="navbar_global">

@@ -1,9 +1,9 @@
-import { subscribeComponent } from 'event/EventBus'
-import { subscribeFieldChange } from 'event/FieldEvent'
+import { subscribe } from 'event/EventBus'
 import formStore from 'store/FormStore'
 import { debounce } from 'util/Debounce'
 import { saveToLocalStorage } from './SaveForm'
-import { onMount } from 'svelte'
+
+let initialized = false;
 
 const debounceSave = debounce(() => {
   const form = formStore.getForm()
@@ -11,12 +11,24 @@ const debounceSave = debounce(() => {
 }, 300)
 
 export function startPreviewSaver() {
-  subscribeFieldChange(onMount, () => {
+  if(initialized) {
+    return;
+  }
+  initialized = true;
+  console.log("start saver")
+  subscribe('field_changed', () => {
+    console.log("f change")
     debounceSave()
   })
-  subscribeComponent('form_updated', () => {
+  subscribe('form_updated', () => {
+    console.log("f updated")
+    debounceSave()
+  })
+  subscribe('form_loaded', () => {
+    console.log("f loaded")
     debounceSave()
   })
 }
 
-export function stopPreviewSaver() {}
+export function stopPreviewSaver() {
+}
