@@ -14,7 +14,7 @@ type Form struct {
 	Title string `json:"title"`
 	Changeable
 	Creatable
-	Fields          []Field          `json:"fields"`
+	Fields          []interface{}    `json:"fields"`
 	Submissions     []LeanSubmission `json:"submissions,omitempty"`
 	SubmissionCount int64            `json:"submissionCount"`
 	Versioned
@@ -59,15 +59,6 @@ type Submission struct {
 type SubmissionsDeleted struct {
 	FormId string   `json:"formId"`
 	Ids    []string `json:"ids"`
-}
-
-type Field struct {
-	Name    string      `json:"name"`
-	Label   string      `json:"label"`
-	Type    string      `json:"type"`
-	Id      string      `json:"id"`
-	Options interface{} `json:"options,omitempty"`
-	Value   interface{} `json:"value,omitempty"`
 }
 
 type ContentBlock struct {
