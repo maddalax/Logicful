@@ -1,42 +1,24 @@
-<script context="module">
-  import { getUrlParameter } from 'util/Http'
-
-  export async function preload(this: any, page: any, session: any) {
-    const formId = page.query.formId
-    const mode = page.query?.mode
-    if (mode === 'local') {
-      return { mode }
-    }
-    if (!formId || formId == 'undefined' || formId == 'null') {
-      return this.error(400, 'Invalid Form Id')
-    }
-    const url = `https://json-data.s3.us-west-002.backblazeb2.com/${formId}.json`
-    //@ts-ignore
-    const res = await this.fetch(url)
-    const form = await res.json()
-    form.id = formId
-    formStore.setForm(form)
-    dispatch('form_loaded', {
-      form,
-    })
-
-    return { form }
-  }
-</script>
-
 <script>
   import { dispatch } from 'event/EventBus'
 
   import LiveForm from 'features/form/live/LiveForm.svelte'
   import type { IField } from 'models/IField'
   import type { IForm } from 'models/IForm'
+  import { getApi } from 'services/ApiService'
   import formStore from 'store/FormStore'
   import { onMount } from 'svelte'
+  import { getUrlParameter } from 'util/Http'
 
-  export let form: IForm
-  export let mode: 'local' | '' = ''
+  let form: IForm
+  let formId: string
+  let mode: string = ''
 
-  onMount(() => {
+  onMount(async () => {
+    formId = getUrlParameter('formId') ?? ""
+    if (!formId) {
+      return
+    }
+    mode = getUrlParameter('mode') || ""
     if (mode === 'local') {
       const item = localStorage.getItem('form')
       if (!item) {
@@ -48,8 +30,13 @@
           form = JSON.parse(e.newValue)
         }
       }
+    } else {
+      form = await getApi<IForm>(`form/${formId}`)
     }
-    formStore.setForm(form)
+    console.log('FORM', form)
+    if (form) {
+      formStore.setForm(form)
+    }
   })
 </script>
 

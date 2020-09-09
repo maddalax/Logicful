@@ -30,13 +30,13 @@
 
   async function loadForm() {
     loadingActive = true
-    const formId = getUrlParameter('formId') ?? 'new'
+    const formId = getUrlParameter('formId')
+    if(!formId) {
+      goto("/form/create")
+      return;
+    }
     try {
-      if (formId === 'new') {
-        form = { fields: [], title: 'My New Form' }
-      } else {
-        await loadFromApi(formId)
-      }
+      await loadFromApi(formId)
 
       if (!form) {
         return

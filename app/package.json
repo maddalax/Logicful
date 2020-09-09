@@ -28,6 +28,7 @@
 		"prod": "cross-env NODE_PATH=src run-s validate sapper:build",
 		"start": "node __sapper__/build",
 		"export": "run-s validate sapper:export",
+		"export:run": "run-s validate sapper:export && http-server ./__sapper__/export",
 		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*{.svelte,.ts,.html}",
 		"http-server": "cd src/data && http-server --cors"
 	},

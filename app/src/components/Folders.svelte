@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import { dispatch, subscribe } from 'event/EventBus'
+  import { dispatch, subscribe, subscribeComponent } from 'event/EventBus'
 
   import type { IFolder } from 'models/IFolder'
   import { LoadState } from 'models/LoadState'
@@ -20,18 +20,22 @@
   let newFolderName = ''
   let user: User
   let state = LoadState.NotStarted
+  let contentLoaded = false;
 
   onMount(async () => {
+    subscribe('folder_content_loaded', () => {
+      contentLoaded = true;
+    })
     state = LoadState.Loading
     user = me()
     if (!selected) {
       selected = `${user.teamId}:uncategorized`
     }
     folders = await getFolders()
-    subscribe('folder_content_loaded', () => {
-      dispatchFolderSelected()
-    })
     state = LoadState.Finished
+    if(contentLoaded) {
+      dispatchFolderSelected()
+    }
   })
 
   async function getFolders(): Promise<IFolder[]> {
@@ -43,8 +47,8 @@
     return folders
   }
 
-  afterUpdate(() => {
-    dispatchFolderSelected()
+  subscribeComponent("page_change", (props) => {
+    dispatchFolderSelected();
   })
 
   function dispatchFolderSelected() {
@@ -80,6 +84,7 @@
     <input bind:value={newFolderName} class="form-control" type="text" id="folderName" name="folderName" placeholder="" />
   </Dialog>
 {/if}
+<a href="/form/create" class="btn btn-primary create-new-form"> <span class="fas fa-plus" /> <span>Create New Form</span> </a>
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
   <div class="container-fluid p-2 mt-3" style="padding-left: 0em;"><input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} /></div>
   <div class="card-header card-header-title bg-white border-0" style="display: flex; padding-left: 0.2em;"><span class="title">Your Folders</span></div>
@@ -152,5 +157,11 @@
     padding-top: 0.4em;
     padding-bottom: 0.4em;
     margin-top: 1em;
+  }
+
+  .create-new-form {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 </style>

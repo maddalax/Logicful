@@ -13,7 +13,7 @@
   import { fade } from 'svelte/transition'
 
   export let form: IForm
-  export let mode: 'local' | '' = ''
+  export let mode: string = ''
   let state = LoadState.NotStarted
 
   subscribeFieldChange(onMount, (updatedField: IField) => {

@@ -13,8 +13,8 @@
 
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-dark">
-    <a style="margin-left: 2.5em;height:36px;width:100px" href="/"><LogoWhite /></a>
-    <div class="container position-relative" style="max-width: none; padding-right: 7em;">
+    <a style="margin-left: 2.5em;height:36px;width:100px;position:fixed" href="/"><LogoWhite /></a>
+    <div class="container position-relative" style="max-width: none; padding-right: 2.5em;padding-left: 7.5em;">
       <span style="padding-right: 1.8em;" />
       <div class="navbar-collapse collapse mr-auto" id="navbar_global">
         <div class="navbar-collapse-header">
@@ -41,7 +41,6 @@
               <a href="/folder" class="nav-link"> <span class="fas fa-bars" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;" /> My Forms </a>
             </div>
           </li>
-          <li class="nav-item"><a href="/form/builder" class="nav-link"> <span class="fas fa-hammer" style="color: white; font-size: 1.1em; width: none; padding-right: 0.2em;" /> Builder </a></li>
         </ul>
       </div>
       <div class="d-flex align-items-center">

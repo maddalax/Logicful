@@ -35,13 +35,18 @@
 
   let path: string
   $: path = $page.path.slice(1)
+
+  function isPath(p : string) {
+    return path === p || path === `/${p}/` || path === `/${p}` || path === `${p}/`
+  }
+
 </script>
 
 <svelte:head>
   <title>{path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Index'}</title>
 </svelte:head>
 
-{#if path === 'form/preview' || path === 'account/register' || path === 'account/login'}
+{#if isPath('form/preview') || isPath('account/register') || isPath('account/login') }
   <slot />
 {:else}
   <Authenticate />
