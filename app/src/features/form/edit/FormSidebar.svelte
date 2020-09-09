@@ -135,8 +135,9 @@
   <hr style="margin-right: 0.7em !important;" />
   <div id="block-container">
     {#each blocks as block}
+      <div on:click={() => addField(block)} id={'sidebar-block-' + block.name}>
       {#if block.name === 'string'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fas fa-i-cursor" /></div>
           </div>
@@ -145,7 +146,7 @@
           </div>
         </div>
       {:else if block.name === 'spacer'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
           </div>
@@ -154,7 +155,7 @@
           </div>
         </div>
       {:else if block.name === 'switch'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fa-toggle-off" /></div>
           </div>
@@ -163,7 +164,7 @@
           </div>
         </div>
       {:else if block.name === 'combobox'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="far fa-caret-square-down" /></div>
           </div>
@@ -172,7 +173,7 @@
           </div>
         </div>
       {:else if block.name === 'block'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fa-indent" /></div>
           </div>
@@ -181,7 +182,7 @@
           </div>
         </div>
       {:else if block.name === 'date'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fa-calendar-day" /></div>
           </div>
@@ -190,7 +191,7 @@
           </div>
         </div>
       {:else if block.name === 'file'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fa-file-upload" /></div>
           </div>
@@ -199,7 +200,7 @@
           </div>
         </div>
       {:else if block.name === 'address'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
           </div>
@@ -208,7 +209,7 @@
           </div>
         </div>
       {:else if block.name === 'full-name'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
           </div>
@@ -217,7 +218,7 @@
           </div>
         </div>
       {:else if block.name === 'checkbox-group'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="far fa-check-square" /></div>
           </div>
@@ -226,7 +227,7 @@
           </div>
         </div>
       {:else if block.name === 'radio-group'}
-        <div class="d-flex px-2 block" id={'sidebar-block-' + block.name}>
+        <div class="d-flex px-2 block">
           <div>
             <div class="icon icon-sm icon-secondary"><span class="fas fa-dot-circle" /></div>
           </div>
@@ -235,6 +236,7 @@
           </div>
         </div>
       {/if}
+    </div>
     {/each}
   </div>
 

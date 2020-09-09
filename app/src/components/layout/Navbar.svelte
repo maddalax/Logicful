@@ -2,16 +2,20 @@
   import type { User } from 'models/User'
   import { me } from 'services/AuthService'
   import { onMount } from 'svelte'
-import LogoWhite from './logos/LogoWhite.svelte';
+  import LogoWhite from './logos/LogoWhite.svelte'
+
+  let user: User
+
+  onMount(() => {
+    user = me()
+  })
 </script>
 
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-dark">
     <div class="container position-relative" style="max-width: none; padding-right: 7em; padding-left: 7em; ">
-      <LogoWhite size={"2%"}/>
-      <span style="padding-right: 1.8em;">
-
-      </span>  
+      <LogoWhite size={'2%'} />
+      <span style="padding-right: 1.8em;" />
       <div class="navbar-collapse collapse mr-auto" id="navbar_global">
         <div class="navbar-collapse-header">
           <div class="row">
@@ -41,8 +45,19 @@ import LogoWhite from './logos/LogoWhite.svelte';
         </ul>
       </div>
       <div class="d-flex align-items-center">
-        <a href="/account-settings" class="btn btn-sm btn-outline-soft animate-up-2"> My Account </a>
-
+        {#if user}
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-soft animate-up-2" data-toggle="dropdown" aria-expanded="false"> My Account </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/account-settings"><strong>{user.fullName}</strong></a></li>
+              <li><a class="dropdown-item" href="/account-settings">Settings</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="/account/logout">Sign Out</a></li>
+            </ul>
+          </div>
+        {/if}
         <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" />
         </button>
