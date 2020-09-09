@@ -1,20 +1,3 @@
-<script context="module">
-  import { getUrlParameter } from 'util/Http'
-
-  export async function preload(page: any, session: any) {
-    const formId = page.query.formId
-    if (!formId) {
-      return {}
-    }
-    const url = `https://f002.backblazeb2.com/file/json-data/${formId}.json`
-    //@ts-ignore
-    const res = await this.fetch(url)
-    const form = await res.json()
-    console.log(form)
-    return { formId, form }
-  }
-</script>
-
 <script lang="typescript">
   import { onMount, tick } from 'svelte'
   import { LoadState } from 'models/LoadState'
@@ -24,6 +7,7 @@
   import type { IForm } from 'models/IForm'
   import { isObject, isString } from 'guards/Guard'
   import { deleteApi, getApi } from 'services/ApiService'
+  import { getUrlParameter } from 'util/Http'
 
   export let formId = ''
   export let form: IForm
@@ -35,8 +19,17 @@
   let hidden = new Set(['submission_id'])
 
   async function getRows(): Promise<TableRow[]> {
+    formId = getUrlParameter('formId') ?? ''
+    if (!formId) {
+      return []
+    }
+    form = await getApi<IForm>(`form/${formId}`)
     const submissions: any[] = await getApi(`form/${formId}/submission`)
     const labels: { [key: string]: string } = {}
+
+    if(!form.fields || form.fields?.length === 0) {
+      return []
+    }
 
     form.fields.forEach((f) => {
       if (f.name) {
@@ -58,7 +51,7 @@
           }
         }
       })
-      d.details['Submission Date'] = new Date(d.createTime).toLocaleString()
+      d.details['Submission Date'] = new Date(d.creationDate).toLocaleString()
       d.details['submission_id'] = d.id
       return d.details
     })
@@ -94,7 +87,7 @@
   }
 </script>
 
-<div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
+<div class="container-fluid clearfix" id="main-container" style="margin-top: 5em;">
   <div class="main">
     <h1>Submissions</h1>
     <hr />
