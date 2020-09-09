@@ -23,7 +23,7 @@ func AddHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	submissions, err := List(ps.ByName("formId"))
+	submissions, err := List(ps.ByName("formId"), httpextensions.Query("q", r))
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

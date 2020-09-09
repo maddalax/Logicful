@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -41,6 +42,24 @@ func SetJsonBytes(value []byte, name string, bucket string, acl string) (string,
 	return result.Location, nil
 }
 
+func SetBytes(value []byte, name string, bucket string, acl string) (string, error) {
+
+	uploader := s3manager.NewUploader(createSession())
+
+	result, err := uploader.Upload(&s3manager.UploadInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(name),
+		ACL:    aws.String(acl),
+		Body:   bytes.NewReader(value),
+	})
+
+	if err != nil {
+		return "", err
+	}
+
+	return result.Location, nil
+}
+
 func DownloadToBytes(bucket string, key string) ([]byte, error) {
 	downloader := s3manager.NewDownloader(createSession())
 	buff := &aws.WriteAtBuffer{}
@@ -48,8 +67,13 @@ func DownloadToBytes(bucket string, key string) ([]byte, error) {
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),
 	})
-	if err != nil {
-		return nil, err
+	if aerr, ok := err.(awserr.Error); ok {
+		switch aerr.Code() {
+		case s3.ErrCodeNoSuchKey:
+			return nil, nil
+		default:
+			return nil, err
+		}
 	}
 	return buff.Bytes(), nil
 }

@@ -6,9 +6,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/google/uuid"
 	"github.com/logicful/models"
 	"github.com/logicful/service/db"
@@ -78,13 +76,11 @@ func onSubmission(submission models.SubmissionsDeleted) error {
 
 func currentSubmissions(name string) ([]models.Submission, error) {
 	bytes, err := storage.DownloadToBytes("logicful-folder-submissions", name)
-	if aerr, ok := err.(awserr.Error); ok {
-		switch aerr.Code() {
-		case s3.ErrCodeNoSuchKey:
-			return make([]models.Submission, 0), nil
-		default:
-			return nil, err
-		}
+	if err != nil {
+		return nil, err
+	}
+	if bytes == nil {
+		return make([]models.Submission, 0), nil
 	}
 
 	var submissions []models.Submission

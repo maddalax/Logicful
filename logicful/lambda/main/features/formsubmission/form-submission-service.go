@@ -1,6 +1,7 @@
 package formsubmission
 
 import (
+	"encoding/json"
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -9,6 +10,7 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
+	searcher "github.com/logicful/service/search"
 	"time"
 )
 
@@ -84,11 +86,32 @@ func Add(submission models.Submission) error {
 	//if err != nil {
 	//return err
 	//}
+	marshaled, _ := json.Marshal(submission)
+	_, err = searcher.Index(submission.FormId+"-submissions", submission.Id, string(marshaled))
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
 
-func List(id string) ([]models.Submission, error) {
+func List(id string, query string) ([]models.Submission, error) {
+	search, err := searcher.Search(id+"-submissions", query)
+	if err != nil {
+		return nil, err
+	}
+	if len(search) > 0 {
+		var results []models.Submission
+		for _, s := range search {
+			var sub = models.Submission{}
+			err := json.Unmarshal([]byte(s), &sub)
+			if err != nil {
+				continue
+			}
+			results = append(results, sub)
+		}
+		return results, nil
+	}
 	results, err := db.New().Query(&dynamodb.QueryInput{
 		TableName:              aws.String(db.Data()),
 		KeyConditionExpression: aws.String("SubmissionFormId = :id"),

@@ -102,7 +102,11 @@
       })
       fuse = createFuse()
       filtered = rows
-      columns = Object.keys(rows[rows.length - 1] ?? {})
+      console.log(rows);
+      const orderedByFields = rows.sort((a, b) => {
+        return Object.keys(b).length - Object.keys(a).length;
+      })
+      columns = Object.keys(orderedByFields[0]) ?? {}
       columns = sortColumns?.(columns) ?? columns
       filteredColumns = columns.filter((w) => !hidden.has(w))
       state = LoadState.Finished
