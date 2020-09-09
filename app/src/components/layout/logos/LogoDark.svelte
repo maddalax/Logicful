@@ -1,18 +1,13 @@
-<script>
-    export let size: any;
-</script>
-
-<svg width={size} height={size} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 500 465">
-    <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 500 465">
     <g>
-     <title>background</title>
+     <title>Logo Dark Background</title>
      <rect fill="none" id="canvas_background" height="467" width="502" y="-1" x="-1"/>
      <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
       <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
      </g>
     </g>
     <g>
-     <title>Layer 1</title>
+     <title>Logo Dark</title>
      <rect stroke="#000" transform="rotate(-90 66.50000000000001,231.953125) " rx="4" id="svg_3" height="71" width="416" y="196.45313" x="-141.5" stroke-width="0" fill="#242e4c"/>
      <rect stroke="#000" rx="4" id="svg_7" height="71" width="269.99999" y="369.45313" x="32.5" stroke-width="0" fill="#242e4c"/>
      <rect stroke="#000" rx="4" id="svg_8" height="71" width="225.99999" y="257.45313" x="138" stroke-width="0" fill="#242e4c"/>

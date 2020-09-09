@@ -111,15 +111,14 @@
       {/if}
     {/each}
   </div>
-  <button style="margin-left: 0.5em" class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 <style type="text/scss">
   :global(.ex-over) {
     background-color: #f5f5f5;
     height: 100%;
-    min-height: 60vh;
-    padding-top: 3em;
-    padding-bottom: 3em !important;
+    min-height: 25vh;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 </style>

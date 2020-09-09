@@ -4,7 +4,7 @@
   import { afterUpdate, onMount } from 'svelte'
   import { goto } from '@sapper/app'
   import type { UserToken } from 'services/AuthService'
-import LogoDark from 'components/layout/logos/LogoDark.svelte'
+  import LogoDark from 'components/layout/logos/LogoDark.svelte'
 
   let email = ''
   let password = ''
@@ -105,10 +105,10 @@ import LogoDark from 'components/layout/logos/LogoDark.svelte'
           {:else}
             <div>
               <div class="text-center text-md-center mb-4 mt-md-0">
-                <a href="/">
-                  <LogoDark size={"10%"}/>
-                </a>
-                <h1 class="mb-0 h3">Sign in to our Platform</h1>
+                <div href="/" style="height: 100px">
+                  <LogoDark/>
+                </div>
+                <h1 style="margin-top: 1em" class="mb-0 h3">Sign in to our Platform</h1>
               </div>
               <div style="margin-bottom: 1em">
                 <div class="g-signin2" data-longtitle="true" data-theme="dark" data-height="50" data-width="400" data-onsuccess="onGoogleSignIn" />
