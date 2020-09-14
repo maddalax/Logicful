@@ -24,7 +24,12 @@
       return []
     }
     form = await getApi<IForm>(`form/${formId}`)
-    const submissions: any[] = await getApi(`form/${formId}/submission`)
+    const url: {message : string} = await getApi(`form/${formId}/submission`)
+    const response = await fetch(url.message)
+    let submissions = []
+    if(response.ok) {
+      submissions = await response.json();
+    }
     const labels: { [key: string]: string } = {}
 
     if(!form.fields || form.fields?.length === 0) {
