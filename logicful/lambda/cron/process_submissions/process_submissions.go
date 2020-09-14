@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -12,19 +13,27 @@ import (
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/distributedlock"
 	"github.com/logicful/service/storage"
+	"log"
 )
 
 var instance = db.New()
 
-func HandleRequest(ctx context.Context) error {
+func HandleRequest(ctx context.Context, e events.CloudWatchEvent) {
+	println("Checking unprocessed submissions.")
 	submissions, err := Unprocessed()
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
 	if len(submissions) == 0 {
-		return nil
+		println("No submissions to process.")
+		return
 	}
 	worker := uuid.New().String()
 	err = distributedlock.Acquire("process_submissions", worker)
 	if err != nil {
-		return err
+		log.Fatal(err)
+		return
 	}
 	formMap := make(map[string][]models.Submission)
 	for _, sub := range submissions {
@@ -40,11 +49,11 @@ func HandleRequest(ctx context.Context) error {
 		err := ProcessForm(s, formMap[s])
 		if err != nil {
 			_ = distributedlock.Release("process_submissions", worker)
-			return err
+			log.Fatal(err)
+			return
 		}
 	}
 	_ = distributedlock.Release("process_submissions", worker)
-	return nil
 }
 
 func ProcessForm(formId string, submissions []models.Submission) error {
@@ -140,9 +149,8 @@ func SetUnprocessed(submissions []models.Submission) {
 
 func Unprocessed() ([]models.Submission, error) {
 	results, err := instance.Scan(&dynamodb.ScanInput{
-		TableName:        aws.String(db.Data()),
-		IndexName:        aws.String("UnprocessedSubmissionsIndex"),
-		FilterExpression: aws.String("attribute_exists(FormId)"),
+		TableName: aws.String(db.Data()),
+		IndexName: aws.String("UnprocessedSubmissionsIndex"),
 	})
 	if err != nil {
 		return nil, err

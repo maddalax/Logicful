@@ -29,10 +29,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="form submission processing updates, uses cron job">
-      <change beforePath="$PROJECT_DIR$/../app/src/routes/form/submissions.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/routes/form/submissions.svelte" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="update submissions to load from s3 url">
+      <change beforePath="$PROJECT_DIR$/../app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-processor.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/cron/process_submissions/process_submissions.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/cron/process_submissions/process_submissions.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +282,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="update port" />
     <MESSAGE value="fix css" />
     <MESSAGE value="submissions and sqs submissions handler" />
     <MESSAGE value="delete lock" />
@@ -307,7 +306,8 @@
     <MESSAGE value="full text search on submissions" />
     <MESSAGE value="updates" />
     <MESSAGE value="form submission processing updates, uses cron job" />
-    <option name="LAST_COMMIT_MESSAGE" value="form submission processing updates, uses cron job" />
+    <MESSAGE value="update submissions to load from s3 url" />
+    <option name="LAST_COMMIT_MESSAGE" value="update submissions to load from s3 url" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -359,33 +359,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1638" height="288" key="GridCell.Tab.0.bottom" timestamp="1600120385687">
+    <state width="1638" height="288" key="GridCell.Tab.0.bottom" timestamp="1600123682767">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="288" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600120385687" />
+    <state width="1638" height="288" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600123682767" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="288" key="GridCell.Tab.0.center" timestamp="1600120385687">
+    <state width="1638" height="288" key="GridCell.Tab.0.center" timestamp="1600123682766">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="288" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600120385687" />
+    <state width="1638" height="288" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600123682766" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="288" key="GridCell.Tab.0.left" timestamp="1600120385686">
+    <state width="1638" height="288" key="GridCell.Tab.0.left" timestamp="1600123682766">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="288" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600120385686" />
+    <state width="1638" height="288" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600123682766" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="288" key="GridCell.Tab.0.right" timestamp="1600120385687">
+    <state width="1638" height="288" key="GridCell.Tab.0.right" timestamp="1600123682767">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="288" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600120385687" />
+    <state width="1638" height="288" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600123682767" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -460,11 +460,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600119835020">
+    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600120778959">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600119835020" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600120778959" />
     <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410154953" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -494,12 +494,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600120244869">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600122588959">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600120244869" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600122588959" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

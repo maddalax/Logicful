@@ -176,6 +176,7 @@ Resources:
   ProcessSubmissionsJob:
     Type: AWS::Serverless::Function
     Properties:
+      Policies: AmazonDynamoDBFullAccess
       Handler: main
       Runtime: go1.x
       CodeUri: lambda/cron/process_submissions
@@ -183,6 +184,7 @@ Resources:
         InvocationLevel:
           Type: Schedule
           Properties:
+            Enabled: true
             Schedule: rate(1 minute)
 
 
