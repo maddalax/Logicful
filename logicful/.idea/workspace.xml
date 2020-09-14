@@ -29,8 +29,31 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="full text search on submissions">
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="replace dl to bytes">
+      <change afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-processor.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/distributedlock/distributedlock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/static/css/pixel.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/pixel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_7_20,_1_30_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_7_20__1_30_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/db/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/search/searcher.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/search/searcher.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/storage/s3.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/storage/s3.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +177,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.deploy:staging">
+  <component name="RunManager" selected="npm.build:watch">
     <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$/lambda/api" />
@@ -213,15 +236,15 @@
     <list>
       <item itemvalue="Go Build.go build api" />
       <item itemvalue="Go Remote.Unnamed" />
+      <item itemvalue="Shell Script.setup.sh" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.deploy:staging" />
       <item itemvalue="npm.dev:setup" />
-      <item itemvalue="Shell Script.setup.sh" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.build:watch" />
+        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="Shell Script.setup.sh" />
         <item itemvalue="Go Build.go build api" />
         <item itemvalue="npm.dev:setup" />
@@ -314,6 +337,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="459" y="476" key="#Go_Modules/0.0.2560.1400@0.0.2560.1400" timestamp="1597443699002" />
+    <state x="458" y="367" key="#Notifications" timestamp="1599743863135">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="458" y="367" key="#Notifications/0.23.1680.1027@0.23.1680.1027" timestamp="1599743863135" />
     <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599225802736">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -342,33 +369,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1448" height="286" key="GridCell.Tab.0.bottom" timestamp="1599679475070">
+    <state width="1448" height="217" key="GridCell.Tab.0.bottom" timestamp="1599749974767">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1448" height="286" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599679475070" />
+    <state width="1448" height="217" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974767" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1448" height="286" key="GridCell.Tab.0.center" timestamp="1599679475069">
+    <state width="1448" height="217" key="GridCell.Tab.0.center" timestamp="1599749974766">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1448" height="286" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599679475069" />
+    <state width="1448" height="217" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974766" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1448" height="286" key="GridCell.Tab.0.left" timestamp="1599679475068">
+    <state width="1448" height="217" key="GridCell.Tab.0.left" timestamp="1599749974765">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1448" height="286" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599679475068" />
+    <state width="1448" height="217" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974765" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1448" height="286" key="GridCell.Tab.0.right" timestamp="1599679475069">
+    <state width="1448" height="217" key="GridCell.Tab.0.right" timestamp="1599749974767">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1448" height="286" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599679475069" />
+    <state width="1448" height="217" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974767" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -461,11 +488,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599606453558">
+    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600109604195">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599606453558" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600109604194" />
     <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
     <state x="43" y="27" width="1122" height="1012" key="find.popup" timestamp="1599417095215">
       <screen x="0" y="27" width="2560" height="1413" />
@@ -477,12 +504,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1599679494300">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600111510072">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599679494300" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600111510072" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

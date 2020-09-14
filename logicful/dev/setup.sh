@@ -19,3 +19,11 @@ aws dynamodb update-table \
     --global-secondary-index-updates \
     "[{\"Create\":{\"IndexName\": \"UserByEmail\",\"KeySchema\":[{\"AttributeName\":\"email\",\"KeyType\":\"HASH\"}, {\"AttributeName\":\"userId\",\"KeyType\":\"RANGE\"}], \
     \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+
+aws dynamodb update-table \
+    --table-name data \
+    --endpoint-url http://localhost:8000 \
+    --attribute-definitions AttributeName=NewSubmissionKey,AttributeType=S \
+    --global-secondary-index-updates \
+    "[{\"Create\":{\"IndexName\": \"UnprocessedSubmissionsIndex\",\"KeySchema\":[{\"AttributeName\":\"SubmissionFormId\",\"KeyType\":\"HASH\"}, {\"AttributeName\":\"NewSubmissionKey\",\"KeyType\":\"RANGE\"}], \
+    \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"

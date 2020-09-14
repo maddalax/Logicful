@@ -31,6 +31,15 @@ func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	httpextensions.WriteJson(w, submissions)
 }
 
+func UnprocessedHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	submissions, err := Unprocessed()
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	httpextensions.WriteJson(w, submissions)
+}
+
 func DeleteHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var ids []string
 	if !httpextensions.ReadJson(&ids, w, r) {

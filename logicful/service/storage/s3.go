@@ -60,6 +60,31 @@ func SetBytes(value []byte, name string, bucket string, acl string) (string, err
 	return result.Location, nil
 }
 
+func DownloadToFile(bucket string, key string, path string, name string) (bool, error) {
+	downloader := s3manager.NewDownloader(createSession())
+	err := os.MkdirAll(path, 0644)
+	if err != nil {
+		return false, err
+	}
+	file, err := os.Create(path + "/" + name)
+	if err != nil {
+		return false, nil
+	}
+	_, err = downloader.Download(file, &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	if aerr, ok := err.(awserr.Error); ok {
+		switch aerr.Code() {
+		case s3.ErrCodeNoSuchKey:
+			return false, nil
+		default:
+			return false, err
+		}
+	}
+	return true, nil
+}
+
 func DownloadToBytes(bucket string, key string) ([]byte, error) {
 	downloader := s3manager.NewDownloader(createSession())
 	buff := &aws.WriteAtBuffer{}

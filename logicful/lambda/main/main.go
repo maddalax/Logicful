@@ -52,6 +52,7 @@ func addFolderHandlers(router *httprouter.Router) {
 }
 
 func addSubmissionHandlers(router *httprouter.Router) {
+	router.GET("/api/submission/unprocessed", formsubmission.UnprocessedHandler)
 	router.GET("/api/form/:formId/submission", formsubmission.ListHandler)
 	router.POST("/api/form/:formId/submission", formsubmission.AddHandler)
 	router.DELETE("/api/form/:formId/submission", formsubmission.DeleteHandler)

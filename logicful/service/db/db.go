@@ -27,7 +27,7 @@ func OptionSets() string {
 	return os.Getenv("OPTION_SETS_TABLE")
 }
 
-func SubmissionQueueLocks() string {
+func DistributedLocks() string {
 	return os.Getenv("SUBMISSION_QUEUE_LOCKS_TABLE")
 }
 

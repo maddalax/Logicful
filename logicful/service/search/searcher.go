@@ -1,12 +1,17 @@
 package searcher
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/blevesearch/bleve"
 	"github.com/logicful/service/storage"
 	"io/ioutil"
-	"os"
+	"strings"
 )
+
+type JsonIndex struct {
+	Content string `json:"content"`
+}
 
 func Index(key string, id string, data interface{}) (bleve.Index, error) {
 	files := []string{
@@ -15,32 +20,31 @@ func Index(key string, id string, data interface{}) (bleve.Index, error) {
 	}
 	noIndex := false
 	var path = "/tmp/" + key
-	err := os.Mkdir(path, 0644)
-	if err != nil {
-		return nil, err
-	}
 	for i := range files {
-		bytes, err := storage.DownloadToBytes("search-indexes", key+files[i])
+		result, err := storage.DownloadToFile("search-indexes", key+files[i], path, files[i])
 		if err != nil {
 			return nil, err
 		}
-		if bytes == nil {
+		if !result {
 			noIndex = true
 			break
 		}
-		err = ioutil.WriteFile(path+"/"+files[i], bytes, 0644)
-		if err != nil {
-			return nil, err
-		}
 	}
 	var index bleve.Index
+	serialized, err := json.Marshal(data)
+	if err != nil {
+		return nil, err
+	}
+	json := JsonIndex{
+		Content: string(serialized),
+	}
 	if noIndex {
 		mapping := bleve.NewIndexMapping()
 		index, err := bleve.New(path, mapping)
 		if err != nil {
 			return nil, err
 		}
-		err = index.Index(key, data)
+		err = index.Index(key, json)
 		if err != nil {
 			return nil, err
 		}
@@ -49,14 +53,10 @@ func Index(key string, id string, data interface{}) (bleve.Index, error) {
 		if err != nil {
 			return nil, err
 		}
-		err = index.Index(id, data)
+		err = index.Index(id, json)
 		if err != nil {
 			return nil, err
 		}
-	}
-	dirFiles, err := ioutil.ReadDir(path)
-	for i := range dirFiles {
-		println(dirFiles[i].Name())
 	}
 	for i := range files {
 		bytes, err := ioutil.ReadFile(path + "/" + files[i])
@@ -79,22 +79,14 @@ func Search(key string, q string) ([]string, error) {
 	}
 	noIndex := false
 	var path = "/tmp/" + key
-	err := os.Mkdir(path, 0644)
-	if err != nil {
-		return nil, err
-	}
 	for i := range files {
-		bytes, err := storage.DownloadToBytes("search-indexes", key+files[i])
+		result, err := storage.DownloadToFile("search-indexes", key+files[i], path, files[i])
 		if err != nil {
 			return nil, err
 		}
-		if bytes == nil {
+		if !result {
 			noIndex = true
 			break
-		}
-		err = ioutil.WriteFile(path+"/"+files[i], bytes, 0644)
-		if err != nil {
-			return nil, err
 		}
 	}
 
@@ -107,7 +99,7 @@ func Search(key string, q string) ([]string, error) {
 		return nil, err
 	}
 
-	query := bleve.NewQueryStringQuery(q)
+	query := bleve.NewFuzzyQuery(strings.ToLower(q))
 	search := bleve.NewSearchRequest(query)
 	search.Fields = []string{"*"}
 	count, _ := index.DocCount()
@@ -119,6 +111,10 @@ func Search(key string, q string) ([]string, error) {
 	var result []string
 	for i := range searchResults.Hits {
 		doc := searchResults.Hits[i].Fields
+		for s := range doc {
+			println(s)
+			println(fmt.Sprint(doc[s]))
+		}
 		result = append(result, fmt.Sprint(doc[""]))
 	}
 	return result, nil

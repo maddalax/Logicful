@@ -1,7 +1,6 @@
 package formsubmission
 
 import (
-	"encoding/json"
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -10,7 +9,6 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
-	searcher "github.com/logicful/service/search"
 	"time"
 )
 
@@ -24,6 +22,7 @@ func Add(submission models.Submission) error {
 
 	submission.CreationDate = date.ISO8601(time.Now())
 	submission.CreateBy = "maddox"
+	submission.NewSubmissionKey = uuid.New().String()
 
 	details, err := dynamodbattribute.Marshal(submission.Details)
 
@@ -53,11 +52,14 @@ func Add(submission models.Submission) error {
 				S: aws.String("SUBMISSION#" + submission.Id),
 			},
 		},
-		UpdateExpression: aws.String("SET #details = :details, #fieldMeta = :fieldMeta, #meta = :meta, #createBy = :createBy, #createTime = :createTime, #submissionFormId = :formId"),
+		UpdateExpression: aws.String("SET #id = :id, #newSubmissionKey = :newSubmissionKey, #details = :details, #fieldMeta = :fieldMeta, #meta = :meta, #createBy = :createBy, #createTime = :createTime, #submissionFormId = :formId, #formId = :formId"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":details":   details,
 			":fieldMeta": fieldMeta,
 			":meta":      meta,
+			":id": {
+				S: aws.String(submission.Id),
+			},
 			":formId": {
 				S: aws.String(submission.FormId),
 			},
@@ -67,14 +69,20 @@ func Add(submission models.Submission) error {
 			":createTime": {
 				S: aws.String(submission.CreationDate),
 			},
+			":newSubmissionKey": {
+				S: aws.String(submission.NewSubmissionKey),
+			},
 		},
 		ExpressionAttributeNames: map[string]*string{
+			"#id":               aws.String("Id"),
 			"#details":          aws.String("Details"),
 			"#createBy":         aws.String("CreateBy"),
 			"#createTime":       aws.String("CreationDate"),
 			"#fieldMeta":        aws.String("FieldMeta"),
 			"#meta":             aws.String("Meta"),
+			"#formId":           aws.String("FormId"),
 			"#submissionFormId": aws.String("SubmissionFormId"),
+			"#newSubmissionKey": aws.String("NewSubmissionKey"),
 		},
 	})
 
@@ -82,36 +90,12 @@ func Add(submission models.Submission) error {
 		return err
 	}
 
-	//err = sqs.SendMessage(submission, os.Getenv("FORM_SUBMISSION_QUEUE"))
-	//if err != nil {
-	//return err
-	//}
-	marshaled, _ := json.Marshal(submission)
-	_, err = searcher.Index(submission.FormId+"-submissions", submission.Id, string(marshaled))
-	if err != nil {
-		return err
-	}
+	go Process(submission)
 
 	return nil
 }
 
 func List(id string, query string) ([]models.Submission, error) {
-	search, err := searcher.Search(id+"-submissions", query)
-	if err != nil {
-		return nil, err
-	}
-	if len(search) > 0 {
-		var results []models.Submission
-		for _, s := range search {
-			var sub = models.Submission{}
-			err := json.Unmarshal([]byte(s), &sub)
-			if err != nil {
-				continue
-			}
-			results = append(results, sub)
-		}
-		return results, nil
-	}
 	results, err := db.New().Query(&dynamodb.QueryInput{
 		TableName:              aws.String(db.Data()),
 		KeyConditionExpression: aws.String("SubmissionFormId = :id"),
@@ -120,6 +104,22 @@ func List(id string, query string) ([]models.Submission, error) {
 		},
 		IndexName:        aws.String("SubmissionsByDate"),
 		ScanIndexForward: aws.Bool(false),
+	})
+	if err != nil {
+		return nil, err
+	}
+	var submissions []models.Submission
+	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &submissions)
+	if err != nil {
+		return nil, err
+	}
+	return submissions, nil
+}
+
+func Unprocessed() ([]models.Submission, error) {
+	results, err := db.New().Scan(&dynamodb.ScanInput{
+		TableName: aws.String(db.Data()),
+		IndexName: aws.String("UnprocessedSubmissionsIndex"),
 	})
 	if err != nil {
 		return nil, err

@@ -90,6 +90,17 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: ALL
+        - IndexName: UnprocessedSubmissionsIndex
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+          KeySchema:
+            - AttributeName: SubmissionFormId
+              KeyType: HASH
+            - AttributeName: NewSubmissionKey
+              KeyType: RANGE
+          Projection:
+              ProjectionType: ALL
         - IndexName: UserByEmail
           ProvisionedThroughput:
             ReadCapacityUnits: 5
@@ -175,45 +186,6 @@ Resources:
       VisibilityTimeout: 600
       DelaySeconds: 20
       ReceiveMessageWaitTimeSeconds: 10
-
-  FormSubmissionQueueHandler:
-    Type: AWS::Serverless::Function
-    Properties:
-      Policies:
-        - AmazonDynamoDBFullAccess
-        - SQSPollerPolicy:
-            QueueName:
-              !GetAtt FormSubmissionDeleteQueue.QueueName
-      CodeUri: lambda/sqs/sqs-form-submission-handler/
-      Handler: sqs-form-submission-handler
-      Runtime: go1.x
-      Timeout: 600
-      Events:
-        Sqs:
-          Type: SQS
-          Properties:
-            Queue: !GetAtt FormSubmissionQueue.Arn
-            BatchSize: 10
-
-  FormSubmissionDeleteQueueHandler:
-    Type: AWS::Serverless::Function
-    Properties:
-      Policies:
-        - AmazonDynamoDBFullAccess
-        - SQSPollerPolicy:
-            QueueName:
-              !GetAtt FormSubmissionDeleteQueue.QueueName
-      CodeUri: lambda/sqs/sqs-form-submission-delete-handler/
-      Handler: sqs-form-submission-delete-handler
-      Runtime: go1.x
-      Timeout: 600
-      Events:
-        Sqs:
-          Type: SQS
-          Properties:
-            Queue: !GetAtt FormSubmissionDeleteQueue.Arn
-            BatchSize: 10
-
 
 Outputs:
   StagingApi:
