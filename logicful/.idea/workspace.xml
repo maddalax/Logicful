@@ -29,29 +29,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="replace dl to bytes">
-      <change afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-processor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/distributedlock/distributedlock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/test.json" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="updates">
+      <change afterPath="$PROJECT_DIR$/lambda/cron/process_submissions/process_submissions.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/node_modules/@sapper/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/static/css/pixel.css" beforeDir="false" afterPath="$PROJECT_DIR$/../app/static/css/pixel.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_7_20,_1_30_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_7_20__1_30_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/local-env.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-processor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-delete-handler/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/sqs/sqs-form-submission-handler/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/db/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/search/searcher.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/search/searcher.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/distributedlock/distributedlock.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/distributedlock/distributedlock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/storage/s3.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/storage/s3.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
@@ -98,23 +89,23 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../app/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lambda/api" />
-      <recent name="$PROJECT_DIR$/lambda/sqs" />
-      <recent name="$PROJECT_DIR$/lambda" />
-      <recent name="$PROJECT_DIR$/lambda/features" />
-      <recent name="$PROJECT_DIR$/../app/static/css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/dev/tables" />
       <recent name="$PROJECT_DIR$/lambda/main/features/folder" />
       <recent name="$PROJECT_DIR$/lambda/api/features/contentblock" />
       <recent name="$PROJECT_DIR$/lambda/api/features/form" />
       <recent name="$PROJECT_DIR$/lambda/api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lambda" />
+      <recent name="$PROJECT_DIR$/lambda/main" />
+      <recent name="$PROJECT_DIR$/lambda/cron/process_submissions" />
+      <recent name="$PROJECT_DIR$/lambda/api" />
+      <recent name="$PROJECT_DIR$/lambda/sqs" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -177,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build:watch">
+  <component name="RunManager" selected="npm.sqs:processSubmissions">
     <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$/lambda/api" />
@@ -187,6 +178,15 @@
       <directory value="$PROJECT_DIR$/../app" />
       <output_directory value="$PROJECT_DIR$/out" />
       <option name="run" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build process_submissions.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="logicful" />
+      <working_directory value="$PROJECT_DIR$/lambda" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/lambda/cron/process_submissions/process_submissions.go" />
+      <directory value="$PROJECT_DIR$/../app" />
+      <output_directory value="$PROJECT_DIR$/.aws-sam/build/ProcessSubmissionsJob" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
@@ -223,31 +223,32 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="dev:setup" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="sqs:processSubmissions" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev:setup" />
+        <script value="sqs:processSubmissions" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Go Build.go build process_submissions.go" />
       <item itemvalue="Go Build.go build api" />
       <item itemvalue="Go Remote.Unnamed" />
-      <item itemvalue="Shell Script.setup.sh" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.deploy:staging" />
-      <item itemvalue="npm.dev:setup" />
+      <item itemvalue="npm.sqs:processSubmissions" />
+      <item itemvalue="Shell Script.setup.sh" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.sqs:processSubmissions" />
         <item itemvalue="npm.build:watch" />
+        <item itemvalue="Go Build.go build process_submissions.go" />
         <item itemvalue="npm.deploy:staging" />
         <item itemvalue="Shell Script.setup.sh" />
-        <item itemvalue="Go Build.go build api" />
-        <item itemvalue="npm.dev:setup" />
       </list>
     </recent_temporary>
   </component>
@@ -292,7 +293,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="logic builder select def value" />
     <MESSAGE value="sapper ssr working" />
     <MESSAGE value="update port" />
     <MESSAGE value="fix css" />
@@ -317,7 +317,8 @@
     <MESSAGE value="add addtional routes" />
     <MESSAGE value="lookup user from auth token" />
     <MESSAGE value="full text search on submissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="full text search on submissions" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -341,16 +342,16 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="458" y="367" key="#Notifications/0.23.1680.1027@0.23.1680.1027" timestamp="1599743863135" />
-    <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599225802736">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="85" y="350" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600116942225">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599225802736" />
-    <state x="85" y="350" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598711580777" />
-    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597666458170">
+    <state x="85" y="350" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600116942225" />
+    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600116735740">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="719" y="436" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1597621497460" />
-    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597666458170" />
+    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1600116735740" />
     <state x="578" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598272233738">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -369,33 +370,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1448" height="217" key="GridCell.Tab.0.bottom" timestamp="1599749974767">
+    <state width="1638" height="288" key="GridCell.Tab.0.bottom" timestamp="1600119791460">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1448" height="217" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974767" />
+    <state width="1638" height="288" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600119791460" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1448" height="217" key="GridCell.Tab.0.center" timestamp="1599749974766">
+    <state width="1638" height="288" key="GridCell.Tab.0.center" timestamp="1600119791459">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1448" height="217" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974766" />
+    <state width="1638" height="288" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600119791459" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1448" height="217" key="GridCell.Tab.0.left" timestamp="1599749974765">
+    <state width="1638" height="288" key="GridCell.Tab.0.left" timestamp="1600119791456">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1448" height="217" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974765" />
+    <state width="1638" height="288" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600119791456" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1448" height="217" key="GridCell.Tab.0.right" timestamp="1599749974767">
+    <state width="1638" height="288" key="GridCell.Tab.0.right" timestamp="1600119791459">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1448" height="217" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1599749974767" />
+    <state width="1638" height="288" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600119791459" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -461,20 +462,20 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598213039172" />
-    <state x="110" y="234" key="SettingsEditor" timestamp="1599064133950">
+    <state x="110" y="234" key="SettingsEditor" timestamp="1600112132981">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
-    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1599064133950" />
+    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600112132981" />
     <state x="496" y="259" key="VCS.ChangeListViewerDialog" timestamp="1597929207162">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1599679461510">
+    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600112141181">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1599679461510" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600112141181" />
     <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410154953" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -488,11 +489,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600109604195">
+    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600112360515">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600109604194" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600112360515" />
     <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
     <state x="43" y="27" width="1122" height="1012" key="find.popup" timestamp="1599417095215">
       <screen x="0" y="27" width="2560" height="1413" />
@@ -504,12 +505,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600111510072">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600119803676">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600111510072" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600119803676" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

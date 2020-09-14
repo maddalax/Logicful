@@ -21,14 +21,12 @@ Globals:
     Environment:
       Variables:
         ENV: !Ref Stage
-        S3_ENDPOINT: s3.us-west-002.backblazeb2.com
-        S3_KEY: 002bde636d6efa60000000001
-        S3_SECRET: K002RflL669GuhXI0qdWnID+wkO9oAA
+        S3_ENDPOINT: s3.wasabisys.com
+        S3_KEY: BO7Z2Y1MUUL07XN14RRO
+        S3_SECRET: HmSMKlkeGKJzsOaVLjTsA7LQIMm1uU60GXeMYW1G
         DYNAMO_REGION: us-east-1
         DYNAMO_IS_LOCAL: false
         DYNAMO_ENDPOINT: FILLED_IN_BY_AWS
-        FORM_SUBMISSION_QUEUE: !Ref FormSubmissionQueue
-        FORM_SUBMISSIONS_DELETED_QUEUE: !Ref FormSubmissionDeleteQueue
         OPTION_SETS_TABLE: !Ref OptionSetsTable
         SUBMISSION_QUEUE_LOCKS_TABLE: !Ref SubmissionsQueueLocksTable
         CONTENT_BLOCKS_TABLE: !Ref ContentBlocksTable
@@ -173,19 +171,18 @@ Resources:
             Method: ANY
             RestApiId: !Ref StagingApi
 
-  FormSubmissionQueue:
-    Type: AWS::SQS::Queue
+  ProcessSubmissionsJob:
+    Type: AWS::Serverless::Function
     Properties:
-      VisibilityTimeout: 600
-      DelaySeconds: 20
-      ReceiveMessageWaitTimeSeconds: 10
+      Handler: main
+      Runtime: go1.x
+      CodeUri: lambda/cron/process_submissions
+      Events:
+        InvocationLevel:
+          Type: Schedule
+          Properties:
+            Schedule: cron(1 minutes)
 
-  FormSubmissionDeleteQueue:
-    Type: AWS::SQS::Queue
-    Properties:
-      VisibilityTimeout: 600
-      DelaySeconds: 20
-      ReceiveMessageWaitTimeSeconds: 10
 
 Outputs:
   StagingApi:

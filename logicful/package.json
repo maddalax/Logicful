@@ -6,8 +6,7 @@
     "debug": "sam build && sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 23451 --debugger-path debug --debug-args \"-delveAPI=2\"",
     "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
     "deploy:staging": "cross-env CGO_ENABLED=0 sam build && sam deploy",
-    "sqs:formSubmission": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionQueueHandler",
-    "sqs:formSubmissionDelete": "node dev/events/sqs/sqs.js && sam local invoke -e dev/events/sqs/form_submission.json --docker-network logicful --env-vars dev/local-env.json FormSubmissionDeleteQueueHandler"
+    "sqs:processSubmissions": "cross-env CGO_ENABLED=0 GOOS=linux sam build && sam local invoke --docker-network logicful --env-vars dev/local-env.json ProcessSubmissionsJob"
   },
   "devDependencies": {
     "chokidar": "^3.42",

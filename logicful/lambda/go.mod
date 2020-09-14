@@ -1,6 +1,6 @@
 require (
 	github.com/apex/gateway v1.1.1
-	github.com/aws/aws-lambda-go v1.19.1 // indirect
+	github.com/aws/aws-lambda-go v1.19.1
 	github.com/aws/aws-sdk-go v1.34.5
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/google/uuid v1.1.1

@@ -9,6 +9,7 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
+	"github.com/logicful/service/storage"
 	"time"
 )
 
@@ -90,44 +91,14 @@ func Add(submission models.Submission) error {
 		return err
 	}
 
-	go Process(submission)
-
 	return nil
 }
 
-func List(id string, query string) ([]models.Submission, error) {
-	results, err := db.New().Query(&dynamodb.QueryInput{
-		TableName:              aws.String(db.Data()),
-		KeyConditionExpression: aws.String("SubmissionFormId = :id"),
-		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			":id": {S: aws.String(id)},
-		},
-		IndexName:        aws.String("SubmissionsByDate"),
-		ScanIndexForward: aws.Bool(false),
-	})
+func List(id string) (string, error) {
+	name := id + ".json"
+	url, err := storage.GetUrl(name, "logicful-form-submissions")
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	var submissions []models.Submission
-	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &submissions)
-	if err != nil {
-		return nil, err
-	}
-	return submissions, nil
-}
-
-func Unprocessed() ([]models.Submission, error) {
-	results, err := db.New().Scan(&dynamodb.ScanInput{
-		TableName: aws.String(db.Data()),
-		IndexName: aws.String("UnprocessedSubmissionsIndex"),
-	})
-	if err != nil {
-		return nil, err
-	}
-	var submissions []models.Submission
-	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &submissions)
-	if err != nil {
-		return nil, err
-	}
-	return submissions, nil
+	return url, nil
 }

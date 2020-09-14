@@ -23,21 +23,14 @@ func AddHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	submissions, err := List(ps.ByName("formId"), httpextensions.Query("q", r))
+	url, err := List(ps.ByName("formId"))
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return
 	}
-	httpextensions.WriteJson(w, submissions)
-}
-
-func UnprocessedHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	submissions, err := Unprocessed()
-	if err != nil {
-		httpextensions.WriteError(w, err)
-		return
-	}
-	httpextensions.WriteJson(w, submissions)
+	httpextensions.WriteJson(w, httpextensions.SuccessResult{
+		Message: url,
+	})
 }
 
 func DeleteHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {

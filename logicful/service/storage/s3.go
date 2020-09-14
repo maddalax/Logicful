@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"os"
+	"time"
 )
 
 func SetJson(value interface{}, name string, bucket string, acl string) (string, error) {
@@ -21,6 +22,17 @@ func SetJson(value interface{}, name string, bucket string, acl string) (string,
 	}
 
 	return SetJsonBytes(serialized, name, bucket, acl)
+}
+
+func GetUrl(key string, bucket string) (string, error) {
+	svc := s3.New(createSession())
+	params := &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	}
+	req, _ := svc.GetObjectRequest(params)
+	url, err := req.Presign(15 * time.Minute)
+	return url, err
 }
 
 func SetJsonBytes(value []byte, name string, bucket string, acl string) (string, error) {
@@ -107,7 +119,7 @@ func createSession() *session.Session {
 	endpoint := os.Getenv("S3_ENDPOINT")
 	// The session the S3 Uploader will use
 	conf := &aws.Config{
-		Region:      aws.String("us-west-2"),
+		Region:      aws.String("us-east-1"),
 		Endpoint:    &endpoint,
 		Credentials: credentials.NewStaticCredentials(os.Getenv("S3_KEY"), os.Getenv("S3_SECRET"), ""),
 	}

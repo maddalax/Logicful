@@ -9,6 +9,7 @@ import (
 )
 
 func Acquire(key string, worker string) error {
+	println(db.DistributedLocks())
 	threeMinutesAgo := time.Now().Add(time.Duration(-3) * time.Minute).Unix()
 	_, err := db.New().PutItem(&dynamodb.PutItemInput{
 		Item: map[string]*dynamodb.AttributeValue{

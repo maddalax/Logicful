@@ -11,11 +11,22 @@ import (
 
 func Process(submission models.Submission) error {
 	debug.Debug(submission)
+	err := processSubmission(submission)
+	if err != nil {
+
+	}
+	return nil
+}
+
+func processSubmission(submission models.Submission) error {
 	worker := uuid.New().String()
+	println("Acquiring lock")
 	err := distributedlock.Acquire(submission.FormId, worker)
 	if err != nil {
+		panic(err)
 		return err
 	}
+	println("got lock")
 	err = onSubmission(submission)
 	if err != nil {
 		_ = distributedlock.Release(submission.FormId, worker)
@@ -27,6 +38,7 @@ func Process(submission models.Submission) error {
 
 func onSubmission(submission models.Submission) error {
 	name := submission.FormId + ".json"
+	println(name)
 	current, err := currentSubmissions(name)
 	if err != nil {
 		return err
