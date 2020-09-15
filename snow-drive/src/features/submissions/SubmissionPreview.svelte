@@ -2,7 +2,7 @@
   import { isObject, isString } from "@app/guards/Guard"
 
   import type { ISubmission } from '@app/models/IForm'
-  import { formatSubmissionItem } from '@app/routes/form/submissions.svelte'
+  import { formatSubmissionItem } from '@app/pages/form/FormSubmissionsPage.svelte'
   import { isEmptyOrNull, isNullString } from '@app/util/Compare'
 
   export let submission: ISubmission

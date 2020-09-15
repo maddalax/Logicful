@@ -1,117 +1,82 @@
 <script lang="typescript">
-  import { dispatch, subscribe, subscribeComponent } from '@app/event/EventBus'
+  import { dispatch, subscribe, subscribeComponent } from "@app/event/EventBus";
+  import { link, Router } from "svelte-routing";
 
-  import type { IFolder } from '@app/models/IFolder'
-  import { LoadState } from '@app/models/LoadState'
-  import type { User } from '@app/models/User'
-  import { getApi, postApi, putApi } from '@app/services/ApiService'
-  import { me } from '@app/services/AuthService'
-  import { afterUpdate, onMount } from 'svelte'
-  import { randomString } from '@app/util/Generate'
-  import { v1 } from 'uuid'
-  import Dialog from './layout/Dialog.svelte'
-  import Loader from './Loader.svelte'
+  import type { IFolder } from "@app/models/IFolder";
+  import { LoadState } from "@app/models/LoadState";
+  import type { User } from "@app/models/User";
+  import { getApi, postApi, putApi } from "@app/services/ApiService";
+  import { me } from "@app/services/AuthService";
+  import { afterUpdate, onMount } from "svelte";
+  import { randomString } from "@app/util/Generate";
+  import { v1 } from "uuid";
+  import Dialog from "./layout/Dialog.svelte";
+  import Loader from "./Loader.svelte";
+  import { getUrlParameter } from "@app/util/Http";
 
-  export let selected: string = ''
-  let folders: IFolder[] = []
-  let searchPlaceHolder = 'Search for a form'
-  let query = ''
-  let creatingNewFolder = false
-  let newFolderName = ''
-  let user: User
-  let state = LoadState.NotStarted
+  export let selected: string = "";
+  let folders: IFolder[] = [];
+  let searchPlaceHolder = "Search for a form";
+  let query = "";
+  let creatingNewFolder = false;
+  let newFolderName = "";
+  let user: User;
+  let state = LoadState.NotStarted;
   let contentLoaded = false;
 
-  onMount(async () => {
-    subscribe('folder_content_loaded', () => {
-      contentLoaded = true;
-    })
-    state = LoadState.Loading
-    user = me()
+  async function load() {
     if (!selected) {
-      selected = `${user.teamId}:uncategorized`
+      selected = `${user.teamId}:uncategorized`;
     }
-    folders = await getFolders()
-    state = LoadState.Finished
-    if(contentLoaded) {
-      dispatchFolderSelected()
+    if (contentLoaded) {
+      dispatchFolderSelected();
     }
-  })
+  }
+
+  onMount(async () => {
+    user = me();
+    state = LoadState.Loading;
+    selected = getUrlParameter("folderId") ?? "";
+    subscribe("folder_content_loaded", () => {
+      contentLoaded = true;
+    });
+    folders = await getFolders();
+    await load();
+    state = LoadState.Finished;
+  });
 
   async function getFolders(): Promise<IFolder[]> {
-    const folders = await getApi<IFolder[]>('folder?team=' + user.teamId)
+    const folders = await getApi<IFolder[]>("folder?team=" + user.teamId);
     folders.unshift({
-      name: 'Uncategorized',
+      name: "Uncategorized",
       id: `${user.teamId}:uncategorized`,
-    })
-    return folders
+    });
+    return folders;
   }
 
   subscribeComponent("page_change", (props) => {
     dispatchFolderSelected();
-  })
+  });
 
   function dispatchFolderSelected() {
-    const s = folders.find((f) => f.id === selected)
+    const s = folders.find((f) => f.id === selected);
     if (s) {
-      dispatch('folder_selected', { folder: s })
+      dispatch("folder_selected", { folder: s });
     }
   }
 
   function newFolderClick() {
-    creatingNewFolder = true
+    creatingNewFolder = true;
   }
 
   async function createNewFolder() {
-    await postApi('folder', {
+    await postApi("folder", {
       name: newFolderName,
       teamId: user.teamId,
-    })
-    folders = await getFolders()
+    });
+    folders = await getFolders();
   }
 </script>
-
-{#if creatingNewFolder}
-  <Dialog
-    title={'Create New Folder'}
-    isOpen={true}
-    actions={[{ label: `Create Folder`, type: 'secondary', onClick: createNewFolder }, { label: 'Cancel', type: 'danger' }]}
-    onClose={() => {
-      creatingNewFolder = false
-    }}
-  >
-    <h6>Folder Name</h6>
-    <input bind:value={newFolderName} class="form-control" type="text" id="folderName" name="folderName" placeholder="" />
-  </Dialog>
-{/if}
-<a href="/form/create" class="btn btn-primary create-new-form"> <span class="fas fa-plus" /> <span>Create New Form</span> </a>
-<div class="card border-light p-2" style="padding-bottom: 1em !important;">
-  <div class="container-fluid p-2 mt-3" style="padding-left: 0em;"><input class="form-control search-bar container-fluid" placeholder={searchPlaceHolder} bind:value={query} /></div>
-  <div class="card-header card-header-title bg-white border-0" style="display: flex; padding-left: 0.2em;"><span class="title">Your Folders</span></div>
-  {#if state === LoadState.Loading}
-    <Loader />
-  {/if}
-  {#each folders as folder}
-    <div class="card-body p-2">
-      <div class="list-group dashboard-menu list-group-sm">
-        <a
-          href="/folder?folderId={folder.id}"
-          class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}"
-          style="padding-bottom: 0.5em; padding-top: 0.5em;"
-        >
-          {#if folder.id === selected}
-            <div><span class="fas fa-folder" style="font-size: 1.2em; font-weight: 375;" /></div>
-          {:else}
-            <div><span class="far fa-folder" style="font-size: 1.2em; font-weight: 375;" /></div>
-          {/if}
-          <span style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
-          {#if folder.id === selected}<span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>{/if}
-        </a>
-      </div>
-    </div>
-  {/each}
-  <button on:click={newFolderClick} class="btn btn-outline-dark"> <span class="fas fa-plus" style="font-size: 0.9em;" /> <span style="font-weight: 400;">New Folder</span> </button>
-</div>
 
 <style>
   .card-header-title {
@@ -165,3 +130,80 @@
     margin-bottom: 1em;
   }
 </style>
+
+{#if creatingNewFolder}
+  <Dialog
+    title={'Create New Folder'}
+    isOpen={true}
+    actions={[{ label: `Create Folder`, type: 'secondary', onClick: createNewFolder }, { label: 'Cancel', type: 'danger' }]}
+    onClose={() => {
+      creatingNewFolder = false;
+    }}>
+    <h6>Folder Name</h6>
+    <input
+      bind:value={newFolderName}
+      class="form-control"
+      type="text"
+      id="folderName"
+      name="folderName"
+      placeholder="" />
+  </Dialog>
+{/if}
+<a use:link href="/form/create" class="btn btn-primary create-new-form">
+  <span class="fas fa-plus" />
+  <span>Create New Form</span>
+</a>
+<div class="card border-light p-2" style="padding-bottom: 1em !important;">
+  <div class="container-fluid p-2 mt-3" style="padding-left: 0em;">
+    <input
+      class="form-control search-bar container-fluid"
+      placeholder={searchPlaceHolder}
+      bind:value={query} />
+  </div>
+  <div
+    class="card-header card-header-title bg-white border-0"
+    style="display: flex; padding-left: 0.2em;">
+    <span class="title">Your Folders</span>
+  </div>
+  {#if state === LoadState.Loading}
+    <Loader />
+  {/if}
+  {#each folders as folder}
+    <div class="card-body p-2">
+      <div class="list-group dashboard-menu list-group-sm">
+          <button
+            on:click={() => {
+              selected = folder.id
+              load()
+            }}
+            class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}"
+            style="padding-bottom: 0.5em; padding-top: 0.5em;">
+            {#if folder.id === selected}
+              <div>
+                <span
+                  class="fas fa-folder"
+                  style="font-size: 1.2em; font-weight: 375;" />
+              </div>
+            {:else}
+              <div>
+                <span
+                  class="far fa-folder"
+                  style="font-size: 1.2em; font-weight: 375;" />
+              </div>
+            {/if}
+            <span
+              style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
+            {#if folder.id === selected}
+              <span class="icon icon-xs ml-auto">
+                <span class="fas fa-chevron-right" />
+              </span>
+            {/if}
+          </button>
+      </div>
+    </div>
+  {/each}
+  <button on:click={newFolderClick} class="btn btn-outline-dark">
+    <span class="fas fa-plus" style="font-size: 0.9em;" />
+    <span style="font-weight: 400;">New Folder</span>
+  </button>
+</div>

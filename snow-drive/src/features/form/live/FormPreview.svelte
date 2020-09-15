@@ -3,7 +3,7 @@
 
   import LiveForm from '@app/features/form/live/LiveForm.svelte'
   import type { IField } from '@app/models/IField'
-  import { IForm, ISubmission } from '@app/models/IForm'
+  import type { IForm, ISubmission } from '@app/models/IForm'
   import { getApi } from '@app/services/ApiService'
   import formStore from '@app/store/FormStore'
   import { afterUpdate, onDestroy, onMount, tick } from 'svelte'
@@ -11,7 +11,7 @@
   export let submission: ISubmission | undefined = undefined
   export let form: IForm
 
-  let formId: string
+  let formId: string = ''
   let mode: string = ''
 
   onDestroy(() => {

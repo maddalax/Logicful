@@ -17,6 +17,7 @@
   import { startPreviewSaver } from "./services/PreviewSaver";
   import { DynamicFormMode } from "@app/components/models/ComponentProps";
   import { dispatch, subscribeComponent } from "@app/event/EventBus";
+  import { navigate } from "svelte-routing";
 
   let dropped = false;
   let loadingActive: boolean = false;
@@ -31,8 +32,7 @@
     loadingActive = true;
     const formId = getUrlParameter("formId");
     if (!formId) {
-      // todo revert
-      //window.location.replace("/form/create");
+      navigate("/form/create", {replace : true});
       return;
     }
     try {

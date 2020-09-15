@@ -2,7 +2,7 @@
   import { postApi } from '@app/services/ApiService'
   import { setToken } from '@app/services/AuthService'
   import { afterUpdate } from 'svelte'
-  import {UserToken} from '@app/services/AuthService'
+  import type {UserToken} from '@app/services/AuthService'
 
   let email = ''
   let password = ''

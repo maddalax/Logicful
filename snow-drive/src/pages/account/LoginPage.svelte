@@ -2,7 +2,7 @@
   import { postApi } from '@app/services/ApiService'
   import { setToken } from '@app/services/AuthService'
   import { afterUpdate, onMount } from 'svelte'
-  import { UserToken } from '@app/services/AuthService'
+  import type { UserToken } from '@app/services/AuthService'
   import LogoDark from '@app/components/layout/logos/LogoDark.svelte'
 
   let email = ''

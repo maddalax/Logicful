@@ -1,4 +1,5 @@
 <script lang="typescript">
+  import { link, Router } from "svelte-routing";
   import type { User } from '@app/models/User'
   import { me } from '@app/services/AuthService'
   import { onMount } from 'svelte'
@@ -14,7 +15,7 @@
 <header class="header-global">
   <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-dark">
     <div style="margin-left: 2.5em;height:36px;width:100px;position:absolute">
-      <a href="/">
+      <a href="/" use:link>
         <LogoWhite /></a>
     </div>
     <div class="container position-relative" style="max-width: none; padding-right: 2.5em;padding-left: 7.5em;">
@@ -38,10 +39,10 @@
           </div>
         </div>
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-          <li class="nav-item"><a href="/" class="nav-link"> <span class="fas fa-columns" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;" /> Dashboard </a></li>
+          <li class="nav-item"><a href="/" use:link class="nav-link"> <span class="fas fa-columns" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;" /> Dashboard </a></li>
           <li class="nav-item">
             <div style="display: flex; vertical-align: middle;">
-              <a href="/folder" class="nav-link"> <span class="fas fa-bars" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;" /> My Forms </a>
+              <a href="/folder" class="nav-link" use:link> <span class="fas fa-bars" style="color: white; font-size: 1.1em; width: none; padding-right: 0.1em;" /> My Forms </a>
             </div>
           </li>
         </ul>
@@ -51,12 +52,12 @@
           <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-soft animate-up-2" data-toggle="dropdown" aria-expanded="false"> My Account </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/account-settings"><strong>{user.fullName}</strong></a></li>
-              <li><a class="dropdown-item" href="/account-settings">Settings</a></li>
+              <li><a class="dropdown-item" use:link href="/account-settings"><strong>{user.fullName}</strong></a></li>
+              <li><a class="dropdown-item" use:link href="/account-settings">Settings</a></li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
-              <li><a class="dropdown-item" href="/account/logout">Sign Out</a></li>
+              <li><a class="dropdown-item" use:link href="/account/logout">Sign Out</a></li>
             </ul>
           </div>
         {/if}

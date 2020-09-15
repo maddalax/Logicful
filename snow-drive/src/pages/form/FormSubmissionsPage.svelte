@@ -40,7 +40,7 @@
   import { fastClone } from '@app/util/Compare'
 
   export let formId = ''
-  export let form: IForm
+  export let form: IForm | undefined = undefined
 
   let state: LoadState = LoadState.NotStarted
   let container: any

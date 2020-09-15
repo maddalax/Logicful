@@ -1,6 +1,6 @@
 <script lang="typescript">
   import type { IForm } from '@app/models/IForm'
-  import { IFolder } from '@app/models/IFolder'
+  import type { IFolder } from '@app/models/IFolder'
   import { onMount } from 'svelte'
   import { getApi } from '@app/services/ApiService'
 
