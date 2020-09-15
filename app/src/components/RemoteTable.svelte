@@ -105,12 +105,10 @@
       })
       fuse = createFuse()
       filtered = rows
-      console.log(rows);
       let allColumns = new Set<string>();
       rows.forEach(r => {
         Object.keys(r).forEach(c => allColumns.add(c))
       })
-      console.log(allColumns);
       columns = Array.from(allColumns)
       columns = sortColumns?.(columns) ?? columns
       filteredColumns = columns.filter((w) => !hidden.has(w))
