@@ -38,7 +38,7 @@
 <Label field={field} />
 <div class="d-flex flex-row bd-highlight" style="margin-bottom: -1.5em !important">
   {#if config.prefix}
-    <div class="bd-highlight pr-2 flex-shrink-1">
+    <div class="bd-highlight pr-2 flex-shrink-1" style="width: 20%">
       <LiveField field={{ required: true, name: `${field.name}.prefix`, id: `${field.id}.value.prefix`, helperText: 'Prefix', hideLabel: true, value: value?.prefix?.value ?? '', type: 'string' }} />
     </div>
   {/if}
@@ -55,7 +55,7 @@
     </div>
   {/if}
   {#if config.middleInitial}
-    <div class="bd-highlight pr-2">
+    <div class="bd-highlight pr-2" style="width: 20%">
       <LiveField
         field={{ required: true, name: `${field.name}.middleInitial`, id: `${field.id}.value.middleInitial`, helperText: 'M.I.', hideLabel: true, value: value?.middleInitial?.value ?? '', type: 'string' }}
       />
@@ -67,7 +67,7 @@
     </div>
   {/if}
   {#if config.suffix}
-    <div class="bd-highlight p-right-2 flex-shrink-1">
+    <div class="bd-highlight p-right-2 flex-shrink-1" style="width: 20%">
       <LiveField field={{ required: true, name: `${field.name}.suffix`, id: `${field.id}.value.suffix`, helperText: 'Suffix', hideLabel: true, value: value?.suffix?.value ?? '', type: 'string' }} />
     </div>
   {/if}
