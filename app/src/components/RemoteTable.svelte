@@ -12,6 +12,7 @@
   import { isObject } from 'guards/Guard'
 
   export let getRows: () => Promise<TableRow[]>
+  export let defaultSortColumn = ''
 
   let id: string = ''
   let caption: string = ''
@@ -113,6 +114,9 @@
       columns = sortColumns?.(columns) ?? columns
       filteredColumns = columns.filter((w) => !hidden.has(w))
       state = LoadState.Finished
+      if(defaultSortColumn) {
+        sortColumn(defaultSortColumn)
+      }
     } catch (ex) {
       console.error(ex)
       state = LoadState.Failed
@@ -220,7 +224,7 @@
       title: 'Deletion Started',
       message: 'Your entries have been queued for deletion.',
     })
-    load();
+    modal = ''
   }
 </script>
 

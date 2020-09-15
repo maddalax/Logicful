@@ -125,7 +125,9 @@
     <h1>Submissions</h1>
     <hr />
     <div>
-      <RemoteTable {getRows} {sortColumns} {onDelete} {onRowClick} onFormat={formatSubmissionItem} {hidden} />
+      <RemoteTable 
+        defaultSortColumn={"Submission Date"}
+        {getRows} {sortColumns} {onDelete} {onRowClick} onFormat={formatSubmissionItem} {hidden} />
     </div>
   </div>
 </div>

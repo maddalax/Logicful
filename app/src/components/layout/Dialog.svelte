@@ -27,25 +27,12 @@
     }
   }
 
-  afterUpdate(() => {
-    console.log('on dialog update')
-    if(isOpen) {
-      if (!modal) {
-      initModal()
-    } else {
-      open()
-    }
-    }
-  })
-
   onMount(() => {
-    console.log('on dialog mount')
     //@ts-ignore
     initModal()
     return () => {
       try {
-        modal?.dispose()
-        modal = null
+        modal?.hide()
       } catch {}
     }
   })
@@ -58,13 +45,14 @@
   }
 
   async function close() {
-    try {
-      modal.dispose()
-      modal = null
-    } catch {}
     isOpen = false
+    try {
+      modal.hide();
+      modal.dispose()
+    } catch(ex) {
+      console.log(ex);
+    }
     await onClose?.()
-    await tick()
   }
 
   afterUpdate(() => {
