@@ -4,11 +4,7 @@ import (
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/logicful/models"
 	"github.com/logicful/service/db"
-	"github.com/logicful/service/sqs"
-	"os"
-	"sync"
 )
 
 var instance = db.New()
@@ -23,79 +19,39 @@ func Delete(ids []string, formId string) error {
 		return errors.New("you may only delete up to 50 entries in a single request")
 	}
 
-	allErrors := make(chan error)
-	wgDone := make(chan bool)
-
-	var wg sync.WaitGroup
-	for i := range ids {
-		wg.Add(1)
-		go func(id string) {
-			remove(formId, id, allErrors)
-			wg.Done()
-		}(ids[i])
+	for _, id := range ids {
+		_, err := instance.UpdateItem(&dynamodb.UpdateItemInput{
+			TableName: aws.String(db.Data()),
+			Key: map[string]*dynamodb.AttributeValue{
+				"PK": {
+					S: aws.String("FORM#" + formId),
+				},
+				"SK": {
+					S: aws.String("SUBMISSION#" + id),
+				},
+			},
+			UpdateExpression: aws.String("SET #status = :status, #newSubmissionKey = :newSubmissionKey, #submissionFormId = :formId, #formId = :formId"),
+			ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+				":formId": {
+					S: aws.String(formId),
+				},
+				":newSubmissionKey": {
+					S: aws.String(id),
+				},
+				":status": {
+					S: aws.String("deleted"),
+				},
+			},
+			ExpressionAttributeNames: map[string]*string{
+				"#formId":           aws.String("FormId"),
+				"#submissionFormId": aws.String("SubmissionFormId"),
+				"#newSubmissionKey": aws.String("NewSubmissionKey"),
+				"#status":           aws.String("Status"),
+			},
+		})
+		if err != nil {
+			return err
+		}
 	}
-
-	go func() {
-		wg.Wait()
-		close(wgDone)
-	}()
-
-	select {
-	case <-wgDone:
-		break
-	case err := <-allErrors:
-		close(allErrors)
-		return err
-	}
-
-	err := sqs.SendMessage(models.SubmissionsDeleted{
-		FormId: formId,
-		Ids:    ids,
-	}, os.Getenv("FORM_SUBMISSIONS_DELETED_QUEUE"))
-
-	if err != nil {
-		return err
-	}
-
 	return nil
-}
-
-func remove(formId string, id string, errors chan error) {
-	_, err := instance.TransactWriteItems(&dynamodb.TransactWriteItemsInput{
-		TransactItems: []*dynamodb.TransactWriteItem{
-			{
-				Update: &dynamodb.Update{
-					TableName: aws.String(db.Forms()),
-					Key: map[string]*dynamodb.AttributeValue{
-						"id": {
-							S: aws.String(formId),
-						},
-					},
-					UpdateExpression: aws.String("DELETE #submissions :submission"),
-					ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-						":submission": {
-							SS: aws.StringSlice([]string{id}),
-						},
-					},
-					ExpressionAttributeNames: map[string]*string{
-						"#submissions": aws.String("submissions"),
-					},
-				},
-			},
-			{
-				Delete: &dynamodb.Delete{
-					TableName: aws.String(db.Submissions()),
-					Key: map[string]*dynamodb.AttributeValue{
-						"id": {
-							S: aws.String(id),
-						},
-					},
-				},
-			},
-		},
-	})
-	if err != nil {
-		errors <- err
-		return
-	}
 }

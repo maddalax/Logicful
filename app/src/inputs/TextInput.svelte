@@ -2,7 +2,7 @@
   import type { IField } from 'models/IField'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import Label from './Label.svelte'
-  import { onMount } from 'svelte'
+  import { afterUpdate, onMount } from 'svelte'
   import formStore from 'store/FormStore'
   import { debounce } from 'util/Debounce'
 
@@ -13,7 +13,7 @@
 
   subscribeFieldChange(onMount, (newField) => {
     if (newField.id === field.id) {
-      value = newField.value ?? ''
+      value = newField.value ?? value ?? ''
     }
   })
 
@@ -24,7 +24,7 @@
       field.onChange?.(field.value)
     }, 500)
 
-    value = formStore.getValue(field.configTarget ?? field.id) ?? ''
+    value = field.value ?? formStore.getValue(field.configTarget ?? field.id) ?? ''
   })
 </script>
 

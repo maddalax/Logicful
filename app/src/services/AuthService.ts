@@ -8,6 +8,9 @@ export interface UserToken {
 }
 
 export function setToken(token: UserToken, remember: boolean = true) {
+    if(!localStorage) {
+        return;
+    }
     localStorage.removeItem("token");
     if (remember) {
         localStorage.setItem("token", JSON.stringify(token))
@@ -17,6 +20,9 @@ export function setToken(token: UserToken, remember: boolean = true) {
 }
 
 export function getToken(): string | undefined {
+    if(!localStorage) {
+        return undefined
+    }
     const token = localStorage.getItem("token") ?? memoryToken;
     if (!token) {
         return undefined

@@ -18,3 +18,13 @@ export type IForm = {
   loaded? : boolean
   url?: string
 }
+
+export type ISubmission = {
+  id : string
+  formId : string,
+  details : {[key : string] : any},
+  meta : {
+    env : any
+  }
+  [key : string] : any
+}

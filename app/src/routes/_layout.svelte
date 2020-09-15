@@ -55,8 +55,6 @@
   <slot />
 
   <!--<Footer />-->
-
-  <Dialog />
 {/if}
 
 <style type="text/scss">

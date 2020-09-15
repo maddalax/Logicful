@@ -8,13 +8,15 @@
   export let isOpen: boolean = false
   export let onClose = () => {}
   export let actions: ButtonAction[] = []
+  export let width: string = '500px'
+
   let container: any
   let modal: any
   let processing = -1
   let failed = false
   let focusable: any = null
 
-  onMount(() => {
+  function initModal() {
     //@ts-ignore
     modal = new bootstrap.Modal(container)
     container!.addEventListener('hidden.bs.modal', function (e: any) {
@@ -23,23 +25,53 @@
     if (isOpen) {
       open()
     }
+  }
+
+  afterUpdate(() => {
+    console.log('on dialog update')
+    if (!modal) {
+      initModal()
+    } else {
+      open()
+    }
+  })
+
+  onMount(() => {
+    console.log('on dialog mount')
+    //@ts-ignore
+    initModal()
+    return () => {
+      try {
+        modal?.dispose()
+        modal = null
+      } catch {}
+    }
   })
 
   function open() {
     isOpen = true
-    modal.show()
+    try {
+      modal.show()
+    } catch {}
   }
 
   function close() {
-    isOpen = false
-    modal.hide()
-    onClose?.()
+    try {
+      modal.dispose()
+      modal = null
+    } catch {}
+    setTimeout(() => {
+      onClose?.()
+      isOpen = false
+    }, 100)
   }
 
   afterUpdate(() => {
     if (focusable) {
       setTimeout(() => {
-        focusable.focus()
+        try {
+          focusable.focus()
+        } catch {}
       }, 500)
     }
   })
@@ -60,7 +92,7 @@
 </script>
 
 <div class="modal fade" bind:this={container} tabindex="-1" aria-labelledby="app-dialog-label" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style={`max-width: ${width}`}>
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="app-dialog-label">{title}</h5>

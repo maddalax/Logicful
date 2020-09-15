@@ -123,7 +123,6 @@ func SetUnprocessed(submissions []models.Submission) {
 		if submission.Id == "" {
 			continue
 		}
-		println("Updadting: " + submission.Id)
 		_, err := db.New().UpdateItem(&dynamodb.UpdateItemInput{
 			TableName: aws.String(db.Data()),
 			Key: map[string]*dynamodb.AttributeValue{

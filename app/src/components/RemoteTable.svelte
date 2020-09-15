@@ -32,7 +32,8 @@
   let editingColumns = false
   let allRowsSelected = false
   let selectedCount = 0
-  let modal: 'delete' | 'toggle_column' | '' = ''
+  let modal: 'delete' | 'toggle_column' | 'preview' | '' = ''
+  let preview : any = null
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined
@@ -40,6 +41,7 @@
   export let hidden: Set<string> = new Set<string>()
   export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
   export let onFormat: (column: string, row: any) => any = () => undefined
+  export let onRowClick : (row : any) => any = () => {}
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
@@ -91,6 +93,7 @@
 
   async function load() {
     try {
+      state = LoadState.Loading
       rows = await getRows()
       if (rows.length === 0) {
         state = LoadState.Finished
@@ -192,7 +195,7 @@
     filteredColumns = columns.filter((w) => !hidden.has(w))
   }
 
-  function onRowClick(row: any) {
+  function onRowSelected(row: any) {
     const index = filtered.findIndex((w) => w.table_meta_id === row.table_meta_id)
     if (filtered[index].meta_selected) {
       selectedCount--
@@ -208,11 +211,16 @@
     if (selected.length !== selectedCount) {
       throw new Error('Selection count did not match actual selected.')
     }
+    filtered = filtered.map(f => {
+      f.meta_selected = false;
+      return f;
+    })
     await onDelete?.(selected)
     dispatch('show_toast', {
       title: 'Deletion Started',
-      message: 'Your entries have been queued for deletion. This may take up to 2 minutes to show.',
+      message: 'Your entries have been queued for deletion.',
     })
+    load();
   }
 </script>
 
@@ -269,7 +277,7 @@
             </tr>
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}
-                <tr class:active={row.meta_selected} style="vertical-align: middle;">
+                <tr class:active={row.meta_selected} style="vertical-align: middle; cursor: pointer;" on:click={() => onRowClick(row)}>
                   <td>
                     <div class="form-check">
                       <input
@@ -277,8 +285,9 @@
                         type="checkbox"
                         value=""
                         checked={row.meta_selected}
-                        on:change={(e) => {
-                          onRowClick(row)
+                        on:click|stopPropagation
+                        on:change|stopPropagation={(e) => {
+                          onRowSelected(row)
                         }}
                         id={'row-toggle-' + index}
                       />

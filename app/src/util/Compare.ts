@@ -25,6 +25,10 @@ export function isEmptyOrNull(value: any[] | undefined | null): boolean {
   return value.length === 0
 }
 
+export function isNullString(value : any) {
+  return value == null || value == "null" || value == "undefined" || value == undefined
+}
+
 export function nullOrEmpty(str: any) {
   return str == null || str === ''
 }

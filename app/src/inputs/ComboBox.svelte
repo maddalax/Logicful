@@ -257,7 +257,7 @@
   {:else}
     {#if options}
       <div on:click|stopPropagation class="themed">
-        <Select items={options} on:select={onSelect} on:clear={onClear} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} />
+        <Select inputAttributes={{autocomplete : 'off'}} items={options} on:select={onSelect} on:clear={onClear} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} />
       </div>
     {/if}
     {#if field.helperText}

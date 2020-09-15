@@ -6,7 +6,7 @@ export function isString(value: any): value is string {
 }
 
 export function isObject(value: any): value is any {
-  return !isString(value) && typeof value === 'object'
+  return value != null && !isString(value) && typeof value === 'object'
 }
 
 export function isFunction(value: any): value is () => any {

@@ -12,12 +12,13 @@ const excluded = ['block']
 export async function submitForm() {
   const form = formStore.getForm()
   const clone = fastClone(form)
+  console.log(JSON.stringify(clone, null, 2))
   const id = form.id
   const results: { [key: string]: any } = {}
   const fieldMeta: { [key: string]: any } = {}
   const meta: { [key: string]: any } = {}
 
-  const ignored = ['name', 'value', 'type']
+  const ignored = ['name', 'value', 'type', 'id']
 
   // Parse out the values of the form by deleting
   // any key that isn't in the ignored list.
