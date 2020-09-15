@@ -1,0 +1,22 @@
+{
+  "extends": "@snowpack/app-scripts-svelte",
+  "devOptions" : {
+    "port": 3000
+  },
+  "plugins": [
+    [
+      "@snowpack/plugin-run-script",
+      {
+        "cmd": "tsc --noEmit",
+        "watch": "$1 --watch"
+      }
+    ],
+    ["@snowpack/plugin-run-script", {"cmd": "svelte-check --output human", "watch": "$1 --watch", "output": "stream"}]
+  ],
+  "alias": {
+    "@app": "./src"
+  },
+  "installOptions": {
+    "installTypes": true
+  }
+}

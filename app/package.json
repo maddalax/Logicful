@@ -24,7 +24,7 @@
 		"sapper:dev": "cross-env NODE_PATH=src PORT=5000 sapper dev",
 		"sapper:build": "cross-env NODE_ENV=production NODE_PATH=src sapper build",
 		"sapper:export": "cross-env NODE_ENV=production NODE_PATH=src sapper export --legacy --entry '/ form form/preview form/submissions form/builder form-settings folder builder account/login account/register'",
-		"dev": "cross-env NODE_PATH=src PORT=5000 run-p validate:dev sapper:dev",
+		"dev": "cross-env NODE_PATH=src PORT=5000 yarn run sapper:dev",
 		"prod": "cross-env NODE_PATH=src run-s validate sapper:build",
 		"start": "node __sapper__/build",
 		"export": "run-s validate sapper:export",

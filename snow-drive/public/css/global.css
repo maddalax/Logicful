@@ -1,0 +1,91 @@
+.shadow {
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.accordion > .card {
+    overflow: visible;
+}
+
+.ql-align-center {
+    text-align: center;
+}
+
+.ql-align-right {
+    text-align: right;
+}
+
+.ql-container.ql-snow {
+    padding-bottom: 1em;
+}
+
+.ql-container {
+    font-size: 16px;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+    margin-right: unset;
+}
+
+.icon span, .icon svg {
+    font-size: unset;
+}
+
+
+.tooltip-inner {
+    padding: 0.25rem 0.5rem;
+    color: #ffffff !important;
+    text-align: center;
+    background-color: #1b1b1b !important;
+    border-radius: 0.45rem;
+  }
+
+  .tooltip-arrow {
+    display: none !important;
+}   
+
+.form-control {
+    border-radius: 3px !important;
+}
+
+.form-file-input {
+    border-radius: 3px !important;
+}
+
+.input {
+    border-radius: 3px !important;
+}
+
+button {
+    border-radius: 3px !important;
+}
+
+a.btn {
+    border-radius: 3px !important;
+}
+
+.input-group-text {
+    border-radius: 3px !important;
+}
+
+.form-file-label {
+    border-radius: 3px !important;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #c3c3c3
+}
+.separator::before {
+    margin-right: 1.3em;
+}
+.separator::after {
+    margin-left: 1.3em;
+}

@@ -20,7 +20,7 @@ const preprocess = [
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
-const sourcemap = dev;
+const sourcemap = false;
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const warningIsIgnored = (warning) => warning.message.includes(
