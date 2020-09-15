@@ -37,7 +37,7 @@
   import Dialog from 'components/layout/Dialog.svelte'
   import SubmissionPreview from 'features/submissions/SubmissionPreview.svelte'
   import FormPreview from 'features/form/live/FormPreview.svelte'
-import { fastClone } from 'util/Compare';
+  import { fastClone } from 'util/Compare'
 
   export let formId = ''
   export let form: IForm
@@ -105,7 +105,7 @@ import { fastClone } from 'util/Compare';
 
   function onRowClick(row: any) {
     const submission = JSON.parse(row['full_submission_data'])
-    console.log("SUBM", submission)
+    console.log('SUBM', submission)
     preview = fastClone(submission)
   }
 
@@ -135,13 +135,14 @@ import { fastClone } from 'util/Compare';
     isOpen={true}
     width={'960px'}
     title={`Viewing Submission Details`}
-    onClose={() => {
-      console.log("closed")
+    onClose={async () => {
+      console.log('closed')
       preview = undefined
+      await tick();
     }}
   >
     <div>
-      <FormPreview submission={preview} />
+      <FormPreview submission={preview} form={form}/>
     </div>
   </Dialog>
 {/if}

@@ -24,6 +24,9 @@ export type FieldChange = {
 }
 
 export class FormStore {
+  initialized() : boolean {
+    return this.getForm().initialized === true;
+  }
   setForm(form: IForm) {
     const copy: IForm = fastClone(form)
     store = { fields: {} }
@@ -41,6 +44,7 @@ export class FormStore {
       //@ts-ignore
       store[f] = copy[f]
     })
+    store.initialized = true;
     dispatch('form_updated', this.getForm())
   }
   set(field: IField, change: FieldChange = { field: '', value: '', fromUser: false }) {

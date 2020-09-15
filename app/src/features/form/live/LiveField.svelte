@@ -3,7 +3,7 @@
 
   export let field: IField
   import TextInput from 'inputs/TextInput.svelte'
-  import { onMount } from 'svelte'
+  import { afterUpdate, onMount } from 'svelte'
   import ComboBox from 'inputs/ComboBox.svelte'
   import { LoadState } from 'models/LoadState'
   import { FieldValueLoader } from 'loader/FieldValueLoader'
@@ -19,7 +19,7 @@
   import DatePicker from 'components/DatePicker.svelte'
   import { firstNotEmpty } from 'util/Format'
   import { subscribeFieldChange } from 'event/FieldEvent'
-  import { fastClone } from 'util/Compare'
+  import { fastClone, fastEquals } from 'util/Compare'
   import FileUpload from 'inputs/FileUpload.svelte'
   import FullName from 'inputs/FullName.svelte'
   import CheckboxGroup from 'inputs/CheckboxGroup.svelte'
@@ -33,6 +33,12 @@
 
   onMount(load)
 
+  afterUpdate(async () => {
+    if(field.value && !fastEquals(field.value, lastValue)) {
+      await load();
+    }
+  })
+
   async function load() {
     lastValue = field.value
     if ((field.value ?? field.defaultValue) != null) {
@@ -42,6 +48,7 @@
         const result = await loader.load(field)
         value = result
         field.value = result
+        lastValue = result
         formStore.set(field, {
           value: result,
           field: 'value',
@@ -56,8 +63,8 @@
   }
 </script>
 
-<div style="margin-top: .3em" class:hidden>
-  <div style="padding: .75em 0.6em; border-radius: 1em;">
+<div class="spaced" class:hidden>
+  <div style="border-radius: 1em;">
     {#if hidden}
       <span />
     {:else}
@@ -97,5 +104,9 @@
 <style type="text/scss">
   .hidden {
     display: none;
+  }
+
+  .spaced {
+    margin-bottom: 1.3em
   }
 </style>

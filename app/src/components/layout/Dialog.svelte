@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import { afterUpdate, onMount } from 'svelte'
+  import { afterUpdate, onMount, tick } from 'svelte'
   import { subscribe, dispatch } from 'event/EventBus'
   import { subscribeFieldChange } from 'event/FieldEvent'
   import { randomString } from 'util/Generate'
@@ -29,10 +29,12 @@
 
   afterUpdate(() => {
     console.log('on dialog update')
-    if (!modal) {
+    if(isOpen) {
+      if (!modal) {
       initModal()
     } else {
       open()
+    }
     }
   })
 
@@ -55,15 +57,14 @@
     } catch {}
   }
 
-  function close() {
+  async function close() {
     try {
       modal.dispose()
       modal = null
     } catch {}
-    setTimeout(() => {
-      onClose?.()
-      isOpen = false
-    }, 100)
+    isOpen = false
+    await onClose?.()
+    await tick()
   }
 
   afterUpdate(() => {
@@ -99,7 +100,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
       </div>
       <div class="modal-body">
-        <slot />
+        {#if isOpen}
+          <slot />
+        {/if}
       </div>
       {#if actions.length > 0}
         <div class="modal-footer">

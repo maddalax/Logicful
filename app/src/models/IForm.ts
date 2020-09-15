@@ -17,6 +17,7 @@ export type IForm = {
   emailOnSubmission?: boolean
   loaded? : boolean
   url?: string
+  initialized? : boolean
 }
 
 export type ISubmission = {

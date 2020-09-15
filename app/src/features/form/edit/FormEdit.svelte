@@ -20,9 +20,9 @@
   })
 
   onMount(() => {
-    const f = formStore.getForm();
-    if(f.loaded) {
-      form = f;
+    const f = formStore.getForm()
+    if (f.loaded) {
+      form = f
     }
   })
 
