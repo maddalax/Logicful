@@ -35,7 +35,7 @@
   })
 </script>
 
-<Label field={{ label: 'Name', type: 'name', id: randomString(), required : field.required }} />
+<Label field={field} />
 <div class="d-flex flex-row bd-highlight" style="margin-bottom: -1.5em !important">
   {#if config.prefix}
     <div class="bd-highlight pr-2 flex-shrink-1">

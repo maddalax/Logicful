@@ -28,6 +28,7 @@
   let state = LoadState.NotStarted
   let value: any
   let lastValue: any
+  export let padding : boolean = true
   export let config: any = {}
   export let hidden: boolean = false
 
@@ -63,7 +64,7 @@
   }
 </script>
 
-<div class="spaced" class:hidden>
+<div class:spaced={padding} class:hidden>
   <div style="border-radius: 1em;">
     {#if hidden}
       <span />
