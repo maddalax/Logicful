@@ -17,7 +17,8 @@ function authHeaders() {
 }
 
 export function apiEndpoint() {
-  return config['API_ENDPOINT']
+  // todo update this to read from env
+  return 'https://logicful.org/api/'
 }
 
 export async function getApi<T>(path: string, fetch?: any): Promise<T> {

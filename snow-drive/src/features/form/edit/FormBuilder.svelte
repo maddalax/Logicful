@@ -31,7 +31,8 @@
     loadingActive = true;
     const formId = getUrlParameter("formId");
     if (!formId) {
-      window.location.replace("/form/create");
+      // todo revert
+      //window.location.replace("/form/create");
       return;
     }
     try {

@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"start": "cross-env snowpack dev --polyfill-node",
+		"start": "snowpack dev --polyfill-node",
+		"reload" : "snowpack dev --reload",
 		"build": "cross-env snowpack build",
 		"test": "jest"
 	},

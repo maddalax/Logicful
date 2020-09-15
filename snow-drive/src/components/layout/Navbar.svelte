@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import { User } from '@app/models/User'
+  import type { User } from '@app/models/User'
   import { me } from '@app/services/AuthService'
   import { onMount } from 'svelte'
   import LogoWhite from './logos/LogoWhite.svelte'

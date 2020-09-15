@@ -8,6 +8,7 @@
 	import Sidebar from '@app/components/Sidebar.svelte'
 	import type { IForm } from '@app/models/IForm'
 	import { getUrlParameter } from '@app/util/Http'
+	import Navbar from '@app/components/layout/Navbar.svelte'
   
 	let rightSidebar: any
 	let rightSidebarProps: any = {}
@@ -23,6 +24,7 @@
   </script>
   
   <div class="App">
+	<Navbar/>
 	<div class="container-fluid clearfix" id="main-container" style="margin-top: 3.9em;">
 		<div class="left-sidebar">
 		  <Sidebar>
