@@ -46,7 +46,7 @@
         try {
           focusable.focus();
         } catch {}
-      }, 500);
+      }, 50);
     }
   });
 

@@ -69,7 +69,7 @@
     {#if hidden}
       <span />
     {:else}
-      <div transition:fade={{ duration: 300 }}>
+      <div>
         {#if field.type === 'address'}
           <Address {field} {value} />
         {:else if field.type === 'string'}

@@ -32,7 +32,7 @@
     loadingActive = true;
     const formId = getUrlParameter("formId");
     if (!formId) {
-      navigate("/form/create", {replace : true});
+      navigate("/form/create", { replace: true });
       return;
     }
     try {
@@ -50,11 +50,6 @@
         w.selected = false;
         return w;
       });
-      // todo remove this, just for testing
-      form.groups = [
-        { value: "123", label: "Personal Details" },
-        { value: "456", label: "Experience Questions" },
-      ];
 
       form.loaded = true;
       formStore.setForm(form);
@@ -210,13 +205,17 @@
       });
     fields = fields.filter((w) => w != null);
     form.fields = fastClone(fields);
+    await dispatch("destroy_dragula", {});
+    await tick();
     dragForm = fastClone(form);
+    formStore.setForm(form);
     await tick();
     dragForm = undefined;
     if (form.fields.length === 0) {
       addPlaceHolder();
     }
-    formStore.setForm(form);
+    await tick();
+    dispatch("reload_dragula", {});
   });
 
   subscribeFieldChange(onMount, (newField: IField) => {

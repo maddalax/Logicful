@@ -10,7 +10,7 @@
   import formStore from '@app/store/FormStore'
   import { LogicBuilder } from '@app/services/LogicBuilder'
   import { fastClone } from '@app/util/Compare'
-  import { onMount } from 'svelte'
+  import { afterUpdate, onMount } from 'svelte'
   import Dialog from '@app/components/layout/Dialog.svelte'
   import { randomString } from '@app/util/Generate'
   import { saveToLocalStorage } from './services/SaveForm'

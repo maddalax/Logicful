@@ -17,7 +17,12 @@
   import Preloader from "@app/components/layout/Preloader.svelte";
   import { afterUpdate, onMount } from "svelte";
   let path = "";
-  
+
+
+  $: {
+    path = window.location.pathname;
+  }
+
   const noNav = [
     "/account/login",
     "/account/register",
