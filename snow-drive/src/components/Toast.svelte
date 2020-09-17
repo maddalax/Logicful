@@ -9,17 +9,6 @@
   let component: any
 
   onMount(() => {
-    //@ts-ignore
-    const toast = new bootstrap.Toast(component, {
-      delay: 0,
-      autohide: false,
-    })
-    component.addEventListener('hidden.bs.toast', () => {
-      dispatch('toast_closed', {
-        id,
-      })
-    })
-    toast.show()
   })
 </script>
 

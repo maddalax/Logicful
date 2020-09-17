@@ -15,8 +15,8 @@ func Delete(ids []string, formId string) error {
 		return nil
 	}
 
-	if len(ids) > 50 {
-		return errors.New("you may only delete up to 50 entries in a single request")
+	if len(ids) > 100 {
+		return errors.New("you may only delete up to 100 entries in a single request")
 	}
 
 	for _, id := range ids {

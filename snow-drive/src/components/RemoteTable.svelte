@@ -213,18 +213,25 @@
   async function deleteEntries() {
     const selected = filtered.filter((w) => w.meta_selected)
     if (selected.length !== selectedCount) {
-      throw new Error('Selection count did not match actual selected.')
+      throw new Error('Selection count did not match actual selected, please try reloading the page.')
     }
-    filtered = filtered.map(f => {
-      f.meta_selected = false;
-      return f;
-    })
     await onDelete?.(selected)
     dispatch('show_toast', {
       title: 'Deletion Started',
       message: 'Your entries have been queued for deletion.',
     })
     modal = ''
+    const toRemove = new Set(selected.map(w => w.table_meta_id));
+    filtered = filtered.filter(w => {
+      return !toRemove.has(w.table_meta_id)
+    })
+    filtered = filtered.map(f => {
+      f.meta_selected = false;
+      return f;
+    })
+    rows = rows.filter(w => {
+      return !toRemove.has(w.table_meta_id)
+    })
   }
 </script>
 

@@ -2,7 +2,6 @@ import App from "./App.svelte";
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '@fortawesome/fontawesome-free/js/all.min.js'
 import 'popper.js/dist/popper.min.js'
-import 'bootstrap/dist/js/bootstrap.min.js'
 
 var app = new App({
   target: document.body,

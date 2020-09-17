@@ -4,7 +4,7 @@
   import LoginPage from "./pages/account/LoginPage.svelte";
   import LogoutPage from "./pages/account/LogoutPage.svelte";
   import RegisterPage from "./pages/account/RegisterPage.svelte";
-import DashboardPage from "./pages/DashboardPage.svelte";
+  import DashboardPage from "./pages/DashboardPage.svelte";
   import FolderPage from "./pages/folder/FolderPage.svelte";
   import CreateFormPage from "./pages/form/CreateFormPage.svelte";
   import FormBuilderPage from "./pages/form/FormBuilderPage.svelte";

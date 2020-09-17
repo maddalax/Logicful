@@ -69,7 +69,7 @@
                   setRowsPerPage(entry)
                 }}
               >
-                Show {entry} Entires
+                Show {entry} Entries
               </a>
             </li>
           {/each}
