@@ -127,6 +127,7 @@
     <div>
       <RemoteTable 
         defaultSortColumn={"Submission Date"}
+        searchPlaceHolder={"Search Anything..."}
         {getRows} {sortColumns} {onDelete} {onRowClick} onFormat={formatSubmissionItem} {hidden} />
     </div>
   </div>

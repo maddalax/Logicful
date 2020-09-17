@@ -1,8 +1,11 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
   import Authenticate from "./components/Authenticate.svelte";
+  import AccountSettingsPage from "./pages/account/AccountSettingsPage.svelte";
+  import BillingPage from "./pages/account/BillingPage.svelte";
   import LoginPage from "./pages/account/LoginPage.svelte";
   import LogoutPage from "./pages/account/LogoutPage.svelte";
+  import ManageTeamPage from "./pages/account/ManageTeamPage.svelte";
   import RegisterPage from "./pages/account/RegisterPage.svelte";
   import DashboardPage from "./pages/DashboardPage.svelte";
   import FolderPage from "./pages/folder/FolderPage.svelte";
@@ -10,8 +13,23 @@
   import FormBuilderPage from "./pages/form/FormBuilderPage.svelte";
   import FormSubmissionsPage from "./pages/form/FormSubmissionsPage.svelte";
   import PreviewFormPage from "./pages/form/PreviewFormPage.svelte";
+  import Navbar from "@app/components/layout/Navbar.svelte";
+  import Preloader from "@app/components/layout/Preloader.svelte";
+  import { afterUpdate, onMount } from "svelte";
+  let path = "";
+  
+  const noNav = [
+    "/account/login",
+    "/account/register",
+    "/account/logout",
+    "/form/preview",
+  ];
 </script>
 
+<Preloader />
+{#if !noNav.includes(path)}
+  <Navbar />
+{/if}
 <!-- App.svelte -->
 <Router>
   <div>
@@ -51,6 +69,21 @@
     </Route>
     <Route path="/account/logout">
       <LogoutPage />
+    </Route>
+    <Route path="/account/settings">
+      <Authenticate>
+        <AccountSettingsPage />
+      </Authenticate>
+    </Route>
+    <Route path="/account/settings/team">
+      <Authenticate>
+        <ManageTeamPage />
+      </Authenticate>
+    </Route>
+    <Route path="/account/settings/billing">
+      <Authenticate>
+        <BillingPage />
+      </Authenticate>
     </Route>
   </div>
 </Router>

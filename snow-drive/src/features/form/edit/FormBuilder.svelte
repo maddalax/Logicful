@@ -109,22 +109,6 @@
     });
   }
 
-  subscribeComponent("page_change", (props) => {
-    if (props.query?.formId === form.id) {
-      return;
-    }
-    if (dirty) {
-      const confirm = window.confirm(
-        "You have unsaved changes, are you sure you want to create a new form?"
-      );
-      if (!confirm) {
-        window.location.replace("/form/builder?formId=" + form.id);
-        return;
-      }
-    }
-    loadForm();
-  });
-
   subscribeComponent("form_updated", (props) => {
     form = props;
     addPlaceHolder();

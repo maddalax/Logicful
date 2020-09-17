@@ -1,18 +1,19 @@
 <script lang="typescript">
-  import { onMount } from 'svelte'
-  import { me } from '@app/services/AuthService'
-import Navbar from './layout/Navbar.svelte'
-import Preloader from './layout/Preloader.svelte'
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { me } from "@app/services/AuthService";
+  import { navigate } from "svelte-routing";
 
 
   onMount(() => {
-    const user = me()
+    const user = me();
     if (!user.id) {
-     window.location.replace('/account/login')
+      navigate("/account/login");
     }
-  })
+  });
 </script>
 
-<Navbar/>
-<Preloader/>
-<slot></slot>
+<div>
+  <slot />
+</div>
+

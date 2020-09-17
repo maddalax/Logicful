@@ -89,3 +89,7 @@ a.btn {
 .separator::after {
     margin-left: 1.3em;
 }
+
+.bg-soft {
+    height: 100vh;
+}

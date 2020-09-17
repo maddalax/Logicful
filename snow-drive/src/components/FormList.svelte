@@ -3,6 +3,7 @@
   import type { IFolder } from '@app/models/IFolder'
   import { onMount } from 'svelte'
   import { getApi } from '@app/services/ApiService'
+import Link from './Link.svelte'
 
   export let forms: IForm[] = []
   // export let folder: IFolder
@@ -23,13 +24,13 @@
             <h3 class="h6 mb-1"><a href="./invoice.html" style="font-weight: 600;">{form.title}</a></h3>
             <!-- Text -->
             <small class="text-gray-700" >
-              <a href={`/form/submissions?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Submissions</a>
+              <Link href={`/form/submissions?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Submissions</Link>
               <span>  |  </span>
-              <a href={`/form-settings?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Form Settings</a>
+              <Link href={`/form-settings?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Form Settings</Link>
             </small>
           </div>
           <div class="col-auto">
-            <a href={`/form/builder?formId=${form.id}`} style="font-weight: 400;" class="btn btn-xs btn-outline-dark">Edit</a>
+            <Link href={`/form/builder?formId=${form.id}`} style="font-weight: 400;" class="btn btn-xs btn-outline-dark">Edit</Link>
             <button class="btn btn-xs btn-outline-dark">
               <span
                 on:click={() => {

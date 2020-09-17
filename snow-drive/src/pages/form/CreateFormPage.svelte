@@ -4,7 +4,8 @@
   import { LoadState } from '@app/models/LoadState'
   import { postApi } from '@app/services/ApiService'
   import { me } from '@app/services/AuthService'
-import { getUrlParameter } from '@app/util/Http';
+  import { getUrlParameter } from '@app/util/Http';
+  import { navigate } from "svelte-routing";
 
   let state: LoadState = LoadState.NotStarted
 
@@ -19,7 +20,7 @@ import { getUrlParameter } from '@app/util/Http';
         teamId: user.teamId,
         folder : folder
       })
-      window.location.replace(`/form/builder?formId=${response.id}`)
+      navigate(`/form/builder?formId=${response.id}`)
       state = LoadState.Finished
     } catch (ex) {
       state = LoadState.Failed

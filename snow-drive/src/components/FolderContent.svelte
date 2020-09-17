@@ -11,6 +11,8 @@
   import { me } from '@app/services/AuthService'
   import { LoadState } from '@app/models/LoadState'
   import Loader from './Loader.svelte'
+import Link from './Link.svelte'
+import LiveField from '@app/features/form/live/LiveField.svelte'
 
   let forms: IForm[] = []
   let folderId: string = ''
@@ -64,9 +66,9 @@
             </div>
             <div class="col-auto">
               <div class="align-items-center" style="padding-bottom: 0.3em; text-align: right !important;" />
-              <a href={`/form/create?folder=${folder?.id}`} class="btn btn-xs btn-outline-dark">
+              <Link href={`/form/create?folder=${folder?.id}`} classes="btn btn-xs btn-outline-dark">
                 <span class="fas fa-plus" /><span style="padding-left: 0.4em; font-weight: 400;">Create Form In This Folder</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
   import { subscribe, subscribeComponent } from '@app/event/EventBus'
   import type { IForm } from '@app/models/IForm'
   import { onMount } from 'svelte'
+import Link from '../Link.svelte'
 
   export let form: IForm
   export let selected: string
@@ -25,18 +26,18 @@
   </div>
   <div class="card-body p-2">
     <div class="list-group dashboard-menu list-group-sm">
-      <a href="./form-settings?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'general' ? 'active' : ''}">
+      <Link href="./form-settings?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'general' ? 'active' : ''}">
         General <span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>
-      </a>
-      <a href="./form-settings/workflows?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'workflows' ? 'active' : ''}">
+      </Link>
+      <Link href="./form-settings/workflows?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'workflows' ? 'active' : ''}">
         Workflows <span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>
-      </a>
-      <a href="./form-settings/emails?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'emails' ? 'active' : ''}">
+      </Link>
+      <Link href="./form-settings/emails?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'emails' ? 'active' : ''}">
         Emails <span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>
-      </a>
-      <a href="./form-settings/scoring?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'scoring' ? 'active' : ''}">
+      </Link>
+      <Link href="./form-settings/scoring?formId={form.id}" class="d-flex list-group-item border-0 list-group-item-action {selected === 'scoring' ? 'active' : ''}">
         Scoring <span class="icon icon-xs ml-auto"> <span class="fas fa-chevron-right" /> </span>
-      </a>
+      </Link>
     </div>
   </div>
 </div>

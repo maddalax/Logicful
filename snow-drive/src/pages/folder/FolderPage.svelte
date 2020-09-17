@@ -1,12 +1,7 @@
 <script lang="typescript">
-  import Folders from "../../components/Folders.svelte";
-  import FolderContent from "../../components/FolderContent.svelte";
-import { afterUpdate } from "svelte";
-
-  afterUpdate(() => {
-    console.log('hereee')
-  })
-
+  import Folders from "@app/components/Folders.svelte";
+  import FolderContent from "@app/components/FolderContent.svelte";
+  import { afterUpdate } from "svelte";
 </script>
 
 <div class="section section-lg pt-6 pt-md-6 bg-soft">

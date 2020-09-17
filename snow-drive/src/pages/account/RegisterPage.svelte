@@ -3,6 +3,7 @@
   import { setToken } from '@app/services/AuthService'
   import { afterUpdate } from 'svelte'
   import type {UserToken} from '@app/services/AuthService'
+  import { navigate } from "svelte-routing";
 
   let email = ''
   let password = ''
@@ -31,7 +32,7 @@
       })
       if (result.token) {
         setToken(result)
-        window.location.replace('/')
+        navigate('/')
       } else {
         error = 'Failed to register, unknown response from server.'
       }

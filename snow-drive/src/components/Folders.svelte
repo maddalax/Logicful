@@ -1,7 +1,6 @@
 <script lang="typescript">
   import { dispatch, subscribe, subscribeComponent } from "@app/event/EventBus";
-  import { link, Router } from "svelte-routing";
-
+  import { navigate } from "svelte-routing";
   import type { IFolder } from "@app/models/IFolder";
   import { LoadState } from "@app/models/LoadState";
   import type { User } from "@app/models/User";
@@ -13,6 +12,7 @@
   import Dialog from "./layout/Dialog.svelte";
   import Loader from "./Loader.svelte";
   import { getUrlParameter } from "@app/util/Http";
+  import Link from "./Link.svelte";
 
   export let selected: string = "";
   let folders: IFolder[] = [];
@@ -123,12 +123,6 @@
     padding-bottom: 0.4em;
     margin-top: 1em;
   }
-
-  .create-new-form {
-    width: 100%;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
 </style>
 
 {#if creatingNewFolder}
@@ -149,10 +143,10 @@
       placeholder="" />
   </Dialog>
 {/if}
-<a use:link href="/form/create" class="btn btn-primary create-new-form">
+<Link href="/form/create" class="btn btn-primary" style="width:100%;margin-top:1em;margin-bottom:1em;">
   <span class="fas fa-plus" />
   <span>Create New Form</span>
-</a>
+</Link>
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
   <div class="container-fluid p-2 mt-3" style="padding-left: 0em;">
     <input
@@ -171,33 +165,37 @@
   {#each folders as folder}
     <div class="card-body p-2">
       <div class="list-group dashboard-menu list-group-sm">
-          <button
-            on:click={() => {
-              selected = folder.id
-              load()
-            }}
-            class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}"
-            style="padding-bottom: 0.5em; padding-top: 0.5em;">
-            {#if folder.id === selected}
-              <div>
-                <span
-                  class="fas fa-folder"
-                  style="font-size: 1.2em; font-weight: 375;" />
-              </div>
-            {:else}
-              <div>
-                <span
-                  class="far fa-folder"
-                  style="font-size: 1.2em; font-weight: 375;" />
-              </div>
-            {/if}
-            <span
-              style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
-            {#if folder.id === selected}
-              <span class="icon icon-xs ml-auto">
-                <span class="fas fa-chevron-right" />
-              </span>
-            {/if}
+        <button
+          on:click={() => {
+            if(selected === folder.id) {
+              return;
+            }
+            selected = folder.id
+            load()
+            navigate(`/folder?folderId=${folder.id}`)
+          }}
+          class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}"
+          style="padding-bottom: 0.5em; padding-top: 0.5em;">
+          {#if folder.id === selected}
+            <div>
+              <span
+                class="fas fa-folder"
+                style="font-size: 1.2em; font-weight: 375;" />
+            </div>
+          {:else}
+            <div>
+              <span
+                class="far fa-folder"
+                style="font-size: 1.2em; font-weight: 375;" />
+            </div>
+          {/if}
+          <span
+            style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
+          {#if folder.id === selected}
+            <span class="icon icon-xs ml-auto">
+              <span class="fas fa-chevron-right" />
+            </span>
+          {/if}
           </button>
       </div>
     </div>

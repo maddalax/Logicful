@@ -13,10 +13,10 @@
 
   export let getRows: () => Promise<TableRow[]>
   export let defaultSortColumn = ''
+  export let searchPlaceHolder : string = 'Search'
 
   let id: string = ''
   let caption: string = ''
-  let searchPlaceHolder = 'Search'
   let rows: TableRow[] = []
   let filtered: TableRow[] = []
   let columns: string[] = []
