@@ -88,9 +88,15 @@
 <form class="preview-padding" id="form-preview">
   <div style="padding-bottom: 1em" id="form-preview-fields">
     {#each form.fields as field (field.id)}
-    <div id={`form-field-${field.id}`}>
-      <Field field={fastClone(field)} hidden={!display(field)}/>
-    </div>
+      {#if display(field)}
+        <div id={`form-field-${field.id}`}>
+          <Field field={fastClone(field)}/>
+        </div>
+      {:else}
+        <div id={`form-field-${field.id}`}>
+          <Field field={fastClone(field)} hidden={true} />
+        </div>
+      {/if}
     {/each}
   </div>
 </form>
