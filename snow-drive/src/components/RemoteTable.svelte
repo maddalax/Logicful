@@ -16,7 +16,6 @@
   export let searchPlaceHolder : string = 'Search'
 
   let id: string = ''
-  let caption: string = ''
   let rows: TableRow[] = []
   let filtered: TableRow[] = []
   let columns: string[] = []
@@ -24,17 +23,14 @@
   let query = ''
   let fuse: Fuse<{}>
   let state = LoadState.Loading
-  let lastSelectedIndex = -1
   let range: { min: number; max: number } = { min: 1, max: 1 }
   let widths: { [key: string]: number } = {}
   let canvasContext: any
   let sort = ''
   let sortDirection = ''
-  let editingColumns = false
   let allRowsSelected = false
   let selectedCount = 0
   let modal: 'delete' | 'toggle_column' | 'preview' | '' = ''
-  let preview : any = null
 
   export let headerActions: TableButtonAction[] = []
   export let onEdit: ((row: any) => any) | undefined = undefined

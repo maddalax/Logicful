@@ -24,11 +24,15 @@ func SetJson(value interface{}, name string, bucket string, acl string) (string,
 	return SetJsonBytes(serialized, name, bucket, acl)
 }
 
-func GetUrl(key string, bucket string) (string, error) {
+func GetUrl(key string, bucket string, fileName string) (string, error) {
+	if fileName == "" {
+		fileName = key
+	}
 	svc := s3.New(createSession())
 	params := &s3.GetObjectInput{
-		Bucket: aws.String(bucket),
-		Key:    aws.String(key),
+		Bucket:                     aws.String(bucket),
+		Key:                        aws.String(key),
+		ResponseContentDisposition: aws.String("attachment;filename=" + fileName),
 	}
 	req, _ := svc.GetObjectRequest(params)
 	url, err := req.Presign(15 * time.Minute)

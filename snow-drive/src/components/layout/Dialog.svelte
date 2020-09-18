@@ -16,12 +16,12 @@
   let processing = -1;
   let failed = false;
   let focusable: any = null;
-  let error = ''
+  let error = "";
 
   onMount(() => {
     setTimeout(() => {
       loaded = true;
-    }, 500)
+    }, 500);
     return () => {
       isOpen = false;
     };
@@ -32,7 +32,7 @@
   }
 
   async function close() {
-    if(!isOpen || !loaded) {
+    if (!isOpen || !loaded) {
       return;
     }
     isOpen = false;
@@ -53,7 +53,7 @@
   async function runAction(action: ButtonAction, index: number) {
     try {
       failed = false;
-      error = ''
+      error = "";
       processing = index;
       if (action && action.onClick) {
         await action.onClick();
@@ -67,6 +67,13 @@
     }
   }
 </script>
+
+<style>
+  .modal-body {
+    overflow: scroll;
+    height: 85vh;
+  }
+</style>
 
 {#if isOpen}
   <div class="modal-backdrop fade show" on:click={close} />
@@ -127,4 +134,4 @@
   </div>
 {/if}
 
-<svelte:body on:click={close}></svelte:body>
+<svelte:body on:click={close} />

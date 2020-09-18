@@ -40,6 +40,13 @@ type LeanForm struct {
 	Title string
 }
 
+type File struct {
+	Id       string `json:"id"`
+	Name     string `json:"name"`
+	FileType string `json:"type"`
+	Size     int64  `json:"size"`
+}
+
 type LeanSubmission struct {
 	Id string
 	Creatable

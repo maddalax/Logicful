@@ -102,12 +102,18 @@ export async function uploadFiles(form : IForm) {
   const responses : any[] = await Promise.all(promises);
   const upload = responses.map((r : {url : string, key : string}, i : number) => {
     const id = fileFields[i].id;
-    const file = formStore.getFile(fileFields[i].value);
+    const file = formStore.getFile(fileFields[i].value.id);
+    if(!file) {
+      throw new Error("Failed to get file for " + fileFields[i].name)
+    }
     const index = form.fields.findIndex(w => w.id === id);
     form.fields[index].value.id = r.key;
     return fetch(r.url, {
       method: 'PUT',
-      body: file
+      body: file,
+      headers : {
+        'Content-Type' : 'application/octet-stream'
+      }
     });
   });
   await Promise.all(upload);

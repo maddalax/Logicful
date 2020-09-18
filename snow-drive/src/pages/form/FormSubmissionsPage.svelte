@@ -20,6 +20,12 @@
       const results = [value?.prefix?.value, value?.first?.value, value?.middle?.value, value?.last?.value]
       return results.filter((r) => r).join(' ')
     }
+    if(type === 'file' && isObject(value)) {
+      if(!value) {
+        return 'No file submitted'
+      }
+      return `${value.name ?? value.id}, ${value.type}`
+    }
     return undefined
   }
 </script>
@@ -133,7 +139,7 @@
   </div>
 </div>
 
-{#if preview}
+{#if preview && form}
   <Dialog
     isOpen={true}
     width={'960px'}
@@ -145,7 +151,7 @@
     }}
   >
     <div>
-      <FormPreview submission={preview} form={form}/>
+      <FormPreview submission={preview} form={form} mode={'submission_preview'}/>
     </div>
   </Dialog>
 {/if}

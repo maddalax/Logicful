@@ -96,7 +96,16 @@ func Add(submission models.Submission) error {
 
 func List(id string) (string, error) {
 	name := id + ".json"
-	url, err := storage.GetUrl(name, "logicful-form-submissions")
+	url, err := storage.GetUrl(name, "logicful-form-submissions", "")
+	if err != nil {
+		return "", err
+	}
+	return url, nil
+}
+
+func GetSubmissionFile(file models.File, user models.User) (string, error) {
+	// todo do something w/ user.
+	url, err := storage.GetUrl(file.Id, "logicful-form-assets", file.Name)
 	if err != nil {
 		return "", err
 	}
