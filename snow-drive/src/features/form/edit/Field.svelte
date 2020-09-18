@@ -46,6 +46,11 @@
   }
 
   function styles() {
+
+    if(field.type === 'placeholder') {
+      return ''
+    }
+
     let style = ''
     if (padding) {
       style = `padding: .75em 0.6em; border-radius: 1em;`
@@ -93,7 +98,7 @@
   }
 </script>
 
-<div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor} class:selected={field.selected}>
+<div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor && field.type !== 'placeholder'} class:selected={field.selected}>
   {#if field.selected}
     <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
       <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">
@@ -127,6 +132,7 @@
       <DatePicker {field} {...config} />
     {:else if field.type === 'placeholder'}
       <div class="placeholder">
+        <i class="fas fa-grip-horizontal"></i>
         <p>You have no fields, drag one from the left sidebar to get started.</p>
       </div>
     {:else if field.type === 'file'}
@@ -157,10 +163,10 @@
   }
 
   .placeholder {
-    background-color: #f5f5f5 !important;
     padding: 4em !important;
     border-radius: 0.3rem;
-  }
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23424767FF' stroke-width='1' stroke-dasharray='12%2c 15' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    }
 
   .hidden {
     opacity: 0.7;

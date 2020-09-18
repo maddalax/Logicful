@@ -24,7 +24,6 @@
       placeholder = firstNotEmpty(field.placeholder, 'Choose a file...')
       files = undefined
       formStore.clearFile(fileId)
-      fileId = ''
       field.value = undefined
       formStore.set(field, {
         field: 'value',
@@ -36,14 +35,20 @@
 
   afterUpdate(() => {
     if (files && files[0] && !hasFile) {
+      const file = files[0];
       hasFile = true
-      placeholder = files[0].name
-      fileId = randomString()
-      formStore.setFile(fileId, files[0])
-      field.value = fileId
+      placeholder = file.name
+      fileId = field.id
+      formStore.setFile(fileId, file)
+      field.value = {
+        name : placeholder,
+        id : fileId,
+        size : file.size,
+        type : file.type
+      }
       formStore.set(field, {
         field: 'value',
-        value: fileId,
+        value: field.value,
         fromUser: true,
       })
     }

@@ -19,3 +19,12 @@ func SetJson(key string, value []byte) (string, error) {
 
 	return path, nil
 }
+
+func GenerateStoreUrl() (string, string, error) {
+	key := uuid.New().String()
+	url, err := storage.GenerateUrl(key, "logicful-form-assets")
+	if err != nil {
+		return "", "", err
+	}
+	return url, key, nil
+}

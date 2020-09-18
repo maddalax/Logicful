@@ -11,10 +11,12 @@
   import { submitForm } from '@app/features/form/live/service/SubmitForm'
   import { LoadState } from '@app/models/LoadState'
   import { fade } from 'svelte/transition'
+  import { subscribeComponent } from '@app/event/EventBus';
 
   export let form: IForm
   export let mode: string = ''
   let state = LoadState.NotStarted
+  let uploadingFiles = false;
 
   subscribeFieldChange(onMount, (updatedField: IField) => {
     if (!form || !form.fields) {
@@ -45,6 +47,14 @@
     const builder = new LogicBuilder()
     return builder.evaluate(field)
   }
+
+  subscribeComponent("submission_uploading_files", () => {
+    uploadingFiles = true;
+  })
+
+  subscribeComponent("submission_uploading_files_finished", () => {
+    uploadingFiles = false;
+  })
 
   async function onSubmit() {
     state = LoadState.Loading
@@ -82,7 +92,13 @@
   {:else if state === LoadState.Failed}
     <button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" type="submit">Failed to Submit, Click To Try Again</button>
   {:else if state === LoadState.Loading}
-    <button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>Submitting...</button>
+    <button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>
+      {#if uploadingFiles} 
+        Uploading Files...
+      {:else}
+        Submitting...
+      {/if}
+    </button>
   {:else if state === LoadState.Finished}<button style="margin-left: 0.5em; margin-bottom: 2em" class="btn btn-primary" disabled>Submitted Successfully.</button>{/if}
 </form>
 

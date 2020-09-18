@@ -35,6 +35,16 @@ func GetUrl(key string, bucket string) (string, error) {
 	return url, err
 }
 
+func GenerateUrl(key string, bucket string) (string, error) {
+	svc := s3.New(createSession())
+	req, _ := svc.PutObjectRequest(&s3.PutObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	str, err := req.Presign(15 * time.Minute)
+	return str, err
+}
+
 func SetJsonBytes(value []byte, name string, bucket string, acl string) (string, error) {
 
 	uploader := s3manager.NewUploader(createSession())

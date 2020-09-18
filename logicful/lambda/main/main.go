@@ -59,6 +59,7 @@ func addSubmissionHandlers(router *httprouter.Router) {
 
 func addSetS3Handlers(router *httprouter.Router) {
 	router.POST("/api/s3/json", s3store.SetJsonHandler)
+	router.POST("/api/s3/put", s3store.GenerateUrlHandler)
 }
 
 func addUserRoutes(router *httprouter.Router) {

@@ -22,3 +22,19 @@ func SetJsonHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 		Message: url,
 	})
 }
+
+func GenerateUrlHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	url, key, err := GenerateStoreUrl()
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	type UrlResult struct {
+		Key string `json:"key"`
+		Url string `json:"url"`
+	}
+	httpextensions.WriteJson(w, UrlResult{
+		Key: key,
+		Url: url,
+	})
+}
