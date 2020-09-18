@@ -15,8 +15,14 @@
   let fileId = ''
 
   onMount(() => {
-    placeholder = firstNotEmpty(field.placeholder, 'Choose a file...')
+    placeholder = firstNotEmpty(field.placeholder ?? field.value?.name, 'Choose a file...')
   })
+
+  subscribeFieldChange(onMount, (newField : IField) => {
+    if(newField.id === field.id) {
+      placeholder = firstNotEmpty(field.placeholder ?? field.value?.name, 'Choose a file...') 
+    }
+  });
 
   function clear() {
     if (files) {
