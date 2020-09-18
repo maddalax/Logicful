@@ -12,7 +12,7 @@
   import formStore from '@app/store/FormStore'
   import { nullOrEmpty } from '@app/util/Compare'
   import Label from '@app/inputs/Label.svelte'
-  import Select from 'svelte-select'
+  import Select from '@app/components/select/Select.svelte'
 
   let initialized = false
   let dropdownId

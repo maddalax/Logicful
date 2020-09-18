@@ -12,9 +12,9 @@
 
   onMount(() => {
     window.onunhandledrejection = (e: any) => {
+      console.error(e);
       const message = e.reason?.message ?? e.stack ?? e.message
       dispatch("unhandled_error", message);
-      console.error(e);
       alert(`An unhandled exception has occured.\n\n${message}\n\nYour page may not work as expected.\n\nPlease try reloading the page.\n\nThis issue has been reported.`)
     };
   });

@@ -35,7 +35,6 @@
 		"smooth-scroll": "^16.1.0",
 		"svelte": "3.25.1",
 		"svelte-routing": "^1.4.2",
-		"svelte-select": "^3.11.1",
 		"traverse": "^0.6.6",
 		"uuid": "^8.3.0",
 		"vivus": "^0.4.5",

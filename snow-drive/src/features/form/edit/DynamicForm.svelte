@@ -5,29 +5,18 @@
   import type { IField } from '@app/models/IField'
   import { subscribeFieldChange } from '@app/event/FieldEvent'
   import { DynamicFormMode } from '@app/components/models/ComponentProps'
-  import { dispatch, dispatchSync, subscribeComponent } from '@app/event/EventBus'
-  import { transformDraggedElement } from './util/Draggable'
-  import formStore from '@app/store/FormStore'
+  import { dispatch, subscribeComponent } from '@app/event/EventBus'
   import { LogicBuilder } from '@app/services/LogicBuilder'
   import { fastClone } from '@app/util/Compare'
-  import { afterUpdate, onMount } from 'svelte'
+  import { onMount } from 'svelte'
   import Dialog from '@app/components/layout/Dialog.svelte'
-  import { randomString } from '@app/util/Generate'
-  import { saveToLocalStorage } from './services/SaveForm'
 
   export let form: IForm
   export let mode: DynamicFormMode = DynamicFormMode.Live
-  let considering: boolean = false
-  let values: { [key: string]: any } = {}
-  let hasPlaceholder: boolean = false
-  let fromSidebar = false
   let deleting = false
 
   subscribeComponent('confirm_field_deletion', () => {
     deleting = true
-  })
-  subscribeComponent('form_placeholder_changed', (props) => {
-    hasPlaceholder = props.added
   })
 
   subscribeFieldChange(onMount, (updatedField: IField) => {
@@ -99,15 +88,9 @@
 <form class="preview-padding" id="form-preview">
   <div style="padding-bottom: 1em" id="form-preview-fields">
     {#each form.fields as field (field.id)}
-      {#if display(field)}
-        <div id={`form-field-${field.id}`}>
-          <Field field={fastClone(field)} />
-        </div>
-      {:else}
-        <div id={`form-field-${field.id}`}>
-          <Field field={fastClone(field)} hidden={true} />
-        </div>
-      {/if}
+    <div id={`form-field-${field.id}`}>
+      <Field field={fastClone(field)} hidden={!display(field)}/>
+    </div>
     {/each}
   </div>
 </form>
