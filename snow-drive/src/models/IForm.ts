@@ -25,7 +25,8 @@ export type ISubmission = {
   formId : string,
   details : {[key : string] : any},
   meta : {
-    env : any
+    env : any,
+    ipAddress : string
   }
   [key : string] : any
 }

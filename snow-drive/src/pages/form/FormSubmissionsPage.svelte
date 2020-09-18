@@ -35,13 +35,11 @@
   import { LoadState } from '@app/models/LoadState'
   import RemoteTable from '@app/components/RemoteTable.svelte'
   import type { TableRow } from '@app/components/models/RemoteTableProps'
-  import { randomString, randomStringSmall } from '@app/util/Generate'
   import type { IForm, ISubmission } from '@app/models/IForm'
-  import { isObject, isString } from "@app/guards/Guard"
+  import { isObject } from "@app/guards/Guard"
   import { deleteApi, getApi } from '@app/services/ApiService'
   import { getUrlParameter } from '@app/util/Http'
   import Dialog from '@app/components/layout/Dialog.svelte'
-  import SubmissionPreview from '@app/features/submissions/SubmissionPreview.svelte'
   import FormPreview from '@app/features/form/live/FormPreview.svelte'
   import { fastClone } from '@app/util/Compare'
 
@@ -49,8 +47,6 @@
   export let form: IForm | undefined = undefined
 
   let state: LoadState = LoadState.NotStarted
-  let container: any
-  let filtered: any[] = []
   let hidden = new Set(['submission_id', 'full_submission_data'])
   let preview: ISubmission | undefined = undefined
 
@@ -60,6 +56,11 @@
       return []
     }
     form = await getApi<IForm>(`form/${formId}`)
+
+    if(!form) {
+      return []
+    }
+
     const url: { message: string } = await getApi(`form/${formId}/submission`)
     const response = await fetch(url.message)
     let submissions: any[] = []
@@ -87,10 +88,10 @@
           if (labels[key]) {
             const label = labels[key]
             d.details[label] = d.details[key]
-            types[label] = form.fields.find((w) => w.label === label)?.type ?? ''
+            types[label] = form!.fields.find((w) => w.label === label)?.type ?? ''
             delete d.details[key]
           } else {
-            const fieldByName = form.fields.find((w) => w.name === key)?.type
+            const fieldByName = form!.fields.find((w) => w.name === key)?.type
             if (fieldByName) {
               types[key] = fieldByName
             }
@@ -105,13 +106,12 @@
 
   function sortColumns(columns: string[]) {
     return columns.sort((a, b) => {
-      return form.fields.findIndex((f) => f.label === a) - form.fields.findIndex((f) => f.label === b)
+      return form!.fields.findIndex((f) => f.label === a) - form!.fields.findIndex((f) => f.label === b)
     })
   }
 
   function onRowClick(row: any) {
     const submission = JSON.parse(row['full_submission_data'])
-    console.log('SUBM', submission)
     preview = fastClone(submission)
   }
 
@@ -134,6 +134,7 @@
       <RemoteTable 
         defaultSortColumn={"Submission Date"}
         searchPlaceHolder={"Search Anything..."}
+        columnMeta={{"Submission Date" : {type : "date"}}}
         {getRows} {sortColumns} {onDelete} {onRowClick} onFormat={formatSubmissionItem} {hidden} />
     </div>
   </div>

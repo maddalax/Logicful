@@ -157,6 +157,7 @@
     <p><strong>Submission Date: </strong> {formatDetail('Submission Date')}</p>
     <br />
     <h4><strong>Environment Information</strong></h4>
+    <strong>Ip Address: </strong>{submission.meta?.ipAddress}
     <p>
       <strong>Browser: </strong>{submission.meta?.env?.browser?.name}
       {submission.meta?.env?.browser?.version}

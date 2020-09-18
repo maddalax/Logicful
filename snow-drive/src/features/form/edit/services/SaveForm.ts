@@ -8,17 +8,12 @@ export async function saveForm(options: {
   dispatchEvent: boolean
 } = { dispatchEvent: true }) {
   const form = formStore.getForm()
-  const isNew = form.id == null
-  removeValues(form)
-  const saved: IForm = await save(form)
-  form.id = saved.id
-  saveToLocalStorage(form)
+  const clone = fastClone(form);
+  removeValues(clone)
+  await save(clone)
+  saveToLocalStorage(clone)
   if (!options.dispatchEvent) {
     return;
-  }
-  formStore.setForm(form)
-  if (isNew) {
-    window.location.replace('/form/builder?formId=' + form.id)
   }
   dispatch("form_saved", form)
 }

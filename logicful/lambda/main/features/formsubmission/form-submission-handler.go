@@ -14,6 +14,7 @@ func AddHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	if !httpextensions.ReadJson(&submission, w, r) {
 		return
 	}
+	submission.Meta.IpAddress = r.RemoteAddr
 	submission.FormId = ps.ByName("formId")
 	err := Add(submission)
 	if err != nil {

@@ -53,11 +53,16 @@ type LeanSubmission struct {
 	Status string
 }
 
+type SubmissionMeta struct {
+	Env interface{} `json:"env"`
+	IpAddress string `json:"ipAddress"`
+}
+
 type Submission struct {
 	FormId           string      `json:"formId"`
 	Id               string      `json:"id"`
 	Details          interface{} `json:"details"`
-	Meta             interface{} `json:"meta"`
+	Meta             SubmissionMeta `json:"meta"`
 	FieldMeta        interface{} `json:"fieldMeta"`
 	Status           string      `json:"status"`
 	NewSubmissionKey string      `json:"newSubmissionKey"`

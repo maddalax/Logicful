@@ -14,6 +14,7 @@
   export let getRows: () => Promise<TableRow[]>
   export let defaultSortColumn = ''
   export let searchPlaceHolder : string = 'Search'
+  export let columnMeta : {[key : string] : {type : string}} = {}
 
   let id: string = ''
   let rows: TableRow[] = []
@@ -127,6 +128,7 @@
       sort = column
       sortDirection = 'desc'
     }
+    let isDate = columnMeta[column]?.type === "date"
     dispatchPrivate(id, 'on_sort', { sort, sortDirection })
     filtered = filtered.sort(function (a, b) {
       var nameA = a[sort]?.toString()?.toUpperCase()
@@ -139,6 +141,14 @@
       }
       if (nameB == null) {
         return 1
+      }
+      if(isDate) {
+        if(new Date(nameA).getTime() < new Date(nameB).getTime()) {
+          return 1;
+        }
+        if(new Date(nameA).getTime() > new Date(nameB).getTime()) {
+          return -1;
+        }
       }
       if (nameA < nameB) {
         return 1
