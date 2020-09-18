@@ -1,10 +1,12 @@
 package s3store
 
 import (
+	"errors"
 	"github.com/julienschmidt/httprouter"
 	"github.com/logicful/service/httpextensions"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 )
 
 func SetJsonHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -24,7 +26,21 @@ func SetJsonHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 }
 
 func GenerateUrlHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	url, key, err := GenerateStoreUrl()
+	length := httpextensions.Query("length", r)
+	if length == "" {
+		httpextensions.WriteError(w, errors.New("length must be supplied"))
+		return
+	}
+	parsed, err := strconv.ParseInt(length, 10, 64)
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	if parsed >= 5e+7 {
+		httpextensions.WriteError(w, errors.New("file may not be greater than 50 mb"))
+		return
+	}
+	url, key, err := GenerateStoreUrl(parsed)
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

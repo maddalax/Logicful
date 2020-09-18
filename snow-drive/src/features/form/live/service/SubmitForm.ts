@@ -97,7 +97,11 @@ export async function uploadFiles(form : IForm) {
   dispatch("submission_uploading_files", {})
   const fileFields = form.fields.filter(w => w.type === "file" && w.value);
   const promises = await fileFields.map(f => {
-    return postApi(`s3/put`, {})
+    const file = formStore.getFile(f.value.id);
+    if(!file) {
+      throw new Error("Failed to get file for " + f.name)
+    }
+    return postApi(`s3/put?length=${file!.size}`, {})
   });
   const responses : any[] = await Promise.all(promises);
   const upload = responses.map((r : {url : string, key : string}, i : number) => {
@@ -108,13 +112,22 @@ export async function uploadFiles(form : IForm) {
     }
     const index = form.fields.findIndex(w => w.id === id);
     form.fields[index].value.id = r.key;
-    return fetch(r.url, {
-      method: 'PUT',
-      body: file,
-      headers : {
-        'Content-Type' : 'application/octet-stream'
-      }
-    });
+    return new Promise((resolve, reject) => {
+      fetch(r.url, {
+        method: 'PUT',
+        body: file,
+        headers : {
+          'Content-Type' : 'application/octet-stream'
+        }
+      }).then(result => {
+        if(!result.ok) {
+          return reject("Failed to upload file, please try again.")
+        }
+        resolve();
+      }).catch(error => {
+        reject(error)
+      });
+    })
   });
   await Promise.all(upload);
   dispatch("submission_uploading_files_finished", {})

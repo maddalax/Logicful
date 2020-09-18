@@ -71,7 +71,7 @@
 <style>
   .modal-body {
     overflow: scroll;
-    height: 85vh;
+    max-height: 85vh;
   }
 </style>
 

@@ -39,11 +39,12 @@ func GetUrl(key string, bucket string, fileName string) (string, error) {
 	return url, err
 }
 
-func GenerateUrl(key string, bucket string) (string, error) {
+func GenerateUrl(key string, bucket string, contentLength int64) (string, error) {
 	svc := s3.New(createSession())
 	req, _ := svc.PutObjectRequest(&s3.PutObjectInput{
-		Bucket: aws.String(bucket),
-		Key:    aws.String(key),
+		Bucket:        aws.String(bucket),
+		Key:           aws.String(key),
+		ContentLength: aws.Int64(contentLength),
 	})
 	str, err := req.Presign(15 * time.Minute)
 	return str, err
