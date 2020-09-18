@@ -51,16 +51,19 @@
       return ''
     }
 
-    let style = ''
+    if(padding && field.type === "address") {
+      return `padding: .75em 0.6em; border-radius: 1em; padding-bottom: .1em;`
+    }
+
     if (padding) {
-      style = `padding: .75em 0.6em; border-radius: 1em;`
+      return `padding: .75em 0.6em; border-radius: 1em;`
     }
 
     if (field.customCss) {
-      style += ` ${field.customCss} padding-left: 0.6em;`
+      return` ${field.customCss} padding-left: 0.6em;`
     }
 
-    return style
+    return ''
   }
 
   function select() {
@@ -98,7 +101,7 @@
   }
 </script>
 
-<div on:click|stopPropagation={select} style="margin-top: .3em" class:hidden class:wrapper={!field.configTarget && !editor && field.type !== 'placeholder'} class:selected={field.selected}>
+<div on:click|stopPropagation={select} class:hidden class:wrapper={!field.configTarget && !editor && field.type !== 'placeholder'} class:selected={field.selected}>
   {#if field.selected}
     <div class="btn-group float-right" role="group" aria-label="Selected" style="top: -0.5em; right: 1em;">
       <button on:click|stopPropagation={onClone} type="button" class="btn btn-secondary" style="font-size: 0.5rem; padding: 0.25rem 0.5rem;">

@@ -62,9 +62,19 @@
       }
     }
   }
+
+  function spacing() {
+    if(!padding) {
+      return ""
+    }
+    if(field.type === "address") {
+      return "margin-bottom: .85em"
+    }
+    return "margin-bottom: 1.3em"
+  }
 </script>
 
-<div class:spaced={padding} class:hidden>
+<div style={spacing()} class:hidden>
   <div style="border-radius: 1em;">
     {#if hidden}
       <span />
