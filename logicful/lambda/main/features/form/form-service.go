@@ -33,9 +33,12 @@ func Set(form models.Form) (models.Form, error) {
 		}
 	}
 
-	form.CreationDate = date.ISO8601(time.Now())
+	if form.CreationDate == "" {
+		form.CreationDate = date.ISO8601(time.Now())
+		form.CreateBy = "maddox2"
+	}
+
 	form.ChangeDate = date.ISO8601(time.Now())
-	form.CreateBy = "maddox2"
 	form.ChangeBy = "maddox2"
 
 	fields, err := dynamodbattribute.Marshal(form.Fields)

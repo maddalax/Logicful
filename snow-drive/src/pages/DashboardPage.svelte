@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import Dashboard from '../components/dashboard/Dashboard.svelte'
+  import Dashboard from "../components/dashboard/Dashboard.svelte";
 </script>
 
 <div style=" background-color: #eff1f5;">

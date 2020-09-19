@@ -1,268 +1,293 @@
 <script lang="typescript">
-  import type { TableRow, TableButtonAction } from '@app/components/models/RemoteTableProps'
-  import { onMount, tick } from 'svelte'
-  import Fuse from 'fuse.js'
-  import { LoadState } from '@app/models/LoadState'
-  import { randomString } from '@app/util/Generate'
-  import Pagination from '@app/components/Pagination.svelte'
-  import { dispatch, dispatchPrivate } from '@app/event/EventBus'
-  import { fastEquals } from '@app/util/Compare'
-  import Dialog from '@app/components/layout/Dialog.svelte'
-  import ToastManager from '@app/components/ToastManager.svelte'
-  import { isObject } from "@app/guards/Guard"
+  import type {
+    TableRow,
+    TableButtonAction,
+  } from "@app/components/models/RemoteTableProps";
+  import { onMount, tick } from "svelte";
+  import Fuse from "fuse.js";
+  import { LoadState } from "@app/models/LoadState";
+  import { randomString } from "@app/util/Generate";
+  import Pagination from "@app/components/Pagination.svelte";
+  import { dispatch, dispatchPrivate } from "@app/event/EventBus";
+  import { fastEquals } from "@app/util/Compare";
+  import Dialog from "@app/components/layout/Dialog.svelte";
+  import ToastManager from "@app/components/ToastManager.svelte";
+  import { isObject } from "@app/guards/Guard";
 
-  export let getRows: () => Promise<TableRow[]>
-  export let defaultSortColumn = ''
-  export let searchPlaceHolder : string = 'Search'
-  export let columnMeta : {[key : string] : {type : string}} = {}
+  export let getRows: () => Promise<TableRow[]>;
+  export let defaultSortColumn = "";
+  export let searchPlaceHolder: string = "Search";
+  export let columnMeta: { [key: string]: { type: string } } = {};
 
-  let id: string = ''
-  let rows: TableRow[] = []
-  let filtered: TableRow[] = []
-  let columns: string[] = []
-  let filteredColumns: string[] = []
-  let query = ''
-  let fuse: Fuse<{}>
-  let state = LoadState.Loading
-  let range: { min: number; max: number } = { min: 1, max: 1 }
-  let widths: { [key: string]: number } = {}
-  let canvasContext: any
-  let sort = ''
-  let sortDirection = ''
-  let allRowsSelected = false
-  let selectedCount = 0
-  let modal: 'delete' | 'toggle_column' | 'preview' | '' = ''
+  let id: string = "";
+  let rows: TableRow[] = [];
+  let filtered: TableRow[] = [];
+  let columns: string[] = [];
+  let filteredColumns: string[] = [];
+  let query = "";
+  let fuse: Fuse<{}>;
+  let state = LoadState.Loading;
+  let range: { min: number; max: number } = { min: 1, max: 1 };
+  let widths: { [key: string]: number } = {};
+  let canvasContext: any;
+  let sort = "";
+  let sortDirection = "";
+  let allRowsSelected = false;
+  let selectedCount = 0;
+  let modal: "delete" | "toggle_column" | "preview" | "" = "";
 
-  export let headerActions: TableButtonAction[] = []
-  export let onEdit: ((row: any) => any) | undefined = undefined
-  export let onDelete: ((rows: any[]) => any) | undefined = undefined
-  export let hidden: Set<string> = new Set<string>()
-  export let sortColumns: ((columns: string[]) => string[]) | undefined = undefined
-  export let onFormat: (column: string, row: any) => any = () => undefined
-  export let onRowClick : (row : any) => any = () => {}
+  export let headerActions: TableButtonAction[] = [];
+  export let onEdit: ((row: any) => any) | undefined = undefined;
+  export let onDelete: ((rows: any[]) => any) | undefined = undefined;
+  export let hidden: Set<string> = new Set<string>();
+  export let sortColumns:
+    | ((columns: string[]) => string[])
+    | undefined = undefined;
+  export let onFormat: (column: string, row: any) => any = () => undefined;
+  export let onRowClick: (row: any) => any = () => {};
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
-      const result: any = {}
+      const result: any = {};
       Object.keys(r).forEach((key) => {
-        result[key] = isObject(r[key]) ? JSON.stringify(r[key]) : r[key]
-      })
-      return result
-    })
+        result[key] = isObject(r[key]) ? JSON.stringify(r[key]) : r[key];
+      });
+      return result;
+    });
     return new Fuse(list, {
       keys: Object.keys(rows[0]),
-    })
+    });
   }
 
   onMount(() => {
-    id = randomString()
-    hidden.add('table_meta_id')
-    const element = document.createElement('canvas')
-    canvasContext = element.getContext('2d')
-    load()
-  })
+    id = randomString();
+    hidden.add("table_meta_id");
+    const element = document.createElement("canvas");
+    canvasContext = element.getContext("2d");
+    load();
+  });
 
   $: {
     if (rows.length === 0) {
-      filtered = rows
-    } else if (query === '') {
-      filtered = rows
+      filtered = rows;
+    } else if (query === "") {
+      filtered = rows;
     } else {
-      const result = fuse.search(query)
-      filtered = result.map((r) => r.item)
+      const result = fuse.search(query);
+      filtered = result.map((r) => r.item);
     }
   }
 
   function selectAllRows() {
     for (let i = 0; i < filtered.length; i++) {
       if (i >= range.min && i <= range.max) {
-        filtered[i].meta_selected = allRowsSelected ? false : true
+        filtered[i].meta_selected = allRowsSelected ? false : true;
       }
     }
-    allRowsSelected = !allRowsSelected
-    let count = 0
+    allRowsSelected = !allRowsSelected;
+    let count = 0;
     for (let i = 0; i < filtered.length; i++) {
       if (filtered[i].meta_selected) {
-        count++
+        count++;
       }
     }
-    selectedCount = count
+    selectedCount = count;
   }
 
   async function load() {
     try {
-      state = LoadState.Loading
-      rows = await getRows()
+      state = LoadState.Loading;
+      rows = await getRows();
       if (rows.length === 0) {
-        state = LoadState.Finished
-        return
+        state = LoadState.Finished;
+        return;
       }
       rows.map((w) => {
-        w.table_meta_id = randomString()
-        return w
-      })
-      fuse = createFuse()
-      filtered = rows
+        w.table_meta_id = randomString();
+        return w;
+      });
+      fuse = createFuse();
+      filtered = rows;
       let allColumns = new Set<string>();
-      rows.forEach(r => {
-        Object.keys(r).forEach(c => allColumns.add(c))
-      })
-      columns = Array.from(allColumns)
-      columns = sortColumns?.(columns) ?? columns
-      filteredColumns = columns.filter((w) => !hidden.has(w))
-      state = LoadState.Finished
-      if(defaultSortColumn) {
-        sortColumn(defaultSortColumn)
+      rows.forEach((r) => {
+        Object.keys(r).forEach((c) => allColumns.add(c));
+      });
+      columns = Array.from(allColumns);
+      columns = sortColumns?.(columns) ?? columns;
+      filteredColumns = columns.filter((w) => !hidden.has(w));
+      state = LoadState.Finished;
+      if (defaultSortColumn) {
+        sortColumn(defaultSortColumn);
       }
     } catch (ex) {
-      console.error(ex)
-      state = LoadState.Failed
+      console.error(ex);
+      state = LoadState.Failed;
     }
   }
 
   function sortColumn(column: string) {
     if (sort === column) {
-      sort = column
-      sortDirection = sortDirection === 'asc' ? 'desc' : 'asc'
+      sort = column;
+      sortDirection = sortDirection === "asc" ? "desc" : "asc";
     } else {
-      sort = column
-      sortDirection = 'desc'
+      sort = column;
+      sortDirection = "desc";
     }
-    let isDate = columnMeta[column]?.type === "date"
-    dispatchPrivate(id, 'on_sort', { sort, sortDirection })
+    let isDate = columnMeta[column]?.type === "date";
+    dispatchPrivate(id, "on_sort", { sort, sortDirection });
     filtered = filtered.sort(function (a, b) {
-      var nameA = a[sort]?.toString()?.toUpperCase()
-      var nameB = b[sort]?.toString()?.toUpperCase()
+      var nameA = a[sort]?.toString()?.toUpperCase();
+      var nameB = b[sort]?.toString()?.toUpperCase();
       if (nameA == null && nameB == null) {
-        return 0
+        return 0;
       }
       if (nameA == null) {
-        return 1
+        return 1;
       }
       if (nameB == null) {
-        return 1
+        return 1;
       }
-      if(isDate) {
-        if(new Date(nameA).getTime() < new Date(nameB).getTime()) {
+      if (isDate) {
+        if (new Date(nameA).getTime() < new Date(nameB).getTime()) {
           return 1;
         }
-        if(new Date(nameA).getTime() > new Date(nameB).getTime()) {
+        if (new Date(nameA).getTime() > new Date(nameB).getTime()) {
           return -1;
         }
       }
       if (nameA < nameB) {
-        return 1
+        return 1;
       }
       if (nameA > nameB) {
-        return -1
+        return -1;
       }
-      return 0
-    })
-    if (sortDirection === 'asc') {
-      filtered = filtered.reverse()
+      return 0;
+    });
+    if (sortDirection === "asc") {
+      filtered = filtered.reverse();
     }
   }
 
   function headerStyle(column: string) {
     if (widths[column]) {
-      return 'width: ' + widths[column] + 'px;'
+      return "width: " + widths[column] + "px;";
     }
   }
 
   function setWidths() {
-    let values = filtered.slice(range.min, range.max)
-    widths = {}
+    let values = filtered.slice(range.min, range.max);
+    widths = {};
     values.forEach((value) => {
       columns.forEach((c) => {
-        const v = value[c]
-        let width = getTextWidth(v, '')
+        const v = value[c];
+        let width = getTextWidth(v, "");
         if (width < 150) {
-          width = 150
+          width = 150;
         }
         if (width > 400) {
-          width = 400
+          width = 400;
         }
         if ((widths[c] ?? 0) < width) {
-          widths[c] = width
+          widths[c] = width;
         }
-      })
-    })
+      });
+    });
   }
 
   function renderValue(row: any, column: string) {
-    let value = row[column] ?? ''
-    value = onFormat(column, row[column]) ?? value
-    return isObject(value) || Array.isArray(value) ? JSON.stringify(value) : value
+    let value = row[column] ?? "";
+    value = onFormat(column, row[column]) ?? value;
+    return isObject(value) || Array.isArray(value)
+      ? JSON.stringify(value)
+      : value;
   }
 
   function getTextWidth(text: string, font: string) {
-    canvasContext.font = 'bold 1em arial'
-    return canvasContext.measureText(text).width
+    canvasContext.font = "bold 1em arial";
+    return canvasContext.measureText(text).width;
   }
 
   function toggleColumn(checked: boolean, column: string) {
-    checked ? hidden.delete(column) : hidden.add(column)
-    filteredColumns = columns.filter((w) => !hidden.has(w))
+    checked ? hidden.delete(column) : hidden.add(column);
+    filteredColumns = columns.filter((w) => !hidden.has(w));
   }
 
   function onRowSelected(row: any) {
-    const index = filtered.findIndex((w) => w.table_meta_id === row.table_meta_id)
+    const index = filtered.findIndex(
+      (w) => w.table_meta_id === row.table_meta_id
+    );
     if (filtered[index].meta_selected) {
-      selectedCount--
-      filtered[index].meta_selected = false
+      selectedCount--;
+      filtered[index].meta_selected = false;
     } else {
-      selectedCount++
-      filtered[index].meta_selected = true
+      selectedCount++;
+      filtered[index].meta_selected = true;
     }
   }
 
   async function deleteEntries() {
-    const selected = filtered.filter((w) => w.meta_selected)
+    const selected = filtered.filter((w) => w.meta_selected);
     if (selected.length !== selectedCount) {
-      throw new Error('Selection count did not match actual selected, please try reloading the page.')
+      throw new Error(
+        "Selection count did not match actual selected, please try reloading the page."
+      );
     }
-    await onDelete?.(selected)
-    dispatch('show_toast', {
-      title: 'Deletion Started',
-      message: 'Your entries have been queued for deletion.',
-    })
-    modal = ''
-    const toRemove = new Set(selected.map(w => w.table_meta_id));
-    filtered = filtered.filter(w => {
-      return !toRemove.has(w.table_meta_id)
-    })
-    filtered = filtered.map(f => {
+    await onDelete?.(selected);
+    dispatch("show_toast", {
+      title: "Deletion Started",
+      message: "Your entries have been queued for deletion.",
+    });
+    modal = "";
+    const toRemove = new Set(selected.map((w) => w.table_meta_id));
+    filtered = filtered.filter((w) => {
+      return !toRemove.has(w.table_meta_id);
+    });
+    filtered = filtered.map((f) => {
       f.meta_selected = false;
       return f;
-    })
-    rows = rows.filter(w => {
-      return !toRemove.has(w.table_meta_id)
-    })
+    });
+    rows = rows.filter((w) => {
+      return !toRemove.has(w.table_meta_id);
+    });
   }
 </script>
 
 <div>
   <ToastManager />
   <div class="d-flex bd-highlight mb-3">
-    <div class="mr-auto p-2 bd-highlight"><input class="form-control" placeholder={searchPlaceHolder} bind:value={query} style="width: 300px" /></div>
+    <div class="mr-auto p-2 bd-highlight">
+      <input
+        class="form-control"
+        placeholder={searchPlaceHolder}
+        bind:value={query}
+        style="width: 300px" />
+    </div>
     {#if selectedCount > 0}
       <div class="p-2 bd-highlight">
-        <div style="margin-top: 5px;">Selected: <strong>{selectedCount} of {filtered.length}</strong></div>
+        <div style="margin-top: 5px;">
+          Selected: <strong>{selectedCount} of {filtered.length}</strong>
+        </div>
       </div>
       <div class="p-2 bd-highlight">
-        <div style="pointer: cursor;" on:click={() => (modal = 'delete')}><i class="fas fa-trash-alt" /></div>
+        <div style="pointer: cursor;" on:click={() => (modal = 'delete')}>
+          <i class="fas fa-trash-alt" />
+        </div>
       </div>
     {/if}
     <div class="p-2 bd-highlight">
       <div style="pointer: cursor;"><i class="fas fa-cog" /></div>
     </div>
     <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}><i class="fas fa-columns" /></div>
+      <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}>
+        <i class="fas fa-columns" />
+      </div>
     </div>
   </div>
   {#if state === LoadState.Loading}
     <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
-      <div class="spinner-border text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   {:else if state === LoadState.Finished}
     <canvas id="canvas" style="display: none" />
@@ -279,22 +304,38 @@
           <tbody>
             <tr>
               <th scope="col" style="width: 50px">
-                <div class="form-check"><input class="form-check-input" type="checkbox" value="" checked={allRowsSelected} on:change={selectAllRows} id={'row-toggle-all'} /></div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    checked={allRowsSelected}
+                    on:change={selectAllRows}
+                    id={'row-toggle-all'} />
+                </div>
               </th>
               {#each filteredColumns as column (column)}
-                <th scope="col" style={headerStyle(column)} on:click={() => sortColumn(column)}>
+                <th
+                  scope="col"
+                  style={headerStyle(column)}
+                  on:click={() => sortColumn(column)}>
                   {column}
                   <span>
                     {#if sort === column && sortDirection === 'asc'}
                       <span> <span class="fas fa-chevron-up" /> </span>
-                    {:else if sort === column && sortDirection === 'desc'}<span> <span class="fas fa-chevron-down" /> </span>{/if}
+                    {:else if sort === column && sortDirection === 'desc'}
+                      <span> <span class="fas fa-chevron-down" /> </span>
+                    {/if}
                   </span>
                 </th>
               {/each}
             </tr>
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}
-                <tr class:active={row.meta_selected} style="vertical-align: middle; cursor: pointer;" on:click={() => onRowClick(row)}>
+                <tr
+                  class:active={row.meta_selected}
+                  style="vertical-align: middle; cursor: pointer;"
+                  on:click={() => onRowClick(row)}>
                   <td>
                     <div class="form-check">
                       <input
@@ -304,10 +345,9 @@
                         checked={row.meta_selected}
                         on:click|stopPropagation
                         on:change|stopPropagation={(e) => {
-                          onRowSelected(row)
+                          onRowSelected(row);
                         }}
-                        id={'row-toggle-' + index}
-                      />
+                        id={'row-toggle-' + index} />
                     </div>
                   </td>
                   {#each filteredColumns as column}
@@ -326,13 +366,12 @@
         count={filtered.length}
         onRangeChange={(r) => {
           if (fastEquals(r, range)) {
-            return
+            return;
           }
-          range = r
-          setWidths()
-          columns = columns
-        }}
-      />
+          range = r;
+          setWidths();
+          columns = columns;
+        }} />
     {/if}
   {:else if state === LoadState.Failed}
     <div style="padding-top:1em; padding-left: 1em;">
@@ -344,9 +383,8 @@
       title={'Toggle Column Visibility'}
       isOpen={true}
       onClose={() => {
-        modal = ''
-      }}
-    >
+        modal = '';
+      }}>
       {#each columns as column}
         {#if column !== 'table_meta_id'}
           <div class="form-check">
@@ -356,11 +394,12 @@
               value=""
               checked={!hidden.has(column)}
               on:change={(e) => {
-                toggleColumn(e.target.checked, column)
+                toggleColumn(e.target.checked, column);
               }}
-              id={'toggle-' + column}
-            />
-            <label class="form-check-label" for={'toggle-' + column}>{column}</label>
+              id={'toggle-' + column} />
+            <label
+              class="form-check-label"
+              for={'toggle-' + column}>{column}</label>
           </div>
         {/if}
       {/each}
@@ -371,9 +410,8 @@
       isOpen={true}
       actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
       onClose={() => {
-        modal = ''
-      }}
-    >
+        modal = '';
+      }}>
       <p>Are you sure you want to delete {selectedCount} entries?</p>
     </Dialog>
   {/if}

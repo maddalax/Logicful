@@ -21,6 +21,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../pixel-pro-v5.1.0" />
     </content>
     <content url="file://$MODULE_DIR$/../sapper-typescript-graphql-template" />
+    <content url="file://$MODULE_DIR$/../snow-drive" />
     <content url="file://$MODULE_DIR$/../svelte-dnd-action">
       <excludeFolder url="file://$MODULE_DIR$/../svelte-dnd-action" />
     </content>

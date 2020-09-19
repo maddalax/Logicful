@@ -1,5 +1,4 @@
 <script lang="typescript">
-  import FormList from '@app/components/FormList.svelte'
   import type { IForm } from '@app/models/IForm'
 
   import { onMount } from 'svelte'

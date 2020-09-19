@@ -6,8 +6,10 @@ import { dispatch } from '@app/event/EventBus'
 
 export async function saveForm(options: {
   dispatchEvent: boolean
-} = { dispatchEvent: true }) {
-  const form = formStore.getForm()
+} = { dispatchEvent: true }, form? : IForm) {
+  if(!form) {
+    form = formStore.getForm()
+  }
   const clone = fastClone(form);
   removeValues(clone)
   await save(clone)
@@ -25,6 +27,9 @@ export function saveToLocalStorage(form: IForm) {
 }
 
 function removeValues(form: IForm): IForm {
+  if(!form.fields) {
+    return form;
+  }
   form.fields = form.fields.map((f) => {
     delete f.value
     return f

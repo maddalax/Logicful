@@ -10,6 +10,7 @@
   export let isOpen: boolean = false;
   export let onClose = () => {};
   export let actions: ButtonAction[] = [];
+  export let getActions: (() => ButtonAction[]) | undefined = undefined
   export let width: string = "500px";
 
   let loaded = false;
@@ -19,6 +20,7 @@
   let error = "";
 
   onMount(() => {
+    actions = getActions?.() ?? actions
     setTimeout(() => {
       loaded = true;
     }, 500);
@@ -26,6 +28,10 @@
       isOpen = false;
     };
   });
+
+  afterUpdate(() => {
+    actions = getActions?.() ?? actions
+  })
 
   function open() {
     isOpen = true;
@@ -71,7 +77,7 @@
 <style>
   .modal-body {
     overflow: scroll;
-    max-height: 85vh;
+    max-height: 80vh;
   }
 </style>
 

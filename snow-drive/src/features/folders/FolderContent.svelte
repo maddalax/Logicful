@@ -1,28 +1,35 @@
 <script lang="typescript">
   import { onMount } from "svelte";
-  import { dispatch, subscribe, subscribeComponent } from "@app/event/EventBus";
-  import type { IFolder } from "../models/IFolder";
-  import Folders from "./Folders.svelte";
-  import FormList from "./FormList.svelte";
+  import { dispatch, subscribeComponent } from "@app/event/EventBus";
+  import type { IFolder } from "@app/models/IFolder";
   import type { IForm } from "@app/models/IForm";
-  import { getApi, postApi } from "@app/services/ApiService";
-  import Dialog from "./layout/Dialog.svelte";
+  import { getApi } from "@app/services/ApiService";
   import type { User } from "@app/models/User";
   import { me } from "@app/services/AuthService";
   import { LoadState } from "@app/models/LoadState";
-  import Loader from "./Loader.svelte";
-  import Link from "./Link.svelte";
-  import LiveField from "@app/features/form/live/LiveField.svelte";
-import { debounce } from "@app/util/Debounce";
+  import { debounce } from "@app/util/Debounce";
+  import FormList from "@app/features/folders/FormList.svelte";
+  import Link from "@app/components/Link.svelte";
+  import Loader from "@app/components/Loader.svelte";
+  import { cacheClear } from "@app/util/Cache";
+import FolderSettings from "./FolderSettings.svelte";
 
   let forms: IForm[] = [];
-  let folderId: string = "";
+  let user : User
   let folder: IFolder;
-  let newFormTitle = "";
-  let user: User;
   let state: LoadState = LoadState.NotStarted;
+  let editing = false;
 
-  function onSettings(folderId: string) {}
+  function onSettings() {
+    editing = true;
+  }
+
+  subscribeComponent("forms_moved", (newFolder) => {
+    forms = [];
+    state = LoadState.Loading;
+    cacheClear(`api-request-form?folderId=${newFolder}`);
+    setForms(false);
+  });
 
   subscribeComponent(
     "folder_selected",
@@ -30,14 +37,18 @@ import { debounce } from "@app/util/Debounce";
       forms = [];
       state = LoadState.Loading;
       folder = e.folder;
-      debounceSetForms()
-      state = LoadState.Finished;
+      debounceSetForms();
     }
   );
 
+  async function setForms(cache: boolean = true) {
+    forms = await getApi(`form?folderId=${folder.id}`);
+    state = LoadState.Finished;
+  }
+
   const debounceSetForms = debounce(async () => {
-    forms = await getApi(`form?folderId=${folder.id}`, true);
-  }, 1000)
+    setForms();
+  }, 300);
 
   onMount(() => {
     user = me();
@@ -51,6 +62,10 @@ import { debounce } from "@app/util/Debounce";
   }
 </style>
 
+{#if editing}
+  <FolderSettings {folder} onClose={() => {editing = false}}/>
+{/if}
+
 <div class="row mb-5">
   <div class="col-12 mb-4">
     <div class="card card-body bg-white border-light p-0 p-md-4">
@@ -61,10 +76,8 @@ import { debounce } from "@app/util/Debounce";
               <div style="display: flex">
                 <span class="h5">{folder.name}</span>
                 <div
-                  style="padding-left: 0.5em; font-size: 1.2em;"
-                  on:click={() => {
-                    onSettings(folder.id);
-                  }}
+                  style="padding-left: 0.5em; font-size: 1.2em; cursor: pointer"
+                  on:click={onSettings}
                   class="">
                   <span class="fas fa-cog" />
                 </div>

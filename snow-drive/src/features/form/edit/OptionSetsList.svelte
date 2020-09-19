@@ -20,7 +20,7 @@
   }
 
   async function getRows(): Promise<TableRow[]> {
-    const data: OptionSet[] = await getApi('option-set', true)
+    const data: OptionSet[] = await getApi('option-set')
     return data.map((d) => {
       return {
         id: d.id,

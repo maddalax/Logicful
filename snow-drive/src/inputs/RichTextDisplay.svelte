@@ -1,53 +1,53 @@
 <script lang="typescript">
-  import type { IField } from '@app/models/IField'
-  import { subscribeFieldChange } from '@app/event/FieldEvent'
-  import { onMount } from 'svelte'
-  import formStore from '@app/store/FormStore'
-  import { isString } from "@app/guards/Guard"
-  import { LoadState } from '@app/models/LoadState'
+  import type { IField } from "@app/models/IField";
+  import { subscribeFieldChange } from "@app/event/FieldEvent";
+  import { onMount } from "svelte";
+  import formStore from "@app/store/FormStore";
+  import { isString } from "@app/guards/Guard";
+  import { LoadState } from "@app/models/LoadState";
 
-  export let field: IField
-  export let isPreview: Boolean = false
-  let value = ''
-  let lastUrl = ''
-  let state = LoadState.NotStarted
-  let url
+  export let field: IField;
+  export let isPreview: Boolean = false;
+  let value = "";
+  let lastUrl = "";
+  let state = LoadState.NotStarted;
+  let url;
 
   subscribeFieldChange(onMount, (newField) => {
     if (newField.id === field.id && lastUrl !== newField.value) {
-      url = newField.value
-      load(url)
+      url = newField.value;
+      load(url);
     }
-  })
+  });
 
   onMount(async () => {
-    url = formStore.getValue(field.configTarget ?? field.id)
+    url = formStore.getValue(field.configTarget ?? field.id);
 
-    load(url)
-  })
+    load(url);
+  });
 
   async function load(url: string) {
-    state = LoadState.Loading
+    state = LoadState.Loading;
     try {
       if (!url) {
-        return
+        return;
       }
       if (!isString(url)) {
-        return
+        return;
       }
-      if (url.startsWith('http')) {
-        lastUrl = url
-        const response = await fetch(url)
-        const html = await response.text()
-        value = html ?? ''
+      if (url.startsWith("http")) {
+        lastUrl = url;
+        const response = await fetch(url);
+        const html = await response.text();
+        value = html ?? "";
       } else {
-        value = url
+        value = url;
       }
     } catch (ex) {
-      state = LoadState.Failed
+      state = LoadState.Failed;
     } finally {
       if (state !== LoadState.Failed) {
-        state = LoadState.Finished
+        state = LoadState.Finished;
       }
     }
   }
@@ -56,14 +56,18 @@
 <div>
   {#if isPreview && (value === '' || value == null)}
     <h5>Content Placeholder</h5>
-    <p style="margin-block-end: 0;">From the field configuration settings, select a content block to display.</p>
+    <p style="margin-block-end: 0;">
+      From the field configuration settings, select a content block to display.
+    </p>
   {:else if state === LoadState.Finished}
     {@html value}
   {:else if state === LoadState.Failed}
     <p>Failed to load content.</p>
   {:else}
     <div class="d-flex justify-content-center">
-      <div class="spinner-border text-dark" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-border text-dark" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   {/if}
 </div>

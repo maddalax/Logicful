@@ -4,18 +4,16 @@
   import type { IFolder } from "@app/models/IFolder";
   import { LoadState } from "@app/models/LoadState";
   import type { User } from "@app/models/User";
-  import { getApi, postApi } from "@app/services/ApiService";
+  import { postApi } from "@app/services/ApiService";
   import { me } from "@app/services/AuthService";
-  import { afterUpdate, onMount } from "svelte";
-  import Dialog from "./layout/Dialog.svelte";
-  import Loader from "./Loader.svelte";
-  import { getUrlParameter } from "@app/util/Http";
-  import Link from "./Link.svelte";
+  import { onMount } from "svelte";
+  import Dialog from "@app/components/layout/Dialog.svelte";
+  import Loader from "@app/components/Loader.svelte";
+  import Link from "@app/components/Link.svelte";
   import FolderList from "./FolderList.svelte";
-  import { fastClone } from "@app/util/Compare";
-  import { set } from "@app/util/Selection";
+  import { getFolders } from "@app/features/folders/FolderService";
 
-  export let selected: IFolder;
+  let selected: IFolder | undefined = undefined;
   let folders: { [key: string]: IFolder } = {};
   let searchPlaceHolder = "Search for a form";
   let query = "";
@@ -35,6 +33,11 @@
     }
   }
 
+  subscribeComponent("folder_updated", async (folder) => {
+    await loadFolders();
+    onSelected(folder)
+  })
+
   onMount(async () => {
     user = me();
     state = LoadState.Loading;
@@ -42,61 +45,12 @@
       contentLoaded = true;
     });
     await loadFolders();
-    await onFolderSelected();
     state = LoadState.Finished;
   });
 
   async function loadFolders(cache: boolean = true) {
-    const current = await getApi<IFolder[]>("folder", cache);
-    const selectedId = getUrlParameter("folderId") ?? "";
-    current.unshift({
-      name: "Uncategorized",
-      id: `${user.teamId}:uncategorized`,
-    });
-    selected = current[0];
-
-    let results: { [key: string]: IFolder } = {};
-    let parentMap: { [key: string]: string | undefined } = {};
-    let folderIdMap: { [key: string]: IFolder } = {};
-
-    current.forEach((f) => {
-      if (f.id === selectedId) {
-        selected = f;
-      }
-      parentMap[f.id] = f.parent;
-      folderIdMap[f.id] = fastClone(f);
-      if (!f.parent) {
-        results[f.id] = f;
-      }
-    });
-
-    current.forEach((f) => {
-      if (f.parent) {
-        let root: string | undefined = f.parent;
-        let paths: Set<string> = new Set([f.id, root]);
-        while (true) {
-          if (!root) {
-            break;
-          }
-          root = parentMap[root];
-          if (!root) {
-            break;
-          }
-          paths.add(root);
-        }
-        const fullPath = Array.from(paths)
-          .map((p) => folderIdMap[p])
-          .reverse();
-
-        let path = "";
-        fullPath.forEach((folder, i) => {
-          path += folder.id;
-          set(results, path, folder);
-          path += `.children.`;
-        });
-      }
-    });
-    folders = results;
+    folders = await getFolders(cache);
+    onSelected(folders[Object.keys(folders)[0]])
   }
 
   function onSelected(folder: IFolder) {
@@ -115,16 +69,15 @@
       teamId: user.teamId,
       parent: parent,
     });
+    newFolderName = "";
     await loadFolders(false);
+    dispatch("folder_created", parent);
   }
 </script>
 
 <style>
   .card-header-title {
-    padding-left: 0.9em;
-    padding-right: 1em;
-    padding-top: 1em;
-    padding-bottom: 0.5em;
+    padding: 1em 1em 0.5em 0.9em;
   }
 
   .card {
@@ -174,7 +127,7 @@
   <span>Create New Form</span>
 </Link>
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
-  <div class="container-fluid p-2 mt-3" style="padding-left: 0em;">
+  <div class="container-fluid p-2 mt-3" style="padding-left: 0;">
     <input
       class="form-control search-bar container-fluid"
       placeholder={searchPlaceHolder}

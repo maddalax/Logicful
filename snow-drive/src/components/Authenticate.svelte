@@ -4,7 +4,6 @@
   import { me } from "@app/services/AuthService";
   import { navigate } from "svelte-routing";
 
-
   onMount(() => {
     const user = me();
     if (!user.id) {
@@ -16,4 +15,3 @@
 <div>
   <slot />
 </div>
-

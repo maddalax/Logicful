@@ -1,245 +1,252 @@
 <script lang="typescript">
   //@ts-nocheck
-  import type { IField, LabelValue } from '@app/models/IField'
-  import { afterUpdate, onDestroy, onMount, tick } from 'svelte'
-  import { LoadState } from '@app/models/LoadState'
-  import { stringEquals, fastEquals } from '@app/util/Compare'
-  import { subscribeFieldChange } from '@app/event/FieldEvent'
-  import { isFunction, isString } from "@app/guards/Guard"
-  import { randomString } from '@app/util/Generate'
-  import { dispatch, subscribeComponent } from '@app/event/EventBus'
-  import Fuse from 'fuse.js'
-  import formStore from '@app/store/FormStore'
-  import { nullOrEmpty } from '@app/util/Compare'
-  import Label from '@app/inputs/Label.svelte'
-  import Select from '@app/components/select/Select.svelte'
+  import type { IField, LabelValue } from "@app/models/IField";
+  import { afterUpdate, onDestroy, onMount, tick } from "svelte";
+  import { LoadState } from "@app/models/LoadState";
+  import { stringEquals, fastEquals } from "@app/util/Compare";
+  import { subscribeFieldChange } from "@app/event/FieldEvent";
+  import { isFunction, isString } from "@app/guards/Guard";
+  import { randomString } from "@app/util/Generate";
+  import { dispatch, subscribeComponent } from "@app/event/EventBus";
+  import Fuse from "fuse.js";
+  import formStore from "@app/store/FormStore";
+  import { nullOrEmpty } from "@app/util/Compare";
+  import Label from "@app/inputs/Label.svelte";
+  import Select from "@app/components/select/Select.svelte";
 
-  let initialized = false
-  let dropdownId
-  let open = false
-  let fuse: Fuse<{}>
+  let initialized = false;
+  let dropdownId;
+  let open = false;
+  let fuse: Fuse<{}>;
 
-  export let field: IField
+  export let field: IField;
 
-  let prevOptions: any = null
-  let activeToolTip: any
+  let prevOptions: any = null;
+  let activeToolTip: any;
 
   onDestroy(() => {
-    disposeToolTip()
-  })
+    disposeToolTip();
+  });
 
-  subscribeComponent('show_field_config', (props) => {
-    value = ''
-    options = []
-    setup()
-  })
+  subscribeComponent("show_field_config", (props) => {
+    value = "";
+    options = [];
+    setup();
+  });
 
-  subscribeComponent('combobox_get_options', (props) => {
+  subscribeComponent("combobox_get_options", (props) => {
     if (props.id === field.id) {
-      return options
+      return options;
     }
-  })
+  });
 
-  subscribeComponent('combobox_open', (props) => {
+  subscribeComponent("combobox_open", (props) => {
     if (props.id !== field.id) {
-      doClose()
+      doClose();
     }
-  })
+  });
 
-  subscribeComponent('option_set_modified', (set) => {
+  subscribeComponent("option_set_modified", (set) => {
     if (set.value === field.options) {
-      setup()
+      setup();
     }
     if (field.configTarget) {
-      setup()
+      setup();
     }
-  })
+  });
 
   subscribeFieldChange(onMount, (newField) => {
     if (newField.id === field.id) {
-      value = newField.value ?? ''
-      normalizeValue()
+      value = newField.value ?? "";
+      normalizeValue();
     }
-  })
+  });
 
   onMount(async () => {
-    dropdownId = `${field.name}-${randomString()}`
-    initialized = false
-    value = formStore.getValue(field.id)
-    await setup()
-  })
+    dropdownId = `${field.name}-${randomString()}`;
+    initialized = false;
+    value = formStore.getValue(field.id);
+    await setup();
+  });
 
   $: {
     if (!fastEquals(prevOptions, field.options)) {
-      prevOptions = field.options ?? []
-      setup()
+      prevOptions = field.options ?? [];
+      setup();
     }
   }
 
   function createFuse(): Fuse<{}> {
     if (!options) {
-      return new Fuse([])
+      return new Fuse([]);
     }
     return new Fuse(options, {
-      keys: ['label', 'value'],
-    })
+      keys: ["label", "value"],
+    });
   }
 
   async function setup() {
-    state = LoadState.Loading
-    options = []
+    state = LoadState.Loading;
+    options = [];
     try {
-      if (field.options?.type === 'remote' || isString(field.options) || (field.options?.type === 'local' && isString(field.options.value))) {
-        const url = field.options.value || field.options
-        const result = await fetch(url)
-        const data = await result.json()
+      if (
+        field.options?.type === "remote" ||
+        isString(field.options) ||
+        (field.options?.type === "local" && isString(field.options.value))
+      ) {
+        const url = field.options.value || field.options;
+        const result = await fetch(url);
+        const data = await result.json();
         if (!data) {
-          return
+          return;
         }
-        const parsed: any[] = []
+        const parsed: any[] = [];
         if (field.loadTransformer) {
-          options = field.loadTransformer(data) ?? []
+          options = field.loadTransformer(data) ?? [];
         } else {
           Object.keys(data).forEach((key) => {
-            parsed.push({ value: data[key], label: key })
-          })
-          options = parsed ?? []
+            parsed.push({ value: data[key], label: key });
+          });
+          options = parsed ?? [];
         }
       } else {
-        const value = field.options?.value
-        const data = isFunction(value) ? await value() : await value
-        options = (field.loadTransformer ? field.loadTransformer(data) : data) ?? []
+        const value = field.options?.value;
+        const data = isFunction(value) ? await value() : await value;
+        options =
+          (field.loadTransformer ? field.loadTransformer(data) : data) ?? [];
       }
-      fuse = createFuse()
-      normalizeValue()
-      state = LoadState.Finished
+      fuse = createFuse();
+      normalizeValue();
+      state = LoadState.Finished;
     } catch (ex) {
-      console.log(ex)
-      options = []
-      state = LoadState.Failed
+      console.log(ex);
+      options = [];
+      state = LoadState.Failed;
     }
   }
 
-  let state: LoadState = LoadState.Loading
-  let value = ''
-  let selectedValue: LabelValue
-  let options: LabelValue[] = []
-  let filteredBy = ''
-  let filtered: Set<string> = new Set<string>()
+  let state: LoadState = LoadState.Loading;
+  let value = "";
+  let selectedValue: LabelValue;
+  let options: LabelValue[] = [];
+  let filteredBy = "";
+  let filtered: Set<string> = new Set<string>();
 
   function normalizeValue() {
-    const option = options?.find((w) => stringEquals(w.label, value) || stringEquals(w.value, value))
+    const option = options?.find(
+      (w) => stringEquals(w.label, value) || stringEquals(w.value, value)
+    );
     if (option) {
-      value = option.label ?? ''
-      selectedValue = option
+      value = option.label ?? "";
+      selectedValue = option;
     }
   }
 
   function select(option: LabelValue) {
-    doClose()
-    value = option.value
-    field.value = option.value
+    doClose();
+    value = option.value;
+    field.value = option.value;
     formStore.set(field, {
-      field: 'value',
+      field: "value",
       value: option.value,
       fromUser: true,
-    })
-    field.onChange?.(field.value)
+    });
+    field.onChange?.(field.value);
   }
 
   function onBodyClick() {
-    doClose()
+    doClose();
   }
 
   function onSearch(query: string) {
     if (options.length === 0) {
-      filtered = new Set<string>()
-    } else if (query == null || query === '') {
-      filtered = new Set<string>()
+      filtered = new Set<string>();
+    } else if (query == null || query === "") {
+      filtered = new Set<string>();
     } else {
-      const result = fuse.search(query)
-      filteredBy = ''
-      filtered = new Set(result.map((r) => (r.item as LabelValue).value))
-      filteredBy = query
+      const result = fuse.search(query);
+      filteredBy = "";
+      filtered = new Set(result.map((r) => (r.item as LabelValue).value));
+      filteredBy = query;
     }
   }
 
   function onKeyDown(e: any) {
-    if (e.key === 'Escape') {
-      doClose()
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault()
-      const option = document.getElementById(`${field.id}-option-0`)
+    if (e.key === "Escape") {
+      doClose();
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const option = document.getElementById(`${field.id}-option-0`);
       option?.focus({
         preventScroll: true,
-      })
+      });
     }
   }
 
   function doOpen() {
-    dispatch('combobox_open', {
+    dispatch("combobox_open", {
       id: field.id,
-    })
-    open = true
+    });
+    open = true;
   }
 
   function doClose() {
-    disposeToolTip()
-    open = false
-    filtered.clear()
-    filteredBy = ''
+    disposeToolTip();
+    open = false;
+    filtered.clear();
+    filteredBy = "";
   }
 
   function disposeToolTip() {
     if (activeToolTip) {
       try {
-        activeToolTip.dispose()
+        activeToolTip.dispose();
       } catch (ex) {}
     }
-    activeToolTip = undefined
+    activeToolTip = undefined;
   }
 
   function showTooltip(option: LabelValue, id: string) {
     //@ts-ignore
     activeToolTip = new bootstrap.Tooltip(document.getElementById(id), {
       title: option.label,
-      placement: 'top',
-      trigger: 'manual',
-    })
+      placement: "top",
+      trigger: "manual",
+    });
     setTimeout(() => {
-      activeToolTip.show()
-    }, 600)
+      activeToolTip.show();
+    }, 600);
   }
 
   function itemFilter(label: string, filterText: string, option: any) {
     if (filteredBy != filterText) {
-      onSearch(filterText)
+      onSearch(filterText);
     }
-    return filtered.has(option.value)
+    return filtered.has(option.value);
   }
 
   function onSelect(e: any): any {
-    e.stopPropagation()
-    field.value = e.detail.value
+    e.stopPropagation();
+    field.value = e.detail.value;
     formStore.set(field, {
-      field: 'value',
+      field: "value",
       value: field.value,
       fromUser: true,
-    })
+    });
   }
 
   function onClear(): any {
-    field.value = undefined
+    field.value = undefined;
     formStore.set(field, {
-      field: 'value',
+      field: "value",
       value: undefined,
       fromUser: true,
-    })
+    });
   }
 
   function onMouseDown(option: LabelValue, id: string) {
-    disposeToolTip()
-    showTooltip(option, id)
+    disposeToolTip();
+    showTooltip(option, id);
   }
 </script>
 
@@ -250,14 +257,24 @@
 
   {#if state === LoadState.Loading}
     <div>
-      <div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   {:else if state === LoadState.Failed}
     <p>Failed to load.</p>
   {:else}
     {#if options}
       <div on:click|stopPropagation class="themed">
-        <Select inputAttributes={{autocomplete : 'off'}} items={options} on:select={onSelect} on:clear={onClear} isVirtualList={options.length > 25} {itemFilter} bind:selectedValue showChevron={true} />
+        <Select
+          inputAttributes={{ autocomplete: 'off' }}
+          items={options}
+          on:select={onSelect}
+          on:clear={onClear}
+          isVirtualList={options.length > 25}
+          {itemFilter}
+          bind:selectedValue
+          showChevron={true} />
       </div>
     {/if}
     {#if field.helperText}

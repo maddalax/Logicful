@@ -3,7 +3,8 @@
 		"start": "snowpack dev --polyfill-node",
 		"reload": "snowpack dev --reload",
 		"build": "cross-env snowpack build",
-		"test": "jest"
+		"test": "jest",
+		"pretty": "prettier --write --svelte-sort-order scripts-markup-styles ./src/**/*{.svelte,.ts}"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.14.0",

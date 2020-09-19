@@ -67,13 +67,6 @@
   }
 </script>
 
-<style>
-  .rows-page-button {
-    height: 40px;
-    margin-left: 1em;
-  }
-</style>
-
 <nav aria-label="Table Pagination">
   <ul class="pagination justify-content-end">
     <li>
@@ -151,3 +144,10 @@
     </li>
   </ul>
 </nav>
+
+<style>
+  .rows-page-button {
+    height: 40px;
+    margin-left: 1em;
+  }
+</style>

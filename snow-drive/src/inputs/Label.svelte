@@ -1,7 +1,7 @@
 <script lang="typescript">
-  import type { IField } from '@app/models/IField'
-  import { firstNotEmpty } from '@app/util/Format'
-  export let field: IField
+  import type { IField } from "@app/models/IField";
+  import { firstNotEmpty } from "@app/util/Format";
+  export let field: IField;
 </script>
 
 <label for={field.id}>

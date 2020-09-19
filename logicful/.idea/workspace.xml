@@ -30,10 +30,82 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="limit file size on upload">
+      <change beforePath="$PROJECT_DIR$/.idea/logicful.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logicful.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/form/form-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/form/form-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Accordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Accordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Authenticate.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Authenticate.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/DatePicker.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/DatePicker.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/DropdownButton.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/DropdownButton.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/ErrorDialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/ErrorDialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/ExampleComponent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/ExampleComponent.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/FolderContent.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/FolderList.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Folders.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/FormList.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Html.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Html.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Link.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Link.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Loader.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Loader.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/LogicRule.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/LogicRule.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Pagination.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Pagination.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Repeater.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Sidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Sidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/Toast.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/Toast.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/ToastManager.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/ToastManager.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/dashboard/RecentForms.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/dashboard/RecentForms.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/dashboard/SubmissionsDash.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/dashboard/SubmissionsDash.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/layout/Dialog.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/event/EventBus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/event/EventBus.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/event/FieldEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/event/FieldEvent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/ContentBlockList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/ContentBlockList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/OptionSetsList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/OptionSetsList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/services/SaveForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/form/edit/services/SaveForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/guards/Guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/guards/Guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/Address.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/CheckboxGroup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/CheckboxGroup.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/ComboBox.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/FileUpload.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/FileUpload.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/FullName.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/FullName.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/Label.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/RadioGroup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/RadioGroup.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/RichTextDisplay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/Spacer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/Spacer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/StateSelector.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/StateSelector.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/Switch.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/Switch.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/TextArea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/TextArea.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/inputs/TextInput.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/inputs/TextInput.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/loader/FieldValueLoader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/loader/FieldValueLoader.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/ContentBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/ContentBlock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/Group.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/Group.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/IAddress.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/IAddress.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/IField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/IField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/IFolder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/IFolder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/IForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/LogicBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/LogicBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/OptionSet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/OptionSet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/pages/DashboardPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/pages/DashboardPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/pages/folder/FolderPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/pages/folder/FolderPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/pages/form-settings/scoring/index.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/pages/form-settings/workflows/index.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/AddressService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/AddressService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/AuthService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/LogicBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/LogicBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/store/ConfigStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/store/ConfigStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/store/FormStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/store/FormStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Array.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Array.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Cache.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Cache.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Compare.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Compare.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Debounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Debounce.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Format.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Format.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Generate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Generate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Http.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Http.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snow-drive/src/util/Selection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/util/Selection.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +150,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../app/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -157,7 +229,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.deploy:staging">
+  <component name="RunManager" selected="npm.build:watch">
     <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$/lambda/api" />
@@ -233,8 +305,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.build:watch" />
+        <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.sqs:processSubmissions" />
         <item itemvalue="Go Build.go build process_submissions.go" />
         <item itemvalue="Shell Script.setup.sh" />
@@ -363,33 +435,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1638" height="217" key="GridCell.Tab.0.bottom" timestamp="1600517777302">
+    <state width="1638" height="217" key="GridCell.Tab.0.bottom" timestamp="1600549706662">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="217" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600517777302" />
+    <state width="1638" height="217" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600549706662" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="217" key="GridCell.Tab.0.center" timestamp="1600517777301">
+    <state width="1638" height="217" key="GridCell.Tab.0.center" timestamp="1600549706661">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="217" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600517777301" />
+    <state width="1638" height="217" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600549706661" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="217" key="GridCell.Tab.0.left" timestamp="1600517777301">
+    <state width="1638" height="217" key="GridCell.Tab.0.left" timestamp="1600549706660">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="217" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600517777301" />
+    <state width="1638" height="217" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600549706660" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="217" key="GridCell.Tab.0.right" timestamp="1600517777302">
+    <state width="1638" height="217" key="GridCell.Tab.0.right" timestamp="1600549706661">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="217" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600517777302" />
+    <state width="1638" height="217" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600549706661" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -455,11 +527,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598213039172" />
-    <state x="110" y="234" key="SettingsEditor" timestamp="1600112132981">
+    <state x="110" y="234" key="SettingsEditor" timestamp="1600546672725">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
-    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600112132981" />
+    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600546672725" />
     <state x="496" y="259" key="VCS.ChangeListViewerDialog" timestamp="1597929207162">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -498,12 +570,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600517569147">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600552053260">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600517569147" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600552053260" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

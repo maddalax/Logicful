@@ -1,6 +1,6 @@
 <script lang="typescript">
-  import Folders from "@app/components/Folders.svelte";
-  import FolderContent from "@app/components/FolderContent.svelte";
+  import Folders from "@app/features/folders/Folders.svelte";
+  import FolderContent from "@app/features/folders/FolderContent.svelte";
   import { afterUpdate } from "svelte";
 </script>
 

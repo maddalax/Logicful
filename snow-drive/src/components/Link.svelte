@@ -1,5 +1,5 @@
 <script lang="typescript">
-import { onMount } from "svelte";
+  import { onMount } from "svelte";
 
   import { link, Router } from "svelte-routing";
   export let useRouter: boolean = true;
