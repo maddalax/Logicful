@@ -11,6 +11,7 @@ import { set } from "@app/util/Selection";
     current.unshift({
       name: "Uncategorized",
       id: `${user.teamId}:uncategorized`,
+      isUncategorized : true
     });
 
     let results: { [key: string]: IFolder } = {};

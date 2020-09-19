@@ -33,7 +33,13 @@
     }
   }
 
+  subscribeComponent("folder_deleted", async (folder) => {
+    state = LoadState.Loading;
+    await loadFolders();
+  })
+
   subscribeComponent("folder_updated", async (folder) => {
+    state = LoadState.Loading;
     await loadFolders();
     onSelected(folder)
   })

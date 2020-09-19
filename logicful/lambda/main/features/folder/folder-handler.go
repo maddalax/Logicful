@@ -24,6 +24,15 @@ func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	httpextensions.WriteJson(w, folder)
 }
 
+func DeleteHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	err := Delete(ps.ByName("folderId"), handler.User(r))
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	httpextensions.WriteNoContent(w)
+}
+
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	folders, err := List(handler.User(r).TeamId)
 	if err != nil {

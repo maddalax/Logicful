@@ -5,5 +5,6 @@ export interface IFolder {
   id: string;
   forms?: IForm[];
   parent?: string;
+  isUncategorized? : boolean
   children?: { [key: string]: IFolder };
 }

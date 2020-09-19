@@ -12,10 +12,10 @@
   import Link from "@app/components/Link.svelte";
   import Loader from "@app/components/Loader.svelte";
   import { cacheClear } from "@app/util/Cache";
-import FolderSettings from "./FolderSettings.svelte";
+  import FolderSettings from "./FolderSettings.svelte";
 
   let forms: IForm[] = [];
-  let user : User
+  let user: User;
   let folder: IFolder;
   let state: LoadState = LoadState.NotStarted;
   let editing = false;
@@ -63,11 +63,15 @@ import FolderSettings from "./FolderSettings.svelte";
 </style>
 
 {#if editing}
-  <FolderSettings {folder} onClose={() => {editing = false}}/>
+  <FolderSettings
+    {folder}
+    onClose={() => {
+      editing = false;
+    }} />
 {/if}
 
 <div class="row mb-5">
-  <div class="col-12 mb-4">
+  <div class="col-12 mb-4" style="margin-top: 1em">
     <div class="card card-body bg-white border-light p-0 p-md-4">
       {#if folder}
         <div class="card-header bg-white border-0 p-2" style="display: flex">
@@ -75,12 +79,14 @@ import FolderSettings from "./FolderSettings.svelte";
             <div class="col">
               <div style="display: flex">
                 <span class="h5">{folder.name}</span>
-                <div
-                  style="padding-left: 0.5em; font-size: 1.2em; cursor: pointer"
-                  on:click={onSettings}
-                  class="">
-                  <span class="fas fa-cog" />
-                </div>
+                {#if !folder.isUncategorized}
+                  <div
+                    style="padding-left: 0.5em; font-size: 1.2em; cursor: pointer"
+                    on:click={onSettings}
+                    class="">
+                    <span class="fas fa-cog" />
+                  </div>
+                {/if}
               </div>
               <p class="small">{forms?.length ?? 0} Forms</p>
             </div>

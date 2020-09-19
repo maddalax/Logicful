@@ -65,7 +65,9 @@
         await action.onClick();
       }
       processing = -1;
-      close();
+      if(action.onClose == null || action.onClose) {
+        close();
+      }
     } catch (ex) {
       console.error(ex);
       error = ex.message;

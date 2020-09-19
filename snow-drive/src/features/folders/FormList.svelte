@@ -24,6 +24,11 @@
     border-radius: 0rem !important;
     padding-left: 0.5em;
   }
+
+  .form-list {
+    max-height: 70vh;
+    overflow: auto;
+  }
 </style>
 
 {#if moving}
@@ -33,7 +38,7 @@
 {/if}
 
 <div class="card-body px-0 pt-0">
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush form-list">
     {#each forms as form}
       <li class="list-group-item border-bottom py-3 radius-0">
         <div class="row align-items-center">

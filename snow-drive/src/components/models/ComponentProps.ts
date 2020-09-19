@@ -7,6 +7,7 @@ export interface ButtonAction {
   label: string
   type: string
   focus?: boolean
+  onClose? : boolean
   onClick?: (() => Promise<any>) | (() => any)
 }
 

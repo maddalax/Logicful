@@ -49,6 +49,7 @@ func addFolderHandlers(router *httprouter.Router) {
 	router.GET("/api/folder", folder.ListHandler)
 	router.POST("/api/folder", folder.SetHandler)
 	router.PUT("/api/folder/:folderId", folder.SetHandler)
+	router.DELETE("/api/folder/:folderId", folder.DeleteHandler)
 }
 
 func addSubmissionHandlers(router *httprouter.Router) {

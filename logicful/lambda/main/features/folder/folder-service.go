@@ -1,6 +1,7 @@
 package folder
 
 import (
+	"api/main/features/form"
 	"errors"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -62,7 +63,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 			":teamId": {
 				S: aws.String(folder.TeamId),
 			},
-			":parent" : {
+			":parent": {
 				S: aws.String(folder.Parent),
 			},
 		},
@@ -74,7 +75,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 			"#createBy":     aws.String("CreateBy"),
 			"#folderId":     aws.String("FolderId"),
 			"#teamId":       aws.String("TeamId"),
-			"#parent":		 aws.String("Parent"),
+			"#parent":       aws.String("Parent"),
 		},
 	})
 
@@ -83,6 +84,36 @@ func Set(folder models.Folder) (models.Folder, error) {
 	}
 
 	return folder, err
+}
+
+func Delete(id string, user models.User) error {
+	forms, err := form.List(id)
+	if err != nil {
+		return err
+	}
+	for _, f := range forms {
+		f.Folder = ""
+		_, err := form.Set(f)
+		if err != nil {
+			return err
+		}
+	}
+	_, err = instance.DeleteItem(&dynamodb.DeleteItemInput{
+		TableName: aws.String(db.Data()),
+		Key: map[string]*dynamodb.AttributeValue{
+			"PK": {
+				S: aws.String("TEAM#" + user.TeamId),
+			},
+			"SK": {
+				S: aws.String("FOLDER#" + id),
+			},
+		},
+	})
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func List(team string) ([]models.Folder, error) {

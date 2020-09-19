@@ -45,7 +45,7 @@
       {#if folder.id === selected}
         <div>
           <span
-            class="fas fa-folder"
+            class="fas fa-folder-open"
             style="font-size: 1.2em; font-weight: 375;" />
         </div>
       {:else}
