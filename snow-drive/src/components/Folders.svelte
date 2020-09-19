@@ -4,18 +4,19 @@
   import type { IFolder } from "@app/models/IFolder";
   import { LoadState } from "@app/models/LoadState";
   import type { User } from "@app/models/User";
-  import { getApi, postApi, putApi } from "@app/services/ApiService";
+  import { getApi, postApi } from "@app/services/ApiService";
   import { me } from "@app/services/AuthService";
   import { afterUpdate, onMount } from "svelte";
-  import { randomString } from "@app/util/Generate";
-  import { v1 } from "uuid";
   import Dialog from "./layout/Dialog.svelte";
   import Loader from "./Loader.svelte";
   import { getUrlParameter } from "@app/util/Http";
   import Link from "./Link.svelte";
+  import FolderList from "./FolderList.svelte";
+  import { fastClone } from "@app/util/Compare";
+  import { set } from "@app/util/Selection";
 
-  export let selected: string = "";
-  let folders: IFolder[] = [];
+  export let selected: IFolder;
+  let folders: { [key: string]: IFolder } = {};
   let searchPlaceHolder = "Search for a form";
   let query = "";
   let creatingNewFolder = false;
@@ -23,49 +24,88 @@
   let user: User;
   let state = LoadState.NotStarted;
   let contentLoaded = false;
+  let parent = "";
 
-  async function load() {
+  async function onFolderSelected() {
     if (!selected) {
-      selected = `${user.teamId}:uncategorized`;
+      selected = folders[0];
     }
-    if (contentLoaded) {
-      dispatchFolderSelected();
+    if (contentLoaded && selected) {
+      dispatch("folder_selected", { folder: selected });
     }
   }
 
   onMount(async () => {
     user = me();
     state = LoadState.Loading;
-    selected = getUrlParameter("folderId") ?? "";
     subscribe("folder_content_loaded", () => {
       contentLoaded = true;
     });
-    folders = await getFolders();
-    await load();
+    await loadFolders();
+    await onFolderSelected();
     state = LoadState.Finished;
   });
 
-  async function getFolders(): Promise<IFolder[]> {
-    const folders = await getApi<IFolder[]>("folder?team=" + user.teamId);
-    folders.unshift({
+  async function loadFolders(cache: boolean = true) {
+    const current = await getApi<IFolder[]>("folder", cache);
+    const selectedId = getUrlParameter("folderId") ?? "";
+    current.unshift({
       name: "Uncategorized",
       id: `${user.teamId}:uncategorized`,
     });
-    return folders;
+    selected = current[0];
+
+    let results: { [key: string]: IFolder } = {};
+    let parentMap: { [key: string]: string | undefined } = {};
+    let folderIdMap: { [key: string]: IFolder } = {};
+
+    current.forEach((f) => {
+      if (f.id === selectedId) {
+        selected = f;
+      }
+      parentMap[f.id] = f.parent;
+      folderIdMap[f.id] = fastClone(f);
+      if (!f.parent) {
+        results[f.id] = f;
+      }
+    });
+
+    current.forEach((f) => {
+      if (f.parent) {
+        let root: string | undefined = f.parent;
+        let paths: Set<string> = new Set([f.id, root]);
+        while (true) {
+          if (!root) {
+            break;
+          }
+          root = parentMap[root];
+          if (!root) {
+            break;
+          }
+          paths.add(root);
+        }
+        const fullPath = Array.from(paths)
+          .map((p) => folderIdMap[p])
+          .reverse();
+
+        let path = "";
+        fullPath.forEach((folder, i) => {
+          path += folder.id;
+          set(results, path, folder);
+          path += `.children.`;
+        });
+      }
+    });
+    folders = results;
   }
 
-  subscribeComponent("page_change", (props) => {
-    dispatchFolderSelected();
-  });
-
-  function dispatchFolderSelected() {
-    const s = folders.find((f) => f.id === selected);
-    if (s) {
-      dispatch("folder_selected", { folder: s });
-    }
+  function onSelected(folder: IFolder) {
+    selected = folder;
+    onFolderSelected();
   }
 
-  function newFolderClick() {
+  function onNewFolder(parentFolder: string = "") {
+    parent = parentFolder;
     creatingNewFolder = true;
   }
 
@@ -73,8 +113,9 @@
     await postApi("folder", {
       name: newFolderName,
       teamId: user.teamId,
+      parent: parent,
     });
-    folders = await getFolders();
+    await loadFolders(false);
   }
 </script>
 
@@ -84,14 +125,6 @@
     padding-right: 1em;
     padding-top: 1em;
     padding-bottom: 0.5em;
-  }
-  .list-group.dashboard-menu .list-group-item:hover {
-    border-radius: 0.3em;
-  }
-
-  .active {
-    color: #26304c !important;
-    border-radius: 0.3em;
   }
 
   .card {
@@ -104,16 +137,6 @@
     color: #1c2540;
     padding-left: 0.5em;
     font-size: 1em;
-  }
-
-  .list-group-item {
-    color: #26304c !important;
-  }
-
-  .p-2 {
-    padding-left: 0.5rem !important;
-    padding-top: 0rem !important;
-    padding-bottom: 0rem !important;
   }
 
   .btn-outline-dark {
@@ -143,7 +166,10 @@
       placeholder="" />
   </Dialog>
 {/if}
-<Link href="/form/create" class="btn btn-primary" style="width:100%;margin-top:1em;margin-bottom:1em;">
+<Link
+  href="/form/create"
+  class="btn btn-primary"
+  style="width:100%;margin-top:1em;margin-bottom:1em;">
   <span class="fas fa-plus" />
   <span>Create New Form</span>
 </Link>
@@ -162,45 +188,12 @@
   {#if state === LoadState.Loading}
     <Loader />
   {/if}
-  {#each folders as folder}
-    <div class="card-body p-2">
-      <div class="list-group dashboard-menu list-group-sm">
-        <button
-          on:click={() => {
-            if(selected === folder.id) {
-              return;
-            }
-            selected = folder.id
-            load()
-            navigate(`/folder?folderId=${folder.id}`)
-          }}
-          class="d-flex list-group-item border-0 list-group-item-action {folder.id === selected ? 'active' : ''}"
-          style="padding-bottom: 0.5em; padding-top: 0.5em;">
-          {#if folder.id === selected}
-            <div>
-              <span
-                class="fas fa-folder"
-                style="font-size: 1.2em; font-weight: 375;" />
-            </div>
-          {:else}
-            <div>
-              <span
-                class="far fa-folder"
-                style="font-size: 1.2em; font-weight: 375;" />
-            </div>
-          {/if}
-          <span
-            style="padding-left: 0.5em; font-weight: 375;">{folder.name}</span>
-          {#if folder.id === selected}
-            <span class="icon icon-xs ml-auto">
-              <span class="fas fa-chevron-right" />
-            </span>
-          {/if}
-          </button>
-      </div>
-    </div>
-  {/each}
-  <button on:click={newFolderClick} class="btn btn-outline-dark">
+  <FolderList {onNewFolder} {onSelected} {folders} selected={selected?.id} />
+  <button
+    on:click={() => {
+      onNewFolder('');
+    }}
+    class="btn btn-outline-dark">
     <span class="fas fa-plus" style="font-size: 0.9em;" />
     <span style="font-weight: 400;">New Folder</span>
   </button>

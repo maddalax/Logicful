@@ -21,12 +21,12 @@ import Link from './Link.svelte'
       <li class="list-group-item border-bottom py-3 radius-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="h6 mb-1"><a href="./invoice.html" style="font-weight: 600;">{form.title}</a></h3>
+            <h3 class="h6 mb-1"><Link href={`/form/builder?formId=${form.id}`} style="font-weight: 600;">{form.title}</Link></h3>
             <!-- Text -->
             <small class="text-gray-700" >
               <Link href={`/form/submissions?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Submissions</Link>
               <span>  |  </span>
-              <Link href={`/form-settings?formId=${form.id}`} style="font-weight: 50; text-decoration: underline;">Form Settings</Link>
+              <Link href={`/form/preview?formId=${form.id}`} target="_blank" style="font-weight: 50; text-decoration: underline;">Preview</Link>
             </small>
           </div>
           <div class="col-auto">

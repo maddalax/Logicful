@@ -37,7 +37,7 @@
 
   async function load() {
     loading = true
-    const data: OptionSet[] = await getApi('option-set')
+    const data: OptionSet[] = await getApi('option-set', true)
     const result = data.find((w) => w.name === name)
     if (!result) {
       return

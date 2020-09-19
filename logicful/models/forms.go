@@ -31,7 +31,7 @@ type Folder struct {
 	Parent string `json:"parent"`
 	Versioned
 	TeamId   string `json:"teamId"`
-	FolderId string `json:"folderId"`
+	FolderId string `json:"folderId,omitempty"`
 }
 
 type LeanForm struct {

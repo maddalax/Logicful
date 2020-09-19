@@ -1,9 +1,9 @@
 import { config } from '@app/store/ConfigStore'
+import { cacheGet, cacheSet } from '@app/util/Cache';
 import { getToken } from './AuthService';
 
 function instance() {
-  //@ts-ignore
-  return fetch ?? this.fetch
+  return fetch
 }
 
 function authHeaders() {
@@ -22,16 +22,24 @@ export function apiEndpoint() {
   //return 'http://localhost:3000/api/'
 }
 
-export async function getApi<T>(path: string, fetch?: any): Promise<T> {
+export async function getApi<T>(path: string, cache: boolean = false): Promise<T> {
+  const key = `api-request-${path}`;
+  if (cache) {
+    const fromCache = cacheGet(`api-request-${path}`);
+    if (fromCache) {
+      return fromCache;
+    }
+  }
   const endpoint = apiEndpoint()
-  const response = await (fetch ?? instance())(`${endpoint}${path}`, {
-    headers : authHeaders()
+  const response = await (instance())(`${endpoint}${path}`, {
+    headers: authHeaders()
   })
   if (!response.ok) {
     const body = await response.json()
     throw new Error(body.message)
   }
   const body = await response.json()
+  cache && cacheSet(key, body);
   return body as T
 }
 

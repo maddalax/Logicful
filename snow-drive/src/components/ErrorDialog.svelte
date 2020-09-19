@@ -15,7 +15,7 @@
       console.error(e);
       const message = e.reason?.message ?? e.stack ?? e.message
       dispatch("unhandled_error", message);
-      alert(`An unhandled exception has occured.\n\n${message}\n\nYour page may not work as expected.\n\nPlease try reloading the page.\n\nThis issue has been reported.`)
+      //alert(`An unhandled exception has occured.\n\n${message}\n\nYour page may not work as expected.\n\nPlease try reloading the page.\n\nThis issue has been reported.`)
     };
   });
 </script>

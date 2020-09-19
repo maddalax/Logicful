@@ -68,7 +68,7 @@
     if (!formId) {
       return;
     }
-    form = await getApi(`form/${formId}`);
+    form = await getApi(`form/${formId}`, true);
   }
 
   function removePlaceHolder() {

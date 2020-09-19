@@ -1,47 +1,55 @@
 <script lang="typescript">
-  import { onMount } from 'svelte'
-  import { dispatch, subscribe, subscribeComponent } from '@app/event/EventBus'
-  import type { IFolder } from '../models/IFolder'
-  import Folders from './Folders.svelte'
-  import FormList from './FormList.svelte'
-  import type { IForm } from '@app/models/IForm'
-  import { getApi, postApi } from '@app/services/ApiService'
-  import Dialog from './layout/Dialog.svelte'
-  import type { User } from '@app/models/User'
-  import { me } from '@app/services/AuthService'
-  import { LoadState } from '@app/models/LoadState'
-  import Loader from './Loader.svelte'
-import Link from './Link.svelte'
-import LiveField from '@app/features/form/live/LiveField.svelte'
+  import { onMount } from "svelte";
+  import { dispatch, subscribe, subscribeComponent } from "@app/event/EventBus";
+  import type { IFolder } from "../models/IFolder";
+  import Folders from "./Folders.svelte";
+  import FormList from "./FormList.svelte";
+  import type { IForm } from "@app/models/IForm";
+  import { getApi, postApi } from "@app/services/ApiService";
+  import Dialog from "./layout/Dialog.svelte";
+  import type { User } from "@app/models/User";
+  import { me } from "@app/services/AuthService";
+  import { LoadState } from "@app/models/LoadState";
+  import Loader from "./Loader.svelte";
+  import Link from "./Link.svelte";
+  import LiveField from "@app/features/form/live/LiveField.svelte";
+import { debounce } from "@app/util/Debounce";
 
-  let forms: IForm[] = []
-  let folderId: string = ''
-  let folder: IFolder
-  let newFormTitle = ''
-  let user: User
-  let state: LoadState = LoadState.NotStarted
+  let forms: IForm[] = [];
+  let folderId: string = "";
+  let folder: IFolder;
+  let newFormTitle = "";
+  let user: User;
+  let state: LoadState = LoadState.NotStarted;
 
   function onSettings(folderId: string) {}
 
-  function onImportForm() {}
+  subscribeComponent(
+    "folder_selected",
+    async (e: { folder: IFolder; showForms: any }) => {
+      forms = [];
+      state = LoadState.Loading;
+      folder = e.folder;
+      debounceSetForms()
+      state = LoadState.Finished;
+    }
+  );
 
-  subscribeComponent('folder_selected', async (e: { folder: IFolder; showForms: any }) => {
-    forms = []
-    state = LoadState.Loading
-    folder = e.folder
-    await setForms(e.folder.id)
-    state = LoadState.Finished
-  })
-
-  async function setForms(folderId: string) {
-    forms = await getApi(`form?folderId=${folderId}`)
-  }
+  const debounceSetForms = debounce(async () => {
+    forms = await getApi(`form?folderId=${folder.id}`, true);
+  }, 1000)
 
   onMount(() => {
-    user = me()
-    dispatch('folder_content_loaded', {})
-  })
+    user = me();
+    dispatch("folder_content_loaded", {});
+  });
 </script>
+
+<style>
+  .card {
+    border-radius: 0.3em;
+  }
+</style>
 
 <div class="row mb-5">
   <div class="col-12 mb-4">
@@ -55,19 +63,23 @@ import LiveField from '@app/features/form/live/LiveField.svelte'
                 <div
                   style="padding-left: 0.5em; font-size: 1.2em;"
                   on:click={() => {
-                    onSettings(folder.id)
+                    onSettings(folder.id);
                   }}
-                  class=""
-                >
+                  class="">
                   <span class="fas fa-cog" />
                 </div>
               </div>
               <p class="small">{forms?.length ?? 0} Forms</p>
             </div>
             <div class="col-auto">
-              <div class="align-items-center" style="padding-bottom: 0.3em; text-align: right !important;" />
-              <Link href={`/form/create?folder=${folder?.id}`} classes="btn btn-xs btn-outline-dark">
-                <span class="fas fa-plus" /><span style="padding-left: 0.4em; font-weight: 400;">Create Form In This Folder</span>
+              <div
+                class="align-items-center"
+                style="padding-bottom: 0.3em; text-align: right !important;" />
+              <Link
+                href={`/form/create?folder=${folder?.id}`}
+                classes="btn btn-xs btn-outline-dark">
+                <span class="fas fa-plus" /><span style="padding-left: 0.4em; font-weight: 400;">Create
+                  Form In This Folder</span>
               </Link>
             </div>
           </div>
@@ -85,9 +97,3 @@ import LiveField from '@app/features/form/live/LiveField.svelte'
     </div>
   </div>
 </div>
-
-<style>
-  .card {
-    border-radius: 0.3em;
-  }
-</style>

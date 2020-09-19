@@ -5,4 +5,5 @@ export interface IFolder {
   id: string
   forms?: IForm[],
   parent?: string
+  children?: {[key : string] : IFolder}
 }

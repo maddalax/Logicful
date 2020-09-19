@@ -20,7 +20,7 @@
   }
 
   async function getRows(): Promise<TableRow[]> {
-    const blocks: ContentBlock[] = await getApi('content-block')
+    const blocks: ContentBlock[] = await getApi('content-block', true)
     return blocks.map((block) => {
       return {
         id: block.id,

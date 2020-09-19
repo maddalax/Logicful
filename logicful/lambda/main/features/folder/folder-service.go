@@ -39,7 +39,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 				S: aws.String("FOLDER#" + folder.Id),
 			},
 		},
-		UpdateExpression: aws.String("SET #teamId = :teamId, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
+		UpdateExpression: aws.String("SET #teamId = :teamId, #parent = :parent, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":name": {
 				S: aws.String(folder.Name),
@@ -62,6 +62,9 @@ func Set(folder models.Folder) (models.Folder, error) {
 			":teamId": {
 				S: aws.String(folder.TeamId),
 			},
+			":parent" : {
+				S: aws.String(folder.Parent),
+			},
 		},
 		ExpressionAttributeNames: map[string]*string{
 			"#name":         aws.String("Name"),
@@ -71,6 +74,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 			"#createBy":     aws.String("CreateBy"),
 			"#folderId":     aws.String("FolderId"),
 			"#teamId":       aws.String("TeamId"),
+			"#parent":		 aws.String("Parent"),
 		},
 	})
 
@@ -107,6 +111,7 @@ func List(team string) ([]models.Folder, error) {
 
 	for i := range folders {
 		folders[i].Id = folders[i].FolderId
+		folders[i].FolderId = ""
 	}
 
 	return folders, nil
