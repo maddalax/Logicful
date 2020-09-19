@@ -31,7 +31,7 @@ Globals:
         SUBMISSION_QUEUE_LOCKS_TABLE: !Ref SubmissionsQueueLocksTable
         CONTENT_BLOCKS_TABLE: !Ref ContentBlocksTable
         DATA_TABLE: !Ref DataTable
-        JWT_SIGN_TOKEN : XRQ9m99CnEDDU33MOsafGTOXbPbgAm
+        JWT_SIGN_TOKEN: XRQ9m99CnEDDU33MOsafGTOXbPbgAm
         GOOGLE_OAUTH_SECRET: bzxPS_Ct4UDWyFwcuiuEhnRY
 
 
@@ -58,6 +58,8 @@ Resources:
         - AttributeName: userId
           AttributeType: S
         - AttributeName: NewSubmissionKey
+          AttributeType: S
+        - AttributeName: ParentFolder
           AttributeType: S
       KeySchema:
         - AttributeName: PK
@@ -100,7 +102,7 @@ Resources:
             - AttributeName: NewSubmissionKey
               KeyType: RANGE
           Projection:
-              ProjectionType: ALL
+            ProjectionType: ALL
         - IndexName: UserByEmail
           ProvisionedThroughput:
             ReadCapacityUnits: 5
@@ -110,6 +112,15 @@ Resources:
               KeyType: HASH
             - AttributeName: userId
               KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: FolderChildrenIndex
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+          KeySchema:
+            - AttributeName: ParentFolder
+              KeyType: HASH
           Projection:
             ProjectionType: ALL
 

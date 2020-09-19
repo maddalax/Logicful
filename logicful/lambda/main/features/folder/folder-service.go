@@ -40,7 +40,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 				S: aws.String("FOLDER#" + folder.Id),
 			},
 		},
-		UpdateExpression: aws.String("SET #teamId = :teamId, #parent = :parent, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
+		UpdateExpression: aws.String("SET #teamId = :teamId, #parent = :parent, #parentFolder = :parent, #folderId = :folderId, #name = :name, #changeDate = :changeDate, #changeBy = :changeBy, #creationDate = if_not_exists(#creationDate,:creationDate), #createBy = if_not_exists(#createBy,:createBy)"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":name": {
 				S: aws.String(folder.Name),
@@ -76,6 +76,7 @@ func Set(folder models.Folder) (models.Folder, error) {
 			"#folderId":     aws.String("FolderId"),
 			"#teamId":       aws.String("TeamId"),
 			"#parent":       aws.String("Parent"),
+			"#parentFolder": aws.String("ParentFolder"),
 		},
 	})
 
@@ -87,6 +88,17 @@ func Set(folder models.Folder) (models.Folder, error) {
 }
 
 func Delete(id string, user models.User) error {
+
+	children, err := getChildren(id)
+
+	if err != nil {
+		return err
+	}
+
+	if len(children) > 0 {
+		return errors.New("must delete all child folders first")
+	}
+
 	forms, err := form.List(id)
 	if err != nil {
 		return err
@@ -145,5 +157,27 @@ func List(team string) ([]models.Folder, error) {
 		folders[i].FolderId = ""
 	}
 
+	return folders, nil
+}
+
+func getChildren(id string) ([]models.Folder, error) {
+	results, err := db.New().Query(&dynamodb.QueryInput{
+		TableName:              aws.String(db.Data()),
+		IndexName:              aws.String("FolderChildrenIndex"),
+		KeyConditionExpression: aws.String("ParentFolder = :folder"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":folder": {S: aws.String(id)},
+		},
+		ProjectionExpression: aws.String("FolderId"),
+	})
+	if err != nil {
+		return nil, err
+	}
+	var folders []models.Folder
+	err = dynamodbattribute.UnmarshalListOfMaps(results.Items, &folders)
+
+	if err != nil {
+		return nil, err
+	}
 	return folders, nil
 }
