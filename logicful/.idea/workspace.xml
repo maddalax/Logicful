@@ -29,21 +29,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="limit file size on upload">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/folder/folder-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/public/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/public/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/layout/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/components/models/ComponentProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/components/models/ComponentProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderContent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderContent.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderSettings.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderSettings.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/FormList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/FormList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/MoveForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/MoveForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" afterDir="false" />
-    </list>
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="limit file size on upload" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
