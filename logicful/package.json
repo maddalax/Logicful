@@ -1,17 +1,5 @@
 {
   "scripts": {
-    "build:watch": "cross-env CGO_ENABLED=0 sam build && concurrently npm:dev*",
-    "dev:setup": "docker-compose -f ./dev/docker-compose.yaml up -d && ./dev/setup.sh",
-    "dev:watch": "cross-env CGO_ENABLED=0 chokidar \"**/*.go\" -c \"sam build Api\"",
-    "debug": "sam build && sam local start-api --docker-network logicful --env-vars dev/local-env.json -d 23451 --debugger-path debug --debug-args \"-delveAPI=2\"",
-    "dev:start": "sam local start-api --docker-network logicful --env-vars dev/local-env.json",
-    "deploy:staging": "cross-env CGO_ENABLED=0 sam build && sam deploy",
-    "sqs:processSubmissions": "cross-env CGO_ENABLED=0 GOOS=linux sam build && sam local invoke --docker-network logicful --env-vars dev/local-env.json ProcessSubmissionsJob"
-  },
-  "devDependencies": {
-    "chokidar": "^3.42",
-    "chokidar-cli": "^2.1.0",
-    "concurrently": "^5.3.0",
-    "cross-env": "^7.0.2"
+    "deploy" : "gcloud app deploy"
   }
 }

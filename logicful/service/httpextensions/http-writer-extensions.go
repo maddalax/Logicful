@@ -44,7 +44,6 @@ func WriteError(writer http.ResponseWriter, error error) {
 }
 
 func writeCorsHeaders(writer http.ResponseWriter) {
-	println("writing cors headers")
 	writer.Header().Set("Access-Control-Allow-Origin", "*")
 	writer.Header().Set("Access-Control-Request-Method", "*")
 	writer.Header().Set("Access-Control-Request-Headers", "*")

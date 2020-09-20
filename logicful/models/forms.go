@@ -54,18 +54,18 @@ type LeanSubmission struct {
 }
 
 type SubmissionMeta struct {
-	Env interface{} `json:"env"`
-	IpAddress string `json:"ipAddress"`
+	Env       interface{} `json:"env"`
+	IpAddress string      `json:"ipAddress"`
 }
 
 type Submission struct {
-	FormId           string      `json:"formId"`
-	Id               string      `json:"id"`
-	Details          interface{} `json:"details"`
-	Meta             SubmissionMeta `json:"meta"`
-	FieldMeta        interface{} `json:"fieldMeta"`
-	Status           string      `json:"status"`
-	NewSubmissionKey string      `json:"newSubmissionKey"`
+	FormId    string         `json:"formId"`
+	Id        string         `json:"id"`
+	Details   interface{}    `json:"details"`
+	Meta      SubmissionMeta `json:"meta"`
+	FieldMeta interface{}    `json:"fieldMeta"`
+	Status    string         `json:"status"`
+	Processed bool           `json:"processed"`
 	Creatable
 }
 

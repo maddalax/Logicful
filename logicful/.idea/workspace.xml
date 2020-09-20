@@ -29,11 +29,148 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="endpoint">
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="check if there are child folders before deleting">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gcloudignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cron.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/folder/folder-service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/form/form-service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/cache/cache.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/db/extensions.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/queue/queue.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/logicful.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logicful.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/dev/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/events/sqs/form_submission.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/events/sqs/form_submission_body.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/events/sqs/sqs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/local-env.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/setup.ps1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/setup.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/content-blocks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/option_sets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/tables/submissions_queue_locks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/cron/process_submissions/process_submissions.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/process_submissions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/contentblock/content-block-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/contentblock/content-block-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/contentblock/content-block-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/contentblock/content-block-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/folder/folder-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/folder/folder-service.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/form/form-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/form/form-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/form/form-service.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-delete-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/form-submission-delete-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/form-submission-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/form-submission-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/optionset/option-set-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/optionset/option-set-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/optionset/option-set-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/optionset/option-set-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/s3store/s3-store-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/s3store/s3-store-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/s3store/s3-store-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/s3store/s3-store-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/user/user-management-handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-management-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/user/user-management-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/features/user/user-oauth-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/user/user-oauth-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lambda/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/Apache-HttpComponents-HttpClient-4.5.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/Apache-HttpComponents-HttpCore-4.4.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/JMESPathJava-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/Log4j-api-2.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/antlr-runtime-4.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/aws-java-sdk-core-1.11.780.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/aws-java-sdk-dynamodb-1.11.780.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/commons-cli-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/commons-lang3-3.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/ion-java-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jackson-annotations-2.6.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jackson-core-2.6.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jackson-databind-2.6.x.20200211.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jackson-dataformat-cbor-2.6.x.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-ajp-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-annotations-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-client-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-continuation-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-deploy-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-http-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-io-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-jmx-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-jndi-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-overlay-deployer-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-plus-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-policy-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-rewrite-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-security-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-server-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-servlet-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-servlets-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-start.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-util-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-webapp-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-websocket-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/jetty-xml-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/joda-time-2.8.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/libsqlite4java-linux-aarch64.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/libsqlite4java-linux-amd64.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/libsqlite4java-linux-i386.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/libsqlite4java-osx.dylib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/log4j-core-2.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/osgi.core-4.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/servlet-api-3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/spdy-core-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/spdy-jetty-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/spdy-jetty-http-8.1.12.v20130726.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/sqlite4java-win32-x64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/sqlite4java-win32-x86.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/DynamoDBLocal_lib/sqlite4java.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/Log4j-api-2.x_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/Log4j-api-2.x_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/Log4j-core-2.8_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/Log4j-core-2.8_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/THIRD_PARTY_JAVASCRIPT_NOTICES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/antlr-runtime-4.5_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/commons-cli-1.2_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/commons-cli-1.2_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/commons-lang-3.3.x_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/commons-lang-3.3.x_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/ion-java-1.5.1_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/ion-java-1.5.1_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/jackson-annotations-2.6.x_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/jackson-core-2.6.x_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/jackson-databind-2.6.x_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/jackson_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/jetty_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/jetty_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/joda-time-2.8.2_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/joda-time-2.8.2_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/log4j-1.2.17_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/log4j-1.2.17_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/osgi.core-4.3.1_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/servlet-api-3.0_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/servlet-api-3.0_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/spdy-core_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/spdy-core_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/spdy-jetty_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/spdy-jetty_NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dynamo/third_party_licenses/sqlite4java_LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/entity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samconfig.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/db/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/db/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/distributedlock/distributedlock.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/distributedlock/distributedlock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/service/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/service/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/httpextensions/http-writer-extensions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-local-instance.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,19 +220,19 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../app/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/features/formsubmission" />
+      <recent name="$PROJECT_DIR$/features/formsubmission/cron" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/lambda" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dev/tables" />
       <recent name="$PROJECT_DIR$/lambda/main/features/folder" />
       <recent name="$PROJECT_DIR$/lambda/api/features/contentblock" />
       <recent name="$PROJECT_DIR$/lambda/api/features/form" />
-      <recent name="$PROJECT_DIR$/lambda/api" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lambda" />
-      <recent name="$PROJECT_DIR$/lambda/main" />
-      <recent name="$PROJECT_DIR$/lambda/cron/process_submissions" />
-      <recent name="$PROJECT_DIR$/lambda/api" />
-      <recent name="$PROJECT_DIR$/lambda/sqs" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -158,39 +295,77 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build:watch">
+  <component name="RunManager" selected="Go Build.go build api">
     <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="logicful" />
-      <working_directory value="$PROJECT_DIR$/lambda/api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <envs>
+        <env name="GOOGLE_APPLICATION_CREDENTIALS" value="./auth.json" />
+      </envs>
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="true" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+          <ENTRY IS_ENABLED="true" PARSER="env" PATH="dev.env" />
+        </ENTRIES>
+      </EXTENSION>
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/lambda/api/api.go" />
+      <filePath value="$PROJECT_DIR$/main.go" />
       <package value="api" />
       <directory value="$PROJECT_DIR$/../app" />
-      <output_directory value="$PROJECT_DIR$/out" />
-      <option name="run" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="go build process_submissions.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build app" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="logicful" />
-      <working_directory value="$PROJECT_DIR$/lambda" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/lambda/cron/process_submissions/process_submissions.go" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <envs>
+        <env name="GOOGLE_APPLICATION_CREDENTIALS" value="./../auth.json" />
+      </envs>
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/lambda/main/main.go" />
+      <package value="app" />
       <directory value="$PROJECT_DIR$/../app" />
-      <output_directory value="$PROJECT_DIR$/.aws-sam/build/ProcessSubmissionsJob" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <module name="logicful" />
+      <working_directory value="$PROJECT_DIR$/app" />
+      <envs>
+        <env name="GOOGLE_APPLICATION_CREDENTIALS" value="./../auth.json" />
+      </envs>
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/app/main.go" />
+      <package value="api" />
+      <directory value="$PROJECT_DIR$/../app" />
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
       <method v="2" />
     </configuration>
-    <configuration name="setup.sh" type="ShConfigurationType" temporary="true">
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/dev/setup.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/dev" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="INTERPRETER_OPTIONS" value="" />
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="" />
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="build:watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -213,32 +388,23 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="sqs:processSubmissions" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="sqs:processSubmissions" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Go Build.go build process_submissions.go" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Go Build.go build app" />
+      <item itemvalue="Go Build.go build main.go" />
       <item itemvalue="Go Build.go build api" />
       <item itemvalue="Go Remote.Unnamed" />
       <item itemvalue="npm.build:watch" />
       <item itemvalue="npm.deploy:staging" />
-      <item itemvalue="npm.sqs:processSubmissions" />
-      <item itemvalue="Shell Script.setup.sh" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build:watch" />
+        <item itemvalue="Go Build.go build api" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="npm.deploy:staging" />
-        <item itemvalue="npm.sqs:processSubmissions" />
-        <item itemvalue="Go Build.go build process_submissions.go" />
-        <item itemvalue="Shell Script.setup.sh" />
+        <item itemvalue="npm.build:watch" />
       </list>
     </recent_temporary>
   </component>
@@ -283,7 +449,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="update api to just be a single function" />
     <MESSAGE value="multiple env working" />
     <MESSAGE value="fix list" />
     <MESSAGE value="deserialization fixes on api" />
@@ -308,7 +473,8 @@
     <MESSAGE value="submission view updates, view &amp; download file in submission" />
     <MESSAGE value="limit file size on upload" />
     <MESSAGE value="endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="endpoint" />
+    <MESSAGE value="check if there are child folders before deleting" />
+    <option name="LAST_COMMIT_MESSAGE" value="check if there are child folders before deleting" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -332,16 +498,16 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="458" y="367" key="#Notifications/0.23.1680.1027@0.23.1680.1027" timestamp="1599743863135" />
-    <state x="85" y="350" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600116942225">
+    <state x="396" y="138" width="1071" height="912" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600621247215">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599225802736" />
-    <state x="85" y="350" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600116942225" />
-    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600116735740">
+    <state x="396" y="138" width="1071" height="912" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600621247215" />
+    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600573671463">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="719" y="436" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1597621497460" />
-    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1600116735740" />
+    <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1600573671463" />
     <state x="528" y="279" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600431807910">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -364,33 +530,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1638" height="256" key="GridCell.Tab.0.bottom" timestamp="1600556180526">
+    <state width="1638" height="278" key="GridCell.Tab.0.bottom" timestamp="1600624476689">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="256" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600556180526" />
+    <state width="1638" height="278" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600624476689" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="256" key="GridCell.Tab.0.center" timestamp="1600556180525">
+    <state width="1638" height="278" key="GridCell.Tab.0.center" timestamp="1600624476688">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="256" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600556180525" />
+    <state width="1638" height="278" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600624476688" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="256" key="GridCell.Tab.0.left" timestamp="1600556180524">
+    <state width="1638" height="278" key="GridCell.Tab.0.left" timestamp="1600624476688">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="256" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600556180524" />
+    <state width="1638" height="278" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600624476688" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="256" key="GridCell.Tab.0.right" timestamp="1600556180525">
+    <state width="1638" height="278" key="GridCell.Tab.0.right" timestamp="1600624476689">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="256" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600556180525" />
+    <state width="1638" height="278" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600624476689" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1625" height="246" key="GridCell.Tab.1.bottom" timestamp="1598712371739">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -456,20 +622,20 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598213039172" />
-    <state x="110" y="234" key="SettingsEditor" timestamp="1600546672725">
+    <state x="110" y="234" key="SettingsEditor" timestamp="1600621132828">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
-    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600546672725" />
+    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600621132828" />
     <state x="496" y="259" key="VCS.ChangeListViewerDialog" timestamp="1597929207162">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600555338086">
+    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600556704607">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600555338086" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600556704607" />
     <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410154953" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -483,28 +649,28 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600112360515">
+    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600607050003">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600112360515" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600607050003" />
     <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1600347932064">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1600621411426">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600347932064" />
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600621411426" />
     <state x="43" y="27" width="1122" height="1012" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599417095215" />
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog" timestamp="1599072033112">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1599072033112" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600556344254">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600625081428">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600556344254" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600625081428" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

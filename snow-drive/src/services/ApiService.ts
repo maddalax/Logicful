@@ -18,8 +18,8 @@ function authHeaders() {
 
 export function apiEndpoint() {
   // todo update this to read from env
-  //return "https://logicful.org/api/";
-  return 'http://localhost:3000/api/'
+  return "https://logicful.org/api/";
+  //return 'http://localhost:3000/api/'
 }
 
 export async function getApi<T>(path: string): Promise<T> {

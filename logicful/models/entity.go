@@ -1,7 +1,7 @@
 package models
 
 type Changeable struct {
-	ChangeDate string `json:"changeTime"`
+	ChangeDate string `json:"changeDate"`
 	ChangeBy   string `json:"changeBy"`
 }
 
@@ -17,4 +17,8 @@ type Versioned struct {
 type TokenResponse struct {
 	Token      string `json:"token"`
 	Expiration int64  `json:"expiration"`
+}
+
+type Index struct {
+	Key string `json:"key"`
 }
