@@ -15,6 +15,7 @@ export type IForm = {
   openDateTime?: string;
   closeDateTime?: string;
   emailOnSubmission?: boolean;
+  submissionCount? : number
   loaded?: boolean;
   url?: string;
   initialized?: boolean;

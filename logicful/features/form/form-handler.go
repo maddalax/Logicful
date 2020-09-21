@@ -34,7 +34,7 @@ func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func GetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	form, err := Get(ps.ByName("formId"), handler.User(r))
+	form, err := Get(ps.ByName("formId"))
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

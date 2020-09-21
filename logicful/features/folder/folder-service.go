@@ -51,10 +51,10 @@ func Delete(id string, user models.User) error {
 	}
 
 	client := db.Instance()
-	batch := db.Instance().Batch()
+	batch := client.Batch()
+	ctx := context.Background()
 
-	iter := client.Collection("forms").Where("Folder", "==", "id").Documents(context.Background())
-	folder := client.Collection("folders").Doc(id)
+	iter := client.Collection("forms").Where("Folder", "==", id).Documents(ctx)
 
 	for {
 		doc, err := iter.Next()
@@ -69,9 +69,9 @@ func Delete(id string, user models.User) error {
 		}, firestore.MergeAll)
 	}
 
-	batch.Delete(folder)
+	batch.Delete(client.Collection("folders").Doc(id))
 
-	_, err = batch.Commit(context.Background())
+	_, err = batch.Commit(ctx)
 
 	if err != nil {
 		return err
@@ -84,7 +84,7 @@ func List(team string) ([]models.Folder, error) {
 		return nil, errors.New("team is required")
 	}
 	iter := db.Instance().Collection("folders").Where("TeamId", "==", team).Documents(context.Background())
-	var results []models.Folder
+	var results = make([]models.Folder, 0)
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -106,6 +106,9 @@ func List(team string) ([]models.Folder, error) {
 func hasChildren(folder string) (bool, error) {
 	iter := db.Instance().Collection("folders").Where("Parent", "==", folder).Documents(context.Background())
 	doc, err := iter.Next()
+	if err == iterator.Done {
+		return false, nil
+	}
 	if err != nil {
 		return false, err
 	}

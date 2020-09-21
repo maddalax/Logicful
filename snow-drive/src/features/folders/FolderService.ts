@@ -8,7 +8,7 @@ import { set } from "@app/util/Selection";
   export async function getFolders(cache: boolean = true, each? : (folder : IFolder) => any) : Promise<Dictionary<IFolder>> {
     const current = await getApi<IFolder[]>("folder", cache);
     const user = me();
-    current.unshift({
+    current.push({
       name: "Uncategorized",
       id: `${user.teamId}:uncategorized`,
       isUncategorized : true

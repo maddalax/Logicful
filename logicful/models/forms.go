@@ -14,13 +14,22 @@ type Form struct {
 	Title string `json:"title"`
 	Changeable
 	Creatable
-	Fields          []interface{}    `json:"fields"`
-	Submissions     []LeanSubmission `json:"submissions,omitempty"`
-	SubmissionCount int64            `json:"submissionCount"`
+	Fields          []interface{} `json:"fields"`
+	SubmissionCount int64         `json:"submissionCount"`
 	Versioned
-	Folder string `json:"folder"`
-	TeamId string `json:"teamId"`
-	FormId string `json:"formId,omitempty"`
+	Folder   string   `json:"folder"`
+	TeamId   string   `json:"teamId"`
+	Workflow Workflow `json:"workflow"`
+}
+
+type Workflow struct {
+	Integrations []Integration `json:"integrations"`
+}
+
+type Integration struct {
+	Name       string            `json:"name"`
+	Config     map[string]string `json:"config"`
+	Submission Submission
 }
 
 type Folder struct {
@@ -30,8 +39,7 @@ type Folder struct {
 	Creatable
 	Parent string `json:"parent"`
 	Versioned
-	TeamId   string `json:"teamId"`
-	FolderId string `json:"folderId,omitempty"`
+	TeamId string `json:"teamId"`
 }
 
 type LeanForm struct {

@@ -9,7 +9,6 @@ import (
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/queue"
 	"google.golang.org/api/iterator"
-	"strings"
 	"time"
 )
 
@@ -27,10 +26,6 @@ func Set(form models.Form, user models.User) (models.Form, error) {
 
 	if form.Folder == "" {
 		form.Folder = form.TeamId + ":" + "uncategorized"
-	} else {
-		if !strings.HasPrefix(form.Folder, form.TeamId) {
-			form.Folder = form.TeamId + ":" + form.Folder
-		}
 	}
 
 	if form.CreationDate == "" {
@@ -77,7 +72,20 @@ func List(folder string) ([]models.Form, error) {
 	return results, nil
 }
 
-func Get(id string, user models.User) (models.Form, error) {
+func Get(id string) (models.Form, error) {
+	result, err := db.Instance().Collection("forms").Doc(id).Get(context.Background())
+	if err != nil {
+		return models.Form{}, err
+	}
+	form := models.Form{}
+	err = db.Unmarshal(result.Data(), &form)
+	if err != nil {
+		return models.Form{}, err
+	}
+	return form, nil
+}
+
+func GetWorkflow(id string) (models.Form, error) {
 	result, err := db.Instance().Collection("forms").Doc(id).Get(context.Background())
 	if err != nil {
 		return models.Form{}, err

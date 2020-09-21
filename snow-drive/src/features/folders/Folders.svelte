@@ -25,9 +25,6 @@
   let parent = "";
 
   async function onFolderSelected() {
-    if (!selected) {
-      selected = folders[0];
-    }
     if (contentLoaded && selected) {
       dispatch("folder_selected", { folder: selected });
     }
@@ -51,12 +48,12 @@
       contentLoaded = true;
     });
     await loadFolders();
-    state = LoadState.Finished;
   });
 
   async function loadFolders(cache: boolean = true) {
     folders = await getFolders(cache);
     onSelected(folders[Object.keys(folders)[0]])
+    state = LoadState.Finished;
   }
 
   function onSelected(folder: IFolder) {

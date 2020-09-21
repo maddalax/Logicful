@@ -8,14 +8,10 @@ import (
 	"api/features/optionset"
 	"api/features/s3store"
 	"api/features/user"
-	"cloud.google.com/go/pubsub"
-	"encoding/json"
+	"api/features/workflow"
 	"github.com/julienschmidt/httprouter"
-	"github.com/logicful/models"
 	"github.com/logicful/service/db"
-	"github.com/logicful/service/debug"
 	"github.com/logicful/service/queue"
-	"golang.org/x/net/context"
 	"log"
 	"net/http"
 	"os"
@@ -28,6 +24,17 @@ func main() {
 	addCron()
 
 	router := httprouter.New()
+
+	router.GlobalOPTIONS = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("Access-Control-Request-Method") != "" {
+			// Set CORS headers
+			header := w.Header()
+			header.Set("Access-Control-Allow-Methods", header.Get("Allow"))
+			header.Set("Access-Control-Allow-Origin", "*")
+			header.Set("Access-Control-Allow-Headers", "*")
+		}
+	})
+
 	addOptionSetHandlers(router)
 	addContentBlockHandlers(router)
 	addFormHandlers(router)
@@ -36,7 +43,7 @@ func main() {
 	addSetS3Handlers(router)
 	addUserRoutes(router)
 
-	go Receive()
+	addQueueSubscribers()
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -98,25 +105,6 @@ func addCron() {
 	formsubmission.StartProcessor()
 }
 
-func Receive() {
-	client, err := queue.Instance()
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-
-	sub := client.Subscription("form-processor")
-	err = sub.Receive(context.Background(), func(ctx context.Context, message *pubsub.Message) {
-		var result models.Form
-		err := json.Unmarshal(message.Data, &result)
-		if err != nil {
-			message.Nack()
-			return
-		}
-		message.Ack()
-		debug.Debug(result)
-	})
-
-	if err != nil {
-		log.Fatal(err.Error())
-	}
+func addQueueSubscribers() {
+	workflow.Register()
 }

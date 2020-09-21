@@ -3,6 +3,7 @@ package queue
 import (
 	"encoding/json"
 	"golang.org/x/net/context"
+	"log"
 )
 import "cloud.google.com/go/pubsub"
 
@@ -22,7 +23,11 @@ func Instance() (*pubsub.Client, error) {
 
 func Setup() {
 	setupTopic("form")
+	setupTopic("submissions")
+	setupTopic("integration-email")
 	setupSubscription("form", "form-processor")
+	setupSubscription("submissions", "workflow")
+	setupSubscription("integration-email", "send-submission-email")
 }
 
 func setupTopic(name string) {
@@ -79,4 +84,25 @@ func Dispatch(name string, data interface{}) error {
 		Data: serialized,
 	})
 	return nil
+}
+
+func Receive(subscription string, cb func([]byte) error) {
+	client, err := Instance()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	sub := client.Subscription(subscription)
+	go func() {
+		err = sub.Receive(context.Background(), func(ctx context.Context, message *pubsub.Message) {
+			err = cb(message.Data)
+			if err != nil {
+				message.Nack()
+				return
+			}
+			message.Ack()
+		})
+		if err != nil {
+			println(err.Error())
+		}
+	}()
 }
