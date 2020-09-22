@@ -128,15 +128,26 @@ func currentSubmissions(name string) ([]models.Submission, error) {
 func SetUnprocessed(submissions []models.Submission) error {
 	client := db.Instance()
 	batch := client.Batch()
+	formId := ""
+	count := 0
+
 	for _, s := range submissions {
 		if s.Id == "" {
 			continue
 		}
+		count++
+		formId = s.FormId
 		doc := client.Collection("submissions").Doc(s.Id)
 		batch.Set(doc, map[string]interface{}{
 			"Processed": true,
 		}, firestore.MergeAll)
 	}
+
+	batch.Update(db.Instance().Collection("forms").Doc(formId), []firestore.Update{
+		{Path: "SubmissionCount", Value: firestore.Increment(count)},
+		{Path: "UnreadSubmissions", Value: firestore.Increment(count)},
+	})
+
 	_, err := batch.Commit(context.Background())
 	if err != nil {
 		return err

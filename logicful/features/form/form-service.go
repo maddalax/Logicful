@@ -7,7 +7,6 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
-	"github.com/logicful/service/queue"
 	"google.golang.org/api/iterator"
 	"time"
 )
@@ -37,12 +36,6 @@ func Set(form models.Form, user models.User) (models.Form, error) {
 	form.ChangeBy = "maddox2"
 
 	_, err := db.Instance().Collection("forms").Doc(form.Id).Set(context.Background(), form)
-
-	if err != nil {
-		return models.Form{}, err
-	}
-
-	err = queue.Dispatch("forms", form)
 
 	if err != nil {
 		return models.Form{}, err

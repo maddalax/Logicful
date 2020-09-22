@@ -2,6 +2,7 @@ package formsubmission
 
 import (
 	"cloud.google.com/go/firestore"
+	"encoding/json"
 	"errors"
 	"github.com/google/uuid"
 	"github.com/logicful/models"
@@ -10,8 +11,45 @@ import (
 	"github.com/logicful/service/queue"
 	"github.com/logicful/service/storage"
 	"golang.org/x/net/context"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"time"
 )
+
+func MarkRead(ids map[string]bool, formId string, user models.User) error {
+	client := db.Instance()
+	batch := client.Batch()
+	ref := db.Instance().Collection("submissions_seen").Doc(user.Id + ":" + formId)
+	for s, b := range ids {
+		batch.Set(ref, map[string]interface{}{
+			"Submissions": map[string]interface{}{
+				s: b,
+			},
+		}, firestore.MergeAll)
+	}
+	_, err := batch.Commit(context.Background())
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetRead(formId string, user models.User) (map[string]bool, error) {
+	doc, err := db.Instance().Collection("submissions_seen").Doc(user.Id + ":" + formId).Get(context.Background())
+	if err != nil && status.Code(err) == codes.NotFound {
+		return make(map[string]bool, 0), nil
+	}
+	bytes, err := json.Marshal(doc.Data()["Submissions"])
+	if err != nil {
+		return nil, err
+	}
+	var m map[string]bool
+	err = json.Unmarshal(bytes, &m)
+	if err != nil {
+		return nil, err
+	}
+	return m, nil
+}
 
 func Add(submission models.Submission) error {
 
@@ -24,6 +62,7 @@ func Add(submission models.Submission) error {
 	submission.CreationDate = date.ISO8601(time.Now())
 	submission.CreateBy = "maddox"
 	submission.Processed = false
+	submission.ReadBy = make(map[string]bool, 0)
 
 	err := queue.Dispatch("submissions", submission)
 
@@ -31,22 +70,7 @@ func Add(submission models.Submission) error {
 		return err
 	}
 
-	submissionRef := db.Instance().Collection("submissions").Doc(submission.Id)
-	formRef := db.Instance().Collection("forms").Doc(submission.FormId)
-
-	err = db.Instance().RunTransaction(context.Background(), func(ctx context.Context, tx *firestore.Transaction) error {
-		err := tx.Set(submissionRef, submission)
-		if err != nil {
-			return err
-		}
-		err = tx.Update(formRef, []firestore.Update{
-			{Path: "SubmissionCount", Value: firestore.Increment(1)},
-		})
-		if err != nil {
-			return err
-		}
-		return nil
-	})
+	_, err = db.Instance().Collection("submissions").Doc(submission.Id).Set(context.Background(), submission)
 
 	if err != nil {
 		return err

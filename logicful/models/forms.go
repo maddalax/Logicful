@@ -14,8 +14,9 @@ type Form struct {
 	Title string `json:"title"`
 	Changeable
 	Creatable
-	Fields          []interface{} `json:"fields"`
-	SubmissionCount int64         `json:"submissionCount"`
+	Fields            []interface{} `json:"fields"`
+	SubmissionCount   int64         `json:"submissionCount"`
+	UnreadSubmissions int64         `json:"unreadSubmissions"`
 	Versioned
 	Folder   string   `json:"folder"`
 	TeamId   string   `json:"teamId"`
@@ -75,6 +76,7 @@ type Submission struct {
 	Status    string         `json:"status"`
 	Processed bool           `json:"processed"`
 	Creatable
+	ReadBy map[string]bool `json:"readBy"`
 }
 
 type SubmissionsDeleted struct {

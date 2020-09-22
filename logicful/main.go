@@ -87,6 +87,8 @@ func addSubmissionHandlers(router *httprouter.Router) {
 	router.POST("/api/form/:formId/submission/file/:id", formsubmission.GenerateFileUrlHandler)
 	router.POST("/api/form/:formId/submission", formsubmission.AddHandler)
 	router.DELETE("/api/form/:formId/submission", formsubmission.DeleteHandler)
+	router.PUT("/api/form/:formId/submission/mark/read", formsubmission.MarkReadHandler)
+	router.GET("/api/form/:formId/submission/read", formsubmission.GetReadHandler)
 }
 
 func addSetS3Handlers(router *httprouter.Router) {

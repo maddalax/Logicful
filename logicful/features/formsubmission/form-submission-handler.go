@@ -24,6 +24,28 @@ func AddHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	httpextensions.WriteNoContent(w)
 }
 
+func GetReadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	read, err := GetRead(ps.ByName("formId"), handler.User(r))
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	httpextensions.WriteJson(w, read)
+}
+
+func MarkReadHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	var body map[string]bool
+	if !httpextensions.ReadJson(&body, w, r) {
+		return
+	}
+	err := MarkRead(body, ps.ByName("formId"), handler.User(r))
+	if err != nil {
+		httpextensions.WriteError(w, err)
+		return
+	}
+	httpextensions.WriteNoContent(w)
+}
+
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	url, err := List(ps.ByName("formId"))
 	if err != nil {

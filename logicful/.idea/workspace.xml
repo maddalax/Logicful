@@ -29,25 +29,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="switch to google cloud and firestore">
-      <change afterPath="$PROJECT_DIR$/features/workflow/integrations/email-submission-integration.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/workflow/submission-workflow-listener.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/emailer/emailer.go" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="setup workflow integrations, add email">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_14_20,_2_28_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_14_20__2_28_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/dev.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/folder/folder-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/folder/folder-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/form/form-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/form/form-handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/form/form-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/form/form-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/formsubmission/form-submission-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/form-submission-handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/form-submission-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/formsubmission/process_submissions.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/process_submissions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/queue/queue.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/queue/queue.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/FolderService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/Folders.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/Folders.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/features/folders/FormList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/features/folders/FormList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/models/IForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../snow-drive/src/services/ApiService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,7 +318,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="fix list" />
     <MESSAGE value="deserialization fixes on api" />
     <MESSAGE value="route fixes" />
     <MESSAGE value="api gateway changes" />
@@ -350,7 +342,8 @@
     <MESSAGE value="endpoint" />
     <MESSAGE value="check if there are child folders before deleting" />
     <MESSAGE value="switch to google cloud and firestore" />
-    <option name="LAST_COMMIT_MESSAGE" value="switch to google cloud and firestore" />
+    <MESSAGE value="setup workflow integrations, add email" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup workflow integrations, add email" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -406,50 +399,50 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1638" height="427" key="GridCell.Tab.0.bottom" timestamp="1600697153473">
+    <state width="1638" height="167" key="GridCell.Tab.0.bottom" timestamp="1600775716157">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="427" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153473" />
+    <state width="1638" height="167" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600775716157" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="427" key="GridCell.Tab.0.center" timestamp="1600697153473">
+    <state width="1638" height="167" key="GridCell.Tab.0.center" timestamp="1600775716156">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="427" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153473" />
+    <state width="1638" height="167" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600775716156" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="427" key="GridCell.Tab.0.left" timestamp="1600697153472">
+    <state width="1638" height="167" key="GridCell.Tab.0.left" timestamp="1600775716156">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="427" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153472" />
+    <state width="1638" height="167" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600775716156" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="427" key="GridCell.Tab.0.right" timestamp="1600697153473">
+    <state width="1638" height="167" key="GridCell.Tab.0.right" timestamp="1600775716157">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="427" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153473" />
+    <state width="1638" height="167" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600775716157" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="427" key="GridCell.Tab.1.bottom" timestamp="1600697153349">
+    <state width="1638" height="265" key="GridCell.Tab.1.bottom" timestamp="1600697652131">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="427" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153349" />
-    <state width="1638" height="427" key="GridCell.Tab.1.center" timestamp="1600697153348">
+    <state width="1638" height="265" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1600697652131" />
+    <state width="1638" height="265" key="GridCell.Tab.1.center" timestamp="1600697652130">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="427" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153348" />
-    <state width="1638" height="427" key="GridCell.Tab.1.left" timestamp="1600697153348">
+    <state width="1638" height="265" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1600697652130" />
+    <state width="1638" height="265" key="GridCell.Tab.1.left" timestamp="1600697652130">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="427" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153348" />
-    <state width="1638" height="427" key="GridCell.Tab.1.right" timestamp="1600697153349">
+    <state width="1638" height="265" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1600697652130" />
+    <state width="1638" height="265" key="GridCell.Tab.1.right" timestamp="1600697652130">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="427" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600697153349" />
+    <state width="1638" height="265" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1600697652130" />
     <state width="1625" height="246" key="GridCell.Tab.2.bottom" timestamp="1598712371742">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -498,20 +491,20 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598213039172" />
-    <state x="110" y="234" key="SettingsEditor" timestamp="1600621132828">
+    <state x="110" y="234" key="SettingsEditor" timestamp="1600769893422">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
-    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600621132828" />
+    <state x="110" y="234" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600769893422" />
     <state x="496" y="259" key="VCS.ChangeListViewerDialog" timestamp="1597929207162">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600627196045">
+    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1600697621182">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600627196045" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600697621182" />
     <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410154953" />
     <state x="113" y="123" width="1467" height="827" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598272474503">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -531,22 +524,22 @@
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600607050003" />
     <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1600621411426">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1600771949676">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600621411426" />
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600771949676" />
     <state x="43" y="27" width="1122" height="1012" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599417095215" />
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog" timestamp="1600691570262">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600697084637">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1600775710968">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600697084637" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1600775710968" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

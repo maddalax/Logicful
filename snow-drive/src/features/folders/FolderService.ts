@@ -6,7 +6,7 @@ import { fastClone } from "@app/util/Compare";
 import { set } from "@app/util/Selection";
 
   export async function getFolders(cache: boolean = true, each? : (folder : IFolder) => any) : Promise<Dictionary<IFolder>> {
-    const current = await getApi<IFolder[]>("folder", cache);
+    const current = await getApi<IFolder[]>("folder");
     const user = me();
     current.push({
       name: "Uncategorized",
