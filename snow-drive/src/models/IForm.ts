@@ -1,5 +1,6 @@
 import type { Group } from "./Group";
 import type { IField } from "./IField";
+import type { Dictionary } from "./Utility";
 
 export type IForm = {
   fields: IField[];
@@ -16,7 +17,8 @@ export type IForm = {
   closeDateTime?: string;
   emailOnSubmission?: boolean;
   submissionCount? : number
-  loaded?: boolean;
+  unreadSubmissions? : number
+  loaded?: boolean
   url?: string;
   initialized?: boolean;
   folder?: string;
@@ -30,5 +32,6 @@ export type ISubmission = {
     env: any;
     ipAddress: string;
   };
+  isUnread : boolean
   [key: string]: any;
 };

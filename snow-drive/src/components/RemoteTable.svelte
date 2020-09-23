@@ -3,7 +3,7 @@
     TableRow,
     TableButtonAction,
   } from "@app/components/models/RemoteTableProps";
-  import { onMount, tick } from "svelte";
+  import { afterUpdate, onMount, tick } from "svelte";
   import Fuse from "fuse.js";
   import { LoadState } from "@app/models/LoadState";
   import { randomString } from "@app/util/Generate";
@@ -13,7 +13,7 @@
   import Dialog from "@app/components/layout/Dialog.svelte";
   import ToastManager from "@app/components/ToastManager.svelte";
   import { isObject } from "@app/guards/Guard";
-
+  import type { Dictionary } from "@app/models/Utility";
   export let getRows: () => Promise<TableRow[]>;
   export let defaultSortColumn = "";
   export let searchPlaceHolder: string = "Search";
@@ -34,17 +34,40 @@
   let sortDirection = "";
   let allRowsSelected = false;
   let selectedCount = 0;
-  let modal: "delete" | "toggle_column" | "preview" | "" = "";
+  let modal: "delete" | "toggle_column" | "preview" | "" | "filter" = "";
+  let filters: Dictionary<any> = {
+    onlyUnread : false
+  };
+  let lastFilters: Dictionary<any> = {};
 
   export let headerActions: TableButtonAction[] = [];
   export let onEdit: ((row: any) => any) | undefined = undefined;
   export let onDelete: ((rows: any[]) => any) | undefined = undefined;
+  export let onRead:
+    | ((rows: any[], value: boolean) => any)
+    | undefined = undefined;
   export let hidden: Set<string> = new Set<string>();
   export let sortColumns:
     | ((columns: string[]) => string[])
     | undefined = undefined;
   export let onFormat: (column: string, row: any) => any = () => undefined;
   export let onRowClick: (row: any) => any = () => {};
+
+  afterUpdate(() => {
+    if(!fastEquals(filters, lastFilters)) {
+        filters = lastFilters;
+        applyFilters();
+      }
+  })
+
+  function applyFilters() {
+    console.log("FILTERS", filters)
+    if(filters.onlyUnread) {
+      filtered = filtered.filter(f => {
+        return isUnread(f)
+      })
+    }
+  }
 
   function createFuse(): Fuse<{}> {
     const list = rows.map((r) => {
@@ -194,6 +217,10 @@
     });
   }
 
+  function isUnread(row: any) {
+    return row["meta_unread"] === true;
+  }
+
   function renderValue(row: any, column: string) {
     let value = row[column] ?? "";
     value = onFormat(column, row[column]) ?? value;
@@ -225,6 +252,22 @@
     }
   }
 
+  async function markRead(value: boolean) {
+    const selected = filtered.filter((w) => w.meta_selected);
+    const ids = new Set(selected.map((s) => s.table_meta_id));
+    await onRead?.(selected, value);
+    filtered = filtered.map((f) => {
+      const id = f.table_meta_id;
+      if (ids.has(id)) {
+        f.meta_unread = !value;
+      }
+      return f;
+    });
+    dispatch("show_toast", {
+      message: `Item(s) marked as ${value ? "read" : "unread"}.`,
+    });
+  }
+
   async function deleteEntries() {
     const selected = filtered.filter((w) => w.meta_selected);
     if (selected.length !== selectedCount) {
@@ -249,18 +292,106 @@
     rows = rows.filter((w) => {
       return !toRemove.has(w.table_meta_id);
     });
+    dispatch("show_toast", {
+      message: `Item(s) deleted.'}.`,
+    });
   }
 </script>
+
+<style>
+  .table-hover {
+    margin-top: 1em !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  table tr:hover td:first-child {
+    border-top-left-radius: 0.45rem;
+    border-bottom-left-radius: 0.45rem;
+  }
+  table tr:hover td:last-child {
+    border-top-right-radius: 0.45rem;
+    border-bottom-right-radius: 0.45rem;
+  }
+
+  tr:not(:first-child) {
+    background-color: #f4f7f7 !important;
+  }
+
+  tr.active {
+    border-radius: 0.45rem;
+  }
+
+  td {
+    max-width: 500px;
+    width: 500px !important;
+  }
+
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
+  .text-unread {
+    font-weight: bold;
+  }
+
+  :global(th) {
+    cursor: pointer;
+  }
+
+  .fa-columns {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .fa-trash-alt {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .fa-eye {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .fa-filter {
+    cursor: pointer;
+    height: 1.3em;
+    width: 1.3em;
+  }
+
+  .fa-eye-slash {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .unread {
+    background-color: white !important;
+  }
+</style>
 
 <div>
   <ToastManager />
   <div class="d-flex bd-highlight mb-3">
-    <div class="mr-auto p-2 bd-highlight">
+    <div class="p-2 bd-highlight">
       <input
         class="form-control"
         placeholder={searchPlaceHolder}
         bind:value={query}
         style="width: 300px" />
+    </div>
+    <div class="mr-auto p-2 bd-highlight">
+      <div on:click={() => (modal = 'filter')} style="margin-top: 7px;">
+        <i class="fas fa-filter" />
+      </div>
     </div>
     {#if selectedCount > 0}
       <div class="p-2 bd-highlight">
@@ -269,14 +400,21 @@
         </div>
       </div>
       <div class="p-2 bd-highlight">
+        <div style="pointer: cursor;" on:click={() => markRead(true)}>
+          <i class="fas fa-eye" />
+        </div>
+      </div>
+      <div class="p-2 bd-highlight">
+        <div style="pointer: cursor;" on:click={() => markRead(false)}>
+          <i class="fas fa-eye-slash" />
+        </div>
+      </div>
+      <div class="p-2 bd-highlight">
         <div style="pointer: cursor;" on:click={() => (modal = 'delete')}>
           <i class="fas fa-trash-alt" />
         </div>
       </div>
     {/if}
-    <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;"><i class="fas fa-cog" /></div>
-    </div>
     <div class="p-2 bd-highlight">
       <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}>
         <i class="fas fa-columns" />
@@ -335,8 +473,11 @@
                 <tr
                   class:active={row.meta_selected}
                   style="vertical-align: middle; cursor: pointer;"
-                  on:click={() => onRowClick(row)}>
-                  <td>
+                  on:click={() => {
+                    onRowClick(row);
+                    row['meta_unread'] = false;
+                  }}>
+                  <td class:unread={isUnread(row)}>
                     <div class="form-check">
                       <input
                         class="form-check-input"
@@ -348,11 +489,20 @@
                           onRowSelected(row);
                         }}
                         id={'row-toggle-' + index} />
+                      {#if isUnread(row)}
+                        <div>
+                          <i
+                            class="fas fa-circle"
+                            style="width: .5em;margin-left:4px" />
+                        </div>
+                      {/if}
                     </div>
                   </td>
                   {#each filteredColumns as column}
-                    <td>
-                      <div class="text">{renderValue(row, column)}</div>
+                    <td class:unread={isUnread(row)}>
+                      <div class="text" class:text-unread={isUnread(row)}>
+                        {renderValue(row, column)}
+                      </div>
                     </td>
                   {/each}
                 </tr>
@@ -414,61 +564,21 @@
       }}>
       <p>Are you sure you want to delete {selectedCount} entries?</p>
     </Dialog>
+  {:else if modal === 'filter'}
+    <Dialog
+      title={'Manage Filters'}
+      isOpen={true}
+      onClose={() => {
+        modal = '';
+      }}>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          bind:checked={filters.onlyUnread}
+          on:click|stopPropagation />
+        <label class="form-check-label">Only Show Unread Items</label>
+      </div>
+    </Dialog>
   {/if}
 </div>
-
-<style>
-  .table-hover {
-    margin-top: 1em !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-  }
-
-  table tr:hover td:first-child {
-    border-top-left-radius: 0.45rem;
-    border-bottom-left-radius: 0.45rem;
-  }
-  table tr:hover td:last-child {
-    border-top-right-radius: 0.45rem;
-    border-bottom-right-radius: 0.45rem;
-  }
-
-  tr.active {
-    background-color: #f5f5f5 !important;
-    border-radius: 0.45rem;
-  }
-
-  td {
-    max-width: 500px;
-    width: 500px !important;
-  }
-
-  .text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
-
-  :global(th) {
-    cursor: pointer;
-  }
-
-  .fa-columns {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  .fa-cog {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-  .fa-trash-alt {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-</style>

@@ -11,25 +11,6 @@
   onMount(() => {});
 </script>
 
-<div aria-live="polite" aria-atomic="true" class="toast-container">
-  <div
-    class="toast"
-    bind:this={component}
-    style="position: absolute; top: 0; right: 0;">
-    <div class="toast-header">
-      <strong class="mr-auto">{title}</strong>
-      <button
-        type="button"
-        class="ml-2 mb-1 close"
-        data-dismiss="toast"
-        aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="toast-body">{message}</div>
-  </div>
-</div>
-
 <style>
   .toast-container {
     position: fixed;
@@ -54,3 +35,24 @@
     background-color: #52547a !important;
   }
 </style>
+
+<div aria-live="polite" aria-atomic="true" class="toast-container">
+  <div
+    class="toast"
+    bind:this={component}
+    style="position: absolute; top: 0; right: 0;">
+    {#if title}
+      <div class="toast-header">
+        <strong class="mr-auto">{title}</strong>
+        <button
+          type="button"
+          class="ml-2 mb-1 close"
+          data-dismiss="toast"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {/if}
+    <div class="toast-body">{message}</div>
+  </div>
+</div>

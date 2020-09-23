@@ -55,7 +55,7 @@
               <Link
                 href={`/form/submissions?formId=${form.id}`}
                 style="font-weight: 50; text-decoration: underline;">
-                Unread ({form.submissionCount})
+                Unread ({form.unreadSubmissions})
               </Link>
               <span> | </span>
               <Link
