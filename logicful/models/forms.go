@@ -23,6 +23,13 @@ type Form struct {
 	Workflow Workflow `json:"workflow"`
 }
 
+type FormField struct {
+	Name  string `json:"name"`
+	Label string `json:"label"`
+	Type  string `json:"type"`
+	Value string `json:"value"`
+}
+
 type Workflow struct {
 	Integrations []Integration `json:"integrations"`
 }
@@ -30,7 +37,8 @@ type Workflow struct {
 type Integration struct {
 	Name       string            `json:"name"`
 	Config     map[string]string `json:"config"`
-	Submission Submission
+	Submission Submission        `json:"submission"`
+	Form       Form              `json:"form"`
 }
 
 type Folder struct {

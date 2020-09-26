@@ -4,8 +4,6 @@
   import Label from "./Label.svelte";
   import { onMount } from "svelte";
   import formStore from "@app/store/FormStore";
-  import { isEmptyOrNull } from "@app/util/Compare";
-  import { afterUpdate, object_without_properties } from "svelte/internal";
   import { debounce } from "@app/util/Debounce";
 
   export let field: IField;

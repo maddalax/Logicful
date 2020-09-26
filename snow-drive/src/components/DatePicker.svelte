@@ -2,9 +2,11 @@
   import { onMount } from "svelte";
   import type { IField } from "@app/models/IField";
   import Label from "../inputs/Label.svelte";
-  import FieldContainer from "@app/features/form/live/FieldContainer.svelte";
+  import formStore from "../store/FormStore";
 
   export let field: IField;
+  export let onChange: (value: string) => void = () => {};
+
   let value: string = "";
   let picker: any;
   let input: any;
@@ -21,6 +23,13 @@
     picker = flatpickr.default(input, {
       onChange: (selectedDates: any, dateStr: any, instance: any) => {
         value = dateStr;
+        field.value = value;
+        formStore.set(field, {
+          field: "value",
+          value: field.value,
+          fromUser: true,
+        });
+        onChange(value);
       },
       altInput: true,
       altFormat: "F j, Y h:i K",
@@ -34,6 +43,13 @@
   }
 </script>
 
+<style>
+  .date-input-hidden {
+    background-color: white !important;
+    opacity: 1;
+  }
+</style>
+
 <Label {field} />
 <input
   id={field.id}
@@ -42,10 +58,3 @@
   class="form-control date-input-hidden"
   value={value ?? ''}
   placeholder="Select a date..." />
-
-<style>
-  .date-input-hidden {
-    background-color: white !important;
-    opacity: 1;
-  }
-</style>

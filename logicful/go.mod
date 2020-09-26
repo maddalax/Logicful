@@ -1,6 +1,6 @@
 require (
 	cloud.google.com/go/firestore v1.3.0
-	cloud.google.com/go/pubsub v1.3.1
+	github.com/antonholmquist/jason v1.0.0
 	github.com/aws/aws-sdk-go v1.34.5
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/google/uuid v1.1.1

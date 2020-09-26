@@ -7,6 +7,7 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/distributedlock"
+	"github.com/logicful/service/queue"
 	"github.com/logicful/service/storage"
 	"github.com/robfig/cron/v3"
 	"google.golang.org/api/iterator"
@@ -134,6 +135,10 @@ func SetUnprocessed(submissions []models.Submission) error {
 	for _, s := range submissions {
 		if s.Id == "" {
 			continue
+		}
+		err := queue.Dispatch("submissions", s)
+		if err != nil {
+			return err
 		}
 		count++
 		formId = s.FormId

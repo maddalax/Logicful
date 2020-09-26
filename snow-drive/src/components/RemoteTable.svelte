@@ -9,7 +9,7 @@
   import { randomString } from "@app/util/Generate";
   import Pagination from "@app/components/Pagination.svelte";
   import { dispatch, dispatchPrivate } from "@app/event/EventBus";
-  import { fastEquals } from "@app/util/Compare";
+  import { fastClone, fastEquals } from "@app/util/Compare";
   import Dialog from "@app/components/layout/Dialog.svelte";
   import ToastManager from "@app/components/ToastManager.svelte";
   import { isObject } from "@app/guards/Guard";
@@ -36,9 +36,10 @@
   let selectedCount = 0;
   let modal: "delete" | "toggle_column" | "preview" | "" | "filter" = "";
   let filters: Dictionary<any> = {
-    onlyUnread : false
+    onlyUnread: false,
   };
   let lastFilters: Dictionary<any> = {};
+  let appliedFilters = 0;
 
   export let headerActions: TableButtonAction[] = [];
   export let onEdit: ((row: any) => any) | undefined = undefined;
@@ -54,18 +55,21 @@
   export let onRowClick: (row: any) => any = () => {};
 
   afterUpdate(() => {
-    if(!fastEquals(filters, lastFilters)) {
-        filters = lastFilters;
-        applyFilters();
-      }
-  })
+    console.log("after update", filters);
+    if (!fastEquals(filters, lastFilters)) {
+      lastFilters = fastClone(filters);
+      applyFilters();
+    }
+  });
 
   function applyFilters() {
-    console.log("FILTERS", filters)
-    if(filters.onlyUnread) {
-      filtered = filtered.filter(f => {
-        return isUnread(f)
-      })
+    appliedFilters = 0;
+    filtered = rows;
+    if (filters.onlyUnread) {
+      appliedFilters++;
+      filtered = filtered.filter((f) => {
+        return isUnread(f);
+      });
     }
   }
 
@@ -388,11 +392,16 @@
         bind:value={query}
         style="width: 300px" />
     </div>
-    <div class="mr-auto p-2 bd-highlight">
+    <div class="p-2 bd-highlight" class:mr-auto={appliedFilters === 0}>
       <div on:click={() => (modal = 'filter')} style="margin-top: 7px;">
         <i class="fas fa-filter" />
       </div>
     </div>
+    {#if appliedFilters > 0}
+      <div class="mr-auto p-2 bd-highlight" style="margin-top: 7px;">
+        <span class="badge bg-primary">{appliedFilters} Filter(s) Applied</span>
+      </div>
+    {/if}
     {#if selectedCount > 0}
       <div class="p-2 bd-highlight">
         <div style="margin-top: 5px;">

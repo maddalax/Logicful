@@ -8,7 +8,6 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
-	"github.com/logicful/service/queue"
 	"github.com/logicful/service/storage"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/codes"
@@ -64,13 +63,7 @@ func Add(submission models.Submission) error {
 	submission.Processed = false
 	submission.ReadBy = make(map[string]bool, 0)
 
-	err := queue.Dispatch("submissions", submission)
-
-	if err != nil {
-		return err
-	}
-
-	_, err = db.Instance().Collection("submissions").Doc(submission.Id).Set(context.Background(), submission)
+	_, err := db.Instance().Collection("submissions").Doc(submission.Id).Set(context.Background(), submission)
 
 	if err != nil {
 		return err

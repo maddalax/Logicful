@@ -25,7 +25,7 @@ func registerWorkflowProcessor() {
 }
 
 func processWorkflow(submission models.Submission) error {
-	f, err := form.GetWorkflow(submission.FormId)
+	f, err := form.Get(submission.FormId)
 	if err != nil {
 		return err
 	}
@@ -34,6 +34,7 @@ func processWorkflow(submission models.Submission) error {
 			Submission: submission,
 			Name:       integration.Name,
 			Config:     integration.Config,
+			Form:       f,
 		})
 		if err != nil {
 			return err

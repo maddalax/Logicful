@@ -10,13 +10,13 @@ import (
 
 type Email struct {
 	To       string
-	HtmlBody string
-	Subject  string
 	From     string
+	Template string            `json:"TemplateAlias"`
+	Model    map[string]string `json:"TemplateModel"`
 }
 
 func Send(email Email) error {
-	url := "https://api.postmarkapp.com/email"
+	url := "https://api.postmarkapp.com/email/withTemplate"
 	payload, err := json.Marshal(email)
 	if err != nil {
 		return err
