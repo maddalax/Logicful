@@ -2,6 +2,7 @@ package main
 
 import (
 	"api/features/contentblock"
+	"api/features/email"
 	"api/features/folder"
 	"api/features/form"
 	"api/features/formsubmission"
@@ -42,6 +43,7 @@ func main() {
 	addSubmissionHandlers(router)
 	addSetS3Handlers(router)
 	addUserRoutes(router)
+	addEmailWebhookRoutes(router)
 
 	addQueueSubscribers()
 
@@ -101,6 +103,10 @@ func addUserRoutes(router *httprouter.Router) {
 	router.POST("/api/user/login", user.LoginHandler)
 	router.POST("/api/user/refresh", user.RefreshHandler)
 	router.POST("/api/user/login/google", user.LoginFromGoogleHandler)
+}
+
+func addEmailWebhookRoutes(router *httprouter.Router) {
+	router.POST("/api/email/webhook", email.WebhookHandler)
 }
 
 func addCron() {

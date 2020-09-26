@@ -12,6 +12,8 @@ type User struct {
 	Picture     string `json:"picture"`
 	Creatable
 	Changeable
+	EmailSuppressed  string `json:"emailSuppressed"`
+	EmailBounceCount string `json:"emailBounceCount"`
 }
 
 type UserLoginClaims struct {
