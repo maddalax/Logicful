@@ -29,15 +29,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="email submissions working">
-      <change afterPath="$PROJECT_DIR$/features/email/email-webhook-handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/email/email-webhook-service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/email.go" afterDir="false" />
+    <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="setup webhooks for email">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/dev.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/formsubmission/process_submissions.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/process_submissions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/workflow/integrations/email-submission-integration.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/workflow/integrations/email-submission-integration.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.deploy">
+  <component name="RunManager" selected="Go Build.go build api">
     <configuration name="go build api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$" />
@@ -263,8 +260,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy" />
         <item itemvalue="Go Build.go build api" />
+        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.deploy:staging" />
         <item itemvalue="npm.build:watch" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
@@ -312,7 +309,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="api gateway changes" />
     <MESSAGE value="update endpoints, make export work" />
     <MESSAGE value="revert lb changes" />
     <MESSAGE value="folder api" />
@@ -337,7 +333,8 @@
     <MESSAGE value="setup workflow integrations, add email" />
     <MESSAGE value="track unseen submissions, ability to mark seen or not." />
     <MESSAGE value="email submissions working" />
-    <option name="LAST_COMMIT_MESSAGE" value="email submissions working" />
+    <MESSAGE value="setup webhooks for email" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup webhooks for email" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -379,10 +376,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="578" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598272233738" />
-    <state x="829" y="404" key="#xdebugger.evaluate" timestamp="1601129880763">
+    <state x="829" y="404" key="#xdebugger.evaluate" timestamp="1601208288149">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="829" y="404" key="#xdebugger.evaluate/0.23.1680.1027@0.23.1680.1027" timestamp="1601129880763" />
+    <state x="829" y="404" key="#xdebugger.evaluate/0.23.1680.1027@0.23.1680.1027" timestamp="1601208288149" />
     <state x="68" y="106" width="1612" height="776" key="DiffContextDialog" timestamp="1599621801139">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -393,50 +390,50 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom" timestamp="1601137790075">
+    <state width="1638" height="221" key="GridCell.Tab.0.bottom" timestamp="1601209329583">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790075" />
+    <state width="1638" height="221" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329583" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center" timestamp="1601137790075">
+    <state width="1638" height="221" key="GridCell.Tab.0.center" timestamp="1601209329583">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790075" />
+    <state width="1638" height="221" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329583" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left" timestamp="1601137790074">
+    <state width="1638" height="221" key="GridCell.Tab.0.left" timestamp="1601209329582">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790074" />
+    <state width="1638" height="221" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329582" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right" timestamp="1601137790075">
+    <state width="1638" height="221" key="GridCell.Tab.0.right" timestamp="1601209329583">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790075" />
+    <state width="1638" height="221" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329583" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="258" key="GridCell.Tab.1.bottom" timestamp="1601137790077">
+    <state width="1638" height="221" key="GridCell.Tab.1.bottom" timestamp="1601209329427">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790077" />
-    <state width="1638" height="258" key="GridCell.Tab.1.center" timestamp="1601137790076">
+    <state width="1638" height="221" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329427" />
+    <state width="1638" height="221" key="GridCell.Tab.1.center" timestamp="1601209329426">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790076" />
-    <state width="1638" height="258" key="GridCell.Tab.1.left" timestamp="1601137790076">
+    <state width="1638" height="221" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329426" />
+    <state width="1638" height="221" key="GridCell.Tab.1.left" timestamp="1601209329426">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790076" />
-    <state width="1638" height="258" key="GridCell.Tab.1.right" timestamp="1601137790076">
+    <state width="1638" height="221" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329426" />
+    <state width="1638" height="221" key="GridCell.Tab.1.right" timestamp="1601209329426">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="258" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601137790076" />
+    <state width="1638" height="221" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601209329426" />
     <state width="1625" height="246" key="GridCell.Tab.2.bottom" timestamp="1598712371742">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -494,11 +491,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="496" y="259" key="VCS.ChangeListViewerDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1597929207162" />
-    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1601131942841">
+    <state x="236" y="274" width="800" height="539" key="Vcs.Push.Dialog.v2" timestamp="1601138285994">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="360" y="342" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599169326692" />
-    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1601131942841" />
+    <state x="236" y="274" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1601138285994" />
     <state x="360" y="352" width="800" height="539" key="Vcs.Push.Dialog.v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410154953" />
     <state width="840" height="513" key="XDebugger.FullValuePopup" timestamp="1601129801060">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -516,11 +513,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600867525675">
+    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601207535868">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1600867525675" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1601207535868" />
     <state x="798" y="593" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1599410617437" />
     <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1601137576222">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -532,12 +529,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1601137915711">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1601209061288">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1601137915711" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1601209061288" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

@@ -6,6 +6,7 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/emailer"
 	"github.com/logicful/service/queue"
+	"os"
 	"strings"
 )
 
@@ -27,20 +28,27 @@ func sendSubmissionEmail(integration models.Integration) error {
 		return err
 	}
 	println(body)
-	err = emailer.Send(emailer.Email{
-		To:       integration.Config["to"],
-		From:     "maddox@logicful.org",
-		Template: "new-submission",
-		Model: map[string]string{
-			"body":               body,
-			"formName":           integration.Form.Title,
-			"unsubscribeUrl":     "http://localhost:5000/unsubscribe",
-			"viewSubmissionsUrl": "http://localhost:5000/form/submissions?formId=" + integration.Submission.FormId,
-			"viewSubmissionUrl":  "http://localhost:5000/form/submissions?formId=" + integration.Submission.FormId + "&submissionId=" + integration.Submission.Id,
-		},
-	})
-	if err != nil {
-		return err
+	if os.Getenv("SEND_EMAILS") == "true" {
+		to := integration.Config["to"]
+		test := os.Getenv("TEST_EMAIL_RECEIVER")
+		if test != "" {
+			to = test
+		}
+		err = emailer.Send(emailer.Email{
+			To:       to,
+			From:     "maddox@logicful.org",
+			Template: "new-submission",
+			Model: map[string]string{
+				"body":               body,
+				"formName":           integration.Form.Title,
+				"unsubscribeUrl":     "http://localhost:5000/unsubscribe",
+				"viewSubmissionsUrl": "http://localhost:5000/form/submissions?formId=" + integration.Submission.FormId,
+				"viewSubmissionUrl":  "http://localhost:5000/form/submissions?formId=" + integration.Submission.FormId + "&submissionId=" + integration.Submission.Id,
+			},
+		})
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -65,7 +73,7 @@ func formatEmail(integration models.Integration) (string, error) {
 	}
 
 	var builder strings.Builder
-	for key, _ := range result {
+	for key := range result {
 		for _, field := range fields {
 			if field.Name == key || field.Label == key {
 				value := formatField(field, result[key])
@@ -100,6 +108,7 @@ func formatField(field models.FormField, data interface{}) string {
 		writeField(&builder, v, "City", "city", "value")
 		writeField(&builder, v, "State", "state", "value")
 		writeField(&builder, v, "Zip Code", "zip", "value")
+		return builder.String()
 	}
 	if field.Type == "full-name" {
 		writeField(&builder, v, "Prefix", "prefix", "value")
@@ -107,7 +116,36 @@ func formatField(field models.FormField, data interface{}) string {
 		writeField(&builder, v, "Middle", "middle", "value")
 		writeField(&builder, v, "Last", "last", "value")
 		writeField(&builder, v, "Suffix", "suffix", "value")
+		return builder.String()
 	}
+	if field.Type == "file" {
+		writeField(&builder, v, "Name", "name")
+		writeField(&builder, v, "Type", "type")
+		builder.WriteString("<p><strong>" + "Download" + ": " + "</strong>")
+		builder.WriteString("View the submission on your submissions page to download the file.")
+		builder.WriteString("</p>")
+		return builder.String()
+	}
+	if field.Type == "radio-group" || field.Type == "checkbox-group" {
+		radio, err := v.GetObject()
+		if err != nil {
+			return ""
+		}
+		builder.WriteString("<p>")
+		var values []string
+		for _, value := range radio.Map() {
+			str, err := value.String()
+			if err != nil {
+				continue
+			}
+			values = append(values, str)
+		}
+		builder.WriteString(strings.Join(values, ", "))
+		builder.WriteString("</p>")
+		return builder.String()
+	}
+
+	builder.WriteString(v.String())
 	return builder.String()
 }
 
