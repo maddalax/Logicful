@@ -5,7 +5,7 @@ export interface DropdownButtonAction {
 
 export interface ButtonAction {
   label: string
-  type: string
+  type: "primary" | "secondary" | "warn" | "danger"
   focus?: boolean
   onClose? : boolean
   onClick?: (() => Promise<any>) | (() => any)
