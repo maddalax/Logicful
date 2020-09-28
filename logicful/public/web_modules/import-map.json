@@ -1,0 +1,30 @@
+{
+  "imports": {
+    "@fortawesome/fontawesome-free/css/all.min.css": "./@fortawesome/fontawesome-free/css/all.min.css",
+    "@fortawesome/fontawesome-free/js/all.min.js": "./@fortawesome/fontawesome-free/js/all.min.js",
+    "@sentry/browser": "./@sentry/browser.js",
+    "@sentry/tracing": "./@sentry/tracing.js",
+    "bowser": "./bowser.js",
+    "dragula": "./dragula.js",
+    "dragula/dist/dragula.css": "./dragula/dist/dragula.css",
+    "dragula/dist/dragula.min.css": "./dragula/dist/dragula.min.css",
+    "flatpickr": "./flatpickr.js",
+    "flatpickr/dist/flatpickr.min.css": "./flatpickr/dist/flatpickr.min.css",
+    "fuse.js": "./fusejs.js",
+    "lodash.get": "./lodash.get.js",
+    "lodash.has": "./lodash.has.js",
+    "lodash.set": "./lodash.set.js",
+    "popper.js": "./popperjs.js",
+    "popper.js/dist/popper.min.js": "./popperjs/dist/popper.min.js",
+    "quill": "./quill.js",
+    "quill/dist/quill.js": "./quill/dist/quill.js",
+    "quill/dist/quill.snow.css": "./quill/dist/quill.snow.css",
+    "svelte": "./svelte.js",
+    "svelte-routing": "./svelte-routing.js",
+    "svelte/animate": "./svelte/animate.js",
+    "svelte/internal": "./svelte/internal.js",
+    "svelte/transition": "./svelte/transition.js",
+    "traverse": "./traverse.js",
+    "uuid": "./uuid.js"
+  }
+}

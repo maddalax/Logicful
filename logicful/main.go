@@ -10,6 +10,7 @@ import (
 	"api/features/s3store"
 	"api/features/user"
 	"api/features/workflow"
+	"api/handler"
 	"github.com/julienschmidt/httprouter"
 	"github.com/logicful/service/db"
 	"github.com/logicful/service/queue"
@@ -44,6 +45,12 @@ func main() {
 	addSetS3Handlers(router)
 	addUserRoutes(router)
 	addEmailWebhookRoutes(router)
+	router.ServeFiles("/css/*filepath", http.Dir("public/css"))
+	router.ServeFiles("/js/*filepath", http.Dir("public/js"))
+	router.ServeFiles("/img/*filepath", http.Dir("public/img"))
+	router.ServeFiles("/assets/*filepath", http.Dir("public/assets"))
+	router.ServeFiles("/fonts/*filepath", http.Dir("public/fonts"))
+	router.NotFound = handler.FileServer(http.Dir("/public"))
 
 	addQueueSubscribers()
 
@@ -56,6 +63,10 @@ func main() {
 	if err := http.ListenAndServe(":"+port, router); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func index(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
+	http.ServeFile(w, r, "public/index.html")
 }
 
 func addOptionSetHandlers(router *httprouter.Router) {

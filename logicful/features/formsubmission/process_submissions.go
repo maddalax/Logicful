@@ -16,7 +16,7 @@ import (
 
 func StartProcessor() {
 	c := cron.New()
-	_, err := c.AddFunc("@every 5s", process)
+	_, err := c.AddFunc("@every 1m", process)
 	if err != nil {
 		log.Fatal(err)
 	}

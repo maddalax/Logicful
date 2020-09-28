@@ -1,0 +1,34 @@
+{
+  "extends": "@snowpack/app-scripts-svelte",
+  "devOptions": {
+    "port": 5000
+  },
+  "scripts" : {
+    "build:css": "postcss"
+  },
+  "plugins": [
+    [
+      "@snowpack/plugin-build-script",
+      {
+        "cmd": "postcss",
+        "input": [
+          ".css"
+        ],
+        "output": [
+          ".css"
+        ]
+      }
+    ],
+    "@snowpack/plugin-optimize",
+    "@snowpack/plugin-webpack"
+  ],
+  "alias": {
+    "@app": "./src"
+  },
+  "buildOptions": {
+    "clean": true
+  },
+  "installOptions": {
+    "installTypes": true
+  }
+}
