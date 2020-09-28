@@ -85,7 +85,9 @@
     <p class="text-sm leading-5 text-gray-500">
       Are you sure you want to delete this field?
     </p>
-    <p class="text-sm leading-5 text-gray-500">Changes will be applied after the form is saved.</p>
+    <p class="text-sm leading-5 text-gray-500">
+      Changes will be applied after the form is saved.
+    </p>
   </Dialog>
 {/if}
 <div
@@ -98,31 +100,35 @@
   </div>
   <div class="mt-4 flex sm:mt-0 sm:ml-4">
     <span class="order-1 ml-3 shadow-sm rounded-md sm:order-0 sm:ml-0">
-      <button
+      <a
+        href={`/form/submissions?formId=${form.id}&mode=local`}
+        target="_blank"
         type="button"
         class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
           leading-5 font-medium rounded-md text-gray-700 bg-white
           hover:text-gray-500 focus:outline-none focus:shadow-outline-blue
           focus:border-blue-300 active:text-gray-800 active:bg-gray-50
           transition duration-150 ease-in-out">
-        Share
-      </button>
+        Submissions
+      </a>
     </span>
     <span class="order-0 sm:order-1 sm:ml-3 shadow-sm rounded-md">
-      <button
+      <a
+        href={`/form/preview?formId=${form.id}&mode=local`}
+        target="_blank"
         type="button"
         class="inline-flex items-center px-4 py-2 border border-transparent
           text-sm leading-5 font-medium rounded-md text-white bg-indigo-800
           hover:bg-indigo-700 focus:outline-none focus:shadow-outline-purple
           focus:bg-indigo-700 active:bg-indigo-700 transition duration-150
           ease-in-out">
-        Create
-      </button>
+        Preview
+      </a>
     </span>
   </div>
 </div>
 
-<div class="mt-8 sm:mx-auto sm:w-full">
+<div class="sm:mx-auto sm:w-full">
   <div class="py-8 px-4 sm:rounded-lg sm:px-2">
     <form action="#" method="POST" id="form-preview">
       <div id="form-preview-fields">

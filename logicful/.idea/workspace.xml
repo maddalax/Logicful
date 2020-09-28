@@ -30,12 +30,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add rest of field types to email">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/models/ComponentProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/models/ComponentProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/FileUpload.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/FileUpload.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package.json" afterDir="false" />
