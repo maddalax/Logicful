@@ -20,16 +20,86 @@
 
   function defaultBlocks() {
     return [
-      { name: "string" },
-      { name: "switch" },
-      { name: "spacer" },
-      { name: "date" },
-      { name: "block" },
-      { name: "file" },
-      { name: "address" },
-      { name: "checkbox-group" },
-      { name: "radio-group" },
-      { name: "full-name" },
+      {
+        name: "string",
+        width: 256,
+        height: 512,
+        icon:
+          "M256 52.048V12.065C256 5.496 250.726.148 244.158.066 211.621-.344 166.469.011 128 37.959 90.266.736 46.979-.114 11.913.114 5.318.157 0 5.519 0 12.114v39.645c0 6.687 5.458 12.078 12.145 11.998C38.111 63.447 96 67.243 96 112.182V224H60c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h36v112c0 44.932-56.075 48.031-83.95 47.959C5.404 447.942 0 453.306 0 459.952v39.983c0 6.569 5.274 11.917 11.842 11.999 32.537.409 77.689.054 116.158-37.894 37.734 37.223 81.021 38.073 116.087 37.845 6.595-.043 11.913-5.405 11.913-12V460.24c0-6.687-5.458-12.078-12.145-11.998C217.889 448.553 160 444.939 160 400V288h36c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-36V112.182c0-44.932 56.075-48.213 83.95-48.142 6.646.018 12.05-5.346 12.05-11.992z",
+        text: "Text Input",
+      },
+      {
+        name: "switch",
+        width: 576,
+        height: 512,
+        icon:
+          "M384 64H192C85.961 64 0 149.961 0 256s85.961 192 192 192h192c106.039 0 192-85.961 192-192S490.039 64 384 64zM64 256c0-70.741 57.249-128 128-128 70.741 0 128 57.249 128 128 0 70.741-57.249 128-128 128-70.741 0-128-57.249-128-128zm320 128h-48.905c65.217-72.858 65.236-183.12 0-256H384c70.741 0 128 57.249 128 128 0 70.74-57.249 128-128 128z",
+        text: "Toggle",
+      },
+      {
+        name: "spacer",
+        width: 512,
+        height: 512,
+        icon:
+          "M505.12019,19.09375c-1.18945-5.53125-6.65819-11-12.207-12.1875C460.716,0,435.507,0,410.40747,0,307.17523,0,245.26909,55.20312,199.05238,128H94.83772c-16.34763.01562-35.55658,11.875-42.88664,26.48438L2.51562,253.29688A28.4,28.4,0,0,0,0,264a24.00867,24.00867,0,0,0,24.00582,24H127.81618l-22.47457,22.46875c-11.36521,11.36133-12.99607,32.25781,0,45.25L156.24582,406.625c11.15623,11.1875,32.15619,13.15625,45.27726,0l22.47457-22.46875V488a24.00867,24.00867,0,0,0,24.00581,24,28.55934,28.55934,0,0,0,10.707-2.51562l98.72834-49.39063c14.62888-7.29687,26.50776-26.5,26.50776-42.85937V312.79688c72.59753-46.3125,128.03493-108.40626,128.03493-211.09376C512.07526,76.5,512.07526,51.29688,505.12019,19.09375ZM384.04033,168A40,40,0,1,1,424.05,128,40.02322,40.02322,0,0,1,384.04033,168Z",
+        text: "Spacer",
+      },
+      {
+        name: "date",
+        width: 448,
+        height: 512,
+        icon:
+          "M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z",
+        text: "Date",
+      },
+      {
+        name: "block",
+        width: 448,
+        height: 512,
+        icon:
+          "M27.31 363.3l96-96a16 16 0 0 0 0-22.62l-96-96C17.27 138.66 0 145.78 0 160v192c0 14.31 17.33 21.3 27.31 11.3zM432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm3.17-128H204.83A12.82 12.82 0 0 0 192 300.83v38.34A12.82 12.82 0 0 0 204.83 352h230.34A12.82 12.82 0 0 0 448 339.17v-38.34A12.82 12.82 0 0 0 435.17 288zm0-128H204.83A12.82 12.82 0 0 0 192 172.83v38.34A12.82 12.82 0 0 0 204.83 224h230.34A12.82 12.82 0 0 0 448 211.17v-38.34A12.82 12.82 0 0 0 435.17 160zM432 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z",
+        text: "Content Block",
+      },
+      {
+        name: "file",
+        width: 384,
+        height: 512,
+        icon:
+          "M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm65.18 216.01H224v80c0 8.84-7.16 16-16 16h-32c-8.84 0-16-7.16-16-16v-80H94.82c-14.28 0-21.41-17.29-11.27-27.36l96.42-95.7c6.65-6.61 17.39-6.61 24.04 0l96.42 95.7c10.15 10.07 3.03 27.36-11.25 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z",
+        text: "File Input",
+      },
+      {
+        name: "address",
+        width: 576,
+        height: 512,
+        icon:
+          "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-352 96c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H86.4C74 384 64 375.4 64 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2zM512 312c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z",
+        text: "Address",
+      },
+      {
+        name: "checkbox-group",
+        width: 448,
+        height: 512,
+        icon:
+          "M400 480H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48v352c0 26.51-21.49 48-48 48zm-204.686-98.059l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.248-16.379-6.249-22.628 0L184 302.745l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.25 16.379 6.25 22.628.001z",
+        text: "Checkboxes",
+      },
+      {
+        name: "radio-group",
+        width: 512,
+        height: 512,
+        icon:
+          "M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z",
+        text: "Radio Buttons",
+      },
+      {
+        name: "full-name",
+        width: 448,
+        height: 512,
+        icon:
+          "M436 160c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h320c26.5 0 48-21.5 48-48v-48h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20zm-228-32c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H118.4C106 384 96 375.4 96 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2z",
+        text: "Full Name",
+      },
     ];
   }
 
@@ -127,7 +197,7 @@
   subscribeComponent("destroy_dragula", () => {
     shouldReload = false;
     requestAnimationFrame(() => {
-      console.log("DESTROYING")
+      console.log("DESTROYING");
       if (drake) {
         drake.destroy();
       }
@@ -150,58 +220,262 @@
   });
 </script>
 
-<!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
-<div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
-  <div class="flex items-center flex-shrink-0 px-4">
-    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-white.svg" alt="Workflow">
-  </div>
-  <div class="mt-5 flex-grow flex flex-col">
-    <nav class="flex-1 bg-white space-y-1">
-      <a href="#" class="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-indigo-600 bg-indigo-50 border-l-4 border-indigo-600 focus:outline-none focus:bg-indigo-100 transition ease-in-out duration-150">
-        <!-- Heroicon name: home -->
-        <svg class="mr-3 h-6 w-6 text-indigo-500 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-        Dashboard
-      </a>
-      <a href="#" class="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150">
-        <!-- Heroicon name: users -->
-        <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-600 group-focus:text-gray-600 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        Team
-      </a>
-      <a href="#" class="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150">
-        <!-- Heroicon name: folder -->
-        <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-600 group-focus:text-gray-600 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-        </svg>
-        Projects
-      </a>
-      <a href="#" class="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150">
-        <!-- Heroicon name: calendar -->
-        <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-600 group-focus:text-gray-600 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Calendar
-      </a>
-      <a href="#" class="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150">
-        <!-- Heroicon name: inbox -->
-        <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-600 group-focus:text-gray-600 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-        </svg>
-        Documents
-      </a>
-      <a href="#" class="group flex items-center px-3 py-2 text-sm leading-5 font-medium text-gray-600 border-l-4 border-transparent hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150">
-        <!-- Heroicon name: chart-bar -->
-        <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-600 group-focus:text-gray-600 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-        Reports
-      </a>
-    </nav>
+<div class="hidden md:flex md:flex-shrink-0">
+  <div class="flex flex-col w-52">
+    <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="flex flex-col h-0 flex-1 bg-indigo-800">
+      <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+        <div class="flex items-center flex-shrink-0 px-4">
+          <img
+            class="h-8 w-auto"
+            src="https://tailwindui.com/img/logos/workflow-logo-on-brand.svg"
+            alt="Workflow" />
+        </div>
+        <nav class="mt-5 flex-1 px-2 bg-indigo-800 space-y-1">
+          <div
+            class="flex flex-col space-y-3 sm:space-y-0 sm:space-x-3 sm:flex-row
+              xl:flex-col xl:space-x-0 xl:space-y-3">
+            <span class="inline-flex rounded-md shadow-sm">
+              {#if !loaded}
+                <button
+                  class="w-full inline-flex items-center justify-center px-4
+                    py-2 border border-transparent text-sm leading-5 font-medium
+                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
+                    focus:outline-none focus:border-indigo-700
+                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    ease-in-out duration-150"
+                  type="button"
+                  disabled>Loading...</button>
+              {:else if saved}
+                <button
+                  class="w-full inline-flex items-center justify-center px-4
+                    py-2 border border-transparent text-sm leading-5 font-medium
+                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
+                    focus:outline-none focus:border-indigo-700
+                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    ease-in-out duration-150"
+                  type="button"
+                  disabled>Saved</button>
+              {:else if saving}
+                <button
+                  class="w-full inline-flex items-center justify-center px-4
+                    py-2 border border-transparent text-sm leading-5 font-medium
+                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
+                    focus:outline-none focus:border-indigo-700
+                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    ease-in-out duration-150"
+                  type="button"
+                  disabled>Saving...</button>
+              {:else}
+                <button
+                  type="button"
+                  on:click={saveDraft}
+                  class="w-full inline-flex items-center justify-center px-4
+                    py-2 border border-transparent text-sm leading-5 font-medium
+                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
+                    focus:outline-none focus:border-indigo-700
+                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    ease-in-out duration-150">
+                  Save Form
+                </button>
+              {/if}
+            </span>
+          </div>
+          <div id="block-container">
+            {#each blocks as block}
+              <div
+                on:click={() => addField(block)}
+                id={'sidebar-block-' + block.name}>
+                <a
+                  href="#"
+                  class="group flex items-center px-2 py-2 text-sm leading-5
+                    font-medium text-indigo-300 rounded-md hover:text-white
+                    hover:bg-indigo-700 focus:outline-none focus:text-white
+                    focus:bg-indigo-700 transition ease-in-out duration-150">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 {block.width} {block.height}"
+                    class="h-7 w-7 pr-2 fill-current text-indigo-400"><path
+                      d={block.icon} /></svg>
+                  {block.text}
+                </a>
+              </div>
+            {/each}
+          </div>
+        </nav>
+      </div>
+      <div class="flex-shrink-0 flex border-t border-indigo-700 p-4">
+        <a href="#" class="flex-shrink-0 w-full group block">
+          <div class="flex items-center">
+            <div>
+              <img
+                class="inline-block h-9 w-9 rounded-full"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt="" />
+            </div>
+            <div class="ml-3">
+              <p class="text-sm leading-5 font-medium text-white">Tom Cook</p>
+              <p
+                class="text-xs leading-4 font-medium text-indigo-300
+                  group-hover:text-indigo-100 transition ease-in-out
+                  duration-150">
+                View profile
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- <div style="text-align:center;">
+  {#if !loaded}
+    <button class="btn save-button btn-primary" type="button" disabled>Loading...</button>
+  {:else if saved}
+    <button class="btn save-button btn-primary" type="button" disabled>Saved</button>
+  {:else if saving}
+    <button class="btn save-button btn-primary" type="button" disabled>Saving...</button>
+  {:else}<button class="btn save-button btn-primary" type="button" on:click={saveDraft}>Save Form</button>{/if}
+</div>
+<div style="padding-left: 0.2em;">
+  <h5 style="">Add Field</h5>
+  <hr style="margin-right: 0.7em !important;" />
+  <div id="block-container">
+    {#each blocks as block}
+      <div on:click={() => addField(block)} id={'sidebar-block-' + block.name}>
+      {#if block.name === 'string'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fas fa-i-cursor" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Text Input</h6>
+          </div>
+        </div>
+      {:else if block.name === 'spacer'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Spacer</h6>
+          </div>
+        </div>
+      {:else if block.name === 'switch'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-toggle-off" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Toggle</h6>
+          </div>
+        </div>
+      {:else if block.name === 'combobox'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-caret-square-down" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Dropdown</h6>
+          </div>
+        </div>
+      {:else if block.name === 'block'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-indent" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Content</h6>
+          </div>
+        </div>
+      {:else if block.name === 'date'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-calendar-day" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Date</h6>
+          </div>
+        </div>
+      {:else if block.name === 'file'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-file-upload" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">File Upload</h6>
+          </div>
+        </div>
+      {:else if block.name === 'address'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Address Block</h6>
+          </div>
+        </div>
+      {:else if block.name === 'full-name'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Full Name</h6>
+          </div>
+        </div>
+      {:else if block.name === 'checkbox-group'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="far fa-check-square" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Checkboxes</h6>
+          </div>
+        </div>
+      {:else if block.name === 'radio-group'}
+        <div class="d-flex px-2 block">
+          <div>
+            <div class="icon icon-sm icon-secondary"><span class="fas fa-dot-circle" /></div>
+          </div>
+          <div class="pl-3">
+            <h6 class="h6">Radio Buttons</h6>
+          </div>
+        </div>
+      {/if}
+    </div>
+    {/each}
+  </div>
+
+  <div class="d-flex px-2 collapsed" href="#submenu-app" data-toggle="collapse" data-target="#submenu-app" aria-expanded="false">
+    <div>
+      <div class="icon icon-sm icon-secondary"><span class="fas fa-palette" /></div>
+    </div>
+    <div class="pl-3">
+      <h6 class="h6">Styling</h6>
+    </div>
+    <div class="pl-3" />
+    <div>
+      <div class="icon icon-sm icon-secondary link-arrow"><span class="fas fa-chevron-right" style="font-size: 1em;" /></div>
+    </div>
+  </div>
+  <div>
+    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false" style="padding-top:0.5em; padding-left: 1em;">
+      <ul class="flex-column nav">
+        <li class="nav-item">
+          <a class="nav-link" id="address" href="#" style="padding-left: 0em;">
+            <div class="d-flex px-2 block">
+              <div>
+                <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
+              </div>
+              <div class="pl-3">
+                <h6 class="h6">Spacer</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->

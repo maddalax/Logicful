@@ -50,6 +50,7 @@
   }
 </script>
 
+<!-- svelte-ignore a11y-label-has-associated-control -->
 <label class="block text-sm font-medium leading-5 text-gray-700">{label}</label>
 {#each options as option, i}
   {#if onlyLabel}
@@ -153,56 +154,3 @@
     </div>
   {/if}
 {/each}
-
-<!-- <div>
-  <label style="margin-left: .5em">{label}</label>
-  {#each options as option, i}
-    <div class="d-flex flex-row bd-highlight justify-end">
-      {#if onlyLabel}
-        <div class="p-1 bd-highlight" style="width: 100%;">
-          <input
-            class="form-control"
-            name="display"
-            type="text"
-            on:blur={() => onRepeaterChange(true)}
-            bind:value={option.label}
-            placeholder={'Option'} />
-        </div>
-      {:else}
-        <div class="p-1 bd-highlight" style="width: 100%;">
-          <input
-            class="form-control"
-            name="display"
-            type="text"
-            on:blur={() => onRepeaterChange(true)}
-            bind:value={option.label}
-            placeholder={'Display'} />
-        </div>
-        <div class="p-1 bd-highlight" style="width: 100%;">
-          <input
-            class="form-control"
-            name="value"
-            type="text"
-            on:blur={() => onRepeaterChange(true)}
-            bind:value={option.value}
-            placeholder={'Value'} />
-        </div>
-      {/if}
-      <div class="bd-highlight">
-        <span class="icon baseline" on:click={addNew}>
-          <span class="fas fa-plus" />
-        </span>
-      </div>
-      <div class="bd-highlight">
-        <span class="icon baseline" on:click={() => remove(i)}>
-          <span class="fas fa-trash" />
-        </span>
-      </div>
-    </div>
-  {/each}
-  {#if helperText}
-    <div class="helper-text">
-      {@html helperText ?? ''}
-    </div>
-  {/if}
-</div> -->

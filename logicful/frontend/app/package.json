@@ -12,6 +12,7 @@
 		"@sentry/tracing": "^5.24.2",
 		"@snowpack/plugin-optimize": "^0.2.1",
 		"@snowpack/plugin-webpack": "^2.0.12",
+		"@tailwindcss/ui": "^0.6.2",
 		"@types/clusterize.js": "^0.17.1",
 		"@types/quill": "^2.0.3",
 		"@types/traverse": "^0.6.32",
@@ -42,8 +43,7 @@
 		"traverse": "^0.6.6",
 		"uuid": "^8.3.0",
 		"vivus": "^0.4.5",
-		"waypoints": "4.0.1",
-		"@tailwindcss/ui": "^0.6.2"
+		"waypoints": "4.0.1"
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.10.4",

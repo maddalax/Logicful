@@ -113,9 +113,9 @@
       <button
         type="button"
         class="inline-flex items-center px-4 py-2 border border-transparent
-          text-sm leading-5 font-medium rounded-md text-white bg-purple-600
-          hover:bg-purple-500 focus:outline-none focus:shadow-outline-purple
-          focus:border-purple-700 active:bg-indigo-700 transition duration-150
+          text-sm leading-5 font-medium rounded-md text-white bg-indigo-800
+          hover:bg-indigo-700 focus:outline-none focus:shadow-outline-purple
+          focus:bg-indigo-700 active:bg-indigo-700 transition duration-150
           ease-in-out">
         Create
       </button>
