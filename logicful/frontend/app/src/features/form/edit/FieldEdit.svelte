@@ -36,7 +36,7 @@
       <ConfigField
         field={{ id: randomString(), label: 'Helper Text', value: field.helperText, type: 'string', configFieldTarget: 'helperText', configTarget: field.id }} />
       <ConfigField
-        field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required: true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'local', value: [{ label : 'Dropdown', value : 'dropdown' }] } }} />
+        field={{ id: randomString(), label: 'Field Type', value: { type: 'local', value: field.type }, type: 'combobox', required: true, configFieldTarget: 'type', configTarget: field.id, options: { type: 'local', value: [{ label: 'Dropdown', value: 'dropdown' }] } }} />
       <FieldTypeEditor {field} />
     </div>
   {/if}

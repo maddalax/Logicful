@@ -60,6 +60,8 @@
       {type} />
   {/if}
   {#if field.helperText}
-    <p class="mt-2 text-sm text-gray-500"> {@html field.helperText ?? ''}</p>
+    <p class="mt-2 text-sm text-gray-500">
+      {@html field.helperText ?? ''}
+    </p>
   {/if}
 </div>

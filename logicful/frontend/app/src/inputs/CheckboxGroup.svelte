@@ -111,12 +111,12 @@
     </div>
     <div class="mt-4">
       <input
-      class="form-input block w-full sm:text-sm sm:leading-5"
-      type="text"
-      on:click|stopPropagation
-      on:input={(e) => onOtherChange(e)}
-      value={otherText}
-      id={`${field.id}-other`} />
-      </div>
+        class="form-input block w-full sm:text-sm sm:leading-5"
+        type="text"
+        on:click|stopPropagation
+        on:input={(e) => onOtherChange(e)}
+        value={otherText}
+        id={`${field.id}-other`} />
+    </div>
   {/if}
 {/if}

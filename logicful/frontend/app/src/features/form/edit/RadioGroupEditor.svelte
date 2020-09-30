@@ -8,7 +8,6 @@
   import ConfigField from "./ConfigField.svelte";
 
   export let field: IField;
-  export let expanded: boolean;
 
   function onOptionsChange(options: string[] | LabelValue[]) {
     if (options.length === 0) {

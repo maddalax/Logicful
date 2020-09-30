@@ -2,17 +2,13 @@
   import type { IField, LabelValue } from "@app/models/IField";
   import type { ContentBlock } from "@app/models/ContentBlock";
 
-  import Field from "./Field.svelte";
   import { randomString } from "@app/util/Generate";
-  import { dispatch } from "@app/event/EventBus";
-  import ContentBlockList from "./ContentBlockList.svelte";
   import Repeater from "@app/components/Repeater.svelte";
   import formStore from "@app/store/FormStore";
   import { isEmptyOrNull } from "@app/util/Compare";
   import ConfigField from "./ConfigField.svelte";
 
   export let field: IField;
-  export let expanded: boolean;
 
   function onOptionsChange(options: string[] | LabelValue[]) {
     if (options.length === 0) {

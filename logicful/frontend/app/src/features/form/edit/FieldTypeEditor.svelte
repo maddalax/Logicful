@@ -18,11 +18,11 @@
   {:else if field.type === 'combobox'}
     <ComboBoxOptionsEditor {field} />
   {:else if field.type === 'address'}
-    <AddressEditor {field} expanded={field.expanded} />
+    <AddressEditor {field} />
   {:else if field.type === 'checkbox-group'}
-    <CheckboxGroupEditor {field} expanded={field.expanded} />
+    <CheckboxGroupEditor {field} />
   {:else if field.type === 'radio-group'}
-    <RadioGroupEditor {field} expanded={field.expanded} />
+    <RadioGroupEditor {field} />
   {:else if field.type === 'switch'}
     <ConfigField
       field={{ id: randomString(), type: 'switch', label: 'Default Value', value: { type: 'local', value: field.defaultValue || false }, configFieldTarget: 'defaultValue', configTarget: field.id }} />

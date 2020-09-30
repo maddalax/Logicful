@@ -3,8 +3,6 @@
   import { onMount } from "svelte";
   import formStore from "@app/store/FormStore";
   import { subscribeFieldChange } from "@app/event/FieldEvent";
-  import { firstNotEmpty } from "@app/util/Format";
-  import { subscribeComponent } from "@app/event/EventBus";
   import Label from "./Label.svelte";
 
   export let config: any;

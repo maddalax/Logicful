@@ -17,10 +17,10 @@ function authHeaders() {
 }
 
 export function apiEndpoint() {
-  if(window.location.host === "localhost:5000") {
-    return "http://localhost:3000/api/"
+  if (window.location.host === "localhost:5000") {
+    return "http://localhost:3000/api/";
   } else {
-    return "/api/"
+    return "/api/";
   }
 }
 
