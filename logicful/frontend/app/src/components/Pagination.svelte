@@ -70,7 +70,7 @@
 <nav aria-label="Table Pagination">
   <ul class="pagination justify-content-end">
     <li>
-      <div class="dropdown" style="margin-right: .5em">
+      <div class="dropdown">
         <button
           class="btn btn-secondary dropdown-toggle rows-page-button"
           type="button"

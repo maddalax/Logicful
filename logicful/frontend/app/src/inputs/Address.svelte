@@ -30,9 +30,85 @@
   });
 </script>
 
-<Label {field} />
-
 <div>
+  <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+    <div class="sm:col-span-3">
+      <label
+        for="country"
+        class="block text-sm font-medium leading-5 text-gray-700">
+        Country / Region
+      </label>
+      <div class="mt-1 rounded-md shadow-sm">
+        <select
+          id="country"
+          class="form-select block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5">
+          <option>United States</option>
+          <option>Canada</option>
+          <option>Mexico</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sm:col-span-6">
+      <label
+        for="street_address"
+        class="block text-sm font-medium leading-5 text-gray-700">
+        Street address
+      </label>
+      <div class="mt-1 rounded-md shadow-sm">
+        <textarea
+          id="street_address"
+          class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5" />
+      </div>
+    </div>
+
+    <div class="sm:col-span-2">
+      <label
+        for="city"
+        class="block text-sm font-medium leading-5 text-gray-700">
+        City
+      </label>
+      <div class="mt-1 rounded-md shadow-sm">
+        <input
+          id="city"
+          class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5" />
+      </div>
+    </div>
+
+    <div class="sm:col-span-2">
+      <label
+        for="state"
+        class="block text-sm font-medium leading-5 text-gray-700">
+        State / Province
+      </label>
+      <div class="mt-1 rounded-md shadow-sm">
+        <input
+          id="state"
+          class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5" />
+      </div>
+    </div>
+
+    <div class="sm:col-span-2">
+      <label
+        for="zip"
+        class="block text-sm font-medium leading-5 text-gray-700">
+        ZIP / Postal
+      </label>
+      <div class="mt-1 rounded-md shadow-sm">
+        <input
+          id="zip"
+          class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div>
   <div class="d-flex flex-row bd-highlight" style="padding-bottom: 0.75em">
     <div class="bd-highlight flex-grow-1 pr-2">
       <LiveField
@@ -64,4 +140,4 @@
         field={{ required: true, name: `${field.name}.zip`, id: `${field.id}.value.zip`, helperText: 'Zip Code', hideLabel: true, value: value?.zip?.value ?? '', type: 'string', properties: { pattern: '[d]{5}(-[d]{4})?' } }} />
     </div>
   </div>
-</div>
+</div> -->

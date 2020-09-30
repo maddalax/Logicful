@@ -58,5 +58,5 @@
       class="inline-block h-5 w-5 rounded-full bg-white shadow transform
         transition ease-in-out duration-200" />
   </span>
-  <Label {field} />
+  <Label {field} showOptional={false} />
 </div>

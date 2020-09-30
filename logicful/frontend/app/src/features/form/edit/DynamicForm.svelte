@@ -10,6 +10,7 @@
   import { fastClone } from "@app/util/Compare";
   import { onMount } from "svelte";
   import Dialog from "@app/components/layout/Dialog.svelte";
+  import EditableField from "./EditableField.svelte";
 
   export let form: IForm;
   export let mode: DynamicFormMode = DynamicFormMode.Live;
@@ -135,11 +136,11 @@
         {#each form.fields as field (field.id)}
           {#if display(field)}
             <div id={`form-field-${field.id}`}>
-              <Field field={fastClone(field)} />
+              <EditableField field={fastClone(field)} />
             </div>
           {:else}
             <div id={`form-field-${field.id}`}>
-              <Field field={fastClone(field)} hidden={true} />
+              <EditableField field={fastClone(field)} hidden={true} />
             </div>
           {/if}
         {/each}

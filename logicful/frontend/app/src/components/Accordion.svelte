@@ -5,6 +5,6 @@
   export let open = false;
 </script>
 
-<div style="padding-bottom: 2em">
+<div>
   <slot />
 </div>

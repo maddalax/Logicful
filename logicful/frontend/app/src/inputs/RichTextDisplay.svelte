@@ -56,7 +56,7 @@
 <div>
   {#if isPreview && (value === '' || value == null)}
     <h5>Content Placeholder</h5>
-    <p style="margin-block-end: 0;">
+    <p>
       From the field configuration settings, select a content block to display.
     </p>
   {:else if state === LoadState.Finished}

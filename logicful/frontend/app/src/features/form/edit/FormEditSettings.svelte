@@ -6,6 +6,7 @@
   import { onMount } from 'svelte'
   import { subscribe, subscribeComponent } from '@app/event/EventBus'
   import formStore from '@app/store/FormStore'
+import ConfigField from './ConfigField.svelte';
 
   export let form: IForm
 
@@ -18,7 +19,7 @@
   })
 </script>
 
-<Field field={{ id: randomString(), required: true, label: 'Form Title', value: { type: 'local', value: form.title }, type: 'string', configFieldTarget: 'title', configTarget: 'form' }} />
-<Field
+<ConfigField field={{ id: randomString(), required: true, label: 'Form Title', value: { type: 'local', value: form.title }, type: 'string', configFieldTarget: 'title', configTarget: 'form' }} />
+<ConfigField
   field={{ id: randomString(), required: true, label: 'Form Description', value: { type: 'local', value: form.description }, type: 'string', configFieldTarget: 'description', configTarget: 'form' }}
 />

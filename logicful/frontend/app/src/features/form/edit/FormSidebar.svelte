@@ -1,13 +1,7 @@
 <script lang="typescript">
   // @ts-nocheck
   import { dispatch, subscribeComponent } from "@app/event/EventBus";
-  import { flip } from "svelte/animate";
-  import { randomString } from "@app/util/Generate";
   import { onMount, tick } from "svelte";
-  import FieldEdit from "./FieldEdit.svelte";
-  import { slide } from "svelte/transition";
-  import { subscribeFieldChange } from "@app/event/FieldEvent";
-  import { fastClone } from "@app/util/Compare";
   import { transformDraggedElement } from "./util/Draggable";
   import { debounce } from "@app/util/Debounce";
 
@@ -99,6 +93,14 @@
         icon:
           "M436 160c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h320c26.5 0 48-21.5 48-48v-48h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20zm-228-32c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H118.4C106 384 96 375.4 96 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2z",
         text: "Full Name",
+      },
+      {
+        name: "section-header",
+        width: 512,
+        height: 512,
+        icon:
+          "M448 96v320h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16H320a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h32V288H160v128h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h32V96H32a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16h-32v128h192V96h-32a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16z",
+        text: "Section Header",
       },
     ];
   }
@@ -328,154 +330,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div style="text-align:center;">
-  {#if !loaded}
-    <button class="btn save-button btn-primary" type="button" disabled>Loading...</button>
-  {:else if saved}
-    <button class="btn save-button btn-primary" type="button" disabled>Saved</button>
-  {:else if saving}
-    <button class="btn save-button btn-primary" type="button" disabled>Saving...</button>
-  {:else}<button class="btn save-button btn-primary" type="button" on:click={saveDraft}>Save Form</button>{/if}
-</div>
-<div style="padding-left: 0.2em;">
-  <h5 style="">Add Field</h5>
-  <hr style="margin-right: 0.7em !important;" />
-  <div id="block-container">
-    {#each blocks as block}
-      <div on:click={() => addField(block)} id={'sidebar-block-' + block.name}>
-      {#if block.name === 'string'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fas fa-i-cursor" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Text Input</h6>
-          </div>
-        </div>
-      {:else if block.name === 'spacer'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Spacer</h6>
-          </div>
-        </div>
-      {:else if block.name === 'switch'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fa-toggle-off" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Toggle</h6>
-          </div>
-        </div>
-      {:else if block.name === 'combobox'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="far fa-caret-square-down" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Dropdown</h6>
-          </div>
-        </div>
-      {:else if block.name === 'block'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fa-indent" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Content</h6>
-          </div>
-        </div>
-      {:else if block.name === 'date'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fa-calendar-day" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Date</h6>
-          </div>
-        </div>
-      {:else if block.name === 'file'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fa-file-upload" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">File Upload</h6>
-          </div>
-        </div>
-      {:else if block.name === 'address'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Address Block</h6>
-          </div>
-        </div>
-      {:else if block.name === 'full-name'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="far fa-address-card" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Full Name</h6>
-          </div>
-        </div>
-      {:else if block.name === 'checkbox-group'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="far fa-check-square" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Checkboxes</h6>
-          </div>
-        </div>
-      {:else if block.name === 'radio-group'}
-        <div class="d-flex px-2 block">
-          <div>
-            <div class="icon icon-sm icon-secondary"><span class="fas fa-dot-circle" /></div>
-          </div>
-          <div class="pl-3">
-            <h6 class="h6">Radio Buttons</h6>
-          </div>
-        </div>
-      {/if}
-    </div>
-    {/each}
-  </div>
-
-  <div class="d-flex px-2 collapsed" href="#submenu-app" data-toggle="collapse" data-target="#submenu-app" aria-expanded="false">
-    <div>
-      <div class="icon icon-sm icon-secondary"><span class="fas fa-palette" /></div>
-    </div>
-    <div class="pl-3">
-      <h6 class="h6">Styling</h6>
-    </div>
-    <div class="pl-3" />
-    <div>
-      <div class="icon icon-sm icon-secondary link-arrow"><span class="fas fa-chevron-right" style="font-size: 1em;" /></div>
-    </div>
-  </div>
-  <div>
-    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false" style="padding-top:0.5em; padding-left: 1em;">
-      <ul class="flex-column nav">
-        <li class="nav-item">
-          <a class="nav-link" id="address" href="#" style="padding-left: 0em;">
-            <div class="d-flex px-2 block">
-              <div>
-                <div class="icon icon-sm icon-secondary"><span class="fas fa-rocket" /></div>
-              </div>
-              <div class="pl-3">
-                <h6 class="h6">Spacer</h6>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div> -->

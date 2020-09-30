@@ -8,6 +8,7 @@
   import { onMount } from 'svelte'
   import formStore from '@app/store/FormStore'
   import GroupEditSidebar from './GroupEditSidebar.svelte'
+import ConfigField from './ConfigField.svelte';
 
   export let field: IField
 
@@ -24,7 +25,7 @@
 </script>
 
 <div>
-  <Field
+  <ConfigField
     config={{ search: true }}
     field={{ id: randomString(), label: 'Specify Group', helperText: 'Link fields together via a group', value: { type: 'local', value: field.groupId }, type: 'combobox', required: true, configFieldTarget: `groupId`, configTarget: field.id, options: { type: 'local', value: getGroups } }}
   />

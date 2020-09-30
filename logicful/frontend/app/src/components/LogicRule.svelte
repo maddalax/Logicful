@@ -6,18 +6,15 @@
   } from "@app/models/LogicBuilder";
   import type { IField } from "@app/models/IField";
   import type { LabelValue } from "@app/models/IField";
-  import { dispatch } from "@app/event/EventBus";
   import { onMount } from "svelte";
   import { dispatchSingle } from "@app/event/EventBus";
-  import Field from "@app/features/form/edit/Field.svelte";
   import { randomString } from "@app/util/Generate";
   import { subscribeFieldChange } from "@app/event/FieldEvent";
   import formStore from "@app/store/FormStore";
-  import { isObject } from "@app/guards/Guard";
-  import Label from "@app/inputs/Label.svelte";
   import { firstNotEmpty } from "@app/util/Format";
-  import { assertExists } from "@app/util/Selection";
   import { fastClone, isEmptyOrNull } from "@app/util/Compare";
+  import ConfigField from "@app/features/form/edit/ConfigField.svelte";
+  import Button from "./Button.svelte";
 
   export let helperText: string = "";
   export let field: IField;
@@ -232,10 +229,6 @@
     return [];
   }
 
-  function customCss() {
-    return "padding-top: 0em; padding-left: 0.6em; padding-right: 0.6em; padding-bottom: 0.7em;";
-  }
-
   function fieldsTransformer(fields: IField[]): LabelValue[] {
     return fields.map((f) => {
       return {
@@ -248,50 +241,58 @@
 
 <div>
   {#each field.logic?.rules ?? [] as option, i}
-    <div
-      class="container"
-      style="background-color: rgb(245 249 253); padding-left: 0.3em; padding-right: 0.3em;">
-      <div class="row">
-        <div class="col">
-          <div
-            class="float-right">
-            <button
-              type="button"
-              on:click={() => remove(i)}
-              class="btn btn-secondary">
-              <span class="icon-brand"> <span class="fas fa-trash" /> </span>
-            </button>
+    <div class="bg-gray-100 overflow-visible mt-3 relative rounded-md">
+      <div class="absolute top-2 right-2" on:click={() => remove(i)}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          class="w-6 h-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+      </div>
+      <div class="sm:p-2">
+        <div>
+          <div>
+            <div>
+              <ConfigField
+                config={{ search: true }}
+                field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
+            </div>
           </div>
-          <Field
-            config={{ search: true }}
-            field={{ id: randomString(), loadTransformer: fieldsTransformer, helperText: 'Select which field the conditional should be ran against.', label: 'Select Field', value: { type: 'local', value: field.logic?.rules?.[i]?.field }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].field`, configTarget: field.id, options: { type: 'local', value: getFields } }} />
+          <div>
+            {#if field.logic?.rules?.[i]?.field}
+              <ConfigField
+                config={{ search: true }}
+                field={{ id: randomString(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
+            {/if}
+          </div>
+          <div>
+            {#if field.logic?.rules?.[i]?.condition && options[i]?.showValue}
+              {#if options[i].valueType === 'text'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
+              {:else if options[i].valueType === 'combobox'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
+              {/if}
+            {/if}
+          </div>
         </div>
       </div>
-      <div class="row">
-        {#if field.logic?.rules?.[i]?.field}
-          <Field
-            config={{ search: true }}
-            field={{ id: randomString(), customCss: customCss(), label: 'Select Your Condition', value: { type: 'local', value: field.logic?.rules?.[i]?.condition }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].condition`, configTarget: field.id, options: { type: 'local', value: conditions(i) } }} />
-        {/if}
-      </div>
-      <div class="row">
-        {#if field.logic?.rules?.[i]?.condition && options[i]?.showValue}
-          {#if options[i].valueType === 'text'}
-            <Field
-              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
-          {:else if options[i].valueType === 'combobox'}
-            <Field
-              field={{ id: randomString(), customCss: customCss(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
-          {/if}
-        {/if}
-      </div>
     </div>
-    <br />
   {/each}
   {#if helperText}
     <div class="helper-text">
       {@html helperText ?? ''}
     </div>
   {/if}
-  <button class="btn-primary btn" style="" on:click={addNew}>Add Rule</button>
+  <div class="ml-1 mt-4">
+    <Button type="primary" onClick={addNew}>Add New Rule</Button>
+  </div>
 </div>

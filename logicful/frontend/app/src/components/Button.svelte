@@ -2,6 +2,7 @@
     import { afterUpdate, onMount } from "svelte";
 
     export let type: "primary" | "secondary" | "warn" | "danger";
+    export let submit: boolean = false;
     export let onClick: () => any = () => {};
     export let disabled: boolean = false;
     export let focus: boolean = false;
@@ -20,8 +21,8 @@
 
 {#if type === 'danger'}
     <button
-        type="button"
-        disabled={disabled}
+        type={submit ? 'submit' : 'button'}
+        {disabled}
         bind:this={focusable}
         on:click|stopPropagation={onClick}
         class="inline-flex justify-center w-full rounded-md border
@@ -33,22 +34,18 @@
     </button>
 {:else if type === 'primary'}
     <button
+        type={submit ? 'submit' : 'button'}
         on:click|stopPropagation={onClick}
-        disabled={disabled}
-        type="button"
+        {disabled}
         bind:this={focusable}
-        class="inline-flex items-center px-3 py-2 border border-transparent
-            text-sm leading-4 font-medium rounded-md text-white bg-indigo-600
-            hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
-            focus:shadow-outline-indigo active:bg-indigo-700 transition
-            ease-in-out duration-150">
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
         <slot />
     </button>
 {:else if type === 'secondary'}
     <button
+        type={submit ? 'submit' : 'button'}
         on:click|stopPropagation={onClick}
-        disabled={disabled}
-        type="button"
+        {disabled}
         bind:this={focusable}
         class="inline-flex items-center px-2.5 py-1.5 border border-transparent
             text-xs leading-4 font-medium rounded text-indigo-700 bg-indigo-100

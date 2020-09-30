@@ -9,6 +9,7 @@
   import TextArea from '@app/inputs/TextArea.svelte'
   import { randomString } from '@app/util/Generate'
   import { getApi, postApi, putApi } from '@app/services/ApiService'
+import ConfigField from './ConfigField.svelte';
 
   let block: ContentBlock
   let data: any
@@ -85,12 +86,12 @@
     </div>
   {:else}
     <div style="margin-top: 1em">
-      <Field
+      <ConfigField
         field={{ id: `${block.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: block.name, onChange: (value) => {
             block.name = value
           } }}
       />
-      <Field editor={true} config={{ onChange }} field={{ value: data, id: randomString(), name: block.name, type: 'block-editor' }} />
+      <ConfigField config={{ onChange }} field={{ value: data, id: randomString(), name: block.name, type: 'block-editor' }} />
     </div>
   {/if}
   <div class="float-right">

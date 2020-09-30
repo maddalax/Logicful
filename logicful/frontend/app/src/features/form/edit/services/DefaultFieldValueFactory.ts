@@ -9,5 +9,9 @@ export function setFieldDefaults(field: IField): IField {
     field.value = { 'Option 1': 'Option 1' }
     field.options = ['Option 1', 'Option 2']
   }
+  if (field.type === 'section-header') {
+    field.helperText = 'Use this text to display helper text that will assist a user in filling out the following fields.'
+    field.header = 'Example Section Header'
+  }
   return field
 }

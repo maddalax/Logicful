@@ -76,7 +76,7 @@
 </script>
 
 {#if !field.hideLabel}
-  <Label {field} />
+  <Label {field} type="inline" />
 {/if}
 {#if field.options}
   {#each field.options as option}

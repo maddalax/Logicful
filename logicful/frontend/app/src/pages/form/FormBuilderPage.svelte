@@ -4,12 +4,8 @@
   import FormSidebar from "@app/features/form/edit/FormSidebar.svelte";
   import FieldEditSidebar from "@app/features/form/edit/FieldEditSidebar.svelte";
   import { onMount } from "svelte";
-  import { subscribe, subscribeComponent } from "@app/event/EventBus";
-  import Sidebar from "@app/components/Sidebar.svelte";
-  import type { IForm } from "@app/models/IForm";
-  import { getUrlParameter } from "@app/util/Http";
+  import { subscribeComponent } from "@app/event/EventBus";
   import RightSidebar from "@app/features/form/edit/RightSidebar.svelte";
-  import type { bind } from "svelte/internal";
 
   let rightSidebar: any;
   let rightSidebarProps: any = {};
@@ -24,37 +20,14 @@
   });
 </script>
 
-<!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
 <div class="h-screen flex overflow-hidden bg-white">
-  <!-- Off-canvas menu for mobile -->
   <div class="md:hidden">
     <div class="fixed inset-0 flex z-40">
-      <!--
-        Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
-        Entering: "transition-opacity ease-linear duration-300"
-          From: "opacity-0"
-          To: "opacity-100"
-        Leaving: "transition-opacity ease-linear duration-300"
-          From: "opacity-100"
-          To: "opacity-0"
-      -->
       <div class="fixed inset-0">
         <div class="absolute inset-0 bg-gray-600 opacity-75"></div>
       </div>
-      <!--
-        Off-canvas menu, show/hide based on off-canvas menu state.
-
-        Entering: "transition ease-in-out duration-300 transform"
-          From: "-translate-x-full"
-          To: "translate-x-0"
-        Leaving: "transition ease-in-out duration-300 transform"
-          From: "translate-x-0"
-          To: "-translate-x-full"
-      -->
+    
       <div class="relative flex-1 flex flex-col max-w-xs w-full bg-indigo-800">
         <div class="absolute top-0 right-0 -mr-14 p-1">
           <button class="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600" aria-label="Close sidebar">
@@ -69,7 +42,6 @@
           </div>
           <nav class="mt-5 px-2 space-y-1">
             <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
-              <!-- Heroicon name: home -->
               <svg class="mr-4 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>

@@ -30,6 +30,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add rest of field types to email">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/public/css/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/public/css/pixel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/public/css/pixel.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/public/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Accordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Accordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/LogicRule.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/LogicRule.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Pagination.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Pagination.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Sidebar.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/form_settings/FormSettings.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/form_settings/FormSettings.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/form_settings/FormSettingsSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/form_settings/FormSettingsSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/AddressEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/AddressEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/CheckboxGroupEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/CheckboxGroupEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ContentBlockEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ContentBlockEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/Field.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldConfiguration.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldEditSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldEditSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldTypeEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FieldTypeEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FlyoutPanel.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FlyoutPanel.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormEdit.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormEdit.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormEditSettings.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormEditSettings.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/GroupAccordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/GroupAccordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/GroupDetails.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/GroupDetails.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/GroupEditSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/GroupEditSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/LogicAccordion.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/LogicAccordion.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/LogicBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/LogicBuilder.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageContentBlock.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageContentBlock.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/RadioGroupEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/RadioGroupEditor.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/RightSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/RightSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/services/DefaultFieldValueFactory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/services/DefaultFieldValueFactory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/live/FormPreview.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/live/FormPreview.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveField.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveField.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/Address.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/CheckboxGroup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/CheckboxGroup.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/Label.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/RadioGroup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/RadioGroup.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/RichTextDisplay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/RichTextDisplay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/Switch.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/Switch.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form-settings/emails/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form-settings/emails/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form-settings/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form-settings/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/FormBuilderPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/FormBuilderPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/FormSubmissionsPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/FormSubmissionsPage.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package.json" afterDir="false" />
@@ -393,33 +442,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
-    <state width="1638" height="221" key="GridCell.Tab.0.bottom" timestamp="1601328740349">
+    <state width="1638" height="317" key="GridCell.Tab.0.bottom" timestamp="1601393171214">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="221" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740349" />
+    <state width="1638" height="317" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601393171214" />
     <state width="2229" height="337" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="221" key="GridCell.Tab.0.center" timestamp="1601328740348">
+    <state width="1638" height="317" key="GridCell.Tab.0.center" timestamp="1601393171213">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="221" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740348" />
+    <state width="1638" height="317" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601393171213" />
     <state width="2229" height="337" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="221" key="GridCell.Tab.0.left" timestamp="1601328740347">
+    <state width="1638" height="317" key="GridCell.Tab.0.left" timestamp="1601393171213">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="221" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740347" />
+    <state width="1638" height="317" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601393171213" />
     <state width="2229" height="337" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
-    <state width="1638" height="221" key="GridCell.Tab.0.right" timestamp="1601328740349">
+    <state width="1638" height="317" key="GridCell.Tab.0.right" timestamp="1601393171213">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="221" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740349" />
+    <state width="1638" height="317" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601393171213" />
     <state width="2229" height="337" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599420273429" />
     <state width="1638" height="221" key="GridCell.Tab.1.bottom" timestamp="1601328740350">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -532,12 +581,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1601231282803">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1601382390812">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1601231282803" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1601382390812" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599423954112" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

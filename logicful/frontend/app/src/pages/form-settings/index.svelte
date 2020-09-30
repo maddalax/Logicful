@@ -23,6 +23,6 @@
   });
 </script>
 
-<div style="background-color: #f5f9fe;">
+<div>
   <FormSettings {form} {selected} />
 </div>

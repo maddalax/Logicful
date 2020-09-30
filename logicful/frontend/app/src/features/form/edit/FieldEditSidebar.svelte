@@ -2,14 +2,10 @@
   import { onMount } from "svelte";
   import FieldEdit from "./FieldEdit.svelte";
   import type { IField } from "@app/models/IField";
-  import { subscribeComponent } from "@app/event/EventBus";
-  import type { IForm } from "@app/models/IForm";
-  import { fade, slide } from "svelte/transition";
   import FormEdit from "./FormEdit.svelte";
-  import { dispatch } from "@app/event/EventBus";
   import { subscribeFieldChange } from "@app/event/FieldEvent";
   import { fastClone } from "@app/util/Compare";
-  import RightSidebar from "./RightSidebar.svelte";
+  import FieldConfigSidebarHeader from "./FieldConfigSidebarHeader.svelte";
 
   let field: IField | undefined;
   let fieldId: string | undefined;
@@ -27,14 +23,26 @@
   });
 </script>
 
-<div>
-  {#if field}
-    {#each [field] as f (fieldId)}
-      <div transition:slide={{ duration: 50 }}>
-        <FieldEdit field={f} />
+{#if field}
+  {#each [field] as f (fieldId)}
+    <div>
+      <FieldConfigSidebarHeader
+        title={`Editing ${f.label}`}
+        description={`Configure settings for your ${f.type} field.`} />
+      <div class="sm:mx-auto sm:w-full">
+        <div class="px-4 sm:rounded-lg sm:px-2">
+          <FieldEdit field={f} />
+        </div>
       </div>
-    {/each}
-  {:else}
-    <FormEdit />
-  {/if}
-</div>
+    </div>
+  {/each}
+{:else}
+  <FieldConfigSidebarHeader
+    title={`Form Settings`}
+    description={`Configure settings for your form.`} />
+  <div class="sm:mx-auto sm:w-full">
+    <div class="px-4 sm:rounded-lg sm:px-2">
+      <FormEdit />
+    </div>
+  </div>
+{/if}
