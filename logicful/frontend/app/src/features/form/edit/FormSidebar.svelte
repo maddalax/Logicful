@@ -225,7 +225,7 @@
 <div class="hidden md:flex md:flex-shrink-0">
   <div class="flex flex-col w-52">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="flex flex-col h-0 flex-1 bg-indigo-800">
+    <div class="flex flex-col h-0 flex-1 bg-blue-800">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <div class="flex items-center flex-shrink-0 px-4">
           <img
@@ -233,7 +233,7 @@
             src="https://tailwindui.com/img/logos/workflow-logo-on-brand.svg"
             alt="Workflow" />
         </div>
-        <nav class="mt-5 flex-1 px-2 bg-indigo-800 space-y-1">
+        <nav class="mt-5 flex-1 px-2 bg-blue-800 space-y-1">
           <div
             class="flex flex-col space-y-3 sm:space-y-0 sm:space-x-3 sm:flex-row
               xl:flex-col xl:space-x-0 xl:space-y-3">
@@ -242,9 +242,9 @@
                 <button
                   class="w-full inline-flex items-center justify-center px-4
                     py-2 border border-transparent text-sm leading-5 font-medium
-                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
-                    focus:outline-none focus:border-indigo-700
-                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    rounded-md text-white bg-blue-600 hover:bg-blue-500
+                    focus:outline-none focus:border-blue-700
+                    focus:shadow-outline-blue active:bg-blue-700 transition
                     ease-in-out duration-150"
                   type="button"
                   disabled>Loading...</button>
@@ -252,9 +252,9 @@
                 <button
                   class="w-full inline-flex items-center justify-center px-4
                     py-2 border border-transparent text-sm leading-5 font-medium
-                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
-                    focus:outline-none focus:border-indigo-700
-                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    rounded-md text-white bg-blue-600 hover:bg-blue-500
+                    focus:outline-none focus:border-blue-700
+                    focus:shadow-outline-blue active:bg-blue-700 transition
                     ease-in-out duration-150"
                   type="button"
                   disabled>Saved</button>
@@ -262,9 +262,9 @@
                 <button
                   class="w-full inline-flex items-center justify-center px-4
                     py-2 border border-transparent text-sm leading-5 font-medium
-                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
-                    focus:outline-none focus:border-indigo-700
-                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    rounded-md text-white bg-blue-600 hover:bg-blue-500
+                    focus:outline-none focus:border-blue-700
+                    focus:shadow-outline-blue active:bg-blue-700 transition
                     ease-in-out duration-150"
                   type="button"
                   disabled>Saving...</button>
@@ -274,9 +274,9 @@
                   on:click={saveDraft}
                   class="w-full inline-flex items-center justify-center px-4
                     py-2 border border-transparent text-sm leading-5 font-medium
-                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500
-                    focus:outline-none focus:border-indigo-700
-                    focus:shadow-outline-indigo active:bg-indigo-700 transition
+                    rounded-md text-white bg-blue-600 hover:bg-blue-500
+                    focus:outline-none focus:border-blue-700
+                    focus:shadow-outline-blue active:bg-blue-700 transition
                     ease-in-out duration-150">
                   Save Form
                 </button>
@@ -291,13 +291,13 @@
                 <a
                   href="#"
                   class="group flex items-center px-2 py-2 text-sm leading-5
-                    font-medium text-indigo-300 rounded-md hover:text-white
-                    hover:bg-indigo-700 focus:outline-none focus:text-white
-                    focus:bg-indigo-700 transition ease-in-out duration-150">
+                    font-medium text-blue-300 rounded-md hover:text-white
+                    hover:bg-blue-700 focus:outline-none focus:text-white
+                    focus:bg-blue-700 transition ease-in-out duration-150">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 {block.width} {block.height}"
-                    class="h-7 w-7 pr-2 fill-current text-indigo-400"><path
+                    class="h-7 w-7 pr-2 fill-current text-blue-400"><path
                       d={block.icon} /></svg>
                   {block.text}
                 </a>
@@ -306,7 +306,7 @@
           </div>
         </nav>
       </div>
-      <div class="flex-shrink-0 flex border-t border-indigo-700 p-4">
+      <div class="flex-shrink-0 flex border-t border-blue-700 p-4">
         <a href="#" class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
@@ -318,8 +318,8 @@
             <div class="ml-3">
               <p class="text-sm leading-5 font-medium text-white">Maddox</p>
               <p
-                class="text-xs leading-4 font-medium text-indigo-300
-                  group-hover:text-indigo-100 transition ease-in-out
+                class="text-xs leading-4 font-medium text-blue-300
+                  group-hover:text-blue-100 transition ease-in-out
                   duration-150">
                 View profile
               </p>

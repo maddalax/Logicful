@@ -45,7 +45,7 @@
       field.onChange?.(field.value);
     }}
     class:bg-gray-200={!checked}
-    class:bg-indigo-600={checked}
+    class:bg-blue-600={checked}
     class="relative inline-flex flex-shrink-0 h-6 w-11 border-2
       border-transparent rounded-full cursor-pointer transition-colors
       ease-in-out duration-200 focus:outline-none focus:shadow-outline mr-2">

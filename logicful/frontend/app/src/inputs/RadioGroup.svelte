@@ -84,7 +84,7 @@
       <div class="relative flex items-start">
         <div class="flex items-center h-5">
           <input
-            class="form-radio h-4 w-4 text-indigo-600 transition duration-150
+            class="form-radio h-4 w-4 text-blue-600 transition duration-150
               ease-in-out"
             type="radio"
             on:click|stopPropagation
@@ -106,7 +106,7 @@
       <div class="relative flex items-start">
         <div class="flex items-center h-5">
           <input
-            class="form-radio h-4 w-4 text-indigo-600 transition duration-150
+            class="form-radio h-4 w-4 text-blue-600 transition duration-150
               ease-in-out"
             on:click|stopPropagation
             on:click={onOtherRadioChange}
