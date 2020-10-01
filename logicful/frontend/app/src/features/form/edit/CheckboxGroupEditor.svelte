@@ -41,12 +41,12 @@
   }
 </script>
 
-<div>
+<div class="ml-3">
   <Repeater
-    options={options()}
-    onlyLabel={true}
-    label={'Checkbox Options'}
-    onChange={onOptionsChange} />
-  <ConfigField
-    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />
+  options={options()}
+  onlyLabel={true}
+  label={'Checkbox Options'}
+  onChange={onOptionsChange} />
 </div>
+<ConfigField
+  field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />

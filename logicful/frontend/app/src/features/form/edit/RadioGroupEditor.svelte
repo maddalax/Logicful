@@ -1,6 +1,5 @@
 <script lang="typescript">
   import type { IField, LabelValue } from "@app/models/IField";
-  import type { ContentBlock } from "@app/models/ContentBlock";
   import { randomString } from "@app/util/Generate";
   import Repeater from "@app/components/Repeater.svelte";
   import formStore from "@app/store/FormStore";
@@ -21,15 +20,6 @@
     });
   }
 
-  function loadTransformer(value: ContentBlock[]) {
-    return value.map((v) => {
-      return {
-        label: v.name,
-        value: v.value,
-      };
-    });
-  }
-
   function options(): LabelValue[] {
     if (isEmptyOrNull(field.options)) {
       return [{ label: "Radio Item 1", value: "Radio Item 1" }];
@@ -40,12 +30,12 @@
   }
 </script>
 
-<div>
+<div class="ml-3">
   <Repeater
     options={options()}
     onlyLabel={true}
     label={'Radio Options'}
     onChange={onOptionsChange} />
-  <ConfigField
-    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />
 </div>
+<ConfigField
+    field={{ id: randomString(), type: 'switch', label: "Include 'Other' Option", value: { type: 'local', value: field.includeOther || false }, configFieldTarget: 'includeOther', configTarget: field.id }} />
