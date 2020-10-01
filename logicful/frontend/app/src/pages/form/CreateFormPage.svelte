@@ -16,6 +16,7 @@
       const user = me()
       const response: IForm = await postApi('form', {
         title: 'My New Form',
+        description: 'Your Form Description (Optional)',
         fields: [],
         teamId: user.teamId,
         folder : folder

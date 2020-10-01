@@ -11,6 +11,7 @@
   import { onMount } from "svelte";
   import Dialog from "@app/components/layout/Dialog.svelte";
   import EditableField from "./EditableField.svelte";
+  import Button from "@app/components/Button.svelte";
 
   export let form: IForm;
   export let mode: DynamicFormMode = DynamicFormMode.Live;
@@ -98,33 +99,20 @@
     <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">
       {form.title}
     </h1>
+    <p class="max-w-4xl text-sm leading-5 text-gray-500">{form.description}</p>
   </div>
   <div class="mt-4 flex sm:mt-0 sm:ml-4">
     <span class="order-1 ml-3 shadow-sm rounded-md sm:order-0 sm:ml-0">
-      <a
-        href={`/form/submissions?formId=${form.id}&mode=local`}
-        target="_blank"
-        type="button"
-        class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
-          leading-5 font-medium rounded-md text-gray-700 bg-white
-          hover:text-gray-500 focus:outline-none focus:shadow-outline-blue
-          focus:border-blue-300 active:text-gray-800 active:bg-gray-50
-          transition duration-150 ease-in-out">
+      <Button type={"secondary"} href={`/form/submissions?formId=${form.id}&mode=local`}>
         Submissions
-      </a>
+      </Button>
     </span>
     <span class="order-0 sm:order-1 sm:ml-3 shadow-sm rounded-md">
-      <a
-        href={`/form/preview?formId=${form.id}&mode=local`}
-        target="_blank"
-        type="button"
-        class="inline-flex items-center px-4 py-2 border border-transparent
-          text-sm leading-5 font-medium rounded-md text-white bg-indigo-800
-          hover:bg-indigo-700 focus:outline-none focus:shadow-outline-purple
-          focus:bg-indigo-700 active:bg-indigo-700 transition duration-150
-          ease-in-out">
+      <Button
+        type={'primary'}
+        href={`/form/preview?formId=${form.id}&mode=local`}>
         Preview
-      </a>
+      </Button>
     </span>
   </div>
 </div>

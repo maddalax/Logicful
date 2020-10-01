@@ -12,6 +12,7 @@ type OptionSet struct {
 type Form struct {
 	Id    string `json:"id"`
 	Title string `json:"title"`
+	Description string `json:"description"`
 	Changeable
 	Creatable
 	Fields            []interface{} `json:"fields"`

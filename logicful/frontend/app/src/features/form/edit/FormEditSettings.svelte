@@ -19,7 +19,7 @@ import ConfigField from './ConfigField.svelte';
   })
 </script>
 
-<ConfigField field={{ id: randomString(), required: true, label: 'Form Title', value: { type: 'local', value: form.title }, type: 'string', configFieldTarget: 'title', configTarget: 'form' }} />
+<ConfigField field={{ id: randomString(), required: true, label: 'Form Title', value: form.title, type: 'string', configFieldTarget: 'title', configTarget: 'form' }} />
 <ConfigField
-  field={{ id: randomString(), required: true, label: 'Form Description', value: { type: 'local', value: form.description }, type: 'string', configFieldTarget: 'description', configTarget: 'form' }}
+  field={{ id: randomString(), required: true, label: 'Form Description', value: form.description, type: 'string', configFieldTarget: 'description', configTarget: 'form' }}
 />
