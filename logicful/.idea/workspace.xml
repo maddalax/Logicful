@@ -31,19 +31,13 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add rest of field types to email">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/DynamicForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/DynamicForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormEditSettings.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormEditSettings.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/CreateFormPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/CreateFormPage.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/FormBuilderPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/FormBuilderPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/FormSubmissionsPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/FormSubmissionsPage.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/snowpack.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/snowpack.config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

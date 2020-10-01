@@ -302,7 +302,126 @@
   }
 </script>
 
-<div>
+<style>
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
+  td {
+    max-width: 500px;
+    width: 500px !important;
+  }
+</style>
+
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-scroll sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div
+        class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+          <thead>
+            <tr>
+              <th
+                class="px-6 py-3 bg-gray-50 text-left text-xs leading-4
+                  font-medium text-gray-500 uppercase tracking-wider">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    checked={allRowsSelected}
+                    on:change={selectAllRows}
+                    id={'row-toggle-all'} />
+                </div>
+              </th>
+              {#each filteredColumns as column (column)}
+                <th
+                  style={headerStyle(column)}
+                  class="px-6 py-3 bg-gray-50 text-left text-xs leading-4
+                    font-medium text-gray-500 uppercase tracking-wider"
+                  on:click={() => sortColumn(column)}>
+                  {column}
+                  <span>
+                    {#if sort === column && sortDirection === 'asc'}
+                      <span> <span class="fas fa-chevron-up" /> </span>
+                    {:else if sort === column && sortDirection === 'desc'}
+                      <span> <span class="fas fa-chevron-down" /> </span>
+                    {/if}
+                  </span>
+                </th>
+              {/each}
+            </tr>
+          </thead>
+          <tbody>
+            {#each filtered as row, index}
+              {#if index >= range.min && index <= range.max}
+                <tr
+                  class:active={row.meta_selected}
+                  style="vertical-align: middle; cursor: pointer;"
+                  on:click={() => {
+                    onRowClick(row);
+                    row['meta_unread'] = false;
+                  }}>
+                  <td
+                    class:unread={isUnread(row)}
+                    class="px-6 py-4 whitespace-no-wrap text-sm leading-5
+                      font-medium text-gray-900">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        checked={row.meta_selected}
+                        on:click|stopPropagation
+                        on:change|stopPropagation={(e) => {
+                          onRowSelected(row);
+                        }}
+                        id={'row-toggle-' + index} />
+                      {#if isUnread(row)}
+                        <div>
+                          <i
+                            class="fas fa-circle"
+                            style="width: .5em;margin-left:4px" />
+                        </div>
+                      {/if}
+                    </div>
+                  </td>
+                  {#each filteredColumns as column}
+                    <td
+                      class:font-bold={isUnread(row)}
+                      class:text-gray-800={isUnread(row)}
+                      class="px-6 py-4 text-sm leading-5 text-gray-500">
+                      <div class="text" class:text-unread={isUnread(row)}>
+                        {renderValue(row, column)}
+                      </div>
+                    </td>
+                  {/each}
+                </tr>
+              {/if}
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<Pagination
+  {id}
+  count={filtered.length}
+  onRangeChange={(r) => {
+    if (fastEquals(r, range)) {
+      return;
+    }
+    range = r;
+    setWidths();
+    columns = columns;
+  }} />
+
+<!-- <div>
   <ToastManager />
   <div class="d-flex bd-highlight mb-3">
     <div class="p-2 bd-highlight">
@@ -367,7 +486,6 @@
     {:else}
       <div class="table-responsive">
         <table class="table table-hover" style="table-layout: fixed;">
-          <!-- svelte-ignore empty-block -->
           <tbody>
             <tr>
               <th scope="col" style="width: 50px">
@@ -510,84 +628,4 @@
       </div>
     </Dialog>
   {/if}
-</div>
-
-<style>
-  .table-hover {
-    margin-top: 1em !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-  }
-
-  table tr:hover td:first-child {
-    border-top-left-radius: 0.45rem;
-    border-bottom-left-radius: 0.45rem;
-  }
-  table tr:hover td:last-child {
-    border-top-right-radius: 0.45rem;
-    border-bottom-right-radius: 0.45rem;
-  }
-
-  tr:not(:first-child) {
-    background-color: #f4f7f7 !important;
-  }
-
-  tr.active {
-    border-radius: 0.45rem;
-  }
-
-  td {
-    max-width: 500px;
-    width: 500px !important;
-  }
-
-  .text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
-
-  .text-unread {
-    font-weight: bold;
-  }
-
-  :global(th) {
-    cursor: pointer;
-  }
-
-  .fa-columns {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  .fa-trash-alt {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  .fa-eye {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  .fa-filter {
-    cursor: pointer;
-    height: 1.3em;
-    width: 1.3em;
-  }
-
-  .fa-eye-slash {
-    cursor: pointer;
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  .unread {
-    background-color: white !important;
-  }
-</style>
+</div> -->

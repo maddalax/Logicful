@@ -53,6 +53,7 @@
   import FormPreview from "@app/features/form/live/FormPreview.svelte";
   import { fastClone } from "@app/util/Compare";
   import type { Dictionary } from "@app/models/Utility";
+  import Shell from "@app/components/Shell.svelte";
 
   export let formId = "";
   export let form: IForm | undefined = undefined;
@@ -205,28 +206,19 @@
   }
 </script>
 
-<div
-  class="container-fluid clearfix"
-  id="main-container"
-  style="margin-top: 5em;">
-  <div class="main">
-    <h1>Submissions</h1>
-    <hr />
-    <div>
-      <RemoteTable
-        defaultSortColumn={'Submission Date'}
-        searchPlaceHolder={'Search Anything...'}
-        columnMeta={{ 'Submission Date': { type: 'date' } }}
-        {getRows}
-        {sortColumns}
-        {onDelete}
-        {onRowClick}
-        onRead={onMarkRead}
-        onFormat={formatSubmissionItem}
-        {hidden} />
-    </div>
-  </div>
-</div>
+<Shell header="Form Submissions">
+  <RemoteTable
+    defaultSortColumn={'Submission Date'}
+    searchPlaceHolder={'Search Anything...'}
+    columnMeta={{ 'Submission Date': { type: 'date' } }}
+    {getRows}
+    {sortColumns}
+    {onDelete}
+    {onRowClick}
+    onRead={onMarkRead}
+    onFormat={formatSubmissionItem}
+    {hidden} />
+</Shell>
 
 {#if preview && form}
   <Dialog

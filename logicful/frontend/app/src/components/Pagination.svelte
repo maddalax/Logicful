@@ -12,7 +12,14 @@
   let hasNext = true;
   let hasPrevious = false;
   let rowsPerPageEntries = [10, 25, 50, 100];
+  let showingCount = 0;
   let showing = "";
+
+  let classes = `-ml-px relative inline-flex items-center px-4 py-2 border
+            border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700
+            hover:text-gray-500 focus:z-10 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100
+            active:text-gray-700 transition ease-in-out duration-150`;
 
   afterUpdate(() => {
     onChange();
@@ -31,7 +38,7 @@
     }
     hasNext = page < pages;
     hasPrevious = page > 1;
-    let showingCount = Math.floor(page * rowsPerPage);
+    showingCount = Math.floor(page * rowsPerPage);
     showingCount = showingCount >= count ? Math.floor(count) : showingCount;
     showing = `Showing ${showingCount} / ${Math.floor(count)} Entries`;
     onRangeChange(range());
@@ -67,9 +74,123 @@
   }
 </script>
 
-<nav aria-label="Table Pagination">
-  <ul class="pagination justify-content-end">
-    <li>
+<div
+  class="bg-white px-4 py-3 flex items-center justify-between border-t
+    border-gray-200 sm:px-6">
+  <div class="flex-1 flex justify-between sm:hidden">
+    <a
+      href="#"
+      class="relative inline-flex items-center px-4 py-2 border border-gray-300
+        text-sm leading-5 font-medium rounded-md text-gray-700 bg-white
+        hover:text-gray-500 focus:outline-none focus:shadow-outline-blue
+        focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition
+        ease-in-out duration-150">
+      Previous
+    </a>
+    <a
+      href="#"
+      class="ml-3 relative inline-flex items-center px-4 py-2 border
+        border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700
+        bg-white hover:text-gray-500 focus:outline-none
+        focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100
+        active:text-gray-700 transition ease-in-out duration-150">
+      Next
+    </a>
+  </div>
+  <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <div>
+      <p class="text-sm leading-5 text-gray-700">
+        Showing <span
+          class="font-medium">{showingCount === count ? showingCount : showingCount - rowsPerPage}</span>
+        to <span class="font-medium">{showingCount}</span> of <span
+          class="font-medium">{count}</span> results
+      </p>
+    </div>
+    <div class="inline-flex">
+      <div>
+        <label for="location" class="block text-sm leading-5 font-medium text-gray-700">Location</label>
+        <select id="location" class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+          <option>USA</option>
+          <option selected>Canada</option>
+          <option>EU</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <nav class="relative z-0 inline-flex shadow-sm">
+        <a
+          href="javascript:void(0)"
+          class:disabled={!hasPrevious}
+          on:click={() => setPage(page - 1)}
+          class="relative inline-flex items-center px-2 py-2 rounded-l-md border
+            border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500
+            hover:text-gray-400 focus:z-10 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100
+            active:text-gray-500 transition ease-in-out duration-150"
+          aria-label="Previous">
+          <!-- Heroicon name: chevron-left -->
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+        {#if hasPrevious && page - 2 >= 1}
+          <a
+            class={classes}
+            on:click={() => setPage(page - 2)}
+            href="javascript:void(0)">{page - 2}</a>
+        {/if}
+        {#if page > 1}
+          <a
+            class={classes}
+            on:click={() => setPage(page - 1)}
+            href="javascript:void(0)">{page - 1}</a>
+        {/if}
+        <a
+          class="-ml-px relative inline-flex items-center px-4 py-2 border
+            border-gray-300 bg-indigo-700 text-sm leading-5 font-medium
+            text-white hover:text-gray-500 focus:z-10 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-indigo-700
+            active:text-white transition ease-in-out duration-150"
+          href="javascript:void(0)">{page}</a>
+        {#if hasNext}
+          <a
+            class={classes}
+            on:click={() => setPage(page + 1)}
+            href="javascript:void(0)">{page + 1}</a>
+        {/if}
+        {#if page + 2 <= pages}
+          <a
+            class={classes}
+            on:click={() => setPage(page + 2)}
+            href="javascript:void(0)">{page + 2}</a>
+        {/if}
+        <a
+          href="javascript:void(0)"
+          class:disabled={!hasNext}
+          on:click={() => setPage(page + 1)}
+          class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md
+            border border-gray-300 bg-white text-sm leading-5 font-medium
+            text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100
+            active:text-gray-500 transition ease-in-out duration-150"
+          aria-label="Next">
+          <!-- Heroicon name: chevron-right -->
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- <li>
       <div class="dropdown">
         <button
           class="btn btn-secondary dropdown-toggle rows-page-button"
@@ -92,62 +213,4 @@
           {/each}
         </ul>
       </div>
-    </li>
-    <li class="page-item">
-      <button
-        class="page-link btn"
-        disabled={!hasPrevious}
-        on:click={() => setPage(page - 1)}
-        tabindex="-1"
-        aria-disabled="true">Previous</button>
-    </li>
-    {#if hasPrevious && page - 2 >= 1}
-      <li class="page-item">
-        <button
-          class="page-link btn"
-          on:click={() => setPage(page - 2)}
-          href="javascript:void(0)">{page - 2}</button>
-      </li>
-    {/if}
-    {#if page > 1}
-      <li class="page-item">
-        <button
-          class="page-link btn"
-          on:click={() => setPage(page - 1)}
-          href="javascript:void(0)">{page - 1}</button>
-      </li>
-    {/if}
-    <li class="page-item active" aria-current="page">
-      <button class="page-link btn" href="javascript:void(0)">{page}</button>
-    </li>
-    {#if hasNext}
-      <li class="page-item">
-        <button
-          class="page-link btn"
-          on:click={() => setPage(page + 1)}
-          href="javascript:void(0)">{page + 1}</button>
-      </li>
-    {/if}
-    {#if page + 2 <= pages}
-      <li class="page-item">
-        <button
-          class="page-link btn"
-          on:click={() => setPage(page + 2)}
-          href="javascript:void(0)">{page + 2}</button>
-      </li>
-    {/if}
-    <li class="page-item">
-      <button
-        class="page-link btn btn-primary"
-        disabled={!hasNext}
-        on:click={() => setPage(page + 1)}>Next</button>
-    </li>
-  </ul>
-</nav>
-
-<style>
-  .rows-page-button {
-    height: 40px;
-    margin-left: 1em;
-  }
-</style>
+    </li> -->
