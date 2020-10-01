@@ -66,12 +66,12 @@
 </script>
 
 {#if mode === 'local'}
-  <div class="rounded-md bg-blue-50 p-4">
+  <div class="rounded-md bg-indigo-50 p-4">
     <div class="flex">
       <div class="flex-shrink-0">
         <!-- Heroicon name: information-circle -->
         <svg
-          class="h-5 w-5 text-blue-400"
+          class="h-5 w-5 text-indigo-400"
           viewBox="0 0 20 20"
           fill="currentColor">
           <path
@@ -81,7 +81,7 @@
         </svg>
       </div>
       <div class="ml-3 flex-1 md:flex md:justify-between">
-        <p class="text-sm leading-5 text-blue-700">
+        <p class="text-sm leading-5 text-indigo-700">
           You are viewing a live preview of how your form will display and act
           once it is published. This preview will <strong>live update</strong> when
           changes are made from the form builder, no save neeed.

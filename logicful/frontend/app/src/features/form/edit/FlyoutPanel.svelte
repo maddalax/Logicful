@@ -21,7 +21,7 @@
                 <div
                     class="h-full flex flex-col bg-white shadow-xl
                         overflow-y-scroll">
-                    <header class="space-y-1 py-6 px-4 bg-blue-700 sm:px-6">
+                    <header class="space-y-1 py-6 px-4 bg-indigo-700 sm:px-6">
                         <div
                             class="flex items-center justify-between space-x-3">
                             <h2
@@ -32,7 +32,7 @@
                                 <button
                                     aria-label="Close panel"
                                     on:click={onClose}
-                                    class="text-blue-200 hover:text-white
+                                    class="text-indigo-200 hover:text-white
                                         transition ease-in-out duration-150">
                                     <!-- Heroicon name: x -->
                                     <svg
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div>
-                            <p class="text-sm leading-5 text-blue-300">
+                            <p class="text-sm leading-5 text-indigo-300">
                                 {description}
                             </p>
                         </div>

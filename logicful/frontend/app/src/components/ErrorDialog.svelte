@@ -28,7 +28,7 @@
           window.location.reload();
         }, type: 'primary' }]}>
     <p>An uncaught exception has occured.</p>
-    <p style="color: blue">{error}</p>
+    <p style="color: indigo">{error}</p>
     <p>
       Your page may not continue working as expected, please reload the page.
     </p>

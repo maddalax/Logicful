@@ -8,14 +8,14 @@
     }
 </script>
 
-<header class="space-y-1 pb-6 pt-4 mb-4 px-4 bg-blue-700 sm:px-6">
+<header class="space-y-1 pb-6 pt-4 mb-4 px-4 bg-indigo-700 sm:px-6">
     <div class="flex items-center justify-between space-x-3">
         <h2 class="text-lg leading-7 font-medium text-white">{title}</h2>
         <div class="h-7 flex items-center">
             <button
                 on:click={onClose}
                 aria-label="Close panel"
-                class="text-blue-200 hover:text-white transition ease-in-out
+                class="text-indigo-200 hover:text-white transition ease-in-out
                     duration-150">
                 <svg
                     class="h-6 w-6"
@@ -32,6 +32,6 @@
         </div>
     </div>
     <div>
-        <p class="text-sm leading-5 text-blue-300">{description}</p>
+        <p class="text-sm leading-5 text-indigo-300">{description}</p>
     </div>
 </header>

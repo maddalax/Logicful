@@ -71,7 +71,7 @@
       <div class="relative flex items-start">
         <div class="flex items-center h-5">
           <input
-            class="form-checkbox h-4 w-4 text-blue-600 transition duration-150
+            class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
               ease-in-out"
             type="checkbox"
             on:click|stopPropagation
@@ -93,7 +93,7 @@
       <div class="relative flex items-start">
         <div class="flex items-center h-5">
           <input
-            class="form-checkbox h-4 w-4 text-blue-600 transition duration-150
+            class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
               ease-in-out"
             on:click|stopPropagation
             type="checkbox"
