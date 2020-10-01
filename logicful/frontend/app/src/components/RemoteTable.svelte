@@ -428,9 +428,10 @@
               <th
                 class="px-6 py-3 bg-gray-50 text-left text-xs leading-4
                   font-medium text-gray-500 uppercase tracking-wider">
-                <div class="form-check">
+                <div>
                   <input
-                    class="form-check-input"
+                    class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
+                    ease-in-out"
                     type="checkbox"
                     value=""
                     checked={allRowsSelected}
@@ -470,9 +471,10 @@
                     class:unread={isUnread(row)}
                     class="px-6 py-4 whitespace-no-wrap text-sm leading-5
                       font-medium text-gray-900">
-                    <div class="form-check">
+                    <div>
                       <input
-                        class="form-check-input"
+                        class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
+                        ease-in-out"
                         type="checkbox"
                         value=""
                         checked={row.meta_selected}
@@ -481,13 +483,6 @@
                           onRowSelected(row);
                         }}
                         id={'row-toggle-' + index} />
-                      {#if isUnread(row)}
-                        <div>
-                          <i
-                            class="fas fa-circle"
-                            style="width: .5em;margin-left:4px" />
-                        </div>
-                      {/if}
                     </div>
                   </td>
                   {#each filteredColumns as column}
