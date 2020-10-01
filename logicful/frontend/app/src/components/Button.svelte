@@ -3,6 +3,7 @@
 
   export let type: "primary" | "secondary" | "warn" | "danger";
   export let submit: boolean = false;
+  export let size: 'regular' | 'large' | 'small' = 'regular'
   export let onClick: () => any = () => {};
   export let disabled: boolean = false;
   export let focus: boolean = false;

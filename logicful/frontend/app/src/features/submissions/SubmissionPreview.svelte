@@ -15,6 +15,7 @@
   import { formatSubmissionItem } from "@app/pages/form/FormSubmissionsPage.svelte";
   import Loader from "@app/components/Loader.svelte";
   import { getApi, postApi } from "@app/services/ApiService";
+import Button from "@app/components/Button.svelte";
 
   export let submission: ISubmission | undefined;
   let fieldPerSubmissionDetail: { [key: string]: IField } = {};
@@ -153,7 +154,6 @@
   <Loader />
 {:else}
   {#if submission}
-    <h4><strong>General</strong></h4>
     <p><strong>Submission Date: </strong> {formatDetail('Submission Date')}</p>
     <br />
     <h4><strong>Environment Information</strong></h4>
@@ -174,12 +174,12 @@
     </p>
   {/if}
 
-  <div style="margin-top: 1.5em">
+  <div class="mt-5">
     <h4>{form.title ?? 'Form Title'}</h4>
     <small class="text-gray-700">{form.description ?? ''}</small>
   </div>
   <form on:submit|preventDefault={onSubmit}>
-    <div style="padding-bottom: 1em">
+    <div>
       {#each form.fields as field (field.id)}
         {#if display(field)}
           <div transition:fade>
@@ -194,33 +194,36 @@
     </div>
   </form>
 
-  <h4><strong>Raw Details</strong></h4>
-  <hr />
-  {#each Object.keys(submission?.details ?? []).filter((k) => !hidden.includes(k)) as d}
-    <div style="margin-top: 1em">
-      <p><strong>{d ?? ''}</strong></p>
-      <p>{formatDetail(d)}</p>
-      {#if fieldPerSubmissionDetail[d]?.type === 'file' && fieldPerSubmissionDetail[d].value}
-        {#if !downloading}
-          <button
-            class="btn btn-primary btn-sm"
-            on:click={() => downloadFile(fieldPerSubmissionDetail[d])}>Download
-            File</button>
-        {:else}
-          <button class="btn btn-primary btn-sm" disabled>Processing... file
-            will open in a new tab.</button>
+  <div class="mt-4">
+    <h4><strong>Raw Details</strong></h4>
+    <hr />
+    {#each Object.keys(submission?.details ?? []).filter((k) => !hidden.includes(k)) as d}
+      <div class="mt-4">
+        <p><strong>{d ?? ''}</strong></p>
+        <p>{formatDetail(d)}</p>
+        {#if fieldPerSubmissionDetail[d]?.type === 'file' && fieldPerSubmissionDetail[d].value}
+          {#if !downloading}
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => downloadFile(fieldPerSubmissionDetail[d])}>
+              Download File</Button>
+          {:else}
+            <Button type="primary" size="small" disabled>Processing... file
+              will open in a new tab.</Button>
+          {/if}
         {/if}
-      {/if}
+      </div>
+    {/each}
+    <br />
+    <h4><strong>Raw JSON</strong></h4>
+    <hr />
+    <div class="mt-4">
+      <pre>
+      <code>
+        {toRawJson()}
+    </code>
+    </pre>
     </div>
-  {/each}
-  <br />
-  <h4><strong>Raw JSON</strong></h4>
-  <hr />
-  <div style="margin-top: 1em">
-    <pre>
-    <code>
-      {toRawJson()}
-  </code>
-  </pre>
   </div>
 {/if}

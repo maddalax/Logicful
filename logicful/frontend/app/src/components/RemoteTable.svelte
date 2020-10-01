@@ -317,6 +317,106 @@
   }
 </style>
 
+<div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+  <div
+    class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
+      sm:flex-no-wrap">
+    <div>
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <div
+              class="absolute inset-y-0 left-0 pl-3 flex items-center
+                pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              class="form-input block w-full pl-10 sm:text-sm sm:leading-5"
+              placeholder={searchPlaceHolder}
+              bind:value={query} />
+          </div>
+        </div>
+        <!-- Filter -->
+        <div>
+          <div class="text-gray-700 text-center px-4 py-2 m-2">
+            <div on:click={() => (modal = 'filter')}>
+              <i class="fas fa-filter" />
+            </div>
+          </div>
+        </div>
+        <!-- Applied Filters -->
+        {#if appliedFilters > 0}
+          <div>
+            <div class="text-gray-700 text-center px-4 py-2 m-2">
+              <span
+                class="inline-flex items-center px-3 py-0.5 rounded-full text-sm
+                  font-medium leading-5 bg-indigo-100 text-indigo-800">
+                {appliedFilters} Filter(s) Applied <button
+                  on:click={() => {
+                    filters = {};
+                  }}
+                  type="button"
+                  class="flex-shrink-0 -mr-0.5 ml-1.5 inline-flex
+                    text-indigo-500 focus:outline-none focus:text-indigo-700"
+                  aria-label="Remove large badge">
+                  <svg
+                    class="h-2 w-2"
+                    stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 8 8">
+                    <path
+                      stroke-linecap="round"
+                      stroke-width="1.5"
+                      d="M1 1l6 6m0-6L1 7" />
+                  </svg>
+                </button>
+              </span>
+            </div>
+          </div>
+        {/if}
+      </div>
+    </div>
+    {#if selectedCount > 0}
+      <div class="ml-4 mt-4 flex-shrink-0 flex">
+        <span class="inline-flex rounded-md">
+          <div>
+            Selected: <strong>{selectedCount} of {filtered.length}</strong>
+          </div>
+        </span>
+
+        <span class="ml-3 pl-2 inline-flex rounded-md cursor-pointer" on:click={() => markRead(true)}>
+          <div>
+            <i class="fas fa-eye" />
+          </div>
+        </span>
+
+        <span class="ml-3 pl-2 inline-flex rounded-md cursor-pointer" on:click={() => markRead(false)}>
+          <div>
+            <i class="fas fa-eye-slash" />
+          </div>
+        </span>
+
+        <span class="ml-3 pl-2 inline-flex rounded-md cursor-pointer" on:click={() => (modal = 'delete')}>
+          <div>
+            <i class="fas fa-trash-alt" />
+          </div>
+        </span>
+      </div>
+    {/if}
+  </div>
+</div>
+
 <div class="flex flex-col">
   <div class="-my-2 overflow-x-scroll sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -420,6 +520,66 @@
     setWidths();
     columns = columns;
   }} />
+
+{#if modal === 'toggle_column'}
+  <Dialog
+    title={'Toggle Column Visibility'}
+    isOpen={true}
+    onClose={() => {
+      modal = '';
+    }}>
+    {#each columns as column}
+      {#if column !== 'table_meta_id'}
+        <div class="mt-4">
+          <div class="relative flex items-start">
+            <div class="flex items-center h-5">
+              <input
+                class="form-checkbox h-4 w-4 text-indigo-600 transition
+                  duration-150 ease-in-out"
+                type="checkbox"
+                on:click|stopPropagation
+                checked={!hidden.has(column)}
+                on:change={(e) => {
+                  toggleColumn(e.target.checked, column);
+                }} />
+            </div>
+            <div class="ml-3 text-sm leading-5">
+              <label
+                for={'toggle-' + column}
+                class="font-medium text-gray-700">{column}</label>
+            </div>
+          </div>
+        </div>
+      {/if}
+    {/each}
+  </Dialog>
+{:else if modal === 'delete'}
+  <Dialog
+    title={'Confirm Deletion'}
+    isOpen={true}
+    actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
+    onClose={() => {
+      modal = '';
+    }}>
+    <p>Are you sure you want to delete {selectedCount} entries?</p>
+  </Dialog>
+{:else if modal === 'filter'}
+  <Dialog
+    title={'Manage Filters'}
+    isOpen={true}
+    onClose={() => {
+      modal = '';
+    }}>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        bind:checked={filters.onlyUnread}
+        on:click|stopPropagation />
+      <label class="form-check-label">Only Show Unread Items</label>
+    </div>
+  </Dialog>
+{/if}
 
 <!-- <div>
   <ToastManager />
