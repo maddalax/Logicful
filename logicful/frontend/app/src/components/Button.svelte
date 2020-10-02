@@ -6,6 +6,7 @@
   export let size: "regular" | "large" | "small" = "regular";
   export let onClick: () => any = () => {};
   export let disabled: boolean = false;
+  export let width : "" | "full" = ""
   export let focus: boolean = false;
   export let href = "";
   export let hrefTarget = "";
@@ -36,6 +37,9 @@
     sizeClass = `${px} ${text} ${leading}`;
     if(hasIcon) {
       sizeClass = `${sizeClass} pl-3 pr-3`
+    }
+    if(width === 'full') {
+      sizeClass = `${sizeClass} pl-3 pr-3 w-full inline-flex items-center justify-center`
     }
   });
 

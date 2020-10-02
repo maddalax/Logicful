@@ -107,15 +107,12 @@
         class="mb-2 flex flex-col space-y-3 sm:space-y-0 sm:space-x-3 sm:flex-row
           xl:flex-col xl:space-x-0 xl:space-y-3">
         <span class="inline-flex rounded-md shadow-sm">
-          <button
-            type="button"
-            class="w-full inline-flex items-center justify-center px-4 py-2
-              border border-transparent text-sm leading-5 font-medium rounded-md
-              text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-              focus:border-indigo-700 focus:shadow-outline-indigo
-              active:bg-indigo-700 transition ease-in-out duration-150">
+          <Button
+            type="primary"
+            width="full"
+            href="/form/create">
             + New Form
-          </button>
+          </Button>
         </span>
       </div>
       <div>
