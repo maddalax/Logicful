@@ -206,7 +206,7 @@
   }
 </script>
 
-<Shell header="Form Submissions">
+<Shell header="Form Submissions" sidebar={false}>
   <RemoteTable
     defaultSortColumn={'Submission Date'}
     searchPlaceHolder={'Search Anything...'}

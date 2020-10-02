@@ -3,6 +3,7 @@
   import Link from "@app/components/Link.svelte";
   import MoveFormManager from "./MoveFormManager.svelte";
   import { dispatch } from "@app/event/EventBus";
+  import FormListItem from "./FormListItem.svelte";
 
   export let forms: IForm[] = [];
   let moving: IForm | undefined;
@@ -16,7 +17,7 @@
     moving = undefined;
   }
 
-  function onDelete(formId: string) {}
+  function onDelete(formId: string | undefined) {}
 </script>
 
 {#if moving}
@@ -25,7 +26,16 @@
   </div>
 {/if}
 
-<div class="card-body px-0 pt-0">
+{#each forms as form}
+  <div class="mb-4 mt-4">
+    <FormListItem
+      {form}
+      onMove={moveFolders}
+      onDelete={() => onDelete(form.id)} />
+  </div>
+{/each}
+
+<!-- <div class="card-body px-0 pt-0">
   <ul class="list-group list-group-flush form-list">
     {#each forms as form}
       <li class="list-group-item border-bottom py-3 radius-0">
@@ -38,7 +48,6 @@
                 {form.title}
               </Link>
             </h3>
-            <!-- Text -->
             <small class="text-gray-700">
               <Link
                 href={`/form/submissions?formId=${form.id}`}
@@ -84,4 +93,4 @@
       </li>
     {/each}
   </ul>
-</div>
+</div> -->

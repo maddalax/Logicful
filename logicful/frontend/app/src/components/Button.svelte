@@ -1,9 +1,9 @@
 <script lang="typescript">
   import { afterUpdate, onMount } from "svelte";
 
-  export let type: "primary" | "secondary" | "warn" | "danger";
+  export let type: "primary" | "secondary" | "warn" | "danger" | "white";
   export let submit: boolean = false;
-  export let size: 'regular' | 'large' | 'small' = 'regular'
+  export let size: "regular" | "large" | "small" = "regular";
   export let onClick: () => any = () => {};
   export let disabled: boolean = false;
   export let focus: boolean = false;
@@ -90,6 +90,35 @@
         hover:bg-indigo-50 focus:outline-none focus:border-indigo-300
         focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out
         duration-150">
+      <slot />
+    </button>
+  {/if}
+{:else if type === 'white'}
+  {#if href}
+    <a
+      type="button"
+      target={hrefTarget || '_blank'}
+      {href}
+      {disabled}
+      bind:this={focusable}
+      class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
+        leading-5 font-medium rounded-md text-gray-700 bg-white
+        hover:text-gray-500 focus:outline-none focus:border-blue-300
+        focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50
+        transition ease-in-out duration-150">
+      <slot />
+    </a>
+  {:else}
+    <button
+      type={submit ? 'submit' : 'button'}
+      on:click|stopPropagation={onClick}
+      {disabled}
+      bind:this={focusable}
+      class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
+        leading-5 font-medium rounded-md text-gray-700 bg-white
+        hover:text-gray-500 focus:outline-none focus:border-blue-300
+        focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50
+        transition ease-in-out duration-150">
       <slot />
     </button>
   {/if}

@@ -56,7 +56,6 @@
   });
 </script>
 
-
 {#if editing}
   <FolderSettings
     {folder}
@@ -64,7 +63,7 @@
       editing = false;
     }} />
 {/if}
-
+<!-- 
 <div class="row mb-5">
   <div class="col-12 mb-4" style="margin-top: 1em">
     <div class="card card-body bg-white border-light p-0 p-md-4">
@@ -105,9 +104,18 @@
         {#if forms}
           <FormList {forms} />
         {:else}
-          <p style="padding-left: 0.7em;">Folder Empty</p>
+          <p class="pl-4">Folder Empty</p>
         {/if}
       {/if}
     </div>
   </div>
-</div>
+</div> -->
+
+{#if state === LoadState.Loading}
+  <Loader />
+{/if}
+{#if forms}
+  <FormList {forms} />
+{:else}
+  <p class="pl-4">Folder Empty</p>
+{/if}

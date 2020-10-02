@@ -12,6 +12,7 @@
   import Link from "@app/components/Link.svelte";
   import FolderList from "./FolderList.svelte";
   import { getFolders } from "@app/features/folders/FolderService";
+  import Button from "@app/components/Button.svelte";
 
   let selected: IFolder | undefined = undefined;
   let folders: { [key: string]: IFolder } = {};
@@ -33,13 +34,13 @@
   subscribeComponent("folder_deleted", async (folder) => {
     state = LoadState.Loading;
     await loadFolders();
-  })
+  });
 
   subscribeComponent("folder_updated", async (folder) => {
     state = LoadState.Loading;
     await loadFolders();
-    onSelected(folder)
-  })
+    onSelected(folder);
+  });
 
   onMount(async () => {
     user = me();
@@ -52,7 +53,7 @@
 
   async function loadFolders(cache: boolean = true) {
     folders = await getFolders(cache);
-    onSelected(folders[Object.keys(folders)[0]])
+    onSelected(folders[Object.keys(folders)[0]]);
     state = LoadState.Finished;
   }
 
@@ -78,32 +79,6 @@
   }
 </script>
 
-<style>
-  .card-header-title {
-    padding: 1em 1em 0.5em 0.9em;
-  }
-
-  .card {
-    border-radius: 0.3em;
-  }
-
-  .title {
-    font-weight: 600;
-    line-height: 1.3;
-    color: #1c2540;
-    padding-left: 0.5em;
-    font-size: 1em;
-  }
-
-  .btn-outline-dark {
-    margin-right: 0.9em;
-    margin-left: 0.9em;
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-    margin-top: 1em;
-  }
-</style>
-
 {#if creatingNewFolder}
   <Dialog
     title={'Create New Folder'}
@@ -122,13 +97,46 @@
       placeholder="" />
   </Dialog>
 {/if}
-<Link
+
+<div
+  class="flex flex-col flex-grow border-r border-gray-200 pb-4 pt-2 bg-white
+    overflow-y-auto">
+  <div class="flex-grow flex flex-col">
+    <nav class="flex-1 px-2 bg-white">
+      <div
+        class="mb-2 flex flex-col space-y-3 sm:space-y-0 sm:space-x-3 sm:flex-row
+          xl:flex-col xl:space-x-0 xl:space-y-3">
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="button"
+            class="w-full inline-flex items-center justify-center px-4 py-2
+              border border-transparent text-sm leading-5 font-medium rounded-md
+              text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+              focus:border-indigo-700 focus:shadow-outline-indigo
+              active:bg-indigo-700 transition ease-in-out duration-150">
+            + New Form
+          </button>
+        </span>
+      </div>
+      <div>
+        <FolderList
+          {onNewFolder}
+          {onSelected}
+          {folders}
+          selected={selected?.id} />
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- <div class="items-center">
+  <Button
   href="/form/create"
-  class="btn btn-primary"
-  style="width:100%;margin-top:1em;margin-bottom:1em;">
+  type="primary">
   <span class="fas fa-plus" />
-  <span>Create New Form</span>
-</Link>
+  <span class="ml-2">Create New Form</span>
+</Button>
+</div>
 <div class="card border-light p-2" style="padding-bottom: 1em !important;">
   <div class="container-fluid p-2 mt-3" style="padding-left: 0;">
     <input
@@ -154,3 +162,4 @@
     <span style="font-weight: 400;">New Folder</span>
   </button>
 </div>
+ -->

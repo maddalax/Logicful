@@ -30,10 +30,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add rest of field types to email">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/submissions/SubmissionPreview.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/submissions/SubmissionPreview.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Shell.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Shell.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderContent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderContent.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FormList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FormList.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/models/IForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/folder/FolderPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/folder/FolderPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/FormSubmissionsPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/FormSubmissionsPage.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder/package.json" afterDir="false" />

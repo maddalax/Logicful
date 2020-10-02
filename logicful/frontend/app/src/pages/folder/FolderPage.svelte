@@ -1,18 +1,23 @@
 <script lang="typescript">
   import Folders from "@app/features/folders/Folders.svelte";
   import FolderContent from "@app/features/folders/FolderContent.svelte";
-  import { afterUpdate } from "svelte";
+  import Shell from "@app/components/Shell.svelte";
+  import { subscribeComponent } from "@app/event/EventBus";
+  import type { IFolder } from "@app/models/IFolder";
+
+  let header: string = "My Forms";
+
+  subscribeComponent(
+    "folder_selected",
+    async (e: { folder: IFolder; showForms: any }) => {
+      header = e.folder.name;
+    }
+  );
 </script>
 
-<div class="section section-lg pt-6 pt-md-6 bg-soft">
-  <div class="container">
-    <div class="row pt-3 pt-md-0">
-      <div class="col-12 col-md-4 d-none d-lg-block">
-        <Folders />
-      </div>
-      <div class="col-12 col-lg-8">
-        <FolderContent />
-      </div>
-    </div>
+<Shell header={header}>
+  <div slot="sidebar" class="mt-2">
+    <Folders />
   </div>
-</div>
+  <FolderContent />
+</Shell>

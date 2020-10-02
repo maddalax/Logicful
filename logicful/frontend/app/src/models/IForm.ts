@@ -8,7 +8,7 @@ export type IForm = {
   description?: string;
   enableLogic?: boolean;
   id?: string;
-  changeTime?: string;
+  changeDate?: string;
   changeBy?: string;
   groups?: Group[];
   disableSubmissions?: boolean;
