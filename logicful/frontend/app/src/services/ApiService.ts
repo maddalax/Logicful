@@ -1,6 +1,6 @@
 import { config } from "@app/store/ConfigStore";
 import { cacheGet, cacheSet } from "@app/util/Cache";
-import { getToken } from "./AuthService";
+import { getToken, me } from "./AuthService";
 
 function instance() {
   return fetch;
@@ -25,6 +25,10 @@ export function apiEndpoint() {
 }
 
 export async function getApi<T>(path: string): Promise<T> {
+  if(!me()) {
+    window.location.replace("/account/login")
+    return {} as T;
+  }
   const endpoint = apiEndpoint();
   const response = await instance()(`${endpoint}${path}`, {
     headers: authHeaders(),

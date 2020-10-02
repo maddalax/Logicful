@@ -11,6 +11,7 @@
     "@sentry/browser": "^5.24.2",
     "@sentry/tracing": "^5.24.2",
     "@tailwindcss/ui": "^0.6.2",
+    "bowser": "^2.11.0",
     "dragula": "^3.7.2",
     "flatpickr": "^4.6.6",
     "fuse.js": "6.4.1",
