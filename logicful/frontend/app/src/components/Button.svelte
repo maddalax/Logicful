@@ -41,6 +41,10 @@
     if(width === 'full') {
       sizeClass = `${sizeClass} pl-3 pr-3 w-full inline-flex items-center justify-center`
     }
+
+    if(disabled) {
+      sizeClass = `${sizeClass} opacity-50 cursor-not-allowed`
+    }
   });
 
   afterUpdate(() => {
