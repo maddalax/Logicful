@@ -65,10 +65,10 @@
   </div>
   <div class="mt-5 flex lg:mt-0 lg:ml-4">
     <span class="hidden sm:block shadow-sm rounded-md">
-      <Button href={`/form/preview?formId=${form.id}`} type="white">
+      <Button href={`/form/preview?formId=${form.id}`} type="white" size="small" hasIcon={true}>
         <!-- Heroicon name: pencil -->
         <svg
-          class="-ml-1 mr-2 h-5 w-5 text-gray-500"
+          class="-ml-1 mr-1 h-5 w-5 text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -88,10 +88,10 @@
     </span>
 
     <span class="hidden sm:block ml-3 shadow-sm rounded-md">
-      <Button href={`/form/builder?formId=${form.id}`} type="white">
+      <Button href={`/form/builder?formId=${form.id}`} type="white" size="small" hasIcon={true}>
         <!-- Heroicon name: link -->
         <svg
-          class="-ml-1 mr-2 h-5 w-5 text-gray-500"
+          class="-ml-1 mr-1 h-5 w-5 text-gray-500"
           viewBox="0 0 20 20"
           fill="currentColor">
           <path
@@ -102,14 +102,11 @@
 
     <!-- Dropdown -->
     <span class="ml-3 relative shadow-sm rounded-md">
-      <button
-        on:click|stopPropagation={() => (showActions = !showActions)}
-        type="button"
-        class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
-          leading-5 font-medium rounded-md text-gray-700 bg-white
-          hover:bg-gray-50 focus:outline-none focus:shadow-outline
-          focus:border-blue-300 transition duration-150 ease-in-out"
-        id="mobile-menu"
+      <Button
+        hasIcon={true}
+        onClick={() => (showActions = !showActions)}
+        type="white"
+        size="small"
         aria-haspopup="true">
         Actions
         <!-- Heroicon name: chevron-down -->
@@ -122,7 +119,7 @@
             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
             clip-rule="evenodd" />
         </svg>
-      </button>
+      </Button>
 
       <div
         class:hidden={!showActions}

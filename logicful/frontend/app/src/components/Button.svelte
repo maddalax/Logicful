@@ -9,7 +9,35 @@
   export let focus: boolean = false;
   export let href = "";
   export let hrefTarget = "";
+  export let hasIcon: boolean = false;
   let focusable: any = null;
+
+  let px = "px-2.5";
+  let text = "text-sm";
+  let leading = "leading-4";
+  let sizeClass = "";
+
+  onMount(() => {
+    if (size === "small") {
+      px = "px-2";
+      text = "text-xs";
+      leading = "leading-3";
+    }
+    if (size === "regular") {
+      px = "px-4";
+      text = "text-sm";
+      leading = "leading-5";
+    }
+    if (size === "large") {
+      px = "px-4";
+      text = "text-base";
+      leading = "leading-6";
+    }
+    sizeClass = `${px} ${text} ${leading}`;
+    if(hasIcon) {
+      sizeClass = `${sizeClass} pl-3 pr-3`
+    }
+  });
 
   afterUpdate(() => {
     if (focus && focusable) {
@@ -28,11 +56,11 @@
     {disabled}
     bind:this={focusable}
     on:click|stopPropagation={onClick}
-    class="inline-flex justify-center w-full rounded-md border
-      border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium
+    class={`inline-flex justify-center w-full rounded-md border
+      border-transparent py-2 bg-indigo-600 font-medium
       text-white shadow-sm hover:bg-indigo-500 focus:outline-none
       focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out
-      duration-150 sm:text-sm sm:leading-5">
+      duration-150 sm:text-sm sm:leading-5 ${sizeClass}`}>
     <slot />
   </button>
 {:else if type === 'primary'}
@@ -43,11 +71,11 @@
       {href}
       {disabled}
       bind:this={focusable}
-      class="inline-flex items-center px-4 py-2 border border-transparent
-        text-sm leading-5 font-medium rounded-md text-white bg-indigo-600
+      class={`inline-flex items-center py-2 border border-transparent
+        text-sm rounded-md text-white bg-indigo-600
         hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
         focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out
-        duration-150">
+        duration-150 ${sizeClass}`}>
       <slot />
     </a>
   {:else}
@@ -56,11 +84,11 @@
       on:click|stopPropagation={onClick}
       {disabled}
       bind:this={focusable}
-      class="inline-flex items-center px-4 py-2 border border-transparent
+      class={`inline-flex items-center px-4 py-2 border border-transparent
         text-sm leading-5 font-medium rounded-md text-white bg-indigo-600
         hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
         focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out
-        duration-150">
+        duration-150 ${sizeClass}`}>
       <slot />
     </button>
   {/if}
@@ -72,11 +100,11 @@
       {href}
       {disabled}
       bind:this={focusable}
-      class="inline-flex items-center px-4 py-2 border border-transparent
-        text-sm leading-5 font-medium rounded-md text-indigo-700 bg-indigo-100
+      class={`inline-flex items-center py-2 border border-transparent
+        font-medium rounded-md text-indigo-700 bg-indigo-100
         hover:bg-indigo-50 focus:outline-none focus:border-indigo-300
         focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out
-        duration-150">
+        duration-150 ${sizeClass}`}>
       <slot />
     </a>
   {:else}
@@ -85,11 +113,11 @@
       on:click|stopPropagation={onClick}
       {disabled}
       bind:this={focusable}
-      class="inline-flex items-center px-4 py-2 border border-transparent
-        text-sm leading-5 font-medium rounded-md text-indigo-700 bg-indigo-100
+      class={`inline-flex items-center py-2 border border-transparent
+        font-medium rounded-md text-indigo-700 bg-indigo-100
         hover:bg-indigo-50 focus:outline-none focus:border-indigo-300
         focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out
-        duration-150">
+        duration-150 ${sizeClass}`}>
       <slot />
     </button>
   {/if}
@@ -101,11 +129,11 @@
       {href}
       {disabled}
       bind:this={focusable}
-      class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
-        leading-5 font-medium rounded-md text-gray-700 bg-white
+      class={`inline-flex items-center py-2 border border-gray-300
+        font-medium rounded-md text-gray-700 bg-white
         hover:text-gray-500 focus:outline-none focus:border-blue-300
         focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50
-        transition ease-in-out duration-150">
+        transition ease-in-out duration-150 ${sizeClass}`}>
       <slot />
     </a>
   {:else}
@@ -114,11 +142,11 @@
       on:click|stopPropagation={onClick}
       {disabled}
       bind:this={focusable}
-      class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm
-        leading-5 font-medium rounded-md text-gray-700 bg-white
+      class={`inline-flex items-center py-2 border border-gray-300
+        font-medium rounded-md text-gray-700 bg-white
         hover:text-gray-500 focus:outline-none focus:border-blue-300
         focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50
-        transition ease-in-out duration-150">
+        transition ease-in-out duration-150 ${sizeClass}`}>
       <slot />
     </button>
   {/if}

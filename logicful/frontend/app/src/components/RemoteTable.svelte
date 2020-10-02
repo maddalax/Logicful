@@ -395,22 +395,22 @@
           </div>
         </span>
 
-        <span class="ml-3 pl-2 inline-flex rounded-md cursor-pointer" on:click={() => markRead(true)}>
-          <div>
-            <i class="fas fa-eye" />
-          </div>
+        <span
+          class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
+          on:click={() => markRead(true)}>
+          <div><i class="fas fa-eye" /></div>
         </span>
 
-        <span class="ml-3 pl-2 inline-flex rounded-md cursor-pointer" on:click={() => markRead(false)}>
-          <div>
-            <i class="fas fa-eye-slash" />
-          </div>
+        <span
+          class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
+          on:click={() => markRead(false)}>
+          <div><i class="fas fa-eye-slash" /></div>
         </span>
 
-        <span class="ml-3 pl-2 inline-flex rounded-md cursor-pointer" on:click={() => (modal = 'delete')}>
-          <div>
-            <i class="fas fa-trash-alt" />
-          </div>
+        <span
+          class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
+          on:click={() => (modal = 'delete')}>
+          <div><i class="fas fa-trash-alt" /></div>
         </span>
       </div>
     {/if}
@@ -430,8 +430,8 @@
                   font-medium text-gray-500 uppercase tracking-wider">
                 <div>
                   <input
-                    class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-                    ease-in-out"
+                    class="form-checkbox h-4 w-4 text-indigo-600 transition
+                      duration-150 ease-in-out"
                     type="checkbox"
                     value=""
                     checked={allRowsSelected}
@@ -457,7 +457,7 @@
               {/each}
             </tr>
           </thead>
-          <tbody>
+          <tbody class="divide-y divide-gray-200">
             {#each filtered as row, index}
               {#if index >= range.min && index <= range.max}
                 <tr
@@ -468,25 +468,33 @@
                     row['meta_unread'] = false;
                   }}>
                   <td
-                    class:unread={isUnread(row)}
-                    class="px-6 py-4 whitespace-no-wrap text-sm leading-5
-                      font-medium text-gray-900">
-                    <div>
-                      <input
-                        class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-                        ease-in-out"
-                        type="checkbox"
-                        value=""
-                        checked={row.meta_selected}
-                        on:click|stopPropagation
-                        on:change|stopPropagation={(e) => {
-                          onRowSelected(row);
-                        }}
-                        id={'row-toggle-' + index} />
+                    class:bg-cool-gray-50={!isUnread(row)}
+                    class="px-6 py-3 max-w-0 w-full whitespace-no-wrap text-sm
+                      leading-5 font-medium text-gray-900">
+                    <div class="flex items-center space-x-3">
+                      <a href="#" class="truncate hover:text-gray-600">
+                        <input
+                          class="form-checkbox h-4 w-4 text-indigo-600
+                            transition duration-150 ease-in-out"
+                          type="checkbox"
+                          value=""
+                          checked={row.meta_selected}
+                          on:click|stopPropagation
+                          on:change|stopPropagation={(e) => {
+                            onRowSelected(row);
+                          }}
+                          id={'row-toggle-' + index} />
+                      </a>
+                      {#if isUnread(row)}
+                        <div
+                          class="flex-shrink-0 w-2.5 h-2.5 rounded-full
+                            bg-indigo-400" />
+                      {/if}
                     </div>
                   </td>
                   {#each filteredColumns as column}
                     <td
+                      class:bg-cool-gray-50={!isUnread(row)}
                       class:font-bold={isUnread(row)}
                       class:text-gray-800={isUnread(row)}
                       class="px-6 py-4 text-sm leading-5 text-gray-500">

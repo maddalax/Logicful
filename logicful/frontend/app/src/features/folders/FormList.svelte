@@ -27,11 +27,12 @@
 {/if}
 
 {#each forms as form}
-  <div class="mb-4 mt-4">
+  <div class="-mt-2 mb-4">
     <FormListItem
       {form}
       onMove={moveFolders}
       onDelete={() => onDelete(form.id)} />
+      <div class="border-b border-gray-200 sm:px-6 pt-3"/>
   </div>
 {/each}
 

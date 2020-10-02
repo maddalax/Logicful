@@ -20,9 +20,9 @@
   let state: LoadState = LoadState.NotStarted;
   let editing = false;
 
-  function onSettings() {
+  subscribeComponent("folder_edit", () => {
     editing = true;
-  }
+  })
 
   subscribeComponent("forms_moved", (newFolder) => {
     forms = [];
@@ -43,6 +43,8 @@
 
   async function setForms(cache: boolean = true) {
     forms = await getApi(`form?folderId=${folder.id}`);
+    folder.forms = forms;
+    dispatch("folder_loaded", folder);
     state = LoadState.Finished;
   }
 
