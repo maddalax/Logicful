@@ -81,7 +81,6 @@
   :global(input:required) {
     box-shadow: none;
   }
- 
 </style>
 
 <svelte:head>
@@ -105,10 +104,9 @@
       Sign in to our platform
     </h2>
     <p class="mt-2 text-center text-sm leading-5 text-gray-600 max-w">
-      Or
-      <a href="/account/register" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-        Create an account
-      </a>
+      Or <a href="/account/register" class="font-medium text-indigo-600
+          hover:text-indigo-500 focus:outline-none focus:underline transition
+          ease-in-out duration-150"> Create an account </a>
     </p>
   </div>
 
@@ -195,31 +193,92 @@
                     clip-rule="evenodd" />
                 </svg>
               </div>
-              <input
-                id="password"
-                type="password"
-                minlength="5"
-                required
-                autocomplete="current-password"
-                bind:value={password}
-                class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
+              {#if showPassword}
+                <input
+                  id="password"
+                  type="text"
+                  minlength="5"
+                  required
+                  autocomplete="current-password"
+                  bind:value={password}
+                  class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
+                <div
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center
+                    cursor-pointer"
+                  on:click={togglePassword}>
+                  <svg
+                    class="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                  </svg>
+                </div>
+              {:else}
+                <input
+                  id="password"
+                  type="password"
+                  minlength="5"
+                  required
+                  autocomplete="current-password"
+                  bind:value={password}
+                  class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
+                <div
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center
+                    cursor-pointer"
+                  on:click={togglePassword}>
+                  <svg
+                    class="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </div>
+              {/if}
             </div>
           </div>
           <div class="mt-6 flex items-center justify-between">
             <div class="flex items-center">
-              <input id="remember_me" bind:checked={remember} type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-              <label for="remember_me" class="ml-2 block text-sm leading-5 text-gray-900">
+              <input
+                id="remember_me"
+                bind:checked={remember}
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-indigo-600 transition
+                  duration-150 ease-in-out" />
+              <label
+                for="remember_me"
+                class="ml-2 block text-sm leading-5 text-gray-900">
                 Remember me
               </label>
             </div>
-  
+
             <div class="text-sm leading-5">
-              <a href="/account/forgot" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+              <a
+                href="/account/forgot"
+                class="font-medium text-indigo-600 hover:text-indigo-500
+                  focus:outline-none focus:underline transition ease-in-out
+                  duration-150">
                 Forgot your password?
               </a>
             </div>
           </div>
-  
+
           <div class="mt-5">
             {#if !processing}
               <Button type="primary" width={'full'} submit={true}>
@@ -236,151 +295,3 @@
     </div>
   </div>
 </div>
-
-<!-- <section
-  class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark"
-  data-background="../../assets/img/pages/form-image.jpg">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 d-flex align-items-center justify-content-center">
-        <div
-          class="signin-inner mt-3 mt-lg-0 bg-white shadow-soft border rounded
-            border-light p-4 p-lg-5 w-100 fmxw-500">
-          {#if error}
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              style="border-radius: 0;"
-              role="alert">
-              {error}
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          {/if}
-          {#if processingGoogle && googleIdToken}
-            <div
-              style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
-              <div class="spinner-border text-secondary" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-              <div style="margin-top: 1em">
-                <p><strong>Signing in with Google...</strong></p>
-              </div>
-            </div>
-          {:else}
-            <div>
-              <div class="text-center text-md-center mb-4 mt-md-0">
-                <div href="/" style="height: 100px">
-                  <LogoDark />
-                </div>
-                <h1 style="margin-top: 1em" class="mb-0 h3">
-                  Sign in to our Platform
-                </h1>
-              </div>
-              <div style="margin-bottom: 1em">
-                <div
-                  class="g-signin2"
-                  data-longtitle="true"
-                  data-theme="dark"
-                  data-height="50"
-                  data-width="400"
-                  data-onsuccess="onGoogleSignIn" />
-              </div>
-              <div
-                class="separator"
-                style="margin-bottom: 1em; margin-top: 1.5em">
-                Or
-              </div>
-              <form on:submit|preventDefault|stopPropagation={onLogin}>
-                <div class="form-group mb-4">
-                  <label for="email">Your Email</label>
-                  <div class="input-group">
-                    <span class="input-group-text" id="basic-addon3"><span
-                        class="fas fa-envelope" /></span>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      autocomplete="email"
-                      bind:value={email} />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="form-group mb-4">
-                    <label for="password">Your Password</label>
-                    <div class="input-group">
-                      <span class="input-group-text" id="basic-addon4"><span
-                          class="fas fa-unlock-alt" /></span>
-                      {#if showPassword}
-                        <input
-                          type="text"
-                          minlength="6"
-                          class="form-control"
-                          id="password"
-                          autocomplete="current-password"
-                          bind:value={password} />
-                      {:else}
-                        <input
-                          type="password"
-                          minlength="6"
-                          class="form-control"
-                          id="password"
-                          autocomplete="current-password"
-                          bind:value={password} />
-                      {/if}
-                      {#if !showPassword}
-                        <span on:click={togglePassword}>
-                          <span
-                            class="fas fa-eye"
-                            style="position:absolute;top:0px;right:10px;margin-top:0.8em;" />
-                        </span>
-                      {:else}
-                        <span on:click={togglePassword}>
-                          <span
-                            class="fas fa-eye-slash"
-                            style="position:absolute;top:0px;right:10px;margin-top:0.8em;" />
-                        </span>
-                      {/if}
-                    </div>
-                  </div>
-                  <div class="form-check mb-4">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      bind:checked={remember}
-                      id="rememberMe" />
-                    <label class="form-check-label" for="rememberMe">Remember me</label>
-                  </div>
-                </div>
-                {#if !processing}
-                  <button
-                    type="submit"
-                    class="btn btn-block btn-primary"
-                    disabled={!valid}>Sign In With Email</button>
-                {:else}
-                  <button
-                    type="submit"
-                    class="btn btn-block btn-primary"
-                    disabled={true}>Signing In...</button>
-                {/if}
-              </form>
-              <div
-                class="d-flex justify-content-center align-items-center mt-4">
-                <span class="font-weight-normal">
-                  Not signed up?
-                  <Link href="/account/register" class="font-weight-bold">
-                    Register here
-                  </Link>
-                </span>
-              </div>
-            </div>
-          {/if}
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
