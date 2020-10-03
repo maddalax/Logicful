@@ -9,8 +9,8 @@
   let fullName: string = ''
   let email: string = ''
 
-  onMount(() => {
-    user = me()
+  onMount(async () => {
+    user = await me()
     displayName = user.displayName
     fullName = user.fullName
     email = user.email

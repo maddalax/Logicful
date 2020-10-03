@@ -1,16 +1,1 @@
-import _set from "../../web_modules/lodash.set.js";
-import _get from "../../web_modules/lodash.get.js";
-import _has from "../../web_modules/lodash.has.js";
-export function select(o, s) {
-  return _get(o, s);
-}
-export function set(o, s, value) {
-  _set(o, s, value);
-}
-export function assertExists(o, s, value) {
-  if (!_has(o, s)) {
-    _set(o, s, value);
-    return true;
-  }
-  return false;
-}
+import o from"../../web_modules/lodash.set.js";import r from"../../web_modules/lodash.get.js";import u from"../../web_modules/lodash.has.js";export function select(e,t){return r(e,t)}export function set(e,t,s){o(e,t,s)}export function assertExists(e,t,s){return u(e,t)?!1:(o(e,t,s),!0)}

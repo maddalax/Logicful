@@ -8,8 +8,8 @@
   let teamId: string =''
  
 
-  onMount(() => {
-    user = me()
+  onMount(async () => {
+    user = await me()
     // teamId = user.teamId
 
   })

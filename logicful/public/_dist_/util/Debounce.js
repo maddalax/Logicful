@@ -1,16 +1,1 @@
-export function debounce(func, wait, immediate = null) {
-  let timeout;
-  return function() {
-    var context = this, args = arguments;
-    var later = function() {
-      timeout = null;
-      if (!immediate)
-        func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow)
-      func.apply(context, args);
-  };
-}
+export function debounce(e,r,l=null){let t;return function(){var n=this,o=arguments,u=function(){t=null,l||e.apply(n,o)},a=l&&!t;clearTimeout(t),t=setTimeout(u,r),a&&e.apply(n,o)}}

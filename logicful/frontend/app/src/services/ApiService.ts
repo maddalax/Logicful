@@ -1,13 +1,7 @@
-import { config } from "@app/store/ConfigStore";
-import { cacheGet, cacheSet } from "@app/util/Cache";
 import { getToken, me } from "./AuthService";
 
-function instance() {
-  return fetch;
-}
-
-function authHeaders() {
-  const token = getToken();
+async function authHeaders() {
+  const token = await getToken();
   if (!token) {
     return;
   }
@@ -25,13 +19,9 @@ export function apiEndpoint() {
 }
 
 export async function getApi<T>(path: string): Promise<T> {
-  if(!me()) {
-    window.location.replace("/account/login")
-    return {} as T;
-  }
   const endpoint = apiEndpoint();
-  const response = await instance()(`${endpoint}${path}`, {
-    headers: authHeaders(),
+  const response = await fetch(`${endpoint}${path}`, {
+    headers: await authHeaders(),
   });
   if (!response.ok) {
     const body = await response.json();
@@ -60,11 +50,11 @@ async function requestApiWithBody<T>(
 ): Promise<T> {
   const endpoint = apiEndpoint();
   try {
-    const response = await instance()(`${endpoint}${path}`, {
+    const response = await fetch(`${endpoint}${path}`, {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        ...authHeaders(),
+        ...await authHeaders(),
       },
       body: JSON.stringify(body),
     });
@@ -81,6 +71,5 @@ async function requestApiWithBody<T>(
     return JSON.parse(result) as T;
   } catch (ex) {
     throw ex;
-    return {} as T;
   }
 }

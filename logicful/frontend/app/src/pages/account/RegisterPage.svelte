@@ -134,30 +134,89 @@
         </div>
 
         <form on:submit|preventDefault|stopPropagation={onRegister}>
-          <label
-            for="email"
-            class="block text-sm font-medium leading-5 text-gray-700">Email</label>
-          <div class="mt-1 relative rounded-md shadow-sm">
-            <div
-              class="absolute inset-y-0 left-0 pl-3 flex items-center
-                pointer-events-none">
-              <svg
-                class="w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor">
-                <path
-                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path
-                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
+          <div class="mt-2">
+            <label
+              for="name"
+              class="block text-sm font-medium leading-5 text-gray-700">Full
+              Name</label>
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <div
+                class="absolute inset-y-0 left-0 pl-3 flex items-center
+                  pointer-events-none">
+                <svg
+                  class="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <input
+                id="name"
+                autocomplete="name"
+                type="text"
+                bind:value={name}
+                on:blur={onNameBlur}
+                class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
             </div>
-            <input
-              id="email"
-              autocomplete="email"
-              type="email"
-              bind:value={email}
-              class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
+          </div>
+          <div class="mt-2">
+            <label
+              for="displayName"
+              class="block text-sm font-medium leading-5 text-gray-700">What
+              should we call you?</label>
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <div
+                class="absolute inset-y-0 left-0 pl-3 flex items-center
+                  pointer-events-none">
+                <svg
+                  class="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <input
+                id="displayName"
+                autocomplete="off"
+                type="text"
+                bind:value={displayName}
+                class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
+            </div>
+          </div>
+          <div class="mt-2">
+            <label
+              for="email"
+              class="block text-sm font-medium leading-5 text-gray-700">Email</label>
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <div
+                class="absolute inset-y-0 left-0 pl-3 flex items-center
+                  pointer-events-none">
+                <svg
+                  class="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path
+                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path
+                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+              </div>
+              <input
+                id="email"
+                autocomplete="email"
+                type="email"
+                bind:value={email}
+                class="form-input block w-full pl-10 sm:text-sm sm:leading-5" />
+            </div>
           </div>
           <div class="mt-2">
             <label
@@ -238,6 +297,23 @@
               {/if}
             </div>
           </div>
+          <div class="mt-6 flex items-center justify-between">
+            <div class="flex items-center">
+              <input
+                id="terms"
+                bind:checked={agree}
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-indigo-600 transition
+                  duration-150 ease-in-out" />
+              <label
+                for="terms"
+                class="ml-2 block text-sm leading-5 text-gray-900">
+                I agree to the <a href="/tos" target="_blank" class="text-indigo-700">terms
+                  and conditions</a>
+              </label>
+            </div>
+          </div>
+
           <div class="mt-5">
             {#if !creating}
               <Button type="primary" width={'full'} submit={true}>
@@ -254,73 +330,3 @@
     </div>
   </div>
 </div>
-
-<!-- Section
-<section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="../../assets/img/pages/form-image.jpg">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 d-flex align-items-center justify-content-center">
-        <div class="signin-inner mt-3 mt-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-          {#if error}
-            <div class="alert alert-danger alert-dismissible fade show" style="border-radius: 0;" role="alert">
-              {error} <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-            </div>
-          {/if}
-          <div class="text-center text-md-center mb-4 mt-md-0">
-            <h1 class="mb-0 h3">Create an Account</h1>
-          </div>
-          <form on:submit|preventDefault|stopPropagation={onRegister}>
-            <div class="form-group mb-4">
-              <label for="fullName">Full Name</label>
-              <div class="input-group">
-                <span class="input-group-text" id="basic-addon3"><i class="fas fa-user" /></span>
-                <input type="text" class="form-control" id="fullName" on:blur={onNameBlur} bind:value={name} />
-              </div>
-            </div>
-
-            <div class="form-group mb-4">
-              <label for="displayName">What should we call you?</label>
-              <div class="input-group">
-                <span class="input-group-text" id="basic-addon3"><i class="far fa-address-book" /></span>
-                <input type="text" class="form-control" id="displayName" autocomplete="off" bind:value={displayName} />
-              </div>
-            </div>
-
-            <div class="form-group mb-4">
-              <label for="email">Your Email</label>
-              <div class="input-group">
-                <span class="input-group-text" id="basic-addon3"><span class="fas fa-envelope" /></span>
-                <input type="email" class="form-control" id="email" bind:value={email} />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-group mb-4">
-                <label for="password">Your Password</label>
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon4"><span class="fas fa-unlock-alt" /></span>
-                  {#if showPassword}
-                    <input type="text" minlength="6" class="form-control" id="password" autocomplete="current-password" bind:value={password} />
-                  {:else}<input type="password" minlength="6" class="form-control" id="password" autocomplete="current-password" bind:value={password} />{/if}
-                  {#if !showPassword}
-                    <span on:click={togglePassword}> <span class="fas fa-eye" style="position:absolute;top:0px;right:10px;margin-top:0.8em;" /> </span>
-                  {:else}<span on:click={togglePassword}> <span class="fas fa-eye-slash" style="position:absolute;top:0px;right:10px;margin-top:0.8em;" /> </span>{/if}
-                </div>
-                <div class="form-text">Minimum 6 characters</div>
-              </div>
-              <div class="form-check mb-4">
-                <input class="form-check-input" type="checkbox" bind:checked={agree} id="defaultCheck6" />
-                <label class="form-check-label" for="defaultCheck6"> I agree to the <a href="#">terms and conditions</a> </label>
-              </div>
-            </div>
-            {#if !creating}
-              <button type="submit" class="btn btn-block btn-primary" disabled={!valid}>Create Account</button>
-            {:else}<button type="submit" class="btn btn-block btn-primary" disabled={true}>Creating Account...</button>{/if}
-          </form>
-          <div class="d-flex justify-content-center align-items-center mt-4">
-            <span class="font-weight-normal"> Already have an account? <a href="./account/login" class="font-weight-bold">Login here</a> </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->

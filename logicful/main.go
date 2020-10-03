@@ -65,10 +65,6 @@ func main() {
 	}
 }
 
-func index(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
-	http.ServeFile(w, r, "public/index.html")
-}
-
 func addOptionSetHandlers(router *httprouter.Router) {
 	router.GET("/api/option-set", optionset.ListHandler)
 	router.POST("/api/option-set", optionset.SetHandler)

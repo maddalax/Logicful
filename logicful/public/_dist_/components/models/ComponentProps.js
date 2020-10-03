@@ -1,5 +1,1 @@
-export var DynamicFormMode;
-(function(DynamicFormMode2) {
-  DynamicFormMode2[DynamicFormMode2["Preview"] = 0] = "Preview";
-  DynamicFormMode2[DynamicFormMode2["Live"] = 1] = "Live";
-})(DynamicFormMode || (DynamicFormMode = {}));
+export var DynamicFormMode;(function(e){e[e.Preview=0]="Preview",e[e.Live=1]="Live"})(DynamicFormMode||(DynamicFormMode={}));

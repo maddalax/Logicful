@@ -1,4 +1,1 @@
-export const config = {};
-export function setConfig(key, value) {
-  config[key] = value;
-}
+export const config={};export function setConfig(o,n){config[o]=n}

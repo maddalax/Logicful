@@ -9,8 +9,8 @@
   export let page: string = "";
   let user: User;
 
-  onMount(() => {
-    user = me();
+  onMount(async () => {
+    user = await me();
   });
 </script>
 

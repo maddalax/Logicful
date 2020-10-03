@@ -15,7 +15,7 @@
     state = LoadState.Loading;
     const folder = getUrlParameter("folder");
     try {
-      const user = me();
+      const user = await me();
       const response: IForm = await postApi("form", {
         title: "My New Form",
         description: "Your Form Description (Optional)",

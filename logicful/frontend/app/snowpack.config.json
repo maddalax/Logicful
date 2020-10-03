@@ -7,6 +7,7 @@
     "build:css": "postcss"
   },
   "plugins": [
+    "@snowpack/plugin-dotenv",
     [
       "@snowpack/plugin-build-script",
       {
@@ -20,7 +21,11 @@
       }
     ],
     "@snowpack/plugin-optimize",
-    "@snowpack/plugin-webpack"
+    [
+      "@snowpack/plugin-webpack",
+      {
+      }
+    ]
   ],
   "alias": {
     "@app": "./src"

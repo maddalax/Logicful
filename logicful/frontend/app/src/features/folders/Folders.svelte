@@ -43,7 +43,7 @@
   });
 
   onMount(async () => {
-    user = me();
+    user = await me();
     state = LoadState.Loading;
     subscribe("folder_content_loaded", () => {
       contentLoaded = true;

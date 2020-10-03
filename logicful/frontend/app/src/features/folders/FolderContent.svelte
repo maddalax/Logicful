@@ -52,8 +52,8 @@
     setForms();
   }, 300);
 
-  onMount(() => {
-    user = me();
+  onMount(async () => {
+    user = await me()
     dispatch("folder_content_loaded", {});
   });
 </script>

@@ -8,12 +8,12 @@
 
   let setHeap = false;
 
-  function initHeap() {
+  async function initHeap() {
     if (setHeap) {
       return;
     }
-    const user = me();
-    if (user) {
+    const user = await me();
+    if (user.id) {
       console.log(user);
       //@ts-ignore
       console.log(window.heap);

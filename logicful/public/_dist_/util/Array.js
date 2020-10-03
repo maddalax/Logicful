@@ -1,16 +1,1 @@
-export function shiftArray(arr, oldIndex, newIndex) {
-  if (newIndex >= arr.length) {
-    let k = newIndex - arr.length + 1;
-    while (k--) {
-      arr.push(void 0);
-    }
-  }
-  arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
-  return arr;
-}
-export function orderBy(arr, arr2, property) {
-  arr.sort((a, b) => {
-    return arr2.indexOf(a[property]) - arr2.indexOf(b[property]);
-  });
-  return arr;
-}
+export function shiftArray(t,e,i){if(i>=t.length){let n=i-t.length+1;for(;n--;)t.push(void 0)}return t.splice(i,0,t.splice(e,1)[0]),t}export function orderBy(t,e,i){return t.sort((n,f)=>e.indexOf(n[i])-e.indexOf(f[i])),t}

@@ -1,16 +1,1 @@
-import {dispatchSync, subscribeComponent} from "./EventBus.js";
-export function dispatchFieldChange(field, change) {
-  dispatchSync("field_changed", {
-    field,
-    change
-  });
-}
-export function subscribeFieldChange(onMount, callback) {
-  subscribeComponent("field_changed", (payload) => {
-    if (!payload.field) {
-      console.error("Field change was undefined.", payload);
-      return;
-    }
-    callback(payload.field, payload.change);
-  });
-}
+import{dispatchSync as c,subscribeComponent as r}from"./EventBus.js";export function dispatchFieldChange(i,n){c("field_changed",{field:i,change:n})}export function subscribeFieldChange(i,n){r("field_changed",e=>{if(!e.field){console.error("Field change was undefined.",e);return}n(e.field,e.change)})}

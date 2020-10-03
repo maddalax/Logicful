@@ -1,53 +1,27 @@
-export function transformDraggedElement(el, data, index) {
-  if (data.name === "string") {
-    el.innerHTML = "<label>New Text Input</label><input class='form-control'/>";
-  }
-  if (data.name === "combobox") {
-    el.innerHTML = "<label>New Dropdown</label><select class='form-control'><option>Dropdown Value</option></select>";
-  }
-  if (data.name === "switch") {
-    el.innerHTML = `<div class="form-check form-switch">
+export function transformDraggedElement(e,l,c){return l.name==="string"&&(e.innerHTML="<label>New Text Input</label><input class='form-control'/>"),l.name==="combobox"&&(e.innerHTML="<label>New Dropdown</label><select class='form-control'><option>Dropdown Value</option></select>"),l.name==="switch"&&(e.innerHTML=`<div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault">New Toggle</label>
-            </div>`;
-  }
-  if (data.name === "date") {
-    el.innerHTML = "<label>New Date</label><input type='date' class='form-control shadow'></input>";
-  }
-  if (data.name === "block") {
-    el.innerHTML = "<div style='background-color: #f0f0f0;margin-top:5px;padding: 10px 10px 3px;border-radius: 0.45em'><h5>New Content Block</h5><p>Content will display here.</p></div>";
-  }
-  if (data.name === "file") {
-    el.innerHTML = `<label>New File</label><div class="form-file">
+            </div>`),l.name==="date"&&(e.innerHTML="<label>New Date</label><input type='date' class='form-control shadow'></input>"),l.name==="block"&&(e.innerHTML="<div style='background-color: #f0f0f0;margin-top:5px;padding: 10px 10px 3px;border-radius: 0.45em'><h5>New Content Block</h5><p>Content will display here.</p></div>"),l.name==="file"&&(e.innerHTML=`<label>New File</label><div class="form-file">
         <input type="file" class="form-file-input" />
         <label class="form-file-label">
           <span class="form-file-text">Choose a file...</span>
           <span class="form-file-button">Browse</span>
         </label>
-      </div>`;
-  }
-  if (data.name === "checkbox-group") {
-    el.innerHTML = `<label>New Checkbox Group</label><div class="form-check">
+      </div>`),l.name==="checkbox-group"&&(e.innerHTML=`<label>New Checkbox Group</label><div class="form-check">
     <input class="form-check-input" type="checkbox" checked="true" value="" id="checkboxOne" />
     <label class="form-check-label" for="defaultCheck1">Option 1</label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkboxTwo" />
     <label class="form-check-label" for="defaultCheck2">Option 2</label>
-  </div>`;
-  }
-  if (data.name === "radio-group") {
-    el.innerHTML = `<label>New Radio Group</label><div class="form-check">
+  </div>`),l.name==="radio-group"&&(e.innerHTML=`<label>New Radio Group</label><div class="form-check">
     <input class="form-check-input" type="radio" value="" checked="true" id="checkboxOne" />
     <label class="form-check-label" for="defaultCheck1">Option One</label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="radio" value="" id="checkboxTwo" />
     <label class="form-check-label" for="defaultCheck2">Option Two</label>
-  </div>`;
-  }
-  if (data.name === "address") {
-    el.innerHTML = `<div class="row">
+  </div>`),l.name==="address"&&(e.innerHTML=`<div class="row">
     <div class="col">
       <label class="form-check-label" for="defaultCheck1">Address</label>
       <div class="row">
@@ -74,7 +48,4 @@ export function transformDraggedElement(el, data, index) {
         </div>
       </div>
     </div>
-  </div>`;
-  }
-  return el;
-}
+  </div>`),e}

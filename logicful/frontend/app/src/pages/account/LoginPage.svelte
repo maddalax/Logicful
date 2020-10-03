@@ -29,6 +29,7 @@
   });
 
   async function onGoogleLogin() {
+    remember = true;
     await doLogin("user/login/google", {
       token: googleIdToken,
     });
@@ -57,6 +58,7 @@
       if (ex.message === "invalid username or password") {
         error = "Invalid username or password.";
       } else {
+        console.error(ex);
         error = "Failed to login, something went wrong.";
       }
     } finally {

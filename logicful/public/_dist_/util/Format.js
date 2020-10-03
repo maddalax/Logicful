@@ -1,9 +1,1 @@
-import {nullOrEmpty} from "./Compare.js";
-export function firstNotEmpty(...values) {
-  for (let v of values) {
-    if (!nullOrEmpty(v)) {
-      return v;
-    }
-  }
-  return "";
-}
+import{nullOrEmpty as o}from"./Compare.js";export function firstNotEmpty(...t){for(let r of t)if(!o(r))return r;return""}

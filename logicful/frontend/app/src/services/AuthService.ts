@@ -1,6 +1,8 @@
 import type { User } from "@app/models/User";
+import { postApi } from "./ApiService";
 
 let memoryToken: string = "";
+let refreshing = false;
 
 export interface UserToken {
   token: string;
@@ -19,7 +21,7 @@ export function setToken(token: UserToken, remember: boolean = true) {
   }
 }
 
-export function getToken(): string | undefined {
+export async function getToken(): Promise<string | undefined> {
   if (!localStorage) {
     return undefined;
   }
@@ -28,7 +30,18 @@ export function getToken(): string | undefined {
     return undefined;
   }
   try {
-    const parsed: UserToken = JSON.parse(token);
+    let parsed: UserToken = JSON.parse(token);
+    const left = parsed.expiration - Date.now();
+
+    if (left <= 0) {
+      await refreshToken();
+      return await getToken();
+    }
+    // 24 hours
+    else if (left <= 8.64e7) {
+      refreshToken();
+    }
+
     return parsed.token;
   } catch (ex) {
     localStorage.removeItem("token");
@@ -37,7 +50,7 @@ export function getToken(): string | undefined {
   }
 }
 
-export function me(): User {
+export async function me(): Promise<User> {
   const emptyUser = {
     fullName: "",
     displayName: "",
@@ -45,7 +58,7 @@ export function me(): User {
     id: "",
     teamId: "",
   };
-  const token = getToken();
+  const token = await getToken();
   if (!token) {
     return emptyUser;
   }
@@ -71,4 +84,15 @@ function parseJwt(token: string): any {
   return JSON.parse(jsonPayload);
 }
 
-export function refreshToken() {}
+async function refreshToken() {
+  if (refreshing) {
+    return;
+  }
+  refreshing = true;
+  try {
+    const token = await postApi<UserToken>("user/refresh", {});
+    setToken(token, true);
+  } finally {
+    refreshing = false;
+  }
+}

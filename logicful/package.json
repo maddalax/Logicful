@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "deploy" : "gcloud app deploy"
+    "deploy" : "cd frontend/app && npm run build && cd ../../ && gcloud app deploy"
   }
 }

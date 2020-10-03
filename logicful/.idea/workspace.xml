@@ -30,9 +30,522 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="add rest of field types to email">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Button.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/snowpack.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/snowpack.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Authenticate.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Authenticate.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/account/AccountSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/account/AccountSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/account/ManageTeam.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/account/ManageTeam.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/account/Settings.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/account/Settings.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderContent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderContent.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/account/LoginPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/account/LoginPage.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/account/RegisterPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/account/RegisterPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/form/CreateFormPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/form/CreateFormPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/services/ApiService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/services/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/services/AuthService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/AppRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Authenticate.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Authenticate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DropdownButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/DropdownButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/ErrorDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/ErrorDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/ExampleComponent.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/ExampleComponent.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/ExampleComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/ExampleComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Html.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Html.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Link.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Link.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/LogicRule.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/LogicRule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Pagination.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Pagination.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Repeater.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Repeater.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Repeater.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Repeater.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Sidebar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Sidebar.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Sidebar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Toast.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Toast.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Toast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/ToastManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/ToastManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Tooltip.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Tooltip.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Tooltip.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Tooltip.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Tooltip.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Tooltip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/account/AccountSidebar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/account/AccountSidebar.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/account/AccountSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/account/AccountSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/account/Billing.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/account/Billing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/account/ManageTeam.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/account/ManageTeam.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/account/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/account/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/Dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/Dashboard.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/GettingStarted.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/dashboard/GettingStarted.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/RecentForms.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/RecentForms.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/RecentForms.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/dashboard/RecentForms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/SubmissionsDash.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/dashboard/SubmissionsDash.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/SubmissionsDash.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/dashboard/SubmissionsDash.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/dashboard/SubmissionsDash.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/dashboard/SubmissionsDash.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/EmailSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/form_settings/EmailSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Footer.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Navbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Navbar.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/Preloader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/logos/LogoDark.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/logos/LogoDark.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/logos/LogoWhite.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/logos/LogoWhite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/models/ComponentProps.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/models/ComponentProps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Item.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Item.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Item.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/List.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/List.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/MultiSelection.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/MultiSelection.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/MultiSelection.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/MultiSelection.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/MultiSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/MultiSelection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Select.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Select.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Select.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Selection.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Selection.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/Selection.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/Selection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/VirtualList.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/VirtualList.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/VirtualList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/VirtualList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/utils/debounce.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/utils/debounce.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/select/utils/isOutOfViewport.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/select/utils/isOutOfViewport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/event/EventBus.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/event/EventBus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/event/FieldEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/event/FieldEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/MoveForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/MoveForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/MoveForm.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/MoveForm.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/MoveForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/MoveForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/MoveFormManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/MoveFormManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/AddressEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/AddressEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/CheckboxGroupEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/CheckboxGroupEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ContentBlockEditor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ContentBlockEditor.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ContentBlockEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ContentBlockEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ContentBlockList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ContentBlockList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/DynamicForm.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/DynamicForm.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/DynamicForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/DynamicForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldConfiguration.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEditSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEditSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldTypeEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldTypeEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEditSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEditSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupEditSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupEditSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/LogicAccordion.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/LogicAccordion.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/LogicAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/LogicAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/LogicBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/LogicBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageContentBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageContentBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageOptionSets.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageOptionSets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/OptionSetsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/OptionSetsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/RadioGroupEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/RadioGroupEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/DefaultFieldValueFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/DefaultFieldValueFactory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/PreviewSaver.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/PreviewSaver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/SaveForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/SaveForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/util/Draggable.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/util/Draggable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/FieldContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/FieldContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/FormPreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/FormPreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveField.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveField.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveField.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/service/SubmitForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/service/SubmitForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/submissions/SubmissionPreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/submissions/SubmissionPreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/guards/Guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/guards/Guard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/Address.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/Address.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/CheckboxGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/CheckboxGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/FileUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/FileUpload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/FullName.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/FullName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/Label.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/Label.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/RadioGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/RadioGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/RichTextDisplay.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/RichTextDisplay.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/RichTextDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/RichTextDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/Spacer.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/Spacer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/StateSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/StateSelector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/Switch.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/Switch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/TextArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/TextArea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/TextInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/loader/FieldValueLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/loader/FieldValueLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/models/LoadState.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/models/LoadState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/DashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/DashboardPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/account/AccountSettingsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/account/AccountSettingsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/account/BillingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/account/BillingPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/account/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/account/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/account/LogoutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/account/LogoutPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/account/ManageTeamPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/account/ManageTeamPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/account/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/account/RegisterPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/folder/FolderPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/folder/FolderPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form-settings/emails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form-settings/emails/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form-settings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form-settings/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/CreateFormPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form/CreateFormPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/FormBuilderPage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/FormBuilderPage.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/FormBuilderPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form/FormBuilderPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/FormSubmissionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form/FormSubmissionsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/PreviewFormPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form/PreviewFormPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/services/AddressService.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/AddressService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/services/ApiService.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/ApiService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/AuthService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/services/LogicBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/LogicBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/services/Sentry.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/Sentry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/store/ConfigStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/store/ConfigStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/store/FormStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/store/FormStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Array.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Array.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Cache.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Cache.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Compare.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Compare.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Debounce.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Debounce.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Format.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Format.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Generate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Http.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/util/Selection.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/util/Selection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/account/office-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/account/office-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/account/office-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/image-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/image-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/image-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/image-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/blog/image-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/brand/dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/brand/light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/brand/logicful-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/brand/logicful-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/brand/themesberg-logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/carousel/image-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/carousel/image-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/carousel/image-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/checker_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/airbnb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/business-school.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/corsair.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/docker.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/ebay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/elastic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/forbes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/google.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/northwestern.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/paypal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/pinterest.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/clients/university-of-chicago.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/android-chrome-192x192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/android-chrome-512x512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/browserconfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/mstile-150x150.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/safari-pinned-tab.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/favicon/site.webmanifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/feature-elements.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/404.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/about-illustration.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/addicted.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/app-landing-2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/app-landing-cta.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/app-landing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/crypto-footer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/crypto.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/feature.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/maintenance.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/meditating.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/reading-side.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/reading.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/illustrations/server-error.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/blog-card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/dropdown-btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/ipad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/iphone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/macbook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/modal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/navbar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/pricing-card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/profile-card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/section-image-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/section-image-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/section-image-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/section-image-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/section-image-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/section-image-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/index-components/social-btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/iphone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/megamenu_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/office.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/coworking.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/design.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/form-image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/subscribe-image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/support.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/technologies.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation-mockup-dashboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation-mockup.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/404.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/500.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/about.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/account.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/billing.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/blank-page.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/blog-post.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/blog.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/career-single.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/careers.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/coming-soon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/contact.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/edit-item.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/forgot-password.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/invoice.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/items.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/landing-app.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/landing-crypto.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/landing-freelancer.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/legal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/maintenance.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/messages.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/pricing.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/profile.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/reset-password.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/security.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/services.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/settings.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/sign-in.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/sign-up.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/single-message.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/support-topic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/support.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/team.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/all-pages/terms.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/screen-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/screen-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/screen-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/presentation/screen-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/about-us-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/about-us-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/about-us-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/feature-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/feature-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/feature-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/sections/feature-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/shop/item-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/shop/item-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/shop/item-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/shop/item-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/shop/item-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/shop/item-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/signature.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/big-profile-picture-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/big-profile-picture-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/big-profile-picture-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/cover-profile.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-crypto.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/team/profile-picture-freelancer.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/themesberg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/wavelogo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/pixel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/pixel.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/alerts/error.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/alerts/info.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/alerts/success.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/alerts/warning.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-down-gray-90.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-down-hover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-down-primary-hover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-down-primary.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-down-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-right-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-up-primary-hover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-up-primary.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-arrow-up-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-double-left-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-double-right-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-left-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/angle-right-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-both.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-down-gray-60.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-left-indigo-cool-50v.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-left-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/arrow-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/calendar-alt-solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/checkbox-check-print.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/chevron-right-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/chevron-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/chevron-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/chevron.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-alt-blue-60v.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-blue-30-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-blue-40v-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-blue-50-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-blue-50v-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-blue-60-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-blue-60v-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-gray-60.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-gray-90-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-primary.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-white-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close-white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/correct8-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/correct8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/correct9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/external-link-alt-hover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/external-link-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/external-link-hover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/external-link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/file-excel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/file-pdf.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/file-video.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/file-word.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/file.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/icon-dot-gov.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/icon-https.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/loader.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/lock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/minus-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/plus-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/search-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/search-primary.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/social-icons/facebook25.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/social-icons/rss25.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/social-icons/twitter16.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/social-icons/youtube15.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/commons.f95deddf828d6ddb00b2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/commons.f95deddf828d6ddb00b2.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/index.0990f2467dc068d48e80.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib-5d742710.d54fef6a2617a9676811.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib-79fbc136.78370e108d02787b6ed7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib-79fbc136.78370e108d02787b6ed7.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/webpack-runtime.a9d6ff18eca7c8664d5c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/normalize.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/css/bootstrap-utilities.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/js/bootstrap.esm.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/esm/popper-utils.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/esm/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/popper-utils.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/umd/popper-utils.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/umd/popper.js.flow" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/popper.js/dist/umd/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/@fortawesome/fontawesome-free/css/all.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/@fortawesome/fontawesome-free/css/all.min.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/@fortawesome/fontawesome-free/js/all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/@sentry/browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/@sentry/browser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/@sentry/tracing.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/@sentry/tracing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/bowser.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/bowser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/common/_commonjsHelpers-239f682e.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/common/_commonjsHelpers-239f682e.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/common/hub-e5e7c94b.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/common/hub-e5e7c94b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/common/index-78b2aaa2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/common/index-bd131d6e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/dragula.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/dragula.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/dragula/dist/dragula.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/dragula/dist/dragula.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/dragula/dist/dragula.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/dragula/dist/dragula.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/dragula/dist/dragula.min.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/dragula/dist/dragula.min.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/flatpickr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/fusejs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/fusejs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/import-map.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/import-map.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/lodash.get.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/lodash.get.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/lodash.has.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/lodash.has.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/lodash.set.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/lodash.set.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/popperjs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/popperjs/dist/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/quill.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/quill.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/quill/dist/quill.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/quill/dist/quill.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/quill/dist/quill.snow.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/quill/dist/quill.snow.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/quill/dist/quill.snow.css.proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/quill/dist/quill.snow.css.proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte-routing.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte-routing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte/animate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte/internal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte/internal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte/transition.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte/transition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/traverse.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/traverse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/uuid.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/uuid.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,10 +748,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build main.go" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.pretty" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="npm.pretty" />
       </list>
     </recent_temporary>
   </component>
@@ -369,54 +882,54 @@
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
     <state x="284" y="286" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1601667243394" />
-    <state width="1554" height="486" key="GridCell.Tab.0.bottom" timestamp="1601668889003">
+    <state width="1268" height="369" key="GridCell.Tab.0.bottom" timestamp="1601756972423">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1638" height="247" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601555866998" />
-    <state width="1554" height="486" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601668889003" />
-    <state width="1554" height="486" key="GridCell.Tab.0.center" timestamp="1601668889003">
+    <state width="1268" height="369" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601756972423" />
+    <state width="1268" height="369" key="GridCell.Tab.0.center" timestamp="1601756972423">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1638" height="247" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601555866997" />
-    <state width="1554" height="486" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601668889003" />
-    <state width="1554" height="486" key="GridCell.Tab.0.left" timestamp="1601668889003">
+    <state width="1268" height="369" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601756972423" />
+    <state width="1268" height="369" key="GridCell.Tab.0.left" timestamp="1601756972423">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
     <state width="1638" height="247" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601555866997" />
-    <state width="1554" height="486" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601668889003" />
-    <state width="1554" height="486" key="GridCell.Tab.0.right" timestamp="1601668889003">
+    <state width="1268" height="369" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601756972423" />
+    <state width="1268" height="369" key="GridCell.Tab.0.right" timestamp="1601756972423">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
     <state width="1638" height="247" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601555866998" />
-    <state width="1554" height="486" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601668889003" />
-    <state width="1554" height="486" key="GridCell.Tab.1.bottom" timestamp="1601668888958">
+    <state width="1268" height="369" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601756972423" />
+    <state width="1701" height="331" key="GridCell.Tab.1.bottom" timestamp="1601753637431">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1638" height="221" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740350" />
-    <state width="1554" height="486" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601668888958" />
-    <state width="1554" height="486" key="GridCell.Tab.1.center" timestamp="1601668888958">
+    <state width="1701" height="331" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
+    <state width="1701" height="331" key="GridCell.Tab.1.center" timestamp="1601753637431">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1638" height="221" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740350" />
-    <state width="1554" height="486" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601668888958" />
-    <state width="1554" height="486" key="GridCell.Tab.1.left" timestamp="1601668888958">
+    <state width="1701" height="331" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
+    <state width="1701" height="331" key="GridCell.Tab.1.left" timestamp="1601753637431">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1638" height="221" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740349" />
-    <state width="1554" height="486" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601668888958" />
-    <state width="1554" height="486" key="GridCell.Tab.1.right" timestamp="1601668888958">
+    <state width="1701" height="331" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
+    <state width="1701" height="331" key="GridCell.Tab.1.right" timestamp="1601753637431">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1638" height="221" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1601328740350" />
-    <state width="1554" height="486" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601668888958" />
+    <state width="1701" height="331" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
     <state width="1638" height="221" key="GridCell.Tab.2.bottom" timestamp="1601328740351">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -513,13 +1026,13 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup" timestamp="1601668878012">
+    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup" timestamp="1601757001183">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
     <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1601555850646" />
-    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1601668878012" />
+    <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1601757001183" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

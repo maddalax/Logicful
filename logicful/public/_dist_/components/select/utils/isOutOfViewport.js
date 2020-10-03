@@ -1,13 +1,1 @@
-export default function(elem) {
-  const bounding = elem.getBoundingClientRect();
-  const out = {};
-
-  out.top = bounding.top < 0;
-  out.left = bounding.left < 0;
-  out.bottom = bounding.bottom > (window.innerHeight || document.documentElement.clientHeight);
-  out.right = bounding.right > (window.innerWidth || document.documentElement.clientWidth);
-  out.any = out.top || out.left || out.bottom || out.right;
-
-  return out;
-};
-
+export default function(e){const n=e.getBoundingClientRect(),t={};return t.top=n.top<0,t.left=n.left<0,t.bottom=n.bottom>(window.innerHeight||document.documentElement.clientHeight),t.right=n.right>(window.innerWidth||document.documentElement.clientWidth),t.any=t.top||t.left||t.bottom||t.right,t}

@@ -1,11 +1,1 @@
-export function setFieldDefaults(field) {
-  if (field.type === "checkbox-group") {
-    field.value = {"Option 1": "Option 1"};
-    field.options = ["Option 1", "Option 2"];
-  }
-  if (field.type === "radio-group") {
-    field.value = {"Option 1": "Option 1"};
-    field.options = ["Option 1", "Option 2"];
-  }
-  return field;
-}
+export function setFieldDefaults(t){return t.type==="checkbox-group"&&(t.value={"Option 1":"Option 1"},t.options=["Option 1","Option 2"]),t.type==="radio-group"&&(t.value={"Option 1":"Option 1"},t.options=["Option 1","Option 2"]),t.type==="section-header"&&(t.helperText="Use this text to display helper text that will assist a user in filling out the following fields.",t.header="Example Section Header"),t}
