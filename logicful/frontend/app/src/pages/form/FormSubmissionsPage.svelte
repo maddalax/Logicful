@@ -36,6 +36,9 @@
       }
       return `${value.name ?? value.id}, ${value.type}`;
     }
+    if(type === "date") {
+      return new Date(value).toLocaleString();
+    }
     return undefined;
   }
 </script>

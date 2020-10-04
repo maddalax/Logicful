@@ -7,6 +7,7 @@
   import CheckboxGroupEditor from "./CheckboxGroupEditor.svelte";
   import RadioGroupEditor from "./RadioGroupEditor.svelte";
   import ConfigField from "./ConfigField.svelte";
+  import DateInputEditor from "./DateInputEditor.svelte";
 
   export let field: IField;
 </script>
@@ -26,5 +27,7 @@
   {:else if field.type === 'switch'}
     <ConfigField
       field={{ id: randomString(), type: 'switch', label: 'Default Value', value: { type: 'local', value: field.defaultValue || false }, configFieldTarget: 'defaultValue', configTarget: field.id }} />
+  {:else if field.type === 'date'}
+    <DateInputEditor {field} />
   {/if}
 </div>

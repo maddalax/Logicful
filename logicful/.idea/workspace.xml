@@ -31,19 +31,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="setup build">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/DatePicker.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Loader.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Loader.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/dashboard/SubmissionsDash.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/dashboard/SubmissionsDash.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderContent.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderContent.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FolderList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/FormList.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/FormList.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/EditableField.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/EditableField.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/Field.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/services/DefaultFieldValueFactory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/services/DefaultFieldValueFactory.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/services/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/services/AuthService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.14.7/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
@@ -331,11 +318,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="616" y="200" key="#GOPATH/0.23.1680.1027@0.23.1680.1027" timestamp="1597450931319" />
-    <state x="928" y="636" width="500" height="145" key="#GOROOT" timestamp="1601666339565">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="609" y="471" width="500" height="145" key="#GOROOT" timestamp="1601780018504">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="928" y="611" key="#GOROOT/0.0.2560.1400@0.0.2560.1400" timestamp="1599167853134" />
-    <state x="609" y="471" key="#GOROOT/0.23.1680.1027@0.23.1680.1027" timestamp="1599437917580" />
+    <state x="609" y="471" key="#GOROOT/0.23.1680.1027@0.23.1680.1027" timestamp="1601780018504" />
     <state x="928" y="636" width="500" height="145" key="#GOROOT/0.27.2560.1413@0.27.2560.1413" timestamp="1601666339565" />
     <state x="459" y="476" key="#Go_Modules" timestamp="1597443699002">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -345,11 +332,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="458" y="367" key="#Notifications/0.23.1680.1027@0.23.1680.1027" timestamp="1599743863135" />
-    <state x="361" y="51" width="1632" height="1330" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601667275261">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="237" y="52" width="1071" height="937" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601780011103">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="479" y="465" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599225802736" />
-    <state x="237" y="52" width="1071" height="912" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600910643805" />
+    <state x="237" y="52" width="1071" height="937" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1601780011103" />
     <state x="361" y="51" width="1632" height="1330" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1601667275261" />
     <state x="472" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600573671463">
       <screen x="0" y="23" width="1680" height="1027" />

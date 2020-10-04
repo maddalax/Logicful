@@ -1,7 +1,5 @@
 <script lang="typescript">
   import type { IField, LabelValue } from "@app/models/IField";
-  import type { ContentBlock } from "@app/models/ContentBlock";
-
   import { randomString } from "@app/util/Generate";
   import Repeater from "@app/components/Repeater.svelte";
   import formStore from "@app/store/FormStore";
@@ -19,15 +17,6 @@
       fromUser: true,
       field: "options",
       value: options,
-    });
-  }
-
-  function loadTransformer(value: ContentBlock[]) {
-    return value.map((v) => {
-      return {
-        label: v.name,
-        value: v.value,
-      };
     });
   }
 
