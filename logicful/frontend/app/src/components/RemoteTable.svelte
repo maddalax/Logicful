@@ -351,7 +351,9 @@
         <div>
           <div class="text-gray-700 text-center px-4 py-2 m-2">
             <div on:click={() => (modal = 'filter')}>
-              <i class="fas fa-filter" />
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
             </div>
           </div>
         </div>
@@ -398,19 +400,57 @@
         <span
           class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
           on:click={() => markRead(true)}>
-          <div><i class="fas fa-eye" /></div>
+          <svg
+            class="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
         </span>
 
         <span
           class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
           on:click={() => markRead(false)}>
-          <div><i class="fas fa-eye-slash" /></div>
+          <svg
+            class="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+          </svg>
         </span>
 
         <span
           class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
           on:click={() => (modal = 'delete')}>
-          <div><i class="fas fa-trash-alt" /></div>
+          <svg
+            class="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
         </span>
       </div>
     {/if}
@@ -448,9 +488,35 @@
                   {column}
                   <span>
                     {#if sort === column && sortDirection === 'asc'}
-                      <span> <span class="fas fa-chevron-up" /> </span>
+                      <span>
+                        <svg
+                          class="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 15l7-7 7 7" />
+                        </svg>
+                      </span>
                     {:else if sort === column && sortDirection === 'desc'}
-                      <span> <span class="fas fa-chevron-down" /> </span>
+                      <span>
+                        <svg
+                          class="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
                     {/if}
                   </span>
                 </th>
@@ -583,212 +649,3 @@
     </div>
   </Dialog>
 {/if}
-
-<!-- <div>
-  <ToastManager />
-  <div class="d-flex bd-highlight mb-3">
-    <div class="p-2 bd-highlight">
-      <input
-        class="form-control"
-        placeholder={searchPlaceHolder}
-        bind:value={query}
-        style="width: 300px" />
-    </div>
-    <div class="p-2 bd-highlight" class:mr-auto={appliedFilters === 0}>
-      <div on:click={() => (modal = 'filter')} style="margin-top: 7px;">
-        <i class="fas fa-filter" />
-      </div>
-    </div>
-    {#if appliedFilters > 0}
-      <div class="mr-auto p-2 bd-highlight" style="margin-top: 7px;">
-        <span class="badge bg-primary">{appliedFilters} Filter(s) Applied</span>
-      </div>
-    {/if}
-    {#if selectedCount > 0}
-      <div class="p-2 bd-highlight">
-        <div style="margin-top: 5px;">
-          Selected: <strong>{selectedCount} of {filtered.length}</strong>
-        </div>
-      </div>
-      <div class="p-2 bd-highlight">
-        <div style="pointer: cursor;" on:click={() => markRead(true)}>
-          <i class="fas fa-eye" />
-        </div>
-      </div>
-      <div class="p-2 bd-highlight">
-        <div style="pointer: cursor;" on:click={() => markRead(false)}>
-          <i class="fas fa-eye-slash" />
-        </div>
-      </div>
-      <div class="p-2 bd-highlight">
-        <div style="pointer: cursor;" on:click={() => (modal = 'delete')}>
-          <i class="fas fa-trash-alt" />
-        </div>
-      </div>
-    {/if}
-    <div class="p-2 bd-highlight">
-      <div style="pointer: cursor;" on:click={() => (modal = 'toggle_column')}>
-        <i class="fas fa-columns" />
-      </div>
-    </div>
-  </div>
-  {#if state === LoadState.Loading}
-    <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
-      <div class="spinner-border text-secondary" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-  {:else if state === LoadState.Finished}
-    <canvas id="canvas" style="display: none" />
-    {#if rows.length === 0}
-      <div style="text-align: center; padding-top: 1em; padding-bottom: 1em;">
-        <div class="text-secondary">
-          <p>No results to display.</p>
-        </div>
-      </div>
-    {:else}
-      <div class="table-responsive">
-        <table class="table table-hover" style="table-layout: fixed;">
-          <tbody>
-            <tr>
-              <th scope="col" style="width: 50px">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    checked={allRowsSelected}
-                    on:change={selectAllRows}
-                    id={'row-toggle-all'} />
-                </div>
-              </th>
-              {#each filteredColumns as column (column)}
-                <th
-                  scope="col"
-                  style={headerStyle(column)}
-                  on:click={() => sortColumn(column)}>
-                  {column}
-                  <span>
-                    {#if sort === column && sortDirection === 'asc'}
-                      <span> <span class="fas fa-chevron-up" /> </span>
-                    {:else if sort === column && sortDirection === 'desc'}
-                      <span> <span class="fas fa-chevron-down" /> </span>
-                    {/if}
-                  </span>
-                </th>
-              {/each}
-            </tr>
-            {#each filtered as row, index}
-              {#if index >= range.min && index <= range.max}
-                <tr
-                  class:active={row.meta_selected}
-                  style="vertical-align: middle; cursor: pointer;"
-                  on:click={() => {
-                    onRowClick(row);
-                    row['meta_unread'] = false;
-                  }}>
-                  <td class:unread={isUnread(row)}>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        checked={row.meta_selected}
-                        on:click|stopPropagation
-                        on:change|stopPropagation={(e) => {
-                          onRowSelected(row);
-                        }}
-                        id={'row-toggle-' + index} />
-                      {#if isUnread(row)}
-                        <div>
-                          <i
-                            class="fas fa-circle"
-                            style="width: .5em;margin-left:4px" />
-                        </div>
-                      {/if}
-                    </div>
-                  </td>
-                  {#each filteredColumns as column}
-                    <td class:unread={isUnread(row)}>
-                      <div class="text" class:text-unread={isUnread(row)}>
-                        {renderValue(row, column)}
-                      </div>
-                    </td>
-                  {/each}
-                </tr>
-              {/if}
-            {/each}
-          </tbody>
-        </table>
-      </div>
-      <Pagination
-        {id}
-        count={filtered.length}
-        onRangeChange={(r) => {
-          if (fastEquals(r, range)) {
-            return;
-          }
-          range = r;
-          setWidths();
-          columns = columns;
-        }} />
-    {/if}
-  {:else if state === LoadState.Failed}
-    <div style="padding-top:1em; padding-left: 1em;">
-      <p>Failed to load rows, please try refreshing the page.</p>
-    </div>
-  {/if}
-  {#if modal === 'toggle_column'}
-    <Dialog
-      title={'Toggle Column Visibility'}
-      isOpen={true}
-      onClose={() => {
-        modal = '';
-      }}>
-      {#each columns as column}
-        {#if column !== 'table_meta_id'}
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              checked={!hidden.has(column)}
-              on:change={(e) => {
-                toggleColumn(e.target.checked, column);
-              }}
-              id={'toggle-' + column} />
-            <label
-              class="form-check-label"
-              for={'toggle-' + column}>{column}</label>
-          </div>
-        {/if}
-      {/each}
-    </Dialog>
-  {:else if modal === 'delete'}
-    <Dialog
-      title={'Confirm Deletion'}
-      isOpen={true}
-      actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
-      onClose={() => {
-        modal = '';
-      }}>
-      <p>Are you sure you want to delete {selectedCount} entries?</p>
-    </Dialog>
-  {:else if modal === 'filter'}
-    <Dialog
-      title={'Manage Filters'}
-      isOpen={true}
-      onClose={() => {
-        modal = '';
-      }}>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          bind:checked={filters.onlyUnread}
-          on:click|stopPropagation />
-        <label class="form-check-label">Only Show Unread Items</label>
-      </div>
-    </Dialog>
-  {/if}
-</div> -->

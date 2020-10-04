@@ -13,5 +13,9 @@ export function setFieldDefaults(field: IField): IField {
     field.helperText = 'Use this text to display helper text that will assist a user in filling out the following fields.'
     field.header = 'Example Section Header'
   }
+  if(field.type === 'date') {
+    field.showDate = true;
+    field.showTime = true;
+  }
   return field
 }

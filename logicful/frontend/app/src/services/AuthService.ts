@@ -44,6 +44,7 @@ export async function getToken(): Promise<string | undefined> {
 
     return parsed.token;
   } catch (ex) {
+    console.error(ex);
     localStorage.removeItem("token");
     memoryToken = "";
     return undefined;

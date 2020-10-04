@@ -18,7 +18,7 @@
   import formStore from "@app/store/FormStore";
   import RichTextDisplay from "@app/inputs/RichTextDisplay.svelte";
   import Switch from "../../../inputs/Switch.svelte";
-  import DatePicker from "@app/components/DatePicker.svelte";
+  import DatePicker from "@app/inputs/DatePicker.svelte";
   import { firstNotEmpty } from "@app/util/Format";
   import FileUpload from "@app/inputs/FileUpload.svelte";
   import SectionHeader from "@app/inputs/SectionHeader.svelte";

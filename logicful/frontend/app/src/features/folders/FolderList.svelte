@@ -35,15 +35,15 @@
           focus:bg-gray-50 transition ease-in-out duration-150">
         {#if folder.id === selected}
           <div>
-            <span
-              class="fas fa-folder-open"
-              style="font-size: 1.2em; font-weight: 375;" />
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+            </svg>
           </div>
         {:else}
           <div>
-            <span
-              class="far fa-folder"
-              style="font-size: 1.2em; font-weight: 375;" />
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            </svg>
           </div>
         {/if}
         <p class="pl-1 pr-1">{folder.name}</p>
@@ -54,7 +54,9 @@
               on:click={async () => {
                 await onNewFolder(folder.id);
               }}>
-              <span class="fas fa-plus" />
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </span>
           </div>
         {/if}
