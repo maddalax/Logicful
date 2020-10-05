@@ -100,15 +100,14 @@
 
 <div
   class="flex flex-col flex-grow border-r border-gray-200 pb-4 pt-2 bg-white
-    overflow-y-auto">
+    overflow-y-auto w-56">
   <div class="flex-grow flex flex-col">
     <nav class="flex-1 px-2 bg-white">
       <h3 class="pl-2 mb-3 text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
         My Folders
       </h3>
       <div
-        class="mb-2 flex flex-col space-y-3 sm:space-y-0 sm:space-x-3
-          sm:flex-row xl:flex-col xl:space-x-0 xl:space-y-3">
+        class="mb-2 flex flex-col space-y-2">
         <span class="inline-flex rounded-md shadow-sm">
           <Button type="primary" width="full" href="/form/create">
             + New Form
