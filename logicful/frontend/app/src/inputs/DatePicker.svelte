@@ -17,7 +17,7 @@
   let dateRangeFrom: string;
   let dateRangeTo: string;
   let atDateLimit: boolean;
-  let atDateBeforeLimit : boolean;
+  let atDateBeforeLimit: boolean;
 
   let debouncedOnChange: any;
 
@@ -98,18 +98,18 @@
       return;
     }
     const current = DateTime.fromISO(date);
-    current.set({hour : 0, minute : 0, second : 0, millisecond : 0})
+    current.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
 
     if (dateRangeTo) {
       const toLimit = DateTime.fromISO(dateRangeTo);
-      toLimit.set({hour : 0, minute : 0, second : 0, millisecond : 0})
+      toLimit.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
       const at = toLimit.toMillis() <= current.toMillis();
       atDateLimit = at;
     }
 
     if (dateRangeFrom) {
       const fromLimit = DateTime.fromISO(dateRangeFrom);
-      fromLimit.set({hour : 0, minute : 0, second : 0, millisecond : 0})
+      fromLimit.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
       const at = current.toMillis() <= fromLimit.toMillis();
       atDateBeforeLimit = at;
     }
