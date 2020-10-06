@@ -3,10 +3,15 @@
   import type { IForm, Integration } from "@app/models/IForm";
   import SendEmailIntegration from "./integrations/SendEmailIntegration.svelte";
   import IntegrationStepper from "./integrations/IntegrationStepper.svelte";
+  import { dispatch, subscribeComponent } from "@app/event/EventBus";
 
   export let form: IForm;
   let configuring: Integration;
-  let index : number
+  let index: number;
+
+  function isEnabled(index: number): boolean {
+    return form.workflow?.integrations?.[index]?.enabled ?? false;
+  }
 
   const integrations: Integration[] = [
     {
@@ -15,23 +20,35 @@
       description:
         "When a submission is received, an email will be sent out to your desired email address containing the submission data.",
       config: {},
-      enabled: false,
       editor: SendEmailIntegration,
     },
-    {
-      name: "integration-webhook",
-      label: "Send Webhook On Submission",
-      description:
-        "When a submission is received, an HTTP POST request will be sent to the desired url.",
-      config: {},
-      enabled: false,
-      editor: SendEmailIntegration,
-    },
+    // {
+    //   name: "integration-webhook",
+    //   label: "Send Webhook On Submission",
+    //   description:
+    //     "When a submission is received, an HTTP POST request will be sent to the desired url.",
+    //   config: {},
+    //   editor: SendEmailIntegration,
+    // },
   ];
 
-  function configure(integration: Integration, i : number) {
+  subscribeComponent("save_form", () => {
+    setTimeout(() => {
+      dispatch("show_toast", {
+        message: `Successfully updated integration.`,
+      });
+      steps[0].active = true;
+      steps[1].active = false;
+    }, 250);
+  });
+
+  subscribeComponent("integration_configured", (value: boolean) => {
+    steps[1].completed = value;
+  });
+
+  function configure(integration: Integration, i: number) {
     configuring = integration;
-    index = i
+    index = i;
     steps[0].completed = true;
     steps[0].active = false;
     steps[1].active = true;
@@ -58,11 +75,6 @@
       active: false,
       completed: false,
     },
-    {
-      name: "Test",
-      active: false,
-      completed: false,
-    },
   ];
 </script>
 
@@ -77,7 +89,7 @@
         <div class="ml-4 mt-4 w-10/12">
           <h3 class="text-lg leading-6 font-medium text-gray-900">
             {integration.label}
-            {#if integration.enabled}
+            {#if isEnabled(i)}
               <span
                 class="inline-flex items-center px-3 py-0.5 rounded-full text-sm
                   font-medium leading-5 bg-indigo-100 text-indigo-800">
@@ -103,6 +115,10 @@
 
 {#if steps[1].active}
   <div class="mt-4">
-    <svelte:component this={configuring.editor} {form} {index} integration={configuring} />
+    <svelte:component
+      this={configuring.editor}
+      {form}
+      {index}
+      integration={configuring} />
   </div>
 {/if}

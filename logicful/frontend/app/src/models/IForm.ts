@@ -33,7 +33,7 @@ export type Integration = {
   name : string
   label : string
   config : any
-  enabled : boolean
+  enabled? : boolean
   description : string,
   editor : any
 }

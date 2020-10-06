@@ -16,3 +16,7 @@ export function isFunction(value: any): value is () => any {
 export function isLabelValue(value: any): value is LabelValue {
   return !isString(value) && value?.label != null && value?.value != null;
 }
+
+export function isEmail(value : any) : boolean {
+  return value && value.toString().includes("@");
+}

@@ -22,14 +22,14 @@ func RegisterEmail() {
 }
 
 func sendSubmissionEmail(integration models.Integration) error {
-	println("Sending email: " + integration.Submission.Id + " " + integration.Config["to"])
+	println("Sending email: " + integration.Submission.Id + " " + integration.Config["email"])
 	body, err := formatEmail(integration)
 	if err != nil {
 		return err
 	}
 	println(body)
 	if os.Getenv("SEND_EMAILS") == "true" {
-		to := integration.Config["to"]
+		to := integration.Config["email"]
 		test := os.Getenv("TEST_EMAIL_RECEIVER")
 		if test != "" {
 			to = test
