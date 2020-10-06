@@ -1,10 +1,6 @@
 <script lang="typescript">
-  import { afterUpdate, onMount, tick } from "svelte";
-  import { subscribe, dispatch } from "@app/event/EventBus";
-  import { subscribeFieldChange } from "@app/event/FieldEvent";
-  import { randomString } from "@app/util/Generate";
+  import { afterUpdate, onMount } from "svelte";
   import type { ButtonAction } from "@app/components/models/ComponentProps";
-  import { fade } from "svelte/transition";
   import Button from "../Button.svelte";
 
   export let title: string = "";
@@ -81,7 +77,7 @@
       <div
         class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4
           text-left overflow-hidden shadow-xl transform transition-all sm:my-8
-          sm:align-middle w-auto sm:p-6"
+          sm:align-middle w-8/12 sm:p-6"
         role="dialog"
         on:click|stopPropagation
         aria-modal="true"

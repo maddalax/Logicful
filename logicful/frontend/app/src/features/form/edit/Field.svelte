@@ -77,6 +77,8 @@
     <Address {field} {value} />
   {:else if field.type === 'string'}
     <TextInput {field} />
+  {:else if field.type === 'email'}
+    <TextInput {field} />
   {:else if field.type === 'number'}
     <TextInput {field} type={'number'} />
   {:else if field.type === 'combobox'}

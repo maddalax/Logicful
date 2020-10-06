@@ -9,6 +9,7 @@
   "dependencies": {
     "@sentry/browser": "^5.24.2",
     "@sentry/tracing": "^5.24.2",
+    "@tailwindcss/typography": "^0.2.0",
     "@tailwindcss/ui": "^0.6.2",
     "bowser": "^2.11.0",
     "dragula": "^3.7.2",
