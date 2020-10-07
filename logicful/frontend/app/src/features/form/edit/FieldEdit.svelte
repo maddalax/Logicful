@@ -30,8 +30,6 @@
           field={{ id: randomString(), customCss: 'padding-bottom: 0em;', label: 'Required', value: { type: 'local', value: field.required }, type: 'switch', configFieldTarget: 'required', configTarget: field.id, options: { type: 'local', value: [{ label: 'Yes', value: true }, { label: 'No', value: false }] } }} />
       {/if}
       <ConfigField
-        field={{ id: randomString(), label: 'Name', required: true, value: field.name, type: 'string', configFieldTarget: 'name', configTarget: field.id }} />
-      <ConfigField
         field={{ id: randomString(), label: 'Label', value: field.label, type: 'string', configFieldTarget: 'label', configTarget: field.id }} />
       <ConfigField
         field={{ id: randomString(), label: 'Helper Text', value: field.helperText, type: 'string', configFieldTarget: 'helperText', configTarget: field.id }} />

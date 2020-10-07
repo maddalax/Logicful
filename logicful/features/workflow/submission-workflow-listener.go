@@ -11,6 +11,7 @@ import (
 func Register() {
 	registerWorkflowProcessor()
 	integrations.RegisterEmail()
+	integrations.RegisterWebhook()
 }
 
 func registerWorkflowProcessor() {
@@ -30,6 +31,9 @@ func processWorkflow(submission models.Submission) error {
 		return err
 	}
 	for _, integration := range f.Workflow.Integrations {
+		if !integration.Enabled {
+			continue
+		}
 		err := queue.Dispatch(integration.Name, models.Integration{
 			Submission: submission,
 			Name:       integration.Name,

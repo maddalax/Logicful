@@ -196,6 +196,9 @@
 
   subscribeComponent("form_saved", () => {
     saved = true;
+    dispatch("show_toast", {
+      message : 'Successfully saved your form.'
+    })
     setTimeout(() => {
       saved = false;
     }, 1500);

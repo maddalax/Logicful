@@ -10,8 +10,8 @@ type OptionSet struct {
 }
 
 type Form struct {
-	Id    string `json:"id"`
-	Title string `json:"title"`
+	Id          string `json:"id"`
+	Title       string `json:"title"`
 	Description string `json:"description"`
 	Changeable
 	Creatable
@@ -40,6 +40,7 @@ type Integration struct {
 	Config     map[string]string `json:"config"`
 	Submission Submission        `json:"submission"`
 	Form       Form              `json:"form"`
+	Enabled    bool              `json:"enabled"`
 }
 
 type Folder struct {

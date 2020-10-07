@@ -6,6 +6,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 type Email struct {
@@ -27,7 +28,10 @@ func Send(email Email) error {
 	}
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-Postmark-Server-Token", "0debd00f-760b-415b-97cd-3e80f0d6b905")
-	res, err := http.DefaultClient.Do(req)
+	var client = &http.Client{
+		Timeout: time.Second * 10,
+	}
+	res, err := client.Do(req)
 	if err != nil {
 		return err
 	}

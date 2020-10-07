@@ -22,7 +22,21 @@ export type IForm = {
   url?: string;
   initialized?: boolean;
   folder?: string;
+  workflow? : Workflow 
 };
+
+export type Workflow = {
+  integrations : Integration[]
+}
+
+export type Integration = {
+  name : string
+  label : string
+  config : any
+  enabled? : boolean
+  description : string,
+  editor : any
+}
 
 export type ISubmission = {
   id: string;

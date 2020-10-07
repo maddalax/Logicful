@@ -1,10 +1,6 @@
 <script lang="typescript">
-  import { afterUpdate, onMount, tick } from "svelte";
-  import { subscribe, dispatch } from "@app/event/EventBus";
-  import { subscribeFieldChange } from "@app/event/FieldEvent";
-  import { randomString } from "@app/util/Generate";
+  import { afterUpdate, onMount } from "svelte";
   import type { ButtonAction } from "@app/components/models/ComponentProps";
-  import { fade } from "svelte/transition";
   import Button from "../Button.svelte";
 
   export let title: string = "";

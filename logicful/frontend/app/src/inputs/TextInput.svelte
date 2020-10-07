@@ -2,7 +2,7 @@
   import type { IField } from "@app/models/IField";
   import { subscribeFieldChange } from "@app/event/FieldEvent";
   import Label from "./Label.svelte";
-  import { afterUpdate, onMount } from "svelte";
+  import { onMount } from "svelte";
   import formStore from "@app/store/FormStore";
   import { debounce } from "@app/util/Debounce";
 

@@ -18,7 +18,7 @@
   let leading = "leading-4";
   let sizeClass = "";
 
-  onMount(() => {
+  function setClasses() {
     if (size === "small") {
       px = "px-2";
       text = "text-xs";
@@ -45,9 +45,15 @@
     if(disabled) {
       sizeClass = `${sizeClass} opacity-50 cursor-not-allowed`
     }
+  }
+
+  onMount(() => {
+   setClasses();
   });
 
+
   afterUpdate(() => {
+    setClasses();
     if (focus && focusable) {
       setTimeout(() => {
         try {
