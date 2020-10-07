@@ -104,7 +104,8 @@
     v.forEach((s) => {
       body[s.label] = s.value;
     });
-    const saveId = editingId;
+    
+    const saveId = set.localSaveId?.replace("https://", "")?.split("/")[1] ?? "";
     const qs = saveId ? `?id=${saveId}` : "";
     const { message } = qs
       ? await putApi<any>(`s3/json${qs}`, body)

@@ -30,8 +30,6 @@ import FlyoutPanel from "./FlyoutPanel.svelte";
   field={{ id: randomString(), loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: `option-set`, isOurApi : true }, configFieldTarget: 'options', configTarget: field.id }} />
 
 <div class="ml-3 mt-3">
-  <SectionHeader
-    field={{ id: randomString(), header: 'Date/Time Range', helperText: 'Restrict selection to date range', type: 'section-header' }} />
   <Button type="primary" onClick={() => (dialog = 'option_sets')}>
     Manage Option Sets
   </Button>

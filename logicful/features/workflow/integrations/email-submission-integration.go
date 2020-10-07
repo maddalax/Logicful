@@ -7,7 +7,9 @@ import (
 	"github.com/logicful/service/emailer"
 	"github.com/logicful/service/queue"
 	"os"
+	"strconv"
 	"strings"
+	"time"
 )
 
 func RegisterEmail() {
@@ -88,9 +90,24 @@ func formatEmail(integration models.Integration) (string, error) {
 	return b, nil
 }
 
+func msToTime(ms string) (time.Time, error) {
+	msInt, err := strconv.ParseInt(ms, 10, 64)
+	if err != nil {
+		return time.Time{}, err
+	}
+
+	return time.Unix(0, msInt*int64(time.Millisecond)), nil
+}
+
 func formatField(field models.FormField, data interface{}) string {
 	if w, ok := data.(string); ok {
 		return "<p>" + w + "</p>"
+	}
+	if w, ok := data.(float64); ok {
+		if field.Type == "date" {
+			t := time.Unix(0, int64(w*float64(time.Millisecond)))
+			return "<p>" + t.Format(time.RFC822) + "</p>"
+		}
 	}
 	serialized, err := json.Marshal(data)
 	if err != nil {
