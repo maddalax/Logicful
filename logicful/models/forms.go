@@ -18,6 +18,7 @@ type Form struct {
 	Fields            []interface{} `json:"fields"`
 	SubmissionCount   int64         `json:"submissionCount"`
 	UnreadSubmissions int64         `json:"unreadSubmissions"`
+	SubmissionConfig interface{} `json:"submissionConfig"`
 	Versioned
 	Folder   string   `json:"folder"`
 	TeamId   string   `json:"teamId"`

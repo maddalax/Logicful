@@ -7,17 +7,7 @@
 <div class="fixed inset-0 overflow-hidden" on:click={onClose}>
     <div class="absolute inset-0 overflow-hidden">
         <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-            <!--
-          Slide-over panel, show/hide based on slide-over state.
-  
-          Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-            From: "translate-x-full"
-            To: "translate-x-0"
-          Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-            From: "translate-x-0"
-            To: "translate-x-full"
-        -->
-            <div class="w-screen max-w-md">
+            <div class="w-screen max-w-2xl">
                 <div
                     class="h-full flex flex-col bg-white shadow-xl
                         overflow-y-scroll">

@@ -116,6 +116,7 @@
     temp.splice(index, 1);
     form.fields = temp;
     formStore.setForm(form);
+    dispatch("unselect_field", {});
   });
 
   subscribeComponent("right_sidebar_loaded", () => {

@@ -40,6 +40,6 @@
   {/if}
   <div class="ml-3 mt-2">
     <LogicAccordion {field} />
-    <GroupAccordion {field} />
+    <!-- <GroupAccordion {field} /> -->
   </div>
 </form>

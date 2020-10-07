@@ -197,8 +197,8 @@
   subscribeComponent("form_saved", () => {
     saved = true;
     dispatch("show_toast", {
-      message : 'Successfully saved your form.'
-    })
+      message: "Successfully saved your form.",
+    });
     setTimeout(() => {
       saved = false;
     }, 1500);
@@ -290,6 +290,7 @@
           <div id="block-container">
             {#each blocks as block}
               <div
+                draggable={true}
                 on:click={() => addField(block)}
                 id={'sidebar-block-' + block.name}>
                 <a

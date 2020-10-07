@@ -6,7 +6,7 @@ import { isEmail } from "@app/guards/Guard";
   import type { IForm, Integration } from "@app/models/IForm";
   import { randomString } from "@app/util/Generate";
   import { set } from "@app/util/Selection";
-  import { afterUpdate, onMount } from "svelte";
+  import { onMount } from "svelte";
   import ConfigField from "../ConfigField.svelte";
 
   export let form: IForm;

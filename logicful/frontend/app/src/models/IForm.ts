@@ -1,6 +1,5 @@
 import type { Group } from "./Group";
 import type { IField } from "./IField";
-import type { Dictionary } from "./Utility";
 
 export type IForm = {
   fields: IField[];
@@ -11,19 +10,20 @@ export type IForm = {
   changeDate?: string;
   changeBy?: string;
   groups?: Group[];
-  disableSubmissions?: boolean;
-  maxSubmissions?: number;
-  openDateTime?: string;
-  closeDateTime?: string;
-  emailOnSubmission?: boolean;
   submissionCount?: number;
   unreadSubmissions?: number;
   loaded?: boolean;
   url?: string;
   initialized?: boolean;
   folder?: string;
-  workflow? : Workflow 
+  workflow? : Workflow
+  submissionConfig : SubmissionConfig
 };
+
+export type SubmissionConfig = {
+  afterSubmitAction : any
+  afterSubmitConfig : any
+}
 
 export type Workflow = {
   integrations : Integration[]
