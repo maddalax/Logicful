@@ -16,27 +16,27 @@ export type IForm = {
   url?: string;
   initialized?: boolean;
   folder?: string;
-  workflow? : Workflow
-  submissionConfig : SubmissionConfig
+  workflow?: Workflow;
+  submissionConfig: SubmissionConfig;
 };
 
 export type SubmissionConfig = {
-  afterSubmitAction : any
-  afterSubmitConfig : any
-}
+  afterSubmitAction: any;
+  afterSubmitConfig: any;
+};
 
 export type Workflow = {
-  integrations : Integration[]
-}
+  integrations: Integration[];
+};
 
 export type Integration = {
-  name : string
-  label : string
-  config : any
-  enabled? : boolean
-  description : string,
-  editor : any
-}
+  name: string;
+  label: string;
+  config: any;
+  enabled?: boolean;
+  description: string;
+  editor: any;
+};
 
 export type ISubmission = {
   id: string;

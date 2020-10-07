@@ -12,11 +12,11 @@
 </script>
 
 <div
-  class="fixed bottom-0 right-0 flex items-end justify-center px-4 py-6
-    z-50
+  class="fixed bottom-0 right-0 flex items-end justify-center px-4 py-6 z-50
     pointer-events-none sm:p-6 sm:items-start sm:justify-end w-4/12">
   <div
-    class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto z-50">
+    class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto
+      z-50">
     <div class="rounded-lg shadow-xs overflow-visible">
       <div class="p-4">
         <div class="flex items-start">
@@ -36,12 +36,8 @@
             </svg>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
-            <p class="text-sm leading-5 font-medium text-gray-900">
-              {title}
-            </p>
-            <p class="mt-1 text-sm leading-5 text-gray-500">
-              {message}
-            </p>
+            <p class="text-sm leading-5 font-medium text-gray-900">{title}</p>
+            <p class="mt-1 text-sm leading-5 text-gray-500">{message}</p>
           </div>
           <div class="ml-4 flex-shrink-0 flex">
             <button

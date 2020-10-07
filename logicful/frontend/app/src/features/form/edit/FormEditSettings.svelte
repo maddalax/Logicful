@@ -6,10 +6,9 @@
   import ConfigField from "./ConfigField.svelte";
   import SectionHeader from "@app/inputs/SectionHeader.svelte";
   import Button from "@app/components/Button.svelte";
-  import Dialog from "@app/components/layout/Dialog.svelte";
   import ManageIntegrations from "./ManageIntegrations.svelte";
-import ManageSubmissionBehavior from "./ManageSubmissionBehavior.svelte";
-import FlyoutPanel from "./FlyoutPanel.svelte";
+  import ManageSubmissionBehavior from "./ManageSubmissionBehavior.svelte";
+  import FlyoutPanel from "./FlyoutPanel.svelte";
 
   export let form: IForm;
   let dialog: "" | "integrations" | "submission-behavior" = "";
@@ -24,16 +23,16 @@ import FlyoutPanel from "./FlyoutPanel.svelte";
 </script>
 
 {#if dialog === 'integrations'}
-  <Dialog
-    isOpen={true}
-    title="Manage Integrations"
-    onClose={() => (dialog = '')}>
+  <FlyoutPanel title="Manage Integrations" onClose={() => (dialog = '')}>
     <ManageIntegrations {form} />
-  </Dialog>
+  </FlyoutPanel>
 {/if}
 
 {#if dialog === 'submission-behavior'}
-  <FlyoutPanel title="Manage Submission Behavior" description="Redirect or show a message your form has been submitted." onClose={() => dialog = ''}>
+  <FlyoutPanel
+    title="Manage Submission Behavior"
+    description="Redirect or show a message your form has been submitted."
+    onClose={() => (dialog = '')}>
     <ManageSubmissionBehavior {form} />
   </FlyoutPanel>
 {/if}

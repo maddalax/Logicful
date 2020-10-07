@@ -54,7 +54,7 @@ async function requestApiWithBody<T>(
       method: method,
       headers: {
         "Content-Type": "application/json",
-        ...await authHeaders(),
+        ...(await authHeaders()),
       },
       body: JSON.stringify(body),
     });

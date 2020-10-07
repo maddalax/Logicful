@@ -30,7 +30,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="set timeout on http server">
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageSubmissionBehavior.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageSubmissionBehavior.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

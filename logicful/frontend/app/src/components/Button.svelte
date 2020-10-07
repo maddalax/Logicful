@@ -6,7 +6,7 @@
   export let size: "regular" | "large" | "small" = "regular";
   export let onClick: () => any = () => {};
   export let disabled: boolean = false;
-  export let width : "" | "full" = ""
+  export let width: "" | "full" = "";
   export let focus: boolean = false;
   export let href = "";
   export let hrefTarget = "";
@@ -35,22 +35,21 @@
       leading = "leading-6";
     }
     sizeClass = `${px} ${text} ${leading}`;
-    if(hasIcon) {
-      sizeClass = `${sizeClass} pl-3 pr-3`
+    if (hasIcon) {
+      sizeClass = `${sizeClass} pl-3 pr-3`;
     }
-    if(width === 'full') {
-      sizeClass = `${sizeClass} pl-3 pr-3 w-full inline-flex items-center justify-center`
+    if (width === "full") {
+      sizeClass = `${sizeClass} pl-3 pr-3 w-full inline-flex items-center justify-center`;
     }
 
-    if(disabled) {
-      sizeClass = `${sizeClass} opacity-50 cursor-not-allowed`
+    if (disabled) {
+      sizeClass = `${sizeClass} opacity-50 cursor-not-allowed`;
     }
   }
 
   onMount(() => {
-   setClasses();
+    setClasses();
   });
-
 
   afterUpdate(() => {
     setClasses();

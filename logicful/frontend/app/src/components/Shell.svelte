@@ -2,7 +2,7 @@
   import Navbar from "./layout/Navbar.svelte";
   import ShellSidebar from "./ShellSidebar.svelte";
 
-  export let header: string = '';
+  export let header: string = "";
   export let sidebar: boolean = true;
 </script>
 

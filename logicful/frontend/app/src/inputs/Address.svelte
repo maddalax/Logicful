@@ -10,7 +10,7 @@
   import { randomString } from "@app/util/Generate";
   import ComboBox from "./ComboBox.svelte";
   import Label from "./Label.svelte";
-import Field from "@app/features/form/edit/Field.svelte";
+  import Field from "@app/features/form/edit/Field.svelte";
   export let field: IField;
   export let value: { [key: string]: any };
 
@@ -43,7 +43,7 @@ import Field from "@app/features/form/edit/Field.svelte";
     </div>
     <div class="sm:col-span-2">
       <Field
-      field={{ required: true, name: `${field.name}.city`, id: `${field.id}.value.city`, label: 'City', value: value?.city?.value ?? '', type: 'string' }} />
+        field={{ required: true, name: `${field.name}.city`, id: `${field.id}.value.city`, label: 'City', value: value?.city?.value ?? '', type: 'string' }} />
     </div>
 
     <div class="sm:col-span-2">
@@ -53,7 +53,7 @@ import Field from "@app/features/form/edit/Field.svelte";
 
     <div class="sm:col-span-2">
       <Field
-      field={{ required: true, name: `${field.name}.zip`, id: `${field.id}.value.zip`, label: 'Zip / Postal Code', value: value?.zip?.value ?? '', type: 'string', properties: { pattern: '[d]{5}(-[d]{4})?' } }} />
+        field={{ required: true, name: `${field.name}.zip`, id: `${field.id}.value.zip`, label: 'Zip / Postal Code', value: value?.zip?.value ?? '', type: 'string', properties: { pattern: '[d]{5}(-[d]{4})?' } }} />
     </div>
   </div>
 </div>

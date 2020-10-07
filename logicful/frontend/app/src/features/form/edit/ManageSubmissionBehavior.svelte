@@ -2,6 +2,7 @@
   import type { IForm } from "@app/models/IForm";
   import { randomString } from "@app/util/Generate";
   import ConfigField from "./ConfigField.svelte";
+import SaveFormButton from "./SaveFormButton.svelte";
 
   export let form: IForm;
 </script>
@@ -18,3 +19,7 @@
   <ConfigField
     field={{ id: randomString(), required: true, value: form.submissionConfig?.afterSubmitConfig?.url, label: 'URL to redirect to:', type: 'string', configTarget: 'form', configFieldTarget: 'submissionConfig.afterSubmitConfig.url' }} />
 {/if}
+
+<div class="ml-3 mt-3">
+    <SaveFormButton/>
+</div>

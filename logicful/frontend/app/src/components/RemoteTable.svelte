@@ -302,21 +302,6 @@
   }
 </script>
 
-<style>
-  .text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
-
-  td {
-    max-width: 500px;
-    width: 500px !important;
-  }
-</style>
-
 <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
   <div
     class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
@@ -351,8 +336,17 @@
         <div>
           <div class="text-gray-700 text-center px-4 py-2 m-2">
             <div on:click={() => (modal = 'filter')}>
-              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              <svg
+                class="w-5 h-5"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
               </svg>
             </div>
           </div>
@@ -455,12 +449,21 @@
       </div>
     {/if}
     <span
-          class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
-          on:click={() => (modal = 'toggle_column')}>
-          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-          </svg>
-        </span>
+      class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
+      on:click={() => (modal = 'toggle_column')}>
+      <svg
+        class="w-5 h-5"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+    </span>
   </div>
 </div>
 
@@ -656,3 +659,18 @@
     </div>
   </Dialog>
 {/if}
+
+<style>
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
+  td {
+    max-width: 500px;
+    width: 500px !important;
+  }
+</style>

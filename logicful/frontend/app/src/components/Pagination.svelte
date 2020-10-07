@@ -60,10 +60,10 @@
   }
 
   $: {
-    if(rowsPerPage !== lastRowsPerPage) {
-      console.log("rows per page change", rowsPerPage)
+    if (rowsPerPage !== lastRowsPerPage) {
+      console.log("rows per page change", rowsPerPage);
       lastRowsPerPage = rowsPerPage;
-      page = 1
+      page = 1;
     }
   }
 
@@ -78,17 +78,15 @@
   }
 </script>
 
-<div
-  class="bg-white px-4 py-3 flex border-t
-    border-gray-200 sm:px-6">
+<div class="bg-white px-4 py-3 flex border-t border-gray-200 sm:px-6">
   <div class="flex-1 flex just- sm:hidden">
     <a
       href="#"
       class="relative inline-flex items-center px-4 py-2 border border-gray-300
         text-sm leading-5 font-medium rounded-md text-gray-700 bg-white
         hover:text-gray-500 focus:outline-none focus:shadow-outline-indigo
-        focus:border-indigo-300 active:bg-gray-100 active:text-gray-700 transition
-        ease-in-out duration-150">
+        focus:border-indigo-300 active:bg-gray-100 active:text-gray-700
+        transition ease-in-out duration-150">
       Previous
     </a>
     <a
@@ -111,16 +109,19 @@
       </p>
     </div>
     <div class="flex-initial">
-      <div>
-       
-      </div>
+      <div />
     </div>
     <div class="flex-initial">
       <nav class="relative z-0 inline-flex shadow-sm">
         <div class="relative px-2">
-          <select bind:value={rowsPerPage} class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 sm:text-sm sm:leading-5">
+          <select
+            bind:value={rowsPerPage}
+            class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base
+              leading-6 border-gray-300 focus:outline-none
+              focus:shadow-outline-indigo focus:border-indigo-300 sm:text-sm
+              sm:leading-5">
             {#each rowsPerPageEntries as entry}
-            <option value={entry}>Show {entry} Entries</option>
+              <option value={entry}>Show {entry} Entries</option>
             {/each}
           </select>
         </div>
@@ -131,8 +132,9 @@
           class="relative inline-flex items-center px-2 py-2 rounded-l-md border
             border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500
             hover:text-gray-400 focus:z-10 focus:outline-none
-            focus:border-indigo-300 focus:shadow-outline-indigo active:bg-gray-100
-            active:text-gray-500 transition ease-in-out duration-150"
+            focus:border-indigo-300 focus:shadow-outline-indigo
+            active:bg-gray-100 active:text-gray-500 transition ease-in-out
+            duration-150"
           aria-label="Previous">
           <!-- Heroicon name: chevron-left -->
           <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -158,8 +160,9 @@
           class="-ml-px relative inline-flex items-center px-4 py-2 border
             border-gray-300 bg-indigo-700 text-sm leading-5 font-medium
             text-white hover:text-gray-500 focus:z-10 focus:outline-none
-            focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-700
-            active:text-white transition ease-in-out duration-150"
+            focus:border-indigo-300 focus:shadow-outline-indigo
+            active:bg-indigo-700 active:text-white transition ease-in-out
+            duration-150"
           href="javascript:void(0)">{page}</a>
         {#if hasNext}
           <a
@@ -180,8 +183,9 @@
           class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md
             border border-gray-300 bg-white text-sm leading-5 font-medium
             text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none
-            focus:border-indigo-300 focus:shadow-outline-indigo active:bg-gray-100
-            active:text-gray-500 transition ease-in-out duration-150"
+            focus:border-indigo-300 focus:shadow-outline-indigo
+            active:bg-gray-100 active:text-gray-500 transition ease-in-out
+            duration-150"
           aria-label="Next">
           <!-- Heroicon name: chevron-right -->
           <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
