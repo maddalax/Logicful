@@ -11,6 +11,7 @@ import (
 func Register() {
 	registerWorkflowProcessor()
 	integrations.RegisterEmail()
+	integrations.RegisterWebhook()
 }
 
 func registerWorkflowProcessor() {

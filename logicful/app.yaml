@@ -23,9 +23,10 @@ env_variables:
     GOOGLE_OAUTH_SECRET: i38IZDtifvnm15q8DpiO4tVm
     REDISHOST: 10.46.172.115
     REDISPORT: 6379
-    POSTMARK_TOKEN: "0debd00f-760b-415b-97cd-3e80f0d6b905"
+    POSTMARK_TOKEN: 0debd00f-760b-415b-97cd-3e80f0d6b905
     POSTMARK_WEBHOOK_AUTH: safGTOXbPbgAm
     SEND_EMAILS: true
+    ROOT_DOMAIN: https://logicful.org
 
 vpc_access_connector:
     name: 'projects/logicful-290101/locations/us-central1/connectors/logicful'

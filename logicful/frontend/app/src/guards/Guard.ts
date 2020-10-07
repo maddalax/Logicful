@@ -20,3 +20,10 @@ export function isLabelValue(value: any): value is LabelValue {
 export function isEmail(value : any) : boolean {
   return value && value.toString().includes("@");
 }
+
+export function isUrl(value : any) : boolean {
+  if(!value) {
+    return false;
+  }
+  return value.toString().includes("http://") || value.toString().includes("https://")
+}

@@ -25,9 +25,11 @@ func Setup() {
 	setupTopic("form")
 	setupTopic("submissions")
 	setupTopic("integration-email")
+	setupTopic("integration-webhook")
 	setupSubscription("form", "form-processor")
 	setupSubscription("submissions", "workflow")
 	setupSubscription("integration-email", "send-submission-email")
+	setupSubscription("integration-webhook", "send-submission-webhook")
 }
 
 func setupTopic(name string) {

@@ -22,18 +22,17 @@ func RegisterEmail() {
 }
 
 func sendSubmissionEmail(integration models.Integration) error {
-	println("Sending email: " + integration.Submission.Id + " " + integration.Config["email"])
 	body, err := formatEmail(integration)
 	if err != nil {
 		return err
 	}
-	println(body)
 	if os.Getenv("SEND_EMAILS") == "true" {
 		to := integration.Config["email"]
 		test := os.Getenv("TEST_EMAIL_RECEIVER")
 		if test != "" {
 			to = test
 		}
+		var domain = os.Getenv("ROOT_DOMAIN")
 		err = emailer.Send(emailer.Email{
 			To:       to,
 			From:     "maddox@logicful.org",
@@ -41,9 +40,9 @@ func sendSubmissionEmail(integration models.Integration) error {
 			Model: map[string]string{
 				"body":               body,
 				"formName":           integration.Form.Title,
-				"unsubscribeUrl":     "http://localhost:5000/unsubscribe",
-				"viewSubmissionsUrl": "http://localhost:5000/form/submissions?formId=" + integration.Submission.FormId,
-				"viewSubmissionUrl":  "http://localhost:5000/form/submissions?formId=" + integration.Submission.FormId + "&submissionId=" + integration.Submission.Id,
+				"unsubscribeUrl":     domain + "/unsubscribe",
+				"viewSubmissionsUrl": domain + "/form/submissions?formId=" + integration.Submission.FormId,
+				"viewSubmissionUrl":  domain + "/form/submissions?formId=" + integration.Submission.FormId + "&submissionId=" + integration.Submission.Id,
 			},
 		})
 		if err != nil {

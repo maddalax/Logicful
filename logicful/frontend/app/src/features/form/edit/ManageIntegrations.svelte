@@ -4,6 +4,7 @@
   import SendEmailIntegration from "./integrations/SendEmailIntegration.svelte";
   import IntegrationStepper from "./integrations/IntegrationStepper.svelte";
   import { dispatch, subscribeComponent } from "@app/event/EventBus";
+import SendWebhookIntegration from "./integrations/SendWebhookIntegration.svelte";
 
   export let form: IForm;
   let configuring: Integration;
@@ -22,14 +23,14 @@
       config: {},
       editor: SendEmailIntegration,
     },
-    // {
-    //   name: "integration-webhook",
-    //   label: "Send Webhook On Submission",
-    //   description:
-    //     "When a submission is received, an HTTP POST request will be sent to the desired url.",
-    //   config: {},
-    //   editor: SendEmailIntegration,
-    // },
+    {
+      name: "integration-webhook",
+      label: "Send Webhook On Submission",
+      description:
+        "When a submission is received, an HTTP POST request will be sent to the desired url.",
+      config: {},
+      editor: SendWebhookIntegration,
+    },
   ];
 
   subscribeComponent("save_form", () => {
