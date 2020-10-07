@@ -7,6 +7,7 @@ type OptionSet struct {
 	Value string `json:"value"`
 	Changeable
 	Creatable
+	TeamId   string   `json:"teamId"`
 }
 
 type Form struct {

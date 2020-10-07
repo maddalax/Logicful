@@ -1,6 +1,7 @@
 package optionset
 
 import (
+	"api/handler"
 	_ "encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"github.com/logicful/models"
@@ -10,6 +11,7 @@ import (
 
 func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var set = models.OptionSet{}
+	set.TeamId = handler.User(r).TeamId
 	if !httpextensions.ReadJson(&set, w, r) {
 		return
 	}
@@ -23,7 +25,7 @@ func SetHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func ListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	sets, err := List()
+	sets, err := List(handler.User(r).TeamId)
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

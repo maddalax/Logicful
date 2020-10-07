@@ -11,9 +11,9 @@
   import { dispatch, dispatchPrivate } from "@app/event/EventBus";
   import { fastClone, fastEquals } from "@app/util/Compare";
   import Dialog from "@app/components/layout/Dialog.svelte";
-  import ToastManager from "@app/components/ToastManager.svelte";
   import { isObject } from "@app/guards/Guard";
   import type { Dictionary } from "@app/models/Utility";
+import Button from "./Button.svelte";
   export let getRows: () => Promise<TableRow[]>;
   export let defaultSortColumn = "";
   export let searchPlaceHolder: string = "Search";
@@ -40,6 +40,7 @@
   };
   let lastFilters: Dictionary<any> = {};
   let appliedFilters = 0;
+  let showFilter: boolean;
 
   export let headerActions: TableButtonAction[] = [];
   export let onEdit: ((row: any) => any) | undefined = undefined;
@@ -302,6 +303,21 @@
   }
 </script>
 
+<style>
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
+  td {
+    max-width: 500px;
+    width: 500px !important;
+  }
+</style>
+
 <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
   <div
     class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
@@ -333,24 +349,35 @@
           </div>
         </div>
         <!-- Filter -->
-        <div>
-          <div class="text-gray-700 text-center px-4 py-2 m-2">
-            <div on:click={() => (modal = 'filter')}>
-              <svg
-                class="w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-              </svg>
+        {#if showFilter}
+          <div>
+            <div class="text-gray-700 text-center px-4 py-2 m-2">
+              <div on:click={() => (modal = 'filter')}>
+                <svg
+                  class="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
+        {/if}
+        {#if headerActions && headerActions.length > 0}
+          {#each headerActions as action}
+            <div>
+              <div class="text-gray-700 text-center px-4 py-2 m-2">
+                <Button type="primary" onClick={action.onClick}>{action.label}</Button>
+              </div>
+            </div>
+          {/each}
+        {/if}
         <!-- Applied Filters -->
         {#if appliedFilters > 0}
           <div>
@@ -659,18 +686,3 @@
     </div>
   </Dialog>
 {/if}
-
-<style>
-  .text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
-
-  td {
-    max-width: 500px;
-    width: 500px !important;
-  }
-</style>

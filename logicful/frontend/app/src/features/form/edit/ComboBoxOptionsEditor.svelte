@@ -3,20 +3,13 @@
   import { dispatch } from "@app/event/EventBus";
   import OptionSetsList from "./OptionSetsList.svelte";
   import { randomString } from "@app/util/Generate";
-  import { apiEndpoint } from "@app/services/ApiService";
   import ConfigField from "./ConfigField.svelte";
+  import Button from "@app/components/Button.svelte";
+  import SectionHeader from "@app/inputs/SectionHeader.svelte";
+import FlyoutPanel from "./FlyoutPanel.svelte";
 
   export let field: IField;
-
-  function manageSets() {
-    dispatch("dialog_show", {
-      child: OptionSetsList,
-      closeOnOutsideClick: false,
-      confirmCloseOnDirty: true,
-      title: "Manage Option Sets",
-      save: false,
-    });
-  }
+  let dialog: "option_sets" | "" = "";
 
   function loadTransformer(value: any[]) {
     return value.map((v) => {
@@ -28,13 +21,22 @@
   }
 </script>
 
-<div>
-  <ConfigField
-    field={{ id: randomString(), loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: `${apiEndpoint()}option-set` }, configFieldTarget: 'options', configTarget: field.id }} />
-  <button
-    on:click={manageSets}
-    class="manage-button btn btn-light"
-    type="button">
+{#if dialog === "option_sets"}
+  <FlyoutPanel title={"Manage Option Sets"} onClose={() => dialog = ''}>
+    <OptionSetsList/>
+  </FlyoutPanel>
+{:else}
+<ConfigField
+  field={{ id: randomString(), loadTransformer: loadTransformer, required: true, label: 'Option Set', value: field.options, name: `${field.id}-builder-config-field-field_editor-options`, type: 'combobox', options: { type: 'remote', value: `option-set`, isOurApi : true }, configFieldTarget: 'options', configTarget: field.id }} />
+
+<div class="ml-3 mt-3">
+  <SectionHeader
+    field={{ id: randomString(), header: 'Date/Time Range', helperText: 'Restrict selection to date range', type: 'section-header' }} />
+  <Button type="primary" onClick={() => (dialog = 'option_sets')}>
     Manage Option Sets
-  </button>
+  </Button>
 </div>
+{/if}
+
+
+

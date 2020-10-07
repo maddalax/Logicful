@@ -13,6 +13,7 @@
   import { nullOrEmpty } from "@app/util/Compare";
   import Label from "@app/inputs/Label.svelte";
   import Select from "@app/components/select/Select.svelte";
+  import { getApi } from "@app/services/ApiService";
 
   let initialized = false;
   let dropdownId;
@@ -95,8 +96,15 @@
         (field.options?.type === "local" && isString(field.options.value))
       ) {
         const url = field.options.value || field.options;
-        const result = await fetch(url);
-        const data = await result.json();
+        let result;
+        let data;
+        if (field.options?.isOurApi) {
+          data = await getApi(url);
+        } else {
+          result = await fetch(url);
+          data = await result.json();
+        }
+
         if (!data) {
           return;
         }
@@ -250,6 +258,33 @@
   }
 </script>
 
+<style>
+  :global(.item.active) {
+    background: var(--itemIsActiveBG, #cddaec) !important;
+    color: var(--itemIsActiveColor, #cddaec) !important;
+  }
+
+  .themed {
+    --border: 1px solid #cddaec;
+    --borderRadius: 0.3em;
+    --placeholderColor: #515479;
+    --itemIsActiveColor: #515479;
+    --clearSelectColor: #cddaec;
+    --clearSelectFocusColor: #cddaec;
+    --clearSelectHoverColor: #515479;
+    --indicatorColor: #cddaec;
+    --inputColor: #cddaec;
+    --itemColor: #424767;
+    --listEmptyColor: #cddaec;
+    --multiItemActiveColor: #cddaec;
+    --spinnerColor: #cddaec;
+    --borderFocusColor: #cddaec;
+    --disabledColor: #cddaec;
+    --disabledPlaceholderColor: #cddaec;
+    --groupTitleColor: #cddaec;
+  }
+</style>
+
 <div>
   {#if !field.hideLabel}
     <Label {field} />
@@ -286,30 +321,3 @@
     {/if}
   {/if}
 </div>
-
-<style>
-  :global(.item.active) {
-    background: var(--itemIsActiveBG, #cddaec) !important;
-    color: var(--itemIsActiveColor, #cddaec) !important;
-  }
-
-  .themed {
-    --border: 1px solid #cddaec;
-    --borderRadius: 0.3em;
-    --placeholderColor: #515479;
-    --itemIsActiveColor: #515479;
-    --clearSelectColor: #cddaec;
-    --clearSelectFocusColor: #cddaec;
-    --clearSelectHoverColor: #515479;
-    --indicatorColor: #cddaec;
-    --inputColor: #cddaec;
-    --itemColor: #424767;
-    --listEmptyColor: #cddaec;
-    --multiItemActiveColor: #cddaec;
-    --spinnerColor: #cddaec;
-    --borderFocusColor: #cddaec;
-    --disabledColor: #cddaec;
-    --disabledPlaceholderColor: #cddaec;
-    --groupTitleColor: #cddaec;
-  }
-</style>

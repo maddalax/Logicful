@@ -1,21 +1,21 @@
 <script lang="typescript">
   import { onMount } from "svelte";
-  import Field from "./Field.svelte";
   import type { OptionSet } from "@app/models/OptionSet";
   import Repeater from "@app/components/Repeater.svelte";
   import type { LabelValue } from "@app/models/IField";
   import { getUrlParameter } from "@app/util/Http";
-  import DropdownButton from "@app/components/DropdownButton.svelte";
-  import OptionSetsList from "./OptionSetsList.svelte";
   import { dispatch } from "@app/event/EventBus";
   import { isString } from "@app/guards/Guard";
   import { getApi, postApi, putApi } from "@app/services/ApiService";
+  import ConfigField from "./ConfigField.svelte";
+  import Button from "@app/components/Button.svelte";
 
   let sets: OptionSet[] = [];
   let loading = false;
   let errored = false;
-  export let name: string;
+  export let editingId : string;
   export let isNew: boolean;
+  export let onSave: () => any
 
   onMount(async () => {
     if (isNew) {
@@ -38,7 +38,7 @@
   async function load() {
     loading = true;
     const data: OptionSet[] = await getApi("option-set");
-    const result = data.find((w) => w.name === name);
+    const result = data.find((w) => w.id === editingId);
     if (!result) {
       return;
     }
@@ -93,14 +93,9 @@
       return s;
     });
     const toSave = await Promise.all(promises);
-    await postApi("option-set", toSave[0]);
+    editingId ? await putApi("option-set/" + editingId, toSave[0]) : await postApi("option-set", toSave[0]);
     dispatch("option_set_modified", toSave[0]);
-    dispatch("dialog_show", {
-      child: OptionSetsList,
-      closeOnOutsideClick: false,
-      confirmCloseOnDirty: true,
-      title: "Manage Option Sets",
-    });
+    onSave();
   }
 
   async function generateInlineUrl(set: OptionSet): Promise<string> {
@@ -109,11 +104,11 @@
     v.forEach((s) => {
       body[s.label] = s.value;
     });
-    const saveId = getUrlParameter("id", set.localSaveId);
+    const saveId = editingId;
     const qs = saveId ? `?id=${saveId}` : "";
     const { message } = qs
-      ? await putApi<any>(`s3/json?${qs}`, body)
-      : await postApi<any>(`s3/json?${qs}`, body);
+      ? await putApi<any>(`s3/json${qs}`, body)
+      : await postApi<any>(`s3/json${qs}`, body);
     return message;
   }
 </script>
@@ -132,11 +127,11 @@
     <div style="margin-top: 1em">
       <h2>{set.name ?? ''}</h2>
       <div id={set.name ?? ''}>
-        <Field
+        <ConfigField
           field={{ id: `${set.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: set.name, onChange: (value) => {
               set.name = value;
             } }} />
-        <Field
+        <ConfigField
           field={{ onChange: (value) => {
               if (value === 'local') {
                 set.remoteUrl = set.value;
@@ -151,10 +146,10 @@
                 set.value = set.remoteUrl;
               }
               set.type = value;
-            }, id: `${set.id}-type`, type: 'combobox', value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
+            }, id: `${set.id}-type`, type: 'combobox', required: true, value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
 
         {#if set.type === 'remote'}
-          <Field
+          <ConfigField
             field={{ helperText: 'See <a href="test" target="_blank">Remote Option Set Guide</a> for information on how to structure your endpoint response.', onChange: (value) => {
                 set.value = value;
               }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url', required: true }} />
@@ -163,19 +158,18 @@
         {:else if errored}
           Failed to load, please try re-opening this dialog.
         {:else}
-          <Repeater
-            options={isString(set.value) ? [] : set.value}
-            onChange={(data) => {
-              onRepeaterChange(data, index);
-            }} />
+          <div class="ml-3">
+            <Repeater
+              options={isString(set.value) ? [] : set.value}
+              onChange={(data) => {
+                onRepeaterChange(data, index);
+              }} />
+          </div>
         {/if}
       </div>
     </div>
   {/each}
-  <div class="float-right">
-    <DropdownButton
-      label={'Save'}
-      processingLabel={'Saving...'}
-      actions={[{ label: 'Save as Draft', onClick: save }, { label: 'Save and Publish', onClick: save }]} />
+  <div class="ml-3 mt-3">
+    <Button type="primary" onClick={save}>Save Option Set</Button>
   </div>
 </div>
