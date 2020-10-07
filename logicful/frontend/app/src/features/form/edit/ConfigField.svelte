@@ -1,9 +1,9 @@
 <script lang="typescript">
-    import type { IField } from "@app/models/IField";
-    import Field from "./Field.svelte";
+  import type { IField } from "@app/models/IField";
+  import Field from "./Field.svelte";
 
-    export let field: IField;
-    export let config: any = {};
+  export let field: IField;
+  export let config: any = {};
 
 </script>
 

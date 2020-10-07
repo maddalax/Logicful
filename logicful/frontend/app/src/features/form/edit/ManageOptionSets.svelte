@@ -129,7 +129,7 @@
       <h2>{set.name ?? ''}</h2>
       <div id={set.name ?? ''}>
         <ConfigField
-          field={{ id: `${set.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: set.name, onChange: (value) => {
+          field={{ isConfigField : true, id: `${set.id}-name`, type: 'string', required: true, name: 'name', label: 'Name', placeholder: 'Name', value: set.name, onChange: (value) => {
               set.name = value;
             } }} />
         <ConfigField
@@ -147,11 +147,11 @@
                 set.value = set.remoteUrl;
               }
               set.type = value;
-            }, id: `${set.id}-type`, type: 'combobox', required: true, value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.' }} />
+            }, id: `${set.id}-type`, type: 'combobox', required: true, value: set.type, options: { type: 'local', value: [{ label: 'Inline', value: 'local' }, { label: 'Remote', value: 'remote' }] }, name: 'type', label: 'Type', helperText: 'Choose whether you want to automatically load options in from a remote url or manually specify them here.', isConfigField : true }} />
 
         {#if set.type === 'remote'}
           <ConfigField
-            field={{ helperText: 'See <a href="test" target="_blank">Remote Option Set Guide</a> for information on how to structure your endpoint response.', onChange: (value) => {
+            field={{ isConfigField : true, helperText: 'See <a href="test" target="_blank">Remote Option Set Guide</a> for information on how to structure your endpoint response.', onChange: (value) => {
                 set.value = value;
               }, id: `${set.name}-url`, type: 'string', value: set.value, name: 'url', label: 'Url', required: true }} />
         {:else if loading}

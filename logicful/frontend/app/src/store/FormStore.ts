@@ -124,7 +124,7 @@ export class FormStore {
     });
     Object.keys(store.fields).forEach((fieldId) => {
       const field = store.fields[fieldId];
-      if (field.configTarget) {
+      if (field.configTarget || field.isConfigField) {
         return;
       }
       form.fields.push(fastClone(field));
