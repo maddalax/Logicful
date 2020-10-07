@@ -7,6 +7,7 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/queue"
 	"net/http"
+	"time"
 )
 
 func RegisterWebhook() {
@@ -35,7 +36,10 @@ func sendSubmissionWebhook(integration models.Integration) error {
 	if token != "" {
 		req.Header.Set("X-Logicful-Token", token)
 	}
-	res, err := http.DefaultClient.Do(req)
+	var client = &http.Client{
+		Timeout: time.Second * 10,
+	}
+	res, err := client.Do(req)
 	if err != nil {
 		return err
 	}
