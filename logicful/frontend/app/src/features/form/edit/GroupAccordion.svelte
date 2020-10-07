@@ -12,7 +12,7 @@
 {#if visible}
   <FlyoutPanel
     title="Manage Field Grouping"
-    description={'Add rules to change the behavior of when your field should show or hide.'}
+    description={'Group fields together and apply actions to all of them at once, such as showing a series of fields via a condition.'}
     onClose={() => (visible = false)}>
     <GroupDetails {field} />
   </FlyoutPanel>

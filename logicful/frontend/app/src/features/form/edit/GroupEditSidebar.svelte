@@ -7,8 +7,7 @@
 
   import { onMount } from "svelte";
   import { randomString } from "@app/util/Generate";
-  import Field from "./Field.svelte";
-import ConfigField from "./ConfigField.svelte";
+  import ConfigField from "./ConfigField.svelte";
 
   export let groupId: string;
   let form: IForm;
