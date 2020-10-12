@@ -30,53 +30,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="set timeout on http server">
-      <change beforePath="$PROJECT_DIR$/.idea/logicful.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logicful.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css.proxy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Pagination.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.css.proxy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Toast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/CheckboxGroupEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/CheckboxGroupEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEditSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEditSidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldTypeEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldTypeEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEditSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEditSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupEditSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupEditSidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageOptionSets.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageOptionSets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/OptionSetsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/OptionSetsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/DefaultFieldValueFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/DefaultFieldValueFactory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/guards/Guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/guards/Guard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/TextInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/FormSubmissionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form/FormSubmissionsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_dist_/store/FormStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/store/FormStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css.proxy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web_modules/import-map.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/import-map.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/Address.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/babel.config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/jest.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/jest.setup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/logicful.code-workspace" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/snowpack.config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/App.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/App.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/Builder.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/FieldSidebar.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/Form.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/ReactiveField.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/components/EditField.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/components/inputs/TextInput.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/src/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/svelte.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/builder/types/static.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +80,7 @@
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.14.7/libexec" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="ROOT_SYNC" value="SYNC" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
@@ -118,7 +105,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/features/workflow/integrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -203,6 +190,15 @@
     </option>
   </component>
   <component name="RunManager" selected="Go Build.go build main.go">
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="logicful" />
       <working_directory value="$PROJECT_DIR$" />
@@ -240,15 +236,6 @@
     <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/app/package.json" />
       <command value="run" />
@@ -282,16 +269,10 @@
     <list>
       <item itemvalue="Go Build.go build main.go" />
       <item itemvalue="Go Remote.Unnamed" />
-      <item itemvalue="npm.deploy" />
-      <item itemvalue="npm.build" />
-      <item itemvalue="npm.pretty" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.build" />
         <item itemvalue="Go Build.go build main.go" />
-        <item itemvalue="npm.pretty" />
       </list>
     </recent_temporary>
   </component>
@@ -338,6 +319,7 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/frontend/builder" />
+      <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="rename client to team" />
     <MESSAGE value="rename client to team, add gsi's to teamplate.yaml, start on user registration" />
@@ -518,11 +500,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598213039172" />
-    <state x="110" y="234" width="986" height="741" key="SettingsEditor" timestamp="1602507951041">
+    <state x="110" y="234" width="986" height="741" key="SettingsEditor" timestamp="1602508560436">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
-    <state x="110" y="234" width="1470" height="722" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1602507951041" />
+    <state x="110" y="234" width="1470" height="722" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1602508560436" />
     <state x="168" y="309" width="986" height="741" key="SettingsEditor/0.27.2560.1413@0.27.2560.1413" timestamp="1601667231656" />
     <state x="496" y="259" key="VCS.ChangeListViewerDialog" timestamp="1597929207162">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -566,12 +548,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602192275266">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602508518864">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602192275266" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602508518864" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1601906340619" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

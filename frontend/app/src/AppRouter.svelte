@@ -16,6 +16,8 @@
   import Navbar from "@app/components/layout/Navbar.svelte";
   import Preloader from "@app/components/layout/Preloader.svelte";
   import { afterUpdate, onMount } from "svelte";
+import PricingPage from "./pages/pricing/PricingPage.svelte";
+import IndexPage from "./pages/IndexPage.svelte";
   let path = "";
 
 
@@ -37,9 +39,7 @@
 <Router>
   <div>
     <Route path="/">
-      <Authenticate>
-        <DashboardPage />
-      </Authenticate>
+      <IndexPage/>
     </Route>
     <Route path="/form/builder">
       <Authenticate>
@@ -87,6 +87,9 @@
       <Authenticate>
         <BillingPage />
       </Authenticate>
+    </Route>
+    <Route path="/pricing">
+      <PricingPage/>
     </Route>
   </div>
 </Router>

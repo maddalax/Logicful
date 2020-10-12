@@ -5,6 +5,7 @@
   import { transformDraggedElement } from "./util/Draggable";
   import { debounce } from "@app/util/Debounce";
   import Button from "@app/components/Button.svelte";
+import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
 
   let saving = false;
   let saved = false;
@@ -239,13 +240,10 @@
     <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div class="flex flex-col h-0 flex-1 bg-indigo-800">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-        <div class="flex items-center flex-shrink-0 px-4">
-          <img
-            class="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/workflow-logo-on-brand.svg"
-            alt="Workflow" />
+        <div class="h-15 ml-8">
+          <LogoFullAlternative/>
         </div>
-        <nav class="mt-5 flex-1 px-2 bg-indigo-800 space-y-1">
+        <nav class="flex-1 px-2 bg-indigo-800 space-y-1">
           <div
             class="flex flex-col space-y-3 sm:space-y-0 sm:space-x-3 sm:flex-row
               xl:flex-col xl:space-x-0 xl:space-y-3">

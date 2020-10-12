@@ -33,10 +33,6 @@
 
 <div>
   <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-    <div class="sm:col-span-3">
-      <Field
-        field={{ name: `${field.name}.country`, id: `${field.id}.value.country`, label: 'Country', value: value?.country?.value, required: true, type: 'combobox', options: { type: 'remote', value: 'https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_hash.json' } }} />
-    </div>
     <div class="sm:col-span-6">
       <Field
         field={{ required: true, name: `${field.name}.address1`, id: `${field.id}.value.address1`, label: 'Street Address', rows: 3, value: value?.address1?.value ?? '', type: 'string' }} />

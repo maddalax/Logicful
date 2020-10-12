@@ -114,7 +114,7 @@
         </p>
         {#if redirectUrl}
         <p class="text-base text-center text-gray-900">
-          Not redirecting? <a href={redirectUrl} class="text-blue underline">Click here.</a>
+          Not redirecting? <a href={redirectUrl} class="text-indigo underline">Click here.</a>
         </p>
         {/if}
       </div>
