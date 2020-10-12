@@ -1,1 +1,0 @@
-import{SvelteComponent as t,init as n,safe_not_equal as s}from"../../../web_modules/svelte/internal.js";function r(e){"use strict";return[]}class o extends t{constructor(e){super();n(this,e,r,null,s,{})}}export default o;

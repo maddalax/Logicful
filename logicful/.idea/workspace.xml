@@ -30,11 +30,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="set timeout on http server">
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ComboBoxOptionsEditor.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ComboBoxOptionsEditor.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ConfigField.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ConfigField.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageOptionSets.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/ManageOptionSets.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/store/FormStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/store/FormStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/logicful.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logicful.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/builder" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/builder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/DatePicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/RemoteTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/Toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/Toast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/form_settings/FormSettingsSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/components/layout/Dialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FolderList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/Folders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/folders/FormList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/CheckboxGroupEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/CheckboxGroupEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ComboBoxOptionsEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEditSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldEditSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldTypeEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FieldTypeEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEditSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormEditSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/FormSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupEditSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/GroupEditSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageOptionSets.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/ManageOptionSets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/OptionSetsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/OptionSetsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/DefaultFieldValueFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/edit/services/DefaultFieldValueFactory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/features/form/live/LiveForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/guards/Guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/guards/Guard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/ComboBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/inputs/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/inputs/TextInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/pages/form/FormSubmissionsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/pages/form/FormSubmissionsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/services/AuthService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_dist_/store/FormStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_dist_/store/FormStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/flatpickr/dist/flatpickr.min.css.proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/import-map.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/import-map.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +238,15 @@
       <method v="2" />
     </configuration>
     <configuration name="Unnamed" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" nameIsGenerated="true" port="23451">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -371,53 +422,53 @@
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
     <state x="284" y="286" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1601667243394" />
-    <state width="1638" height="282" key="GridCell.Tab.0.bottom" timestamp="1602102804409">
+    <state width="1638" height="282" key="GridCell.Tab.0.bottom" timestamp="1602110768720">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="282" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804409" />
+    <state width="1638" height="282" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768720" />
     <state width="1741" height="324" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="282" key="GridCell.Tab.0.center" timestamp="1602102804408">
+    <state width="1638" height="282" key="GridCell.Tab.0.center" timestamp="1602110768720">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="282" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804408" />
+    <state width="1638" height="282" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768720" />
     <state width="1741" height="324" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="282" key="GridCell.Tab.0.left" timestamp="1602102804408">
+    <state width="1638" height="282" key="GridCell.Tab.0.left" timestamp="1602110768719">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="282" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804408" />
+    <state width="1638" height="282" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768719" />
     <state width="1741" height="324" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="282" key="GridCell.Tab.0.right" timestamp="1602102804409">
+    <state width="1638" height="282" key="GridCell.Tab.0.right" timestamp="1602110768720">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="282" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804409" />
+    <state width="1638" height="282" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768720" />
     <state width="1741" height="324" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="282" key="GridCell.Tab.1.bottom" timestamp="1602102804294">
+    <state width="1638" height="282" key="GridCell.Tab.1.bottom" timestamp="1602110768721">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="282" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804294" />
+    <state width="1638" height="282" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768721" />
     <state width="1701" height="331" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="282" key="GridCell.Tab.1.center" timestamp="1602102804294">
+    <state width="1638" height="282" key="GridCell.Tab.1.center" timestamp="1602110768720">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="282" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804294" />
+    <state width="1638" height="282" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768720" />
     <state width="1701" height="331" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="282" key="GridCell.Tab.1.left" timestamp="1602102804293">
+    <state width="1638" height="282" key="GridCell.Tab.1.left" timestamp="1602110768720">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="282" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804293" />
+    <state width="1638" height="282" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768720" />
     <state width="1701" height="331" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="282" key="GridCell.Tab.1.right" timestamp="1602102804294">
+    <state width="1638" height="282" key="GridCell.Tab.1.right" timestamp="1602110768721">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="282" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602102804294" />
+    <state width="1638" height="282" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602110768721" />
     <state width="1701" height="331" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
     <state width="1638" height="221" key="GridCell.Tab.2.bottom" timestamp="1601328740351">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -467,11 +518,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="628" y="244" key="RollbackChangesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1598213039172" />
-    <state x="168" y="309" width="986" height="741" key="SettingsEditor" timestamp="1601667231656">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="110" y="234" width="986" height="741" key="SettingsEditor" timestamp="1602507951041">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="168" y="287" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597443718067" />
-    <state x="110" y="234" width="1470" height="722" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1600887643090" />
+    <state x="110" y="234" width="1470" height="722" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1602507951041" />
     <state x="168" y="309" width="986" height="741" key="SettingsEditor/0.27.2560.1413@0.27.2560.1413" timestamp="1601667231656" />
     <state x="496" y="259" key="VCS.ChangeListViewerDialog" timestamp="1597929207162">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -499,11 +550,11 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1597501355761" />
-    <state x="798" y="589" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601666323845">
-      <screen x="0" y="27" width="2560" height="1413" />
+    <state x="524" y="455" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602507511944">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
-    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1601554592113" />
+    <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1602507511944" />
     <state x="798" y="589" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1601666323845" />
     <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1601137576222">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -515,12 +566,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602102664579">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602192275266">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602102664579" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602192275266" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1601906340619" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

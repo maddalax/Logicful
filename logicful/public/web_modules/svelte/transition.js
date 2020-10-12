@@ -1,1 +1,0 @@
-import{a9 as a}from"../common/index-5d23bcc1.js";function d(t,{delay:o=0,duration:c=400,easing:e=a}){const i=+getComputedStyle(t).opacity;return{delay:o,duration:c,easing:e,css:n=>`opacity: ${n*i}`}}export{d as fade};

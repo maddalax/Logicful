@@ -1,1 +1,0 @@
-import{SvelteComponent as r,init as d,safe_not_equal as n}from"../../../../web_modules/svelte/internal.js";import"./Field.js";function o(e,s,l){let{field:t}=s;return e.$$set=i=>{"field"in i&&l(0,t=i.field)},[t]}class f extends r{constructor(e){super();d(this,e,o,null,n,{field:0})}}export default f;

@@ -1,1 +1,0 @@
-export class AddressService{async normalize(t){const e=await fetch("https://us-street.api.smartystreets.com/street-address?auth-id=666b1a30-4f4a-735c-8c34-1f957916e7aa&auth-token=63CwZKLIeojla8vjz43O",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify([{street:t.address1,city:t.city,state:t.state,zipcode:t.zip}])}),s=await e.json();console.log(s)}}

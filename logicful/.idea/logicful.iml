@@ -16,6 +16,10 @@
     </content>
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.aws-sam" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/public/_dist_/features/form/edit/integrations" />
+      <excludeFolder url="file://$MODULE_DIR$/public/css" />
+      <excludeFolder url="file://$MODULE_DIR$/public/js" />
     </content>
     <content url="file://$MODULE_DIR$/../pixel-pro-v5.1.0">
       <excludeFolder url="file://$MODULE_DIR$/../pixel-pro-v5.1.0" />

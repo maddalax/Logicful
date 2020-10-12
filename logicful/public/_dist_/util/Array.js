@@ -1,1 +1,0 @@
-export function shiftArray(t,e,i){if(i>=t.length){let n=i-t.length+1;for(;n--;)t.push(void 0)}return t.splice(i,0,t.splice(e,1)[0]),t}export function orderBy(t,e,i){return t.sort((n,f)=>e.indexOf(n[i])-e.indexOf(f[i])),t}

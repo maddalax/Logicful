@@ -1,1 +1,0 @@
-export function getUrlParameter(r,l){if(!location)return;r=r.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");let n=new RegExp("[\\?&]"+r+"=([^&#]*)"),t=n.exec(l??location.search);const e=t===null?void 0:decodeURIComponent(t[1].replace(/\+/g," "));return e==="undefined"||e===""||e==="null"?void 0:e}

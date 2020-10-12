@@ -1,1 +1,0 @@
-import{nullOrEmpty as n}from"../util/Compare.js";export function isString(t){return typeof t=="string"}export function isObject(t){return t!=null&&!isString(t)&&typeof t=="object"}export function isFunction(t){return typeof t=="function"&&!isString(t)&&!n(t)}export function isLabelValue(t){return!isString(t)&&t?.label!=null&&t?.value!=null}

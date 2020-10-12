@@ -1,1 +1,0 @@
-import o from"../__snowpack__/env.js";import.meta.env=o;import e from"./App.js";import{initSentry as p}from"./services/Sentry.js";p();var t=new e({target:document.body});export default t;import.meta.hot&&(import.meta.hot.accept(),import.meta.hot.dispose(()=>{t.$destroy()}));
