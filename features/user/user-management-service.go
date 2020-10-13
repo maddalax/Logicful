@@ -9,7 +9,6 @@ import (
 	"github.com/logicful/models"
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
-	"github.com/logicful/service/debug"
 	"golang.org/x/crypto/bcrypt"
 	"log"
 	"os"
@@ -35,7 +34,6 @@ func Login(user models.User) (models.TokenResponse, error) {
 func RefreshToken(token string) models.TokenResponse {
 	println(token)
 	user := ByToken(token)
-	debug.Debug(user)
 	if user.Id == "" {
 		return models.TokenResponse{}
 	}
@@ -101,6 +99,16 @@ func Register(user models.User, isSocialLogin bool) (models.TokenResponse, error
 	user.DisplayName = strings.TrimSpace(user.DisplayName)
 	user.FullName = strings.TrimSpace(user.FullName)
 
+	exists, err := ByEmail(user.Email)
+
+	if err != nil {
+		return models.TokenResponse{}, errors.New("email already exists")
+	}
+
+	if exists.Id != "" {
+		return models.TokenResponse{}, errors.New("email already exists")
+	}
+
 	if user.TeamId == "" {
 		user.TeamId = uuid.New().String()
 	}
@@ -126,7 +134,7 @@ func Register(user models.User, isSocialLogin bool) (models.TokenResponse, error
 		Key: user.Id,
 	})
 
-	_, err := batch.Commit(context.Background())
+	_, err = batch.Commit(context.Background())
 	if err != nil {
 		log.Printf("An error has occurred: %s", err)
 		return models.TokenResponse{}, err
