@@ -30,40 +30,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="set timeout on http server">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/Address.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/Address.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/babel.config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/jest.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/jest.setup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/logicful.code-workspace" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/postcss.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/snowpack.config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/App.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/App.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/Builder.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/FieldSidebar.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/Form.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/ReactiveField.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/components/EditField.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/components/inputs/TextInput.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/src/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/svelte.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/tailwind.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/builder/types/static.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

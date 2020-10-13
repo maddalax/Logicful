@@ -3,9 +3,6 @@
   import { setToken } from "@app/services/AuthService";
   import { afterUpdate, onMount } from "svelte";
   import type { UserToken } from "@app/services/AuthService";
-  import LogoDark from "@app/components/layout/logos/LogoDark.svelte";
-  import Link from "@app/components/Link.svelte";
-  import { navigate } from "svelte-routing";
   import Button from "@app/components/Button.svelte";
 
   let email = "";
@@ -50,7 +47,7 @@
       const result = await postApi<UserToken>(endpoint, body);
       if (result.token) {
         setToken(result, remember);
-        window.location.replace("/");
+        window.location.replace("/dashboard");
       } else {
         error = "Failed to login, unknown response from server.";
       }
