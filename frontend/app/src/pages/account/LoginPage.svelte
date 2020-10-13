@@ -4,6 +4,7 @@
   import { afterUpdate, onMount } from "svelte";
   import type { UserToken } from "@app/services/AuthService";
   import Button from "@app/components/Button.svelte";
+import LogoFull from "@app/components/LogoFull.svelte";
 
   let email = "";
   let password = "";
@@ -94,10 +95,6 @@
   class="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6
     lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <img
-      class="mx-auto h-12 w-auto"
-      src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
-      alt="Workflow" />
     <h2
       class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
       Sign in to our platform
