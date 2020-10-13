@@ -1,10 +1,17 @@
 <script>
-import LogoFull from "../LogoFull.svelte";
+  import Link from "../Link.svelte";
+  import LogoFull from "../LogoFull.svelte";
 
-  import LogoFullAlternative from "../LogoFullAlternative.svelte";
+  let activeClass =
+    "ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out";
+  let nonActiveClass =
+    "ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out";
+
+  function getClass(path: string): string {
+    const active = window.location.pathname === path;
+    return active ? activeClass : nonActiveClass;
+  }
 </script>
-
-
 
 <nav class="bg-white shadow">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,33 +26,47 @@ import LogoFull from "../LogoFull.svelte";
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex">
-          <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+          <Link href="/dashboard" class={getClass('/dashboard')}>
             Dashboard
-          </a>
-          <a href="#" class="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-            Team
-          </a>
-          <a href="#" class="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-            Projects
-          </a>
-          <a href="#" class="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-            Calendar
-          </a>
+          </Link>
+          <Link href="/folder" class={getClass('/folder')}>My Forms</Link>
         </div>
       </div>
       <div class="hidden sm:ml-6 sm:flex sm:items-center">
-        <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100 transition duration-150 ease-in-out" aria-label="Notifications">
+        <button
+          class="p-1 border-2 border-transparent text-gray-400 rounded-full
+            hover:text-gray-500 focus:outline-none focus:text-gray-500
+            focus:bg-gray-100 transition duration-150 ease-in-out"
+          aria-label="Notifications">
           <!-- Heroicon name: bell -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          <svg
+            class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
           </svg>
         </button>
 
         <!-- Profile dropdown -->
         <div class="ml-3 relative">
           <div>
-            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
-              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <button
+              class="flex text-sm border-2 border-transparent rounded-full
+                focus:outline-none focus:border-gray-300 transition duration-150
+                ease-in-out"
+              id="user-menu"
+              aria-label="User menu"
+              aria-haspopup="true">
+              <img
+                class="h-8 w-8 rounded-full"
+                src="https://images.unsplash.com/photo-1592228749777-deb10fec62ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
+                alt="" />
             </button>
           </div>
           <!--
@@ -69,15 +90,30 @@ import LogoFull from "../LogoFull.svelte";
       </div>
       <div class="-mr-2 flex items-center sm:hidden">
         <!-- Mobile menu button -->
-        <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
+        <button
+          class="inline-flex items-center justify-center p-2 rounded-md
+            text-gray-400 hover:text-gray-500 hover:bg-gray-100
+            focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition
+            duration-150 ease-in-out"
+          aria-label="Main menu"
+          aria-expanded="false">
           <!-- Icon when menu is closed. -->
           <!--
             Heroicon name: menu
 
             Menu open: "hidden", Menu closed: "block"
           -->
-          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            class="block h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
           </svg>
           <!-- Icon when menu is open. -->
           <!--
@@ -85,8 +121,17 @@ import LogoFull from "../LogoFull.svelte";
 
             Menu open: "block", Menu closed: "hidden"
           -->
-          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            class="hidden h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -100,25 +145,70 @@ import LogoFull from "../LogoFull.svelte";
   -->
   <div class="hidden sm:hidden">
     <div class="pt-2 pb-3">
-      <a href="#" class="block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">Dashboard</a>
-      <a href="#" class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Team</a>
-      <a href="#" class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Projects</a>
-      <a href="#" class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Calendar</a>
+      <a
+        href="#"
+        class="block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base
+          font-medium text-indigo-700 bg-indigo-50 focus:outline-none
+          focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700
+          transition duration-150 ease-in-out">Dashboard</a>
+      <a
+        href="#"
+        class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base
+          font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50
+          hover:border-gray-300 focus:outline-none focus:text-gray-800
+          focus:bg-gray-50 focus:border-gray-300 transition duration-150
+          ease-in-out">Team</a>
+      <a
+        href="#"
+        class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base
+          font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50
+          hover:border-gray-300 focus:outline-none focus:text-gray-800
+          focus:bg-gray-50 focus:border-gray-300 transition duration-150
+          ease-in-out">Projects</a>
+      <a
+        href="#"
+        class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base
+          font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50
+          hover:border-gray-300 focus:outline-none focus:text-gray-800
+          focus:bg-gray-50 focus:border-gray-300 transition duration-150
+          ease-in-out">Calendar</a>
     </div>
     <div class="pt-4 pb-3 border-t border-gray-200">
       <div class="flex items-center px-4">
         <div class="flex-shrink-0">
-          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          <img
+            class="h-8 w-8 rounded-full"
+            src="https://images.unsplash.com/photo-1592228749777-deb10fec62ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
+            alt="" />
         </div>
         <div class="ml-3">
-          <div class="text-base font-medium leading-6 text-gray-800">Tom Cook</div>
-          <div class="text-sm font-medium leading-5 text-gray-500">tom@example.com</div>
+          <div class="text-base font-medium leading-6 text-gray-800">
+            Tom Cook
+          </div>
+          <div class="text-sm font-medium leading-5 text-gray-500">
+            tom@example.com
+          </div>
         </div>
       </div>
       <div class="mt-3">
-        <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out">Your Profile</a>
-        <a href="#" class="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out">Settings</a>
-        <a href="#" class="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out">Sign out</a>
+        <a
+          href="#"
+          class="block px-4 py-2 text-base font-medium text-gray-500
+            hover:text-gray-800 hover:bg-gray-100 focus:outline-none
+            focus:text-gray-800 focus:bg-gray-100 transition duration-150
+            ease-in-out">Your Profile</a>
+        <a
+          href="#"
+          class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
+            hover:text-gray-800 hover:bg-gray-100 focus:outline-none
+            focus:text-gray-800 focus:bg-gray-100 transition duration-150
+            ease-in-out">Settings</a>
+        <a
+          href="#"
+          class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
+            hover:text-gray-800 hover:bg-gray-100 focus:outline-none
+            focus:text-gray-800 focus:bg-gray-100 transition duration-150
+            ease-in-out">Sign out</a>
       </div>
     </div>
   </div>

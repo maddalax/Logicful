@@ -58,7 +58,7 @@
         md:inset-y-0 md:right-0">
       <span class="inline-flex rounded-md shadow">
         <a
-          href="#"
+          href="/account/login"
           class="inline-flex items-center px-4 py-2 border border-transparent
             text-base leading-6 font-medium rounded-md text-indigo-600 bg-white
             hover:text-indigo-500 focus:outline-none focus:border-indigo-300
@@ -151,7 +151,7 @@
       </div>
       <div>
         <a
-          href="#"
+          href="/account/login"
           class="block w-full px-5 py-3 text-center font-medium text-indigo-600
             bg-gray-50 hover:bg-gray-100 hover:text-indigo-700
             focus:outline-none focus:bg-gray-100 focus:text-indigo-700

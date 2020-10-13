@@ -1,11 +1,9 @@
 <script lang="typescript">
-  import MarketingNavbar from "@app/components/layout/MarketingNavbar.svelte";
+  import AlphaBanner from "@app/components/AlphaBanner.svelte";
+import MarketingNavbar from "@app/components/layout/MarketingNavbar.svelte";
 </script>
 
-<!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
+<AlphaBanner/>
 <div class="bg-gray-50">
   <div class="relative overflow-hidden">
     <div class="block absolute inset-y-0 h-full w-full">
@@ -97,7 +95,7 @@
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
         <img
           class="relative rounded-lg shadow-lg"
-          src="/builder.png"
+          src="/assets/builder.png"
           alt="App screenshot" />
       </div>
     </div>

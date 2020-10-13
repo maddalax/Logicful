@@ -31,6 +31,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="set timeout on http server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Shell.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Shell.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/IndexPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/IndexPage.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,19 +83,19 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/frontend/app/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/handler" />
-      <recent name="$PROJECT_DIR$/features/formsubmission" />
-      <recent name="$PROJECT_DIR$/features/formsubmission/cron" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/features/workflow/integrations" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dev/tables" />
       <recent name="$PROJECT_DIR$/lambda/main/features/folder" />
       <recent name="$PROJECT_DIR$/lambda/api/features/contentblock" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/app/public/assets" />
+      <recent name="$PROJECT_DIR$/handler" />
+      <recent name="$PROJECT_DIR$/features/formsubmission" />
+      <recent name="$PROJECT_DIR$/features/formsubmission/cron" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -515,12 +517,12 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602508518864">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602596227236">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602508518864" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602596227236" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1601906340619" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

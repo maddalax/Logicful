@@ -1,4 +1,6 @@
 <script>
+import AlphaBanner from "./AlphaBanner.svelte";
+
   import Navbar from "./layout/Navbar.svelte";
   import ShellSidebar from "./ShellSidebar.svelte";
 
@@ -6,6 +8,7 @@
   export let sidebar: boolean = true;
 </script>
 
+<AlphaBanner/>
 <Navbar />
 
 <!--

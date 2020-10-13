@@ -41,6 +41,9 @@ import IndexPage from "./pages/IndexPage.svelte";
     <Route path="/">
       <IndexPage/>
     </Route>
+    <Route path="/dashboard">
+      <DashboardPage/>
+    </Route>
     <Route path="/form/builder">
       <Authenticate>
         <FormBuilderPage />
