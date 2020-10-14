@@ -25,11 +25,11 @@
       <div class="flex-1 min-w-0">
         <div class="flex">
           <div class="flex-initial text-gray-700 text-center">
-            <h2
-              class="font-bold leading-4 text-gray-900 sm:text-xl sm:leading-9
+            <h1
+              class="font-bold leading-4 text-gray-900 sm:text-2xl sm:leading-9
                 sm:truncate">
               {folder.name}
-            </h2>
+            </h1>
           </div>
           <div
             class="flex-initial text-gray-700 text-center pl-2 mt-2

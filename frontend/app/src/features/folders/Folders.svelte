@@ -80,14 +80,20 @@
   <Dialog
     title={'Create New Folder'}
     isOpen={true}
+
     actions={[{ label: `Create Folder`, type: 'secondary', onClick: createNewFolder }, { label: 'Cancel', type: 'danger' }]}
     onClose={() => {
       creatingNewFolder = false;
     }}>
-    <h6>Folder Name</h6>
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="folderName">
+        Folder Name
+      </label>
     <input
       bind:value={newFolderName}
-      class="form-control"
+      class="bg-white focus:outline-none focus:shadow-outline border
+        border-gray-300 rounded-lg py-2 px-4 block appearance-none
+        leading-normal"
+      style="width: 30rem"
       type="text"
       id="folderName"
       name="folderName"
@@ -97,19 +103,20 @@
 
 <div
   class="flex flex-col flex-grow border-r border-gray-200 pb-4 pt-2 bg-white
-    overflow-y-auto w-56">
+    overflow-y-auto w-64"
+  style="width: 18rem">
   <div class="flex-grow flex flex-col">
-    <nav class="flex-1 px-2 bg-white">
-      <h3 class="pl-2 mb-3 text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+    <nav class="flex-1 px-3 bg-white">
+      <h3
+        class="pl-2 mb-3 text-xs leading-4 font-semibold text-gray-500 uppercase
+          tracking-wider">
         My Folders
       </h3>
-      <div
-        class="mb-2 flex flex-col space-y-2">
+      <div class="mb-2 flex flex-col space-y-2">
         <span class="inline-flex rounded-md shadow-sm">
           <Button type="primary" width="full" href="/form/create">
             + New Form
           </Button>
-
         </span>
         <span class="inline-flex rounded-md shadow-sm">
           <Button type="white" width="full" onClick={() => onNewFolder()}>

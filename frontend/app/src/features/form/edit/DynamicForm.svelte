@@ -103,7 +103,7 @@
 {/if}
 <div
   class="border-b border-gray-200 px-4 py-4 sm:flex sm:items-center
-    sm:justify-between sm:px-6 lg:px-8">
+    sm:justify-between">
   <div class="flex-1 min-w-0">
     <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">
       {form.title}
@@ -135,7 +135,7 @@
 </div>
 
 <div class="sm:mx-auto sm:w-full">
-  <div class="py-8 px-4 sm:rounded-lg sm:px-2">
+  <div class="py-5 px-4 sm:rounded-lg sm:px-2">
     <form action="#" method="POST" id="form-preview">
       <div id="form-preview-fields">
         {#each form.fields as field (field.id)}

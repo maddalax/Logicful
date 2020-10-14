@@ -12,7 +12,7 @@ async function authHeaders() {
 
 export function apiEndpoint() {
   if (window.location.host === "localhost:5000") {
-    return "http://localhost:3000/api/";
+    return "https://logicful.org/api/";
   } else {
     return "/api/";
   }
