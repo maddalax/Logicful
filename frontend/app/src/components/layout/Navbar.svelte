@@ -3,18 +3,36 @@
   import LogoFull from "../LogoFull.svelte";
   import { navigate } from "svelte-routing";
 
+  let open = false;
+  let profileOpen = false;
+
   let activeClass =
     "ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out";
+
   let nonActiveClass =
     "ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out";
 
-  function getClass(path: string): string {
+  let activeClassMobile = `block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base
+            font-medium text-indigo-700 bg-indigo-50 focus:outline-none
+            focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700
+            transition duration-150 ease-in-out`;
+
+  let nonActiveClassMobile = `mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent
+            text-base font-medium text-gray-600 hover:text-gray-800
+            hover:bg-gray-50 hover:border-gray-300 focus:outline-none
+            focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300
+            transition duration-150 ease-in-out`;
+
+  function getClass(path: string, mobile : boolean = false): string {
     const active = window.location.pathname === path;
+    if(mobile) {
+      return active ? activeClassMobile : nonActiveClassMobile;
+    }
     return active ? activeClass : nonActiveClass;
   }
 
   function onLogoClick() {
-    navigate("/dashboard")
+    navigate("/dashboard");
   }
 </script>
 
@@ -22,7 +40,9 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex">
-        <div class="flex-shrink-0 flex items-center cursor-pointer" on:click={onLogoClick}>
+        <div
+          class="flex-shrink-0 flex items-center cursor-pointer"
+          on:click={onLogoClick}>
           <div class="block lg:hidden h-8 w-auto">
             <LogoFull />
           </div>
@@ -62,6 +82,7 @@
         <div class="ml-3 relative">
           <div>
             <button
+              on:click={() => profileOpen = !profileOpen}
               class="flex text-sm border-2 border-transparent rounded-full
                 focus:outline-none focus:border-gray-300 transition duration-150
                 ease-in-out"
@@ -84,18 +105,21 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <!-- <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+          {#if profileOpen}
+          <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
             <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
               <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
               <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Settings</a>
               <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
             </div>
-          </div> -->
+          </div>
+          {/if}
         </div>
       </div>
       <div class="-mr-2 flex items-center sm:hidden">
         <!-- Mobile menu button -->
         <button
+          on:click={() => (open = !open)}
           class="inline-flex items-center justify-center p-2 rounded-md
             text-gray-400 hover:text-gray-500 hover:bg-gray-100
             focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition
@@ -148,73 +172,58 @@
 
     Menu open: "block", Menu closed: "hidden"
   -->
-  <div class="hidden sm:hidden">
-    <div class="pt-2 pb-3">
-      <a
-        href="#"
-        class="block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base
-          font-medium text-indigo-700 bg-indigo-50 focus:outline-none
-          focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700
-          transition duration-150 ease-in-out">Dashboard</a>
-      <a
-        href="#"
-        class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base
-          font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50
-          hover:border-gray-300 focus:outline-none focus:text-gray-800
-          focus:bg-gray-50 focus:border-gray-300 transition duration-150
-          ease-in-out">Team</a>
-      <a
-        href="#"
-        class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base
-          font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50
-          hover:border-gray-300 focus:outline-none focus:text-gray-800
-          focus:bg-gray-50 focus:border-gray-300 transition duration-150
-          ease-in-out">Projects</a>
-      <a
-        href="#"
-        class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base
-          font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50
-          hover:border-gray-300 focus:outline-none focus:text-gray-800
-          focus:bg-gray-50 focus:border-gray-300 transition duration-150
-          ease-in-out">Calendar</a>
-    </div>
-    <div class="pt-4 pb-3 border-t border-gray-200">
-      <div class="flex items-center px-4">
-        <div class="flex-shrink-0">
-          <img
-            class="h-8 w-8 rounded-full"
-            src="https://images.unsplash.com/photo-1592228749777-deb10fec62ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
-            alt="" />
-        </div>
-        <div class="ml-3">
-          <div class="text-base font-medium leading-6 text-gray-800">
-            Tom Cook
+  {#if open}
+    <div>
+      <div class="pt-2 pb-3">
+        <Link
+          href="/dashboard"
+          class={getClass("/dashboard", true)}>
+          Dashboard
+        </Link>
+        <Link
+          href="/folder"
+          class={getClass("/folder", true)}>
+          My Forms
+        </Link>
+      </div>
+      <div class="pt-4 pb-3 border-t border-gray-200">
+        <div class="flex items-center px-4">
+          <div class="flex-shrink-0">
+            <img
+              class="h-8 w-8 rounded-full"
+              src="https://images.unsplash.com/photo-1592228749777-deb10fec62ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
+              alt="" />
           </div>
-          <div class="text-sm font-medium leading-5 text-gray-500">
-            tom@example.com
+          <div class="ml-3">
+            <div class="text-base font-medium leading-6 text-gray-800">
+              Tom Cook
+            </div>
+            <div class="text-sm font-medium leading-5 text-gray-500">
+              tom@example.com
+            </div>
           </div>
         </div>
-      </div>
-      <div class="mt-3">
-        <a
-          href="#"
-          class="block px-4 py-2 text-base font-medium text-gray-500
-            hover:text-gray-800 hover:bg-gray-100 focus:outline-none
-            focus:text-gray-800 focus:bg-gray-100 transition duration-150
-            ease-in-out">Your Profile</a>
-        <a
-          href="#"
-          class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
-            hover:text-gray-800 hover:bg-gray-100 focus:outline-none
-            focus:text-gray-800 focus:bg-gray-100 transition duration-150
-            ease-in-out">Settings</a>
-        <a
-          href="#"
-          class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
-            hover:text-gray-800 hover:bg-gray-100 focus:outline-none
-            focus:text-gray-800 focus:bg-gray-100 transition duration-150
-            ease-in-out">Sign out</a>
+        <div class="mt-3">
+          <a
+            href="#"
+            class="block px-4 py-2 text-base font-medium text-gray-500
+              hover:text-gray-800 hover:bg-gray-100 focus:outline-none
+              focus:text-gray-800 focus:bg-gray-100 transition duration-150
+              ease-in-out">Your Profile</a>
+          <a
+            href="#"
+            class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
+              hover:text-gray-800 hover:bg-gray-100 focus:outline-none
+              focus:text-gray-800 focus:bg-gray-100 transition duration-150
+              ease-in-out">Settings</a>
+          <a
+            href="#"
+            class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
+              hover:text-gray-800 hover:bg-gray-100 focus:outline-none
+              focus:text-gray-800 focus:bg-gray-100 transition duration-150
+              ease-in-out">Sign out</a>
+        </div>
       </div>
     </div>
-  </div>
+  {/if}
 </nav>

@@ -36,8 +36,8 @@
             </svg>
           </div>
           <div class="ml-3 w-0 flex-1 pt-0.5">
-            <p class="text-sm leading-5 font-medium text-gray-900">{title}</p>
-            <p class="mt-1 text-sm leading-5 text-gray-500">{message}</p>
+            <p class="text-sm leading-5 font-medium text-gray-900">{title ?? ''}</p>
+            <p class="mt-1 text-sm leading-5 text-gray-500">{message ?? ''}</p>
           </div>
           <div class="ml-4 flex-shrink-0 flex">
             <button

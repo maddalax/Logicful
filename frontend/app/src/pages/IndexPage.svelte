@@ -1,9 +1,9 @@
 <script lang="typescript">
   import AlphaBanner from "@app/components/AlphaBanner.svelte";
-import MarketingNavbar from "@app/components/layout/MarketingNavbar.svelte";
+  import MarketingNavbar from "@app/components/layout/MarketingNavbar.svelte";
 </script>
 
-<AlphaBanner/>
+<AlphaBanner />
 <div class="bg-gray-50">
   <div class="relative overflow-hidden">
     <div class="block absolute inset-y-0 h-full w-full">

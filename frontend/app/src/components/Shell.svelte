@@ -1,50 +1,49 @@
 <script>
-import AlphaBanner from "./AlphaBanner.svelte";
+  import AlphaBanner from "./AlphaBanner.svelte";
 
   import Navbar from "./layout/Navbar.svelte";
   import ShellSidebar from "./ShellSidebar.svelte";
 
   export let header: string = "";
   export let sidebar: boolean = true;
+  let open = false;
 </script>
 
-<AlphaBanner/>
+<AlphaBanner />
 <Navbar />
 
-<!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
 <div class="h-screen flex overflow-hidden bg-white">
-  <!-- Off-canvas menu for mobile -->
-
-  <!-- Static sidebar for desktop -->
   {#if sidebar}
-    <slot name="sidebar">
-      <ShellSidebar />
-    </slot>
+    <div class:sm:block={open} class:hidden={!open} class="md:block">
+      <slot name="sidebar">
+        <ShellSidebar />
+      </slot>
+    </div>
   {/if}
   <div class="flex flex-col w-0 flex-1 overflow-hidden">
-    <div class="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
-      <button
-        class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center
-          rounded-md text-gray-500 hover:text-gray-900 focus:outline-none
-          focus:bg-gray-200 transition ease-in-out duration-150"
-        aria-label="Open sidebar">
-        <!-- Heroicon name: menu -->
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
+    {#if sidebar}
+      <div class="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
+        <button
+          on:click={() => open = !open}
+          class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center
+            justify-center rounded-md text-gray-500 hover:text-gray-900
+            focus:outline-none focus:bg-gray-200 transition ease-in-out
+            duration-150"
+          aria-label="Open sidebar">
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    {/if}
     <main
       class="flex-1 relative z-0 overflow-y-auto focus:outline-none"
       tabindex="0">
@@ -55,11 +54,9 @@ import AlphaBanner from "./AlphaBanner.svelte";
           </slot>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <!-- Replace with your content -->
           <div class="py-4">
             <slot />
           </div>
-          <!-- /End replace -->
         </div>
       </div>
     </main>

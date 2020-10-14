@@ -1,5 +1,7 @@
 <script lang="typescript">
   import LogoMarketing from "@app/components/LogoMarketing.svelte";
+  import LogoFullAlternative from "../LogoFullAlternative.svelte";
+  let open = false;
 </script>
 
 <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
@@ -7,10 +9,10 @@
     class="relative flex items-center justify-between sm:h-10 md:justify-center">
     <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
       <div class="flex items-center justify-between w-full md:w-auto">
-        <a href="#" aria-label="Home" class="mt-15">
+        <a href="#" aria-label="Home" class="h-10">
           <LogoMarketing />
         </a>
-        <div class="-mr-2 flex items-center md:hidden">
+        <div class="-mr-2 flex items-center md:hidden" on:click={() => open = true}>
           <button
             type="button"
             class="inline-flex items-center justify-center p-2 rounded-md
@@ -81,9 +83,10 @@
       From: "opacity-100 scale-100"
       To: "opacity-0 scale-95"
   -->
+{#if open}
 <div
   class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right
-    md:hidden">
+    md:hidden z-50">
   <div class="rounded-lg shadow-md">
     <div
       class="rounded-lg bg-white shadow-xs overflow-hidden"
@@ -91,14 +94,12 @@
       aria-orientation="vertical"
       aria-labelledby="main-menu">
       <div class="px-5 pt-4 flex items-center justify-between">
-        <div>
-          <img
-            class="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
-            alt="" />
+        <div class="h-5">
+          <LogoFullAlternative/>
         </div>
         <div class="-mr-2">
           <button
+            on:click={() => open = false}
             type="button"
             class="inline-flex items-center justify-center p-2 rounded-md
               text-gray-400 hover:text-gray-500 hover:bg-gray-100
@@ -163,3 +164,4 @@
     </div>
   </div>
 </div>
+{/if}

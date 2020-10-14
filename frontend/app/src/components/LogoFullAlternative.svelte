@@ -1,8 +1,12 @@
+<script lang="typescript">
+  export let width = 250;
+  export let height = 250;
+</script>
 <svg
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="250px"
-  height="250px"
+  width={width + "px"}
+  height={height + "px"}
   viewBox="0 0 375 374.999991"
   version="1.2">
   <defs>
