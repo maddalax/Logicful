@@ -14,7 +14,7 @@
       class="font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate
         cursor-pointer hover:text-indigo-500">
       <a
-        href={'/form/submissions?formId=' + form.id}
+        href={'/form/builder?formId=' + form.id}
         target="_blank">{form.title}</a>
     </h2>
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">

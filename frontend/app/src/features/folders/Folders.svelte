@@ -1,6 +1,5 @@
 <script lang="typescript">
   import { dispatch, subscribe, subscribeComponent } from "@app/event/EventBus";
-  import { navigate } from "svelte-routing";
   import type { IFolder } from "@app/models/IFolder";
   import { LoadState } from "@app/models/LoadState";
   import type { User } from "@app/models/User";
@@ -8,8 +7,6 @@
   import { me } from "@app/services/AuthService";
   import { onMount } from "svelte";
   import Dialog from "@app/components/layout/Dialog.svelte";
-  import Loader from "@app/components/Loader.svelte";
-  import Link from "@app/components/Link.svelte";
   import FolderList from "./FolderList.svelte";
   import { getFolders } from "@app/features/folders/FolderService";
   import Button from "@app/components/Button.svelte";
@@ -130,38 +127,3 @@
     </nav>
   </div>
 </div>
-
-<!-- <div class="items-center">
-  <Button
-  href="/form/create"
-  type="primary">
-  <span class="fas fa-plus" />
-  <span class="ml-2">Create New Form</span>
-</Button>
-</div>
-<div class="card border-light p-2" style="padding-bottom: 1em !important;">
-  <div class="container-fluid p-2 mt-3" style="padding-left: 0;">
-    <input
-      class="form-control search-bar container-fluid"
-      placeholder={searchPlaceHolder}
-      bind:value={query} />
-  </div>
-  <div
-    class="card-header card-header-title bg-white border-0"
-    style="display: flex; padding-left: 0.2em;">
-    <span class="title">Your Folders</span>
-  </div>
-  {#if state === LoadState.Loading}
-    <Loader />
-  {/if}
-  <FolderList {onNewFolder} {onSelected} {folders} selected={selected?.id} />
-  <button
-    on:click={() => {
-      onNewFolder('');
-    }}
-    class="btn btn-outline-dark">
-    <span class="fas fa-plus" style="font-size: 0.9em;" />
-    <span style="font-weight: 400;">New Folder</span>
-  </button>
-</div>
- -->

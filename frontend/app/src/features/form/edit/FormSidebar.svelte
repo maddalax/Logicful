@@ -2,10 +2,10 @@
   // @ts-nocheck
   import { dispatch, subscribeComponent } from "@app/event/EventBus";
   import { onMount, tick } from "svelte";
-  import { transformDraggedElement } from "./util/Draggable";
   import { debounce } from "@app/util/Debounce";
   import Button from "@app/components/Button.svelte";
-import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
+  import { navigate } from "svelte-routing";
+  import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
 
   let saving = false;
   let saved = false;
@@ -193,8 +193,6 @@ import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
     saving = false;
   }
 
-  function saveAndPublish() {}
-
   subscribeComponent("form_saved", () => {
     saved = true;
     dispatch("show_toast", {
@@ -212,7 +210,6 @@ import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
   subscribeComponent("destroy_dragula", () => {
     shouldReload = false;
     requestAnimationFrame(() => {
-      console.log("DESTROYING");
       if (drake) {
         drake.destroy();
       }
@@ -230,6 +227,17 @@ import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
     loadDragula();
   });
 
+  function onLogoClick() {
+    if (
+      !window.confirm(
+        "Are you sure you want to leave the builder? Any unsaved changes will be lost."
+      )
+    ) {
+      return;
+    }
+    navigate("/folder");
+  }
+
   onMount(async () => {
     import("dragula/dist/dragula.css");
   });
@@ -240,8 +248,8 @@ import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
     <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div class="flex flex-col h-0 flex-1 bg-indigo-800">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-        <div class="h-15 ml-8">
-          <LogoFullAlternative/>
+        <div class="h-15 ml-8 cursor-pointer" on:click={onLogoClick}>
+          <LogoFullAlternative />
         </div>
         <nav class="flex-1 px-2 bg-indigo-800 space-y-1">
           <div
