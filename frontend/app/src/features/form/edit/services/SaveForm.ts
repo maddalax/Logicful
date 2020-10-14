@@ -5,8 +5,8 @@ import { fastClone } from '@app/util/Compare'
 import { dispatch } from '@app/event/EventBus'
 
 export async function saveForm(options: {
-  dispatchEvent: boolean
-} = { dispatchEvent: true }, form? : IForm) {
+  initiator : string
+} = { initiator : '' }, form? : IForm) {
   if(!form) {
     form = formStore.getForm()
   }
@@ -14,10 +14,10 @@ export async function saveForm(options: {
   removeValues(clone)
   await save(clone)
   saveToLocalStorage(clone)
-  if (!options.dispatchEvent) {
-    return;
-  }
-  dispatch("form_saved", form)
+  dispatch("form_saved", {
+    form,
+    options
+  })
 }
 
 export function saveToLocalStorage(form: IForm) {

@@ -161,7 +161,7 @@
   });
 
   subscribeComponent("save_form", async (params) => {
-    await saveForm();
+    await saveForm(params);
   });
 
   subscribeComponent("get_form_fields", () => {

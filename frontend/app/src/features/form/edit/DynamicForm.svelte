@@ -15,7 +15,16 @@
 
   export let form: IForm;
   export let mode: DynamicFormMode = DynamicFormMode.Live;
+  let saving = false;
   let deleting = false;
+
+  subscribeComponent("save_form", () => {
+    saving = true;
+  })
+
+  subscribeComponent("form_saved", () => {
+    saving = false;
+  })
 
   subscribeComponent("confirm_field_deletion", () => {
     deleting = true;
@@ -100,6 +109,14 @@
       {form.title}
     </h1>
     <p class="max-w-4xl text-sm leading-5 text-gray-500">{form.description}</p>
+    <span class="inline-flex items-center mt-2 px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+      {#if saving}
+        Saving...
+      {:else}
+        All Changes Saved
+      {/if}
+    </span>
+
   </div>
   <div class="mt-4 flex sm:mt-0 sm:ml-4">
     <span class="order-1 ml-3 shadow-sm rounded-md sm:order-0 sm:ml-0">

@@ -1,6 +1,7 @@
 <script>
   import Link from "../Link.svelte";
   import LogoFull from "../LogoFull.svelte";
+  import { navigate } from "svelte-routing";
 
   let activeClass =
     "ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out";
@@ -11,13 +12,17 @@
     const active = window.location.pathname === path;
     return active ? activeClass : nonActiveClass;
   }
+
+  function onLogoClick() {
+    navigate("/dashboard")
+  }
 </script>
 
 <nav class="bg-white shadow">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex">
-        <div class="flex-shrink-0 flex items-center">
+        <div class="flex-shrink-0 flex items-center cursor-pointer" on:click={onLogoClick}>
           <div class="block lg:hidden h-8 w-auto">
             <LogoFull />
           </div>
