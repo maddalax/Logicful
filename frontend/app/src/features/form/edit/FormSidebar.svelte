@@ -189,18 +189,19 @@
     saving = true;
     await dispatch("save_form", {
       status: "draft",
+      initiator: "user",
     });
     saving = false;
   }
 
-  subscribeComponent("form_saved", () => {
-    saved = true;
-    dispatch("show_toast", {
-      message: "Successfully saved your form.",
-    });
-    setTimeout(() => {
-      saved = false;
-    }, 1500);
+  subscribeComponent("form_saved", (data) => {
+    const initiator = data.options?.initiator;
+    saved = false;
+    if (initiator === "user") {
+      dispatch("show_toast", {
+        message: "Successfully saved your form.",
+      });
+    }
   });
 
   subscribeComponent("reload_dragula", () => {

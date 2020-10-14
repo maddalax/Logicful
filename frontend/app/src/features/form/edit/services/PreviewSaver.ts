@@ -20,7 +20,8 @@ const debounceSave = debounce(() => {
   }
   lastForm = form;
   dispatch("save_form", {
-    status: 'draft'
+    status: 'draft',
+    initiator : ''
   })
 }, 800)
 

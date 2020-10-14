@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import { subscribeComponent } from "@app/event/EventBus";
   import RightSidebar from "@app/features/form/edit/RightSidebar.svelte";
+import AlphaBanner from "@app/components/AlphaBanner.svelte";
 
   let rightSidebar: any;
   let rightSidebarProps: any = {};
@@ -20,6 +21,7 @@
   });
 </script>
 
+<AlphaBanner/>
 <div class="h-screen flex overflow-hidden bg-white">
   <div class="md:hidden">
     <div class="fixed inset-0 flex z-40">
