@@ -134,7 +134,7 @@
               {/if}
             {/each}
           </div>
-          <div class="pt-2">
+          <div class="pt-2 pb-9">
             {#if state === LoadState.NotStarted}
               <Button submit={true} type="primary">Submit</Button>
             {:else if state === LoadState.Failed}

@@ -33,13 +33,13 @@
 <div
   on:click|stopPropagation={select}
   class:bg-gray-100={!isConfigInput && field.selected}
-  class={isConfigInput ? 'p-3' : `hover:bg-gray-100 p-3 relative`}>
+  class={isConfigInput ? 'p-3 mb-2' : `hover:bg-gray-100 p-3 relative mb-2 rounded-md`}>
   {#if field.selected}
     <div
-      class="absolute top-1 right-6 h-8 w-8 cursor-pointer"
+      class="absolute top-1 right-6 h-8 w-8 cursor-pointer pt-1"
       on:click|stopPropagation={onClone}>
       <svg
-        class="w-5 h-5"
+        class="w-5 h-5 align-middle"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -52,7 +52,7 @@
       </svg>
     </div>
     <div
-      class="absolute top-1 right-0 h-8 w-8 cursor-pointer"
+      class="absolute top-1 right-0 h-8 w-8 cursor-pointer pt-1"
       on:click|stopPropagation={() => dispatch('confirm_field_deletion', {})}>
       <svg
         class="w-5 h-5"

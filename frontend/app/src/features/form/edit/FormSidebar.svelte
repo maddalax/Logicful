@@ -241,7 +241,9 @@ import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
     <div class="flex flex-col h-0 flex-1 bg-indigo-800">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <div class="h-15 ml-8">
-          <LogoFullAlternative/>
+          <a href="/folder">
+            <LogoFullAlternative/>
+          </a>
         </div>
         <nav class="flex-1 px-2 bg-indigo-800 space-y-1">
           <div
