@@ -6,7 +6,7 @@
   import { subscribeFieldChange } from "@app/event/FieldEvent";
   import { fastClone } from "@app/util/Compare";
   import FieldConfigSidebarHeader from "./FieldConfigSidebarHeader.svelte";
-import { subscribeComponent } from "@app/event/EventBus";
+  import { subscribeComponent } from "@app/event/EventBus";
 
   let field: IField | undefined;
   let fieldId: string | undefined;
@@ -14,7 +14,7 @@ import { subscribeComponent } from "@app/event/EventBus";
   subscribeComponent("field_delete", () => {
     field = undefined;
     fieldId = undefined;
-  })
+  });
 
   subscribeFieldChange(onMount, (newField: IField) => {
     if (newField.id === fieldId && !newField.selected) {

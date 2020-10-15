@@ -33,7 +33,7 @@
   <span
     role="checkbox"
     tabindex="0"
-    aria-checked="false"
+    aria-checked={checked}
     on:click|stopPropagation={() => {
       checked = !checked;
       field.value = checked;

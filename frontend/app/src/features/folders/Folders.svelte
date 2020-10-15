@@ -81,7 +81,7 @@
     title={'Create New Folder'}
     isOpen={true}
 
-    actions={[{ label: `Create Folder`, type: 'secondary', onClick: createNewFolder }, { label: 'Cancel', type: 'danger' }]}
+    actions={[{ label: `Create Folder`, type: 'primary', onClick: createNewFolder }, { label: 'Cancel', type: 'secondary' }]}
     onClose={() => {
       creatingNewFolder = false;
     }}>

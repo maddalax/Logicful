@@ -3,22 +3,9 @@
   import FormBuilder from "@app/features/form/edit/FormBuilder.svelte";
   import FormSidebar from "@app/features/form/edit/FormSidebar.svelte";
   import FieldEditSidebar from "@app/features/form/edit/FieldEditSidebar.svelte";
-  import { onMount } from "svelte";
-  import { subscribeComponent } from "@app/event/EventBus";
   import RightSidebar from "@app/features/form/edit/RightSidebar.svelte";
   import AlphaBanner from "@app/components/AlphaBanner.svelte";
 
-  let rightSidebar: any;
-  let rightSidebarProps: any = {};
-
-  subscribeComponent("show_right_sidebar", ({ component, ...other }) => {
-    rightSidebar = component;
-    rightSidebarProps = other ?? {};
-  });
-
-  onMount(() => {
-    rightSidebar = FieldEditSidebar;
-  });
 </script>
 
 <AlphaBanner />
@@ -39,6 +26,6 @@
     </main>
   </div>
   <RightSidebar>
-    <svelte:component this={rightSidebar} {...rightSidebarProps} />
+    <FieldEditSidebar/>
   </RightSidebar>
 </div>

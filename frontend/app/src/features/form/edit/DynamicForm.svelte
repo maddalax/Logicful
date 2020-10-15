@@ -96,9 +96,6 @@
     <p class="text-sm leading-5 text-gray-500">
       Are you sure you want to delete this field?
     </p>
-    <p class="text-sm leading-5 text-gray-500">
-      Changes will be applied after the form is saved.
-    </p>
   </Dialog>
 {/if}
 <div

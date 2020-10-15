@@ -2,6 +2,7 @@
   import { afterUpdate, onMount } from "svelte";
   import type { ButtonAction } from "@app/components/models/ComponentProps";
   import Button from "../Button.svelte";
+import { dispatch } from "@app/event/EventBus";
 
   export let title: string = "";
   export let isOpen: boolean = false;
@@ -15,6 +16,7 @@
   let error = "";
 
   onMount(() => {
+    dispatch("modal_open", {})
     actions = getActions?.() ?? actions;
     setTimeout(() => {
       loaded = true;
@@ -28,14 +30,11 @@
     actions = getActions?.() ?? actions;
   });
 
-  function open() {
-    isOpen = true;
-  }
-
   async function close() {
     if (!isOpen || !loaded) {
       return;
     }
+    dispatch("modal_close", {})
     isOpen = false;
     loaded = false;
     await onClose?.();
@@ -61,7 +60,7 @@
   }
 
   function buttonClass(isLast : boolean) {
-    return !isLast ? 'flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto' : 'mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto'
+    return !isLast ? 'flex w-full rounded-md shadow-sm sm:w-auto' : 'mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:w-auto'
   }
 </script>
 
@@ -79,7 +78,7 @@
       <div
         class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4
           text-left overflow-hidden shadow-xl transform transition-all sm:my-8
-          sm:align-middle min-w-half sm:p-6 max-w-screen-lg"
+          sm:align-middle md:w-96 sm:p-6 max-w-screen-lg"
         role="dialog"
         on:click|stopPropagation
         aria-modal="true"
@@ -112,12 +111,12 @@
               id="modal-headline">
               {title}
             </h3>
-            <div class="mt-3 w-full">
+            <div class="mt-3 w-full z-50">
               <slot />
             </div>
           </div>
         </div>
-        <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+        <div class="mt-5 sm:mt-4 sm:pl-4 sm:flex">
           {#if actions.length > 0}
             {#each actions as action, index}
               <span class={buttonClass(index === actions.length - 1)}>
@@ -161,6 +160,8 @@
     </div>
   </div>
 {/if}
+
+
 
 <svelte:body on:click={close} />
 

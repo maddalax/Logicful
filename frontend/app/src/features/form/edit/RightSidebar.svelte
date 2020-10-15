@@ -1,9 +1,4 @@
 <script lang="typescript">
-    import { dispatch } from "@app/event/EventBus";
-
-    function unselect() {
-        dispatch("unselect_field", {});
-    }
 </script>
 
 <div class="hidden md:flex md:flex-shrink-0">
