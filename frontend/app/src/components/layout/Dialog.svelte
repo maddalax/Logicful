@@ -79,7 +79,7 @@
       <div
         class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4
           text-left overflow-hidden shadow-xl transform transition-all sm:my-8
-          sm:align-middle w-auto sm:p-6"
+          sm:align-middle min-w-half sm:p-6 max-w-screen-lg"
         role="dialog"
         on:click|stopPropagation
         aria-modal="true"
@@ -104,15 +104,15 @@
             </svg>
           </button>
         </div>
-        <div class="sm:flex sm:items-start">
+        <div class="sm:flex sm:items-start w-full">
       
-          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
             <h3
               class="text-lg leading-6 font-medium text-gray-900"
               id="modal-headline">
               {title}
             </h3>
-            <div class="mt-3">
+            <div class="mt-3 w-full">
               <slot />
             </div>
           </div>

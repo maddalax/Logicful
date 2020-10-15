@@ -30,12 +30,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix login bug">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormSidebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/account/LogoutPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/account/LogoutPage.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/services/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/services/AuthService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/commons.d27153772fb3d5d97287.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/commons.71bff00d3d5d3a5ac979.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/commons.71bff00d3d5d3a5ac979.js.LICENSE.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

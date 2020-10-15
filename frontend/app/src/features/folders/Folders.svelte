@@ -92,7 +92,7 @@
       bind:value={newFolderName}
       class="bg-white focus:outline-none focus:shadow-outline border
         border-gray-300 rounded-lg py-2 px-4 block appearance-none
-        leading-normal md:w-80"
+        leading-normal w-full"
       type="text"
       id="folderName"
       name="folderName"

@@ -28,7 +28,7 @@
     const fullForms = await Promise.all(promises);
     const saves = fullForms.map((f) => {
       f.folder = selected;
-      return saveForm({ dispatchEvent: false }, f);
+      return saveForm({ initiator: 'user' }, f);
     });
     await Promise.all(saves);
   }
