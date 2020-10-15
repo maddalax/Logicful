@@ -191,7 +191,7 @@
 </div>
 
 <div class="hidden md:flex md:flex-shrink-0">
-  <div class="flex flex-col w-80">
+  <div class="flex flex-col w-screen">
     <div
       class="flex flex-col flex-grow border-r border-gray-200 pb-4 bg-white
         overflow-y-auto">

@@ -59,11 +59,14 @@
       failed = true;
     }
   }
+
+  function buttonClass(isLast : boolean) {
+    return !isLast ? 'flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto' : 'mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto'
+  }
 </script>
 
-
 {#if isOpen}
-  <div class="fixed z-10 inset-0 overflow-y-auto">
+  <div class="fixed z-50 inset-0 overflow-y-auto min-w-half">
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20
         text-center sm:block sm:p-0">
@@ -71,8 +74,7 @@
         <div class="absolute inset-0 bg-gray-500 opacity-75" />
       </div>
 
-      <!-- This element is to trick the browser into centering the modal contents. -->
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" />&#8203;
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen min-w-" />&#8203;
     
       <div
         class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4
@@ -118,16 +120,17 @@
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
           {#if actions.length > 0}
             {#each actions as action, index}
-              <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+              <span class={buttonClass(index === actions.length - 1)}>
                 {#if processing === index}
                   {#if failed}
                     <Button
                       type={action.type}
+                      width="full"
                       onClick={() => runAction(action, index)}>
                       Failed To Run, Click To Try Again
                     </Button>
                   {:else}
-                    <Button type={action.type} disabled={true}>
+                    <Button type={action.type} width="full" disabled={true}>
                       Processing...
                     </Button>
                   {/if}
@@ -135,12 +138,14 @@
                   <Button
                     type={action.type}
                     focus={true}
+                    width="full"
                     onClick={() => runAction(action, index)}>
                     {action.label}
                   </Button>
                 {:else}
                   <Button
                     type={action.type}
+                    width="full"
                     onClick={() => runAction(action, index)}>
                     {action.label}
                   </Button>
@@ -158,3 +163,4 @@
 {/if}
 
 <svelte:body on:click={close} />
+

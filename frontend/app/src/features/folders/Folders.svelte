@@ -92,8 +92,7 @@
       bind:value={newFolderName}
       class="bg-white focus:outline-none focus:shadow-outline border
         border-gray-300 rounded-lg py-2 px-4 block appearance-none
-        leading-normal"
-      style="width: 30rem"
+        leading-normal md:w-80"
       type="text"
       id="folderName"
       name="folderName"
@@ -103,8 +102,7 @@
 
 <div
   class="flex flex-col flex-grow border-r border-gray-200 pb-4 pt-2 bg-white
-    overflow-y-auto w-64"
-  style="width: 18rem">
+    overflow-y-auto sm:w-screen w-screen md:w-80">
   <div class="flex-grow flex flex-col">
     <nav class="flex-1 px-3 bg-white">
       <h3

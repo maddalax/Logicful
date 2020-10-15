@@ -109,11 +109,16 @@
       {form.title}
     </h1>
     <p class="max-w-4xl text-sm leading-5 text-gray-500">{form.description}</p>
-    <span class="inline-flex items-center mt-2 px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+    <span class="hidden lg:inline-flex items-center mt-2 px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
       {#if saving}
         Saving...
       {:else}
-        All Changes Saved
+        <div class="hidden xl:inline-flex">
+          All Changes Saved
+        </div>
+        <div class="xl:hidden">
+          Saved
+        </div>
       {/if}
     </span>
 

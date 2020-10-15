@@ -64,7 +64,7 @@
     </div>
   </div>
   <div class="mt-5 flex lg:mt-0 lg:ml-4">
-    <span class="hidden sm:block shadow-sm rounded-md">
+    <span class="sm:block shadow-sm rounded-md">
       <Button href={`/form/preview?formId=${form.id}`} type="white" size="small" hasIcon={true}>
         <!-- Heroicon name: pencil -->
         <svg
@@ -87,7 +87,7 @@
       </Button>
     </span>
 
-    <span class="hidden sm:block ml-3 shadow-sm rounded-md">
+    <span class="sm:block ml-3 shadow-sm rounded-md">
       <Button href={`/form/builder?formId=${form.id}`} type="white" size="small" hasIcon={true}>
         <!-- Heroicon name: link -->
         <svg

@@ -32,7 +32,7 @@
             </h1>
           </div>
           <div
-            class="flex-initial text-gray-700 text-center pl-2 mt-2
+            class="flex-initial text-gray-700 text-center pl-2 md:mt-2
               cursor-pointer"
             on:click={() => dispatch('folder_edit', folder)}>
             <svg
@@ -76,10 +76,13 @@
       </div>
     </div>
   </div>
-  <div slot="sidebar" class="mt-4">
+  <div slot="sidebar" class="mt-4 hidden md:block">
     <Folders />
   </div>
   <div class="mt-8">
+    <div class="sm:block md:hidden -ml-4 -mt-6 pb-3">
+      <Folders/>
+    </div>
     <FolderContent />
   </div>
 </Shell>
