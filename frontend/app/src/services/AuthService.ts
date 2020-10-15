@@ -4,6 +4,13 @@ import { postApi } from "./ApiService";
 let memoryToken: string = "";
 let refreshing = false;
 
+export const emptyUser = {
+  fullName: "",
+  displayName: "",
+  email: "",
+  id: "",
+  teamId: "",
+};
 export interface UserToken {
   token: string;
   expiration: number;
@@ -52,13 +59,6 @@ export async function getToken(): Promise<string | undefined> {
 }
 
 export async function me(): Promise<User> {
-  const emptyUser = {
-    fullName: "",
-    displayName: "",
-    email: "",
-    id: "",
-    teamId: "",
-  };
   const token = await getToken();
   if (!token) {
     return emptyUser;

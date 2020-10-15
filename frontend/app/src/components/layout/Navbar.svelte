@@ -2,9 +2,17 @@
   import Link from "../Link.svelte";
   import LogoFull from "../LogoFull.svelte";
   import { navigate } from "svelte-routing";
+  import { onMount } from "svelte";
+  import { emptyUser, me } from "@app/services/AuthService";
+  import { nameToInitials } from "@app/util/Nav";
 
   let open = false;
   let profileOpen = false;
+  let user = emptyUser;
+
+  onMount(async () => {
+    user = await me();
+  });
 
   let activeClass =
     "ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out";
@@ -23,9 +31,9 @@
             focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300
             transition duration-150 ease-in-out`;
 
-  function getClass(path: string, mobile : boolean = false): string {
+  function getClass(path: string, mobile: boolean = false): string {
     const active = window.location.pathname === path;
-    if(mobile) {
+    if (mobile) {
       return active ? activeClassMobile : nonActiveClassMobile;
     }
     return active ? activeClass : nonActiveClass;
@@ -80,39 +88,66 @@
 
         <!-- Profile dropdown -->
         <div class="ml-3 relative">
-          <div>
-            <button
-              on:click={() => profileOpen = !profileOpen}
-              class="flex text-sm border-2 border-transparent rounded-full
-                focus:outline-none focus:border-gray-300 transition duration-150
-                ease-in-out"
-              id="user-menu"
-              aria-label="User menu"
-              aria-haspopup="true">
-              <img
-                class="h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1592228749777-deb10fec62ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
-                alt="" />
-            </button>
-          </div>
-          <!--
-            Profile dropdown panel, show/hide based on dropdown state.
-
-            Entering: "transition ease-out duration-200"
-              From: "transform opacity-0 scale-95"
-              To: "transform opacity-100 scale-100"
-            Leaving: "transition ease-in duration-75"
-              From: "transform opacity-100 scale-100"
-              To: "transform opacity-0 scale-95"
-          -->
+          <span
+            on:click={() => (profileOpen = !profileOpen)}
+            class="inline-flex items-center justify-center h-10 w-10
+              rounded-full bg-indigo-500 cursor-pointer">
+            <span
+              class="font-medium leading-none text-white">{nameToInitials(user.fullName)}</span>
+          </span>
           {#if profileOpen}
-          <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-              <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+            <div class="relative inline-block text-left">
+              <div
+                class="origin-top-right absolute right-0 mt-2 w-56 rounded-md
+                  shadow-lg z-50">
+                <div
+                  class="rounded-md bg-white shadow-xs"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu">
+                  <div class="px-4 py-3">
+                    <p class="text-sm leading-5">Signed in as</p>
+                    <p
+                      class="text-sm leading-5 font-medium text-gray-900
+                        truncate">
+                      {user.displayName} ({user.email || 'Loading...'})
+                    </p>
+                  </div>
+                  <div class="border-t border-gray-100" />
+                  <div class="py-1">
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm leading-5 text-gray-700
+                        hover:bg-gray-100 hover:text-gray-900 focus:outline-none
+                        focus:bg-gray-100 focus:text-gray-900"
+                      role="menuitem">Account settings</a>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm leading-5 text-gray-700
+                        hover:bg-gray-100 hover:text-gray-900 focus:outline-none
+                        focus:bg-gray-100 focus:text-gray-900"
+                      role="menuitem">Support</a>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm leading-5 text-gray-700
+                        hover:bg-gray-100 hover:text-gray-900 focus:outline-none
+                        focus:bg-gray-100 focus:text-gray-900"
+                      role="menuitem">License</a>
+                  </div>
+                  <div class="border-t border-gray-100" />
+                  <div class="py-1">
+                    <a
+                      href="/account/logout"
+                      class="block w-full text-left px-4 py-2 text-sm leading-5
+                        text-gray-700 hover:bg-gray-100 hover:text-gray-900
+                        focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                      role="menuitem">
+                      Sign out
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
           {/if}
         </div>
       </div>
@@ -175,31 +210,26 @@
   {#if open}
     <div>
       <div class="pt-2 pb-3">
-        <Link
-          href="/dashboard"
-          class={getClass("/dashboard", true)}>
+        <Link href="/dashboard" class={getClass('/dashboard', true)}>
           Dashboard
         </Link>
-        <Link
-          href="/folder"
-          class={getClass("/folder", true)}>
-          My Forms
-        </Link>
+        <Link href="/folder" class={getClass('/folder', true)}>My Forms</Link>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-200">
         <div class="flex items-center px-4">
           <div class="flex-shrink-0">
-            <img
-              class="h-8 w-8 rounded-full"
-              src="https://images.unsplash.com/photo-1592228749777-deb10fec62ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
-              alt="" />
+            <span
+              class="inline-flex items-center justify-center h-10 w-10
+                rounded-full bg-indigo-500 cursor-pointer">
+              <span class="font-medium leading-none text-white">{nameToInitials(user.fullName)}</span>
+            </span>
           </div>
           <div class="ml-3">
             <div class="text-base font-medium leading-6 text-gray-800">
-              Tom Cook
+              {user.displayName}
             </div>
             <div class="text-sm font-medium leading-5 text-gray-500">
-              tom@example.com
+              {user.email}
             </div>
           </div>
         </div>
@@ -217,7 +247,7 @@
               focus:text-gray-800 focus:bg-gray-100 transition duration-150
               ease-in-out">Settings</a>
           <a
-            href="#"
+            href="/account/logout"
             class="mt-1 block px-4 py-2 text-base font-medium text-gray-500
               hover:text-gray-800 hover:bg-gray-100 focus:outline-none
               focus:text-gray-800 focus:bg-gray-100 transition duration-150

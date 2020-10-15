@@ -6,6 +6,8 @@
   import Button from "@app/components/Button.svelte";
   import { navigate } from "svelte-routing";
   import LogoFullAlternative from "@app/components/LogoFullAlternative.svelte";
+  import { emptyUser, me } from "@app/services/AuthService";
+import { nameToInitials } from "@app/util/Nav";
 
   let saving = false;
   let saved = false;
@@ -13,6 +15,7 @@
   let drake: any = null;
   let dragula: any;
   let shouldReload = true;
+  let user = emptyUser;
 
   function defaultBlocks() {
     return [
@@ -240,6 +243,7 @@
   }
 
   onMount(async () => {
+    user = await me();
     import("dragula/dist/dragula.css");
   });
 </script>
@@ -321,22 +325,25 @@
         </nav>
       </div>
       <div class="flex-shrink-0 flex border-t border-indigo-700 p-4">
-        <a href="#" class="flex-shrink-0 w-full group block">
+        <a href="/account/profile" target="_blank" class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
-              <img
-                class="inline-block h-9 w-9 rounded-full"
-                src="https://images.unsplash.com/photo-1601467571911-fc9d8a57c4cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&w=1234&q=80"
-                alt="" />
+              <span
+              class="inline-flex items-center justify-center h-10 w-10
+                rounded-full bg-indigo-500 cursor-pointer">
+              <span class="font-medium leading-none text-white">{nameToInitials(user.fullName)}</span>
+            </span>
             </div>
             <div class="ml-3">
-              <p class="text-sm leading-5 font-medium text-white">Maddox</p>
-              <p
+              <p class="text-sm leading-5 font-medium text-white">{user.displayName}</p>
+              <a
+                href="/account/profile"
+                target="_blank"
                 class="text-xs leading-4 font-medium text-indigo-300
                   group-hover:text-indigo-100 transition ease-in-out
                   duration-150">
                 View profile
-              </p>
+            </a>
             </div>
           </div>
         </a>

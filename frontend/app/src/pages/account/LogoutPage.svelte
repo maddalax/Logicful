@@ -1,43 +1,68 @@
 <script lang="typescript">
-  import Loader from '@app/components/Loader.svelte'
-  import { onMount } from 'svelte'
+  import Loader from "@app/components/Loader.svelte";
+  import Shell from "@app/components/Shell.svelte";
+  import { onMount } from "svelte";
 
-  function signOut() {
+  let error = false;
+
+  function signOut(attempt : number) {
     //@ts-ignore
     if (!window.gapi) {
-      setTimeout(signOut, 100)
-      return
+      setTimeout(signOut, 100);
+      return;
     }
     //@ts-ignore
-    window.gapi.load('auth2', function () {
-      //@ts-ignore
-      window.gapi.auth2.init()
-      //@ts-ignore
-      var auth2 = window.gapi.auth2.getAuthInstance()
-      setTimeout(() => {
-        auth2.signOut().then(function () {
-          localStorage.removeItem('token')
-          window.location.replace('/account/login')
-        })
-      }, 500)
-    })
+    window.gapi.load("auth2", function () {
+      try {
+        //@ts-ignore
+        window.gapi.auth2.init();
+        //@ts-ignore
+        var auth2 = window.gapi.auth2.getAuthInstance();
+        setTimeout(() => {
+          auth2
+            .signOut()
+            .then(function () {
+              localStorage.removeItem("token");
+              window.location.replace("/account/login");
+            })
+            .catch((ex : any) => {
+              console.error(ex);
+              if(attempt > 1) {
+                error = true;
+                return;
+              }
+              setTimeout(() => {
+                signOut(attempt + 1);
+              }, 100)
+            });
+        }, 500);
+      } catch (ex) {
+        console.error(ex);
+        error = true;
+      }
+    });
   }
 
   onMount(() => {
     setTimeout(() => {
-      signOut()
-    }, 500)
-  })
+      signOut(1);
+    }, 500);
+  });
 </script>
 
 <svelte:head>
-  <meta name="google-signin-client_id" content="507014281135-ff3semdge1t7iu6jdi63h3ido0ch4k4q.apps.googleusercontent.com" />
+  <meta
+    name="google-signin-client_id"
+    content="807768276065-c8b2jvlks20jgm0mk3t2akfm7pc3jomu.apps.googleusercontent.com" />
   <script src="https://apis.google.com/js/platform.js" async defer>
-
   </script>
 </svelte:head>
 
-<div style="margin-top: 5em;margin-left:3em">
-  <Loader />
-  <h3>Signing out... please wait.</h3>
-</div>
+<Shell sidebar={false}>
+  {#if error}
+    <p>Failed to sign out, please try refreshing the page.</p>
+  {:else}
+    <Loader />
+    <h3>Signing out... please wait.</h3>
+  {/if}
+</Shell>
