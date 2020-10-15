@@ -79,7 +79,6 @@
 {:else if type === 'primary'}
   {#if href}
     <a
-      type="button"
       target={hrefTarget || '_blank'}
       {href}
       {disabled}
@@ -108,7 +107,6 @@
 {:else if type === 'secondary'}
   {#if href}
     <a
-      type="button"
       target={hrefTarget || '_blank'}
       {href}
       {disabled}
@@ -137,7 +135,6 @@
 {:else if type === 'white'}
   {#if href}
     <a
-      type="button"
       target={hrefTarget || '_blank'}
       {href}
       {disabled}
