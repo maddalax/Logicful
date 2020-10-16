@@ -10,7 +10,7 @@
     class="relative flex items-center justify-between sm:h-10 md:justify-center">
     <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
       <div class="flex items-center justify-between w-full md:w-auto">
-        <a href="#" aria-label="Home" class="h-10">
+        <a href="/" aria-label="Home" class="h-10">
           <LogoMarketing />
         </a>
         <div
@@ -42,11 +42,11 @@
     </div>
     <div class="hidden md:flex md:space-x-10">
       <a
-        href="#"
+        href="features"
         class="font-medium text-gray-500 hover:text-gray-900 transition
           duration-150 ease-in-out">Features</a>
       <a
-        href="#"
+        href="pricing"
         class="font-medium text-gray-500 hover:text-gray-900 transition
           duration-150 ease-in-out">Pricing</a>
       <a

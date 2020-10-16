@@ -17,6 +17,7 @@
   import Preloader from "@app/components/layout/Preloader.svelte";
   import { afterUpdate, onMount } from "svelte";
 import PricingPage from "./pages/pricing/PricingPage.svelte";
+import FeaturesPage from "./pages/features/FeaturesPage.svelte";
 import IndexPage from "./pages/IndexPage.svelte";
 import MyTeamPage from "./pages/team/MyTeamPage.svelte";
 import AcceptTeamInvite from "./pages/team/AcceptTeamInvite.svelte";
@@ -101,6 +102,9 @@ import AcceptTeamInvite from "./pages/team/AcceptTeamInvite.svelte";
     </Route>
     <Route path="/pricing">
       <PricingPage/>
+    </Route>
+    <Route path="/features">
+      <FeaturesPage/>
     </Route>
   </div>
 </Router>
