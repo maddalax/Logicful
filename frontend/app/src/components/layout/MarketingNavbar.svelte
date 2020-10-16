@@ -58,7 +58,7 @@
       class="hidden md:absolute md:flex md:items-center md:justify-end
         md:inset-y-0 md:right-0">
       <span class="inline-flex rounded-md shadow">
-        <Button href="/form/builder?formId=demo" type="white">Demo</Button>
+        <Button href="/form/builder?formId=demo" type="white">Try Demo</Button>
       </span>
       <span class="inline-flex rounded-md shadow ml-3">
         <Button href="/account/login" type="primary">Log in</Button>

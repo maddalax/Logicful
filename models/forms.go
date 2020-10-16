@@ -10,6 +10,13 @@ type OptionSet struct {
 	TeamId   string   `json:"teamId"`
 }
 
+type Team struct {
+	Id          string `json:"id"`
+	Name string `json:"name"`
+	Changeable
+	Creatable
+}
+
 type Form struct {
 	Id          string `json:"id"`
 	Title       string `json:"title"`

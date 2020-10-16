@@ -63,6 +63,7 @@
             Dashboard
           </Link>
           <Link href="/folder" class={getClass('/folder')}>My Forms</Link>
+          <Link href="/team" class={getClass('/team')}>My Team</Link>
         </div>
       </div>
       <div class="hidden sm:ml-6 sm:flex sm:items-center">

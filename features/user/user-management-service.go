@@ -10,6 +10,7 @@ import (
 	"github.com/logicful/service/date"
 	"github.com/logicful/service/db"
 	"golang.org/x/crypto/bcrypt"
+	"google.golang.org/api/iterator"
 	"log"
 	"os"
 	"strings"
@@ -82,6 +83,27 @@ func ByEmail(email string) (models.User, error) {
 		return models.User{}, err
 	}
 	return user, nil
+}
+
+func ByTeam(user models.User) ([]models.User, error) {
+	iter := db.Instance().Collection("users").Where("TeamId", "==", user.TeamId).Documents(context.Background())
+	var results = make([]models.User, 0)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		result := models.User{}
+		err = db.Unmarshal(doc.Data(), &result)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	return results, nil
 }
 
 func Register(user models.User, isSocialLogin bool) (models.TokenResponse, error) {

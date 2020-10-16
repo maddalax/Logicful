@@ -18,6 +18,7 @@
   import { afterUpdate, onMount } from "svelte";
 import PricingPage from "./pages/pricing/PricingPage.svelte";
 import IndexPage from "./pages/IndexPage.svelte";
+import MyTeamPage from "./pages/team/MyTeamPage.svelte";
   let path = "";
 
 
@@ -41,13 +42,16 @@ import IndexPage from "./pages/IndexPage.svelte";
     <Route path="/">
       <IndexPage/>
     </Route>
+    <Route path="/team">
+      <Authenticate>
+        <MyTeamPage />
+      </Authenticate>
+    </Route>
     <Route path="/dashboard">
       <DashboardPage/>
     </Route>
     <Route path="/form/builder">
-      <Authenticate>
-        <FormBuilderPage />
-      </Authenticate>
+      <FormBuilderPage />
     </Route>
     <Route path="/form/create">
       <Authenticate>

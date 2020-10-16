@@ -30,12 +30,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix login bug">
+      <change afterPath="$PROJECT_DIR$/features/team/team-handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/team/team-service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/formsubmission/form-submission-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/formsubmission/form-submission-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormBuilder.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/FormBuilder.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/services/SaveForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/services/SaveForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/live/LiveForm.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/models/IForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/models/IForm.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/user/user-management-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/user/user-management-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Shell.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Shell.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/ShellSidebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/ShellSidebar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/MarketingNavbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/MarketingNavbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Navbar.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/folders/Folders.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +83,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/features/team" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -86,19 +92,19 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/frontend/app/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/features/workflow/integrations" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/dev/tables" />
-      <recent name="$PROJECT_DIR$/lambda/main/features/folder" />
-      <recent name="$PROJECT_DIR$/lambda/api/features/contentblock" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/app/public/assets" />
       <recent name="$PROJECT_DIR$/handler" />
       <recent name="$PROJECT_DIR$/features/formsubmission" />
       <recent name="$PROJECT_DIR$/features/formsubmission/cron" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/features/team" />
+      <recent name="$PROJECT_DIR$/features/workflow/integrations" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/dev/tables" />
+      <recent name="$PROJECT_DIR$/lambda/main/features/folder" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -376,53 +382,53 @@
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
     <state x="284" y="286" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1601667243394" />
-    <state width="1638" height="234" key="GridCell.Tab.0.bottom" timestamp="1602779015868">
+    <state width="1638" height="281" key="GridCell.Tab.0.bottom" timestamp="1602855570456">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="234" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602779015867" />
+    <state width="1638" height="281" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602855570456" />
     <state width="1741" height="324" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="234" key="GridCell.Tab.0.center" timestamp="1602779015866">
+    <state width="1638" height="281" key="GridCell.Tab.0.center" timestamp="1602855570455">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="234" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602779015866" />
+    <state width="1638" height="281" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602855570455" />
     <state width="1741" height="324" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="234" key="GridCell.Tab.0.left" timestamp="1602779015865">
+    <state width="1638" height="281" key="GridCell.Tab.0.left" timestamp="1602855570455">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="234" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602779015865" />
+    <state width="1638" height="281" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602855570455" />
     <state width="1741" height="324" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="234" key="GridCell.Tab.0.right" timestamp="1602779015867">
+    <state width="1638" height="281" key="GridCell.Tab.0.right" timestamp="1602855570456">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="234" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602779015867" />
+    <state width="1638" height="281" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602855570456" />
     <state width="1741" height="324" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="291" key="GridCell.Tab.1.bottom" timestamp="1602613415961">
+    <state width="1638" height="281" key="GridCell.Tab.1.bottom" timestamp="1602855280189">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="291" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602613415961" />
+    <state width="1638" height="281" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602855280189" />
     <state width="1701" height="331" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="291" key="GridCell.Tab.1.center" timestamp="1602613415961">
+    <state width="1638" height="281" key="GridCell.Tab.1.center" timestamp="1602855280188">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="291" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602613415961" />
+    <state width="1638" height="281" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602855280188" />
     <state width="1701" height="331" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="291" key="GridCell.Tab.1.left" timestamp="1602613415961">
+    <state width="1638" height="281" key="GridCell.Tab.1.left" timestamp="1602855280188">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="291" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602613415961" />
+    <state width="1638" height="281" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602855280188" />
     <state width="1701" height="331" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="291" key="GridCell.Tab.1.right" timestamp="1602613415961">
+    <state width="1638" height="281" key="GridCell.Tab.1.right" timestamp="1602855280189">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="291" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602613415961" />
+    <state width="1638" height="281" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602855280189" />
     <state width="1701" height="331" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
     <state width="1638" height="221" key="GridCell.Tab.2.bottom" timestamp="1601328740351">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -510,22 +516,22 @@
     <state x="798" y="589" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599227625167" />
     <state x="524" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.1027@0.23.1680.1027" timestamp="1602698731458" />
     <state x="798" y="589" width="380" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.2560.1413@0.27.2560.1413" timestamp="1601666323845" />
-    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1601137576222">
+    <state x="28" y="23" width="736" height="735" key="find.popup" timestamp="1602855425163">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="43" y="5" width="921" height="1002" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1597624676975" />
-    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1601137576222" />
+    <state x="28" y="23" width="736" height="735" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602855425163" />
     <state x="43" y="27" width="1122" height="1012" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599417095215" />
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog" timestamp="1600691570262">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="683" y="310" key="refactoring.ChangeSignatureDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1600691570262" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602851642191">
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup" timestamp="1602855664248">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="733" y="308" width="1021" height="216" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1599227698666" />
     <state x="412" y="216" width="670" height="158" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1597667660529" />
-    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602851642191" />
+    <state x="481" y="249" width="670" height="158" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1602855664248" />
     <state x="733" y="338" width="1021" height="219" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1601906340619" />
     <state x="590" y="455" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599438745324">
       <screen x="0" y="23" width="1680" height="1027" />

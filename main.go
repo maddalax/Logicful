@@ -8,6 +8,7 @@ import (
 	"api/features/formsubmission"
 	"api/features/optionset"
 	"api/features/s3store"
+	"api/features/team"
 	"api/features/user"
 	"api/features/workflow"
 	"api/handler"
@@ -46,6 +47,7 @@ func main() {
 	addSetS3Handlers(router)
 	addUserRoutes(router)
 	addEmailWebhookRoutes(router)
+	addTeamRoutes(router)
 	router.ServeFiles("/css/*filepath", http.Dir("public/css"))
 	router.ServeFiles("/js/*filepath", http.Dir("public/js"))
 	router.ServeFiles("/img/*filepath", http.Dir("public/img"))
@@ -123,6 +125,11 @@ func addUserRoutes(router *httprouter.Router) {
 	router.POST("/api/user/login", user.LoginHandler)
 	router.POST("/api/user/refresh", user.RefreshHandler)
 	router.POST("/api/user/login/google", user.LoginFromGoogleHandler)
+}
+
+func addTeamRoutes(router *httprouter.Router) {
+	router.GET("/api/team", team.TeamHandler)
+	router.GET("/api/team/members", team.MembersHandler)
 }
 
 func addEmailWebhookRoutes(router *httprouter.Router) {

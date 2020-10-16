@@ -2,10 +2,11 @@
   import AlphaBanner from "./AlphaBanner.svelte";
 
   import Navbar from "./layout/Navbar.svelte";
+  import type { SidebarOptions } from "./props/Props";
   import ShellSidebar from "./ShellSidebar.svelte";
 
   export let header: string = "";
-  export let sidebar: boolean = true;
+  export let sidebar: SidebarOptions = [];
   let open = false;
 </script>
 
@@ -13,10 +14,10 @@
 <Navbar />
 
 <div class="h-screen flex overflow-hidden bg-white">
-  {#if sidebar}
+  {#if sidebar.length > 0}
     <div class:sm:block={open} class:hidden={!open} class="md:block">
       <slot name="sidebar">
-        <ShellSidebar />
+        <ShellSidebar options={sidebar}/>
       </slot>
     </div>
   {/if}
