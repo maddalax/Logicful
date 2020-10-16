@@ -10,6 +10,15 @@ export async function saveForm(options: {
   if(!form) {
     form = formStore.getForm()
   }
+  if(form.id === 'demo') {
+    setTimeout(() => {
+      dispatch("form_saved", {
+        form,
+        options
+      })
+    }, 1000)
+    return;
+  }
   const clone = fastClone(form);
   removeValues(clone)
   await save(clone)

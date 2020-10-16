@@ -56,6 +56,10 @@ func Add(submission models.Submission) error {
 		return errors.New("formId is required on submission")
 	}
 
+	if submission.FormId == "demo" {
+		return errors.New("demo form may not be submitted")
+	}
+
 	submission.Id = uuid.New().String()
 
 	submission.CreationDate = date.ISO8601(time.Now())

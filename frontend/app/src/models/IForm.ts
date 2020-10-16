@@ -8,6 +8,8 @@ export type IForm = {
   enableLogic?: boolean;
   id?: string;
   changeDate?: string;
+  creationDate? : string;
+  createBy? : string;
   changeBy?: string;
   groups?: Group[];
   submissionCount?: number;

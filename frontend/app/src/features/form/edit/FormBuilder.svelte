@@ -36,7 +36,7 @@
       navigate("/form/create", { replace: true });
       return;
     }
-    demo = formId === 'demo';
+    demo = formId === "demo";
     try {
       await loadFromApi(formId);
 
@@ -60,7 +60,7 @@
       });
       saveToLocalStorage(form);
       startPreviewSaver();
-      addPlaceHolder()
+      addPlaceHolder();
     } finally {
       loadingActive = false;
     }
@@ -70,10 +70,87 @@
     if (!formId) {
       return;
     }
-    if(demo) {
-      return {fields : []}
+    if (demo) {
+      form = {
+        fields: [
+          {
+            id: "bbe7e84e-3099-4e68-8349-0acba49ce595",
+            type: "section-header",
+            name: "new-field-1squ",
+            label: "New Field nkjq",
+            selected: false,
+            helperText:
+              "This is a demo form that you can use to experiment with the editor. You will not be able to save the form in demo mode. You may still preview the live form by clicking the Preview button.",
+            header: "Demo Form",
+            updated: false,
+          },
+          {
+            id: "f3e0c82f-29a2-4f1c-b68e-a7c99c28c33e",
+            type: "section-header",
+            name: "new-field-0z4o",
+            label: "New Field 78oa",
+            selected: false,
+            helperText:
+              "We have added a few fields to get you started, feel free to delete them.",
+            header: "",
+            updated: true,
+          },
+          {
+            id: "c7bfb17d-7069-43cb-b9d1-f36dbb178733",
+            type: "string",
+            name: "new-field-8gj1",
+            label: "First Name",
+            selected: false,
+            updated: false,
+            required: true,
+            rows: 1,
+          },
+          {
+            id: "ccf6eff1-a153-469c-8c5d-f7a1f2d82bb8",
+            type: "file",
+            name: "new-field-k9ko",
+            label: "Your Resume",
+            selected: false,
+            updated: true,
+            required: true,
+          },
+          {
+            id: "dcbc8276-58c7-4fc8-87c2-34367853b5dd",
+            type: "checkbox-group",
+            name: "new-field-wfuy",
+            label: "How do you feel about cheese?",
+            selected: true,
+            options: [
+              "It is very good.",
+              "It is okay.",
+              "Ehh it could be better.",
+            ],
+            updated: true,
+            required: true,
+            includeOther: true,
+            helperText: "",
+          },
+        ],
+        id: "demo",
+        title: "My New Form",
+        description: "Your Form Description (Optional)",
+        changeDate: "2020-10-15T21:26:53Z",
+        changeBy: "maddox2",
+        creationDate: "2020-10-15T20:18:14Z",
+        createBy: "maddox2",
+        submissionCount: 5,
+        unreadSubmissions: 0,
+        folder: "42feae3b-3219-45c6-ac59-24a011a096e6",
+        workflow: {
+          integrations: [],
+        },
+        loaded: true,
+        initialized: true,
+        enableLogic: true,
+      };
+    } else {
+      form = await getApi(`form/${formId}`);
     }
-    form = await getApi(`form/${formId}`);
   }
 
   function removePlaceHolder() {
@@ -271,7 +348,6 @@
   });
 </script>
 
-
 <div>
   <ToastManager />
   {#if form == null || loadingActive}
@@ -293,7 +369,7 @@
             <DynamicForm form={dragForm} mode={DynamicFormMode.Preview} />
           </div>
         {:else}
-          <div >
+          <div>
             <DynamicForm {form} mode={DynamicFormMode.Preview} />
           </div>
         {/if}

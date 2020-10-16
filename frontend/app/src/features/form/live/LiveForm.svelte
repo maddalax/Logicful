@@ -17,7 +17,7 @@
   let state = LoadState.NotStarted;
   let uploadingFiles = false;
   let message: string;
-  let redirectUrl : string
+  let redirectUrl: string;
 
   subscribeFieldChange(onMount, (updatedField: IField) => {
     if (!form || !form.fields) {
@@ -62,7 +62,9 @@
   async function onSubmit() {
     state = LoadState.Loading;
     try {
-      await submitForm();
+      if (form.id !== "demo") {
+        await submitForm();
+      }
       state = LoadState.Finished;
       afterSubmission();
     } catch (ex) {
@@ -77,10 +79,11 @@
       const url = form.submissionConfig?.afterSubmitConfig?.url;
       if (url) {
         redirectUrl = url;
-        message = 'Thank you for your submission, you will be redirected in 5 seconds...'
+        message =
+          "Thank you for your submission, you will be redirected in 5 seconds...";
         setTimeout(() => {
           window.location.replace(url);
-        }, 5000)
+        }, 5000);
       }
     }
     if (form.submissionConfig?.afterSubmitAction?.["Show Message"]) {
@@ -113,9 +116,10 @@
           {@html message}
         </p>
         {#if redirectUrl}
-        <p class="text-base text-center text-gray-900">
-          Not redirecting? <a href={redirectUrl} class="text-indigo underline">Click here.</a>
-        </p>
+          <p class="text-base text-center text-gray-900">
+            Not redirecting? <a href={redirectUrl} class="text-indigo underline">Click
+              here.</a>
+          </p>
         {/if}
       </div>
     {:else}
