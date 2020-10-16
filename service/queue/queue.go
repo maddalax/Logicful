@@ -98,6 +98,7 @@ func Receive(subscription string, cb func([]byte) error) {
 		err = sub.Receive(context.Background(), func(ctx context.Context, message *pubsub.Message) {
 			err = cb(message.Data)
 			if err != nil {
+				println(err.Error())
 				message.Nack()
 				return
 			}

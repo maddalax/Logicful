@@ -113,7 +113,7 @@
       <div class="mb-2 flex flex-col space-y-2">
         <span class="inline-flex rounded-md shadow-sm">
           <Button type="primary" width="full" href="/form/create">
-            + New Form
+            + New Folder
           </Button>
         </span>
         <span class="inline-flex rounded-md shadow-sm">

@@ -23,6 +23,7 @@
   let loadingActive: boolean = false;
   let order = [];
   let dragForm: IForm | undefined;
+  let demo = false;
   let lastLength = 0;
   let dirty = false;
 
@@ -35,6 +36,7 @@
       navigate("/form/create", { replace: true });
       return;
     }
+    demo = formId === 'demo';
     try {
       await loadFromApi(formId);
 
@@ -58,7 +60,7 @@
       });
       saveToLocalStorage(form);
       startPreviewSaver();
-      //addPlaceHolder()
+      addPlaceHolder()
     } finally {
       loadingActive = false;
     }
@@ -67,6 +69,9 @@
   async function loadFromApi(formId: string) {
     if (!formId) {
       return;
+    }
+    if(demo) {
+      return {fields : []}
     }
     form = await getApi(`form/${formId}`);
   }

@@ -28,12 +28,14 @@ func sendSubmissionEmail(integration models.Integration) error {
 	if err != nil {
 		return err
 	}
-	if os.Getenv("SEND_EMAILS") == "true" {
+	var sendEmails = os.Getenv("SEND_EMAILS")
+	if strings.ToLower(sendEmails) == "true" {
 		to := integration.Config["email"]
 		test := os.Getenv("TEST_EMAIL_RECEIVER")
 		if test != "" {
 			to = test
 		}
+		println("sending_submission_email to" + to)
 		var domain = os.Getenv("ROOT_DOMAIN")
 		err = emailer.Send(emailer.Email{
 			To:       to,
