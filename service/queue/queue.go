@@ -61,6 +61,7 @@ func setupSubscription(topic string, subscriber string) {
 	if !exists {
 		_, err := client.CreateSubscription(context.Background(), subscriber, pubsub.SubscriptionConfig{
 			Topic: GetTopic(topic),
+
 		})
 		if err != nil {
 			panic(err)
@@ -98,7 +99,7 @@ func Receive(subscription string, cb func([]byte) error) {
 		err = sub.Receive(context.Background(), func(ctx context.Context, message *pubsub.Message) {
 			err = cb(message.Data)
 			if err != nil {
-				println(err.Error())
+				println("Queue error " + subscription + " " + err.Error())
 				message.Nack()
 				return
 			}

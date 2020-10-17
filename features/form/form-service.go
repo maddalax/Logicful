@@ -29,11 +29,11 @@ func Set(form models.Form, user models.User) (models.Form, error) {
 
 	if form.CreationDate == "" {
 		form.CreationDate = date.ISO8601(time.Now())
-		form.CreateBy = "maddox2"
+		form.CreateBy = user.DisplayName
 	}
 
 	form.ChangeDate = date.ISO8601(time.Now())
-	form.ChangeBy = "maddox2"
+	form.ChangeBy = user.DisplayName
 
 	_, err := db.Instance().Collection("forms").Doc(form.Id).Set(context.Background(), form)
 

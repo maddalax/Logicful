@@ -7,6 +7,7 @@
 
   export let header: string = "";
   export let sidebar: SidebarOptions = [];
+  export let showSidebar: boolean = false;
   let open = false;
 </script>
 
@@ -14,7 +15,7 @@
 <Navbar />
 
 <div class="h-screen flex overflow-hidden bg-white">
-  {#if sidebar.length > 0}
+  {#if sidebar.length > 0 || showSidebar}
     <div class:sm:block={open} class:hidden={!open} class="md:block">
       <slot name="sidebar">
         <ShellSidebar options={sidebar}/>

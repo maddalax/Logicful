@@ -77,7 +77,7 @@ func DeleteHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 	if !httpextensions.ReadJson(&ids, w, r) {
 		return
 	}
-	err := Delete(ids, ps.ByName("formId"))
+	err := Delete(ids, ps.ByName("formId"), handler.User(r))
 	if err != nil {
 		httpextensions.WriteError(w, err)
 		return

@@ -6,7 +6,7 @@ import { postApi } from '@app/services/ApiService'
 import type { IForm } from '@app/models/IForm'
 import { dispatch } from '@app/event/EventBus'
 
-const excluded = ['block']
+export const SubmissionExcludedFields = ['block', 'section-header', 'spacer', 'placeholder']
 
 export async function submitForm() {
   const form = formStore.getForm();
@@ -67,7 +67,7 @@ export async function submitForm() {
     if (f.name == null) {
       return
     }
-    if (excluded.includes(f.type)) {
+    if (SubmissionExcludedFields.includes(f.type)) {
       return
     }
     results[f.name] = f.value ?? f.defaultValue ?? null

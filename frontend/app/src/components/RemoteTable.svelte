@@ -13,11 +13,11 @@
   import Dialog from "@app/components/layout/Dialog.svelte";
   import { isObject } from "@app/guards/Guard";
   import type { Dictionary } from "@app/models/Utility";
-import Button from "./Button.svelte";
+  import Button from "./Button.svelte";
   export let getRows: () => Promise<TableRow[]>;
   export let defaultSortColumn = "";
   export let searchPlaceHolder: string = "Search";
-  export let columnMeta: { [key: string]: { type: string } } = {};
+  export let columnMeta: { [key: string]: { type: any } } = {};
 
   let id: string = "";
   let rows: TableRow[] = [];
@@ -147,6 +147,7 @@ import Button from "./Button.svelte";
       if (defaultSortColumn) {
         sortColumn(defaultSortColumn);
       }
+      setWidths();
     } catch (ex) {
       console.error(ex);
       state = LoadState.Failed;
@@ -198,7 +199,7 @@ import Button from "./Button.svelte";
 
   function headerStyle(column: string) {
     if (widths[column]) {
-      return "width: " + widths[column] + "px;";
+      return "min-width: " + widths[column] + "px;";
     }
   }
 
@@ -207,13 +208,15 @@ import Button from "./Button.svelte";
     widths = {};
     values.forEach((value) => {
       columns.forEach((c) => {
+       
         const v = value[c];
         let width = getTextWidth(v, "");
-        if (width < 150) {
-          width = 150;
+      
+        if (width < 200) {
+          width = 200;
         }
-        if (width > 400) {
-          width = 400;
+        if (width > 600) {
+          width = 600;
         }
         if ((widths[c] ?? 0) < width) {
           widths[c] = width;
@@ -311,11 +314,6 @@ import Button from "./Button.svelte";
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
-
-  td {
-    max-width: 500px;
-    width: 500px !important;
-  }
 </style>
 
 <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
@@ -373,7 +371,9 @@ import Button from "./Button.svelte";
           {#each headerActions as action}
             <div>
               <div class="text-gray-700 text-center px-4 py-2 m-2">
-                <Button type="primary" onClick={action.onClick}>{action.label}</Button>
+                <Button type="primary" onClick={action.onClick}>
+                  {action.label}
+                </Button>
               </div>
             </div>
           {/each}
@@ -418,7 +418,8 @@ import Button from "./Button.svelte";
           </div>
         </span>
 
-        <span
+        <slot name="selected_actions">
+          <span
           class="ml-3 pl-2 inline-flex rounded-md cursor-pointer"
           on:click={() => markRead(true)}>
           <svg
@@ -473,6 +474,7 @@ import Button from "./Button.svelte";
               d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
           </svg>
         </span>
+        </slot>
       </div>
     {/if}
     <span
@@ -496,15 +498,15 @@ import Button from "./Button.svelte";
 
 <div class="flex flex-col">
   <div class="-my-2 overflow-x-scroll sm:-mx-6 lg:-mx-8">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+    <div class="py-2 align-middle inline-block sm:px-6 lg:px-8">
       <div
         class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+        <table class="divide-y divide-gray-200">
           <thead>
             <tr>
               <th
                 class="px-6 py-3 bg-gray-50 text-left text-xs leading-4
-                  font-medium text-gray-500 uppercase tracking-wider">
+                  font-medium text-gray-500 uppercase tracking-wider w-2">
                 <div>
                   <input
                     class="form-checkbox h-4 w-4 text-indigo-600 transition
@@ -572,7 +574,7 @@ import Button from "./Button.svelte";
                   }}>
                   <td
                     class:bg-cool-gray-50={!isUnread(row)}
-                    class="px-6 py-3 max-w-0 w-full whitespace-no-wrap text-sm
+                    class="px-6 py-3 text-sm
                       leading-5 font-medium text-gray-900">
                     <div class="flex items-center space-x-3">
                       <a href="#" class="truncate hover:text-gray-600">
@@ -660,15 +662,17 @@ import Button from "./Button.svelte";
     {/each}
   </Dialog>
 {:else if modal === 'delete'}
-  <Dialog
-    title={'Confirm Deletion'}
-    isOpen={true}
-    actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
-    onClose={() => {
-      modal = '';
-    }}>
-    <p>Are you sure you want to delete {selectedCount} entries?</p>
-  </Dialog>
+  <slot name="delete_entries">
+    <Dialog
+      title={'Confirm Deletion'}
+      isOpen={true}
+      actions={[{ label: `Delete ${selectedCount} Entries`, type: 'danger', onClick: deleteEntries }, { label: 'Cancel', type: 'secondary' }]}
+      onClose={() => {
+        modal = '';
+      }}>
+      <p>Are you sure you want to delete {selectedCount} entries?</p>
+    </Dialog>
+  </slot>
 {:else if modal === 'filter'}
   <Dialog
     title={'Manage Filters'}

@@ -4,4 +4,6 @@ export interface User {
   email: string;
   teamId: string;
   id: string;
+  creationDate: string
+  lastActive : string
 }

@@ -2,7 +2,7 @@
   import { afterUpdate, onMount } from "svelte";
   import type { ButtonAction } from "@app/components/models/ComponentProps";
   import Button from "../Button.svelte";
-import { dispatch } from "@app/event/EventBus";
+  import { dispatch } from "@app/event/EventBus";
 
   export let title: string = "";
   export let isOpen: boolean = false;
@@ -16,7 +16,7 @@ import { dispatch } from "@app/event/EventBus";
   let error = "";
 
   onMount(() => {
-    dispatch("modal_open", {})
+    dispatch("modal_open", {});
     actions = getActions?.() ?? actions;
     setTimeout(() => {
       loaded = true;
@@ -34,7 +34,7 @@ import { dispatch } from "@app/event/EventBus";
     if (!isOpen || !loaded) {
       return;
     }
-    dispatch("modal_close", {})
+    dispatch("modal_close", {});
     isOpen = false;
     loaded = false;
     await onClose?.();
@@ -59,13 +59,15 @@ import { dispatch } from "@app/event/EventBus";
     }
   }
 
-  function buttonClass(isLast : boolean) {
-    return !isLast ? 'flex w-full rounded-md shadow-sm sm:w-auto' : 'mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:w-auto'
+  function buttonClass(isLast: boolean) {
+    return !isLast
+      ? "flex w-full rounded-md shadow-sm sm:w-auto"
+      : "mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:w-auto";
   }
 </script>
 
 {#if isOpen}
-  <div class="fixed z-50 inset-0 overflow-y-auto min-w-half">
+  <div class="fixed z-50 inset-0 overflow-y-auto w-auto min-w-96">
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20
         text-center sm:block sm:p-0">
@@ -74,11 +76,10 @@ import { dispatch } from "@app/event/EventBus";
       </div>
 
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen min-w-" />&#8203;
-    
       <div
         class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4
           text-left overflow-hidden shadow-xl transform transition-all sm:my-8
-          sm:align-middle md:w-96 sm:p-6 max-w-screen-lg"
+          sm:align-middle w-auto sm:p-6 max-w-screen-lg min-w-96"
         role="dialog"
         on:click|stopPropagation
         aria-modal="true"
@@ -104,7 +105,6 @@ import { dispatch } from "@app/event/EventBus";
           </button>
         </div>
         <div class="sm:flex sm:items-start w-full">
-      
           <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
             <h3
               class="text-lg leading-6 font-medium text-gray-900"
@@ -161,7 +161,4 @@ import { dispatch } from "@app/event/EventBus";
   </div>
 {/if}
 
-
-
 <svelte:body on:click={close} />
-

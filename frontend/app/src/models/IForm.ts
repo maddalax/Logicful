@@ -22,6 +22,11 @@ export type IForm = {
   submissionConfig: SubmissionConfig;
 };
 
+export type Team = {
+  id : string
+  name : string
+}
+
 export type SubmissionConfig = {
   afterSubmitAction: any;
   afterSubmitConfig: any;

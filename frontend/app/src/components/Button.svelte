@@ -70,9 +70,9 @@
     bind:this={focusable}
     on:click|stopPropagation={onClick}
     class={`inline-flex justify-center w-full rounded-md border
-      border-transparent py-2 bg-indigo-600 font-medium
-      text-white shadow-sm hover:bg-indigo-500 focus:outline-none
-      focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out
+      border-transparent py-2 bg-red-600 font-medium
+      text-white shadow-sm hover:bg-red-500 focus:outline-none
+      focus:border-red-700 focus:shadow-outline-indigo transition ease-in-out
       duration-150 sm:text-sm sm:leading-5 ${sizeClass}`}>
     <slot />
   </button>

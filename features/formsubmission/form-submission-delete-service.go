@@ -1,57 +1,49 @@
 package formsubmission
 
 import (
+	"api/features/form"
+	"cloud.google.com/go/firestore"
+	"context"
 	"errors"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/logicful/models"
 	"github.com/logicful/service/db"
 )
 
-var instance = db.New()
+func Delete(ids []string, formId string, user models.User) error {
 
-func Delete(ids []string, formId string) error {
+	f, err := form.Get(formId)
+
+	if err != nil {
+		return err
+	}
+
+	if f.TeamId != user.TeamId {
+		return errors.New("you do not have access to this form")
+	}
 
 	if len(ids) == 0 {
 		return nil
 	}
 
-	if len(ids) > 100 {
-		return errors.New("you may only delete up to 100 entries in a single request")
+	if len(ids) > 450 {
+		return errors.New("you may only delete up to 450 entries in a single request")
 	}
 
-	for _, id := range ids {
-		_, err := instance.UpdateItem(&dynamodb.UpdateItemInput{
-			TableName: aws.String(db.Data()),
-			Key: map[string]*dynamodb.AttributeValue{
-				"PK": {
-					S: aws.String("FORM#" + formId),
-				},
-				"SK": {
-					S: aws.String("SUBMISSION#" + id),
-				},
-			},
-			UpdateExpression: aws.String("SET #status = :status, #newSubmissionKey = :newSubmissionKey, #submissionFormId = :formId, #formId = :formId"),
-			ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-				":formId": {
-					S: aws.String(formId),
-				},
-				":newSubmissionKey": {
-					S: aws.String(id),
-				},
-				":status": {
-					S: aws.String("deleted"),
-				},
-			},
-			ExpressionAttributeNames: map[string]*string{
-				"#formId":           aws.String("FormId"),
-				"#submissionFormId": aws.String("SubmissionFormId"),
-				"#newSubmissionKey": aws.String("NewSubmissionKey"),
-				"#status":           aws.String("Status"),
-			},
-		})
+	var instance = db.Instance()
+	var batch = instance.Batch()
+	for i := range ids {
+		iter := instance.Collection("submissions").Where("FormId", "==", formId).Where("Id", "==", ids[i]).Limit(1).Documents(context.Background())
+		doc, err := iter.Next()
 		if err != nil {
-			return err
+			continue
 		}
+		batch.Set(doc.Ref, map[string]interface{}{
+			"Status": "deleted",
+		}, firestore.MergeAll)
+	}
+	_, err = batch.Commit(context.Background())
+	if err != nil {
+		return err
 	}
 	return nil
 }

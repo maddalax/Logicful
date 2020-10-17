@@ -34,8 +34,6 @@ import MyTeamPage from "./pages/team/MyTeamPage.svelte";
   ];
 </script>
 
-
-
 <!-- App.svelte -->
 <Router>
   <div>

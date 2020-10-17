@@ -33,7 +33,10 @@ module.exports = {
         },
         '.w-vw-85': {
           width: '85vw'
-        }
+        },
+        '.min-w-96': {
+          minWidth: '24rem'
+        },
       }
       addComponents(widths)
     })

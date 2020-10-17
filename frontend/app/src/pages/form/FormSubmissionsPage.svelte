@@ -57,6 +57,7 @@
   import { fastClone } from "@app/util/Compare";
   import type { Dictionary } from "@app/models/Utility";
   import Shell from "@app/components/Shell.svelte";
+import { SubmissionExcludedFields } from "@app/features/form/live/service/SubmitForm";
 
   export let formId = "";
   export let form: IForm | undefined = undefined;
@@ -129,9 +130,7 @@
             }
           }
         });
-        d.details["Submission Date"] = new Date(
-          d.creationDate
-        ).toLocaleString();
+        d.details["Submission Date"] = new Date(d.creationDate).toLocaleString();
         d.details["submission_id"] = d.id;
         d.details["full_submission_data"] = JSON.stringify(d);
         d.details["meta_unread"] = d.isUnread;
@@ -140,12 +139,24 @@
   }
 
   function sortColumns(columns: string[]) {
-    return columns.sort((a, b) => {
-      return (
-        form!.fields.findIndex((f) => f.label === a) -
-        form!.fields.findIndex((f) => f.label === b)
-      );
+    const used = new Set<string>();
+    const results : string[] = [];
+    results.push("Submission Date");
+    used.add("Submission Date")
+    form!.fields.forEach(f => {
+      if(SubmissionExcludedFields.includes(f.type)) {
+        return;
+      }
+      results.push(f.label!);
+      used.add(f.label!);
     });
+    columns.forEach(c => {
+      if(!used.has(c)) {
+        results.push(c);
+        hidden.add(c);
+      }
+    })
+    return results;
   }
 
   function onRowClick(row: any) {
@@ -209,11 +220,11 @@
   }
 </script>
 
-<Shell header="Form Submissions" sidebar={false}>
+<Shell header="Form Submissions">
   <RemoteTable
     defaultSortColumn={'Submission Date'}
     searchPlaceHolder={'Search Anything...'}
-    columnMeta={{ 'Submission Date': { type: 'date' } }}
+    columnMeta={{ 'Submission Date': { type: 'date' }}}
     {getRows}
     {sortColumns}
     {onDelete}
@@ -226,10 +237,8 @@
 {#if preview && form}
   <Dialog
     isOpen={true}
-    width={'960px'}
     title={`Viewing Submission Details`}
     onClose={async () => {
-      console.log('closed');
       preview = undefined;
       await tick();
     }}>
