@@ -47,7 +47,7 @@ import Dialog from "@app/components/layout/Dialog.svelte";
     </div>
   </div>
 
-  <div class="pt-8">
+  <div class="pt-8 w-full">
     <RemoteTable {getRows}>
         <div slot="selected_actions" class="ml-3">
             <Button type="secondary" size="small" onClick={() => removing = true}>Remove Member(s)</Button>
