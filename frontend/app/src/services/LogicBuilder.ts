@@ -3,6 +3,8 @@ import type { IField } from "../models/IField";
 import formStore from "../store/FormStore";
 import { nullOrEmpty } from "@app/util/Compare";
 import { isLabelValue } from "@app/guards/Guard";
+import type { Dictionary } from "@app/models/Utility";
+import { DateTime } from "luxon";
 
 export class LogicBuilder {
   evaluate(field: IField): boolean {
@@ -115,6 +117,22 @@ export class LogicBuilder {
         return this.isFileExtension(value, rule);
       case "isNotFileExtension":
         return !this.isFileExtension(value, rule);
+      case "hasValueChecked":
+        return this.hasValueChecked(value, rule);
+      case "notHasValueChecked":
+        return !this.hasValueChecked(value, rule);
+      case "noValuesChecked":
+        return this.hasNoValuesChecked(value, rule);
+      case "dateIsBetween":
+        return this.dateIsBetween(value, rule);
+      case "dateIsNotBetween":
+        return !this.dateIsBetween(value, rule);
+      case "dateIsBefore":
+        return this.dateIsBefore(value, rule);
+      case "dateIsAfter":
+        return this.dateIsAfter(value, rule);
+      case "isWithinXDays":
+        return this.dateIsWithinXDays(value, rule);
       default:
         return false;
     }
@@ -122,6 +140,51 @@ export class LogicBuilder {
 
   private hasValue(value: any): boolean {
     return value != null && value != "";
+  }
+
+  private dateIsBetween(value: any, rule: LogicRule): boolean {
+    const min = rule.value.min;
+    const max = rule.value.max;
+    if(min && max) {
+      return value >= min && value <= max;
+    }
+    if(min) {
+      return value >= min;
+    }
+    if(max) {
+      return value <= max;
+    }
+    return false;
+  }
+
+  private dateIsAfter(value: any, rule: LogicRule): boolean {
+    return value > rule.value;
+  }
+
+  private dateIsWithinXDays(value: any, rule: LogicRule): boolean {
+    try {
+      const days = parseInt(rule.value, 10);
+      const valueAsDate = DateTime.fromMillis(value);
+      const diff = parseInt(valueAsDate.diffNow('days').days.toFixed(0), 10);
+      return diff <= days && diff >= 0;
+    } catch(ex) {
+      return false;
+    }
+  }
+
+  private dateIsBefore(value: any, rule: LogicRule): boolean {
+    return value < rule.value;
+  }
+
+  private hasValueChecked(value: Dictionary<string>, rule: LogicRule): boolean {
+    return Object.keys(value).includes(rule.value);
+  }
+
+  private hasNoValuesChecked(
+    value: Dictionary<string>,
+    rule: LogicRule
+  ): boolean {
+    return Object.keys(value).length === 0;
   }
 
   private isFileExtension(value: any, rule: LogicRule): boolean {

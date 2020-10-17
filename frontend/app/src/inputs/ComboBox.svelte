@@ -35,7 +35,7 @@
     setup();
   });
 
-  subscribeComponent("combobox_get_options", (props) => {
+  subscribeComponent("get_options", (props) => {
     if (props.id === field.id) {
       return options;
     }

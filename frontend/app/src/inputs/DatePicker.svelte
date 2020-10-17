@@ -27,7 +27,11 @@
         setTimeRange(field);
       }
       if (newField.value) {
-        value = DateTime.fromMillis(newField.value);
+        try {
+          value = DateTime.fromMillis(newField.value);
+        } catch (ex) {
+          value = undefined;
+        }
       } else {
         value = undefined;
       }
@@ -78,8 +82,12 @@
     }, 300);
 
     if (field.value) {
-      value = DateTime.fromMillis(field.value);
-      setDateAndTime();
+      try {
+        value = DateTime.fromMillis(field.value);
+        setDateAndTime();
+      } catch (ex) {
+        
+      }
     } else {
       value = undefined;
     }

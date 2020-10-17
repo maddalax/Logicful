@@ -51,7 +51,7 @@ export class FormStore {
     field: IField,
     change: FieldChange = { field: "", value: "", fromUser: false }
   ) {
-    console.log("formstore_set", field, change);
+    console.info("formstore_set", field, change);
     if (field.configTarget === "form") {
       const isSame = fastEquals(configStore[field.id], field);
 

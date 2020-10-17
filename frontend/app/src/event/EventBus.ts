@@ -72,7 +72,7 @@ export async function dispatchPrivate(id: string, event: string, payload: any) {
 }
 
 export function dispatchSingle<T>(event: string, payload: any): T {
-  const result = dispatchSync(event, payload)[0] as T;
+  const result = dispatchSync(event, payload)?.filter(r => r)[0] as T;
   console.debug("dispatch_event_single", event, payload, result);
   return result;
 }

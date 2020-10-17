@@ -5,6 +5,7 @@
   import { onMount } from "svelte";
   import formStore from "@app/store/FormStore";
   import { debounce } from "@app/util/Debounce";
+import { subscribeComponent } from "@app/event/EventBus";
 
   export let field: IField;
   export let value: { [key: string]: string } = {};
@@ -19,6 +20,12 @@
         return;
       }
       otherText = value.other ?? "";
+    }
+  });
+
+  subscribeComponent("get_options", (props) => {
+    if (props.id === field.id) {
+      return field.options;
     }
   });
 

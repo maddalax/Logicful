@@ -4,7 +4,7 @@
   import { afterUpdate, onMount } from "svelte";
   import type { UserToken } from "@app/services/AuthService";
   import Button from "@app/components/Button.svelte";
-import LogoFull from "@app/components/LogoFull.svelte";
+  import LogoFull from "@app/components/LogoFull.svelte";
 
   let email = "";
   let password = "";
@@ -49,7 +49,7 @@ import LogoFull from "@app/components/LogoFull.svelte";
       if (result.token) {
         setToken(result, remember);
         const redirect = sessionStorage.getItem("redirect_after_login");
-        if(redirect) {
+        if (redirect) {
           window.location.replace(redirect);
         } else {
           window.location.replace("/dashboard");

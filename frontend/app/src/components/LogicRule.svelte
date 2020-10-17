@@ -100,9 +100,10 @@
     if (!id) {
       return Promise.resolve([]);
     }
-    return dispatchSingle("combobox_get_options", {
+    const options = dispatchSingle("get_options", {
       id,
     });
+    return options as any;
   }
 
   function conditions(index: number): LogicConditional[] {
@@ -159,6 +160,35 @@
         },
       ];
     }
+    if (targetField.type === "date") {
+      return [
+        {
+          label: "Is Within N Days Of Current Date",
+          value: "isWithinXDays",
+          valueInput: "number",
+        },
+        {
+          label: "Is After Date",
+          value: "dateIsAfter",
+          valueInput: "date",
+        },
+        {
+          label: "Is Before Date",
+          value: "dateIsBefore",
+          valueInput: "date",
+        },
+        {
+          label: "Is Between Dates",
+          value: "dateIsBetween",
+          valueInput: "date-between",
+        },
+        {
+          label: "Is Not Between Dates",
+          value: "dateIsNotBetween",
+          valueInput: "date-between",
+        },
+      ];
+    }
     if (targetField.type === "switch") {
       return [
         {
@@ -168,6 +198,46 @@
         {
           label: "Is Not Toggled",
           value: "isFalse",
+        },
+      ];
+    }
+    if (targetField.type === "checkbox-group") {
+      return [
+        {
+          label: "Has Value Checked",
+          value: "hasValueChecked",
+          valueInput: "checkbox-group",
+          options: loadOptions,
+        },
+        {
+          label: "Does Not Have Value Checked",
+          value: "notHasValueChecked",
+          valueInput: "checkbox-group",
+          options: loadOptions,
+        },
+        {
+          label: "Has No Values Checked",
+          value: "noValuesChecked",
+        },
+      ];
+    }
+    if (targetField.type === "radio-group") {
+      return [
+        {
+          label: "Has Value Selected",
+          value: "hasValueChecked",
+          valueInput: "radio-group",
+          options: loadOptions,
+        },
+        {
+          label: "Does Not Have Value Selected",
+          value: "notHasValueChecked",
+          valueInput: "radio-group",
+          options: loadOptions,
+        },
+        {
+          label: "Has No Values Selected",
+          value: "noValuesChecked",
         },
       ];
     }
@@ -280,6 +350,23 @@
               {:else if options[i].valueType === 'combobox'}
                 <ConfigField
                   field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
+              {:else if options[i].valueType === 'checkbox-group'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
+              {:else if options[i].valueType === 'radio-group'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Provide Value For Conditional', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'combobox', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id, options: { type: 'local', value: options[i].options } }} />
+              {:else if options[i].valueType === 'date'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, showDate: true, showTime: true, placeholder: options[i].placeholder, label: 'Afer Date', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'date', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
+              {:else if options[i].valueType === 'date-between'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, showDate: true, showTime: true, placeholder: options[i].placeholder, label: 'Minimum Date', value: { type: 'local', value: field.logic?.rules?.[i]?.value.min }, type: 'date', required: true, configFieldTarget: `logic.rules[${i}].value.min`, configTarget: field.id }} />
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, showDate: true, showTime: true, placeholder: options[i].placeholder, label: 'Maximum Date', value: { type: 'local', value: field.logic?.rules?.[i]?.value.max }, type: 'date', required: true, configFieldTarget: `logic.rules[${i}].value.max`, configTarget: field.id }} />
+              {:else if options[i].valueType === 'number'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Number of Days', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'number', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
               {/if}
             {/if}
           </div>
