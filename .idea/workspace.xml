@@ -30,21 +30,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="team updates">
-      <change afterPath="$PROJECT_DIR$/features/team/team-invite-processor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/team/team-handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/team/team-handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/team/team-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/team/team-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/user/user-management-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/features/user/user-management-service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/AppRouter.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/RemoteTable.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Repeater.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Repeater.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/layout/Dialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/layout/Dialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/team/TeamDetails.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/team/TeamDetails.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/forms.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/forms.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/requests.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/requests.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/queue/queue.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/queue/queue.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/components/Authenticate.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/Authenticate.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/account/LoginPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/account/LoginPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/team/AcceptTeamInvite.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/team/AcceptTeamInvite.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/commons.89335ae8530a1680413f.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/commons.6d750ec35ba58c423f90.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/commons.6d750ec35ba58c423f90.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/common/index-8b5289af.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/import-map.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/import-map.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte-routing.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte-routing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte/internal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte/internal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/web_modules/svelte/transition.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/web_modules/svelte/transition.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,53 +388,53 @@
     </state>
     <state x="284" y="261" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1599225640143" />
     <state x="284" y="286" width="424" height="495" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1601667243394" />
-    <state width="1638" height="241" key="GridCell.Tab.0.bottom" timestamp="1602954434893">
+    <state width="1638" height="241" key="GridCell.Tab.0.bottom" timestamp="1602954591215">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="241" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434893" />
+    <state width="1638" height="241" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591215" />
     <state width="1741" height="324" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="241" key="GridCell.Tab.0.center" timestamp="1602954434892">
+    <state width="1638" height="241" key="GridCell.Tab.0.center" timestamp="1602954591212">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="241" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434892" />
+    <state width="1638" height="241" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591212" />
     <state width="1741" height="324" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="241" key="GridCell.Tab.0.left" timestamp="1602954434892">
+    <state width="1638" height="241" key="GridCell.Tab.0.left" timestamp="1602954591211">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1597667272477" />
-    <state width="1638" height="241" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434892" />
+    <state width="1638" height="241" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591211" />
     <state width="1741" height="324" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="241" key="GridCell.Tab.0.right" timestamp="1602954434893">
+    <state width="1638" height="241" key="GridCell.Tab.0.right" timestamp="1602954591213">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1581" height="309" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599225751918" />
     <state width="1375" height="213" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1597667272478" />
-    <state width="1638" height="241" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434893" />
+    <state width="1638" height="241" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591213" />
     <state width="1741" height="324" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601906347834" />
-    <state width="1638" height="241" key="GridCell.Tab.1.bottom" timestamp="1602954434759">
+    <state width="1638" height="241" key="GridCell.Tab.1.bottom" timestamp="1602954591079">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="241" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434759" />
+    <state width="1638" height="241" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591079" />
     <state width="1701" height="331" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="241" key="GridCell.Tab.1.center" timestamp="1602954434758">
+    <state width="1638" height="241" key="GridCell.Tab.1.center" timestamp="1602954591079">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="241" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434758" />
+    <state width="1638" height="241" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591079" />
     <state width="1701" height="331" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="241" key="GridCell.Tab.1.left" timestamp="1602954434758">
+    <state width="1638" height="241" key="GridCell.Tab.1.left" timestamp="1602954591078">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="241" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434758" />
+    <state width="1638" height="241" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591078" />
     <state width="1701" height="331" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
-    <state width="1638" height="241" key="GridCell.Tab.1.right" timestamp="1602954434759">
+    <state width="1638" height="241" key="GridCell.Tab.1.right" timestamp="1602954591079">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="241" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602954434759" />
+    <state width="1638" height="241" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1602954591079" />
     <state width="1701" height="331" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1601753637431" />
     <state width="1638" height="221" key="GridCell.Tab.2.bottom" timestamp="1601328740351">
       <screen x="0" y="23" width="1680" height="1027" />

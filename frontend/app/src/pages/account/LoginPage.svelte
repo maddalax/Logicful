@@ -48,7 +48,12 @@ import LogoFull from "@app/components/LogoFull.svelte";
       const result = await postApi<UserToken>(endpoint, body);
       if (result.token) {
         setToken(result, remember);
-        window.location.replace("/dashboard");
+        const redirect = sessionStorage.getItem("redirect_after_login");
+        if(redirect) {
+          window.location.replace(redirect);
+        } else {
+          window.location.replace("/dashboard");
+        }
       } else {
         error = "Failed to login, unknown response from server.";
       }

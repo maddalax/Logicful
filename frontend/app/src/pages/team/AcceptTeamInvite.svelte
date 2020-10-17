@@ -15,6 +15,7 @@
     {
       label: "Logout Now",
       onClick: () => {
+        sessionStorage.setItem("redirect_after_login", "/team")
         window.location.replace("/account/logout");
       },
       type: "primary",
