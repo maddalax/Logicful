@@ -1,17 +1,21 @@
 <script lang="typescript">
   import Button from "@app/components/Button.svelte";
-import Dialog from "@app/components/layout/Dialog.svelte";
+  import Dialog from "@app/components/layout/Dialog.svelte";
   import RemoteTable from "@app/components/RemoteTable.svelte";
   import type { Team } from "@app/models/IForm";
   import type { User } from "@app/models/User";
   import { getApi } from "@app/services/ApiService";
   import { onMount } from "svelte";
+import AddMembers from "./AddMembers.svelte";
+  import RemoveMembers from "./RemoveMembers.svelte";
 
   let team: Team;
-  let removing: boolean
+  let dialog : 'removing' | 'adding' | '' = '';
+  let hidden: Set<string>;
 
   onMount(async () => {
     team = await getApi("team");
+    hidden = new Set(["userId"]);
   });
 
   async function getRows() {
@@ -22,6 +26,7 @@ import Dialog from "@app/components/layout/Dialog.svelte";
         Name: u.fullName,
         "Register Date": u.creationDate,
         "Last Online": u.lastActive,
+        userId: u.id,
       };
     });
   }
@@ -39,25 +44,29 @@ import Dialog from "@app/components/layout/Dialog.svelte";
     </div>
     <div class="ml-4 mt-4 flex-shrink-0">
       <span class="inline-flex rounded-md shadow-sm">
-        <Button type="primary">Add Member</Button>
-        <div class="ml-2"> 
-            <Button type="secondary">Leave Team</Button>
+        <Button type="primary" onClick={() => dialog = 'adding'}>Add Member</Button>
+        <div class="ml-2">
+          <Button type="secondary">Leave Team</Button>
         </div>
       </span>
     </div>
   </div>
 
   <div class="pt-8 w-full">
-    <RemoteTable {getRows}>
-        <div slot="selected_actions" class="ml-3">
-            <Button type="secondary" size="small" onClick={() => removing = true}>Remove Member(s)</Button>
-        </div>
+    <RemoteTable {getRows} {hidden}>
+      <div slot="selected_actions" class="ml-3">
+        <Button type="secondary" size="small" onClick={() => (dialog = 'removing')}>
+          Remove Member(s)
+        </Button>
+      </div>
     </RemoteTable>
   </div>
 </div>
 
-{#if removing}
-    <Dialog isOpen={true} title={"Are you sure you want to remove selected teammates?"}>
+{#if dialog === 'removing'}
+  <RemoveMembers {team} onClose={() => (dialog = '')} />
+{/if}
 
-    </Dialog>
+{#if dialog === 'adding'}
+  <AddMembers {team} onClose={() => (dialog = '')} />
 {/if}

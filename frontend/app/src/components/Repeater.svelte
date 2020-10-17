@@ -4,8 +4,10 @@
   import { onMount } from "svelte";
   export let onChange: (data: LabelValue[] | string[]) => any;
   export let helperText: string = "";
+  export let placeholder: string = "Option";
   export let onlyLabel: boolean = false;
   export let label: string = "Options";
+  export let inputType: string = "text";
   export let options: LabelValue[] = [
     {
       label: "",
@@ -57,13 +59,23 @@
     <div class="flex pb-1">
       <div class="flex-initial pr-2 w-10/12">
         <div class="mt-1 relative rounded-md shadow-sm">
-          <input
-            class="form-input block w-full sm:text-sm sm:leading-5"
-            name="display"
-            type="text"
-            on:blur={() => onRepeaterChange(true)}
-            bind:value={option.label}
-            placeholder={'Option'} />
+          {#if inputType === 'email'}
+            <input
+              class="form-input block w-full sm:text-sm sm:leading-5"
+              name="display"
+              type="email"
+              on:blur={() => onRepeaterChange(true)}
+              bind:value={option.label}
+              {placeholder} />
+          {:else if inputType === 'text'}
+            <input
+              class="form-input block w-full sm:text-sm sm:leading-5"
+              name="display"
+              type="text"
+              on:blur={() => onRepeaterChange(true)}
+              bind:value={option.label}
+              {placeholder} />
+          {/if}
         </div>
       </div>
       <div class="flex-initial py-2">

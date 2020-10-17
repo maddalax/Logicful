@@ -13,6 +13,8 @@ type OptionSet struct {
 type Team struct {
 	Id          string `json:"id"`
 	Name string `json:"name"`
+	Owner string `json:"owner"`
+	Admins []string `json:"admins"`
 	Changeable
 	Creatable
 }

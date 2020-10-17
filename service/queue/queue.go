@@ -26,10 +26,12 @@ func Setup() {
 	setupTopic("submissions")
 	setupTopic("integration-email")
 	setupTopic("integration-webhook")
+	setupTopic("team-invite")
 	setupSubscription("form", "form-processor")
 	setupSubscription("submissions", "workflow")
 	setupSubscription("integration-email", "send-submission-email")
 	setupSubscription("integration-webhook", "send-submission-webhook")
+	setupSubscription("team-invite", "team-invite-email")
 }
 
 func setupTopic(name string) {
@@ -83,9 +85,11 @@ func Dispatch(name string, data interface{}) error {
 		return err
 	}
 	topic := client.Topic(name)
-	topic.Publish(context.Background(), &pubsub.Message{
+	if _, err := topic.Publish(context.Background(), &pubsub.Message{
 		Data: serialized,
-	})
+	}).Get(context.Background()); err != nil {
+		return err
+	}
 	return nil
 }
 

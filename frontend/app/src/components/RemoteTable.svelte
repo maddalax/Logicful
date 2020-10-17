@@ -14,6 +14,7 @@
   import { isObject } from "@app/guards/Guard";
   import type { Dictionary } from "@app/models/Utility";
   import Button from "./Button.svelte";
+  import {tableRows} from "@app/store/RemoteTableStore"
   export let getRows: () => Promise<TableRow[]>;
   export let defaultSortColumn = "";
   export let searchPlaceHolder: string = "Search";
@@ -72,6 +73,7 @@
         return isUnread(f);
       });
     }
+    tableRows.set(filtered);
   }
 
   function createFuse(): Fuse<{}> {
@@ -104,6 +106,7 @@
       const result = fuse.search(query);
       filtered = result.map((r) => r.item);
     }
+    tableRows.set(filtered);
   }
 
   function selectAllRows() {
@@ -136,6 +139,7 @@
       });
       fuse = createFuse();
       filtered = rows;
+      tableRows.set(filtered);
       let allColumns = new Set<string>();
       rows.forEach((r) => {
         Object.keys(r).forEach((c) => allColumns.add(c));
@@ -195,6 +199,7 @@
     if (sortDirection === "asc") {
       filtered = filtered.reverse();
     }
+    tableRows.set(filtered);
   }
 
   function headerStyle(column: string) {
@@ -271,6 +276,7 @@
       }
       return f;
     });
+    tableRows.set(filtered);
     dispatch("show_toast", {
       message: `Item(s) marked as ${value ? "read" : "unread"}.`,
     });
@@ -300,6 +306,7 @@
     rows = rows.filter((w) => {
       return !toRemove.has(w.table_meta_id);
     });
+    tableRows.set(filtered);
     dispatch("show_toast", {
       message: `Item(s) deleted.'}.`,
     });

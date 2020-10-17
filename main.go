@@ -130,8 +130,11 @@ func addUserRoutes(router *httprouter.Router) {
 func addTeamRoutes(router *httprouter.Router) {
 	router.GET("/api/team", team.TeamHandler)
 	router.GET("/api/team/members", team.MembersHandler)
-	router.PUT("/api/team/:teamId", team.SetHandler)
+	router.PUT("/api/team", team.SetHandler)
 	router.POST("/api/team", team.SetHandler)
+	router.DELETE("/api/team/members/remove", team.RemoveMembersHandler)
+	router.POST("/api/team/members/invite", team.InviteMembersHandler)
+	router.POST("/api/team/members/invite/accept", team.AcceptInviteHandler)
 }
 
 func addEmailWebhookRoutes(router *httprouter.Router) {
@@ -144,4 +147,5 @@ func addCron() {
 
 func addQueueSubscribers() {
 	workflow.Register()
+	team.Register()
 }

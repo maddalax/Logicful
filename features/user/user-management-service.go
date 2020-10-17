@@ -85,6 +85,19 @@ func ByEmail(email string) (models.User, error) {
 	return user, nil
 }
 
+func ById(id string) (models.User, error) {
+	result, err := db.Instance().Collection("users").Doc(id).Get(context.Background())
+	if err != nil {
+		return models.User{}, err
+	}
+	user := models.User{}
+	err = db.Unmarshal(result.Data(), &user)
+	if err != nil {
+		return models.User{}, err
+	}
+	return user, nil
+}
+
 func ByTeam(user models.User) ([]models.User, error) {
 	iter := db.Instance().Collection("users").Where("TeamId", "==", user.TeamId).Documents(context.Background())
 	var results = make([]models.User, 0)

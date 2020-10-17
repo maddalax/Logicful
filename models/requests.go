@@ -9,3 +9,13 @@ type ChangeFormFolderRequest struct {
 type TokenRequest struct {
 	Token string `json:"token"`
 }
+
+type RemoveTeammatesRequest struct {
+	UserIds []string `json:"userIds"`
+}
+
+type TeamInviteRequest struct {
+	Team Team `json:"team"`
+	User User `json:"user"`
+	Sender User `json:"sender"`
+}

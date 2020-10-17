@@ -14,6 +14,7 @@ type User struct {
 	Changeable
 	EmailSuppressed  string `json:"emailSuppressed"`
 	EmailBounceCount string `json:"emailBounceCount"`
+	PendingTeamInvites map[string]bool `json:"pendingTeamInvites"`
 }
 
 type UserLoginClaims struct {

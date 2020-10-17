@@ -19,6 +19,7 @@
 import PricingPage from "./pages/pricing/PricingPage.svelte";
 import IndexPage from "./pages/IndexPage.svelte";
 import MyTeamPage from "./pages/team/MyTeamPage.svelte";
+import AcceptTeamInvite from "./pages/team/AcceptTeamInvite.svelte";
   let path = "";
 
 
@@ -43,6 +44,11 @@ import MyTeamPage from "./pages/team/MyTeamPage.svelte";
     <Route path="/team">
       <Authenticate>
         <MyTeamPage />
+      </Authenticate>
+    </Route>
+    <Route path="/team/accept">
+      <Authenticate>
+        <AcceptTeamInvite/>
       </Authenticate>
     </Route>
     <Route path="/dashboard">
