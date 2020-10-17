@@ -48,6 +48,11 @@ func main() {
 	addUserRoutes(router)
 	addEmailWebhookRoutes(router)
 	addTeamRoutes(router)
+
+	router.GET("/robots.txt", func(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+		http.ServeFile(w, r, "public/robots.txt")
+	})
+
 	router.ServeFiles("/css/*filepath", http.Dir("public/css"))
 	router.ServeFiles("/js/*filepath", http.Dir("public/js"))
 	router.ServeFiles("/img/*filepath", http.Dir("public/img"))
