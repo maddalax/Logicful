@@ -148,22 +148,12 @@
   </div>
 
   <div class="bg-white overflow-hidden">
-    <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div class="relative max-w-7xl mx-auto py-0 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8">
         <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-2">
-          <!-- <svg class="hidden lg:block absolute top-0 right-0 -mt-20 -mr-20" width="404" height="384" fill="none" viewBox="0 0 404 384">
-          <defs>
-            <pattern id="de316486-4a29-4312-bdfc-fbce2132a2c1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
-        </svg> -->
-          <!-- <div class="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-1 w-screen"></div> -->
-
           <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
             <figure>
-              <div class="relative pb-7/12 lg:pb-0 pl-24 pt-7">
+              <div class="relative lg:pb-0 pl-24 pt-7">
                 <BuildSvg />
               </div>
             </figure>
@@ -213,13 +203,13 @@
   </div>
 
   <div class="bg-white overflow-hidden">
-    <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div class="relative max-w-7xl mx-auto py-0 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8">
         <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-1">
           <div
             class="relative text-base mx-auto max-w-prose lg:max-w-none pl-10">
             <figure>
-              <div class="relative pb-7/12 lg:pb-0 mt-20 pr-20">
+              <div class="relative lg:pb-0 pr-20 mt-10 lg:mt-20">
                 <ShareSvg />
               </div>
             </figure>
@@ -272,19 +262,10 @@
     <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8">
         <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-2">
-          <!-- <svg class="hidden lg:block absolute top-0 right-0 -mt-20 -mr-20" width="404" height="384" fill="none" viewBox="0 0 404 384">
-          <defs>
-            <pattern id="de316486-4a29-4312-bdfc-fbce2132a2c1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
-        </svg> -->
-          <!-- <div class="hidden lg:block bg-gray-50 absolute top-20 bottom-36 left-1 w-screen"></div> -->
-
+        
           <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
             <figure>
-              <div class="relative pb-7/12 lg:pb-0 mt-32 pl-10">
+              <div class="relative lg:pb-0 mt-10 lg:mt-32 pl-10">
                 <WorkflowSvg />
               </div>
             </figure>
@@ -304,13 +285,7 @@
               pre-existing workflows
             </h1>
           </div>
-          <div class="text-base max-w-prose mx-auto lg:max-w-none">
-            <p class="text-lg leading-7 text-gray-500 mb-5">
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
-              urna sed consectetur neque tristique pellentesque. Blandit amet,
-              sed aenean erat arcu morbi.
-            </p>
-          </div>
+          <div>
           <div
             class="prose text-gray-500 mx-auto lg:max-w-none lg:row-start-1
               lg:col-start-1">
@@ -324,22 +299,22 @@
               nisi lorem pulvinar. Urna, laoreet fusce nibh leo. Dictum et et et
               sit. Faucibus sed non gravida lectus dignissim imperdiet a.
             </p>
-            <p>
-              Dictum magnis risus phasellus vitae quam morbi. Quis lorem lorem
-              arcu, metus, egestas netus cursus. In.
-            </p>
           </div>
-          <div class="rounded-md shadow pt-5 w-40">
-            <a
-              href="form/builder?formId=demo"
-              class="flex items-center justify-center px-5 py-3 border
-                border-transparent text-base leading-6 font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-                focus:border-indigo-700 focus:shadow-outline-indigo transition
-                duration-150 ease-in-out">
-              Learn More
-            </a>
+
+
+            <div class="rounded-md shadow mt-5 w-40 text-white md:mx-auto lg:ml-0">
+              <a
+                href="form/builder?formId=demo"
+                class="text-white  flex items-center justify-center px-5 py-3 border
+                  border-transparent text-base leading-6 font-medium rounded-md
+                   bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+                  focus:border-indigo-700 focus:shadow-outline-indigo transition
+                  duration-150 ease-in-out">
+                Learn More
+              </a>
           </div>
+
+          </div>     
         </div>
       </div>
     </div>

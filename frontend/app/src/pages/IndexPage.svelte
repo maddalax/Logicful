@@ -1,6 +1,10 @@
 <script lang="typescript">
   import AlphaBanner from "@app/components/AlphaBanner.svelte";
   import MarketingNavbar from "@app/components/layout/MarketingNavbar.svelte";
+import CodingSvg from "./features/CodingSvg.svelte";
+import ShareSvg from "./features/ShareSvg.svelte";
+import WorkflowSvg from "./features/WorkflowSvg.svelte";
+import TeamSvg from "./team/TeamSvg.svelte";
 </script>
 
 <AlphaBanner />
@@ -104,11 +108,126 @@
     <div
       class="max-w-screen-xl mx-auto pt-8 pb-8 px-4 sm:px-6 md:pb-24 lg:px-8" />
   </div>
+
   <div class="bg-gray-50 overflow-hidden">
+    <div class="relative max-w-7xl mx-auto py-0 lg:py-16 px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+        <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-1">
+          <div
+            class="relative text-base mx-auto max-w-prose lg:max-w-none pl-10">
+            <figure>
+              <div class="relative lg:pb-0 pr-20 mt-10 lg:mt-20">
+                <TeamSvg />
+              </div>
+            </figure>
+          </div>
+        </div>
+        <div>
+          <div class="mx-auto text-base max-w-prose lg:max-w-none">
+            <p
+              class="text-base leading-6 text-indigo-600 font-semibold
+                tracking-wide uppercase">
+              Logicful Form
+            </p>
+            <h1
+              class="mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight
+                text-gray-900 sm:text-4xl sm:leading-10">
+              What is Logicful
+            </h1>
+          </div>
+          <div class="text-base max-w-prose mx-auto lg:max-w-none">
+            <p class="text-lg leading-7 text-gray-500 mb-5">
+              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
+              urna sed consectetur neque tristique pellentesque. Blandit amet,
+              sed aenean erat arcu morbi.
+            </p>
+          </div>
+          <div
+            class="prose text-gray-500 mx-auto lg:max-w-none lg:row-start-2
+              lg:col-start-2">
+            <p>
+              Sollicitudin tristique eros erat odio sed vitae, consequat turpis
+              elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu
+              viverra donec ut volutpat donec laoreet quam urna.
+            </p>
+            <p>
+              Bibendum eu nulla feugiat justo, elit adipiscing. Ut tristique sit
+              nisi lorem pulvinar. Urna, laoreet fusce nibh leo. Dictum et et et
+              sit. Faucibus sed non gravida lectus dignissim imperdiet a.
+            </p>
+            <p>
+              Dictum magnis risus phasellus vitae quam morbi. Quis lorem lorem
+              arcu, metus, egestas netus cursus. In.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-gray-50 overflow-hidden">
+    <div class="bg-gray-50 overflow-hidden">
+      <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+          <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-2">
+          
+            <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
+              <figure>
+                <div class="relative lg:pb-0 mt-8 lg:mt-0 pl-10">
+                  <CodingSvg />
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div>
+            <div class="mx-auto text-base max-w-prose lg:max-w-none">
+              <p
+                class="text-base leading-6 text-indigo-600 font-semibold
+                  tracking-wide uppercase">
+                Customizable
+              </p>
+              <h1
+                class="mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight
+                  text-gray-900 sm:text-4xl sm:leading-10">
+                What makes us different
+              </h1>
+            </div>
+            <div>
+            <div
+              class="prose text-gray-500 mx-auto lg:max-w-none lg:row-start-1
+                lg:col-start-1">
+              <p>
+                We provide the ability to use custom java scipt for field conditionals and validations
+              </p>
+              <p>
+                Bibendum eu nulla feugiat justo, elit adipiscing. Ut tristique sit
+                nisi lorem pulvinar. Urna, laoreet fusce nibh leo. Dictum et et et
+                sit. Faucibus sed non gravida lectus dignissim imperdiet a.
+              </p>
+            </div>
+  
+  
+              <div class="rounded-md shadow mt-5 w-40 text-white md:mx-auto lg:ml-0">
+                <a
+                  href="form/builder?formId=demo"
+                  class="text-white  flex items-center justify-center px-5 py-3 border
+                    border-transparent text-base leading-6 font-medium rounded-md
+                     bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+                    focus:border-indigo-700 focus:shadow-outline-indigo transition
+                    duration-150 ease-in-out">
+                  Learn More
+                </a>
+            </div>
+  
+            </div>     
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="relative max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <svg
         class="absolute top-0 left-full transform -translate-x-1/2
-          -translate-y-3/4 lg:left-auto lg:right-full lg:translate-x-2/3
+          -translate-y-3/4 md:hidden lg:left-auto lg:right-full lg:translate-x-2/3
           lg:translate-y-1/4"
         width="404"
         height="784"
@@ -136,7 +255,7 @@
           height="784"
           fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)" />
       </svg>
-
+      
       <div class="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div class="lg:col-span-1">
           <h3
@@ -275,5 +394,7 @@
         </div>
       </div>
     </div>
+ 
   </div>
+  
 </div>
