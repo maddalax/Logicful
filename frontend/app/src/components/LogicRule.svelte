@@ -310,7 +310,7 @@
       ];
     }
 
-    return [];
+    return [customExpression];
   }
 
   function fieldsTransformer(fields: IField[]): LabelValue[] {
@@ -399,7 +399,7 @@
       {@html helperText ?? ''}
     </div>
   {/if}
-  <div class="ml-1 mt-4">
+  <div class="ml-1 mt-4 mb-6">
     <Button type="primary" onClick={addNew}>Add New Rule</Button>
   </div>
 </div>

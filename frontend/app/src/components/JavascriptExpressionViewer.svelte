@@ -27,20 +27,8 @@
   });
 </script>
 
-{#if !value}
-  <p>Enter a value on your selected input to see its value here.</p>
-{:else}
-  <p>Current value of input:</p>
-  <strong><code>{JSON.stringify(value, null, 4)}</code></strong>
-  <p>Your Javascript expression will be run against this value.</p>
-  <p>
-    To reference this value in your expression, type <code><strong>value</strong></code>
-  </p>
-  <p>Example: <code>value.includes('hello')</code></p>
-{/if}
-
 {#if error}
-  <div class="rounded-md bg-red-50 p-4">
+  <div class="rounded-lg bg-red-50 p-4 sm:rounded-lg">
     <div class="flex">
       <div class="flex-shrink-0">
         <!-- Heroicon name: x-circle -->
@@ -72,3 +60,62 @@
     </div>
   </div>
 {/if}
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mt-3 mb-3">
+  <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      Javascript Expression Guide
+    </h3>
+    <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500" />
+  </div>
+  <div>
+    <dl>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm leading-5 font-medium text-gray-500">
+          Instructions
+        </dt>
+        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2 overflow-scroll">
+          <p>
+            Write any valid Javascript above, your expression must evalulate to
+            a boolean value.
+          </p>
+          <br />
+          <p>
+            The current value of the input you are targeting will be supplied
+            for your expression as the variable: <code><strong>value</strong></code>
+          </p>
+          <br/>
+          <p>You can see its current value below in the 'Current Value' column</p>
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm leading-5 font-medium text-gray-500">
+          Current Value
+        </dt>
+        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+          {#if !value}
+            <p>Enter a value on your selected input to see its value here.</p>
+          {:else}
+            <textarea type="text" class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" disabled readonly rows={5} value={JSON.stringify(value, null, 4)}}/>
+          {/if}
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm leading-5 font-medium text-gray-500">
+          String Example Expression
+        </dt>
+        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+          <p><code>value.includes('hello')</code></p>
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm leading-5 font-medium text-gray-500">
+          Checkbox Example Expression
+        </dt>
+        <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+          <p><code>value['My Option'] != null</code></p>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
