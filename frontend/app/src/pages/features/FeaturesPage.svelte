@@ -450,6 +450,224 @@
 
        
       </div>
+      <div
+      class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+      <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+        <div class="flex-shrink-0 pl-4">
+          <div class="flex-1 bg-white p-6 flex justify-between">
+            <div class="flex-col mt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                height="70"
+                width="70">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+            </div>
+            <div class="flex-1 flex-col pl-6">
+              <a href="#" class="block">
+                <h3
+                  class="mt-2 text-xl leading-7 font-semibold text-indigo-600">
+                  Conditional Fields
+                </h3>
+                <p class="mt-3 text-base leading-6 text-gray-500">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto accusantium praesentium eius, ut atque fuga
+                  culpa, similique sequi cum eos quis dolorum.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+        <div class="flex-shrink-0 pl-4">
+          <div class="flex-1 bg-white p-6 flex justify-between">
+            <div class="flex-col mt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                height="70"
+                width="70">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <div class="flex-1 flex-col pl-6">
+              <a href="#" class="block">
+                <h3
+                  class="mt-2 text-xl leading-7 font-semibold text-indigo-600">
+                  File upload inputs
+                </h3>
+                <p class="mt-3 text-base leading-6 text-gray-500">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto accusantium praesentium eius, ut atque fuga
+                  culpa, similique sequi cum eos quis dolorum.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+        <div class="flex-shrink-0 pl-4">
+          <div class="flex-1 bg-white p-6 flex justify-between">
+            <div class="flex-col mt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                height="70"
+                width="70">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div class="flex-1 flex-col pl-6">
+              <a href="#" class="block">
+                <h3
+                  class="mt-2 text-xl leading-7 font-semibold text-indigo-600">
+                  Confirmation Emails
+                </h3>
+                <p class="mt-3 text-base leading-6 text-gray-500">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto accusantium praesentium eius, ut atque fuga
+                  culpa, similique sequi cum eos quis dolorum.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      
+
+     
+    </div>
+    
+    <div
+    class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+    <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      <div class="flex-shrink-0 pl-4">
+        <div class="flex-1 bg-white p-6 flex justify-between">
+          <div class="flex-col mt-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              height="70"
+              width="70">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+          </div>
+          <div class="flex-1 flex-col pl-6">
+            <a href="#" class="block">
+              <h3
+                class="mt-2 text-xl leading-7 font-semibold text-indigo-600">
+                Custom Redirects and Confirmation Pages
+              </h3>
+              <p class="mt-3 text-base leading-6 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto accusantium praesentium eius, ut atque fuga
+                culpa, similique sequi cum eos quis dolorum.
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      <div class="flex-shrink-0 pl-4">
+        <div class="flex-1 bg-white p-6 flex justify-between">
+          <div class="flex-col mt-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              height="70"
+              width="70">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <div class="flex-1 flex-col pl-6">
+            <a href="#" class="block">
+              <h3
+                class="mt-2 text-xl leading-7 font-semibold text-indigo-600">
+                Submission Viewer
+              </h3>
+              <p class="mt-3 text-base leading-6 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto accusantium praesentium eius, ut atque fuga
+                culpa, similique sequi cum eos quis dolorum.
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+      <div class="flex-shrink-0 pl-4">
+        <div class="flex-1 bg-white p-6 flex justify-between">
+          <div class="flex-col mt-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              height="70"
+              width="70">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="flex-1 flex-col pl-6">
+            <a href="#" class="block">
+              <h3
+                class="mt-2 text-xl leading-7 font-semibold text-indigo-600">
+                Form Rules
+              </h3>
+              <p class="mt-3 text-base leading-6 text-gray-500">
+                Form ability time frames
+                Trigger actions upon submissions
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
     </div>
   </div>
 </div>
