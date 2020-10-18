@@ -31,12 +31,13 @@
   <component name="ChangeListManager">
     <list default="true" id="bbabcb88-1c32-45dd-8eba-224ed1bce975" name="Default Changelist" comment="fix robots txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/src/components/LogicRule.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/components/LogicRule.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/event/EventBus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/event/EventBus.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/CheckboxGroup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/CheckboxGroup.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/inputs/ComboBox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/inputs/ComboBox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/src/pages/account/LoginPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/pages/account/LoginPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/src/features/form/edit/Field.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/features/form/edit/Field.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/app/src/services/LogicBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/src/services/LogicBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

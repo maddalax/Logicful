@@ -15,6 +15,7 @@
   import { fastClone, isEmptyOrNull } from "@app/util/Compare";
   import ConfigField from "@app/features/form/edit/ConfigField.svelte";
   import Button from "./Button.svelte";
+  import JavascriptExpressionViewer from "./JavascriptExpressionViewer.svelte";
 
   export let helperText: string = "";
   export let field: IField;
@@ -116,8 +117,15 @@
     if (!targetField) {
       return [];
     }
+    const customExpression = {
+      label: "Custom Javascript Expression",
+      value: "js",
+      valueInput: "js-expression",
+      placeholder: "value === 'my value'",
+    };
     if (targetField.type === "string") {
       return [
+        customExpression,
         {
           label: "Contains",
           value: "contains",
@@ -142,6 +150,7 @@
     }
     if (targetField.type === "combobox") {
       return [
+        customExpression,
         {
           label: "Equals",
           value: "eq",
@@ -162,6 +171,7 @@
     }
     if (targetField.type === "date") {
       return [
+        customExpression,
         {
           label: "Is Within N Days Of Current Date",
           value: "isWithinXDays",
@@ -203,6 +213,7 @@
     }
     if (targetField.type === "checkbox-group") {
       return [
+        customExpression,
         {
           label: "Has Value Checked",
           value: "hasValueChecked",
@@ -223,6 +234,7 @@
     }
     if (targetField.type === "radio-group") {
       return [
+        customExpression,
         {
           label: "Has Value Selected",
           value: "hasValueChecked",
@@ -243,6 +255,7 @@
     }
     if (targetField.type === "file") {
       return [
+        customExpression,
         {
           label: "Has Chosen File",
           value: "hasValue",
@@ -269,6 +282,7 @@
     }
     if (targetField.type === "number") {
       return [
+        customExpression,
         {
           label: "Greater Than",
           value: "gt",
@@ -367,6 +381,12 @@
               {:else if options[i].valueType === 'number'}
                 <ConfigField
                   field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Number of Days', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'number', required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
+              {:else if options[i].valueType === 'js-expression'}
+                <ConfigField
+                  field={{ id: randomString(), helperText: options[i].helperText, placeholder: options[i].placeholder, label: 'Custom Javascript Expression', value: { type: 'local', value: field.logic?.rules?.[i]?.value }, type: 'string', rows: 3, required: true, configFieldTarget: `logic.rules[${i}].value`, configTarget: field.id }} />
+                <div class="ml-3">
+                  <JavascriptExpressionViewer fieldId={field.logic?.rules?.[i]?.field} />
+                </div>
               {/if}
             {/if}
           </div>

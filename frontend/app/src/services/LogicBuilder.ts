@@ -5,6 +5,7 @@ import { nullOrEmpty } from "@app/util/Compare";
 import { isLabelValue } from "@app/guards/Guard";
 import type { Dictionary } from "@app/models/Utility";
 import { DateTime } from "luxon";
+import { dispatch } from "@app/event/EventBus";
 
 export class LogicBuilder {
   evaluate(field: IField): boolean {
@@ -133,6 +134,8 @@ export class LogicBuilder {
         return this.dateIsAfter(value, rule);
       case "isWithinXDays":
         return this.dateIsWithinXDays(value, rule);
+      case "js":
+        return this.javascriptExpression(value, rule);
       default:
         return false;
     }
@@ -142,16 +145,30 @@ export class LogicBuilder {
     return value != null && value != "";
   }
 
+  private javascriptExpression(value: any, rule: LogicRule): boolean {
+    try {
+      dispatch("logic_rule_javascript_error", undefined);
+      const body = `function( value ){ return ${rule.value} }`;
+      const wrap = (s: string) => "{ return " + body + " };";
+      const func = new Function(wrap(body));
+      const result = func.call(null).call(null, value);
+      return Boolean(result);
+    } catch (ex) {
+      dispatch("logic_rule_javascript_error", ex);
+      return false;
+    }
+  }
+
   private dateIsBetween(value: any, rule: LogicRule): boolean {
     const min = rule.value.min;
     const max = rule.value.max;
-    if(min && max) {
+    if (min && max) {
       return value >= min && value <= max;
     }
-    if(min) {
+    if (min) {
       return value >= min;
     }
-    if(max) {
+    if (max) {
       return value <= max;
     }
     return false;
@@ -165,9 +182,9 @@ export class LogicBuilder {
     try {
       const days = parseInt(rule.value, 10);
       const valueAsDate = DateTime.fromMillis(value);
-      const diff = parseInt(valueAsDate.diffNow('days').days.toFixed(0), 10);
+      const diff = parseInt(valueAsDate.diffNow("days").days.toFixed(0), 10);
       return diff <= days && diff >= 0;
-    } catch(ex) {
+    } catch (ex) {
       return false;
     }
   }

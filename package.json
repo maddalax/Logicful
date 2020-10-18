@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start" : "cd frontend/app && npm run start",
-    "deploy" : "cd frontend/app && npm run build && cd ../../ && gcloud app deploy"
+    "start": "cd frontend/app && npm run start",
+    "deploy": "cd frontend/app && npm run build && cd ../../ && gcloud app deploy"
+  },
+  "dependencies": {
   }
 }
