@@ -6,6 +6,7 @@ import { isLabelValue } from "@app/guards/Guard";
 import type { Dictionary } from "@app/models/Utility";
 import { DateTime } from "luxon";
 import { dispatch } from "@app/event/EventBus";
+import { compileCode } from "./JsEvaluator";
 
 export class LogicBuilder {
   evaluate(field: IField): boolean {
@@ -148,10 +149,8 @@ export class LogicBuilder {
   private javascriptExpression(value: any, rule: LogicRule): boolean {
     try {
       dispatch("logic_rule_javascript_error", undefined);
-      const body = `function( value ){ return ${rule.value} }`;
-      const wrap = (s: string) => "{ return " + body + " };";
-      const func = new Function(wrap(body));
-      const result = func.call(null).call(null, value);
+      const result = compileCode(rule.value, value);
+      console.log("COMPILE RESULT", result);
       return Boolean(result);
     } catch (ex) {
       dispatch("logic_rule_javascript_error", ex);

@@ -6,6 +6,7 @@
   import { onDestroy, onMount, tick } from "svelte";
   import { getUrlParameter } from "@app/util/Http";
   import SubmissionPreview from "@app/features/submissions/SubmissionPreview.svelte";
+  import { loadScripts } from "@app/util/Script";
   export let submission: ISubmission | undefined = undefined;
   export let form: IForm | undefined;
 
@@ -33,6 +34,7 @@
       window.onstorage = (e: any) => {
         if (e.key === "form" && e.newValue) {
           form = JSON.parse(e.newValue);
+          loadJSInterpreter(form!);
         }
       };
     } else {
@@ -48,21 +50,45 @@
       await loadForm();
     }
 
+    if (!form) {
+      return;
+    }
+
     if (submission) {
       Object.keys(submission.details).forEach((k) => {
-        const index = form.fields.findIndex(
+        const index = form!.fields.findIndex(
           (f) => f.label === k || f.name === k
         );
         if (index !== -1) {
-          form.fields[index].value = submission!.details[k];
+          form!.fields[index].value = submission!.details[k];
         }
       });
     }
+
+    await loadJSInterpreter(form);
 
     await tick();
 
     formStore.setForm(form);
   });
+
+  async function loadJSInterpreter(form: IForm) {
+    if(!form || !form.fields) {
+      return;
+    }
+
+    const hasJs =
+      form.fields.find(
+        (w) => w.logic?.rules?.find((w) => w?.condition === "js") != null
+      ) != null;
+
+    if (hasJs) {
+      await loadScripts([
+        "https://cdnjs.cloudflare.com/ajax/libs/acorn/6.4.2/acorn.min.js",
+        "https://cdn.jsdelivr.net/npm/js-interpreter@2.2.0/lib/js-interpreter.min.js",
+      ]);
+    }
+  }
 </script>
 
 {#if mode === 'local'}

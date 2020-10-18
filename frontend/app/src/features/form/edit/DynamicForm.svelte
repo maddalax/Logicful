@@ -12,19 +12,27 @@
   import Dialog from "@app/components/layout/Dialog.svelte";
   import EditableField from "./EditableField.svelte";
   import Button from "@app/components/Button.svelte";
+  import { loadScripts } from "@app/util/Script";
 
   export let form: IForm;
   export let mode: DynamicFormMode = DynamicFormMode.Live;
   let saving = false;
   let deleting = false;
 
+  onMount(async () => {
+    await loadScripts([
+      "https://cdnjs.cloudflare.com/ajax/libs/acorn/6.4.2/acorn.min.js",
+      "https://cdn.jsdelivr.net/npm/js-interpreter@2.2.0/lib/js-interpreter.min.js",
+    ]);
+  });
+
   subscribeComponent("save_form", () => {
     saving = true;
-  })
+  });
 
   subscribeComponent("form_saved", () => {
     saving = false;
-  })
+  });
 
   subscribeComponent("confirm_field_deletion", () => {
     deleting = true;
@@ -106,23 +114,22 @@
       {form.title}
     </h1>
     <p class="max-w-4xl text-sm leading-5 text-gray-500">{form.description}</p>
-    <span class="hidden lg:inline-flex items-center mt-2 px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+    <span
+      class="hidden lg:inline-flex items-center mt-2 px-3 py-0.5 rounded-full
+        text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
       {#if saving}
         Saving...
       {:else}
-        <div class="hidden xl:inline-flex">
-          All Changes Saved
-        </div>
-        <div class="xl:hidden">
-          Saved
-        </div>
+        <div class="hidden xl:inline-flex">All Changes Saved</div>
+        <div class="xl:hidden">Saved</div>
       {/if}
     </span>
-
   </div>
   <div class="mt-4 flex sm:mt-0 sm:ml-4">
     <span class="order-1 ml-3 shadow-sm rounded-md sm:order-0 sm:ml-0">
-      <Button type={"secondary"} href={`/form/submissions?formId=${form.id}&mode=local`}>
+      <Button
+        type={'secondary'}
+        href={`/form/submissions?formId=${form.id}&mode=local`}>
         Submissions
       </Button>
     </span>

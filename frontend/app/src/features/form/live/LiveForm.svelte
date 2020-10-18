@@ -10,6 +10,7 @@
   import { submitForm } from "@app/features/form/live/service/SubmitForm";
   import { LoadState } from "@app/models/LoadState";
   import { subscribeComponent } from "@app/event/EventBus";
+  import { loadScripts } from "@app/util/Script";
   import Button from "@app/components/Button.svelte";
 
   export let form: IForm;

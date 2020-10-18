@@ -1,16 +1,18 @@
 <script lang="typescript">
   import Button from "@app/components/Button.svelte";
-  import Dialog from "@app/components/layout/Dialog.svelte";
   import RemoteTable from "@app/components/RemoteTable.svelte";
   import type { Team } from "@app/models/IForm";
   import type { User } from "@app/models/User";
   import { getApi } from "@app/services/ApiService";
   import { onMount } from "svelte";
-import AddMembers from "./AddMembers.svelte";
+  import AddMembers from "./AddMembers.svelte";
   import RemoveMembers from "./RemoveMembers.svelte";
 
-  let team: Team;
-  let dialog : 'removing' | 'adding' | '' = '';
+  let team: Team = {
+    name: "",
+    id: "",
+  };
+  let dialog: "removing" | "adding" | "" = "";
   let hidden: Set<string>;
 
   onMount(async () => {
@@ -44,7 +46,9 @@ import AddMembers from "./AddMembers.svelte";
     </div>
     <div class="ml-4 mt-4 flex-shrink-0">
       <span class="inline-flex rounded-md shadow-sm">
-        <Button type="primary" onClick={() => dialog = 'adding'}>Add Member</Button>
+        <Button type="primary" onClick={() => (dialog = 'adding')}>
+          Add Member
+        </Button>
         <div class="ml-2">
           <Button type="secondary">Leave Team</Button>
         </div>
@@ -55,7 +59,10 @@ import AddMembers from "./AddMembers.svelte";
   <div class="pt-8 w-full">
     <RemoteTable {getRows} {hidden}>
       <div slot="selected_actions" class="ml-3">
-        <Button type="secondary" size="small" onClick={() => (dialog = 'removing')}>
+        <Button
+          type="secondary"
+          size="small"
+          onClick={() => (dialog = 'removing')}>
           Remove Member(s)
         </Button>
       </div>

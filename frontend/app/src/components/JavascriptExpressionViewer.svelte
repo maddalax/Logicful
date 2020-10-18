@@ -77,7 +77,7 @@
         <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2 overflow-scroll">
           <p>
             Write any valid Javascript above, your expression must evalulate to
-            a boolean value.
+            a boolean value. Your expression must conform to <strong>ES5</strong>, ES6 methods are not supported.
           </p>
           <br />
           <p>
@@ -105,7 +105,7 @@
           String Example Expression
         </dt>
         <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-          <p><code>value.includes('hello')</code></p>
+          <p><code>value.indexOf('hello') !== -1</code></p>
         </dd>
       </div>
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
