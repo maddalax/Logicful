@@ -331,11 +331,11 @@ import { nameToInitials } from "@app/util/Nav";
               <span
               class="inline-flex items-center justify-center h-10 w-10
                 rounded-full bg-indigo-500 cursor-pointer">
-              <span class="font-medium leading-none text-white">{nameToInitials(user.fullName)}</span>
+              <span class="font-medium leading-none text-white">{nameToInitials(user.fullName) || 'DU'}</span>
             </span>
             </div>
             <div class="ml-3">
-              <p class="text-sm leading-5 font-medium text-white">{user.displayName}</p>
+              <p class="text-sm leading-5 font-medium text-white">{user.displayName || 'Demo User'}</p>
               <a
                 href="/account/profile"
                 target="_blank"
